@@ -1,0 +1,1 @@
+global.Mythical = 0;
