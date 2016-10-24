@@ -37,6 +37,7 @@
       <objects name="Map">
         <object>objects\MapButtonObject_Character</object>
         <object>objects\MapButtonObject_MythicalMap</object>
+        <object>objects\Mouse</object>
       </objects>
       <objects name="Character">
         <object>objects\CharacterButtonObject_Diary</object>
