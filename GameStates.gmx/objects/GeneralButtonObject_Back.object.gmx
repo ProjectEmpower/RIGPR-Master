@@ -85,11 +85,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomCharacter)
+            <string>if(room == RoomCharacter) //checks room
 {
-    if(global.myth == 0)
+    if(global.myth == 0) //checks mythial state
     {
-        room = RoomMap;
+        room = RoomMap; //swaps room
     }
     else
     {

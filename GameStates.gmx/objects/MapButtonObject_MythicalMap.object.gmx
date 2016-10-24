@@ -85,9 +85,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomMapMythical)
+            <string>if(room == RoomMapMythical) //checks room
 {
-    room = RoomMap;
+    room = RoomMap; //swaps
 }
 else
 {
