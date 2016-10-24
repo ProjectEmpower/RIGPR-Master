@@ -85,14 +85,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomMapMythical)
+            <string>if(room == RoomMapMythical)//checks current room
 {
-    global.myth = 0;
-    room = RoomMap;
+    global.myth = 0; //creates the variable myth and sets it to 0
+    room = RoomMap;  //swaps room
 }
 else
 {
-    global.myth = 1;
+    global.myth = 1;//creates the variable myth and sets it to 1
     room = RoomMapMythical;
 }
 </string>

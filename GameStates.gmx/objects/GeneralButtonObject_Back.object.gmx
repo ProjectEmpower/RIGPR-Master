@@ -85,15 +85,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomCharacter)
+            <string>if(room == RoomCharacter) //checks room
 {
-    if(global.myth == 0)
+    if(global.myth == 0) //checks if myth variable created in "MapButtonObject_MythicalMap" or not
     {
-        room = RoomMap;
+        room = RoomMap; //swaps room
     }
-    else
+    else                    
     {
-    room = RoomMapMythical;
+    room = RoomMapMythical; 
     }
         
 }
