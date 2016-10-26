@@ -93,6 +93,8 @@ else
 {
     global.myth = 1;//sets the myth variable to 1 (true) when opening the charcter menu
 }
+global.currentX = view_xview
+global.currentY = view_yview
 room = RoomCharacter;
 </string>
           </argument>

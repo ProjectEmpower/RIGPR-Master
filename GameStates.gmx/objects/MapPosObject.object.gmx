@@ -8,6 +8,32 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//sets the temp variables (used in Room Start) to the current screen position
+    
+global.currentX = view_xview
+global.currentY = view_yview
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
@@ -25,8 +51,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-room = RoomMenu;
+            <string>//sets the current view to the view set when leaving the screen (Room End or during initial setup)
+view_xview = global.currentX 
+view_yview = global.currentY  
+
+//changes the position of the buttons to make sure it loads in the correct positon
+MapButtonObject_Character.x = view_xview + global.CharacterButtonX 
+MapButtonObject_Character.y = view_yview + global.CharacterButtonY
+MapButtonObject_MythicalMap.x = view_xview + global.MythicalButtonX
+MapButtonObject_MythicalMap.y = view_yview + global.MythicalButtonY
+
 </string>
           </argument>
         </arguments>

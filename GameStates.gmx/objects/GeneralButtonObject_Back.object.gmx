@@ -94,8 +94,7 @@
     else
     {
     room = RoomMapMythical;
-    }
-        
+    }   
 }
 if(room == RoomDiary)
 {

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>drag = 0
+            <string>//creates the variable drag (sets it to false)
+drag = 0
 </string>
           </argument>
         </arguments>
@@ -48,20 +49,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(drag == 1)
+            <string>if(drag == 1) //if drag is 1 (true)
 {
-    view_xview = dragX - (mouse_x - view_xview)
+    //sets the view when dragging
+    view_xview = dragX - (mouse_x - view_xview) 
     view_yview = dragY - (mouse_y - view_yview)
-    
-    view_xview = max(0, min(view_xview, room_width - view_wview))
+        
+    //makes sure the view stays within the boundries of the room
+    view_xview = max(0, min(view_xview, room_width - view_wview)) 
     view_yview = max(0, min(view_yview, room_height - view_hview))
+    
+    //sets the button postions when the screen is in movement
+    MapButtonObject_Character.x = view_xview + global.CharacterButtonX 
+    MapButtonObject_Character.y = view_yview + global.CharacterButtonY
+      
+    MapButtonObject_MythicalMap.x = view_xview + global.MythicalButtonX
+    MapButtonObject_MythicalMap.y = view_yview + global.MythicalButtonY 
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="56">
+    <event eventtype="6" enumb="58">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -78,13 +88,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>drag = 0
+            <string>//sets the drag variable to false
+drag = 0
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="53">
+    <event eventtype="6" enumb="55">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -101,10 +112,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>drag = 1
+            <string>//turns on drag variable (true)
+drag = 1
+//sets the dragX and dragY positions to the mouse's current position
 dragX = mouse_x
 dragY = mouse_y
-
 
 </string>
           </argument>

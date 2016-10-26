@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>5</kind>
-            <sprite>CharacterButtonSprite_Cards_Hover</sprite>
+            <sprite>CharacterButtonSprite_Cards</sprite>
           </argument>
           <argument>
             <kind>0</kind>
