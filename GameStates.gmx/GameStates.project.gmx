@@ -37,14 +37,15 @@
       <objects name="Map">
         <object>objects\MapButtonObject_Character</object>
         <object>objects\MapButtonObject_MythicalMap</object>
-        <object>objects\Mouse</object>
+        <object>objects\MapDragObject</object>
+        <object>objects\MapPosObject</object>
       </objects>
       <objects name="Character">
         <object>objects\CharacterButtonObject_Diary</object>
         <object>objects\CharacterButtonObject_Cards</object>
       </objects>
       <object>objects\GeneralButtonObject_Back</object>
-      <object>objects\Setup</object>
+      <object>objects\RoomSetupObject</object>
     </objects>
   </objects>
   <rooms name="rooms">
