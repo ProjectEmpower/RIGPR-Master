@@ -27,11 +27,11 @@
             <kind>1</kind>
             <string>if(room == RoomMap)
 {
-    sprite_index = MapButtonSprite_NormalMap
+    sprite_index = MapButtonSprite_MythicalMap
 }
 if(room == RoomMapMythical)
 {
-    sprite_index = MapButtonSprite_MythicalMap
+    sprite_index = MapButtonSprite_NormalMap
 }
 </string>
           </argument>
@@ -119,11 +119,11 @@ else
             <kind>1</kind>
             <string>if(room == RoomMap)
 {
-    sprite_index = MapButtonSprite_NormalMap
+    sprite_index = MapButtonSprite_MythicalMap
 }
 if(room == RoomMapMythical)
 {
-    sprite_index = MapButtonSprite_MythicalMap
+    sprite_index = MapButtonSprite_NormalMap
 }
 </string>
           </argument>
