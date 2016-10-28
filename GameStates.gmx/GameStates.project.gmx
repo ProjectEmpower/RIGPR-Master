@@ -27,7 +27,9 @@
       <sprite>sprites\GeneralButtonSprite_Back_Hover</sprite>
     </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\MapBackground</background>
+  </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <objects name="Rooms">
