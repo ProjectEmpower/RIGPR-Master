@@ -10,18 +10,26 @@
       <sprites name="Menu">
         <sprite>sprites\MenuButtonSprite_Start</sprite>
         <sprite>sprites\MenuButtonSprite_Start_Hover</sprite>
+        <sprite>sprites\MenuTitleSprite</sprite>
       </sprites>
       <sprites name="Map">
         <sprite>sprites\MapButtonSprite_Character</sprite>
         <sprite>sprites\MapButtonSprite_Character_Hover</sprite>
         <sprite>sprites\MapButtonSprite_MythicalMap</sprite>
         <sprite>sprites\MapButtonSprite_MythicalMap_Hover</sprite>
+        <sprite>sprites\NormalMapTitleSprite</sprite>
+        <sprite>sprites\MythicalMapTitleSprite</sprite>
+        <sprite>sprites\MapButtonSprite_NormalMap_Hover</sprite>
+        <sprite>sprites\MapButtonSprite_NormalMap</sprite>
       </sprites>
       <sprites name="Character">
         <sprite>sprites\CharacterButtonSprite_Diary</sprite>
         <sprite>sprites\CharacterButtonSprite_Diary_Hover</sprite>
         <sprite>sprites\CharacterButtonSprite_Cards</sprite>
         <sprite>sprites\CharacterButtonSprite_Cards_Hover</sprite>
+        <sprite>sprites\CharacterTitleSprite</sprite>
+        <sprite>sprites\DiaryTitleSprite</sprite>
+        <sprite>sprites\CardsTitleSprite</sprite>
       </sprites>
       <sprite>sprites\GeneralButtonSprite_Back</sprite>
       <sprite>sprites\GeneralButtonSprite_Back_Hover</sprite>
@@ -35,16 +43,22 @@
     <objects name="Rooms">
       <objects name="Menu">
         <object>objects\MenuButtonObject_Start</object>
+        <object>objects\MenuTitleObject</object>
       </objects>
       <objects name="Map">
         <object>objects\MapButtonObject_Character</object>
         <object>objects\MapButtonObject_MythicalMap</object>
         <object>objects\MapDragObject</object>
         <object>objects\MapPosObject</object>
+        <object>objects\NormalMapTitleObject</object>
+        <object>objects\MythicalMapTitleObject</object>
       </objects>
       <objects name="Character">
         <object>objects\CharacterButtonObject_Diary</object>
         <object>objects\CharacterButtonObject_Cards</object>
+        <object>objects\CharacterTitleObject</object>
+        <object>objects\DiaryTitleObject</object>
+        <object>objects\CardsTitleObject</object>
       </objects>
       <object>objects\GeneralButtonObject_Back</object>
       <object>objects\RoomSetupObject</object>

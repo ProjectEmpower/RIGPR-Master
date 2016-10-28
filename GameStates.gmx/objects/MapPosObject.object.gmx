@@ -54,12 +54,27 @@ global.currentY = view_yview
             <string>//sets the current view to the view set when leaving the screen (Room End or during initial setup)
 view_xview = global.currentX 
 view_yview = global.currentY  
-
+zoom = 1
+view_wview[0] = 1024 * zoom
+view_hview[0] = 768 * zoom
 //changes the position of the buttons to make sure it loads in the correct positon
-MapButtonObject_Character.x = view_xview + global.CharacterButtonX 
-MapButtonObject_Character.y = view_yview + global.CharacterButtonY
-MapButtonObject_MythicalMap.x = view_xview + global.MythicalButtonX
+MapButtonObject_Character.x = view_xview + global.CharacterButtonX
+MapButtonObject_Character.y = (view_yview + global.CharacterButtonY) * zoom
+MapButtonObject_MythicalMap.x = (view_xview + global.MythicalButtonX) * zoom
 MapButtonObject_MythicalMap.y = view_yview + global.MythicalButtonY
+
+if(room == RoomMap)
+{
+    NormalMapTitleObject.x = view_xview + global.MapTitleX
+    NormalMapTitleObject.y = view_yview + global.MapTitleY 
+}
+if(room == RoomMapMythical)
+{ 
+    MythicalMapTitleObject.x = view_xview + global.MapTitleX
+    MythicalMapTitleObject.y = view_yview + global.MapTitleY 
+}
+
+
 
 </string>
           </argument>
