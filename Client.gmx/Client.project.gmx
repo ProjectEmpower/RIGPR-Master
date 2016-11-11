@@ -34,6 +34,7 @@
       <sprite>sprites\GeneralButtonSprite_Back</sprite>
       <sprite>sprites\GeneralButtonSprite_Back_Hover</sprite>
     </sprites>
+    <sprite>sprites\BuildingSprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
@@ -62,6 +63,13 @@
       </objects>
       <object>objects\GeneralButtonObject_Back</object>
       <object>objects\RoomSetupObject</object>
+      <objects name="Editor Import">
+        <object>objects\LocationAddObject</object>
+        <object>objects\BuildingObject</object>
+      </objects>
+      <objects name="LocationView">
+        <object>objects\LocationViewSetupObject</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -72,6 +80,7 @@
     <room>rooms\RoomCharacter</room>
     <room>rooms\RoomDiary</room>
     <room>rooms\RoomCards</room>
+    <room>rooms\RoomLocationView</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

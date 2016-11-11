@@ -104,6 +104,17 @@ if(room == RoomCards)
 {
     room = RoomCharacter;
 }
+if(room == RoomLocationView)
+{
+     if(global.myth == 0) //checks mythial state
+    {
+        room = RoomMap; //swaps room
+    }
+    else
+    {
+        room = RoomMapMythical;
+    }   
+}
 </string>
           </argument>
         </arguments>
