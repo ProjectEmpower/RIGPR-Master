@@ -56,6 +56,7 @@
     <instance objName="MapDragObject" x="32" y="32" name="inst_82B44154" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="MapPosObject" x="64" y="32" name="inst_D322B0CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="MythicalMapTitleObject" x="320" y="192" name="inst_18BF8FBC" locked="0" code="" scaleX="1" scaleY="1" colour="4278190080" rotation="0"/>
+    <instance objName="LocationAddObject" x="96" y="64" name="inst_6FD206B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

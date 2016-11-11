@@ -34,9 +34,13 @@
         ini_open("test.ini"); //opens the ini file
         if(ini_section_exists(locationName)==true) //checks the ini file for the location name (Location#REF#) using the current loop iteration, if it exits it will continue
         {
-            LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
-            LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
-            inst = instance_create(LocationX,LocationY,BuildingObject);  //creats an instance at the location using the object
+            tempMyth = ini_read_real(locationName,"Mythical",2)
+            if(tempMyth == global.myth)
+            {
+                LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
+                LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
+                inst = instance_create(LocationX,LocationY,BuildingObject);  //creats an instance at the location using the object
+            }
             ini_close(); //closes the ini file
         }
         else //if the location doesn't exist (IE max locations stored have been written), move set the totalInstanceNumber to the current loop number.

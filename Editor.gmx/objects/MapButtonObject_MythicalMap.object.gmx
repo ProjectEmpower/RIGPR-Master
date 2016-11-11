@@ -87,10 +87,12 @@ if(room == RoomMapMythical)
             <kind>1</kind>
             <string>if(room == RoomMapMythical) //checks room
 {
+    global.myth = 0;
     room = RoomMap; //swaps
 }
 else
 {
+    global.myth = 1;
     room = RoomMapMythical;
 }
 

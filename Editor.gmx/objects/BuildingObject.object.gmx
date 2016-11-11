@@ -27,32 +27,20 @@
             <kind>1</kind>
             <string>//This object is the buildings object, it will instance out to each building and the code above will occur when 
 //any instance is RIGHT-clicked (we can filter their appearance down, so for example, it will only appear during a week, 
-//day, period, etc. but ). Only setup for normalMap, I will work on getting this working for the mythicalMap soon
-if (room == RoomMap) //if on the map screen
-{
-    global.myth = 0; //sets the myth variable to 0 (false) when opening the charcter menu
-    for(t = 0; t &lt; global.TotalInstanceNum; t++) //runs for loop based on TotalInstanceNum (of buildings)
-    {
-        ini_open("test.ini");//opens the ini file
-        currRef = string(t); //sets temp id to be a string of the current number of the loop
-        locationName = "Location"+currRef; //sets locationname to the current instnace in the loop
-        
-        if(id.x == ini_read_real(locationName,"X",0) &amp;&amp; id.y == ini_read_real(locationName,"Y",0))//checks what location you are selecting, it checks the x/y vs the instance (id) x/y
-        {
-            global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used later)
-            ini_close();//closes the ini file
-            room = RoomLocationAdd//moves to the next room
-        }
-   }
-
-    
+//day, period, etc. but ). 
+ for(t = 0; t &lt; global.TotalInstanceNum; t++) //runs for loop based on TotalInstanceNum (of buildings)
+ {
+     ini_open("test.ini");//opens the ini file
+     currRef = string(t); //sets temp id to be a string of the current number of the loop
+     locationName = "Location"+currRef; //sets locationname to the current instnace in the loop
+     
+     if(id.x == ini_read_real(locationName,"X",0) &amp;&amp; id.y == ini_read_real(locationName,"Y",0))//checks what location you are selecting, it checks the x/y vs the instance (id) x/y
+     {
+         global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used later)
+         ini_close();//closes the ini file
+         room = RoomLocationAdd//moves to the next room
+     }
 }
-if(room == RoomMapMythical)
-{
-    global.myth = 1;//sets the myth variable to 1 (true) when opening the charcter menu
-    room = RoomLocationAdd
-}
-
 
 </string>
           </argument>

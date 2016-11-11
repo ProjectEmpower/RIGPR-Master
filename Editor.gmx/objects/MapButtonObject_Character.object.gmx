@@ -85,15 +85,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (room == RoomMap)
-{
-    global.myth = 0; //sets the myth variable to 0 (false) when opening the charcter menu
-}
-else
-{
-    global.myth = 1;//sets the myth variable to 1 (true) when opening the charcter menu
-}
-global.currentX = view_xview
+            <string>global.currentX = view_xview
 global.currentY = view_yview
 room = RoomCharacter;
 </string>
