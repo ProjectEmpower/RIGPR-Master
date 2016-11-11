@@ -53,7 +53,7 @@
       <sprite>sprites\GeneralButtonSprite_Back</sprite>
       <sprite>sprites\GeneralButtonSprite_Back_Hover</sprite>
     </sprites>
-    <sprite>sprites\BuildingSpriteTest</sprite>
+    <sprite>sprites\BuildingSprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>

@@ -30,7 +30,7 @@ tempID = string(global.tempNum);// takes the current tempNum (set when accessing
 tempLocation = "Location"+tempID;//writes the location+#Ref#  to a temp variable
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
 
-draw_text(room_width/2,25,tempLocation);//draws the text in the middle of the screen, 25 pixels down, the text = the location#ref#
+draw_text(global.MapTitleX,global.MapTitleY,tempLocation);//draws the text in the middle of the screen, 25 pixels down, the text = the location#ref#
 
 </string>
           </argument>
