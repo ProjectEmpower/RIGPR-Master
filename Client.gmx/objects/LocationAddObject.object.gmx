@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    var inst;
+            <string>    //when the map screens start, this will run
+    var inst;
     global.TotalInstanceNum = 100;//sets global Num to 100 (100 is max istance ammount)
     for(i = 0; i &lt; global.TotalInstanceNum; i++) 
     {
@@ -34,8 +35,8 @@
         ini_open("test.ini"); //opens the ini file
         if(ini_section_exists(locationName)==true) //checks the ini file for the location name (Location#REF#) using the current loop iteration, if it exits it will continue
         {
-            tempMyth = ini_read_real(locationName,"Mythical",2)
-            if(tempMyth == global.myth)
+          tempMyth = ini_read_real(locationName,"Mythical",2) //reads the current loops mythical value from the ini and sets it to tempMyth
+            if(tempMyth == global.myth) //if tempMyth is = to the current mythical status (0,1) it will display the location, if not, it will move on
             {
                 LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
                 LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
@@ -43,7 +44,7 @@
             }
             ini_close(); //closes the ini file
         }
-        else //if the location doesn't exist (IE max locations stored have been written), move set the totalInstanceNumber to the current loop number.
+        else //if the location doesn't exist (IE max locations stored have been written), set the totalInstanceNumber to the current loop number.
         {
             global.TotalInstanceNum = i;
         }

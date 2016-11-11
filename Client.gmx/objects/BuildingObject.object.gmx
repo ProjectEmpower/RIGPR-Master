@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//This object is the buildings object, it will instance out to each building and the code above will occur when 
 //any instance is RIGHT-clicked (we can filter their appearance down, so for example, it will only appear during a week, 
-//day, period, etc. but ). Only setup for normalMap, I will work on getting this working for the mythicalMap soon
+//day, period, etc. but ). 
  for(t = 0; t &lt; global.TotalInstanceNum; t++) //runs for loop based on TotalInstanceNum (of buildings)
  {
      ini_open("test.ini");//opens the ini file
