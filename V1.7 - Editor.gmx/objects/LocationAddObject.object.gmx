@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="7" enumb="4">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>    //when the map screens start, this will run
+    
     var inst;
     global.TotalInstanceNum = 100;//sets global Num to 100 (100 is max istance ammount)
     for(i = 0; i &lt; global.TotalInstanceNum; i++) 
@@ -33,9 +34,10 @@
         currRef = string(i)//sets currRef to the current loop iteration in string format
         locationName = "Location"+currRef//writes "Location#loopREF#" to a variable
         ini_open("test.ini"); //opens the ini file
+        
         if(ini_section_exists(locationName)==true) //checks the ini file for the location name (Location#REF#) using the current loop iteration, if it exits it will continue
         {
-          tempMyth = ini_read_real(locationName,"Mythical",2) //reads the current loops mythical value from the ini and sets it to tempMyth
+            tempMyth = ini_read_real(locationName,"Mythical",2) //reads the current loops mythical value from the ini and sets it to tempMyth
             if(tempMyth == global.myth) //if tempMyth is = to the current mythical status (0,1) it will display the location, if not, it will move on
             {
                 LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
@@ -49,6 +51,49 @@
             global.TotalInstanceNum = i;
         }
     }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="57">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Thos object is not shown, it contains the code for right clicking on the map screen. It creates an instance and records
+//its information in an ini file. 
+
+//ini location - c:/users/#YourName#/appdata/Local/Editor - we should be able to change this, I haven't tried yet.
+LocationX = mouse_x; //current mouse x position
+LocationY = mouse_y; //current mouse y position
+var inst; //creates a temp variable 
+currRef= string(global.TotalInstanceNum) //sets the currRef variable to a string of the global TotalInstanceNumber, this is the number of instances currently used
+locationName = "Location"+currRef //this sets lcoation name to "location#REF#"
+inst = instance_create(LocationX,LocationY,BuildingObject); //creates an instance at the mouse position, using the test building object
+ini_open("test.ini"); //opens the ini file1
+ini_write_real(locationName,"InstanceRef",instance_id[global.TotalInstanceNum]); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file
+ini_write_real(locationName,"NumRef",global.TotalInstanceNum); //sets NumRef inside the ini file (used for comparing instances later)
+ini_write_real(locationName,"X",LocationX); //X pos
+ini_write_real(locationName,"Y",LocationY); //Y pos
+ini_write_real(locationName,"Mythical",global.myth);//Current mythical state (0,1)
+ini_write_string(locationName,"Real Location Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file
+ini_close();//close the ini file
+
+global.TotalInstanceNum += 1; //increase the global TotalInstanceNum by 1, this means the next location added will be the next instance
+
 </string>
           </argument>
         </arguments>

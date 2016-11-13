@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="8" enumb="0">
+    <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,13 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//This code is used to draw the current instances' location#REF# to the screen
-tempID = string(global.tempNum);// takes the current tempNum (set when accessing this object via left click)
-tempLocation = "Location"+tempID;//writes the location+#Ref#  to a temp variable
-draw_set_halign(fa_center);//sets the horizontal allignment for the text
+            <string>//sets the initial view of the screen, this is used to to create the variable
+global.currentX = 0
+global.currentY = 0
 
-draw_text(global.MapTitleX,global.MapTitleY,tempLocation);//draws the text in the middle of the screen, 25 pixels down, the text = the location#ref#
+//sets the default positions of the Hud on the map screens
+global.CharacterButtonX = 100 
+global.CharacterButtonY = (room_height - 50)
+global.MythicalButtonX = (room_width / 2)
+global.MythicalButtonY = 100
 
+global.MapTitleX = room_width/2
+global.MapTitleY = 25
+global.InputBoxX = (room_width/4)*3
+global.InputBoxY = 75
+global.InputTextX = room_width/4
+global.InputTextY = 75
+
+//instnace variables
+global.TotalInstanceNum = 0;
+global.myth = 0;
+global.locked = 0;
+global.tempNum = 0;
+
+//after setup, it moves to the menu
+room = RoomMenu;
 </string>
           </argument>
         </arguments>

@@ -3,11 +3,11 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="1" name="datafiles">
+  <datafiles number="5" name="datafiles">
     <datafile>
       <name>test.ini</name>
       <exists>-1</exists>
-      <size>18</size>
+      <size>415</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -52,6 +52,7 @@
       </sprites>
       <sprite>sprites\GeneralButtonSprite_Back</sprite>
       <sprite>sprites\GeneralButtonSprite_Back_Hover</sprite>
+      <sprite>sprites\TextInputBoxSprite</sprite>
     </sprites>
     <sprite>sprites\BuildingSprite</sprite>
   </sprites>
@@ -60,40 +61,36 @@
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
-    <objects name="Standard">
-      <objects name="Rooms">
-        <objects name="Menu">
-          <object>objects\MenuButtonObject_Start</object>
-          <object>objects\MenuTitleObject</object>
-        </objects>
-        <objects name="Map">
-          <object>objects\MapButtonObject_Character</object>
-          <object>objects\MapButtonObject_MythicalMap</object>
-          <object>objects\MapDragObject</object>
-          <object>objects\MapPosObject</object>
-          <object>objects\NormalMapTitleObject</object>
-          <object>objects\MythicalMapTitleObject</object>
-        </objects>
-        <objects name="Character">
-          <object>objects\CharacterButtonObject_Diary</object>
-          <object>objects\CharacterButtonObject_Cards</object>
-          <object>objects\CharacterTitleObject</object>
-          <object>objects\DiaryTitleObject</object>
-          <object>objects\CardsTitleObject</object>
-        </objects>
-        <object>objects\GeneralButtonObject_Back</object>
-        <object>objects\RoomSetupObject</object>
+    <objects name="Rooms">
+      <objects name="Menu">
+        <object>objects\MenuButtonObject_Start</object>
+        <object>objects\MenuTitleObject</object>
       </objects>
-    </objects>
-    <objects name="Editor">
-      <objects name="Rooms">
-        <objects name="Map">
-          <object>objects\BuildingObject</object>
-          <object>objects\LocationAddObject</object>
-        </objects>
-        <objects name="LocationAdd">
-          <object>objects\LocationAddSetupObject</object>
-        </objects>
+      <objects name="Map">
+        <object>objects\MapButtonObject_Character</object>
+        <object>objects\MapButtonObject_MythicalMap</object>
+        <object>objects\MapDragObject</object>
+        <object>objects\MapPosObject</object>
+        <object>objects\NormalMapTitleObject</object>
+        <object>objects\MythicalMapTitleObject</object>
+      </objects>
+      <objects name="Character">
+        <object>objects\CharacterButtonObject_Diary</object>
+        <object>objects\CharacterButtonObject_Cards</object>
+        <object>objects\CharacterTitleObject</object>
+        <object>objects\DiaryTitleObject</object>
+        <object>objects\CardsTitleObject</object>
+      </objects>
+      <object>objects\GeneralButtonObject_Back</object>
+      <object>objects\RoomSetupObject</object>
+      <objects name="Editor Import">
+        <object>objects\LocationAddObject</object>
+        <object>objects\BuildingObject</object>
+      </objects>
+      <objects name="LocationView">
+        <object>objects\LocationViewSetupObject</object>
+        <object>objects\TextInputBoxObject</object>
+        <object>objects\TextInputBoxAddObject</object>
       </objects>
     </objects>
   </objects>
@@ -105,7 +102,7 @@
     <room>rooms\RoomCharacter</room>
     <room>rooms\RoomDiary</room>
     <room>rooms\RoomCards</room>
-    <room>rooms\RoomLocationAdd</room>
+    <room>rooms\RoomLocationView</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
