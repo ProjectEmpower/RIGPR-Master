@@ -54,6 +54,8 @@ if(instance_id[textBoxInstanceRef+4] == id)
 myY = global.tempInputBoxY;//sets current Position (increases depending on instance)
 timer = 0;
 delay = 4;
+textShortLength = 30;
+textLongLength = 500;
 </string>
           </argument>
         </arguments>
