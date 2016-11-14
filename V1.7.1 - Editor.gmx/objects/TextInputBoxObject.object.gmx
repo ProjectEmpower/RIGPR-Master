@@ -25,32 +25,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_id[4] == id)
+            <string>textBoxInstanceRef = 4;//this is actually the instances start poistion, it is 4 as there 4 objects on the screen (roomlocationAdd) and these are counted as instances
+if(instance_id[textBoxInstanceRef] == id)
 {
     txt_input = global.realLocationName;//sets default text
-    txt_display = "Location Name:";
+    txt_display = "Location Name:";     //sets display text
 }
-if(instance_id[5] == id)
+if(instance_id[textBoxInstanceRef+1] == id)
 {
     txt_input = "5";//sets default text
     txt_display = "Week"
 }
-if(instance_id[6] == id)
+if(instance_id[textBoxInstanceRef+2] == id)
 {
     txt_input = "6";//sets default text
-    txt_display = "123"
+    txt_display = "Description:"
 }
-if(instance_id[7] == id)
+if(instance_id[textBoxInstanceRef+3] == id)
 {
     txt_input = "7";//sets default text
     txt_display = "34"
 }
-if(instance_id[8] == id)
+if(instance_id[textBoxInstanceRef+4] == id)
 {
     txt_input = "8";//sets default text
     txt_display = "44"
 }
 myY = global.tempInputBoxY;//sets current Position (increases depending on instance)
+timer = 0;
+delay = 4;
 </string>
           </argument>
         </arguments>
@@ -73,35 +76,32 @@ myY = global.tempInputBoxY;//sets current Position (increases depending on insta
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var k=keyboard_lastkey;
-var c=keyboard_lastchar;
-if(global.focus == id)
+            <string>if(global.focus == id)//checks focus against the instance ID of the text boxes, this allows the select box to be the only one effected by text entry
 {
     if keyboard_check_pressed(vk_anykey)
     {
-        if (k==vk_backspace)
+        script_execute(keyStep);
+        timer = -6;
+    }
+    if keyboard_check(vk_anykey)
+    {
+        if(timer == delay)
         {
-            // delete last character
-            txt_input = string_copy(txt_input, 1, string_length(txt_input)-1 );
+            script_execute(keyStep);
+            timer = 0;
         }
-        else if (k==vk_enter) and (txt_input!="")
+        if(timer &gt; delay)
         {
-            
+            timer = delay;
         }
-        else if k&gt;=65 and k&lt;=90 or k&gt;=97 and k&lt;=122 or k&gt;=48 and k&lt;=57 or k==192 or k==32
+        else if(timer &lt; delay)
         {
-            // 65-90  : upcase letters
-            // 122-192 : lowercase letters
-            // 48-57  : numbers
-            // 192   : I don't remember :P
-            // 32   : space
-            // Add c to txt_input
-            txt_input = txt_input + c;
-            
+            timer++;
         }
-
-            global.realLocationName = txt_input;
-
+    }
+    if keyboard_check_released(vk_anykey)
+    {
+        timer = 0;
     }
 }
 </string>
@@ -150,7 +150,15 @@ if(global.focus == id)
           <argument>
             <kind>1</kind>
             <string>draw_text(global.InputTextX ,myY ,txt_display);//Draws the input text
-draw_text(global.InputBoxX , myY ,txt_input); //draws the input box text
+if(instance_id[textBoxInstanceRef+2] != id)
+{
+    draw_text(global.InputBoxX , myY ,txt_input); //draws the input box text
+}
+else
+{
+    draw_text_ext(global.InputBoxX , myY ,txt_input, 15, 300);
+}
+//draw_text_ext(x,y,string, seperation (between lines, go with 5), w(max width in pixels before current line breaks and starts a new line)
 </string>
           </argument>
         </arguments>

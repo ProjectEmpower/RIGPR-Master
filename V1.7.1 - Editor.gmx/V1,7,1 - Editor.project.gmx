@@ -22,6 +22,7 @@
         <sprite>sprites\MythicalMapTitleSprite</sprite>
         <sprite>sprites\MapButtonSprite_NormalMap_Hover</sprite>
         <sprite>sprites\MapButtonSprite_NormalMap</sprite>
+        <sprite>sprites\BuildingSprite</sprite>
       </sprites>
       <sprites name="Character">
         <sprite>sprites\CharacterButtonSprite_Diary</sprite>
@@ -32,16 +33,22 @@
         <sprite>sprites\DiaryTitleSprite</sprite>
         <sprite>sprites\CardsTitleSprite</sprite>
       </sprites>
-      <sprite>sprites\GeneralButtonSprite_Back</sprite>
       <sprite>sprites\GeneralButtonSprite_Back_Hover</sprite>
+      <sprite>sprites\GeneralButtonSprite_Back</sprite>
+      <sprites name="LocationAdd">
+        <sprite>sprites\LocationAddButtonSprite_Delete</sprite>
+        <sprite>sprites\LocationAddButtonSprite_Delete_Hover</sprite>
+        <sprite>sprites\TextInputBoxSprite</sprite>
+      </sprites>
     </sprites>
-    <sprite>sprites\BuildingSprite</sprite>
-    <sprite>sprites\TextInputBoxSprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\keyStep.gml</script>
+  </scripts>
   <objects name="objects">
     <objects name="Standard">
       <objects name="Rooms">

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.tempID = string(global.tempNum);// takes the current tempNum (set when accessing this object via left click)
+            <string>global.tempID = string(global.tempNum);// takes the current tempNum (set when accessing this building via left click on mao screen)
 global.tempLocation = "Location"+global.tempID;//writes the location+#Ref#  to a temp variable
 
 </string>
