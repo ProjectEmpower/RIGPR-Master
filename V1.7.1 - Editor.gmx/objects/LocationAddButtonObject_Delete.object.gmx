@@ -86,7 +86,7 @@
           <argument>
             <kind>1</kind>
             <string>//this button deletes the currently selected location
-ini_open("test.ini"); //opens the ini file
+ini_open("location.ini"); //opens the ini file
 ini_section_delete(global.tempLocation);//deletes the current location
 ini_close();
 for(i = global.tempNum; i &lt; global.TotalInstanceNum; i++)
@@ -97,7 +97,7 @@ for(i = global.tempNum; i &lt; global.TotalInstanceNum; i++)
     nextRef = string(nextI); //sets nextref to the next loop iteration in string format
     NextLocationName = "Location"+nextRef; //writes "location#nextRef#" to a variable
     
-    ini_open("test.ini"); //opens the ini file   
+    ini_open("location.ini"); //opens the ini file   
     if(ini_section_exists(NextLocationName)==true &amp;&amp; ini_section_exists(locationName)==false) //checks that the next item in the list exists, and the current doesnt
     {
         //reads all relevent info from the next location
@@ -106,7 +106,19 @@ for(i = global.tempNum; i &lt; global.TotalInstanceNum; i++)
         tempY = ini_read_real(NextLocationName,"Y",0);
         tempMyth = ini_read_real(NextLocationName,"Mythical",0);
         tempRealName = ini_read_string(NextLocationName,"Real Location Name",0);
-        
+        tempDesc = ini_read_string(NextLocationName,"Description",0);
+        tempNumEvents = ini_read_real(NextLocationName,"Number of Events",0);
+        for(e = 0; e &lt; tempNumEvents; e++)
+        {
+            eventRef= string(e); //sets the currRef variable to a string of the global TotalInstanceNumber, this is the number of instances currently used
+            eventNameType = "Event"+eventRef+"Type"; //this sets lcoation name to "location#REF#"
+            eventNameWeek = "Event"+eventRef+"Week";
+            eventNameMyth = "Event"+eventRef+"Mythical";
+            tempEventType[e] = ini_read_real(NextLocationName,eventNameType,0);
+            tempEventWeek[e] = ini_read_real(NextLocationName,eventNameWeek,0);
+            tempEventMyth[e] = ini_read_real(NextLocationName,eventNameMyth,0);
+            
+        }
         //writes the info to the current Location
         ini_write_real(locationName,"InstanceRef",tempInst-1); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file
         ini_write_real(locationName,"NumRef",i); //sets NumRef inside the ini file (used for comparing instances later)       
@@ -114,6 +126,18 @@ for(i = global.tempNum; i &lt; global.TotalInstanceNum; i++)
         ini_write_real(locationName,"Y",tempY); //Y pos
         ini_write_real(locationName,"Mythical",tempMyth);//Current mythical state (0,1)
         ini_write_string(locationName,"Real Location Name",tempRealName)
+        ini_write_string(locationName,"Description",tempDesc)
+        ini_write_real(locationName,"Number of Events",tempNumEvents); //Y pos
+        for(e = 0; e &lt; tempNumEvents; e++)
+        {
+            eventRef= string(e); //sets the currRef variable to a string of the global TotalInstanceNumber, this is the number of instances currently used
+            eventNameType = "Event"+eventRef+"Type"; //this sets lcoation name to "location#REF#"
+            eventNameWeek = "Event"+eventRef+"Week";
+            eventNameMyth = "Event"+eventRef+"Mythical";
+            ini_write_real(locationName, eventNameType, tempEventType[e]);
+            ini_write_real(locationName, eventNameWeek, tempEventWeek[e]);
+            ini_write_real(locationName, eventNameMyth, tempEventMyth[e]);
+        }
         ini_section_delete(NextLocationName); //deletes the next location
         ini_close(); //closes the ini file       
     }
@@ -122,7 +146,14 @@ for(i = global.tempNum; i &lt; global.TotalInstanceNum; i++)
         global.TotalInstanceNum = -1; //after running, this will decrease the total instance number by 1
     }
 }
-room = RoomMap; //move back to map screen
+if(global.myth == 0) //checks mythial state
+{
+    room = RoomMap; //swaps room
+}
+else
+{
+    room = RoomMapMythical;
+} 
 </string>
           </argument>
         </arguments>

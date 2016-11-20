@@ -25,18 +25,39 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.tempInputBoxX = global.InputBoxX
-global.tempInputBoxY = global.InputBoxY
-ini_open("test.ini")
+            <string>global.tempInputBoxX = global.InputBoxX+149;
+global.tempInputBoxY = global.InputBoxY;
+global.tempTextBoxY = global.InputTextY;
+global.textBoxInstanceRef = instance_count;//This is the number of objects before instances are created.
+textFeilds = 4;//number of text boxes we want
+ini_open("location.ini")
 global.realLocationName = ini_read_string(global.tempLocation,"Real Location Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
+global.description = ini_read_string(global.tempLocation,"Description","");
+global.locationMyth = ini_read_real(global.tempLocation, "Mythical", "");
+global.locationEventNumber = ini_read_real(global.tempLocation, "Number of Events",0);
 ini_close();
-global.week = 0;
-global.focus = 0;
+global.week = 0;//week
+global.focus = 0; //box focus
 var inst;
-for(i = 0; i &lt; 5; i++)
+global.tempInputBoxY += 10; 
+global.tempTextBoxY += 18;
+for(i = 0; i &lt; textFeilds; i++)
 {
-   inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBoxObject);  //creats an instance at the location using the object 
-   global.tempInputBoxY += global.InputBoxY;   
+
+    if(i == 1)//if i = description box then it will set the position based on the increased size
+    { 
+        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBoxObject);  //creats an instance at the location using the object 
+        global.tempInputBoxY += 100;
+        global.tempTextBoxY += 100;
+    }
+    else
+    {
+        //creates the instanes of the text boxes on screen.
+        inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBoxObject);  //creats an instance at the location using the object 
+
+    }
+        global.tempInputBoxY += 25; 
+        global.tempTextBoxY += 25;
 }
 </string>
           </argument>

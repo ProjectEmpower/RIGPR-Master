@@ -39,7 +39,11 @@
         <sprite>sprites\LocationAddButtonSprite_Delete</sprite>
         <sprite>sprites\LocationAddButtonSprite_Delete_Hover</sprite>
         <sprite>sprites\TextInputBoxSprite</sprite>
+        <sprite>sprites\TextInputBoxSprite_Large</sprite>
+        <sprite>sprites\CycleMapSprite</sprite>
+        <sprite>sprites\CreateEventSprite</sprite>
       </sprites>
+      <sprite>sprites\No_sprite</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -84,8 +88,10 @@
         <objects name="LocationAdd">
           <object>objects\TextInputBoxObject</object>
           <object>objects\LocationAddButtonObject_Delete</object>
+          <object>objects\CycleMapVisibility</object>
           <object>objects\LocationAddSetupObject</object>
           <object>objects\TextInputBoxAddObject</object>
+          <object>objects\CreateEventButtonObject</object>
         </objects>
       </objects>
     </objects>

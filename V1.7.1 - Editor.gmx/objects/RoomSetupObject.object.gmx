@@ -38,10 +38,10 @@ global.MythicalButtonY = 100;
 //title positions
 global.MapTitleX = room_width/2;
 global.MapTitleY = 25;
-global.InputBoxX = (room_width/4)*3
-global.InputBoxY = 75
-global.InputTextX = room_width/4
-global.InputTextY = 75
+global.InputBoxX = room_width/5
+global.InputBoxY = 80
+global.InputTextX = room_width/5
+global.InputTextY = 65
 //instnace variables
 global.TotalInstanceNum = 0;
 global.myth = 0;

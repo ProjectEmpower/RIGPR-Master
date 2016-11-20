@@ -25,37 +25,45 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>textBoxInstanceRef = 4;//this is actually the instances start poistion, it is 4 as there 4 objects on the screen (roomlocationAdd) and these are counted as instances
-if(instance_id[textBoxInstanceRef] == id)
+            <string>realNameTextBoxRef = global.textBoxInstanceRef;
+descTextBoxRef = realNameTextBoxRef+1; //must be updated elsewhere if names are changed
+thirdTextBoxRef = realNameTextBoxRef+2;
+forthTextBoxRef = realNameTextBoxRef+3;
+fifthTextBoxRef = realNameTextBoxRef+4;
+image_xscale = 1.5;
+if(instance_id[realNameTextBoxRef] == id)
 {
     txt_input = global.realLocationName;//sets default text
-    txt_display = "Location Name:";     //sets display text
+    txt_display = "Location Name: ";     //sets display text
 }
-if(instance_id[textBoxInstanceRef+1] == id)
+if(instance_id[descTextBoxRef] == id)
 {
-    txt_input = "5";//sets default text
-    txt_display = "Week"
+    sprite_index = TextInputBoxSprite_Large;
+    txt_input = global.description;//sets default text
+    txt_display = "Description: "
 }
-if(instance_id[textBoxInstanceRef+2] == id)
+if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
 {
-    txt_input = "6";//sets default text
-    txt_display = "Description:"
+    sprite_index = No_sprite;
+    txt_input = "Error - Status not updated somewhere";
+    txt_display = "Map visibility: "
 }
-if(instance_id[textBoxInstanceRef+3] == id)
+if(instance_id[forthTextBoxRef] == id)
 {
-    txt_input = "7";//sets default text
-    txt_display = "34"
+    sprite_index = No_sprite;
+    txt_input = global.locationEventNumber;//sets default text
+    txt_display = "Number of events: "
 }
-if(instance_id[textBoxInstanceRef+4] == id)
+if(instance_id[fifthTextBoxRef] == id)
 {
     txt_input = "8";//sets default text
     txt_display = "44"
 }
-myY = global.tempInputBoxY;//sets current Position (increases depending on instance)
+myY = global.tempTextBoxY;//sets current Position (increases depending on instance)
 timer = 0;
 delay = 4;
 textShortLength = 30;
-textLongLength = 500;
+textLongLength = 200;
 </string>
           </argument>
         </arguments>
@@ -106,6 +114,23 @@ textLongLength = 500;
         timer = 0;
     }
 }
+if(id == instance_id[thirdTextBoxRef])
+{
+    switch(global.locationMyth)
+    {
+        case 0: txt_input = "Normal Map";
+        break;
+        case 1: txt_input = "Mythical Map";
+        break;
+        case 2: txt_input = "Both Maps";
+        break;
+        default: txt_input = "Error - Missing mythical info";
+    }
+}
+if(id == instance_id[forthTextBoxRef])
+{
+    txt_input = global.locationEventNumber;
+}
 </string>
           </argument>
         </arguments>
@@ -151,16 +176,30 @@ textLongLength = 500;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(global.InputTextX ,myY ,txt_display);//Draws the input text
-if(instance_id[textBoxInstanceRef+2] != id)
+            <string>//if(id == instance_id[descTextBoxRef])
+//{
+//    AddY = 15;
+//    for(t = 0; t &lt; 4; t++)
+//    {
+//        draw_sprite(TextInputBoxSprite,0,id.x,id.y + AddY)
+//        AddY += 15;
+//    }
+//}
+draw_set_valign(fa_top);
+draw_set_halign(fa_right);
+draw_text(global.InputTextX ,myY ,txt_display);//Draws the input text
+draw_set_halign(fa_left);
+if(id != instance_id[descTextBoxRef])
 {
     draw_text(global.InputBoxX , myY ,txt_input); //draws the input box text
 }
 else
-{
-    draw_text_ext(global.InputBoxX , myY ,txt_input, 15, 300);
+{   
+    draw_text_ext(global.InputBoxX , myY ,txt_input, 20, 300);
 }
 //draw_text_ext(x,y,string, seperation (between lines, go with 5), w(max width in pixels before current line breaks and starts a new line)
+
+
 </string>
           </argument>
         </arguments>

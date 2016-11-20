@@ -52,9 +52,9 @@ global.tempLocation = "Location"+global.tempID;//writes the location+#Ref#  to a
             <kind>1</kind>
             <string>//This code is used to draw the current instances' location#REF# to the screen
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
-
+draw_set_valign(fa_bottom);
 draw_text(global.MapTitleX,global.MapTitleY,global.tempLocation);//draws the text in the middle of the screen, 25 pixels down, the text = the location#ref#
-
+draw_text(room_width/4, global.InputTextY,"Location Info");
 </string>
           </argument>
         </arguments>

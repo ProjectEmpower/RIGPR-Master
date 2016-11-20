@@ -30,7 +30,7 @@
 //day, period, etc. but ). 
  for(t = 0; t &lt; global.TotalInstanceNum; t++) //runs for loop based on TotalInstanceNum (of buildings)
  {
-     ini_open("test.ini");//opens the ini file
+     ini_open("location.ini");//opens the ini file
      currRef = string(t); //sets temp id to be a string of the current number of the loop
      locationName = "Location"+currRef; //sets locationname to the current instnace in the loop
      
