@@ -29,6 +29,7 @@
     <object>objects\Obj_ScrnText</object>
     <object>objects\Obj_Globals</object>
     <object>objects\Obj_Nav</object>
+    <object>objects\Obj_ClickDet</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RM_Menu</room>
