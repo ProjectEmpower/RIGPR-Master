@@ -92,5 +92,13 @@ if(instance_id[forthTextBoxRef] == id)
 }
 if(instance_id[fifthTextBoxRef] == id)
 {
-
+    global.eventType = txt_input;
+}
+if(instance_id[sixthTextBoxRef] == id)
+{
+    global.eventWeek = txt_input;
+}
+if(instance_id[seventhTextBoxRef] == id)
+{
+    global.eventMyth = txt_input;
 }

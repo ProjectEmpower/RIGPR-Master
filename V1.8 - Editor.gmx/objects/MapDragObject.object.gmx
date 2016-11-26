@@ -60,20 +60,20 @@ drag = 0
     view_yview = max(0, min(view_yview, room_height - view_hview))
     
     //sets the button postions when the screen is in movement
-    MapButtonObject_Character.x = view_xview + global.CharacterButtonX 
-    MapButtonObject_Character.y = view_yview + global.CharacterButtonY
+    ButtonCharacter.x = view_xview + global.CharacterButtonX 
+    ButtonCharacter.y = view_yview + global.CharacterButtonY
       
-    MapButtonObject_MythicalMap.x = view_xview + global.MythicalButtonX
-    MapButtonObject_MythicalMap.y = view_yview + global.MythicalButtonY 
+    ButtonMapSwap.x = view_xview + global.MythicalButtonX
+    ButtonMapSwap.y = view_yview + global.MythicalButtonY 
     if(room == RoomMap)
     {    
-        NormalMapTitleObject.x = view_xview + global.MapTitleX
-        NormalMapTitleObject.y = view_yview + global.MapTitleY 
+        TitleNormalMap.x = view_xview + global.MapTitleX
+        TitleNormalMap.y = view_yview + global.MapTitleY 
     }
     if(room == RoomMapMythical)
     {
-        MythicalMapTitleObject.x = view_xview + global.MapTitleX
-        MythicalMapTitleObject.y = view_yview + global.MapTitleY
+        TitleMythicalMap.x = view_xview + global.MapTitleX
+        TitleMythicalMap.y = view_yview + global.MapTitleY
     }
 }
 </string>

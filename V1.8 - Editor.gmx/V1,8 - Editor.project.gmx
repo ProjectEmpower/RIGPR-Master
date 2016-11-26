@@ -9,8 +9,8 @@
   <sprites name="sprites">
     <sprites name="Rooms">
       <sprites name="Menu">
-        <sprite>sprites\MenuButtonSprite_Start</sprite>
-        <sprite>sprites\MenuButtonSprite_Start_Hover</sprite>
+        <sprite>sprites\ButtonSpriteStart</sprite>
+        <sprite>sprites\ButtonSpriteStart_Hover</sprite>
         <sprite>sprites\MenuTitleSprite</sprite>
       </sprites>
       <sprites name="Map">
@@ -41,11 +41,14 @@
         <sprite>sprites\LocationAddButtonSprite_Delete</sprite>
         <sprite>sprites\LocationAddButtonSprite_Delete_Hover</sprite>
         <sprite>sprites\TextInputBoxSprite</sprite>
+        <sprite>sprites\TextInputBoxSprite_Small</sprite>
         <sprite>sprites\TextInputBoxSprite_Large</sprite>
         <sprite>sprites\CycleMapSprite</sprite>
         <sprite>sprites\CreateEventSprite</sprite>
       </sprites>
       <sprite>sprites\No_sprite</sprite>
+      <sprite>sprites\ArrowLeftSprite</sprite>
+      <sprite>sprites\ArrowRightSprite</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -56,47 +59,41 @@
     <script>scripts\keyStep.gml</script>
   </scripts>
   <objects name="objects">
-    <objects name="Standard">
-      <objects name="Rooms">
-        <objects name="Menu">
-          <object>objects\MenuButtonObject_Start</object>
-          <object>objects\MenuTitleObject</object>
-        </objects>
-        <objects name="Map">
-          <object>objects\MapButtonObject_Character</object>
-          <object>objects\MapDragObject</object>
-          <object>objects\MapPosObject</object>
-          <object>objects\NormalMapTitleObject</object>
-          <object>objects\MythicalMapTitleObject</object>
-        </objects>
-        <objects name="Character">
-          <object>objects\CharacterButtonObject_Diary</object>
-          <object>objects\CharacterButtonObject_Cards</object>
-          <object>objects\CharacterTitleObject</object>
-          <object>objects\DiaryTitleObject</object>
-          <object>objects\CardsTitleObject</object>
-        </objects>
-        <object>objects\GeneralButtonObject_Back</object>
-        <object>objects\RoomSetupObject</object>
-      </objects>
+    <objects name="Menu">
+      <object>objects\ButtonStart</object>
+      <object>objects\TitleMenu</object>
     </objects>
-    <objects name="Editor">
-      <objects name="Rooms">
-        <objects name="Map">
-          <object>objects\BuildingObject</object>
-          <object>objects\LocationAddObject</object>
-          <object>objects\MapButtonObject_MythicalMap</object>
-        </objects>
-        <objects name="LocationAdd">
-          <object>objects\TextInputBoxObject</object>
-          <object>objects\LocationAddButtonObject_Delete</object>
-          <object>objects\CycleMapVisibility</object>
-          <object>objects\LocationAddSetupObject</object>
-          <object>objects\TextInputBoxAddObject</object>
-          <object>objects\CreateEventButtonObject</object>
-        </objects>
-      </objects>
+    <objects name="Map">
+      <object>objects\ButtonMapSwap</object>
+      <object>objects\ButtonCharacter</object>
+      <object>objects\MapDragObject</object>
+      <object>objects\MapPosObject</object>
+      <object>objects\TitleMythicalMap</object>
+      <object>objects\TitleNormalMap</object>
+      <object>objects\Building</object>
+      <object>objects\BuildingSetup</object>
     </objects>
+    <objects name="Character">
+      <object>objects\TitleCharacter</object>
+      <object>objects\ButtonDiary</object>
+      <object>objects\TitleDiary</object>
+      <object>objects\ButtonCards</object>
+      <object>objects\TitleCards</object>
+    </objects>
+    <objects name="LocationAdd">
+      <object>objects\LocationSetup</object>
+      <object>objects\TextInputBox</object>
+      <object>objects\TextInputSetup</object>
+      <object>objects\ButtonDeleteLocation</object>
+      <object>objects\ButtonCycleMapVisibility</object>
+      <object>objects\ButtonCreateEvent</object>
+      <object>objects\ButtonLocationLeft</object>
+      <object>objects\ButtonLocationRight</object>
+      <object>objects\ButtonEventLeft</object>
+      <object>objects\ButtonEventRight</object>
+    </objects>
+    <object>objects\GameSetup</object>
+    <object>objects\ButtonBack</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>

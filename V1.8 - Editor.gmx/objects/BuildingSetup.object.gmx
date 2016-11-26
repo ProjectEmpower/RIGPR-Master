@@ -43,7 +43,7 @@
             {
                 LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
                 LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
-                inst = instance_create(LocationX,LocationY,BuildingObject);  //creats an instance at the location using the object
+                inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
             }
             ini_close(); //closes the ini file
         }
@@ -79,13 +79,13 @@
 LocationX = mouse_x; //current mouse x position
 LocationY = mouse_y; //current mouse y position
 var inst; //creates a temp variable 
-inst = collision_rectangle( LocationX-40, LocationY-40, LocationX+40, LocationY+40, BuildingObject, false, false );
+inst = collision_rectangle( LocationX-40, LocationY-40, LocationX+40, LocationY+40, Building, false, false );
 if (inst == noone)
 {
     
     currRef = string(global.TotalInstanceNum); //sets the currRef variable to a string of the global TotalInstanceNumber, this is the number of instances currently used
     locationName = "Location"+currRef;//this sets lcoation name to "location#REF#"
-    inst = instance_create(LocationX,LocationY,BuildingObject); //creates an instance at the mouse position, using the test building object
+    inst = instance_create(LocationX,LocationY,Building); //creates an instance at the mouse position, using the test building object
     ini_open("location.ini"); //opens the ini file1
     ini_write_real(locationName,"NumRef",global.TotalInstanceNum); //sets NumRef inside the ini file (used for comparing instances later)
     ini_write_real(locationName,"X",LocationX); //X pos

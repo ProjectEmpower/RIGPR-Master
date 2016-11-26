@@ -30,6 +30,9 @@ descTextBoxRef = realNameTextBoxRef+1; //must be updated elsewhere if names are 
 thirdTextBoxRef = realNameTextBoxRef+2;
 forthTextBoxRef = realNameTextBoxRef+3;
 fifthTextBoxRef = realNameTextBoxRef+4;
+sixthTextBoxRef = realNameTextBoxRef+5;
+seventhTextBoxRef = realNameTextBoxRef+6;
+
 image_xscale = 1.5;
 if(instance_id[realNameTextBoxRef] == id)
 {
@@ -45,7 +48,7 @@ if(instance_id[descTextBoxRef] == id)
 if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
 {
     sprite_index = No_sprite;
-    txt_input = "Error - Status not updated somewhere";
+    txt_input = "Error - Map Visibility not updated";
     txt_display = "Map visibility: "
 }
 if(instance_id[forthTextBoxRef] == id)
@@ -56,8 +59,21 @@ if(instance_id[forthTextBoxRef] == id)
 }
 if(instance_id[fifthTextBoxRef] == id)
 {
-    txt_input = "8";//sets default text
-    txt_display = "44"
+    sprite_index = No_sprite;
+    txt_input = "Error - Event type not updated";//sets default text
+    txt_display = "Event Type: "
+}
+if(instance_id[sixthTextBoxRef] == id)
+{
+    sprite_index = TextInputBoxSprite_Small;
+    txt_input = global.eventWeek;//sets default text
+    txt_display = "Acvailable week: "
+}
+if(instance_id[seventhTextBoxRef] == id)
+{
+    sprite_index = No_sprite;
+    txt_input = global.eventMyth;//sets default text
+    txt_display = "Mythical?: "
 }
 myY = global.tempTextBoxY;//sets current Position (increases depending on instance)
 timer = 0;
@@ -116,20 +132,92 @@ textLongLength = 200;
 }
 if(id == instance_id[thirdTextBoxRef])
 {
-    switch(global.locationMyth)
+    if(global.locationEventNumber &gt; 0)
     {
-        case 0: txt_input = "Normal Map";
-        break;
-        case 1: txt_input = "Mythical Map";
-        break;
-        case 2: txt_input = "Both Maps";
-        break;
-        default: txt_input = "Error - Missing mythical info";
+        tempNormMap = 0;
+        tempMythMap = 0;
+        for(i = 0; i &lt; global.locationEventNumber; i++)
+        {
+            tempEventID = string(i);
+            tempEventMyth = "Event"+tempEventID+"Mythical";
+            ini_open("location.ini");
+            tempMyth = ini_read_real(global.tempLocation, tempEventMyth, 3);
+            ini_close();
+            if(tempMyth == 0)
+            {
+                tempNormMap = 1;
+            }
+            if(tempMyth == 1)
+            {
+                tempMythMap = 1;
+            }
+            if(tempMyth == 2)
+            {
+                tempNormMap = 1;
+                tempMythMap = 1;
+            }
+            if(tempMyth == 3)
+            {
+                txt_input = "Error - Missing mythical info2";
+            }
+        }
+        if(tempNormMap == 1 and tempMythMap == 1)
+        {
+            global.locationMyth = 2;
+            txt_input = "Both Maps";
+        }
+        if(tempNormMap == 0 and tempMythMap == 1)
+        {
+            global.locationMyth = 1;
+            txt_input = "Mythical Map";
+        }
+        if(tempNormMap == 1 and tempMythMap == 0)
+        {
+            global.locationMyth = 0
+            txt_input = "Normal Map";
+        }
+    }
+    if(global.locationEventNumber == 0)
+    {
+        switch(global.locationMyth)
+        {
+            case 0: txt_input = "Normal Map";
+            break;
+            case 1: txt_input = "Mythical Map";
+            break;
+            case 2: txt_input = "Both Maps";
+            break;
+            default: txt_input = "Error - Missing mythical info";
+        }
     }
 }
 if(id == instance_id[forthTextBoxRef])
 {
     txt_input = global.locationEventNumber;
+}
+if(id == instance_id[fifthTextBoxRef])
+{
+    switch(global.eventWeek)
+    {
+        case 0: txt_input = "Blank Event";
+        break;
+        case 1: txt_input = "Test 1";
+        break;
+        case 2: txt_input = "Test 2";
+        break;
+        default: txt_input = "Error - Missing Event type";
+    }
+}
+if(id == instance_id[seventhTextBoxRef])
+{
+    switch(global.eventMyth)
+    {
+        case 0: txt_input = "Normal event";
+        break;
+        case 1: txt_input = "Mythical event";
+        break;
+        default: txt_input = "Error - Missing event mythical info";
+    }
 }
 </string>
           </argument>
