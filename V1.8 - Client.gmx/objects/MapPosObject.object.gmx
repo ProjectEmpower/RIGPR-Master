@@ -58,21 +58,13 @@ global.zoom = 1
 view_wview[0] = 1024 * global.zoom
 view_hview[0] = 768 * global.zoom
 //changes the position of the buttons to make sure it loads in the correct positon
+TitleMap.x = view_xview + global.MapTitleX
+TitleMap.y = view_yview + global.MapTitleY 
 
-
-
-if(room == RoomMap)
-{
-    NormalMapTitleObject.x = view_xview + global.MapTitleX
-    NormalMapTitleObject.y = view_yview + global.MapTitleY 
-}
-if(room == RoomMapMythical)
-{ 
-    MythicalMapTitleObject.x = view_xview + global.MapTitleX
-    MythicalMapTitleObject.y = view_yview + global.MapTitleY 
-}
-
-
+ButtonMapSwap.x = view_xview + global.MythicalButtonX// * global.zoom
+ButtonMapSwap.y = view_yview + global.MythicalButtonY
+ButtonCharacter.x = view_xview + global.CharacterButtonX
+ButtonCharacter.y = view_yview + global.CharacterButtonY// * global.zoom
 
 </string>
           </argument>

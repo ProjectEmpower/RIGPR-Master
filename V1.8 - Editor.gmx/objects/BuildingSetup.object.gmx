@@ -39,11 +39,20 @@
         if(ini_section_exists(locationName)==true) //checks the ini file for the location name (Location#REF#) using the current loop iteration, if it exits it will continue
         {
             tempMyth = ini_read_real(locationName,"Mythical",3) //reads the current loops mythical value from the ini and sets it to tempMyth
-            if(tempMyth == global.myth or tempMyth == 2) //if tempMyth is = to the current mythical status (0,1) it will display the location, if not, it will move on
+            if(global.myth != 2)
             {
-                LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
-                LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
-                inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+                if(tempMyth == global.myth or tempMyth == 2) //if tempMyth is = to the current mythical status (0,1) it will display the location, if not, it will move on
+                {
+                    LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
+                    LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
+                    inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+                }
+            }
+            else
+            {
+                    LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
+                    LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
+                    inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
             }
             ini_close(); //closes the ini file
         }
@@ -74,31 +83,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Thos object is not shown, it contains the code for right clicking on the map screen. It creates an instance and records
-//its information in an ini file. 
-LocationX = mouse_x; //current mouse x position
-LocationY = mouse_y; //current mouse y position
-var inst; //creates a temp variable 
-inst = collision_rectangle( LocationX-40, LocationY-40, LocationX+40, LocationY+40, Building, false, false );
-if (inst == noone)
-{
-    
-    currRef = string(global.TotalInstanceNum); //sets the currRef variable to a string of the global TotalInstanceNumber, this is the number of instances currently used
-    locationName = "Location"+currRef;//this sets lcoation name to "location#REF#"
-    inst = instance_create(LocationX,LocationY,Building); //creates an instance at the mouse position, using the test building object
-    ini_open("location.ini"); //opens the ini file1
-    ini_write_real(locationName,"NumRef",global.TotalInstanceNum); //sets NumRef inside the ini file (used for comparing instances later)
-    ini_write_real(locationName,"X",LocationX); //X pos
-    ini_write_real(locationName,"Y",LocationY); //Y pos
-    ini_write_real(locationName,"Mythical",global.myth);//Current mythical state (0,1)
-    ini_write_string(locationName,"Real Location Name",""); //writes a blank default location name
-    ini_write_string(locationName,"Description","");//writes a blank default description
-    ini_write_real(locationName,"Number of Events", 0);
-    ini_write_real(locationName,"SpriteRef",0);
-    ini_close();//close the ini file 
-    global.TotalInstanceNum += 1; //increase the global TotalInstanceNum by 1, this means the next location added will be the next instanc
+            <string>if(global.myth == 2)
+    {
+    //Thos object is not shown, it contains the code for right clicking on the map screen. It creates an instance and records
+    //its information in an ini file. 
+    LocationX = mouse_x; //current mouse x position
+    LocationY = mouse_y; //current mouse y position
+    var inst; //creates a temp variable 
+    inst = collision_rectangle( LocationX-40, LocationY-40, LocationX+40, LocationY+40, Building, false, false );
+    if (inst == noone)
+    {
+        
+        currRef = string(global.TotalInstanceNum); //sets the currRef variable to a string of the global TotalInstanceNumber, this is the number of instances currently used
+        locationName = "Location"+currRef;//this sets lcoation name to "location#REF#"
+        inst = instance_create(LocationX,LocationY,Building); //creates an instance at the mouse position, using the test building object
+        ini_open("location.ini"); //opens the ini file1
+        ini_write_real(locationName,"NumRef",global.TotalInstanceNum); //sets NumRef inside the ini file (used for comparing instances later)
+        ini_write_real(locationName,"X",LocationX); //X pos
+        ini_write_real(locationName,"Y",LocationY); //Y pos
+        ini_write_real(locationName,"Mythical",global.myth);//Current mythical state (0,1)
+        ini_write_string(locationName,"Real Location Name",""); //writes a blank default location name
+        ini_write_string(locationName,"Description","");//writes a blank default description
+        ini_write_real(locationName,"Number of Events", 0);
+        ini_write_real(locationName,"SpriteRef",0);
+        ini_close();//close the ini file 
+        global.TotalInstanceNum += 1; //increase the global TotalInstanceNum by 1, this means the next location added will be the next instanc
+    }
 }
-
 </string>
           </argument>
         </arguments>

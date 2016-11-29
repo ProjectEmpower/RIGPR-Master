@@ -112,14 +112,7 @@ ButtonBack.y = room_height-50
             <kind>1</kind>
             <string>if(room == RoomCharacter) //checks room
 {
-    if(global.myth == 0) //checks mythial state
-    {
-        room = RoomMap; //swaps room
-    }
-    else
-    {
-        room = RoomMapMythical;
-    }   
+    room = RoomMap; //swaps room
 }
 if(room == RoomDiary)
 {
@@ -137,14 +130,8 @@ if(room == RoomLocationAdd) //checks room
     ini_write_real(global.tempLocation,"Mythical", global.locationMyth);
     ini_write_real(global.tempLocation,"Number of Events", global.locationEventNumber);
     ini_close();
-    if(global.myth == 0) //checks mythial state
-    {
-        room = RoomMap; //swaps room
-    }
-    else
-    {
-        room = RoomMapMythical;
-    }   
+    room = RoomMap; //swaps room
+
 }
 </string>
           </argument>

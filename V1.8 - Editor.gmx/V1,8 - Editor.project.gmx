@@ -25,6 +25,8 @@
         <sprite>sprites\BuildingSprite</sprite>
         <sprite>sprites\BuildingSprite1</sprite>
         <sprite>sprites\BuildingSprite2</sprite>
+        <sprite>sprites\ButtonEditorModeSprite</sprite>
+        <sprite>sprites\TitleEditorModeSprite</sprite>
       </sprites>
       <sprites name="Character">
         <sprite>sprites\CharacterButtonSprite_Diary</sprite>
@@ -68,10 +70,10 @@
       <object>objects\ButtonCharacter</object>
       <object>objects\MapDragObject</object>
       <object>objects\MapPosObject</object>
-      <object>objects\TitleMythicalMap</object>
-      <object>objects\TitleNormalMap</object>
+      <object>objects\TitleMap</object>
       <object>objects\Building</object>
       <object>objects\BuildingSetup</object>
+      <object>objects\ButtonEditorMode</object>
     </objects>
     <objects name="Character">
       <object>objects\TitleCharacter</object>
@@ -99,7 +101,6 @@
     <room>rooms\RoomSetup</room>
     <room>rooms\RoomMenu</room>
     <room>rooms\RoomMap</room>
-    <room>rooms\RoomMapMythical</room>
     <room>rooms\RoomCharacter</room>
     <room>rooms\RoomDiary</room>
     <room>rooms\RoomCards</room>

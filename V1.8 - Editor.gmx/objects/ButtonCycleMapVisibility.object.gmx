@@ -125,23 +125,23 @@ ButtonCycleMapVisibility.y = room_height/2-90
     ini_close();
     global.focus = 0;
 }
-//else
-//{
-//    global.focus = global.textBoxInstanceRef+2;
-//    switch(global.locationMyth)
-//    {
-//        case 0: global.locationMyth = 1;
-//        break;
-//        case 1: global.locationMyth = 2;
-//        break;
-//        case 2: global.locationMyth = 0;
-//        break;  
-//    }
-//    ini_open("location.ini");
-//    ini_write_real(global.tempLocation,"Mythical",global.locationMyth);
-//    ini_close();
-//    global.focus = 0;
-//}
+else
+{
+    global.focus = global.textBoxInstanceRef+2;
+    switch(global.locationMyth)
+    {
+        case 0: global.locationMyth = 1;
+        break;
+        case 1: global.locationMyth = 2;
+        break;
+        case 2: global.locationMyth = 0;
+        break;  
+    }
+    ini_open("location.ini");
+    ini_write_real(global.tempLocation,"Mythical",global.locationMyth);
+    ini_close();
+    global.focus = 0;
+}
 </string>
           </argument>
         </arguments>

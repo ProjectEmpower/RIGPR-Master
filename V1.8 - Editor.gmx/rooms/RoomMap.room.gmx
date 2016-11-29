@@ -55,8 +55,9 @@
     <instance objName="ButtonMapSwap" x="352" y="64" name="inst_5CADA767" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="MapDragObject" x="32" y="32" name="inst_00D3A779" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="MapPosObject" x="64" y="32" name="inst_841D1840" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="TitleNormalMap" x="96" y="160" name="inst_44656DCF" locked="0" code="" scaleX="1" scaleY="1" colour="4278190080" rotation="0"/>
+    <instance objName="TitleMap" x="96" y="160" name="inst_44656DCF" locked="0" code="" scaleX="1" scaleY="1" colour="4278190080" rotation="0"/>
     <instance objName="BuildingSetup" x="96" y="64" name="inst_1F58253E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonEditorMode" x="96" y="384" name="inst_2F1E3711" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -65,16 +65,12 @@ drag = 0
       
     ButtonMapSwap.x = view_xview + global.MythicalButtonX
     ButtonMapSwap.y = view_yview + global.MythicalButtonY 
-    if(room == RoomMap)
-    {    
-        TitleNormalMap.x = view_xview + global.MapTitleX
-        TitleNormalMap.y = view_yview + global.MapTitleY 
-    }
-    if(room == RoomMapMythical)
-    {
-        TitleMythicalMap.x = view_xview + global.MapTitleX
-        TitleMythicalMap.y = view_yview + global.MapTitleY
-    }
+    
+    ButtonEditorMode.x = view_xview + global.MythicalButtonX-200;
+    ButtonEditorMode.y = view_yview + global.MythicalButtonY ;
+        
+    TitleMap.x = view_xview + global.MapTitleX
+    TitleMap.y = view_yview + global.MapTitleY 
 }
 </string>
           </argument>

@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="7" enumb="5">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,48 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets the temp variables (used in Room Start) to the current screen position
-    
-global.currentX = view_xview
-global.currentY = view_yview
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//sets the current view to the view set when leaving the screen (Room End or during initial setup)
-view_xview = global.currentX 
-view_yview = global.currentY  
-global.zoom = 1
-view_wview[0] = 1024 * global.zoom
-view_hview[0] = 768 * global.zoom
-TitleMap.x = view_xview + global.MapTitleX
-TitleMap.y = view_yview + global.MapTitleY 
+            <string>//sets the initial view of the screen, this is used to to create the variable
+global.currentX = 0
+global.currentY = 0
 
-ButtonEditorMode.x = view_xview + global.MythicalButtonX-200;
-ButtonEditorMode.y = view_yview + global.MythicalButtonY ;
+//sets the default positions of the Hud on the map screens
+global.CharacterButtonX = 100 
+global.CharacterButtonY = (room_height - 50)
+global.MythicalButtonX = (room_width / 2)
+global.MythicalButtonY = 100
 
-ButtonMapSwap.x = view_xview + global.MythicalButtonX// * global.zoom
-ButtonMapSwap.y = view_yview + global.MythicalButtonY
-ButtonCharacter.x = view_xview + global.CharacterButtonX
-ButtonCharacter.y = view_yview + global.CharacterButtonY// * global.zoom
+global.MapTitleX = room_width/2
+global.MapTitleY = 25
+global.InputBoxX = room_width/5
+global.InputBoxY = 80
+global.InputTextX = room_width/5
+global.InputTextY = 65
+
+//instnace variables
+global.TotalInstanceNum = 0;
+global.myth = 0;
+global.locked = 0;
+global.tempNum = 0;
+
+//after setup, it moves to the menu
+room = RoomMenu;
 </string>
           </argument>
         </arguments>

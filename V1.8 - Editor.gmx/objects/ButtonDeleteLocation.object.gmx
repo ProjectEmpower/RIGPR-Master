@@ -168,14 +168,7 @@ for(i = global.tempNum; i &lt; global.TotalInstanceNum; i++)
         global.TotalInstanceNum = -1; //after running, this will decrease the total instance number by 1
     }
 }
-if(global.myth == 0) //checks mythial state
-{
-    room = RoomMap; //swaps room
-}
-else
-{
-    room = RoomMapMythical;
-} 
+room = RoomMap; //swaps room
 </string>
           </argument>
         </arguments>

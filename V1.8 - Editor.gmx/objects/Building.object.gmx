@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ref = string(global.objectRef);
+            <string>image_angle = 45;
+ref = string(global.objectRef);
 Name = "Location"+ref;
 ini_open("location.ini"); //opens the ini file1
 sprite = ini_read_real(Name,"SpriteRef",0);
