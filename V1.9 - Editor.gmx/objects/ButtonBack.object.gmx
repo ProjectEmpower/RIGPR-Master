@@ -129,6 +129,10 @@ if(room == RoomLocationAdd) //checks room
     ini_write_string(global.tempLocation,"Description",global.description); //writes the description on exit.
     ini_write_real(global.tempLocation,"Mythical", global.locationMyth);
     ini_write_real(global.tempLocation,"Number of Events", global.locationEventNumber);
+    tempEventID = string(global.EventID);
+    global.tempEvent = "Event"+tempEventID;
+    tempEventWeek = global.tempEvent+"Week";
+    ini_write_real(global.tempLocation,tempEventWeek,global.eventWeek);
     ini_close();
     room = RoomMap; //swaps room
 

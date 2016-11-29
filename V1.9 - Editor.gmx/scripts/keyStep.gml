@@ -51,16 +51,16 @@ else if k>=65 and k<=90 or k>=97 and k<=122 or k>=48 and k<=57 or k==192 or k==3
     
     
     //max length code for typing
-    if(id != instance_id[descTextBoxRef] and id != instance_id[thirdTextBoxRef] and id != instance_id[forthTextBoxRef])
+    if(id != instance_id[descTextBoxRef] and id != instance_id[thirdTextBoxRef] and id != instance_id[forthTextBoxRef]and id != instance_id[sixthTextBoxRef])
     {
         if(string_length(txt_input) < textShortLength)
         {
            txt_input = txt_input + c;// Add c to txt_input
         }
     }
-    else if(id == instance_id[thirdTextBoxRef])
+    else if(id == instance_id[sixthTextBoxRef])
     {
-        
+        txt_input = txt_input + c;
     }
     else if(id == instance_id[descTextBoxRef])
     {
@@ -96,7 +96,7 @@ if(instance_id[fifthTextBoxRef] == id)
 }
 if(instance_id[sixthTextBoxRef] == id)
 {
-    global.eventWeek = txt_input;
+    global.eventWeek = real(txt_input);
 }
 if(instance_id[seventhTextBoxRef] == id)
 {

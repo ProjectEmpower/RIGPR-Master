@@ -66,7 +66,7 @@ if(instance_id[fifthTextBoxRef] == id)
 if(instance_id[sixthTextBoxRef] == id)
 {
     sprite_index = TextInputBoxSprite_Small;
-    txt_input = global.eventWeek;//sets default text
+    txt_input = string(global.eventWeek);//sets default text
     txt_display = "Acvailable week: "
 }
 if(instance_id[seventhTextBoxRef] == id)
@@ -197,7 +197,7 @@ if(id == instance_id[forthTextBoxRef])
 }
 if(id == instance_id[fifthTextBoxRef])
 {
-    switch(global.eventWeek)
+    switch(global.eventType)
     {
         case 0: txt_input = "Blank Event";
         break;
@@ -207,6 +207,10 @@ if(id == instance_id[fifthTextBoxRef])
         break;
         default: txt_input = "Error - Missing Event type";
     }
+}
+if(id == instance_id[sixthTextBoxRef])
+{
+    txt_input = string(global.eventWeek);
 }
 if(id == instance_id[seventhTextBoxRef])
 {
