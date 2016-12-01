@@ -133,6 +133,18 @@ for(i = 1; i &lt; global.TotalEventNum; i ++)
     }
     ini_close();
 }
+global.TotalCardNum = 100;
+for(i = 1; i &lt; global.TotalCardNum; i ++)
+{
+    currentCardRef = string(i);//writes i as a string to a variable
+    currentCard = "Card"+currentCardRef; //writes the current event + position in for loop
+    ini_open(global.cardINI);  //opens the event ini file
+    if(!ini_section_exists(currentCard))//if the current event in list does not exist
+    {
+        global.TotalCardNum = i;//set the total to the current loop number.
+    }
+    ini_close();
+}
 </string>
           </argument>
         </arguments>

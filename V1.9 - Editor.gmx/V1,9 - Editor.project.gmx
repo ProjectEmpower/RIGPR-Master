@@ -67,6 +67,7 @@
     <script>scripts\keyStep.gml</script>
     <script>scripts\SaveLocation.gml</script>
     <script>scripts\SaveEvent.gml</script>
+    <script>scripts\SaveCard.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Menu">
@@ -83,6 +84,7 @@
       <object>objects\BuildingSetup</object>
       <object>objects\ButtonEditorMode</object>
       <object>objects\ButtonEventList</object>
+      <object>objects\ButtonCardList</object>
     </objects>
     <objects name="Character">
       <object>objects\TitleCharacter</object>
@@ -107,12 +109,17 @@
       <object>objects\ButtonEventNew</object>
       <object>objects\ButtonEventEdit</object>
       <object>objects\ButtonCycleMapVisibility</object>
+      <objects name="EventEdit">
+        <object>objects\EventEditSetup</object>
+      </objects>
+      <objects name="EventCreate">
+        <object>objects\EventCreateSetup</object>
+      </objects>
     </objects>
-    <objects name="EventEdit">
-      <object>objects\EventEditSetup</object>
-    </objects>
-    <objects name="EventCreate">
-      <object>objects\EventCreateSetup</object>
+    <objects name="CardList">
+      <object>objects\ButtonCardNew</object>
+      <object>objects\CardEditSetup</object>
+      <object>objects\CardCreateSetup</object>
     </objects>
     <object>objects\GameSetup</object>
     <object>objects\ButtonBack</object>
@@ -127,8 +134,12 @@
     <room>rooms\RoomLocationAdd</room>
     <room>rooms\RoomEventAdd</room>
     <room>rooms\RoomEventList</room>
-    <room>rooms\RoomSelectEvent</room>
+    <room>rooms\RoomEventSelect</room>
     <room>rooms\RoomEventEdit</room>
+    <room>rooms\RoomCardEdit</room>
+    <room>rooms\RoomCardAdd</room>
+    <room>rooms\RoomCardSelect</room>
+    <room>rooms\RoomCardList</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

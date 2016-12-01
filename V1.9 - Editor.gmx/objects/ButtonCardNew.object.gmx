@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ButtonEventNew.x = room_width-50
-ButtonEventNew.y = room_height/2+90
+            <string>ButtonCardNew.x = room_width-50
+ButtonCardNew.y = room_height/2+90
 </string>
           </argument>
         </arguments>
@@ -109,21 +109,18 @@ ButtonEventNew.y = room_height/2+90
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.eventRef = string(global.TotalEventNum);
-global.eventName = "Event"+global.eventRef;
-ini_open(global.eventINI);
-ini_write_real(global.eventName,"Ref", global.TotalEventNum);
-ini_write_string(global.eventName,"Event Name", "");
-ini_write_real(global.eventName,"Int", 0);
-ini_write_real(global.eventName,"Char", 0);
-ini_write_real(global.eventName,"Well", 0);
-ini_write_real(global.eventName,"Mythical", 0);
-ini_write_real(global.eventName, "Card1",0);
-ini_write_real(global.eventName, "Card2",0);
-ini_write_real(global.eventName, "Card3",0);
+            <string>global.cardRef = string(global.TotalCardNum);
+global.cardName = "Card"+global.cardRef;
+ini_open(global.cardINI);
+ini_write_real(global.cardName,"Ref", global.TotalCardNum);
+ini_write_string(global.cardName,"Card Name", "");
+ini_write_real(global.cardName,"Int", 0);
+ini_write_real(global.cardName,"Char", 0);
+ini_write_real(global.cardName,"Well", 0);
+ini_write_string(global.cardName,"Card Text","");
 ini_close();
-global.TotalEventNum += 1;
-room = RoomEventAdd;
+global.TotalCardNum += 1;
+room = RoomCardAdd;
 </string>
           </argument>
         </arguments>

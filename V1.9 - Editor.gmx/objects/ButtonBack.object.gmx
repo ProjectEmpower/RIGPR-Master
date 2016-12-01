@@ -133,14 +133,22 @@ if(room == RoomEventAdd or room == RoomEventEdit)
     script_execute(SaveEvent);
      room = RoomEventList;
 }
-if(room == RoomEventList)
+if(room == RoomEventList or room == RoomCardList)
 {
     room = RoomMap;
 }
-
-if(room == RoomSelectEvent)
+if(room == RoomCardAdd or room == RoomCardEdit)
+{
+    script_execute(SaveCard);
+    room = RoomCardList;
+}
+if(room == RoomEventSelect)
 {
     room = RoomLocationAdd;
+}
+if(room == RoomCardSelect)
+{
+    room = global.lastRoom;
 }
 </string>
           </argument>

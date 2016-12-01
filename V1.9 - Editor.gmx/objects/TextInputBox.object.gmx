@@ -32,6 +32,7 @@ forthTextBoxRef = realNameTextBoxRef+3;
 fifthTextBoxRef = realNameTextBoxRef+4;
 sixthTextBoxRef = realNameTextBoxRef+5;
 seventhTextBoxRef = realNameTextBoxRef+6;
+eighthTextBoxRef = realNameTextBoxRef+7;
 timer = 0;
 delay = 4;
 textShortLength = 30;
@@ -92,19 +93,19 @@ if(room == RoomEventAdd or room == RoomEventEdit)
     {
         sprite_index = TextInputBoxSprite_Small;
         txt_input = global.reqEventInt;//sets default text
-        txt_display = "Int: "
+        txt_display = "Required Int: "
     }
     if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
     {
         sprite_index = TextInputBoxSprite_Small;
         txt_input = global.reqEventChar;
-        txt_display = "Char: "
+        txt_display = "Required Char: "
     }
     if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
     {
         sprite_index = TextInputBoxSprite_Small;
         txt_input = global.reqEventWell;
-        txt_display = "Well: "
+        txt_display = "Required Well: "
     }
     if(instance_id[fifthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
     {
@@ -112,20 +113,35 @@ if(room == RoomEventAdd or room == RoomEventEdit)
         txt_input = "Error - Mythical status not set";
         txt_display = "Visibility?: "
     }
-    
+    if(instance_id[sixthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    {
+        txt_input = global.card1;
+        txt_display = "Card1: "
+    }
+    if(instance_id[seventhTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    {
+        txt_input = global.card2;
+        txt_display = "Card2: "
+    }
+    if(instance_id[eighthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    {
+        txt_input = global.card3;
+        txt_display = "Card3: "
+    }
 }
-if(room == RoomEventList or room == RoomSelectEvent)
+if(room == RoomEventList or room == RoomEventSelect)
 {
-    image_xscale = 1.5;
+    image_xscale = 2;
     for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
     {    
         if(instance_id[i] == id)
         {
             ref_display = global.eventRef;
-            name_display = global.eventName;
+            name_display = global.realEventName;
             int_display = global.reqEventInt;
             char_display = global.reqEventChar;
             well_display = global.reqEventWell;
+            
             switch(global.eventMythical)
             {
                 case 0: mythical_display = "Normal Map";
@@ -137,6 +153,55 @@ if(room == RoomEventList or room == RoomSelectEvent)
         }
     }
 }
+if(room == RoomCardAdd or room == RoomCardEdit)
+{
+    if(instance_id[realNameTextBoxRef] == id)
+    {
+        txt_input = global.realCardName;//sets default text
+        txt_display = "Card Name: ";     //sets display text
+    }
+    if(instance_id[descTextBoxRef] == id)
+    {
+        sprite_index = TextInputBoxSprite_Small;
+        txt_input = global.int;//sets default text
+        txt_display = "Int: "
+    }
+    if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    {
+        sprite_index = TextInputBoxSprite_Small;
+        txt_input = global.char;
+        txt_display = "Char: "
+    }
+    if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    {
+        sprite_index = TextInputBoxSprite_Small;
+        txt_input = global.well;
+        txt_display = "Well: "
+    }
+    if(instance_id[fifthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    {
+        sprite_index = TextInputBoxSprite_Large;
+        txt_input = global.cardText;
+        txt_display = "Text: "
+    }
+}
+if(room == RoomCardList or room == RoomCardSelect)
+{
+    image_xscale = 2;
+    for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
+    {    
+        if(instance_id[i] == id)
+        {
+            ref_display = global.cardRef;
+            name_display = global.realCardName;
+            int_display = global.int;
+            char_display = global.char;
+            well_display = global.well;
+            text_display = global.cardText;//not shown here        
+        }
+    }
+}
+
 myY = global.tempTextBoxY;//sets current Position (increases depending on instance)
 
 </string>
@@ -360,6 +425,69 @@ if(room == RoomEventAdd or room == RoomEventEdit)
             default: txt_input = "Error - Missing event mythical info";
         }
     }
+    if(instance_id[sixthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    {
+        if(global.card1 == 0)
+        {
+            txt_input = "No Card Selected";
+        }
+        else
+        {
+            s = string(global.card1);
+            cardName = "Card"+s;
+            ini_open(global.cardINI);
+            realCardName = ini_read_string(cardName,"Card Name","");
+            ini_close();
+            txt_input = realCardName;
+        }
+    }
+    if(instance_id[seventhTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    {
+        if(global.card2 == 0)
+        {
+            txt_input = "No Card Selected";
+        }
+        else
+        {
+            s = string(global.card2);
+            cardName = "Card"+s;
+            ini_open(global.cardINI);
+            realCardName = ini_read_string(cardName,"Card Name","");
+            ini_close();
+            txt_input = realCardName;
+        }
+    }
+    if(instance_id[eighthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    {
+        if(global.card3 == 0)
+        {
+            txt_input = "No Card Selected";
+        }
+        else
+        {
+            s = string(global.card3);
+            cardName = "Card"+s;
+            ini_open(global.cardINI);
+            realCardName = ini_read_string(cardName,"Card Name","");
+            ini_close();
+            txt_input = realCardName;
+        }
+    }
+}
+if(room == RoomCardAdd or room == RoomCardEdit)
+{
+   if(id == instance_id[descTextBoxRef])
+    {
+        txt_input = string(global.int);
+    }
+    if(id == instance_id[thirdTextBoxRef])
+    {
+        txt_input = string(global.char);
+    }
+    if(id == instance_id[forthTextBoxRef])
+    {
+        txt_input = string(global.well);
+    }
 }
 </string>
           </argument>
@@ -389,7 +517,7 @@ if(room == RoomEventList)
     global.eventRef = id.ref_display;
     room = RoomEventEdit;
 }
-if(room == RoomSelectEvent)
+if(room == RoomEventSelect)
 {
     global.eventType = id.ref_display;
     ini_open(global.locationINI);
@@ -398,6 +526,36 @@ if(room == RoomSelectEvent)
     ini_write_real(global.tempLocation,eventType,global.eventType);
     ini_close();
     room = RoomLocationAdd;
+}
+if(room == RoomCardList)
+{
+    global.cardRef = id.ref_display;
+    room = RoomCardEdit;
+}
+if(room == RoomEventEdit or room == RoomEventAdd)
+{
+    if(id == instance_id[global.textBoxInstanceRef+5] or id == instance_id[ global.textBoxInstanceRef+6] or id == instance_id[ global.textBoxInstanceRef+7])
+    {
+        for(i = 5; i &lt; 8; i++)
+        {
+            if(instance_id[global.textBoxInstanceRef+i] == id)
+            {
+                global.currentCard = i-4;
+            }
+        }
+        global.lastRoom = room;
+        room = RoomCardSelect;
+    }
+}
+if(room == RoomCardSelect)
+{
+    global.cardType = id.ref_display;
+    ini_open(global.eventINI);
+    s = string(global.currentCard);
+    cardToUpdate = "Card"+s;
+    ini_write_real(global.eventName,cardToUpdate,global.cardType);
+    ini_close();
+    room = global.lastRoom;
 }
 </string>
           </argument>
@@ -444,16 +602,35 @@ else if(room == RoomEventAdd or room == RoomEventEdit)
     draw_set_halign(fa_left);
     draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
 }
-else if(room == RoomEventList or room == RoomSelectEvent)
+else if(room == RoomEventList or room == RoomEventSelect)
 {
     draw_set_valign(fa_top);
     draw_set_halign(fa_left);
     draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
-    draw_text(global.InputBoxX + 25, myY, name_display);
+    draw_text(global.InputBoxX + 0, myY, name_display);
     draw_text(global.InputBoxX + 125, myY, int_display); 
     draw_text(global.InputBoxX + 150, myY, char_display); 
     draw_text(global.InputBoxX + 175, myY, well_display); 
     draw_text(global.InputBoxX + 200, myY, mythical_display); 
+}
+else if(room == RoomCardList or room == RoomCardSelect)
+{
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
+    draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
+    draw_text(global.InputBoxX + 0, myY, name_display);
+    draw_text(global.InputBoxX + 125, myY, int_display); 
+    draw_text(global.InputBoxX + 150, myY, char_display); 
+    draw_text(global.InputBoxX + 175, myY, well_display); 
+    draw_text(global.InputBoxX + 175, myY, text_display); 
+}
+if(room == RoomCardAdd or room == RoomCardEdit)
+{
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_right);
+    draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
+    draw_set_halign(fa_left);
+    draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
 }
 //draw_text_ext(x,y,string, seperation (between lines, go with 5), w(max width in pixels before current line breaks and starts a new line)
 

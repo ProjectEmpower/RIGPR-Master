@@ -89,13 +89,17 @@ if(room == RoomEventAdd or room == RoomEventEdit)
 {
     TeventRef = string(global.eventRef);
     global.eventName = "Event"+TeventRef;
-    textFeilds = 5;//number of text boxes we want.
+    textFeilds = 8;//number of text boxes we want.
     ini_open(global.eventINI)
-    global.realEventName = ini_read_string(global.eventName,"Event Name","2"); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
+    global.realEventName = ini_read_string(global.eventName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
     global.reqEventInt = ini_read_real(global.eventName,"Int",0);
     global.reqEventChar = ini_read_real(global.eventName, "Char", 0);
     global.reqEventWell = ini_read_real(global.eventName, "Well",0);
     global.eventMythical = ini_read_real(global.eventName,"Mythical",0);
+    global.card1 = ini_read_real(global.eventName,"Card1",0);
+    global.card2 = ini_read_real(global.eventName,"Card2",0);
+    global.card3 = ini_read_real(global.eventName,"Card3",0);
+    
     ini_close();
     var inst;
     for(i = 0; i &lt; textFeilds; i++)
@@ -105,7 +109,7 @@ if(room == RoomEventAdd or room == RoomEventEdit)
             global.tempTextBoxY += 25;
     }
 }
-if(room == RoomEventList or room == RoomSelectEvent)
+if(room == RoomEventList or room == RoomEventSelect)
 {
     if(global.TotalEventNum  &gt;= 21)
     {
@@ -121,7 +125,7 @@ if(room == RoomEventList or room == RoomSelectEvent)
         tempEvent = "Event"+tempEventRef;
         ini_open(global.eventINI);
         global.eventRef = ini_read_real(tempEvent,"Ref","");
-        global.eventName = ini_read_string(tempEvent,"Event Name","");
+        global.realEventName = ini_read_string(tempEvent,"Event Name","");
         global.reqEventInt = ini_read_real(tempEvent,"Int",0);
         global.reqEventChar = ini_read_real(tempEvent, "Char", 0);       
         global.reqEventWell = ini_read_real(tempEvent, "Well",0);
@@ -132,6 +136,54 @@ if(room == RoomEventList or room == RoomSelectEvent)
         global.tempTextBoxY += 25;
     }
 }
+if(room == RoomCardAdd or room == RoomCardEdit)
+{
+    TcardRef = string(global.cardRef);
+    global.cardName = "Card"+TcardRef;
+    textFeilds = 5;//number of text boxes we want.
+    ini_open(global.cardINI)
+    global.realCardName = ini_read_string(global.cardName,"Card Name","");
+    global.int = ini_read_real(global.cardName,"Int",0);
+    global.char = ini_read_real(global.cardName,"Char",0);
+    global.well = ini_read_real(global.cardName,"Well",0);
+    global.cardText = ini_read_string(global.cardName,"Card Text","");
+    ini_close();
+    var inst;
+    for(i = 0; i &lt; textFeilds; i++)
+    {
+            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+    }
+}
+if(room == RoomCardList or room == RoomCardSelect)
+{
+    if(global.TotalCardNum  &gt;= 21)
+    {
+        global.listLength = 21;   
+    }
+    else
+    {
+        global.listLength = 21 - (21 - global.TotalCardNum);
+    }
+    for(i = 1; i &lt; global.listLength; i++)
+    {
+        tempCardRef = string(i);       
+        tempCard = "Card"+tempCardRef;
+        ini_open(global.cardINI);
+        global.cardRef = ini_read_real(tempCard,"Ref",0);
+        global.realCardName = ini_read_string(tempCard,"Card Name","");
+        global.int = ini_read_real(tempCard,"Int",0);
+        global.char = ini_read_real(tempCard,"Char",0);
+        global.well = ini_read_real(tempCard,"Well",0);
+        global.cardText = ini_read_string(tempCard,"Card Text","");
+        ini_close();
+        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+        global.tempInputBoxY += 25;
+        global.tempTextBoxY += 25;
+    }
+}
+
 </string>
           </argument>
         </arguments>

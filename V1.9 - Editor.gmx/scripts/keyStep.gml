@@ -140,3 +140,27 @@ else if(room == RoomEventAdd or room == RoomEventEdit)
         global.reqEventWell = real(txt_input);
     }
 }
+else if(room == RoomCardAdd or room == RoomCardEdit)
+{
+  if(instance_id[realNameTextBoxRef] == id)
+    {
+        global.realCardName = txt_input;
+    }
+    if(instance_id[descTextBoxRef] == id)
+    {
+        global.int = real(txt_input);
+    }
+    if(instance_id[thirdTextBoxRef] == id)
+    {
+    
+        global.char = real(txt_input);
+    }
+    if(instance_id[forthTextBoxRef] == id)
+    {
+        global.well = real(txt_input);
+    }
+    if(instance_id[fifthTextBoxRef] == id)
+    {
+        global.cardText = txt_input;
+    }
+}
