@@ -87,9 +87,11 @@ if(room == RoomLocationAdd)
 }
 if(room == RoomEventAdd or room == RoomEventEdit)
 {
+    TeventRef = string(global.eventRef);
+    global.eventName = "Event"+TeventRef;
     textFeilds = 5;//number of text boxes we want.
     ini_open(global.eventINI)
-    global.realEventName = ini_read_string(global.eventName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
+    global.realEventName = ini_read_string(global.eventName,"Event Name","2"); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
     global.reqEventInt = ini_read_real(global.eventName,"Int",0);
     global.reqEventChar = ini_read_real(global.eventName, "Char", 0);
     global.reqEventWell = ini_read_real(global.eventName, "Well",0);

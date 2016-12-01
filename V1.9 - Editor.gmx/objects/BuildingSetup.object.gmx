@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>//when the map screens start, this will run
+
+    
 var inst;
 global.TotalInstanceNum = 100;//sets global Num to 100 (100 is max istance ammount)
 for(i = 0; i &lt; global.TotalInstanceNum; i++) 
@@ -37,14 +39,72 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
     
     if(ini_section_exists(locationName)==true) //checks the ini file for the location name (Location#REF#) using the current loop iteration, if it exits it will continue
     {
-        tempMyth = ini_read_real(locationName,"Mythical",3) //reads the current loops mythical value from the ini and sets it to tempMyth
+        tempMyth = ini_read_real(locationName, "Mythical", 3); //reads the current loops mythical value from the ini and sets it to tempMyth
+        tempEventNum = ini_read_real(locationName, "Number of Events", 0);
+
         if(global.myth != 2)
         {
+            if(tempEventNum &gt; 0)
+            {
+                tempNormMap = 0;
+                tempMythMap = 0;
+                for(e = 0; e &lt; tempEventNum; e++)
+                {
+                    tempEventID = string(e);
+                    tempEvent = "Event"+tempEventID+"Type";
+                    ini_open(global.locationINI)
+                    tempEventRef = ini_read_real(locationName, tempEvent, 3);
+                    ini_close();
+                    s = string(tempEventRef)
+                    tempEventName = "Event"+s;
+                    ini_open(global.eventINI);
+                    tempMyth = ini_read_real(tempEventName, "Mythical", 3);
+                    ini_close();
+                    if(tempMyth == 0)
+                    {
+                        tempNormMap = 1;
+                    }
+                    if(tempMyth == 1)
+                    {
+                        tempMythMap = 1;
+                    }
+                    if(tempMyth == 2)
+                    {
+                        tempNormMap = 1;
+                        tempMythMap = 1;
+                    }
+                    if(tempMyth == 3)
+                    {
+                        txt_input = "Both - No event selected";
+                    }
+                }
+                if(tempNormMap == 1 and tempMythMap == 1)
+                {
+                    global.locationMyth = 2;
+                    global.eventMyth = 2;
+                    txt_input = "Both Maps";
+                }
+                if(tempNormMap == 0 and tempMythMap == 1)
+                {
+                    global.locationMyth = 1;
+                    global.eventMyth = 1;
+                    txt_input = "Mythical Map";
+                }
+                if(tempNormMap == 1 and tempMythMap == 0)
+                {
+                    global.locationMyth = 0
+                    global.eventMyth = 0;
+                    txt_input = "Normal Map";
+                }
+            }
+            ini_open(global.locationINI)
             if(tempMyth == global.myth or tempMyth == 2) //if tempMyth is = to the current mythical status (0,1) it will display the location, if not, it will move on
             {
+                
                 LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
                 LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
                 inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+                ini_close()
             }
         }
         else
