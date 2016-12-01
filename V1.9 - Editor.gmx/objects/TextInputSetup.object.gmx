@@ -103,7 +103,7 @@ if(room == RoomEventAdd or room == RoomEventEdit)
             global.tempTextBoxY += 25;
     }
 }
-if(room == RoomEventList)
+if(room == RoomEventList or room == RoomSelectEvent)
 {
     if(global.TotalEventNum  &gt;= 21)
     {

@@ -32,6 +32,10 @@ forthTextBoxRef = realNameTextBoxRef+3;
 fifthTextBoxRef = realNameTextBoxRef+4;
 sixthTextBoxRef = realNameTextBoxRef+5;
 seventhTextBoxRef = realNameTextBoxRef+6;
+timer = 0;
+delay = 4;
+textShortLength = 30;
+textLongLength = 200;
 image_xscale = 1.5;
 if(room == RoomLocationAdd)
 {    
@@ -110,9 +114,9 @@ if(room == RoomEventAdd or room == RoomEventEdit)
     }
     
 }
-if(room == RoomEventList)
+if(room == RoomEventList or room == RoomSelectEvent)
 {
-    image_xscale = 2;
+    image_xscale = 1.5;
     for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
     {    
         if(instance_id[i] == id)
@@ -134,10 +138,7 @@ if(room == RoomEventList)
     }
 }
 myY = global.tempTextBoxY;//sets current Position (increases depending on instance)
-timer = 0;
-delay = 4;
-textShortLength = 30;
-textLongLength = 200;
+
 </string>
           </argument>
         </arguments>
@@ -154,7 +155,7 @@ textLongLength = 200;
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>TextInputBox</whoName>
+        <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
@@ -388,6 +389,16 @@ if(room == RoomEventList)
     global.eventRef = id.ref_display;
     room = RoomEventEdit;
 }
+if(room == RoomSelectEvent)
+{
+    global.eventType = id.ref_display;
+    ini_open(global.locationINI);
+    s = string(global.EventID);
+    eventType = "Event"+s+"Type";
+    ini_write_real(global.tempLocation,eventType,global.eventType);
+    ini_close();
+    room = RoomLocationAdd;
+}
 </string>
           </argument>
         </arguments>
@@ -433,7 +444,7 @@ else if(room == RoomEventAdd or room == RoomEventEdit)
     draw_set_halign(fa_left);
     draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
 }
-else if(room == RoomEventList)
+else if(room == RoomEventList or room == RoomSelectEvent)
 {
     draw_set_valign(fa_top);
     draw_set_halign(fa_left);

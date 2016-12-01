@@ -137,6 +137,11 @@ if(room == RoomEventList)
 {
     room = RoomMap;
 }
+
+if(room == RoomSelectEvent)
+{
+    room = RoomLocationAdd;
+}
 </string>
           </argument>
         </arguments>

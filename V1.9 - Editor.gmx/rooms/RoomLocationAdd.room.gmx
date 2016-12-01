@@ -60,6 +60,7 @@
     <instance objName="ButtonLocationRight" x="704" y="96" name="inst_4057A29C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonEventLeft" x="128" y="128" name="inst_342B620D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonEventRight" x="160" y="128" name="inst_8C1A81A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonSelectEvent" x="608" y="320" name="inst_212EE05D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
