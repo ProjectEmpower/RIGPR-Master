@@ -27,6 +27,14 @@
             <kind>1</kind>
             <string>ButtonSelectEvent.x = room_width-50
 ButtonSelectEvent.y = room_height/2-90
+if(global.locationEventNumber &gt; 0)
+{
+    sprite_index = EventSelect;
+}
+else
+{
+    sprite_index = No_sprite;
+}
 </string>
           </argument>
         </arguments>

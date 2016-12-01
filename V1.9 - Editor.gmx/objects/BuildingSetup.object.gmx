@@ -32,7 +32,7 @@ var inst;
 global.TotalInstanceNum = 100;//sets global Num to 100 (100 is max istance ammount)
 for(i = 0; i &lt; global.TotalInstanceNum; i++) 
 {
-    global.objectRef = i;//not sure if needed
+    global.objectRef = i;//not sure if needed anymore
     currRef = string(i);//sets currRef to the current loop iteration in string format
     locationName = "Location"+currRef;//writes "Location#loopREF#" to a variable
     ini_open(global.locationINI); //opens the ini file
@@ -81,24 +81,24 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
                 if(tempNormMap == 1 and tempMythMap == 1)
                 {
                     global.locationMyth = 2;
-                    global.eventMyth = 2;
+                    tempMyth = 2;
                     txt_input = "Both Maps";
                 }
                 if(tempNormMap == 0 and tempMythMap == 1)
                 {
                     global.locationMyth = 1;
-                    global.eventMyth = 1;
+                    tempMyth = 1;
                     txt_input = "Mythical Map";
                 }
                 if(tempNormMap == 1 and tempMythMap == 0)
                 {
                     global.locationMyth = 0
-                    global.eventMyth = 0;
+                    tempMyth = 0;
                     txt_input = "Normal Map";
                 }
             }
             ini_open(global.locationINI)
-            if(tempMyth == global.myth or tempMyth == 2) //if tempMyth is = to the current mythical status (0,1) it will display the location, if not, it will move on
+            if(tempMyth == global.myth or tempMyth == 2 or tempMyth == 3) //if tempMyth is = to the current mythical status (0,1) it will display the location, if not, it will move on
             {
                 
                 LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
