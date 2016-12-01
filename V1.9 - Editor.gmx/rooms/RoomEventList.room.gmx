@@ -54,6 +54,7 @@
     <instance objName="TextInputSetup" x="96" y="96" name="inst_266CE524" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonEventNew" x="928" y="320" name="inst_47FAF7D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonBack" x="128" y="704" name="inst_219E1281" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="EventListSetup" x="128" y="64" name="inst_23CA49AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -106,6 +106,7 @@
       <object>objects\ButtonEventRight</object>
     </objects>
     <objects name="EventList">
+      <object>objects\EventListSetup</object>
       <object>objects\ButtonEventNew</object>
       <object>objects\ButtonEventEdit</object>
       <object>objects\ButtonCycleMapVisibility</object>
@@ -117,6 +118,7 @@
       </objects>
     </objects>
     <objects name="CardList">
+      <object>objects\CardListSetup</object>
       <object>objects\ButtonCardNew</object>
       <object>objects\CardEditSetup</object>
       <object>objects\CardCreateSetup</object>

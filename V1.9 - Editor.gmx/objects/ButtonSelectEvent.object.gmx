@@ -109,7 +109,7 @@ ButtonSelectEvent.y = room_height/2-90
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room = RoomSelectEvent;
+            <string>room = RoomEventSelect;
 </string>
           </argument>
         </arguments>

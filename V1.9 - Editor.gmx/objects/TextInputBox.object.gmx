@@ -622,7 +622,7 @@ else if(room == RoomCardList or room == RoomCardSelect)
     draw_text(global.InputBoxX + 125, myY, int_display); 
     draw_text(global.InputBoxX + 150, myY, char_display); 
     draw_text(global.InputBoxX + 175, myY, well_display); 
-    draw_text(global.InputBoxX + 175, myY, text_display); 
+    draw_text(global.InputBoxX + 200, myY, text_display); 
 }
 if(room == RoomCardAdd or room == RoomCardEdit)
 {
