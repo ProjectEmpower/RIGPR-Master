@@ -49,56 +49,94 @@ else if k>=65 and k<=90 or k>=97 and k<=122 or k>=48 and k<=57 or k==192 or k==3
     // 192   : I don't remember :P
     // 32   : space
     
-    
-    //max length code for typing
-    if(id != instance_id[descTextBoxRef] and id != instance_id[thirdTextBoxRef] and id != instance_id[forthTextBoxRef]and id != instance_id[sixthTextBoxRef])
-    {
-        if(string_length(txt_input) < textShortLength)
+   if(room == RoomLocationAdd)
+   { 
+        //max length code for typing
+        if(id != instance_id[descTextBoxRef] and id != instance_id[thirdTextBoxRef] and id != instance_id[forthTextBoxRef]and id != instance_id[sixthTextBoxRef])
         {
-           txt_input = txt_input + c;// Add c to txt_input
+            if(string_length(txt_input) < textShortLength)
+            {
+               txt_input = txt_input + c;// Add c to txt_input
+            }
+        }
+        else if(id == instance_id[sixthTextBoxRef])
+        {
+            txt_input = txt_input + c;
+        }
+        else if(id == instance_id[descTextBoxRef])
+        {
+            if(string_length(txt_input) < textLongLength)
+            {
+                txt_input = txt_input + c;// Add c to txt_input
+            }
         }
     }
-    else if(id == instance_id[sixthTextBoxRef])
-    {
-        txt_input = txt_input + c;
-    }
-    else if(id == instance_id[descTextBoxRef])
-    {
-        if(string_length(txt_input) < textLongLength)
+    else
+    { 
+        if(is_real(txt_input))
         {
-            txt_input = txt_input + c;// Add c to txt_input
+            txt_input = txt_input + c;
+        }
+        else
+        {   
+            if(string_length(txt_input) < textShortLength)
+            {
+                txt_input = txt_input + c;// Add c to txt_input
+            }
         }
     }
     
+}
+if(room == RoomLocationAdd)
+{
+    //updates relevent variable with the text stored in txt_input
+    if(instance_id[realNameTextBoxRef] == id)
+    {
+        global.realLocationName = txt_input;
+    }
+    if(instance_id[descTextBoxRef] == id)
+    {
+        global.description = txt_input;
+    }
+    if(instance_id[thirdTextBoxRef] == id)
+    {
     
+        global.locationMyth = txt_input;
+    }
+    if(instance_id[forthTextBoxRef] == id)
+    {
+        global.locationEventNumber = txt_input;
+    }
+    if(instance_id[fifthTextBoxRef] == id)
+    {
+        global.eventType = txt_input;
+    }
+    if(instance_id[sixthTextBoxRef] == id)
+    {
+        global.eventWeek = real(txt_input);
+    }
+    if(instance_id[seventhTextBoxRef] == id)
+    {
+        global.eventMyth = txt_input;
+    }
 }
-//updates relevent variable with the text stored in txt_input
-if(instance_id[realNameTextBoxRef] == id)
+else if(room == RoomEventAdd or room == RoomEventEdit)
 {
-    global.realLocationName = txt_input;
-}
-if(instance_id[descTextBoxRef] == id)
-{
-    global.description = txt_input;
-}
-if(instance_id[thirdTextBoxRef] == id)
-{
-
-    global.locationMyth = txt_input;
-}
-if(instance_id[forthTextBoxRef] == id)
-{
-    global.locationEventNumber = txt_input;
-}
-if(instance_id[fifthTextBoxRef] == id)
-{
-    global.eventType = txt_input;
-}
-if(instance_id[sixthTextBoxRef] == id)
-{
-    global.eventWeek = real(txt_input);
-}
-if(instance_id[seventhTextBoxRef] == id)
-{
-    global.eventMyth = txt_input;
+  if(instance_id[realNameTextBoxRef] == id)
+    {
+        global.realEventName = txt_input;
+    }
+    if(instance_id[descTextBoxRef] == id)
+    {
+        global.reqEventInt = real(txt_input);
+    }
+    if(instance_id[thirdTextBoxRef] == id)
+    {
+    
+        global.reqEventChar = real(txt_input);
+    }
+    if(instance_id[forthTextBoxRef] == id)
+    {
+        global.reqEventWell = real(txt_input);
+    }
 }

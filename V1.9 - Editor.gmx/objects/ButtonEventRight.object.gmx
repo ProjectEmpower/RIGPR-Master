@@ -56,6 +56,7 @@ ButtonEventRight.y = 320;
             <kind>1</kind>
             <string>if(global.EventID &lt; global.locationEventNumber-1)
 {
+    script_execute(SaveLocation);
     global.EventID += 1;
     room = RoomLocationAdd;
 }

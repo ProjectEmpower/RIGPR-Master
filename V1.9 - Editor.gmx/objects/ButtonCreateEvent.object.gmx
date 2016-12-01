@@ -109,26 +109,14 @@ ButtonCreateEvent.y = room_height/2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ini_open("location.ini"); //opens the ini file   
+            <string>ini_open(global.locationINI); //opens the ini file   
 eventRef= string(global.locationEventNumber); //creates a string of the number of events (current number = this event)
 eventNameType = "Event"+eventRef+"Type"; //creates the string used in the ini file
 eventNameWeek = "Event"+eventRef+"Week";
 eventNameMyth = "Event"+eventRef+"Mythical";
-if(global.locationMyth == 0)
-{
-    tempMyth = 0;
-}
-else if(global.locationMyth == 1)
-{
-    tempMyth = 1;
-}
-else if(global.locationMyth == 2)
-{
-    tempMyth = 0;
-}
 ini_write_real(global.tempLocation, eventNameType, 0);//accesses the sting set above in the ini file
 ini_write_real(global.tempLocation, eventNameWeek, 0);
-ini_write_real(global.tempLocation, eventNameMyth, tempMyth);
+ini_write_real(global.tempLocation, eventNameMyth, 0);
 global.locationEventNumber += 1; //adds 1 to the number of events
 ini_write_real(global.tempLocation,"Number of Events",global.locationEventNumber);
 ini_close();

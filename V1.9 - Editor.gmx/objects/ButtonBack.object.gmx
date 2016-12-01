@@ -124,18 +124,18 @@ if(room == RoomCards)
 }
 if(room == RoomLocationAdd) //checks room
 {
-    ini_open("location.ini")
-    ini_write_string(global.tempLocation,"Real Location Name",global.realLocationName); //writes the location name on exit
-    ini_write_string(global.tempLocation,"Description",global.description); //writes the description on exit.
-    ini_write_real(global.tempLocation,"Mythical", global.locationMyth);
-    ini_write_real(global.tempLocation,"Number of Events", global.locationEventNumber);
-    tempEventID = string(global.EventID);
-    global.tempEvent = "Event"+tempEventID;
-    tempEventWeek = global.tempEvent+"Week";
-    ini_write_real(global.tempLocation,tempEventWeek,global.eventWeek);
-    ini_close();
+    script_execute(SaveLocation);
     room = RoomMap; //swaps room
 
+}
+if(room == RoomEventAdd or room == RoomEventEdit)
+{
+    script_execute(SaveEvent);
+     room = RoomEventList;
+}
+if(room == RoomEventList)
+{
+    room = RoomMap;
 }
 </string>
           </argument>

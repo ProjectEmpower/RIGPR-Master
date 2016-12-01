@@ -109,39 +109,20 @@ ButtonCycleMapVisibility.y = room_height/2-90
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.locationEventNumber &gt; 0)
+            <string>global.focus = global.textBoxInstanceRef+4;
+switch(global.eventMythical)
 {
-    global.focus = global.textBoxInstanceRef+6;
-    switch(global.eventMyth)
-    {
-        case 0: global.eventMyth = 1;
-        break;
-        case 1: global.eventMyth = 0;
-        break; 
-    }
-    tempEventmyth = global.tempEvent+"Mythical";
-    ini_open("location.ini");
-    ini_write_real(global.tempLocation,tempEventmyth,global.eventMyth);
-    ini_close();
-    global.focus = 0;
+    case 0: global.eventMythical = 1;
+    break;
+    case 1: global.eventMythical = 0;
+    break; 
 }
-else
-{
-    global.focus = global.textBoxInstanceRef+2;
-    switch(global.locationMyth)
-    {
-        case 0: global.locationMyth = 1;
-        break;
-        case 1: global.locationMyth = 2;
-        break;
-        case 2: global.locationMyth = 0;
-        break;  
-    }
-    ini_open("location.ini");
-    ini_write_real(global.tempLocation,"Mythical",global.locationMyth);
-    ini_close();
-    global.focus = 0;
-}
+ini_open(global.eventINI);
+ini_write_real(global.eventName,"Mythical",global.eventMythical);
+ini_close();
+
+global.focus = 0;
+
 </string>
           </argument>
         </arguments>

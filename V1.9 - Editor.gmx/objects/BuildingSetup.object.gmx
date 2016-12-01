@@ -25,42 +25,54 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    //when the map screens start, this will run
+            <string>//when the map screens start, this will run
+var inst;
+global.TotalInstanceNum = 100;//sets global Num to 100 (100 is max istance ammount)
+for(i = 0; i &lt; global.TotalInstanceNum; i++) 
+{
+    global.objectRef = i;//not sure if needed
+    currRef = string(i);//sets currRef to the current loop iteration in string format
+    locationName = "Location"+currRef;//writes "Location#loopREF#" to a variable
+    ini_open(global.locationINI); //opens the ini file
     
-    var inst;
-    global.TotalInstanceNum = 100;//sets global Num to 100 (100 is max istance ammount)
-    for(i = 0; i &lt; global.TotalInstanceNum; i++) 
+    if(ini_section_exists(locationName)==true) //checks the ini file for the location name (Location#REF#) using the current loop iteration, if it exits it will continue
     {
-        global.objectRef = i;
-        currRef = string(i)//sets currRef to the current loop iteration in string format
-        locationName = "Location"+currRef//writes "Location#loopREF#" to a variable
-        ini_open("location.ini"); //opens the ini file
-        
-        if(ini_section_exists(locationName)==true) //checks the ini file for the location name (Location#REF#) using the current loop iteration, if it exits it will continue
+        tempMyth = ini_read_real(locationName,"Mythical",3) //reads the current loops mythical value from the ini and sets it to tempMyth
+        if(global.myth != 2)
         {
-            tempMyth = ini_read_real(locationName,"Mythical",3) //reads the current loops mythical value from the ini and sets it to tempMyth
-            if(global.myth != 2)
+            if(tempMyth == global.myth or tempMyth == 2) //if tempMyth is = to the current mythical status (0,1) it will display the location, if not, it will move on
             {
-                if(tempMyth == global.myth or tempMyth == 2) //if tempMyth is = to the current mythical status (0,1) it will display the location, if not, it will move on
-                {
-                    LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
-                    LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
-                    inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
-                }
+                LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
+                LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
+                inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
             }
-            else
-            {
-                    LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
-                    LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
-                    inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
-            }
-            ini_close(); //closes the ini file
         }
-        else //if the location doesn't exist (IE max locations stored have been written), set the totalInstanceNumber to the current loop number.
+        else
         {
-            global.TotalInstanceNum = i;
+                LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
+                LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
+                inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
         }
+        ini_close(); //closes the ini file
     }
+    else //if the location doesn't exist (IE max locations stored have been written), set the totalInstanceNumber to the current loop number.
+    {
+        global.TotalInstanceNum = i;
+    }
+}
+//this code counts the number of current events in the system.
+global.TotalEventNum = 100;
+for(i = 1; i &lt; global.TotalEventNum; i ++)
+{
+    currentEventRef = string(i);//writes i as a string to a variable
+    currentEvent = "Event"+currentEventRef; //writes the current event + position in for loop
+    ini_open(global.eventINI);  //opens the event ini file
+    if(!ini_section_exists(currentEvent))//if the current event in list does not exist
+    {
+        global.TotalEventNum = i;//set the total to the current loop number.
+    }
+    ini_close();
+}
 </string>
           </argument>
         </arguments>
@@ -97,7 +109,7 @@
         currRef = string(global.TotalInstanceNum); //sets the currRef variable to a string of the global TotalInstanceNumber, this is the number of instances currently used
         locationName = "Location"+currRef;//this sets lcoation name to "location#REF#"
         inst = instance_create(LocationX,LocationY,Building); //creates an instance at the mouse position, using the test building object
-        ini_open("location.ini"); //opens the ini file1
+        ini_open(global.locationINI); //opens the ini file1
         ini_write_real(locationName,"NumRef",global.TotalInstanceNum); //sets NumRef inside the ini file (used for comparing instances later)
         ini_write_real(locationName,"X",LocationX); //X pos
         ini_write_real(locationName,"Y",LocationY); //Y pos

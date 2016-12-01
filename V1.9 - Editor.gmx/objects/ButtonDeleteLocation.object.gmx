@@ -110,7 +110,7 @@ ButtonDeleteLocation.y = room_height-50
           <argument>
             <kind>1</kind>
             <string>//this button deletes the currently selected location
-ini_open("location.ini"); //opens the ini file
+ini_open(global.locationINI); //opens the ini file
 ini_section_delete(global.tempLocation);//deletes the current location
 ini_close();
 for(i = global.tempNum; i &lt; global.TotalInstanceNum; i++)
@@ -121,7 +121,7 @@ for(i = global.tempNum; i &lt; global.TotalInstanceNum; i++)
     nextRef = string(nextI); //sets nextref to the next loop iteration in string format
     NextLocationName = "Location"+nextRef; //writes "location#nextRef#" to a variable
     
-    ini_open("location.ini"); //opens the ini file   
+    ini_open(global.locationINI); //opens the ini file   
     if(ini_section_exists(NextLocationName)==true &amp;&amp; ini_section_exists(locationName)==false) //checks that the next item in the list exists, and the current doesnt
     {
         //reads all relevent info from the next location

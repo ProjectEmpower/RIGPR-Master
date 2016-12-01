@@ -43,10 +43,15 @@
         <sprite>sprites\LocationAddButtonSprite_Delete</sprite>
         <sprite>sprites\LocationAddButtonSprite_Delete_Hover</sprite>
         <sprite>sprites\TextInputBoxSprite</sprite>
+        <sprite>sprites\SelectedTextBoxSprite</sprite>
         <sprite>sprites\TextInputBoxSprite_Small</sprite>
+        <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
         <sprite>sprites\TextInputBoxSprite_Large</sprite>
+        <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
         <sprite>sprites\CycleMapSprite</sprite>
         <sprite>sprites\CreateEventSprite</sprite>
+        <sprite>sprites\EventEdit</sprite>
+        <sprite>sprites\EventCreate</sprite>
       </sprites>
       <sprite>sprites\No_sprite</sprite>
       <sprite>sprites\ArrowLeftSprite</sprite>
@@ -59,6 +64,8 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\keyStep.gml</script>
+    <script>scripts\SaveLocation.gml</script>
+    <script>scripts\SaveEvent.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Menu">
@@ -74,6 +81,7 @@
       <object>objects\Building</object>
       <object>objects\BuildingSetup</object>
       <object>objects\ButtonEditorMode</object>
+      <object>objects\EventList</object>
     </objects>
     <objects name="Character">
       <object>objects\TitleCharacter</object>
@@ -87,13 +95,23 @@
       <object>objects\TextInputBox</object>
       <object>objects\TextInputSetup</object>
       <object>objects\ButtonDeleteLocation</object>
-      <object>objects\ButtonCycleMapVisibility</object>
       <object>objects\ButtonCreateEvent</object>
       <object>objects\ButtonLocationLeft</object>
       <object>objects\ButtonLocationRight</object>
       <object>objects\ButtonEventLeft</object>
       <object>objects\ButtonEventRight</object>
     </objects>
+    <objects name="EventList">
+      <object>objects\ButtonEventEdit</object>
+      <object>objects\ButtonEventNew</object>
+    </objects>
+    <objects name="EventEdit">
+      <object>objects\EventEditSetup</object>
+    </objects>
+    <objects name="EventCreate">
+      <object>objects\EventCreateSetup</object>
+    </objects>
+    <object>objects\ButtonCycleMapVisibility</object>
     <object>objects\GameSetup</object>
     <object>objects\ButtonBack</object>
   </objects>
@@ -105,6 +123,9 @@
     <room>rooms\RoomDiary</room>
     <room>rooms\RoomCards</room>
     <room>rooms\RoomLocationAdd</room>
+    <room>rooms\RoomEventList</room>
+    <room>rooms\RoomEventAdd</room>
+    <room>rooms\RoomEventEdit</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

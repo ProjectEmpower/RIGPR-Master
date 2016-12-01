@@ -29,58 +29,107 @@
 global.tempInputBoxY = global.InputBoxY;
 global.tempTextBoxY = global.InputTextY;
 global.textBoxInstanceRef = instance_count;//This is the number of objects before instances are created.
-textFeilds = 4;//number of text boxes we want
-ini_open("location.ini")
-global.realLocationName = ini_read_string(global.tempLocation,"Real Location Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
-global.description = ini_read_string(global.tempLocation,"Description","");
-global.locationMyth = ini_read_real(global.tempLocation, "Mythical", "");
-global.locationEventNumber = ini_read_real(global.tempLocation, "Number of Events",0);
-ini_close();
 global.week = 0;//week
 global.focus = 0; //box focus
-var inst;
 global.tempInputBoxY += 10; 
 global.tempTextBoxY += 18;
-for(i = 0; i &lt; textFeilds; i++)
+if(room == RoomLocationAdd)
 {
-    if(i == 1)//if i = description box then it will set the position based on the increased size
-    { 
-        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-        global.tempInputBoxY += 100;
-        global.tempTextBoxY += 100;
+    textFeilds = 4;//number of text boxes we want.
+    ini_open(global.locationINI)
+    global.realLocationName = ini_read_string(global.tempLocation,"Real Location Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
+    global.description = ini_read_string(global.tempLocation,"Description","");
+    global.locationMyth = ini_read_real(global.tempLocation, "Mythical", "");
+    global.locationEventNumber = ini_read_real(global.tempLocation, "Number of Events",0);
+    ini_close();
+
+    var inst;
+
+    for(i = 0; i &lt; textFeilds; i++)
+    {
+        if(i == 1)//if i = description box then it will set the position based on the increased size
+        { 
+            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            global.tempInputBoxY += 100;
+            global.tempTextBoxY += 100;
+        }
+        else
+        {
+            //creates the instanes of the text boxes on screen.
+            inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+    
+        }
+            global.tempInputBoxY += 25; 
+            global.tempTextBoxY += 25;
+    }
+    if(global.locationEventNumber &gt; 0)
+    {
+        global.tempInputBoxY += 75; 
+        global.tempTextBoxY += 75;   
+       
+        tempEventID = string(global.EventID);
+        global.tempEvent = "Event"+tempEventID;
+        tempEventType = global.tempEvent+"Type";
+        tempEventWeek = global.tempEvent+"Week";
+        tempEventmyth = global.tempEvent+"Mythical";
+        ini_open(global.locationINI);
+        global.eventType = ini_read_real(global.tempLocation, tempEventType, 0);
+        global.eventWeek = ini_read_real(global.tempLocation, tempEventWeek, 0);
+        global.eventMyth = ini_read_real(global.tempLocation, tempEventmyth, 0);
+        ini_close();
+        for(i = 0; i &lt; 3; i++)
+        {
+            inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            global.tempInputBoxY += 25; 
+            global.tempTextBoxY += 25;   
+        }
+    }
+}
+if(room == RoomEventAdd or room == RoomEventEdit)
+{
+    textFeilds = 5;//number of text boxes we want.
+    ini_open(global.eventINI)
+    global.realEventName = ini_read_string(global.eventName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
+    global.reqEventInt = ini_read_real(global.eventName,"Int",0);
+    global.reqEventChar = ini_read_real(global.eventName, "Char", 0);
+    global.reqEventWell = ini_read_real(global.eventName, "Well",0);
+    global.eventMythical = ini_read_real(global.eventName,"Mythical",0);
+    ini_close();
+    var inst;
+    for(i = 0; i &lt; textFeilds; i++)
+    {
+            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+    }
+}
+if(room == RoomEventList)
+{
+    if(global.TotalEventNum  &gt;= 21)
+    {
+        global.listLength = 21;   
     }
     else
     {
-        //creates the instanes of the text boxes on screen.
-        inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-
+        global.listLength = 21 - (21 - global.TotalEventNum);
     }
-        global.tempInputBoxY += 25; 
-        global.tempTextBoxY += 25;
-}
-if(global.locationEventNumber &gt; 0)
-{
-    global.tempInputBoxY += 75; 
-    global.tempTextBoxY += 75;   
-   
-    tempEventID = string(global.EventID);
-    global.tempEvent = "Event"+tempEventID;
-    tempEventType = global.tempEvent+"Type";
-    tempEventWeek = global.tempEvent+"Week";
-    tempEventmyth = global.tempEvent+"Mythical";
-    ini_open("location.ini");
-    global.eventType = ini_read_real(global.tempLocation, tempEventType, 0);
-    global.eventWeek = ini_read_real(global.tempLocation, tempEventWeek, 0);
-    global.eventMyth = ini_read_real(global.tempLocation, tempEventmyth, 0);
-    ini_close();
-    for(i = 0; i &lt; 3; i++)
+    for(i = 1; i &lt; global.listLength; i++)
     {
-        inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-        global.tempInputBoxY += 25; 
-        global.tempTextBoxY += 25;   
+        tempEventRef = string(i);       
+        tempEvent = "Event"+tempEventRef;
+        ini_open(global.eventINI);
+        global.eventRef = ini_read_real(tempEvent,"Ref","");
+        global.eventName = ini_read_string(tempEvent,"Event Name","");
+        global.reqEventInt = ini_read_real(tempEvent,"Int",0);
+        global.reqEventChar = ini_read_real(tempEvent, "Char", 0);       
+        global.reqEventWell = ini_read_real(tempEvent, "Well",0);
+        global.eventMythical = ini_read_real(tempEvent,"Mythical",0);
+        ini_close();
+        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+        global.tempInputBoxY += 25;
+        global.tempTextBoxY += 25;
     }
 }
-
 </string>
           </argument>
         </arguments>
