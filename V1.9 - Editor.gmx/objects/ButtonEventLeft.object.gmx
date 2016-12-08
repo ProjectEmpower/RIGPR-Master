@@ -25,13 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.locationEventNumber = 0)
+            <string>//sets position, if there are events to display
+if(global.locationEventNumber = 0)//checks to see if it can move
 {
     sprite_index = No_sprite
 }
 ButtonEventLeft.x = 170;
 ButtonEventLeft.y = 320;
-
 </string>
           </argument>
         </arguments>
@@ -54,11 +54,12 @@ ButtonEventLeft.y = 320;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.EventID &gt; 0)
+            <string>//moves to the previous event (if there is an event to go to)
+if(global.EventID &gt; 0)//checks to see if it can move
 {
-    script_execute(SaveLocation);
-    global.EventID -= 1;
-    room = RoomLocationAdd;
+    script_execute(SaveLocation);//saves the current location
+    global.EventID -= 1;//moves the event number back
+    room = RoomLocationAdd;//reloads the room
     
 }
 </string>

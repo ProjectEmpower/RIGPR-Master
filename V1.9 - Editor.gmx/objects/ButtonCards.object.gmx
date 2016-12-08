@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ButtonCards.x = room_width/2
+            <string>//sets position on screen
+ButtonCards.x = room_width/2
 ButtonCards.y = room_height-50
-
 </string>
           </argument>
         </arguments>

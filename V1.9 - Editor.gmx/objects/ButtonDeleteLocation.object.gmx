@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ButtonDeleteLocation.x = 100;
+            <string>//sets positions
+ButtonDeleteLocation.x = 100;
 ButtonDeleteLocation.y = room_height-50
 </string>
           </argument>

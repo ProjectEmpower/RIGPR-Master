@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.myth == 0)
+            <string>//takes the current myth status and displays the correct button.
+if(global.myth == 0)
 {
     sprite_index = MapButtonSprite_MythicalMap
 }
@@ -33,7 +34,7 @@ else if (global.myth == 1)
 {
     sprite_index = MapButtonSprite_NormalMap
 }
-global.EventID = 0;
+global.EventID = 0;//sets the default event ID (being 0) when the map screen is entered
 </string>
           </argument>
         </arguments>
@@ -116,7 +117,8 @@ else if(global.myth == 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.myth == 0)
+            <string>//If the button is pushed, it will change the mythical status and reload the page
+if(global.myth == 0)
 {
     global.myth = 1;
 }

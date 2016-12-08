@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>TitleCharacter.x = room_width/2
+            <string>//sets position on screen
+TitleCharacter.x = room_width/2
 TitleCharacter.y = 50
 </string>
           </argument>

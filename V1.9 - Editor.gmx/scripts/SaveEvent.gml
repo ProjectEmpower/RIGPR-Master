@@ -1,3 +1,4 @@
+//this opens the ini and saves the variables into the corresponding event
 ini_open(global.eventINI);
 ini_write_string(global.eventName,"Event Name",global.realEventName);
 ini_write_real(global.eventName,"Int", global.reqEventInt);

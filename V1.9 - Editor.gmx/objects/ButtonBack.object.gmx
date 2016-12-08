@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ButtonBack.x = room_width-100
+            <string>//Set position on screen.
+ButtonBack.x = room_width-100
 ButtonBack.y = room_height-50
-
 </string>
           </argument>
         </arguments>
@@ -110,7 +110,9 @@ ButtonBack.y = room_height-50
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomCharacter) //checks room
+            <string>//On click event for "ButtonBack"
+//This is used in multiple rooms and behaves differently depending on the room.
+if(room == RoomCharacter) //checks room
 {
     room = RoomMap; //swaps room
 }
@@ -124,13 +126,13 @@ if(room == RoomCards)
 }
 if(room == RoomLocationAdd) //checks room
 {
-    script_execute(SaveLocation);
+    script_execute(SaveLocation);//runs save location script
     room = RoomMap; //swaps room
 
 }
 if(room == RoomEventAdd or room == RoomEventEdit)
 {
-    script_execute(SaveEvent);
+    script_execute(SaveEvent);//runs save event script
      room = RoomEventList;
 }
 if(room == RoomEventList or room == RoomCardList)
@@ -148,7 +150,7 @@ if(room == RoomEventSelect)
 }
 if(room == RoomCardSelect)
 {
-    room = global.lastRoom;
+    room = global.lastRoom; //"lastRoom" stores the room "RoomCardSelect" was accessed from
 }
 </string>
           </argument>

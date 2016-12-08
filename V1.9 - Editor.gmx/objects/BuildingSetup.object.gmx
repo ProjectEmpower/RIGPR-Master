@@ -29,6 +29,7 @@
 
     
 var inst;
+//This code counts the number of locations stored, asigns them instances and displays them based on their mythical status.
 global.TotalInstanceNum = 100;//sets global Num to 100 (100 is max istance ammount)
 for(i = 0; i &lt; global.TotalInstanceNum; i++) 
 {
@@ -42,6 +43,7 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
         tempMyth = ini_read_real(locationName, "Mythical", 3); //reads the current loops mythical value from the ini and sets it to tempMyth
         tempEventNum = ini_read_real(locationName, "Number of Events", 0);
 
+        //checks the event's mythical status' and displays them on the map screen accordingly.
         if(global.myth != 2)
         {
             if(tempEventNum &gt; 0)
@@ -73,28 +75,18 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
                         tempNormMap = 1;
                         tempMythMap = 1;
                     }
-                    if(tempMyth == 3)
-                    {
-                        txt_input = "Both - No event selected";
-                    }
                 }
                 if(tempNormMap == 1 and tempMythMap == 1)
                 {
-                    global.locationMyth = 2;
                     tempMyth = 2;
-                    txt_input = "Both Maps";
                 }
                 if(tempNormMap == 0 and tempMythMap == 1)
                 {
-                    global.locationMyth = 1;
                     tempMyth = 1;
-                    txt_input = "Mythical Map";
                 }
                 if(tempNormMap == 1 and tempMythMap == 0)
                 {
-                    global.locationMyth = 0
                     tempMyth = 0;
-                    txt_input = "Normal Map";
                 }
             }
             ini_open(global.locationINI)
@@ -133,6 +125,7 @@ for(i = 1; i &lt; global.TotalEventNum; i ++)
     }
     ini_close();
 }
+//this code counts the number of current cards in the system.
 global.TotalCardNum = 100;
 for(i = 1; i &lt; global.TotalCardNum; i ++)
 {

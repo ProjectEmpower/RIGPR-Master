@@ -25,15 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ButtonSelectEvent.x = room_width-50
+            <string>//sets posiition
+ButtonSelectEvent.x = room_width-50
 ButtonSelectEvent.y = room_height/2-90
-if(global.locationEventNumber &gt; 0)
+
+if(global.locationEventNumber &gt; 0)//if there are events
 {
-    sprite_index = EventSelect;
+    sprite_index = EventSelect;//display the button
 }
 else
 {
-    sprite_index = No_sprite;
+    sprite_index = No_sprite; //dont display the button
 }
 </string>
           </argument>
@@ -117,7 +119,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room = RoomEventSelect;
+            <string>//if clicked, move to room
+room = RoomEventSelect;
 </string>
           </argument>
         </arguments>

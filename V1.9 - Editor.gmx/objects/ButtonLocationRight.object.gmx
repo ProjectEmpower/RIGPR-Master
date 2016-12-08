@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ButtonLocationRight.x = room_width-50;
+            <string>//sets position
+ButtonLocationRight.x = room_width-50;
 ButtonLocationRight.y = 50;
 </string>
           </argument>
@@ -49,12 +50,13 @@ ButtonLocationRight.y = 50;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.tempNum &lt; global.TotalInstanceNum-1)
+            <string>//moves to the next location (if there is an event to go to)
+if(global.tempNum &lt; global.TotalInstanceNum-1)//if it can move
 {
-    script_execute(SaveLocation);
-    global.tempNum += 1;
-    global.EventID = 0;
-    room = RoomLocationAdd;
+    script_execute(SaveLocation);//save
+    global.tempNum += 1;//move to next locatio
+    global.EventID = 0;//default the eventID 
+    room = RoomLocationAdd;//reload the room
 }
 </string>
           </argument>

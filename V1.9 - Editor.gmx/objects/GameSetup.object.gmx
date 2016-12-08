@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets the initial view of the screen, this is used to to create the variable
+            <string>//Creation code used in "RoomSetup"
+//This sets up the inital variables 
+
+//sets the initial view of the screen, this is used to to create the variable
 global.currentX = 0;
 global.currentY = 0;
 
@@ -54,8 +57,8 @@ global.eventINI = "event.ini";
 global.locationINI = "location.ini";
 global.cardINI = "card.ini";
 global.playerINI = "player.ini";
-//after setup, it moves to the menu
-room = RoomMenu;
+
+room = RoomMenu;//moves to the menu
 </string>
           </argument>
         </arguments>

@@ -25,36 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>realNameTextBoxRef = global.textBoxInstanceRef;
-descTextBoxRef = realNameTextBoxRef+1; //must be updated elsewhere if names are changed
+            <string>//This code creates the text boxes default display info
+
+realNameTextBoxRef = global.textBoxInstanceRef;//takes the textBoxInstanceRef (set via instance_count) and creates a variable for use on this page
+descTextBoxRef = realNameTextBoxRef+1; //creates the references to the textboxes instance, accessed via instance_id[ref]
 thirdTextBoxRef = realNameTextBoxRef+2;
 forthTextBoxRef = realNameTextBoxRef+3;
 fifthTextBoxRef = realNameTextBoxRef+4;
 sixthTextBoxRef = realNameTextBoxRef+5;
 seventhTextBoxRef = realNameTextBoxRef+6;
 eighthTextBoxRef = realNameTextBoxRef+7;
-timer = 0;
-delay = 4;
-textShortLength = 30;
-textLongLength = 200;
-image_xscale = 1.5;
-if(room == RoomLocationAdd)
+timer = 0;//sets timer to 0
+delay = 4;//sets the delay on text entry
+textShortLength = 30;//sets the max text for small text boxes
+textLongLength = 200;//sets the max text for large text boxes
+image_xscale = 1.5; //sets the scale to be 1.5 (default is 1)
+if(room == RoomLocationAdd)//checks room
 {    
-    if(instance_id[realNameTextBoxRef] == id)
+    if(instance_id[realNameTextBoxRef] == id)//checks instnace_id[ref] vs the id (current box clicked on)
     {
         txt_input = global.realLocationName;//sets default text
         txt_display = "Location Name: ";     //sets display text
     }
     if(instance_id[descTextBoxRef] == id)
     {
-        sprite_index = TextInputBoxSprite_Large;
+        sprite_index = TextInputBoxSprite_Large;//changes the sprite to fit the spacing/text length
         txt_input = global.description;//sets default text
         txt_display = "Description: "
     }
-    if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[thirdTextBoxRef] == id) 
     {
         sprite_index = No_sprite;
-        txt_input = "Error - Map Visibility not updated";
+        txt_input = "Error - Map Visibility not updated";//if this is not update elsewhere, this will set
         txt_display = "Map visibility: "
     }
     if(instance_id[forthTextBoxRef] == id)
@@ -95,35 +97,35 @@ if(room == RoomEventAdd or room == RoomEventEdit)
         txt_input = global.reqEventInt;//sets default text
         txt_display = "Required Int: "
     }
-    if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[thirdTextBoxRef] == id) 
     {
         sprite_index = TextInputBoxSprite_Small;
         txt_input = global.reqEventChar;
         txt_display = "Required Char: "
     }
-    if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[forthTextBoxRef] == id) 
     {
         sprite_index = TextInputBoxSprite_Small;
         txt_input = global.reqEventWell;
         txt_display = "Required Well: "
     }
-    if(instance_id[fifthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[fifthTextBoxRef] == id)
     {
         sprite_index = No_sprite;
         txt_input = "Error - Mythical status not set";
         txt_display = "Visibility?: "
     }
-    if(instance_id[sixthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[sixthTextBoxRef] == id) 
     {
         txt_input = global.card1;
         txt_display = "Card1: "
     }
-    if(instance_id[seventhTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[seventhTextBoxRef] == id) 
     {
         txt_input = global.card2;
         txt_display = "Card2: "
     }
-    if(instance_id[eighthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[eighthTextBoxRef] == id) 
     {
         txt_input = global.card3;
         txt_display = "Card3: "
@@ -131,10 +133,10 @@ if(room == RoomEventAdd or room == RoomEventEdit)
 }
 if(room == RoomEventList or room == RoomEventSelect)
 {
-    image_xscale = 2;
-    for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
+    image_xscale = 2;//changes the scale
+    for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)//goes through the list of events 
     {    
-        if(instance_id[i] == id)
+        if(instance_id[i] == id)//sets each event (in the list), with default variables
         {
             ref_display = global.eventRef;
             name_display = global.realEventName;
@@ -142,7 +144,7 @@ if(room == RoomEventList or room == RoomEventSelect)
             char_display = global.reqEventChar;
             well_display = global.reqEventWell;
             
-            switch(global.eventMythical)
+            switch(global.eventMythical)//checks the mythical status, and displays apporpriately
             {
                 case 0: mythical_display = "Normal Map";
                 break;
@@ -228,44 +230,48 @@ myY = global.tempTextBoxY;//sets current Position (increases depending on instan
             <kind>1</kind>
             <string>if(global.focus == id)//checks focus against the instance ID of the text boxes, this allows the select box to be the only one effected by text entry
 {
-    if(sprite_index == TextInputBoxSprite)
+    //this code is used for switching the text boxes sprite between normal and selected.
+    if(sprite_index == TextInputBoxSprite)//if normal sprite
     {
-        sprite_index = SelectedTextBoxSprite;
+        sprite_index = SelectedTextBoxSprite;//change to selected normal sprite
     }
-    if(sprite_index == TextInputBoxSprite_Large)
+    if(sprite_index == TextInputBoxSprite_Large) //if large sprite
     {
-        sprite_index = SelectedTextBoxSprite_Large;
+        sprite_index = SelectedTextBoxSprite_Large;//change to selected large sprite
     }
-    if(sprite_index == TextInputBoxSprite_Small)
+    if(sprite_index == TextInputBoxSprite_Small)//etc.
     {
         sprite_index = SelectedTextBoxSprite_Small;
     }
-    if keyboard_check_pressed(vk_anykey)
+    //this code is used for actually displaying the text (via script, keyStep) and delaying key entry
+    //this is used because otherwise it enters about 10 characters a second.
+    if keyboard_check_pressed(vk_anykey)//if any key is pressed
     {
-        script_execute(keyStep);
-        timer = -6;
+        script_execute(keyStep);//execute the script "keystep" and enter a key
+        timer = -6;//set the timer to -6, this is used to create a slight delay between first key entered and the next x (so first key has a logner delay than the rest, try entering a key on a text field if this doesn't make sence)
     }
-    if keyboard_check(vk_anykey)
+    if keyboard_check(vk_anykey)//if the key is held down
     {
-        if(timer == delay)
+        if(timer == delay)//if the timer is equal to the current delay
         {
-            script_execute(keyStep);
-            timer = 0;
+            script_execute(keyStep); //execute the script "keystep" and enter a key
+            timer = 0; //set timer to 0
         }
-        if(timer &gt; delay)
+        if(timer &gt; delay)//if the timer goes over the delay time
         {
-            timer = delay;
+            timer = delay; //set the timer to the delay time
         }
-        else if(timer &lt; delay)
+        else if(timer &lt; delay)//if the timer is under delay time
         {
-            timer++;
+            timer++;//increase the timer 
         }
     }
-    if keyboard_check_released(vk_anykey)
+    if keyboard_check_released(vk_anykey)//if the key is released
     {
-        timer = 0;
+        timer = 0;//set the timer back to 0
     }
 }
+//this code is used for switching the text boxes sprite between selected and normal, same as above but in reverse, when the box is no longer in focus.
 if(global.focus != id)
 {    if(sprite_index == SelectedTextBoxSprite)
     {
@@ -280,64 +286,65 @@ if(global.focus != id)
         sprite_index = TextInputBoxSprite_Small;
     }
 }
+//individual rooms specific entry requirements, numbers, unenterable feilds (from button clicks), etc.
 if(room == RoomLocationAdd)
 {
+    //This code is used for the mythical status on location add, it goes through the list of events and if any are mythical or normal, it flags this.
+    //It then takes that information and displays the correct mythical status for the location, based on all events.
     if(id == instance_id[thirdTextBoxRef])
     {
      if(global.locationEventNumber &gt; 0)
         {
-            tempNormMap = 0;
-            tempMythMap = 0;
-            for(i = 0; i &lt; global.locationEventNumber; i++)
+            tempNormMap = 0;//set normal map to 0 (false)
+            tempMythMap = 0;//set mythical map to 0 (false)
+            for(i = 0; i &lt; global.locationEventNumber; i++)//go through the events
             {
-                tempEventID = string(i);
-                tempEvent = "Event"+tempEventID+"Type";
-                ini_open(global.locationINI);
-                tempEventRef = ini_read_real(global.tempLocation, tempEvent, 3);
-                ini_close();
-                s = string(tempEventRef)
-                tempEventName = "Event"+s;
-                ini_open(global.eventINI);
-                tempMyth = ini_read_real(tempEventName, "Mythical", 3);
-                ini_close();
-                if(tempMyth == 0)
+                tempEventID = string(i);//create a string of the event id based on the iteration (i) 
+                tempEvent = "Event"+tempEventID+"Type";//creates the tempEvent variable for use when accessing the events information from the location ini
+                ini_open(global.locationINI);//opens the location ini
+                tempEventRef = ini_read_real(global.tempLocation, tempEvent, 3);//reads the events reference 
+                ini_close();//closes the location ini
+                s = string(tempEventRef)//uses the reference set above and creates a string with it
+                tempEventName = "Event"+s;//uses the string to create the event name "Event"+*string set above"
+                ini_open(global.eventINI);//opens the event ini
+                tempMyth = ini_read_real(tempEventName, "Mythical", 3);//reads tge mythical status of current event
+                ini_close();//closes the event ini
+                switch(tempMyth)//checks the events mythical statsus, changes the tempNormMap and tempMythMap variables accordingly
                 {
-                    tempNormMap = 1;
-                }
-                if(tempMyth == 1)
-                {
-                    tempMythMap = 1;
-                }
-                if(tempMyth == 2)
-                {
-                    tempNormMap = 1;
-                    tempMythMap = 1;
-                }
-                if(tempMyth == 3)
-                {
-                    txt_input = "Both - No event selected";
+                    case 0: tempNormMap = 1;
+                    break;
+                    case 1: tempMythMap = 1;
+                    break;
+                    case 2: tempNormMap = 1;
+                            tempMythMap = 1;
+                    break;
+                    case 3: txt_input = "Both - No event selected";
+                    break;
+                    default: txt_input = "Both - Error";
+                    break;
                 }
             }
+            //sets locationMyth variable and text input accordingly
             if(tempNormMap == 1 and tempMythMap == 1)
             {
                 global.locationMyth = 2;
-                global.eventMyth = 2;
+                //global.eventMyth = 2; //unsure if needed.... I don't think so anymore. testing required.
                 txt_input = "Both Maps";
             }
             if(tempNormMap == 0 and tempMythMap == 1)
             {
                 global.locationMyth = 1;
-                global.eventMyth = 1;
+               // global.eventMyth = 1;
                 txt_input = "Mythical Map";
             }
             if(tempNormMap == 1 and tempMythMap == 0)
             {
                 global.locationMyth = 0
-                global.eventMyth = 0;
+                //global.eventMyth = 0;
                 txt_input = "Normal Map";
             }
         }
-        if(global.locationEventNumber == 0)
+        if(global.locationEventNumber == 0)//sets mythical status if there are no buttons visible.
         {
             switch(global.locationMyth)
             {
@@ -357,17 +364,18 @@ if(room == RoomLocationAdd)
     }
     if(id == instance_id[fifthTextBoxRef])
     {
-        if(global.eventType != 0)
+        //checks to see the events type, it displays the event name
+        if(global.eventType != 0)//if there is an event type (other than 0, which is blank)
         {
-            s = string(global.eventType)
-            tempEvent = "Event"+s;
-            ini_open(global.eventINI);
-            txt_input = ini_read_string(tempEvent, "Event Name", "");
-            ini_close();
+            s = string(global.eventType)//set string based on the type
+            tempEvent = "Event"+s;//set event name to load based on the string above
+            ini_open(global.eventINI);//open ini
+            txt_input = ini_read_string(tempEvent, "Event Name", "");//loads the events name using the type variable
+            ini_close();//closes the ini
         }
         else
         {
-            txt_input = "No event selected";
+            txt_input = "No event selected";//if the event is blank, display text
         }
 
     }
@@ -377,6 +385,7 @@ if(room == RoomLocationAdd)
     }
     if(id == instance_id[seventhTextBoxRef])
     {
+    //checks the event types mythical status and displays accordingly
         if(global.eventType != 0)
         {
             s = string(global.eventType)
@@ -416,6 +425,7 @@ if(room == RoomEventAdd or room == RoomEventEdit)
     }
     if(id == instance_id[fifthTextBoxRef])
     {
+    //checks the event mythical status and displays accordingly
         switch(global.eventMythical)
         {
             case 0: txt_input = "Normal event";
@@ -425,8 +435,9 @@ if(room == RoomEventAdd or room == RoomEventEdit)
             default: txt_input = "Error - Missing event mythical info";
         }
     }
-    if(instance_id[sixthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[sixthTextBoxRef] == id) 
     {
+        //checks to see if there is a card selected, if so, it displays the cards name
         if(global.card1 == 0)
         {
             txt_input = "No Card Selected";
@@ -441,8 +452,9 @@ if(room == RoomEventAdd or room == RoomEventEdit)
             txt_input = realCardName;
         }
     }
-    if(instance_id[seventhTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[seventhTextBoxRef] == id) 
     {
+     //checks to see if there is a card selected, if so, it displays the cards name
         if(global.card2 == 0)
         {
             txt_input = "No Card Selected";
@@ -457,8 +469,9 @@ if(room == RoomEventAdd or room == RoomEventEdit)
             txt_input = realCardName;
         }
     }
-    if(instance_id[eighthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[eighthTextBoxRef] == id) 
     {
+     //checks to see if there is a card selected, if so, it displays the cards name
         if(global.card3 == 0)
         {
             txt_input = "No Card Selected";
@@ -511,20 +524,22 @@ if(room == RoomCardAdd or room == RoomCardEdit)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.focus = id;//if the button is id, set the focus to this objects id
+            <string>//If a text box is clicked on, this is what happens
+global.focus = id;//the focus is set to the current instances ID (button clicked ID)
 if(room == RoomEventList)
 {
-    global.eventRef = id.ref_display;
-    room = RoomEventEdit;
+    global.eventRef = id.ref_display;//takes the ref displayed in this instance, and sets it to the global eventRef
+    room = RoomEventEdit;//changes room
 }
 if(room == RoomEventSelect)
 {
-    global.eventType = id.ref_display;
-    ini_open(global.locationINI);
-    s = string(global.EventID);
-    eventType = "Event"+s+"Type";
-    ini_write_real(global.tempLocation,eventType,global.eventType);
-    ini_close();
+    //this opens the location ini, and updates the type section inside
+    global.eventType = id.ref_display;//takes the ref displayed
+    ini_open(global.locationINI);//opens locatio ini
+    s = string(global.EventID);//creates a string using the eventID
+    eventType = "Event"+s+"Type";//creates a eventname using type and the string above
+    ini_write_real(global.tempLocation,eventType,global.eventType);//writes the info to the ini
+    ini_close();//closes the ini
     room = RoomLocationAdd;
 }
 if(room == RoomCardList)
@@ -534,6 +549,7 @@ if(room == RoomCardList)
 }
 if(room == RoomEventEdit or room == RoomEventAdd)
 {
+    //if you click on a card spot on the event screens, it will open the RoomCardSelect to allow the user to select a card.
     if(id == instance_id[global.textBoxInstanceRef+5] or id == instance_id[ global.textBoxInstanceRef+6] or id == instance_id[ global.textBoxInstanceRef+7])
     {
         for(i = 5; i &lt; 8; i++)
@@ -543,19 +559,20 @@ if(room == RoomEventEdit or room == RoomEventAdd)
                 global.currentCard = i-4;
             }
         }
-        global.lastRoom = room;
+        global.lastRoom = room;//sets the current room to "lastroom", used below.
         room = RoomCardSelect;
     }
 }
 if(room == RoomCardSelect)
 {
-    global.cardType = id.ref_display;
-    ini_open(global.eventINI);
+    //writes the cards type to the event inside the event ini file
+    global.cardType = id.ref_display;//sets the ref to "cardtype"
+    ini_open(global.eventINI);//open the event ini
     s = string(global.currentCard);
     cardToUpdate = "Card"+s;
     ini_write_real(global.eventName,cardToUpdate,global.cardType);
-    ini_close();
-    room = global.lastRoom;
+    ini_close();//closes the ini
+    room = global.lastRoom;//reads the "lastroom" variable and sets that to room
 }
 </string>
           </argument>
@@ -579,7 +596,9 @@ if(room == RoomCardSelect)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomLocationAdd)
+            <string>//This sets up the individual rooms text to actually draw on screen
+//this includes text alignment, sizing of boxes, screen positioning
+if(room == RoomLocationAdd)
 {
     draw_set_valign(fa_top);
     draw_set_halign(fa_right);
@@ -632,9 +651,6 @@ if(room == RoomCardAdd or room == RoomCardEdit)
     draw_set_halign(fa_left);
     draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
 }
-//draw_text_ext(x,y,string, seperation (between lines, go with 5), w(max width in pixels before current line breaks and starts a new line)
-
-
 </string>
           </argument>
         </arguments>

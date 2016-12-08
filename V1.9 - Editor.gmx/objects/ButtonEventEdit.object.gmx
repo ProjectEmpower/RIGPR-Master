@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ButtonEventEdit.x = room_width-50
+            <string>//sets position
+ButtonEventEdit.x = room_width-50
 ButtonEventEdit.y = room_height/2-90
 </string>
           </argument>
@@ -49,10 +50,10 @@ ButtonEventEdit.y = room_height/2-90
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.focus == id)
+            <string>//On click event for "ButtonEventEdit"
+if(global.focus == id) //if the focus (current instances ID) is equal to ID, 
 {
-
-    room = RoomEventEdit;
+    room = RoomEventEdit;//open the next room
 }
 </string>
           </argument>

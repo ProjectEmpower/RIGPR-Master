@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ButtonEventNew.x = room_width-50
+            <string>//Sets position on screen
+ButtonEventNew.x = room_width-50
 ButtonEventNew.y = room_height/2+90
 </string>
           </argument>
@@ -109,21 +110,24 @@ ButtonEventNew.y = room_height/2+90
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.eventRef = string(global.TotalEventNum);
-global.eventName = "Event"+global.eventRef;
-ini_open(global.eventINI);
-ini_write_real(global.eventName,"Ref", global.TotalEventNum);
-ini_write_string(global.eventName,"Event Name", "");
-ini_write_real(global.eventName,"Int", 0);
-ini_write_real(global.eventName,"Char", 0);
-ini_write_real(global.eventName,"Well", 0);
-ini_write_real(global.eventName,"Mythical", 0);
-ini_write_real(global.eventName, "Card1",0);
-ini_write_real(global.eventName, "Card2",0);
-ini_write_real(global.eventName, "Card3",0);
-ini_close();
-global.TotalEventNum += 1;
-room = RoomEventAdd;
+            <string>//On click event for "ButtonEventNew" 
+//This creates a new blank event and stores it in the ini file for access on the next screen.
+
+global.eventRef = string(global.TotalEventNum);//creates a string of the curent TotalEventNum
+global.eventName = "Event"+global.eventRef;//creates the Event+*text of string set above
+ini_open(global.eventINI);//opens the event ini
+ini_write_real(global.eventName,"Ref", global.TotalEventNum);//writes the current TotalEventNum as the "Ref"
+ini_write_string(global.eventName,"Event Name", "");//writes a blank "Event Name"
+ini_write_real(global.eventName,"Int", 0);//writes a bank (0) "Int" stat
+ini_write_real(global.eventName,"Char", 0);//writes a blank (0) "Char" stat
+ini_write_real(global.eventName,"Well", 0);//writes a blank (0) "Well" stat
+ini_write_real(global.eventName,"Mythical", 0);//writes a Normal (0) "Mythical stat" stat
+ini_write_real(global.eventName, "Card1",0);//writes a blank (0) "Card1" 
+ini_write_real(global.eventName, "Card2",0);//writes a blank (0) "Card2" 
+ini_write_real(global.eventName, "Card3",0);//writes a blank (0) "Card3" 
+ini_close();//closes the ini
+global.TotalEventNum += 1;//adds to the TotalEventNum variable
+room = RoomEventAdd;//moves to the next room
 </string>
           </argument>
         </arguments>

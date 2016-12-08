@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>TitleDiary.x = room_width/2
+            <string>//sets position on screen
+TitleDiary.x = room_width/2
 TitleDiary.y = 50
 </string>
           </argument>

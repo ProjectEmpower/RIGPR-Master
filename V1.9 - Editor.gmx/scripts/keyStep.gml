@@ -87,9 +87,9 @@ else if k>=65 and k<=90 or k>=97 and k<=122 or k>=48 and k<=57 or k==192 or k==3
     }
     
 }
+//updates relevent variable with the text stored in txt_input
 if(room == RoomLocationAdd)
 {
-    //updates relevent variable with the text stored in txt_input
     if(instance_id[realNameTextBoxRef] == id)
     {
         global.realLocationName = txt_input;

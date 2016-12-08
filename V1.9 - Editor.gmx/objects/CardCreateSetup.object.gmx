@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_center);//sets the horizontal allignment for the text
-draw_set_valign(fa_bottom);
-draw_text(global.MapTitleX,global.MapTitleY,global.cardName);
+            <string>//Draw event used in "RoomCardCreate"
+//Sets up and draws text on screen.
+draw_set_halign(fa_center);//sets the horizontal allignment for the text
+draw_set_valign(fa_bottom);//sets the vertical allignment for the text
+draw_text(global.MapTitleX,global.MapTitleY,global.cardName);//draws the current cards name on screen 
 </string>
           </argument>
         </arguments>

@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.tempEventID = string(global.eventRef);// takes the current tempNum (set when accessing this building via left click on mao screen)
-global.eventName = "Event"+global.tempEventID;//writes the locati
+            <string>//Sets up the events name used in "RoomEventEdit"
+global.tempEventID = string(global.eventRef);// takes the current eventRef (set when accessing this building via left click on mao screen)
+global.eventName = "Event"+global.tempEventID;//writes the eventName
 </string>
           </argument>
         </arguments>
@@ -49,10 +50,10 @@ global.eventName = "Event"+global.tempEventID;//writes the locati
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//This code is used to draw the current instances' location#REF# to the screen
+            <string>//This draws the current events Name to the screen 
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
-draw_set_valign(fa_bottom);
-draw_text(global.MapTitleX,global.MapTitleY,global.eventName);
+draw_set_valign(fa_bottom);//sets the vertical allignment for the text
+draw_text(global.MapTitleX,global.MapTitleY,global.eventName);//writes the current event to screen
 </string>
           </argument>
         </arguments>

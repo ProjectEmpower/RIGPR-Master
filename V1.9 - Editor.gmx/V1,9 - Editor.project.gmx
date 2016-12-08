@@ -108,7 +108,6 @@
     <objects name="EventList">
       <object>objects\EventListSetup</object>
       <object>objects\ButtonEventNew</object>
-      <object>objects\ButtonEventEdit</object>
       <object>objects\ButtonCycleMapVisibility</object>
       <objects name="EventEdit">
         <object>objects\EventEditSetup</object>
@@ -120,8 +119,12 @@
     <objects name="CardList">
       <object>objects\CardListSetup</object>
       <object>objects\ButtonCardNew</object>
-      <object>objects\CardEditSetup</object>
-      <object>objects\CardCreateSetup</object>
+      <objects name="CardEdit">
+        <object>objects\CardEditSetup</object>
+      </objects>
+      <objects name="CardCreate">
+        <object>objects\CardCreateSetup</object>
+      </objects>
     </objects>
     <object>objects\GameSetup</object>
     <object>objects\ButtonBack</object>

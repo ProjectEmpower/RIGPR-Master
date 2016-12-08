@@ -25,13 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_angle = 45;
-ref = string(global.objectRef);
-Name = "Location"+ref;
-ini_open(global.locationINI); //opens the ini file1
-sprite = ini_read_real(Name,"SpriteRef",0);
+            <string>//creation code for buildings
+image_angle = 45;//angle of the building
+ref = string(global.objectRef); //reference of the object in string
+Name = "Location"+ref; //Location+*string*
+ini_open(global.locationINI); //opens the location ini file1
+sprite = ini_read_real(Name,"SpriteRef",0); //reads the sprite
 ini_close();//close the ini file 
-switch(sprite)
+switch(sprite)//checks the sprite and changes the buildings sprite depending on that.
 {
     case 0: sprite_index = BuildingSprite;
     break;

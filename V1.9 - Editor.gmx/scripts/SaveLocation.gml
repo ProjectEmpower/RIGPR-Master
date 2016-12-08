@@ -1,16 +1,14 @@
-ini_open(global.locationINI)
+ini_open(global.locationINI)//opens locatio ini
 ini_write_string(global.tempLocation,"Real Location Name",global.realLocationName); //writes the location name on exit
 ini_write_string(global.tempLocation,"Description",global.description); //writes the description on exit.
 
-ini_write_real(global.tempLocation,"Number of Events", global.locationEventNumber);
-if(global.locationEventNumber > 0)
+ini_write_real(global.tempLocation,"Number of Events", global.locationEventNumber);//saves the number of events
+if(global.locationEventNumber > 0) //if there is more than one
 {
-    //tempEventID = string(global.EventID);
-    //global.tempEvent = "Event"+tempEventID;
     tempEventWeek = global.tempEvent+"Week";
-    ini_write_real(global.tempLocation,tempEventWeek,global.eventWeek);
+    ini_write_real(global.tempLocation,tempEventWeek,global.eventWeek);//write the week 
     tempEventmyth = global.tempEvent+"Mythical";
-    ini_write_real(global.tempLocation,tempEventmyth,global.eventMyth);
+    ini_write_real(global.tempLocation,tempEventmyth,global.eventMyth);//write the mythical status of the event
 }
-ini_write_real(global.tempLocation,"Mythical", global.locationMyth);
-ini_close();    
+ini_write_real(global.tempLocation,"Mythical", global.locationMyth);//writes the mythical status of the location
+ini_close();    //closes the ini
