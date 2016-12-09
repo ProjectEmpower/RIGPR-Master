@@ -30,7 +30,6 @@ global.tempInputBoxX = global.InputBoxX+149; //sets temp input box X
 global.tempInputBoxY = global.InputBoxY;//sets temp input box Y
 global.tempTextBoxY = global.InputTextY;//sets temp text box Y
 global.textBoxInstanceRef = instance_count;//This is the number of objects before instances are created.
-global.week = 0;//week
 global.focus = 0; //box focus
 global.tempInputBoxY += 10; //offset used in the text display boxes
 global.tempTextBoxY += 18;//offset used in the text input boxes

@@ -85,6 +85,8 @@
       <object>objects\ButtonEditorMode</object>
       <object>objects\ButtonEventList</object>
       <object>objects\ButtonCardList</object>
+      <object>objects\ButtonWeekLeft</object>
+      <object>objects\ButtonWeekRight</object>
     </objects>
     <objects name="Character">
       <object>objects\TitleCharacter</object>

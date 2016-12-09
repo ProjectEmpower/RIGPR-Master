@@ -58,6 +58,7 @@ else//if in editor mode
 {
     global.myth = global.editorMode;//set the mythical status back to the previous
 }
+
  room = RoomMap;
 </string>
           </argument>

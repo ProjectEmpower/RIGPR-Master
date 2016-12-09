@@ -67,8 +67,14 @@ drag = 0
     ButtonMapSwap.y = view_yview + global.MythicalButtonY 
     
     ButtonEditorMode.x = view_xview + global.MythicalButtonX-200;
-    ButtonEditorMode.y = view_yview + global.MythicalButtonY ;
-        
+    ButtonEditorMode.y = view_yview + global.MythicalButtonY;
+    
+    ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;
+    ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
+     
+    ButtonWeekRight.x = view_xview + global.WeekRightButtonX;
+    ButtonWeekRight.y = view_yview + global.WeekRightButtonY;
+       
     TitleMap.x = view_xview + global.MapTitleX
     TitleMap.y = view_yview + global.MapTitleY 
 }

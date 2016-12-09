@@ -60,6 +60,8 @@
     <instance objName="ButtonEditorMode" x="96" y="384" name="inst_2F1E3711" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonEventList" x="128" y="32" name="inst_F6212326" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonCardList" x="192" y="32" name="inst_57F92029" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonWeekLeft" x="256" y="256" name="inst_97596729" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonWeekRight" x="320" y="256" name="inst_B6B1CDEE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
