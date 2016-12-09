@@ -318,9 +318,9 @@ if(room == RoomLocationAdd)
                     case 2: tempNormMap = 1;
                             tempMythMap = 1;
                     break;
-                    case 3: txt_input = "Both - No event selected";
+                    case 3: txt_input = "Editor only - Please select an event";
                     break;
-                    default: txt_input = "Both - Error";
+                    default: txt_input = "None - Error: L93";
                     break;
                 }
             }
@@ -352,9 +352,9 @@ if(room == RoomLocationAdd)
                 break;
                 case 1: txt_input = "Mythical Map";
                 break;
-                case 2: txt_input = "Both Maps - No event";
+                case 2: txt_input = "Editor only - Event missing";
                 break;
-                default: txt_input = "Error - Missing mythical info";
+                default: txt_input = "None - Error: L127";
             }
         }
     }
