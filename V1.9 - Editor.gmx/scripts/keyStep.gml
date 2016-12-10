@@ -114,6 +114,7 @@ if(room == RoomLocationAdd)
     if(instance_id[sixthTextBoxRef] == id)
     {
         global.eventWeek = real(txt_input);
+
     }
     if(instance_id[seventhTextBoxRef] == id)
     {

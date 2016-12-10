@@ -71,7 +71,6 @@ drag = 0
     
     ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;
     ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
-     
     ButtonWeekRight.x = view_xview + global.WeekRightButtonX;
     ButtonWeekRight.y = view_yview + global.WeekRightButtonY;
        

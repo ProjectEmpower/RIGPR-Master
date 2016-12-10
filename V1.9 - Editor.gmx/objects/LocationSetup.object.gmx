@@ -28,6 +28,7 @@
             <string>//sets up the current location accessed when clicking a building on the map
 global.tempID = string(global.tempNum);// takes the current tempNum (set when accessing this building via left click on mao screen)
 global.tempLocation = "Location"+global.tempID;//writes the location+#Ref#  to a temp variable
+global.focus = 0;
 </string>
           </argument>
         </arguments>
@@ -57,7 +58,7 @@ draw_text(global.MapTitleX,global.MapTitleY,global.tempLocation);//draws the tex
 draw_text(room_width/4, global.InputTextY,"Location Info");//draws "location info" on the screen
 if(global.locationEventNumber &gt; 0)//if there is more than 1 or more event
 {
-    draw_text(room_width/4, global.tempInputBoxY-110,global.tempEvent+" Info");//draw the current events name + info to the screen
+    draw_text(room_width/4, global.tempInputBoxY-110,"Event " + string(global.EventID)  + " Info");//draw the current events name + info to the screen
 }
 </string>
           </argument>

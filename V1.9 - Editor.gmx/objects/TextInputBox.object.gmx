@@ -164,23 +164,36 @@ if(room == RoomCardAdd or room == RoomCardEdit)
     }
     if(instance_id[descTextBoxRef] == id)
     {
+        sprite_index = No_sprite;
+        switch(global.cardMythical)
+        {
+            case 0: txt_input = "Normal Card";
+            break;
+            case 1: txt_input = "Mythical Card";
+            break;
+            default: txt_input = "Error: Card mythical status not loaded"; 
+        }
+        txt_display = "Mythical?: "
+    }
+    if(instance_id[thirdTextBoxRef] == id)
+    {
         sprite_index = TextInputBoxSprite_Small;
         txt_input = global.int;//sets default text
         txt_display = "Int: "
     }
-    if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
     {
         sprite_index = TextInputBoxSprite_Small;
         txt_input = global.char;
         txt_display = "Char: "
     }
-    if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[fifthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
     {
         sprite_index = TextInputBoxSprite_Small;
         txt_input = global.well;
         txt_display = "Well: "
     }
-    if(instance_id[fifthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[sixthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
     {
         sprite_index = TextInputBoxSprite_Large;
         txt_input = global.cardText;
@@ -200,6 +213,13 @@ if(room == RoomCardList or room == RoomCardSelect)
             char_display = global.char;
             well_display = global.well;
             text_display = global.cardText;//not shown here        
+            switch(global.cardMythical)
+            {
+                case 0: myth_display = "N";
+                break;
+                case 1: myth_display = "M";
+                break;   
+            }
         }
     }
 }
@@ -297,7 +317,7 @@ if(room == RoomLocationAdd)
         {
             tempNormMap = 0;//set normal map to 0 (false)
             tempMythMap = 0;//set mythical map to 0 (false)
-            for(i = 0; i &lt; global.locationEventNumber; i++)//go through the events
+            for(i = 1; i &lt;= global.locationEventNumber; i++)//go through the events
             {
                 tempEventID = string(i);//create a string of the event id based on the iteration (i) 
                 tempEvent = "Event"+tempEventID+"Type";//creates the tempEvent variable for use when accessing the events information from the location ini
@@ -381,7 +401,40 @@ if(room == RoomLocationAdd)
     }
     if(id == instance_id[sixthTextBoxRef])
     {
-        txt_input = string(global.eventWeek);
+        //this code stops the user from adding more than 4 events in a week (for this location only)
+        week = 0;
+        if(global.eventWeek != 0)
+        {
+            ini_open(global.locationINI);
+            for(i = 1; i &lt; global.EventID; i++)
+            {   
+                s = string(i)
+                tempEventWeek = "Event"+s+"Week";
+                tempWeek = ini_read_real(global.tempLocation,tempEventWeek,0);
+                if(tempWeek == global.eventWeek)
+                {
+                    week += global.eventWeek;
+                }
+            }
+            for(i = global.EventID+1; i &lt;= global.locationEventNumber; i++)
+            {   
+                s = string(i)
+                tempEventWeek = "Event"+s+"Week";
+                tempWeek = ini_read_real(global.tempLocation,tempEventWeek,0);
+                if(tempWeek == global.eventWeek)
+                {
+                    week += global.eventWeek;
+                }
+            }
+            ini_close();
+            if(week == global.eventWeek)
+            {
+                global.eventWeek = global.oldWeek;
+            }
+            txt_input = string(global.eventWeek);      
+
+            
+        }
     }
     if(id == instance_id[seventhTextBoxRef])
     {
@@ -491,13 +544,24 @@ if(room == RoomCardAdd or room == RoomCardEdit)
 {
    if(id == instance_id[descTextBoxRef])
     {
+        switch(global.cardMythical)
+        {
+            case 0: txt_input = "Normal Card";
+            break;
+            case 1: txt_input = "Mythical Card";
+            break;
+            default: txt_input = "Error: Card mythical status not loaded"; 
+        }
+    }
+   if(id == instance_id[thirdTextBoxRef])
+    {
         txt_input = string(global.int);
     }
-    if(id == instance_id[thirdTextBoxRef])
+    if(id == instance_id[forthTextBoxRef])
     {
         txt_input = string(global.char);
     }
-    if(id == instance_id[forthTextBoxRef])
+    if(id == instance_id[fifthTextBoxRef])
     {
         txt_input = string(global.well);
     }
@@ -641,7 +705,9 @@ else if(room == RoomCardList or room == RoomCardSelect)
     draw_text(global.InputBoxX + 125, myY, int_display); 
     draw_text(global.InputBoxX + 150, myY, char_display); 
     draw_text(global.InputBoxX + 175, myY, well_display); 
-    draw_text(global.InputBoxX + 200, myY, text_display); 
+    draw_text(global.InputBoxX + 200, myY, myth_display);     
+    draw_text(global.InputBoxX + 225, myY, text_display); 
+    
 }
 if(room == RoomCardAdd or room == RoomCardEdit)
 {

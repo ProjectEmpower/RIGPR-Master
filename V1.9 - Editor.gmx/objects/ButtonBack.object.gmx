@@ -135,7 +135,7 @@ if(room == RoomEventAdd or room == RoomEventEdit)
     script_execute(SaveEvent);//runs save event script
      room = RoomEventList;
 }
-if(room == RoomEventList or room == RoomCardList)
+if(room == RoomEventList)
 {
     room = RoomMap;
 }
@@ -148,7 +148,7 @@ if(room == RoomEventSelect)
 {
     room = RoomLocationAdd;
 }
-if(room == RoomCardSelect)
+if(room == RoomCardSelect or room == RoomCardList)
 {
     room = global.lastRoom; //"lastRoom" stores the room "RoomCardSelect" was accessed from
 }

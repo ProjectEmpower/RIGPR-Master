@@ -119,7 +119,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//if clicked, move to room
+            <string>script_execute(SaveLocation);
+//if clicked, move to room
 room = RoomEventSelect;
 </string>
           </argument>

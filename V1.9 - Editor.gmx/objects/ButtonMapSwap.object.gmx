@@ -34,7 +34,7 @@ else if (global.myth == 1)
 {
     sprite_index = MapButtonSprite_NormalMap
 }
-global.EventID = 0;//sets the default event ID (being 0) when the map screen is entered
+global.EventID = 1;//sets the default event ID (being 0) when the map screen is entered
 </string>
           </argument>
         </arguments>

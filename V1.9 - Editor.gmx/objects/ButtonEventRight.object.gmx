@@ -56,7 +56,7 @@ ButtonEventRight.y = 320;
           <argument>
             <kind>1</kind>
             <string>//moves to the next event (if there is an event to go to)
-if(global.EventID &lt; global.locationEventNumber-1)//checks to see if it can move
+if(global.EventID &lt; global.locationEventNumber)//checks to see if it can move
 {
     script_execute(SaveLocation);//saves the current location
     global.EventID += 1;//moves the event number on

@@ -110,21 +110,40 @@ ButtonCycleMapVisibility.y = room_height/2-90
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Cycles the map visibility for the selected event
-global.focus = global.textBoxInstanceRef+4;//sets the text boxes focus to the "mythical" boxes instnace ID
-switch(global.eventMythical)//checks the events Mythical status, then swaps it.
+            <string>if(room == RoomEventAdd or room == RoomEventEdit)
 {
-    case 0: global.eventMythical = 1; //if it is 0, sets it to 1
-    break;
-    case 1: global.eventMythical = 0;//if its 1, set it to 0
-    break; 
+    //Cycles the map visibility for the selected event
+    global.focus = global.textBoxInstanceRef+4;//sets the text boxes focus to the "mythical" boxes instnace ID
+    switch(global.eventMythical)//checks the events Mythical status, then swaps it.
+    {
+        case 0: global.eventMythical = 1; //if it is 0, sets it to 1
+        break;
+        case 1: global.eventMythical = 0;//if its 1, set it to 0
+        break; 
+    }
+    ini_open(global.eventINI);//open the event ini
+    ini_write_real(global.eventName,"Mythical",global.eventMythical);//write the new mythical status to the event
+    ini_close();//close the ini
+    
+    global.focus = 0; //release the text boxes focus
 }
-ini_open(global.eventINI);//open the event ini
-ini_write_real(global.eventName,"Mythical",global.eventMythical);//write the new mythical status to the event
-ini_close();//close the ini
-
-global.focus = 0; //release the text boxes focus
-
+if(room == RoomCardAdd or room == RoomCardEdit)
+{
+    //Cycles the map visibility for the selected event
+    global.focus = global.textBoxInstanceRef+1;//sets the text boxes focus to the "mythical" boxes instnace ID
+    switch(global.cardMythical)//checks the events Mythical status, then swaps it.
+    {
+        case 0: global.cardMythical = 1; //if it is 0, sets it to 1
+        break;
+        case 1: global.cardMythical = 0;//if its 1, set it to 0
+        break; 
+    }
+    ini_open(global.cardINI);//open the event ini
+    ini_write_real(global.cardName,"Mythical",global.cardMythical);//write the new mythical status to the event
+    ini_close();//close the ini
+    
+    global.focus = 0; //release the text boxes focus
+}
 </string>
           </argument>
         </arguments>

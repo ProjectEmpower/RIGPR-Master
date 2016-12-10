@@ -122,6 +122,7 @@ ini_write_real(global.cardName,"Int", 0); //writes a bank (0) "Int" stat
 ini_write_real(global.cardName,"Char", 0);//writes a blank (0) "Char" stat
 ini_write_real(global.cardName,"Well", 0);//writes a blank (0) "Well" stat
 ini_write_string(global.cardName,"Card Text","");//writes a blank "Card Text"
+ini_write_real(global.cardName,"Mythical",0);
 ini_close();//closes the ini
 global.TotalCardNum += 1; //adds to the TotalCardNum variable
 room = RoomCardAdd; //moves to the next room

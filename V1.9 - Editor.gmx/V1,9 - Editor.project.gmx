@@ -97,8 +97,6 @@
     </objects>
     <objects name="LocationAdd">
       <object>objects\LocationSetup</object>
-      <object>objects\TextInputBox</object>
-      <object>objects\TextInputSetup</object>
       <object>objects\ButtonDeleteLocation</object>
       <object>objects\ButtonCreateEvent</object>
       <object>objects\ButtonSelectEvent</object>
@@ -110,7 +108,6 @@
     <objects name="EventList">
       <object>objects\EventListSetup</object>
       <object>objects\ButtonEventNew</object>
-      <object>objects\ButtonCycleMapVisibility</object>
       <objects name="EventEdit">
         <object>objects\EventEditSetup</object>
       </objects>
@@ -120,16 +117,21 @@
     </objects>
     <objects name="CardList">
       <object>objects\CardListSetup</object>
-      <object>objects\ButtonCardNew</object>
       <objects name="CardEdit">
         <object>objects\CardEditSetup</object>
       </objects>
       <objects name="CardCreate">
         <object>objects\CardCreateSetup</object>
+        <object>objects\ButtonCardNew</object>
       </objects>
     </objects>
+    <objects name="Multiple Rooms">
+      <object>objects\TextInputSetup</object>
+      <object>objects\TextInputBox</object>
+      <object>objects\ButtonBack</object>
+      <object>objects\ButtonCycleMapVisibility</object>
+    </objects>
     <object>objects\GameSetup</object>
-    <object>objects\ButtonBack</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
