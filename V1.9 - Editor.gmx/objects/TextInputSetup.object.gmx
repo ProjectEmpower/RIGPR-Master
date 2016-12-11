@@ -140,8 +140,9 @@ if(room == RoomCardEdit)
         //displays the cards information on the card add screen, same way as above.
         TconsRef = string(global.consCardRef);
         global.consName = "Cons"+TconsRef;
-        textFeilds = 4;//number of text boxes we want.
+        textFeilds = 5;//number of text boxes we want.
         ini_open(global.cardConsINI)
+        global.realConsName = ini_read_string(global.consName,"Card Name","");        
         global.consInt = ini_read_real(global.consName ,"Int",0);
         global.consChar = ini_read_real(global.consName ,"Char",0);
         global.consWell = ini_read_real(global.consName ,"Well",0);
@@ -151,7 +152,7 @@ if(room == RoomCardEdit)
         
         for(i = 0; i &lt; textFeilds; i++)
         {
-            if(i == 0)//if i = description box then it will set the position based on the increased size
+            if(i == 1)//if i = description box then it will set the position based on the increased size
             { 
                 inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
                 global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
@@ -171,8 +172,9 @@ if(room == RoomCardEdit)
         //displays the cards information on the card add screen, same way as above.
         TinfoRef = string(global.infoCardRef);
         global.infoName = "Info"+TinfoRef;
-        textFeilds = 2;//number of text boxes we want.
+        textFeilds = 3;//number of text boxes we want.
         ini_open(global.cardInfoINI)
+        global.realInfoName = ini_read_string(global.infoName,"Card Name","");
         global.infoCardText = ini_read_string(global.infoName,"Card Text","");
         global.infoLink = ini_read_string(global.infoName,"Link",0);
         ini_close();
@@ -180,9 +182,19 @@ if(room == RoomCardEdit)
         
         for(i = 0; i &lt; textFeilds; i++)
         {
-            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-            global.tempInputBoxY += 125;//increases the location of the text/input boxes (large increase for multiple line)
-            global.tempTextBoxY += 125;
+            if(i != 0)//if i = description box then it will set the position based on the increased size
+            { 
+                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
+                global.tempTextBoxY += 100;
+            }
+            else
+            {
+                //creates the instanes of the text boxes on screen.
+                inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            }
+            global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
+            global.tempTextBoxY += 25;
         }
     }
 }
@@ -276,6 +288,7 @@ if(room == RoomCardDeck)
             tempConsCard = "Cons"+tempConsCardRef;
             ini_open(global.cardConsINI);
             global.consCardRef = ini_read_real(tempConsCard,"Ref",0);
+            global.realConsName = ini_read_string(tempConsCard,"Card Name","");   
             global.consCardText = ini_read_string(tempConsCard,"Card Text","");
             global.consInt = ini_read_real(tempConsCard,"Int",0);
             global.consChar = ini_read_real(tempConsCard,"Char",0);
@@ -305,6 +318,7 @@ if(room == RoomCardDeck)
             tempInfoCard = "Info"+tempInfoCardRef;
             ini_open(global.cardInfoINI);
             global.infoCardRef = ini_read_real(tempInfoCard,"Ref",0);
+            global.realInfoName = ini_read_string(tempInfoCard,"Card Name","");
             global.infoCardText = ini_read_string(tempInfoCard,"Card Text","");
             global.infoLink = ini_read_string(tempInfoCard,"Link",0);
             

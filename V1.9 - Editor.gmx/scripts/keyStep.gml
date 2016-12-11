@@ -172,18 +172,22 @@ else if(room == RoomCardEdit)
     {
         if(instance_id[realNameTextBoxRef] == id)
         {
-            global.consCardText = txt_input;
+            global.realConsName = txt_input;
         }
         if(instance_id[descTextBoxRef] == id)
         {
-            global.consInt = real(txt_input);
+            global.consCardText = txt_input;
         }
         if(instance_id[thirdTextBoxRef] == id)
+        {
+            global.consInt = real(txt_input);
+        }
+        if(instance_id[forthTextBoxRef] == id)
         {
         
             global.consChar = real(txt_input);
         }
-        if(instance_id[forthTextBoxRef] == id)
+        if(instance_id[fifthTextBoxRef] == id)
         {
             global.consCardText = real(txt_input);
         }
@@ -192,9 +196,13 @@ else if(room == RoomCardEdit)
     {
         if(instance_id[realNameTextBoxRef] == id)
         {
-            global.infoCardText = txt_input;
+            global.realInfoName = txt_input;
         }
         if(instance_id[descTextBoxRef] == id)
+        {
+            global.infoCardText = txt_input;
+        }
+        if(instance_id[thirdTextBoxRef] == id)
         {
             global.infoLink = txt_input;
         }

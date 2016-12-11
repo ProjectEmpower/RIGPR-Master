@@ -176,23 +176,28 @@ if(room == RoomCardEdit)
     {
         if(instance_id[realNameTextBoxRef] == id)
         {
+            txt_input = global.realConsName;//sets default text
+            txt_display = "Card text: ";     //sets display text
+        }
+        if(instance_id[descTextBoxRef] == id)
+        {
             sprite_index = TextInputBoxSprite_Large;
             txt_input = global.consCardText;//sets default text
             txt_display = "Card text: ";     //sets display text
         }
-        if(instance_id[descTextBoxRef] == id)
+        if(instance_id[thirdTextBoxRef] == id)
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.consInt);
             txt_display = "Int: "
         }
-        if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.consChar);
             txt_display = "Char: "
         }
-        if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        if(instance_id[fifthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.consWell);
@@ -203,11 +208,16 @@ if(room == RoomCardEdit)
     {
         if(instance_id[realNameTextBoxRef] == id)
         {
-            sprite_index = TextInputBoxSprite_Large;
-            txt_input = global.infoCardText;//sets default text
+            txt_input = global.realInfoName;//sets default text
             txt_display = "Card text: ";     //sets display text
         }
         if(instance_id[descTextBoxRef] == id)
+        {
+            sprite_index = TextInputBoxSprite_Large;
+            txt_input = global.infoLink;
+            txt_display = "Int: "
+        }
+        if(instance_id[thirdTextBoxRef] == id)
         {
             sprite_index = TextInputBoxSprite_Large;
             txt_input = global.infoLink;
@@ -269,6 +279,7 @@ if(room == RoomCardDeck)
             if(instance_id[i] == id)
             {
                 ref_display = global.consCardRef;
+                name_display = global.realConsName;
                 int_display = global.consInt; 
                 char_display = global.consChar;
                 well_display = global.consWell;
@@ -284,6 +295,7 @@ if(room == RoomCardDeck)
             if(instance_id[i] == id)
             {   
                 ref_display = global.infoCardRef;
+                name_display = global.realInfoName;
                 text_display = global.infoCardText;
                 link_display = global.infoLink;       
             }
@@ -975,10 +987,10 @@ if(room == RoomCardDeck)
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
-        draw_text(global.InputBoxX + 0, myY, int_display);
-        draw_text(global.InputBoxX + 25, myY, char_display);     
-        draw_text(global.InputBoxX + 50, myY, well_display); 
-        draw_text(global.InputBoxX + 75, myY, text_display); 
+        draw_text(global.InputBoxX + 0, myY, name_display);
+        draw_text(global.InputBoxX + 75, myY, int_display);
+        draw_text(global.InputBoxX + 100, myY, char_display);     
+        draw_text(global.InputBoxX + 125, myY, well_display); 
         
     }
     if(global.RoomState == 3)
@@ -986,10 +998,7 @@ if(room == RoomCardDeck)
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
-        draw_text(global.InputBoxX, myY, text_display); //draws the input box text
-        draw_text(global.InputBoxX + 200, myY, link_display);
-
-        
+        draw_text(global.InputBoxX + 0, myY, name_display);                
     }
 }
 if(room == RoomDeckList)
