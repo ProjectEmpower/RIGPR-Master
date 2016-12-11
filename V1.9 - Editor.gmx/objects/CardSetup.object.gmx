@@ -46,6 +46,11 @@ if(global.RoomState == 3)
     global.tempInfoID = string(global.infoCardRef);
     global.infoName = "Info"+global.tempInfoID;
 }
+if(global.RoomState == 4)
+{
+    global.tempCharID = string(global.charCardRef);
+    global.charName = "Char"+global.tempCharID;
+}
 </string>
           </argument>
         </arguments>
@@ -83,6 +88,14 @@ if(global.RoomState == 1)
 if(global.RoomState == 2)
 {
     draw_text(global.MapTitleX,global.MapTitleY,global.consName);//draws the current cards name on screen 
+}
+if(global.RoomState == 3)
+{
+    draw_text(global.MapTitleX,global.MapTitleY,global.infoName);//draws the current cards name on screen 
+}
+if(global.RoomState == 4)
+{
+    draw_text(global.MapTitleX,global.MapTitleY,global.charName);//draws the current cards name on screen 
 }
 </string>
           </argument>

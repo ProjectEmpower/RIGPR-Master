@@ -61,6 +61,8 @@ global.locked = 0;
 global.tempNum = 0;
 global.EventID = 1;//sets the default event ID (being 0) when the map screen is entered
 
+global.lastState = 20;
+
 global.totalEventCards = 0;
 global.totalActionCards = 0;
 global.totalInfoCards = 0;

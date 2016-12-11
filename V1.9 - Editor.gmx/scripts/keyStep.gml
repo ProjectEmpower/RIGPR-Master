@@ -188,4 +188,15 @@ else if(room == RoomCardEdit)
             global.consCardText = real(txt_input);
         }
     }
+    if(global.RoomState == 3)
+    {
+        if(instance_id[realNameTextBoxRef] == id)
+        {
+            global.infoCardText = txt_input;
+        }
+        if(instance_id[descTextBoxRef] == id)
+        {
+            global.infoLink = txt_input;
+        }
+    }
 }

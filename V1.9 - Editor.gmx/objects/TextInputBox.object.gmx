@@ -209,7 +209,7 @@ if(room == RoomCardEdit)
         }
         if(instance_id[descTextBoxRef] == id)
         {
-            sprite_index = TextInputBoxSprite_Small;
+            sprite_index = TextInputBoxSprite_Large;
             txt_input = global.infoLink;
             txt_display = "Int: "
         }
@@ -276,7 +276,7 @@ if(room == RoomCardDeck)
             }
         }
     }
-    if(global.RoomState == 3)//consequence
+    if(global.RoomState == 3)//Info
     {
         image_xscale = 2;
         for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
@@ -597,7 +597,7 @@ if(room == RoomCardEdit)
             else
             {
                 s = string(global.card1);
-                cardName = "Card"+s;
+                cardName = "Action"+s;
                 ini_open(global.cardActionINI);
                 realCardName = ini_read_string(cardName,"Card Name","");
                 ini_close();
@@ -614,8 +614,8 @@ if(room == RoomCardEdit)
             else
             {
                 s = string(global.card2);
-                cardName = "Card"+s;
-                ini_open(global.cardActionINI);
+                cardName = "Cons"+s;
+                ini_open(global.cardConsINI);
                 realCardName = ini_read_string(cardName,"Card Name","");
                 ini_close();
                 txt_input = realCardName;
@@ -631,8 +631,8 @@ if(room == RoomCardEdit)
             else
             {
                 s = string(global.card3);
-                cardName = "Card"+s;
-                ini_open(global.cardActionINI);
+                cardName = "Info"+s;
+                ini_open(global.cardInfoINI);
                 realCardName = ini_read_string(cardName,"Card Name","");
                 ini_close();
                 txt_input = realCardName;
@@ -641,15 +641,15 @@ if(room == RoomCardEdit)
         if(instance_id[tenthTextBoxRef] == id) 
         {
          //checks to see if there is a card selected, if so, it displays the cards name
-            if(global.card3 == 0)
+            if(global.card4 == 0)
             {
                 txt_input = "No Card Selected";
             }
             else
             {
                 s = string(global.card4);
-                cardName = "Card"+s;
-                ini_open(global.cardActionINI);
+                cardName = "Char"+s;
+                ini_open(global.cardCharINI);
                 realCardName = ini_read_string(cardName,"Card Name","");
                 ini_close();
                 txt_input = realCardName;
@@ -668,18 +668,6 @@ if(room == RoomCardEdit)
                 break;
                 default: txt_input = "Error: Card mythical status not loaded"; 
             }
-        }
-       if(id == instance_id[thirdTextBoxRef])
-        {
-            txt_input = string(global.int);
-        }
-        if(id == instance_id[forthTextBoxRef])
-        {
-            txt_input = string(global.char);
-        }
-        if(id == instance_id[fifthTextBoxRef])
-        {
-            txt_input = string(global.well);
         }
     }
     if(global.RoomState == 2)
@@ -723,11 +711,11 @@ if(room == RoomCardEdit)
             <kind>1</kind>
             <string>//If a text box is clicked on, this is what happens
 global.focus = id;//the focus is set to the current instances ID (button clicked ID)
-if(room == RoomCardDeck)
+if(room == RoomCardDeck)//deck of cards
 {
     if(global.RoomState == 0)
     {
-        if(global.lastRoom == RoomLocationAdd)
+        if(global.lastRoom == RoomLocationAdd)//if your selecting the card
         {
             //this opens the location ini, and updates the type section inside
             global.eventType = id.ref_display;//takes the ref displayed
@@ -736,18 +724,21 @@ if(room == RoomCardDeck)
             eventType = "Event"+s+"Type";//creates a eventname using type and the string above
             ini_write_real(global.tempLocation,eventType,global.eventType);//writes the info to the ini
             ini_close();//closes the ini
-            room = global.lastRoom
+            room = RoomLocationAdd;
+            
         }
-        else
+        else//if you are editing the card
         {
             global.eventRef = id.ref_display;//takes the ref displayed in this instance, and sets it to the global eventRef
+            global.lastState = 0;
+            global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//changes room         
         }
 
     }
     if(global.RoomState == 1)
     {
-        if(global.lastRoom == RoomCardDeck)
+        if(global.lastState == 0)//selecing the card
         {
             //writes the cards type to the event inside the event ini file
             global.cardType = id.ref_display;//sets the ref to "cardtype"
@@ -756,9 +747,12 @@ if(room == RoomCardDeck)
             cardToUpdate = "Action"+s;
             ini_write_real(global.eventName,cardToUpdate,global.cardType);
             ini_close();//closes the ini
-            room = global.lastRoom;//reads the "lastroom" variable and sets that to room
+            global.lastState = 1;
+            global.RoomState = 0;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
         }
-        else
+        else //editing the card
         {
             global.cardRef = id.ref_display;
             room = RoomCardEdit;//changes room      
@@ -767,32 +761,81 @@ if(room == RoomCardDeck)
     }
     if(global.RoomState == 2)
     {
-        global.consCardRef = id.ref_display;
-        room = RoomCardEdit;//changes room      
+        if(global.lastState == 0)//selecing the card
+        {
+            //writes the cards type to the event inside the event ini file
+            global.cardType = id.ref_display;//sets the ref to "cardtype"
+            ini_open(global.cardEventINI);//open the event ini
+            s = string(global.currentCard);
+            cardToUpdate = "Cons"+s;
+            ini_write_real(global.eventName,cardToUpdate,global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 2;
+            global.RoomState = 0;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
+        }
+        else //editing the card
+        {
+            global.consCardRef = id.ref_display;
+            room = RoomCardEdit;//changes room       
+        }   
     }
     if(global.RoomState == 3)
     {
-        global.infoCardRef = id.ref_display;
-        room = RoomCardEdit;//changes room      
-    }
-   
+        if(global.lastState == 0)//selecing the card
+        {
+            //writes the cards type to the event inside the event ini file
+            global.cardType = id.ref_display;//sets the ref to "cardtype"
+            ini_open(global.cardEventINI);//open the event ini
+            s = string(global.currentCard);
+            cardToUpdate = "Info"+s;
+            ini_write_real(global.eventName,cardToUpdate,global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 3;
+            global.RoomState = 0;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
+        }
+        else //editing the card
+        {
+            global.infoCardRef = id.ref_display;
+            room = RoomCardEdit;//changes room      
+        }    
+    }   
 }
 if(room == RoomCardEdit)
 {
     if(global.RoomState == 0)
     {
-        //if you click on a card spot on the event screens, it will open the RoomCardSelect to allow the user to select a card.
-        if(id == instance_id[global.textBoxInstanceRef+6] or id == instance_id[ global.textBoxInstanceRef+7] or id == instance_id[ global.textBoxInstanceRef+8]or id == instance_id[ global.textBoxInstanceRef+9])
+        if(instance_id[global.textBoxInstanceRef+6] == id)
         {
-            for(i = 6; i &lt; 10; i++)
-            {
-                if(instance_id[global.textBoxInstanceRef+i] == id)
-                {
-                    global.currentCard = i-5;
-                }
-            }
+            global.currentCard = 1;//action slot
+            global.lastState = 0;  
+            global.RoomState = 1;
             room = RoomCardDeck;
-        }
+        }    
+        if(instance_id[global.textBoxInstanceRef+7] == id)
+        {
+            global.currentCard = 2;
+            global.lastState = 0;  
+            global.RoomState = 2;
+            room = RoomCardDeck;
+        }    
+        if(instance_id[global.textBoxInstanceRef+8] == id)
+        {
+            global.currentCard = 3;
+            global.lastState = 0;  
+            global.RoomState = 3;
+            room = RoomCardDeck;
+        } 
+        if(instance_id[global.textBoxInstanceRef+9] == id)
+        {
+            global.currentCard = 4;
+            global.lastState = 0;  
+            global.RoomState = 4;
+            room = RoomCardDeck;
+        } 
     }
 }
 
@@ -800,32 +843,32 @@ if(room == RoomDeckList)
 {
     if(instance_id[global.textBoxInstanceRef] == id)
     {
-        global.RoomState = 0;
         global.lastRoom = room;
+        global.RoomState = 0;
         room = RoomCardDeck;
     }
     if(instance_id[global.textBoxInstanceRef+1] == id)
     {
-        global.RoomState = 1;
         global.lastRoom = room;
+        global.RoomState = 1;
         room = RoomCardDeck;
     }
     if(instance_id[global.textBoxInstanceRef+2] == id)
     {
-        global.RoomState = 2;
         global.lastRoom = room;
+        global.RoomState = 2;
         room = RoomCardDeck;
     }   
     if(instance_id[global.textBoxInstanceRef+3] == id)
     {
-        global.RoomState = 3;
         global.lastRoom = room;
+        global.RoomState = 3;
         room = RoomCardDeck;
     }  
     if(instance_id[global.textBoxInstanceRef+4] == id)
     {
-        global.RoomState = 4;
         global.lastRoom = room;
+        global.RoomState = 4;
         room = RoomCardDeck;
     }    
 }
@@ -943,7 +986,7 @@ if(room == RoomCardDeck)
         draw_set_valign(fa_top);
         draw_set_halign(fa_left);
         draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
-        draw_text(global.InputBoxX = 0, myY, text_display); //draws the input box text
+        draw_text(global.InputBoxX, myY, text_display); //draws the input box text
         draw_text(global.InputBoxX + 200, myY, link_display);
 
         

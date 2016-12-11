@@ -135,46 +135,57 @@ if(room == RoomDeckList)
 {
     room = RoomMap;
 }
-if(room == RoomCardDeck)
+if(room == RoomCardDeck)//Room that shows the list of cards.
 {
     if(global.RoomState == 0)
     {
-        room = global.lastRoom;
+        if(global.lastRoom == RoomLocationAdd)
+        {
+            room = RoomLocationAdd;
+        }
+        else
+        {
+            room = RoomDeckList;
+        }
     }
     if(global.RoomState == 1)
     {
+        if(global.lastState == 0)
+        {
+            global.RoomState = 0;
+            global.lastRoom = RoomCardEdit;
+        }
         room = global.lastRoom;
     }
     if(global.RoomState == 2)
     {
-        room = global.lastRoom;
-    }
-}
-if(room == RoomCardDeck)
-{
-
-    if(global.RoomState == 0)
-    {
-        room = global.lastRoom;
-    }
-    if(global.RoomState == 1)
-    {
-        room = RoomDeckList;
-    }
-    if(global.RoomState == 2)
-    {
+        if(global.lastState == 0)
+        {
+            global.RoomState = 0;
+            global.lastRoom = RoomCardEdit;
+        }
         room = global.lastRoom;
     }
     if(global.RoomState == 3)
     {
+        if(global.lastState == 0)
+        {
+            global.RoomState = 0;
+            global.lastRoom = RoomCardEdit;
+        }
         room = global.lastRoom;
     }
     if(global.RoomState == 4)
     {
+        if(global.lastState == 0)
+        {
+            global.RoomState = 0;
+            global.lastRoom = RoomCardEdit;
+        }
         room = global.lastRoom;
     }
 }
-if(room == RoomCardEdit)
+if(room == RoomCardEdit)//Room that edits an individual card
 {
 
     if(global.RoomState == 0)
@@ -195,6 +206,11 @@ if(room == RoomCardEdit)
     if(global.RoomState == 3)
     {
         script_execute(SaveInfoCard);
+        room = RoomCardDeck;
+    }
+    if(global.RoomState == 3)
+    {
+       // script_execute(SaveCharCard);
         room = RoomCardDeck;
     }
 }

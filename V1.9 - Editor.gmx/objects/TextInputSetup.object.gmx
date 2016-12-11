@@ -102,10 +102,10 @@ if(room == RoomCardEdit)
         global.reqEventChar = ini_read_real(global.eventName, "Char", 0);
         global.reqEventWell = ini_read_real(global.eventName, "Well",0);
         global.eventMythical = ini_read_real(global.eventName,"Mythical",0);
-        global.card1 = ini_read_real(global.eventName,"Card1",0);
-        global.card2 = ini_read_real(global.eventName,"Card2",0);
-        global.card3 = ini_read_real(global.eventName,"Card3",0);
-        global.card4 = ini_read_real(global.eventName,"Card4",0);
+        global.card1 = ini_read_real(global.eventName,"Action1",0);
+        global.card2 = ini_read_real(global.eventName,"Cons2",0);
+        global.card3 = ini_read_real(global.eventName,"Info3",0);
+        global.card4 = ini_read_real(global.eventName,"Char4",0);
         
         ini_close();
         var inst;
@@ -174,7 +174,7 @@ if(room == RoomCardEdit)
         textFeilds = 2;//number of text boxes we want.
         ini_open(global.cardInfoINI)
         global.infoCardText = ini_read_string(global.infoName,"Card Text","");
-        global.infoLink = ini_read_real(global.infoName,"Link",0);
+        global.infoLink = ini_read_string(global.infoName,"Link",0);
         ini_close();
         var inst;
         
@@ -303,10 +303,10 @@ if(room == RoomCardDeck)
         {
             tempInfoCardRef = string(i+1);       
             tempInfoCard = "Info"+tempInfoCardRef;
-            ini_open(global.cardConsINI);
+            ini_open(global.cardInfoINI);
             global.infoCardRef = ini_read_real(tempInfoCard,"Ref",0);
             global.infoCardText = ini_read_string(tempInfoCard,"Card Text","");
-            global.infoLink = ini_read_real(tempInfoCard,"Link",0);
+            global.infoLink = ini_read_string(tempInfoCard,"Link",0);
             
             ini_close();
             inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     

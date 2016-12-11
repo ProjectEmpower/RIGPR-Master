@@ -108,24 +108,15 @@
       <object>objects\ButtonEventRight</object>
       <object>objects\ButtonSelectEvent</object>
     </objects>
-    <objects name="CardEventList">
-      <objects name="EventEdit">
-        <object>objects\EventEditSetup</object>
-      </objects>
-      <objects name="EventCreate">
-        <object>objects\EventCreateSetup</object>
-      </objects>
-    </objects>
     <objects name="CardList">
       <object>objects\DeckListSetup</object>
-      <object>objects\CardListSetup</object>
-      <object>objects\ButtonCycleMapVisibility</object>
       <objects name="CardEdit">
-        <object>objects\CardEditSetup</object>
+        <object>objects\CardSetup</object>
+        <object>objects\ButtonCycleMapVisibility</object>
       </objects>
       <objects name="CardCreate">
-        <object>objects\CardCreateSetup</object>
         <object>objects\ButtonCardNew</object>
+        <object>objects\CardListSetup</object>
       </objects>
     </objects>
     <objects name="Multiple Rooms">
@@ -147,8 +138,6 @@
       <room>rooms\RoomDeckList</room>
       <rooms name="Card">
         <room>rooms\RoomCardEdit</room>
-        <room>rooms\RoomCardAdd1</room>
-        <room>rooms\RoomCardSelect1</room>
         <room>rooms\RoomCardDeck</room>
       </rooms>
     </rooms>

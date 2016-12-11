@@ -54,7 +54,7 @@
     <instance objName="ButtonBack" x="480" y="416" name="inst_8641F99B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonCardNew" x="224" y="224" name="inst_9084CC35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="TextInputSetup" x="96" y="224" name="inst_E27E9E01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="DeckListSetup" x="96" y="160" name="inst_C6B7CDF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="CardListSetup" x="96" y="96" name="inst_03DE20D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -29,6 +29,7 @@
 global.tempID = string(global.tempNum);// takes the current tempNum (set when accessing this building via left click on mao screen)
 global.tempLocation = "Location"+global.tempID;//writes the location+#Ref#  to a temp variable
 global.focus = 0;
+global.RoomState = 0;
 </string>
           </argument>
         </arguments>
