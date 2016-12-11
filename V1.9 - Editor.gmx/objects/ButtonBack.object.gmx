@@ -145,6 +145,8 @@ if(room == RoomCardDeck)//Room that shows the list of cards.
         }
         else
         {
+            global.lastState = 1;
+            global.RoomState = 20;
             room = RoomDeckList;
         }
     }
@@ -152,37 +154,61 @@ if(room == RoomCardDeck)//Room that shows the list of cards.
     {
         if(global.lastState == 0)
         {
+            global.lastState = 1;
             global.RoomState = 0;
-            global.lastRoom = RoomCardEdit;
+            room = RoomCardEdit;
         }
-        room = global.lastRoom;
+        else
+        {
+            global.lastState = 1;
+            global.RoomState = 20;
+            room = RoomDeckList;
+        }
     }
     if(global.RoomState == 2)
     {
         if(global.lastState == 0)
         {
+            global.lastState = 2;
             global.RoomState = 0;
-            global.lastRoom = RoomCardEdit;
+            room = RoomCardEdit;
         }
-        room = global.lastRoom;
+        else
+        {
+            global.lastState = 2;
+            global.RoomState = 20;
+            room = RoomDeckList;
+        }
     }
     if(global.RoomState == 3)
     {
         if(global.lastState == 0)
         {
+            global.lastState = 3;
             global.RoomState = 0;
-            global.lastRoom = RoomCardEdit;
+            room = RoomCardEdit;
         }
-        room = global.lastRoom;
+        else
+        {
+            global.lastState = 3;
+            global.RoomState = 20;
+            room = RoomDeckList;
+        }
     }
     if(global.RoomState == 4)
     {
         if(global.lastState == 0)
         {
+            global.lastState = 4;
             global.RoomState = 0;
-            global.lastRoom = RoomCardEdit;
+            room = RoomCardEdit;
         }
-        room = global.lastRoom;
+        else
+        {
+            global.lastState = 4;
+            global.RoomState = 20;
+            room = RoomDeckList;
+        }
     }
 }
 if(room == RoomCardEdit)//Room that edits an individual card

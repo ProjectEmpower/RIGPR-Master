@@ -97,6 +97,7 @@ if(room == RoomCardEdit)
         }
         if(instance_id[descTextBoxRef] == id)
         {
+            sprite_index = TextInputBoxSprite_Large;
             txt_input = global.eventText;//sets default text
             txt_display = "Event Text ";     //sets display text
         }
@@ -177,7 +178,7 @@ if(room == RoomCardEdit)
         if(instance_id[realNameTextBoxRef] == id)
         {
             txt_input = global.realConsName;//sets default text
-            txt_display = "Card text: ";     //sets display text
+            txt_display = "Card Name: ";     //sets display text
         }
         if(instance_id[descTextBoxRef] == id)
         {
@@ -209,7 +210,7 @@ if(room == RoomCardEdit)
         if(instance_id[realNameTextBoxRef] == id)
         {
             txt_input = global.realInfoName;//sets default text
-            txt_display = "Card text: ";     //sets display text
+            txt_display = "Card Name: ";     //sets display text
         }
         if(instance_id[descTextBoxRef] == id)
         {
@@ -767,6 +768,8 @@ if(room == RoomCardDeck)//deck of cards
         else //editing the card
         {
             global.cardRef = id.ref_display;
+            global.lastState = 1;
+            global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//changes room      
         }
 
@@ -790,6 +793,8 @@ if(room == RoomCardDeck)//deck of cards
         else //editing the card
         {
             global.consCardRef = id.ref_display;
+            global.lastState = 2;
+            global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//changes room       
         }   
     }
@@ -812,6 +817,8 @@ if(room == RoomCardDeck)//deck of cards
         else //editing the card
         {
             global.infoCardRef = id.ref_display;
+            global.lastState = 0;
+            global.lastRoom = RoomCardDeck; 
             room = RoomCardEdit;//changes room      
         }    
     }   

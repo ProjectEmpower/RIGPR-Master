@@ -97,7 +97,7 @@ if(room == RoomCardEdit)
         textFeilds = 10;//number of text boxes we want.
         ini_open(global.cardEventINI)
         global.realEventName = ini_read_string(global.eventName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
-        global.eventText = ini_read_string(global.eventName,"Text","");
+        global.eventText = ini_read_string(global.eventName,"Event Text","");
         global.reqEventInt = ini_read_real(global.eventName,"Int",0);
         global.reqEventChar = ini_read_real(global.eventName, "Char", 0);
         global.reqEventWell = ini_read_real(global.eventName, "Well",0);
@@ -111,9 +111,20 @@ if(room == RoomCardEdit)
         var inst;
         for(i = 0; i &lt; textFeilds; i++)
         {
+            if(i == 1)//if i = description box then it will set the position based on the increased size
+            { 
                 inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-                global.tempInputBoxY += 25;
-                global.tempTextBoxY += 25;
+                global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
+                global.tempTextBoxY += 100;
+            }
+            else
+            {
+                //creates the instanes of the text boxes on screen.
+                inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+        
+            }
+            global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
+            global.tempTextBoxY += 25;
         }
     }
     if(global.RoomState == 1)//action card
@@ -218,7 +229,7 @@ if(room == RoomCardDeck)
             tempEvent = "Event"+tempEventRef;
             ini_open(global.cardEventINI);
             global.eventRef = ini_read_real(tempEvent,"Ref","");
-            global.eventText = ini_read_string(tempEvent,"Text","");
+            global.eventText = ini_read_string(tempEvent,"Event Text","");
             global.realEventName = ini_read_string(tempEvent,"Event Name","");
             global.reqEventInt = ini_read_real(tempEvent,"Int",0);
             global.reqEventChar = ini_read_real(tempEvent, "Char", 0);       
@@ -241,7 +252,7 @@ if(room == RoomCardDeck)
         {
             global.listLength = 20 - (20 - global.totalActionCards);
         }
-        if(global.lastRoom == RoomDeckList)
+        if(global.lastState != 0)
         {
             eventMythical = 2;  
         }

@@ -131,14 +131,18 @@ else if(room == RoomCardEdit)
         }
         if(instance_id[descTextBoxRef] == id)
         {
-            global.reqEventInt = real(txt_input);
+            global.eventText = txt_input;
         }
         if(instance_id[thirdTextBoxRef] == id)
+        {
+            global.reqEventInt = real(txt_input);
+        }
+        if(instance_id[forthTextBoxRef] == id)
         {
         
             global.reqEventChar = real(txt_input);
         }
-        if(instance_id[forthTextBoxRef] == id)
+        if(instance_id[fifthTextBoxRef] == id)
         {
             global.reqEventWell = real(txt_input);
         }
