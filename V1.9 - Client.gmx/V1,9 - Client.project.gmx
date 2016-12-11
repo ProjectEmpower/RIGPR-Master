@@ -41,6 +41,8 @@
     <sprite>sprites\BuildingSprite1</sprite>
     <sprite>sprites\BuildingSprite2</sprite>
     <sprite>sprites\No_sprite</sprite>
+    <sprite>sprites\ArrowLeftSprite</sprite>
+    <sprite>sprites\ArrowRightSprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
@@ -60,6 +62,8 @@
         <object>objects\TitleMap</object>
         <object>objects\Building</object>
         <object>objects\BuildingSetup</object>
+        <object>objects\ButtonWeekLeft</object>
+        <object>objects\ButtonWeekRight</object>
       </objects>
       <objects name="Character">
         <object>objects\TitleCharacter</object>
@@ -72,8 +76,8 @@
       <object>objects\ButtonBack</object>
       <objects name="LocationView">
         <object>objects\LocationSetup</object>
-        <object>objects\TextInputBox</object>
         <object>objects\TextInputSetup</object>
+        <object>objects\TextInputBox</object>
       </objects>
     </objects>
   </objects>

@@ -43,9 +43,6 @@ if(room == RoomLocationView)
     {
         if(instance_id[realNameTextBoxRef + i] == id) 
         {          
-                ini_open(global.cardEventINI);
-                ini_write_real(global.eventName, "Action Cards",global.eventActionCardsNum);
-                ini_close();
                 s = string(global.card1[i]);
                 cardName = "Action"+s;
                 ini_open(global.cardActionINI);
