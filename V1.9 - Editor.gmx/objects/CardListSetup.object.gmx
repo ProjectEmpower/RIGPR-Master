@@ -29,7 +29,7 @@
 //Sets up and draws text on screen.
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
 draw_set_valign(fa_bottom);//sets the vertical allignment for the text
-draw_text(global.MapTitleX,global.MapTitleY,"Card List");//writes the room's title on screen
+draw_text(global.MapTitleX,global.MapTitleY,"Card Decks");//writes the room's title on screen
 </string>
           </argument>
         </arguments>

@@ -35,6 +35,8 @@ fifthTextBoxRef = realNameTextBoxRef+4;
 sixthTextBoxRef = realNameTextBoxRef+5;
 seventhTextBoxRef = realNameTextBoxRef+6;
 eighthTextBoxRef = realNameTextBoxRef+7;
+ninthTextBoxRef = realNameTextBoxRef+8;
+tenthTextBoxRef = realNameTextBoxRef+9;
 timer = 0;//sets timer to 0
 delay = 4;//sets the delay on text entry
 textShortLength = 30;//sets the max text for small text boxes
@@ -84,143 +86,237 @@ if(room == RoomLocationAdd)//checks room
         txt_display = "Visibility?: "
     }
 }
-if(room == RoomEventAdd or room == RoomEventEdit)
+if(room == RoomCardEdit)
 {
-    if(instance_id[realNameTextBoxRef] == id)
+    if(global.RoomState == 0)//event card
     {
-        txt_input = global.realEventName;//sets default text
-        txt_display = "Event Name: ";     //sets display text
+        if(instance_id[realNameTextBoxRef] == id)
+        {
+            txt_input = global.realEventName;//sets default text
+            txt_display = "Event Name: ";     //sets display text
+        }
+        if(instance_id[descTextBoxRef] == id)
+        {
+            txt_input = global.eventText;//sets default text
+            txt_display = "Event Text ";     //sets display text
+        }
+        if(instance_id[thirdTextBoxRef] == id)
+        {
+            sprite_index = TextInputBoxSprite_Small;
+            txt_input = string(global.reqEventInt);//sets default text
+            txt_display = "Required Int: "
+        }
+        if(instance_id[forthTextBoxRef] == id) 
+        {
+            sprite_index = TextInputBoxSprite_Small;
+            txt_input = string(global.reqEventChar);
+            txt_display = "Required Char: "
+        }
+        if(instance_id[fifthTextBoxRef] == id) 
+        {
+            sprite_index = TextInputBoxSprite_Small;
+            txt_input = string(global.reqEventWell);
+            txt_display = "Required Well: "
+        }
+        if(instance_id[sixthTextBoxRef] == id)
+        {
+            sprite_index = No_sprite;
+            txt_input = "Error - Mythical status not set";
+            txt_display = "Visibility?: "
+        }
+        if(instance_id[seventhTextBoxRef] == id) 
+        {
+            txt_input = global.card1;
+            txt_display = "Action Card: "
+        }
+        if(instance_id[eighthTextBoxRef] == id) 
+        {
+            txt_input = global.card2;
+            txt_display = "Consequence Card: "
+        }
+        if(instance_id[ninthTextBoxRef] == id) 
+        {
+            txt_input = global.card3;
+            txt_display = "Information Card: "
+        }
+        if(instance_id[tenthTextBoxRef] == id) 
+        {
+            txt_input = global.card4;
+            txt_display = "Character Card: "
+        }
     }
-    if(instance_id[descTextBoxRef] == id)
+    if(global.RoomState == 1)//action
     {
-        sprite_index = TextInputBoxSprite_Small;
-        txt_input = global.reqEventInt;//sets default text
-        txt_display = "Required Int: "
+        if(instance_id[realNameTextBoxRef] == id)
+        {
+            txt_input = global.realCardName;//sets default text
+            txt_display = "Card Name: ";     //sets display text
+        }
+        if(instance_id[descTextBoxRef] == id)
+        {
+            sprite_index = No_sprite;
+            switch(global.cardMythical)
+            {
+                case 0: txt_input = "Normal Card";
+                break;
+                case 1: txt_input = "Mythical Card";
+                break;
+                default: txt_input = "Error: Card mythical status not loaded"; 
+            }
+            txt_display = "Mythical?: "
+        }
+        if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        {
+            sprite_index = TextInputBoxSprite_Large;
+            txt_input = global.cardText;
+            txt_display = "Text: "
+        }
     }
-    if(instance_id[thirdTextBoxRef] == id) 
+    if(global.RoomState == 2)
     {
-        sprite_index = TextInputBoxSprite_Small;
-        txt_input = global.reqEventChar;
-        txt_display = "Required Char: "
+        if(instance_id[realNameTextBoxRef] == id)
+        {
+            sprite_index = TextInputBoxSprite_Large;
+            txt_input = global.consCardText;//sets default text
+            txt_display = "Card text: ";     //sets display text
+        }
+        if(instance_id[descTextBoxRef] == id)
+        {
+            sprite_index = TextInputBoxSprite_Small;
+            txt_input = string(global.consInt);
+            txt_display = "Int: "
+        }
+        if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        {
+            sprite_index = TextInputBoxSprite_Small;
+            txt_input = string(global.consChar);
+            txt_display = "Char: "
+        }
+        if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        {
+            sprite_index = TextInputBoxSprite_Small;
+            txt_input = string(global.consWell);
+            txt_display = "Well: "
+        }
     }
-    if(instance_id[forthTextBoxRef] == id) 
+    if(global.RoomState == 3)
     {
-        sprite_index = TextInputBoxSprite_Small;
-        txt_input = global.reqEventWell;
-        txt_display = "Required Well: "
-    }
-    if(instance_id[fifthTextBoxRef] == id)
-    {
-        sprite_index = No_sprite;
-        txt_input = "Error - Mythical status not set";
-        txt_display = "Visibility?: "
-    }
-    if(instance_id[sixthTextBoxRef] == id) 
-    {
-        txt_input = global.card1;
-        txt_display = "Card1: "
-    }
-    if(instance_id[seventhTextBoxRef] == id) 
-    {
-        txt_input = global.card2;
-        txt_display = "Card2: "
-    }
-    if(instance_id[eighthTextBoxRef] == id) 
-    {
-        txt_input = global.card3;
-        txt_display = "Card3: "
+        if(instance_id[realNameTextBoxRef] == id)
+        {
+            sprite_index = TextInputBoxSprite_Large;
+            txt_input = global.infoCardText;//sets default text
+            txt_display = "Card text: ";     //sets display text
+        }
+        if(instance_id[descTextBoxRef] == id)
+        {
+            sprite_index = TextInputBoxSprite_Small;
+            txt_input = global.infoLink;
+            txt_display = "Int: "
+        }
     }
 }
-if(room == RoomEventList or room == RoomEventSelect)
+if(room == RoomCardDeck)
 {
-    image_xscale = 2;//changes the scale
-    for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)//goes through the list of events 
-    {    
-        if(instance_id[i] == id)//sets each event (in the list), with default variables
-        {
-            ref_display = global.eventRef;
-            name_display = global.realEventName;
-            int_display = global.reqEventInt;
-            char_display = global.reqEventChar;
-            well_display = global.reqEventWell;
-            
-            switch(global.eventMythical)//checks the mythical status, and displays apporpriately
+    if(global.RoomState == 0)//Event
+    {
+        image_xscale = 2;//changes the scale
+        for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)//goes through the list of events 
+        {    
+            if(instance_id[i] == id)//sets each event (in the list), with default variables
             {
-                case 0: mythical_display = "Normal Map";
-                break;
-                case 1: mythical_display = "Mythical Map";
-                break;
-                default: mythical_display = "Error: Missing info";
+                ref_display = global.eventRef;
+                name_display = global.realEventName;
+                int_display = global.reqEventInt;
+                char_display = global.reqEventChar;
+                well_display = global.reqEventWell;
+                
+                switch(global.eventMythical)//checks the mythical status, and displays apporpriately
+                {
+                    case 0: mythical_display = "Normal Map";
+                    break;
+                    case 1: mythical_display = "Mythical Map";
+                    break;
+                    default: mythical_display = "Error: Missing info";
+                }
+            }
+        }
+    }
+    if(global.RoomState == 1)//action
+    {
+        image_xscale = 2;
+        for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
+        {    
+            if(instance_id[i] == id)
+            {
+                ref_display = global.cardRef;
+                name_display = global.realCardName;
+                text_display = global.cardText;//not shown here        
+                switch(global.cardMythical)
+                {
+                    case 0: myth_display = "N";
+                    break;
+                    case 1: myth_display = "M";
+                    break;   
+                }
+            }
+        }
+    }
+    if(global.RoomState == 2)//consequence
+    {
+        image_xscale = 2;
+        for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
+        {    
+            if(instance_id[i] == id)
+            {
+                ref_display = global.consCardRef;
+                int_display = global.consInt; 
+                char_display = global.consChar;
+                well_display = global.consWell;
+                text_display = global.consCardText;//not shown here        
+            }
+        }
+    }
+    if(global.RoomState == 3)//consequence
+    {
+        image_xscale = 2;
+        for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
+        {    
+            if(instance_id[i] == id)
+            {   
+                ref_display = global.infoCardRef;
+                text_display = global.infoCardText;
+                link_display = global.infoLink;       
             }
         }
     }
 }
-if(room == RoomCardAdd or room == RoomCardEdit)
+if(room == RoomDeckList)
 {
+    image_xscale = 2;
     if(instance_id[realNameTextBoxRef] == id)
     {
-        txt_input = global.realCardName;//sets default text
-        txt_display = "Card Name: ";     //sets display text
+        txt_display = "Event Cards Deck";     //sets display text
+        num_display = global.totalEventCards;
     }
     if(instance_id[descTextBoxRef] == id)
     {
-        sprite_index = No_sprite;
-        switch(global.cardMythical)
-        {
-            case 0: txt_input = "Normal Card";
-            break;
-            case 1: txt_input = "Mythical Card";
-            break;
-            default: txt_input = "Error: Card mythical status not loaded"; 
-        }
-        txt_display = "Mythical?: "
+        txt_display = "Action Cards Deck";     //sets display text
+        num_display = global.totalActionCards;
     }
     if(instance_id[thirdTextBoxRef] == id)
     {
-        sprite_index = TextInputBoxSprite_Small;
-        txt_input = global.int;//sets default text
-        txt_display = "Int: "
+        txt_display = "Consequence Cards Deck";     //sets display text
+        num_display = global.totalConsCards;
     }
-    if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[forthTextBoxRef] == id)
     {
-        sprite_index = TextInputBoxSprite_Small;
-        txt_input = global.char;
-        txt_display = "Char: "
+        txt_display = "Information Cards Deck";     //sets display text
+        num_display = global.totalInfoCards;
     }
-    if(instance_id[fifthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+    if(instance_id[fifthTextBoxRef] == id)
     {
-        sprite_index = TextInputBoxSprite_Small;
-        txt_input = global.well;
-        txt_display = "Well: "
-    }
-    if(instance_id[sixthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
-    {
-        sprite_index = TextInputBoxSprite_Large;
-        txt_input = global.cardText;
-        txt_display = "Text: "
-    }
-}
-if(room == RoomCardList or room == RoomCardSelect)
-{
-    image_xscale = 2;
-    for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
-    {    
-        if(instance_id[i] == id)
-        {
-            ref_display = global.cardRef;
-            name_display = global.realCardName;
-            int_display = global.int;
-            char_display = global.char;
-            well_display = global.well;
-            text_display = global.cardText;//not shown here        
-            switch(global.cardMythical)
-            {
-                case 0: myth_display = "N";
-                break;
-                case 1: myth_display = "M";
-                break;   
-            }
-        }
+        txt_display = "Character Cards Deck";     //sets display text
+        num_display = global.totalCharCards;
     }
 }
 
@@ -326,7 +422,7 @@ if(room == RoomLocationAdd)
                 ini_close();//closes the location ini
                 s = string(tempEventRef)//uses the reference set above and creates a string with it
                 tempEventName = "Event"+s;//uses the string to create the event name "Event"+*string set above"
-                ini_open(global.eventINI);//opens the event ini
+                ini_open(global.cardEventINI);//opens the event ini
                 tempMyth = ini_read_real(tempEventName, "Mythical", 3);//reads tge mythical status of current event
                 ini_close();//closes the event ini
                 switch(tempMyth)//checks the events mythical statsus, changes the tempNormMap and tempMythMap variables accordingly
@@ -389,7 +485,7 @@ if(room == RoomLocationAdd)
         {
             s = string(global.eventType)//set string based on the type
             tempEvent = "Event"+s;//set event name to load based on the string above
-            ini_open(global.eventINI);//open ini
+            ini_open(global.cardEventINI);//open ini
             txt_input = ini_read_string(tempEvent, "Event Name", "");//loads the events name using the type variable
             ini_close();//closes the ini
         }
@@ -443,7 +539,7 @@ if(room == RoomLocationAdd)
         {
             s = string(global.eventType)
             tempEvent = "Event"+s;
-            ini_open(global.eventINI);
+            ini_open(global.cardEventINI);
             global.eventMyth = ini_read_real(tempEvent, "Mythical", 0);
             txt_input = string(global.eventMyth);
             ini_close();
@@ -462,108 +558,145 @@ if(room == RoomLocationAdd)
         }
     }
 }
-if(room == RoomEventAdd or room == RoomEventEdit)
+
+if(room == RoomCardEdit)
 {
-    if(id == instance_id[descTextBoxRef])
+    if(global.RoomState == 0)
     {
-        txt_input = string(global.reqEventInt);
-    }
-    if(id == instance_id[thirdTextBoxRef])
-    {
-        txt_input = string(global.reqEventChar);
-    }
-    if(id == instance_id[forthTextBoxRef])
-    {
-        txt_input = string(global.reqEventWell);
-    }
-    if(id == instance_id[fifthTextBoxRef])
-    {
-    //checks the event mythical status and displays accordingly
-        switch(global.eventMythical)
+        if(id == instance_id[thirdTextBoxRef])
         {
-            case 0: txt_input = "Normal event";
-            break;
-            case 1: txt_input = "Mythical event";
-            break;
-            default: txt_input = "Error - Missing event mythical info";
+            txt_input = string(global.reqEventInt);
+        }
+        if(id == instance_id[forthTextBoxRef])
+        {
+            txt_input = string(global.reqEventChar);
+        }
+        if(id == instance_id[fifthTextBoxRef])
+        {
+            txt_input = string(global.reqEventWell);
+        }
+        if(id == instance_id[sixthTextBoxRef])
+        {
+        //checks the event mythical status and displays accordingly
+            switch(global.eventMythical)
+            {
+                case 0: txt_input = "Normal event";
+                break;
+                case 1: txt_input = "Mythical event";
+                break;
+                default: txt_input = "Error - Missing event mythical info";
+            }
+        }
+        if(instance_id[seventhTextBoxRef] == id) 
+        {
+            //checks to see if there is a card selected, if so, it displays the cards name
+            if(global.card1 == 0)
+            {
+                txt_input = "No Card Selected";
+            }
+            else
+            {
+                s = string(global.card1);
+                cardName = "Card"+s;
+                ini_open(global.cardActionINI);
+                realCardName = ini_read_string(cardName,"Card Name","");
+                ini_close();
+                txt_input = realCardName;
+            }
+        }
+        if(instance_id[eighthTextBoxRef] == id) 
+        {
+         //checks to see if there is a card selected, if so, it displays the cards name
+            if(global.card2 == 0)
+            {
+                txt_input = "No Card Selected";
+            }
+            else
+            {
+                s = string(global.card2);
+                cardName = "Card"+s;
+                ini_open(global.cardActionINI);
+                realCardName = ini_read_string(cardName,"Card Name","");
+                ini_close();
+                txt_input = realCardName;
+            }
+        }
+        if(instance_id[ninthTextBoxRef] == id) 
+        {
+         //checks to see if there is a card selected, if so, it displays the cards name
+            if(global.card3 == 0)
+            {
+                txt_input = "No Card Selected";
+            }
+            else
+            {
+                s = string(global.card3);
+                cardName = "Card"+s;
+                ini_open(global.cardActionINI);
+                realCardName = ini_read_string(cardName,"Card Name","");
+                ini_close();
+                txt_input = realCardName;
+            }
+        }
+        if(instance_id[tenthTextBoxRef] == id) 
+        {
+         //checks to see if there is a card selected, if so, it displays the cards name
+            if(global.card3 == 0)
+            {
+                txt_input = "No Card Selected";
+            }
+            else
+            {
+                s = string(global.card4);
+                cardName = "Card"+s;
+                ini_open(global.cardActionINI);
+                realCardName = ini_read_string(cardName,"Card Name","");
+                ini_close();
+                txt_input = realCardName;
+            }
         }
     }
-    if(instance_id[sixthTextBoxRef] == id) 
+    if(global.RoomState == 1)
     {
-        //checks to see if there is a card selected, if so, it displays the cards name
-        if(global.card1 == 0)
+        if(id == instance_id[descTextBoxRef])
         {
-            txt_input = "No Card Selected";
+            switch(global.cardMythical)
+            {
+                case 0: txt_input = "Normal Card";
+                break;
+                case 1: txt_input = "Mythical Card";
+                break;
+                default: txt_input = "Error: Card mythical status not loaded"; 
+            }
         }
-        else
+       if(id == instance_id[thirdTextBoxRef])
         {
-            s = string(global.card1);
-            cardName = "Card"+s;
-            ini_open(global.cardINI);
-            realCardName = ini_read_string(cardName,"Card Name","");
-            ini_close();
-            txt_input = realCardName;
+            txt_input = string(global.int);
         }
-    }
-    if(instance_id[seventhTextBoxRef] == id) 
-    {
-     //checks to see if there is a card selected, if so, it displays the cards name
-        if(global.card2 == 0)
+        if(id == instance_id[forthTextBoxRef])
         {
-            txt_input = "No Card Selected";
+            txt_input = string(global.char);
         }
-        else
+        if(id == instance_id[fifthTextBoxRef])
         {
-            s = string(global.card2);
-            cardName = "Card"+s;
-            ini_open(global.cardINI);
-            realCardName = ini_read_string(cardName,"Card Name","");
-            ini_close();
-            txt_input = realCardName;
+            txt_input = string(global.well);
         }
     }
-    if(instance_id[eighthTextBoxRef] == id) 
+    if(global.RoomState == 2)
     {
-     //checks to see if there is a card selected, if so, it displays the cards name
-        if(global.card3 == 0)
+
+       if(id == instance_id[thirdTextBoxRef])
         {
-            txt_input = "No Card Selected";
+            txt_input = string(global.consInt);
         }
-        else
+        if(id == instance_id[forthTextBoxRef])
         {
-            s = string(global.card3);
-            cardName = "Card"+s;
-            ini_open(global.cardINI);
-            realCardName = ini_read_string(cardName,"Card Name","");
-            ini_close();
-            txt_input = realCardName;
+            txt_input = string(global.consChar);
         }
-    }
-}
-if(room == RoomCardAdd or room == RoomCardEdit)
-{
-   if(id == instance_id[descTextBoxRef])
-    {
-        switch(global.cardMythical)
+        if(id == instance_id[fifthTextBoxRef])
         {
-            case 0: txt_input = "Normal Card";
-            break;
-            case 1: txt_input = "Mythical Card";
-            break;
-            default: txt_input = "Error: Card mythical status not loaded"; 
+            txt_input = string(global.consWell);
         }
-    }
-   if(id == instance_id[thirdTextBoxRef])
-    {
-        txt_input = string(global.int);
-    }
-    if(id == instance_id[forthTextBoxRef])
-    {
-        txt_input = string(global.char);
-    }
-    if(id == instance_id[fifthTextBoxRef])
-    {
-        txt_input = string(global.well);
     }
 }
 </string>
@@ -590,53 +723,111 @@ if(room == RoomCardAdd or room == RoomCardEdit)
             <kind>1</kind>
             <string>//If a text box is clicked on, this is what happens
 global.focus = id;//the focus is set to the current instances ID (button clicked ID)
-if(room == RoomEventList)
+if(room == RoomCardDeck)
 {
-    global.eventRef = id.ref_display;//takes the ref displayed in this instance, and sets it to the global eventRef
-    room = RoomEventEdit;//changes room
-}
-if(room == RoomEventSelect)
-{
-    //this opens the location ini, and updates the type section inside
-    global.eventType = id.ref_display;//takes the ref displayed
-    ini_open(global.locationINI);//opens locatio ini
-    s = string(global.EventID);//creates a string using the eventID
-    eventType = "Event"+s+"Type";//creates a eventname using type and the string above
-    ini_write_real(global.tempLocation,eventType,global.eventType);//writes the info to the ini
-    ini_close();//closes the ini
-    room = RoomLocationAdd;
-}
-if(room == RoomCardList)
-{
-    global.cardRef = id.ref_display;
-    room = RoomCardEdit;
-}
-if(room == RoomEventEdit or room == RoomEventAdd)
-{
-    //if you click on a card spot on the event screens, it will open the RoomCardSelect to allow the user to select a card.
-    if(id == instance_id[global.textBoxInstanceRef+5] or id == instance_id[ global.textBoxInstanceRef+6] or id == instance_id[ global.textBoxInstanceRef+7])
+    if(global.RoomState == 0)
     {
-        for(i = 5; i &lt; 8; i++)
+        if(global.lastRoom == RoomLocationAdd)
         {
-            if(instance_id[global.textBoxInstanceRef+i] == id)
-            {
-                global.currentCard = i-4;
-            }
+            //this opens the location ini, and updates the type section inside
+            global.eventType = id.ref_display;//takes the ref displayed
+            ini_open(global.locationINI);//opens locatio ini
+            s = string(global.EventID);//creates a string using the eventID
+            eventType = "Event"+s+"Type";//creates a eventname using type and the string above
+            ini_write_real(global.tempLocation,eventType,global.eventType);//writes the info to the ini
+            ini_close();//closes the ini
+            room = global.lastRoom
         }
-        global.lastRoom = room;//sets the current room to "lastroom", used below.
-        room = RoomCardSelect;
+        else
+        {
+            global.eventRef = id.ref_display;//takes the ref displayed in this instance, and sets it to the global eventRef
+            room = RoomCardEdit;//changes room         
+        }
+
+    }
+    if(global.RoomState == 1)
+    {
+        if(global.lastRoom == RoomCardDeck)
+        {
+            //writes the cards type to the event inside the event ini file
+            global.cardType = id.ref_display;//sets the ref to "cardtype"
+            ini_open(global.cardEventINI);//open the event ini
+            s = string(global.currentCard);
+            cardToUpdate = "Action"+s;
+            ini_write_real(global.eventName,cardToUpdate,global.cardType);
+            ini_close();//closes the ini
+            room = global.lastRoom;//reads the "lastroom" variable and sets that to room
+        }
+        else
+        {
+            global.cardRef = id.ref_display;
+            room = RoomCardEdit;//changes room      
+        }
+
+    }
+    if(global.RoomState == 2)
+    {
+        global.consCardRef = id.ref_display;
+        room = RoomCardEdit;//changes room      
+    }
+    if(global.RoomState == 3)
+    {
+        global.infoCardRef = id.ref_display;
+        room = RoomCardEdit;//changes room      
+    }
+   
+}
+if(room == RoomCardEdit)
+{
+    if(global.RoomState == 0)
+    {
+        //if you click on a card spot on the event screens, it will open the RoomCardSelect to allow the user to select a card.
+        if(id == instance_id[global.textBoxInstanceRef+6] or id == instance_id[ global.textBoxInstanceRef+7] or id == instance_id[ global.textBoxInstanceRef+8]or id == instance_id[ global.textBoxInstanceRef+9])
+        {
+            for(i = 6; i &lt; 10; i++)
+            {
+                if(instance_id[global.textBoxInstanceRef+i] == id)
+                {
+                    global.currentCard = i-5;
+                }
+            }
+            room = RoomCardDeck;
+        }
     }
 }
-if(room == RoomCardSelect)
+
+if(room == RoomDeckList)
 {
-    //writes the cards type to the event inside the event ini file
-    global.cardType = id.ref_display;//sets the ref to "cardtype"
-    ini_open(global.eventINI);//open the event ini
-    s = string(global.currentCard);
-    cardToUpdate = "Card"+s;
-    ini_write_real(global.eventName,cardToUpdate,global.cardType);
-    ini_close();//closes the ini
-    room = global.lastRoom;//reads the "lastroom" variable and sets that to room
+    if(instance_id[global.textBoxInstanceRef] == id)
+    {
+        global.RoomState = 0;
+        global.lastRoom = room;
+        room = RoomCardDeck;
+    }
+    if(instance_id[global.textBoxInstanceRef+1] == id)
+    {
+        global.RoomState = 1;
+        global.lastRoom = room;
+        room = RoomCardDeck;
+    }
+    if(instance_id[global.textBoxInstanceRef+2] == id)
+    {
+        global.RoomState = 2;
+        global.lastRoom = room;
+        room = RoomCardDeck;
+    }   
+    if(instance_id[global.textBoxInstanceRef+3] == id)
+    {
+        global.RoomState = 3;
+        global.lastRoom = room;
+        room = RoomCardDeck;
+    }  
+    if(instance_id[global.textBoxInstanceRef+4] == id)
+    {
+        global.RoomState = 4;
+        global.lastRoom = room;
+        room = RoomCardDeck;
+    }    
 }
 </string>
           </argument>
@@ -677,45 +868,94 @@ if(room == RoomLocationAdd)
         draw_text_ext(global.InputBoxX, myY ,txt_input, 20, 300);
     }
 }
-else if(room == RoomEventAdd or room == RoomEventEdit)
+
+if(room == RoomCardEdit)
 {
-    draw_set_valign(fa_top);
-    draw_set_halign(fa_right);
-    draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
-    draw_set_halign(fa_left);
-    draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
+    if(global.RoomState == 0)
+    {
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_right);
+        draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
+        draw_set_halign(fa_left);
+        draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
+    }
+    if(global.RoomState == 1)
+    {
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_right);
+        draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
+        draw_set_halign(fa_left);
+        draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
+    }
+    if(global.RoomState == 2)
+    {
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_right);
+        draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
+        draw_set_halign(fa_left);
+        draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
+    }
+    if(global.RoomState == 3)
+    {
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_right);
+        draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
+        draw_set_halign(fa_left);
+        draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
+    }
 }
-else if(room == RoomEventList or room == RoomEventSelect)
+if(room == RoomCardDeck)
 {
-    draw_set_valign(fa_top);
-    draw_set_halign(fa_left);
-    draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
-    draw_text(global.InputBoxX + 0, myY, name_display);
-    draw_text(global.InputBoxX + 125, myY, int_display); 
-    draw_text(global.InputBoxX + 150, myY, char_display); 
-    draw_text(global.InputBoxX + 175, myY, well_display); 
-    draw_text(global.InputBoxX + 200, myY, mythical_display); 
+    if(global.RoomState == 0)
+    {
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+        draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
+        draw_text(global.InputBoxX + 0, myY, name_display);
+        draw_text(global.InputBoxX + 125, myY, int_display); 
+        draw_text(global.InputBoxX + 150, myY, char_display); 
+        draw_text(global.InputBoxX + 175, myY, well_display); 
+        draw_text(global.InputBoxX + 200, myY, mythical_display); 
+    }
+    if(global.RoomState == 1)
+    {
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+        draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
+        draw_text(global.InputBoxX + 0, myY, name_display);
+        draw_text(global.InputBoxX + 25, myY, myth_display);     
+        draw_text(global.InputBoxX + 50, myY, text_display); 
+        
+    }
+    if(global.RoomState == 2)
+    {
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+        draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
+        draw_text(global.InputBoxX + 0, myY, int_display);
+        draw_text(global.InputBoxX + 25, myY, char_display);     
+        draw_text(global.InputBoxX + 50, myY, well_display); 
+        draw_text(global.InputBoxX + 75, myY, text_display); 
+        
+    }
+    if(global.RoomState == 3)
+    {
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+        draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
+        draw_text(global.InputBoxX = 0, myY, text_display); //draws the input box text
+        draw_text(global.InputBoxX + 200, myY, link_display);
+
+        
+    }
 }
-else if(room == RoomCardList or room == RoomCardSelect)
+if(room == RoomDeckList)
 {
     draw_set_valign(fa_top);
     draw_set_halign(fa_left);
-    draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
-    draw_text(global.InputBoxX + 0, myY, name_display);
-    draw_text(global.InputBoxX + 125, myY, int_display); 
-    draw_text(global.InputBoxX + 150, myY, char_display); 
-    draw_text(global.InputBoxX + 175, myY, well_display); 
-    draw_text(global.InputBoxX + 200, myY, myth_display);     
-    draw_text(global.InputBoxX + 225, myY, text_display); 
-    
-}
-if(room == RoomCardAdd or room == RoomCardEdit)
-{
-    draw_set_valign(fa_top);
-    draw_set_halign(fa_right);
-    draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
-    draw_set_halign(fa_left);
-    draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
+    draw_text(global.InputBoxX - 25, myY, num_display); //draws the input box text
+    draw_text(global.InputBoxX + 0, myY, txt_display);
+
 }
 </string>
           </argument>

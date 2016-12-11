@@ -121,7 +121,8 @@ else
             <kind>1</kind>
             <string>script_execute(SaveLocation);
 //if clicked, move to room
-room = RoomEventSelect;
+global.lastRoom = room;
+room = RoomCardDeck;
 </string>
           </argument>
         </arguments>

@@ -59,7 +59,7 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
                     ini_close();//closes location ini
                     s = string(tempEventRef)
                     tempEventName = "Event"+s;
-                    ini_open(global.eventINI);//opens event ini
+                    ini_open(global.cardEventINI);//opens event ini
                     tempMyth = ini_read_real(tempEventName, "Mythical", 3);  
                     ini_close();//closes event ini
                     ini_open(global.locationINI);//opens location ini
@@ -88,29 +88,64 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
         global.TotalInstanceNum = i;
     }
 }
-//this code counts the number of current events in the system.
-global.TotalEventNum = 100;
-for(i = 1; i &lt; global.TotalEventNum; i ++)
+global.totalEventCards = 100;
+for(i = 0; i &lt;= global.totalEventCards; i++)
 {
-    currentEventRef = string(i);//writes i as a string to a variable
-    currentEvent = "Event"+currentEventRef; //writes the current event + position in for loop
-    ini_open(global.eventINI);  //opens the event ini file
-    if(!ini_section_exists(currentEvent))//if the current event in list does not exist
+    currentCardRef = string(i+1);//writes i as a string to a variable
+    currentCard = "Event"+currentCardRef; //writes the current event + position in for loop
+    ini_open(global.cardEventINI);  //opens the event ini file
+    if(!ini_section_exists(currentCard))//if the current event in list does not exist
     {
-        global.TotalEventNum = i;//set the total to the current loop number.
+        global.totalEventCards = i; 
+        //set the total to the current loop number.
     }
     ini_close();
 }
-//this code counts the number of current cards in the system.
-global.TotalCardNum = 100;
-for(i = 1; i &lt; global.TotalCardNum; i ++)
+global.totalActionCards = 100;
+for(i = 0; i &lt;= global.totalActionCards; i ++)
 {
-    currentCardRef = string(i);//writes i as a string to a variable
-    currentCard = "Card"+currentCardRef; //writes the current event + position in for loop
-    ini_open(global.cardINI);  //opens the event ini file
+    currentCardRef = string(i+1);//writes i as a string to a variable
+    currentCard = "Action"+currentCardRef; //writes the current event + position in for loop
+    ini_open(global.cardActionINI);  //opens the event ini file
     if(!ini_section_exists(currentCard))//if the current event in list does not exist
     {
-        global.TotalCardNum = i;//set the total to the current loop number.
+        global.totalActionCards = i;//set the total to the current loop number.
+    }
+    ini_close();
+}
+global.totalConsCards = 100;
+for(i = 0; i &lt;= global.totalConsCards; i ++)
+{
+    currentCardRef = string(i+1);//writes i as a string to a variable
+    currentCard = "Cons"+currentCardRef; //writes the current event + position in for loop
+    ini_open(global.cardConsINI);  //opens the event ini file
+    if(!ini_section_exists(currentCard))//if the current event in list does not exist
+    {
+        global.totalConsCards = i;//set the total to the current loop number.
+    }
+    ini_close();
+}
+global.totalInfoCards = 100;
+for(i = 0; i &lt;= global.totalInfoCards; i ++)
+{
+    currentCardRef = string(i+1);//writes i as a string to a variable
+    currentCard = "Info"+currentCardRef; //writes the current event + position in for loop
+    ini_open(global.cardInfoINI);  //opens the event ini file
+    if(!ini_section_exists(currentCard))//if the current event in list does not exist
+    {
+        global.totalInfoCards = i;//set the total to the current loop number.
+    }
+    ini_close();
+}
+global.totalCharCards = 100;
+for(i = 0; i &lt;= global.totalCharCards; i ++)
+{
+    currentCardRef = string(i+1);//writes i as a string to a variable
+    currentCard = "Char"+currentCardRef; //writes the current event + position in for loop
+    ini_open(global.cardCharINI);  //opens the event ini file
+    if(!ini_section_exists(currentCard))//if the current event in list does not exist
+    {
+        global.totalCharCards = i;//set the total to the current loop number.
     }
     ini_close();
 }

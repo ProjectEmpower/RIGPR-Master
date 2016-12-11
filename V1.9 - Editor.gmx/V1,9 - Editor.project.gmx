@@ -22,8 +22,10 @@
         <sprite>sprites\MythicalMapTitleSprite</sprite>
         <sprite>sprites\MapButtonSprite_NormalMap_Hover</sprite>
         <sprite>sprites\MapButtonSprite_NormalMap</sprite>
-        <sprite>sprites\BuildingSprite</sprite>
-        <sprite>sprites\BuildingSprite1</sprite>
+        <sprite>sprites\BuildingSpriteNormal</sprite>
+        <sprite>sprites\BuildingSpriteMythical</sprite>
+        <sprite>sprites\BuildingSpriteBoth</sprite>
+        <sprite>sprites\BuildingSpriteNormal1</sprite>
         <sprite>sprites\BuildingSprite2</sprite>
         <sprite>sprites\ButtonEditorModeSprite</sprite>
         <sprite>sprites\TitleEditorModeSprite</sprite>
@@ -66,8 +68,10 @@
   <scripts name="scripts">
     <script>scripts\keyStep.gml</script>
     <script>scripts\SaveLocation.gml</script>
-    <script>scripts\SaveEvent.gml</script>
-    <script>scripts\SaveCard.gml</script>
+    <script>scripts\SaveEventCard.gml</script>
+    <script>scripts\SaveActionCard.gml</script>
+    <script>scripts\SaveConsCard.gml</script>
+    <script>scripts\SaveInfoCard.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Menu">
@@ -83,8 +87,7 @@
       <object>objects\Building</object>
       <object>objects\BuildingSetup</object>
       <object>objects\ButtonEditorMode</object>
-      <object>objects\ButtonEventList</object>
-      <object>objects\ButtonCardList</object>
+      <object>objects\ButtonDeckList</object>
       <object>objects\ButtonWeekLeft</object>
       <object>objects\ButtonWeekRight</object>
     </objects>
@@ -99,15 +102,13 @@
       <object>objects\LocationSetup</object>
       <object>objects\ButtonDeleteLocation</object>
       <object>objects\ButtonCreateEvent</object>
-      <object>objects\ButtonSelectEvent</object>
       <object>objects\ButtonLocationLeft</object>
       <object>objects\ButtonLocationRight</object>
       <object>objects\ButtonEventLeft</object>
       <object>objects\ButtonEventRight</object>
+      <object>objects\ButtonSelectEvent</object>
     </objects>
-    <objects name="EventList">
-      <object>objects\EventListSetup</object>
-      <object>objects\ButtonEventNew</object>
+    <objects name="CardEventList">
       <objects name="EventEdit">
         <object>objects\EventEditSetup</object>
       </objects>
@@ -116,7 +117,9 @@
       </objects>
     </objects>
     <objects name="CardList">
+      <object>objects\DeckListSetup</object>
       <object>objects\CardListSetup</object>
+      <object>objects\ButtonCycleMapVisibility</object>
       <objects name="CardEdit">
         <object>objects\CardEditSetup</object>
       </objects>
@@ -129,7 +132,6 @@
       <object>objects\TextInputSetup</object>
       <object>objects\TextInputBox</object>
       <object>objects\ButtonBack</object>
-      <object>objects\ButtonCycleMapVisibility</object>
     </objects>
     <object>objects\GameSetup</object>
   </objects>
@@ -141,14 +143,15 @@
     <room>rooms\RoomDiary</room>
     <room>rooms\RoomCards</room>
     <room>rooms\RoomLocationAdd</room>
-    <room>rooms\RoomEventAdd</room>
-    <room>rooms\RoomEventList</room>
-    <room>rooms\RoomEventSelect</room>
-    <room>rooms\RoomEventEdit</room>
-    <room>rooms\RoomCardEdit</room>
-    <room>rooms\RoomCardAdd</room>
-    <room>rooms\RoomCardSelect</room>
-    <room>rooms\RoomCardList</room>
+    <rooms name="Decks">
+      <room>rooms\RoomDeckList</room>
+      <rooms name="Card">
+        <room>rooms\RoomCardEdit</room>
+        <room>rooms\RoomCardAdd1</room>
+        <room>rooms\RoomCardSelect1</room>
+        <room>rooms\RoomCardDeck</room>
+      </rooms>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

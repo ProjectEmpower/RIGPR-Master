@@ -29,7 +29,18 @@
 //Sets up and draws text on screen.
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
 draw_set_valign(fa_bottom);//sets the vertical allignment for the text
-draw_text(global.MapTitleX,global.MapTitleY,global.cardName);//draws the current cards name on screen 
+if(global.RoomState == 0)
+{
+   draw_text(global.MapTitleX,global.MapTitleY,global.eventName);//draws the current cards name on screen 
+}
+if(global.RoomState == 1)
+{
+    draw_text(global.MapTitleX,global.MapTitleY,global.cardName);//draws the current cards name on screen 
+}
+if(global.RoomState == 2)
+{
+    draw_text(global.MapTitleX,global.MapTitleY,global.consName);//draws the current cards name on screen 
+}
 </string>
           </argument>
         </arguments>

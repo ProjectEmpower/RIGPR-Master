@@ -112,11 +112,11 @@ ButtonEventNew.y = room_height/2+90
             <kind>1</kind>
             <string>//On click event for "ButtonEventNew" 
 //This creates a new blank event and stores it in the ini file for access on the next screen.
-
-global.eventRef = string(global.TotalEventNum);//creates a string of the curent TotalEventNum
+global.totalEventCards += 1;
+global.eventRef = string(global.totalEventCards);//creates a string of the curent TotalEventNum
 global.eventName = "Event"+global.eventRef;//creates the Event+*text of string set above
-ini_open(global.eventINI);//opens the event ini
-ini_write_real(global.eventName,"Ref", global.TotalEventNum);//writes the current TotalEventNum as the "Ref"
+ini_open(global.cardEventINI);//opens the event ini
+ini_write_real(global.eventName,"Ref", global.totalEventCards);//writes the current TotalEventNum as the "Ref"
 ini_write_string(global.eventName,"Event Name", "");//writes a blank "Event Name"
 ini_write_real(global.eventName,"Int", 0);//writes a bank (0) "Int" stat
 ini_write_real(global.eventName,"Char", 0);//writes a blank (0) "Char" stat
@@ -126,7 +126,7 @@ ini_write_real(global.eventName, "Card1",0);//writes a blank (0) "Card1"
 ini_write_real(global.eventName, "Card2",0);//writes a blank (0) "Card2" 
 ini_write_real(global.eventName, "Card3",0);//writes a blank (0) "Card3" 
 ini_close();//closes the ini
-global.TotalEventNum += 1;//adds to the TotalEventNum variable
+//adds to the TotalEventNum variable
 room = RoomEventAdd;//moves to the next room
 </string>
           </argument>

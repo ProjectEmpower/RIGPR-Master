@@ -87,126 +87,275 @@ if(room == RoomLocationAdd)
         }
     }
 }
-if(room == RoomEventAdd or room == RoomEventEdit)
+if(room == RoomCardEdit)
 {
-    //works the same as above, but for roomEventAdd and roomEvenEdit, this is used to display the events information 
-    TeventRef = string(global.eventRef);
-    global.eventName = "Event"+TeventRef;
-    textFeilds = 8;//number of text boxes we want.
-    ini_open(global.eventINI)
-    global.realEventName = ini_read_string(global.eventName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
-    global.reqEventInt = ini_read_real(global.eventName,"Int",0);
-    global.reqEventChar = ini_read_real(global.eventName, "Char", 0);
-    global.reqEventWell = ini_read_real(global.eventName, "Well",0);
-    global.eventMythical = ini_read_real(global.eventName,"Mythical",0);
-    global.card1 = ini_read_real(global.eventName,"Card1",0);
-    global.card2 = ini_read_real(global.eventName,"Card2",0);
-    global.card3 = ini_read_real(global.eventName,"Card3",0);
-    
-    ini_close();
-    var inst;
-    for(i = 0; i &lt; textFeilds; i++)
+    if(global.RoomState == 0)//event card
     {
-            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-            global.tempInputBoxY += 25;
-            global.tempTextBoxY += 25;
-    }
-}
-if(room == RoomEventList or room == RoomEventSelect)
-{
-    //this code is to make sure that the list length doesnt exceed 20
-    if(global.TotalEventNum  &gt;= 21)
-    {
-        global.listLength = 21;   
-    }
-    else
-    {
-        global.listLength = 21 - (21 - global.TotalEventNum);
-    }
-    //used to display the lists of events, works the same as previously
-    for(i = 1; i &lt; global.listLength; i++)
-    {
-        tempEventRef = string(i);       
-        tempEvent = "Event"+tempEventRef;
-        ini_open(global.eventINI);
-        global.eventRef = ini_read_real(tempEvent,"Ref","");
-        global.realEventName = ini_read_string(tempEvent,"Event Name","");
-        global.reqEventInt = ini_read_real(tempEvent,"Int",0);
-        global.reqEventChar = ini_read_real(tempEvent, "Char", 0);       
-        global.reqEventWell = ini_read_real(tempEvent, "Well",0);
-        global.eventMythical = ini_read_real(tempEvent,"Mythical",0);
+        //works the same as above, but for roomEventAdd and roomEvenEdit, this is used to display the events information 
+        TeventRef = string(global.eventRef);
+        global.eventName = "Event"+TeventRef;
+        textFeilds = 10;//number of text boxes we want.
+        ini_open(global.cardEventINI)
+        global.realEventName = ini_read_string(global.eventName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
+        global.eventText = ini_read_string(global.eventName,"Text","");
+        global.reqEventInt = ini_read_real(global.eventName,"Int",0);
+        global.reqEventChar = ini_read_real(global.eventName, "Char", 0);
+        global.reqEventWell = ini_read_real(global.eventName, "Well",0);
+        global.eventMythical = ini_read_real(global.eventName,"Mythical",0);
+        global.card1 = ini_read_real(global.eventName,"Card1",0);
+        global.card2 = ini_read_real(global.eventName,"Card2",0);
+        global.card3 = ini_read_real(global.eventName,"Card3",0);
+        global.card4 = ini_read_real(global.eventName,"Card4",0);
+        
         ini_close();
-        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
-        global.tempInputBoxY += 25;
-        global.tempTextBoxY += 25;
-    }
-}
-if(room == RoomCardAdd or room == RoomCardEdit)
-{
-    //displays the cards information on the card add screen, same way as above.
-    TcardRef = string(global.cardRef);
-    global.cardName = "Card"+TcardRef;
-    textFeilds = 6;//number of text boxes we want.
-    ini_open(global.cardINI)
-    global.realCardName = ini_read_string(global.cardName,"Card Name","");
-    global.int = ini_read_real(global.cardName,"Int",0);
-    global.char = ini_read_real(global.cardName,"Char",0);
-    global.well = ini_read_real(global.cardName,"Well",0);
-    global.cardText = ini_read_string(global.cardName,"Card Text","");
-    global.cardMythical = ini_read_real(global.cardName,"Mythical",0);
-    ini_close();
-    var inst;
-    for(i = 0; i &lt; textFeilds; i++)
-    {
-            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-            global.tempInputBoxY += 25;
-            global.tempTextBoxY += 25;
-    }
-}
-if(room == RoomCardList or room == RoomCardSelect)
-{
-    //this code is to make sure that the list length doesnt exceed 20
-    if(global.TotalCardNum  &gt;= 21)
-    {
-        global.listLength = 21;   
-    }
-    else
-    {
-        global.listLength = 21 - (21 - global.TotalCardNum);
-    }
-    if(global.lastRoom == RoomMap)
-    {
-        eventMythical = 2;  
-    }
-    else
-    {
-        ini_open(global.eventINI);
-        eventMythical = ini_read_real(global.eventName,"Mythical", 0);
-        ini_close();  
-    }
-     //used to display the lists of card, works the same as previously
-    for(i = 1; i &lt; global.listLength; i++)
-    {
-        tempCardRef = string(i);       
-        tempCard = "Card"+tempCardRef;
-        ini_open(global.cardINI);
-        global.cardRef = ini_read_real(tempCard,"Ref",0);
-        global.realCardName = ini_read_string(tempCard,"Card Name","");
-        global.int = ini_read_real(tempCard,"Int",0);
-        global.char = ini_read_real(tempCard,"Char",0);
-        global.well = ini_read_real(tempCard,"Well",0);
-        global.cardText = ini_read_string(tempCard,"Card Text","");
-        global.cardMythical = ini_read_real(tempCard,"Mythical",0);
-        ini_close();
-        if(global.cardMythical == eventMythical or eventMythical = 2)
+        var inst;
+        for(i = 0; i &lt; textFeilds; i++)
         {
+                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.tempInputBoxY += 25;
+                global.tempTextBoxY += 25;
+        }
+    }
+    if(global.RoomState == 1)//action card
+    {
+        //displays the cards information on the card add screen, same way as above.
+        TcardRef = string(global.cardRef);
+        global.cardName = "Action"+TcardRef;
+        textFeilds = 3;//number of text boxes we want.
+        ini_open(global.cardActionINI)
+        global.realCardName = ini_read_string(global.cardName,"Card Name","");
+        global.cardText = ini_read_string(global.cardName,"Card Text","");
+        global.cardMythical = ini_read_real(global.cardName,"Mythical",0);
+        ini_close();
+        var inst;
+        for(i = 0; i &lt; textFeilds; i++)
+        {
+            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+        }
+    }
+    if(global.RoomState == 2)//cons card
+    {
+        //displays the cards information on the card add screen, same way as above.
+        TconsRef = string(global.consCardRef);
+        global.consName = "Cons"+TconsRef;
+        textFeilds = 4;//number of text boxes we want.
+        ini_open(global.cardConsINI)
+        global.consInt = ini_read_real(global.consName ,"Int",0);
+        global.consChar = ini_read_real(global.consName ,"Char",0);
+        global.consWell = ini_read_real(global.consName ,"Well",0);
+        global.consCardText = ini_read_string(global.consName ,"Card Text","");
+        ini_close();
+        var inst;
+        
+        for(i = 0; i &lt; textFeilds; i++)
+        {
+            if(i == 0)//if i = description box then it will set the position based on the increased size
+            { 
+                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
+                global.tempTextBoxY += 100;
+            }
+            else
+            {
+                //creates the instanes of the text boxes on screen.
+                inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            }
+            global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
+            global.tempTextBoxY += 25;
+        }
+    }
+    if(global.RoomState == 3)//info card
+    {
+        //displays the cards information on the card add screen, same way as above.
+        TinfoRef = string(global.infoCardRef);
+        global.infoName = "Info"+TinfoRef;
+        textFeilds = 2;//number of text boxes we want.
+        ini_open(global.cardInfoINI)
+        global.infoCardText = ini_read_string(global.infoName,"Card Text","");
+        global.infoLink = ini_read_real(global.infoName,"Link",0);
+        ini_close();
+        var inst;
+        
+        for(i = 0; i &lt; textFeilds; i++)
+        {
+            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            global.tempInputBoxY += 125;//increases the location of the text/input boxes (large increase for multiple line)
+            global.tempTextBoxY += 125;
+        }
+    }
+}
+if(room == RoomCardDeck)
+{
+    if(global.RoomState == 0)//event card
+    {
+        //this code is to make sure that the list length doesnt exceed 20
+        if(global.totalEventCards  &gt;= 20)
+        {
+            global.listLength = 20;   
+        }
+        else
+        {
+            global.listLength = 20 - (20 - global.totalEventCards);
+        }
+        //used to display the lists of events, works the same as previously
+        for(i = 0; i &lt; global.listLength; i++)
+        {
+            tempEventRef = string(i+1);       
+            tempEvent = "Event"+tempEventRef;
+            ini_open(global.cardEventINI);
+            global.eventRef = ini_read_real(tempEvent,"Ref","");
+            global.eventText = ini_read_string(tempEvent,"Text","");
+            global.realEventName = ini_read_string(tempEvent,"Event Name","");
+            global.reqEventInt = ini_read_real(tempEvent,"Int",0);
+            global.reqEventChar = ini_read_real(tempEvent, "Char", 0);       
+            global.reqEventWell = ini_read_real(tempEvent, "Well",0);
+            global.eventMythical = ini_read_real(tempEvent,"Mythical",0);
+            ini_close();
             inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
             global.tempInputBoxY += 25;
             global.tempTextBoxY += 25;
         }
     }
+    if(global.RoomState == 1)//Action card
+    {
+        //this code is to make sure that the list length doesnt exceed 20
+        if(global.totalActionCards  &gt;= 20)
+        {
+            global.listLength = 20;   
+        }
+        else
+        {
+            global.listLength = 20 - (20 - global.totalActionCards);
+        }
+        if(global.lastRoom == RoomDeckList)
+        {
+            eventMythical = 2;  
+        }
+        else
+        {
+            ini_open(global.cardEventINI);
+            eventMythical = ini_read_real(global.eventName,"Mythical", 0);
+            ini_close();  
+        }
+         //used to display the lists of card, works the same as previously
+        for(i = 0; i &lt; global.listLength; i++)
+        {
+            tempCardRef = string(i+1);       
+            tempCard = "Action"+tempCardRef;
+            ini_open(global.cardActionINI);
+            global.cardRef = ini_read_real(tempCard,"Ref",0);
+            global.realCardName = ini_read_string(tempCard,"Card Name","");
+            global.cardText = ini_read_string(tempCard,"Card Text","");
+            global.cardMythical = ini_read_real(tempCard,"Mythical",0);
+            ini_close();
+            if(global.cardMythical == eventMythical or eventMythical == 2)
+            {
+                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                global.tempInputBoxY += 25;
+                global.tempTextBoxY += 25;
+            }
+        }
+    }
+    if(global.RoomState == 2)//Consequence
+    {
+        //this code is to make sure that the list length doesnt exceed 20
+        if(global.totalConsCards  &gt;= 20)
+        {
+            global.listLength = 20;   
+        }
+        else
+        {
+            global.listLength = 20 - (20 - global.totalConsCards);
+        }
+         //used to display the lists of card, works the same as previously
+        for(i = 0; i &lt; global.listLength; i++)
+        {
+            tempConsCardRef = string(i+1);       
+            tempConsCard = "Cons"+tempConsCardRef;
+            ini_open(global.cardConsINI);
+            global.consCardRef = ini_read_real(tempConsCard,"Ref",0);
+            global.consCardText = ini_read_string(tempConsCard,"Card Text","");
+            global.consInt = ini_read_real(tempConsCard,"Int",0);
+            global.consChar = ini_read_real(tempConsCard,"Char",0);
+            global.consWell = ini_read_real(tempConsCard,"Well",0);
+            ini_close();
+            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+        
+        }
+    }
+    if(global.RoomState == 3)//Info
+    {
+        //this code is to make sure that the list length doesnt exceed 20
+        if(global.totalInfoCards  &gt;= 20)
+        {
+            global.listLength = 20;   
+        }
+        else
+        {
+            global.listLength = 20 - (20 - global.totalInfoCards);
+        }
+         //used to display the lists of card, works the same as previously
+        for(i = 0; i &lt; global.listLength; i++)
+        {
+            tempInfoCardRef = string(i+1);       
+            tempInfoCard = "Info"+tempInfoCardRef;
+            ini_open(global.cardConsINI);
+            global.infoCardRef = ini_read_real(tempInfoCard,"Ref",0);
+            global.infoCardText = ini_read_string(tempInfoCard,"Card Text","");
+            global.infoLink = ini_read_real(tempInfoCard,"Link",0);
+            
+            ini_close();
+            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+        
+        }
+    }
+    if(global.RoomState == 4)//Character
+    {
+        //this code is to make sure that the list length doesnt exceed 20
+        if(global.totalCharCards  &gt;= 20)
+        {
+            global.listLength = 20;   
+        }
+        else
+        {
+            global.listLength = 20 - (20 - global.totalCharCards);
+        }
+        //used to display the lists of card, works the same as previously
+        for(i = 0; i &lt; global.listLength; i++)
+        {
+            tempCharCardRef = string(i+1);       
+            tempCharCard = "Char"+tempCharCardRef;
+            ini_open(global.cardCharINI);
+           // global.consCardRef = ini_read_real(tempCharCard,"Ref",0);
+         //   global.consCardText = ini_read_string(tempCharCard,"Card Text","");
+          //  global.consInt = ini_read_real(tempCharCard,"Int",0);
+          //  global.consChar = ini_read_real(tempCharCard,"Char",0);
+          //  global.consWell = ini_read_real(tempCharCard,"Well",0);
+            ini_close();
+            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+        
+        }
+    }
 }
 
+if(room == RoomDeckList)
+{
+    for(i = 0; i &lt; 5; i++)
+    {
+        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);         
+        global.tempInputBoxY += 25;
+        global.tempTextBoxY += 25;
+    }
+    
+}
 </string>
           </argument>
         </arguments>

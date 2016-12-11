@@ -121,47 +121,71 @@ if(room == RoomLocationAdd)
         global.eventMyth = txt_input;
     }
 }
-else if(room == RoomEventAdd or room == RoomEventEdit)
+else if(room == RoomCardEdit)
 {
-  if(instance_id[realNameTextBoxRef] == id)
+    if(global.RoomState == 0)
     {
-        global.realEventName = txt_input;
+        if(instance_id[realNameTextBoxRef] == id)
+        {
+            global.realEventName = txt_input;
+        }
+        if(instance_id[descTextBoxRef] == id)
+        {
+            global.reqEventInt = real(txt_input);
+        }
+        if(instance_id[thirdTextBoxRef] == id)
+        {
+        
+            global.reqEventChar = real(txt_input);
+        }
+        if(instance_id[forthTextBoxRef] == id)
+        {
+            global.reqEventWell = real(txt_input);
+        }
     }
-    if(instance_id[descTextBoxRef] == id)
+    if(global.RoomState == 1)
     {
-        global.reqEventInt = real(txt_input);
+        if(instance_id[realNameTextBoxRef] == id)
+        {
+            global.realCardName = txt_input;
+        }
+        if(instance_id[descTextBoxRef] == id)
+        {
+            global.int = real(txt_input);
+        }
+        if(instance_id[thirdTextBoxRef] == id)
+        {
+        
+            global.char = real(txt_input);
+        }
+        if(instance_id[forthTextBoxRef] == id)
+        {
+            global.well = real(txt_input);
+        }
+        if(instance_id[fifthTextBoxRef] == id)
+        {
+            global.cardText = txt_input;
+        
+        }
     }
-    if(instance_id[thirdTextBoxRef] == id)
+    if(global.RoomState == 2)
     {
-    
-        global.reqEventChar = real(txt_input);
-    }
-    if(instance_id[forthTextBoxRef] == id)
-    {
-        global.reqEventWell = real(txt_input);
-    }
-}
-else if(room == RoomCardAdd or room == RoomCardEdit)
-{
-  if(instance_id[realNameTextBoxRef] == id)
-    {
-        global.realCardName = txt_input;
-    }
-    if(instance_id[descTextBoxRef] == id)
-    {
-        global.int = real(txt_input);
-    }
-    if(instance_id[thirdTextBoxRef] == id)
-    {
-    
-        global.char = real(txt_input);
-    }
-    if(instance_id[forthTextBoxRef] == id)
-    {
-        global.well = real(txt_input);
-    }
-    if(instance_id[fifthTextBoxRef] == id)
-    {
-        global.cardText = txt_input;
+        if(instance_id[realNameTextBoxRef] == id)
+        {
+            global.consCardText = txt_input;
+        }
+        if(instance_id[descTextBoxRef] == id)
+        {
+            global.consInt = real(txt_input);
+        }
+        if(instance_id[thirdTextBoxRef] == id)
+        {
+        
+            global.consChar = real(txt_input);
+        }
+        if(instance_id[forthTextBoxRef] == id)
+        {
+            global.consCardText = real(txt_input);
+        }
     }
 }

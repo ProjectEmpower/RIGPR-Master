@@ -130,27 +130,73 @@ if(room == RoomLocationAdd) //checks room
     room = RoomMap; //swaps room
 
 }
-if(room == RoomEventAdd or room == RoomEventEdit)
-{
-    script_execute(SaveEvent);//runs save event script
-     room = RoomEventList;
-}
-if(room == RoomEventList)
+
+if(room == RoomDeckList)
 {
     room = RoomMap;
 }
-if(room == RoomCardAdd or room == RoomCardEdit)
+if(room == RoomCardDeck)
 {
-    script_execute(SaveCard);
-    room = RoomCardList;
+    if(global.RoomState == 0)
+    {
+        room = global.lastRoom;
+    }
+    if(global.RoomState == 1)
+    {
+        room = global.lastRoom;
+    }
+    if(global.RoomState == 2)
+    {
+        room = global.lastRoom;
+    }
 }
-if(room == RoomEventSelect)
+if(room == RoomCardDeck)
 {
-    room = RoomLocationAdd;
+
+    if(global.RoomState == 0)
+    {
+        room = global.lastRoom;
+    }
+    if(global.RoomState == 1)
+    {
+        room = RoomDeckList;
+    }
+    if(global.RoomState == 2)
+    {
+        room = global.lastRoom;
+    }
+    if(global.RoomState == 3)
+    {
+        room = global.lastRoom;
+    }
+    if(global.RoomState == 4)
+    {
+        room = global.lastRoom;
+    }
 }
-if(room == RoomCardSelect or room == RoomCardList)
+if(room == RoomCardEdit)
 {
-    room = global.lastRoom; //"lastRoom" stores the room "RoomCardSelect" was accessed from
+
+    if(global.RoomState == 0)
+    {
+        script_execute(SaveEventCard);//runs save event script
+        room = RoomCardDeck;
+    }
+    if(global.RoomState == 1)
+    {
+        script_execute(SaveActionCard);
+        room = RoomCardDeck;
+    }
+    if(global.RoomState == 2)
+    {
+        script_execute(SaveConsCard);
+        room = RoomCardDeck;
+    }
+    if(global.RoomState == 3)
+    {
+        script_execute(SaveInfoCard);
+        room = RoomCardDeck;
+    }
 }
 </string>
           </argument>

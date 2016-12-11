@@ -112,20 +112,69 @@ ButtonCardNew.y = room_height/2+90
             <kind>1</kind>
             <string>//On click event for "ButtonCardNew" 
 //This creates a new blank card and stores it in the ini file for access on the next screen.
+if(room == RoomCardDeck)
+{    
+    if(global.RoomState == 0)
+    {
+        global.totalEventCards += 1;
+        global.eventRef = string(global.totalEventCards);//creates a string of the curent TotalEventNum
+        global.eventName = "Event"+global.eventRef;//creates the Event+*text of string set above
+        ini_open(global.cardEventINI);//opens the event ini
+        ini_write_real(global.eventName,"Ref", global.totalEventCards);//writes the current TotalEventNum as the "Ref"
+        ini_write_string(global.eventName,"Event Name", "");//writes a blank "Event Name"
+        ini_write_real(global.eventName,"Int", 0);//writes a bank (0) "Int" stat
+        ini_write_real(global.eventName,"Char", 0);//writes a blank (0) "Char" stat
+        ini_write_real(global.eventName,"Well", 0);//writes a blank (0) "Well" stat
+        ini_write_real(global.eventName,"Mythical", 0);//writes a Normal (0) "Mythical stat" stat
+        ini_write_real(global.eventName, "Card1",0);//writes a blank (0) "Card1" 
+        ini_write_real(global.eventName, "Card2",0);//writes a blank (0) "Card2" 
+        ini_write_real(global.eventName, "Card3",0);//writes a blank (0) "Card3" 
+        ini_close();//closes the ini
+    }
+    if(global.RoomState == 1)
+    {
+        global.totalActionCards += 1; //adds to the TotalCardNum variable
+        global.cardRef = string(global.totalActionCards);//creates a string of the curent TotalCardNum
+        global.cardName = "Action"+global.cardRef; //creates the Card+*text of string set above*
+        ini_open(global.cardActionINI);//opens the card ini
+        ini_write_real(global.cardName,"Ref", global.totalActionCards);//writes the current TotalCardNum as the "Ref"
+        ini_write_string(global.cardName,"Card Name", ""); //writes a blank "Card Name"
+        ini_write_real(global.cardName,"Int", 0); //writes a bank (0) "Int" stat
+        ini_write_real(global.cardName,"Char", 0);//writes a blank (0) "Char" stat
+        ini_write_real(global.cardName,"Well", 0);//writes a blank (0) "Well" stat
+        ini_write_string(global.cardName,"Card Text","");//writes a blank "Card Text"
+        ini_write_real(global.cardName,"Mythical",0);
+        ini_close();//closes the ini
+        
+    }
+    if(global.RoomState == 2)
+    {
+        global.totalConsCards += 1; //adds to the TotalCardNum variable
+        global.consCardRef = string(global.totalConsCards);//creates a string of the curent TotalCardNum
+        global.consCardName = "Cons"+global.consCardRef; //creates the Card+*text of string set above*
+        ini_open(global.cardConsINI);//opens the card ini
+        ini_write_real(global.consCardName,"Ref", global.totalConsCards);//writes the current TotalCardNum as the "Ref"
+        ini_write_real(global.consCardName,"Int", 0); //writes a bank (0) "Int" stat
+        ini_write_real(global.consCardName,"Char", 0);//writes a blank (0) "Char" stat
+        ini_write_real(global.consCardName,"Well", 0);//writes a blank (0) "Well" stat
+        ini_write_string(global.consCardName,"Card Text","");//writes a blank "Card Text"
+        ini_close();//closes the ini
+    }
+    if(global.RoomState == 3)
+    {
+        global.totalInfoCards += 1; //adds to the TotalCardNum variable
+        global.infoCardRef = string(global.totalInfoCards);//creates a string of the curent TotalCardNum
+        global.infoCardName = "Info"+global.infoCardRef; //creates the Card+*text of string set above*
+        ini_open(global.cardInfoINI);//opens the card ini
+        ini_write_real(global.infoCardName,"Ref", global.totalInfoCards);//writes the current TotalCardNum as the "Ref"
+        ini_write_string(global.infoCardName,"Card Text", ""); //writes a bank (0) "Int" stat
+        ini_write_string(global.infoCardName,"Link", ""); //writes a bank (0) "Int" stat
+        
+        ini_close();//closes the ini
+    }
+}
+room = RoomCardEdit; //moves to the next room
 
-global.cardRef = string(global.TotalCardNum);//creates a string of the curent TotalCardNum
-global.cardName = "Card"+global.cardRef; //creates the Card+*text of string set above*
-ini_open(global.cardINI);//opens the card ini
-ini_write_real(global.cardName,"Ref", global.TotalCardNum);//writes the current TotalCardNum as the "Ref"
-ini_write_string(global.cardName,"Card Name", ""); //writes a blank "Card Name"
-ini_write_real(global.cardName,"Int", 0); //writes a bank (0) "Int" stat
-ini_write_real(global.cardName,"Char", 0);//writes a blank (0) "Char" stat
-ini_write_real(global.cardName,"Well", 0);//writes a blank (0) "Well" stat
-ini_write_string(global.cardName,"Card Text","");//writes a blank "Card Text"
-ini_write_real(global.cardName,"Mythical",0);
-ini_close();//closes the ini
-global.TotalCardNum += 1; //adds to the TotalCardNum variable
-room = RoomCardAdd; //moves to the next room
 </string>
           </argument>
         </arguments>

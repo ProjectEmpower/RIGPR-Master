@@ -25,54 +25,42 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>realNameTextBoxRef = global.textBoxInstanceRef;
-descTextBoxRef = realNameTextBoxRef+1; //must be updated elsewhere if names are changed
+            <string>//This code creates the text boxes default display info
+
+realNameTextBoxRef = global.textBoxInstanceRef;//takes the textBoxInstanceRef (set via instance_count) and creates a variable for use on this page
+descTextBoxRef = realNameTextBoxRef+1; //creates the references to the textboxes instance, accessed via instance_id[ref]
 thirdTextBoxRef = realNameTextBoxRef+2;
 forthTextBoxRef = realNameTextBoxRef+3;
 fifthTextBoxRef = realNameTextBoxRef+4;
 sixthTextBoxRef = realNameTextBoxRef+5;
 seventhTextBoxRef = realNameTextBoxRef+6;
-image_xscale = 1.5;
-if(instance_id[realNameTextBoxRef] == id)
+eighthTextBoxRef = realNameTextBoxRef+7;
+if(room == RoomLocationView)
 {
-    sprite_index = No_sprite;
-    txt_input = global.realLocationName;//sets default text
-    txt_display = "Location Name: ";     //sets display text
-}
-if(instance_id[descTextBoxRef] == id)
-{
-    //sprite_index = TextInputBoxSprite_Large;
-    sprite_index = No_sprite;
-    txt_input = global.description;//sets default text
-    txt_display = "Description: "
-}
-if(instance_id[thirdTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
-{
-    sprite_index = No_sprite;
-    switch(global.locationMyth)
-    {
-        case 0: txt_input = "Normal Map";
-        break;
-        case 1: txt_input = "Mythical Map";
-        break;
-        case 2: txt_input = "Both Maps";
-        break;
-        default: txt_input = "Error - Missing mythical info";
+    image_xscale = 2;
+    for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
+    {    
+        if(instance_id[i] == id)
+        {
+            ref_display = global.cardRef;
+            name_display = global.realCardName;
+            int_display = global.int;
+            char_display = global.char;
+            well_display = global.well;
+            text_display = global.cardText;//not shown here        
+            switch(global.cardMythical)
+            {
+                case 0: myth_display = "N";
+                break;
+                case 1: myth_display = "M";
+                break;   
+            }
+        }
     }
-    txt_display = "Map visibility: "
 }
-if(instance_id[forthTextBoxRef] == id)
-{
-    sprite_index = No_sprite;
-    txt_input = global.locationEventNumber;//sets default text
-    txt_display = "Number of events: "
-}
-if(instance_id[fifthTextBoxRef] == id)
-{
-    txt_input = "8";//sets default text
-    txt_display = "44"
-}
+
 myY = global.tempTextBoxY;//sets current Position (increases depending on instance)
+
 </string>
           </argument>
         </arguments>
@@ -95,17 +83,18 @@ myY = global.tempTextBoxY;//sets current Position (increases depending on instan
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_valign(fa_top);
-draw_set_halign(fa_right);
-draw_text(global.InputTextX ,myY ,txt_display);//Draws the input text
-draw_set_halign(fa_left);
-if(id != instance_id[descTextBoxRef])
+            <string>if(room == RoomLocationView)
 {
-    draw_text(global.InputBoxX , myY ,txt_input); //draws the input box text
-}
-else
-{   
-    draw_text_ext(global.InputBoxX , myY ,txt_input, 20, 300);
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
+    draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
+    draw_text(global.InputBoxX + 0, myY, name_display);
+    draw_text(global.InputBoxX + 125, myY, int_display); 
+    draw_text(global.InputBoxX + 150, myY, char_display); 
+    draw_text(global.InputBoxX + 175, myY, well_display); 
+    draw_text(global.InputBoxX + 200, myY, myth_display);     
+    draw_text(global.InputBoxX + 225, myY, text_display); 
+    
 }
 </string>
           </argument>

@@ -26,8 +26,26 @@
           <argument>
             <kind>1</kind>
             <string>//This code creates a "cardName" variable for use inside the room "RoomCardEdit"
-global.tempCardID = string(global.cardRef);// takes the current cardRef (set when accessing the room)
-global.cardName = "Card"+global.tempCardID;//writes the card name
+if(global.RoomState == 0)
+{
+    global.tempEventID = string(global.eventRef);// takes the current cardRef (set when accessing the room)
+    global.eventName = "Event"+global.tempEventID;//writes the card name
+}
+if(global.RoomState == 1)
+{
+    global.tempCardID = string(global.cardRef);// takes the current cardRef (set when accessing the room)
+    global.cardName = "Action"+global.tempCardID;//writes the card name
+}
+if(global.RoomState == 2)
+{
+    global.tempConID = string(global.consCardRef);// takes the current cardRef (set when accessing the room)
+    global.consName = "Cons"+global.tempConID;//writes the card name
+}
+if(global.RoomState == 3)
+{
+    global.tempInfoID = string(global.infoCardRef);
+    global.infoName = "Info"+global.tempInfoID;
+}
 </string>
           </argument>
         </arguments>
@@ -54,7 +72,18 @@ global.cardName = "Card"+global.tempCardID;//writes the card name
 //Sets up and draws text on screen.
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
 draw_set_valign(fa_bottom);//sets the vertical allignment for the text
-draw_text(global.MapTitleX,global.MapTitleY,global.cardName);//writes the room's title on screen
+if(global.RoomState == 0)
+{
+   draw_text(global.MapTitleX,global.MapTitleY,global.eventName);//draws the current cards name on screen 
+}
+if(global.RoomState == 1)
+{
+    draw_text(global.MapTitleX,global.MapTitleY,global.cardName);//draws the current cards name on screen 
+}
+if(global.RoomState == 2)
+{
+    draw_text(global.MapTitleX,global.MapTitleY,global.consName);//draws the current cards name on screen 
+}
 </string>
           </argument>
         </arguments>
