@@ -30,6 +30,7 @@ if(global.RoomState == 0)
 {
     global.tempEventID = string(global.eventRef);// takes the current cardRef (set when accessing the room)
     global.eventName = "Event"+global.tempEventID;//writes the card name
+   
 }
 if(global.RoomState == 1)
 {
@@ -80,6 +81,7 @@ draw_set_valign(fa_bottom);//sets the vertical allignment for the text
 if(global.RoomState == 0)
 {
    draw_text(global.MapTitleX,global.MapTitleY,global.eventName);//draws the current cards name on screen 
+    draw_text(global.MapTitleX,global.MapTitleY+25,global.eventActionCardsNum);
 }
 if(global.RoomState == 1)
 {

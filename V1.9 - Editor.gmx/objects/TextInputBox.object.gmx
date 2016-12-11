@@ -604,33 +604,30 @@ if(room == RoomCardEdit)
                 default: txt_input = "Error - Missing event mythical info";
             }
         }
-
-            for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+        for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+        {
+            if(instance_id[seventhTextBoxRef + i] == id) 
             {
-                if(instance_id[seventhTextBoxRef + i] == id) 
+              
+                //checks to see if there is a card selected, if so, it displays the cards name
+                if(global.card1[i] == 0)
                 {
-                  
-                    //checks to see if there is a card selected, if so, it displays the cards name
-                    if(global.card1[i] == 0)
-                    {
-                        txt_input = "No Card Selected";
-                    }
-                    else
-                    {
-        //global.eventActionCardsNum
-                        ini_open(global.cardEventINI);
-                        ini_write_real(global.eventName, "Action Cards",global.eventActionCardsNum);
-                        ini_close();
-                        s = string(global.card1[i]);
-                        cardName = "Action"+s;
-                        ini_open(global.cardActionINI);
-                        realCardName = ini_read_string(cardName,"Card Name","");
-                        ini_close();
-                        txt_input = realCardName;
-                    }
+                    txt_input = "No Card Selected";
+                }
+                else
+                {
+                    ini_open(global.cardEventINI);
+                    ini_write_real(global.eventName, "Action Cards",global.eventActionCardsNum);
+                    ini_close();
+                    s = string(global.card1[i]);
+                    cardName = "Action"+s;
+                    ini_open(global.cardActionINI);
+                    realCardName = ini_read_string(cardName,"Card Name","");
+                    ini_close();
+                    txt_input = realCardName;
                 }
             }
-        //}
+        }
         if(instance_id[eighthTextBoxRef+global.eventActionCardsNum] == id) 
         {
          //checks to see if there is a card selected, if so, it displays the cards name
@@ -772,12 +769,14 @@ if(room == RoomCardDeck)//deck of cards
             ini_open(global.cardEventINI);//open the event ini
             s = string(global.currentCard);
             cardToUpdate = "Action"+s;
-            global.eventActionCardsNum = ini_read_real(global.eventName,"Action Cards",0);
-            global.eventActionCardsNum += 1;
+            if(global.edit == 0)
+            {
+                global.eventActionCardsNum = ini_read_real(global.eventName,"Action Cards",0);
+                global.eventActionCardsNum += 1;
+                ini_write_real(global.eventName,"Action Cards",global.eventActionCardsNum);
+            }
             ini_write_real(global.eventName,cardToUpdate,global.cardType);
-            ini_write_real(global.eventName,"Action Cards",global.eventActionCardsNum);
             ini_close();//closes the ini
-            
             global.lastState = 1;
             global.RoomState = 0;
             global.lastRoom = RoomCardDeck;
@@ -850,6 +849,20 @@ if(room == RoomCardEdit)
             if(instance_id[global.textBoxInstanceRef+6+i] == id)
             {
                 global.currentCard = 1+i;//action slot
+                s = string(global.currentCard);
+                cardToCheck = "Action"+s;
+                ini_open(global.cardEventINI);
+                tempCheckingCard = ini_read_real(global.eventName,cardToCheck,0);
+                ini_close();
+                if(tempCheckingCard == 0)
+                {
+                    global.edit = 0;
+                }
+                else
+                {
+                    global.edit = 1;
+                }
+                script_execute(SaveEventCard);
                 global.lastState = 0;  
                 global.RoomState = 1;
                 room = RoomCardDeck;

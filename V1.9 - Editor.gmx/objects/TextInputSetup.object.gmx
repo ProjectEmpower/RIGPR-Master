@@ -230,7 +230,7 @@ if(room == RoomCardDeck)
         //used to display the lists of events, works the same as previously
         for(i = 0; i &lt; global.listLength; i++)
         {
-            tempEventRef = string(i+1);       
+            tempEventRef = string(i+1);                   
             tempEvent = "Event"+tempEventRef;
             ini_open(global.cardEventINI);
             global.eventRef = ini_read_real(tempEvent,"Ref","");

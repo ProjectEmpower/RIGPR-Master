@@ -33,7 +33,7 @@ else if (global.myth == 1)
 {
     sprite_index = MapButtonSprite_NormalMap
 }
-global.EventID = 0;
+global.EventID = 1;
 </string>
           </argument>
         </arguments>

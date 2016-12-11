@@ -68,19 +68,45 @@ switch(sprite)
 //day, period, etc. but ). 
  for(t = 0; t &lt; global.TotalInstanceNum; t++) //runs for loop based on TotalInstanceNum (of buildings)
  {
-     ini_open("location.ini");//opens the ini file
-     currRef = string(t); //sets temp id to be a string of the current number of the loop
-     locationName = "Location"+currRef; //sets locationname to the current instnace in the loop
-     if(id.x == ini_read_real(locationName,"X",0) &amp;&amp; id.y == ini_read_real(locationName,"Y",0))//checks what location you are selecting, it checks the x/y vs the instance (id) x/y
-     {
-         global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used later)
-         ini_close();//closes the ini file
-         room = RoomLocationView//moves to the next room
-     }
+    ini_open(global.locationINI);//opens the ini file
+    currRef = string(t); //sets temp id to be a string of the current number of the loop
+    locationName = "Location"+currRef; //sets locationname to the current instnace in the loop
+    if(id.x == ini_read_real(locationName,"X",0) &amp;&amp; id.y == ini_read_real(locationName,"Y",0))//checks what location you are selecting, it checks the x/y vs the instance (id) x/y
+    {
+        tempEventNum = ini_read_real(locationName, "Number of Events", 0);
+        global.realLocationName = ini_read_string(locationName, "Real Location Name", "");
+        for(e = 1; e &lt;= tempEventNum; e++)
+        {
+            tempEventID = string(e);
+            tempEventWeek = "Event"+tempEventID+"Week";
+            tempEventType = "Event"+tempEventID+"Type";
+            tempEventWeekMap = ini_read_real(locationName, tempEventWeek, 0);
+            if(global.week == tempEventWeekMap) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
+            {
+                global.eventRef = ini_read_real(locationName, tempEventType, 0);
+                
+
+                for(i = 1; i &lt;= global.totalEventCards; i++)
+                {
+                    if(global.eventRef == i)
+                    {
+                        tempID = string(i);
+                        tempEvent = "Event"+tempID;
+                        ini_close();
+                        ini_open(global.cardEventINI)
+                        global.realEventName = ini_read_string(tempEvent, "Event Name", "");
+                        ini_close();
+                        ini_open(global.locationINI);
+                    }   
+                }
+            }
+        }
+        global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used later)
+        ini_close();//closes the ini file
+        room = RoomLocationView//moves to the next room
+    }
+    
 }
-
-
-
 </string>
           </argument>
         </arguments>

@@ -37,26 +37,54 @@ seventhTextBoxRef = realNameTextBoxRef+6;
 eighthTextBoxRef = realNameTextBoxRef+7;
 if(room == RoomLocationView)
 {
-    image_xscale = 2;
-    for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
-    {    
-        if(instance_id[i] == id)
-        {
-            ref_display = global.cardRef;
-            name_display = global.realCardName;
-            int_display = global.int;
-            char_display = global.char;
-            well_display = global.well;
-            text_display = global.cardText;//not shown here        
-            switch(global.cardMythical)
-            {
-                case 0: myth_display = "N";
-                break;
-                case 1: myth_display = "M";
-                break;   
-            }
+    image_xscale = 1.5;
+
+    for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+    {
+        if(instance_id[realNameTextBoxRef + i] == id) 
+        {          
+                ini_open(global.cardEventINI);
+                ini_write_real(global.eventName, "Action Cards",global.eventActionCardsNum);
+                ini_close();
+                s = string(global.card1[i]);
+                cardName = "Action"+s;
+                ini_open(global.cardActionINI);
+                realCardName = ini_read_string(cardName,"Card Name","");
+                ini_close();
+                txt_input = realCardName;
+                txt_display = "Action Card: "
         }
     }
+    if(instance_id[descTextBoxRef + global.eventActionCardsNum] == id) 
+    {
+        s = string(global.card2);
+        cardName = "Cons"+s;
+        ini_open(global.cardConsINI);
+        realCardName = ini_read_string(cardName,"Card Name","");
+        ini_close();
+        txt_input = realCardName;
+        txt_display = "Consequence Card: "
+    }
+    if(instance_id[thirdTextBoxRef + global.eventActionCardsNum] == id) 
+    {
+        s = string(global.card3);
+        cardName = "Info"+s;
+        ini_open(global.cardInfoINI);
+        realCardName = ini_read_string(cardName,"Card Name","");
+        ini_close();
+        txt_input = realCardName;
+        txt_display = "Information Card: "
+    }
+    if(instance_id[forthTextBoxRef + global.eventActionCardsNum] == id) 
+    {
+        s = string(global.card4);
+        cardName = "Char"+s;
+        ini_open(global.cardCharINI);
+        realCardName = ini_read_string(cardName,"Card Name","");
+        ini_close();
+        txt_input = realCardName;
+        txt_display = "Character Card: "
+}
 }
 
 myY = global.tempTextBoxY;//sets current Position (increases depending on instance)
@@ -86,15 +114,10 @@ myY = global.tempTextBoxY;//sets current Position (increases depending on instan
             <string>if(room == RoomLocationView)
 {
     draw_set_valign(fa_top);
+    draw_set_halign(fa_right);
+    draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
     draw_set_halign(fa_left);
-    draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
-    draw_text(global.InputBoxX + 0, myY, name_display);
-    draw_text(global.InputBoxX + 125, myY, int_display); 
-    draw_text(global.InputBoxX + 150, myY, char_display); 
-    draw_text(global.InputBoxX + 175, myY, well_display); 
-    draw_text(global.InputBoxX + 200, myY, myth_display);     
-    draw_text(global.InputBoxX + 225, myY, text_display); 
-    
+    draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
 }
 </string>
           </argument>
