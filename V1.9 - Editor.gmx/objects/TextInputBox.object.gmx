@@ -125,22 +125,26 @@ if(room == RoomCardEdit)
             txt_input = "Error - Mythical status not set";
             txt_display = "Visibility?: "
         }
-        if(instance_id[seventhTextBoxRef] == id) 
+
+        for(i = 0; i &lt;= global.eventActionCardsNum; i++)
         {
-            txt_input = global.card1;
-            txt_display = "Action Card: "
+            if(instance_id[seventhTextBoxRef + i] == id) 
+            {
+                txt_input = global.card1[i];
+                txt_display = "Action Card: "
+            }
         }
-        if(instance_id[eighthTextBoxRef] == id) 
+        if(instance_id[eighthTextBoxRef + global.eventActionCardsNum] == id) 
         {
             txt_input = global.card2;
             txt_display = "Consequence Card: "
         }
-        if(instance_id[ninthTextBoxRef] == id) 
+        if(instance_id[ninthTextBoxRef + global.eventActionCardsNum] == id) 
         {
             txt_input = global.card3;
             txt_display = "Information Card: "
         }
-        if(instance_id[tenthTextBoxRef] == id) 
+        if(instance_id[tenthTextBoxRef + global.eventActionCardsNum] == id) 
         {
             txt_input = global.card4;
             txt_display = "Character Card: "
@@ -600,24 +604,34 @@ if(room == RoomCardEdit)
                 default: txt_input = "Error - Missing event mythical info";
             }
         }
-        if(instance_id[seventhTextBoxRef] == id) 
-        {
-            //checks to see if there is a card selected, if so, it displays the cards name
-            if(global.card1 == 0)
+
+            for(i = 0; i &lt;= global.eventActionCardsNum; i++)
             {
-                txt_input = "No Card Selected";
+                if(instance_id[seventhTextBoxRef + i] == id) 
+                {
+                  
+                    //checks to see if there is a card selected, if so, it displays the cards name
+                    if(global.card1[i] == 0)
+                    {
+                        txt_input = "No Card Selected";
+                    }
+                    else
+                    {
+        //global.eventActionCardsNum
+                        ini_open(global.cardEventINI);
+                        ini_write_real(global.eventName, "Action Cards",global.eventActionCardsNum);
+                        ini_close();
+                        s = string(global.card1[i]);
+                        cardName = "Action"+s;
+                        ini_open(global.cardActionINI);
+                        realCardName = ini_read_string(cardName,"Card Name","");
+                        ini_close();
+                        txt_input = realCardName;
+                    }
+                }
             }
-            else
-            {
-                s = string(global.card1);
-                cardName = "Action"+s;
-                ini_open(global.cardActionINI);
-                realCardName = ini_read_string(cardName,"Card Name","");
-                ini_close();
-                txt_input = realCardName;
-            }
-        }
-        if(instance_id[eighthTextBoxRef] == id) 
+        //}
+        if(instance_id[eighthTextBoxRef+global.eventActionCardsNum] == id) 
         {
          //checks to see if there is a card selected, if so, it displays the cards name
             if(global.card2 == 0)
@@ -634,7 +648,7 @@ if(room == RoomCardEdit)
                 txt_input = realCardName;
             }
         }
-        if(instance_id[ninthTextBoxRef] == id) 
+        if(instance_id[ninthTextBoxRef+global.eventActionCardsNum] == id) 
         {
          //checks to see if there is a card selected, if so, it displays the cards name
             if(global.card3 == 0)
@@ -651,7 +665,7 @@ if(room == RoomCardEdit)
                 txt_input = realCardName;
             }
         }
-        if(instance_id[tenthTextBoxRef] == id) 
+        if(instance_id[tenthTextBoxRef+global.eventActionCardsNum] == id) 
         {
          //checks to see if there is a card selected, if so, it displays the cards name
             if(global.card4 == 0)
@@ -758,8 +772,12 @@ if(room == RoomCardDeck)//deck of cards
             ini_open(global.cardEventINI);//open the event ini
             s = string(global.currentCard);
             cardToUpdate = "Action"+s;
+            global.eventActionCardsNum = ini_read_real(global.eventName,"Action Cards",0);
+            global.eventActionCardsNum += 1;
             ini_write_real(global.eventName,cardToUpdate,global.cardType);
+            ini_write_real(global.eventName,"Action Cards",global.eventActionCardsNum);
             ini_close();//closes the ini
+            
             global.lastState = 1;
             global.RoomState = 0;
             global.lastRoom = RoomCardDeck;
@@ -827,28 +845,31 @@ if(room == RoomCardEdit)
 {
     if(global.RoomState == 0)
     {
-        if(instance_id[global.textBoxInstanceRef+6] == id)
+        for(i = 0; i &lt;= global.eventActionCardsNum; i++)
         {
-            global.currentCard = 1;//action slot
-            global.lastState = 0;  
-            global.RoomState = 1;
-            room = RoomCardDeck;
-        }    
-        if(instance_id[global.textBoxInstanceRef+7] == id)
+            if(instance_id[global.textBoxInstanceRef+6+i] == id)
+            {
+                global.currentCard = 1+i;//action slot
+                global.lastState = 0;  
+                global.RoomState = 1;
+                room = RoomCardDeck;
+            }    
+        }
+        if(instance_id[global.textBoxInstanceRef+7+global.eventActionCardsNum] == id)
         {
             global.currentCard = 2;
             global.lastState = 0;  
             global.RoomState = 2;
             room = RoomCardDeck;
         }    
-        if(instance_id[global.textBoxInstanceRef+8] == id)
+        if(instance_id[global.textBoxInstanceRef+8+global.eventActionCardsNum] == id)
         {
             global.currentCard = 3;
             global.lastState = 0;  
             global.RoomState = 3;
             room = RoomCardDeck;
         } 
-        if(instance_id[global.textBoxInstanceRef+9] == id)
+        if(instance_id[global.textBoxInstanceRef+9+global.eventActionCardsNum] == id)
         {
             global.currentCard = 4;
             global.lastState = 0;  
