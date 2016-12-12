@@ -219,14 +219,14 @@ if(room == RoomCardEdit)
         if(instance_id[descTextBoxRef] == id)
         {
             sprite_index = TextInputBoxSprite_Large;
-            txt_input = global.infoLink;
-            txt_display = "Int: "
+            txt_input = global.infoCardText;
+            txt_display = "Card Text: "
         }
         if(instance_id[thirdTextBoxRef] == id)
         {
             sprite_index = TextInputBoxSprite_Large;
             txt_input = global.infoLink;
-            txt_display = "Int: "
+            txt_display = "Hyperlink: "
         }
     }
 }
@@ -259,7 +259,7 @@ if(room == RoomCardDeck)
     if(global.RoomState == 1)//action
     {
         image_xscale = 2;
-        for(i = realNameTextBoxRef; i &lt; (realNameTextBoxRef+global.listLength); i++)
+        for(i = global.textBoxInstanceRef; i &lt; (global.textBoxInstanceRef+global.listLength); i++)
         {    
             if(instance_id[i] == id)
             {
@@ -834,7 +834,7 @@ if(room == RoomCardDeck)//deck of cards
         else //editing the card
         {
             global.infoCardRef = id.ref_display;
-            global.lastState = 0;
+            global.lastState = 3;
             global.lastRoom = RoomCardDeck; 
             room = RoomCardEdit;//changes room      
         }    

@@ -234,7 +234,7 @@ if(room == RoomCardEdit)//Room that edits an individual card
         script_execute(SaveInfoCard);
         room = RoomCardDeck;
     }
-    if(global.RoomState == 3)
+    if(global.RoomState == 4)
     {
        // script_execute(SaveCharCard);
         room = RoomCardDeck;

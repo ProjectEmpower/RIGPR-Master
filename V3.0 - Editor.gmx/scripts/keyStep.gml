@@ -193,7 +193,7 @@ else if(room == RoomCardEdit)
         }
         if(instance_id[fifthTextBoxRef] == id)
         {
-            global.consCardText = real(txt_input);
+            global.consWell = real(txt_input);
         }
     }
     if(global.RoomState == 3)
