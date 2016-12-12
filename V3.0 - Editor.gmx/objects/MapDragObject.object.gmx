@@ -59,12 +59,18 @@ drag = 0
     view_xview = max(0, min(view_xview, room_width - view_wview)) 
     view_yview = max(0, min(view_yview, room_height - view_hview))
     
+    editorModeDisplay.x = view_xview + 25;
+    editorModeDisplay.y = view_yview + 25;
+    
+    ButtonDeckList.x = view_xview + 75;
+    ButtonDeckList.y = view_yview + 25;
+    
     //sets the button postions when the screen is in movement
     ButtonCharacter.x = view_xview + global.CharacterButtonX 
     ButtonCharacter.y = view_yview + global.CharacterButtonY 
 
     ButtonEditorMode.x = view_xview + global.MythicalButtonX;
-    ButtonEditorMode.y = view_yview + global.MythicalButtonY -50;
+    ButtonEditorMode.y = view_yview + global.MythicalButtonY;
 
     ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;
     ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;

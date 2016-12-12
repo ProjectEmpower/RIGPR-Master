@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//when the map screens start, this will run
-
-    
+            <string>//when the map screens start, this will run   
 var inst;
 //This code counts the number of locations stored, asigns them instances and displays them based on their mythical status.
 global.TotalInstanceNum = 100;//sets global Num to 100 (100 is max istance ammount)

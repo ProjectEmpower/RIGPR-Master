@@ -35,15 +35,15 @@ global.buildingMyth = 1;
 global.CharacterButtonX = 100;
 global.CharacterButtonY = (room_height - 50);
 global.MythicalButtonX = (room_width / 2);
-global.MythicalButtonY = 100;
+global.MythicalButtonY = 50;
 
 global.WeekRightButtonX = room_width - 25
 global.WeekRightButtonY = 25;
 global.WeekLeftButtonX = room_width - 125
 global.WeekLeftButtonY = 25;
 //title positions
-global.MapTitleX = room_width/2;
-global.MapTitleY = 25;
+global.MapTitleX = room_width/2
+global.MapTitleY = 25
 global.InputBoxX = room_width/5
 global.InputBoxY = 80
 global.InputTextX = room_width/5

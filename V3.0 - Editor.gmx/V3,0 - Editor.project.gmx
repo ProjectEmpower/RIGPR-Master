@@ -58,6 +58,7 @@
       </sprites>
       <sprite>sprites\No_sprite</sprite>
       <sprite>sprites\ArrowLeftSprite</sprite>
+      <sprite>sprites\EditorMODE</sprite>
       <sprite>sprites\ArrowRightSprite</sprite>
     </sprites>
   </sprites>
@@ -90,6 +91,7 @@
       <object>objects\ButtonDeckList</object>
       <object>objects\ButtonWeekLeft</object>
       <object>objects\ButtonWeekRight</object>
+      <object>objects\editorModeDisplay</object>
     </objects>
     <objects name="Character">
       <object>objects\TitleCharacter</object>
