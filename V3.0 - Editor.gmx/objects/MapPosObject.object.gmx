@@ -58,14 +58,8 @@ global.zoom = 1
 view_wview[0] = 1024 * global.zoom
 view_hview[0] = 768 * global.zoom
 
-TitleMap.x = view_xview + global.MapTitleX
-TitleMap.y = view_yview + global.MapTitleY 
-
-ButtonEditorMode.x = view_xview + global.MythicalButtonX-200;
-ButtonEditorMode.y = view_yview + global.MythicalButtonY ;
-
-ButtonMapSwap.x = view_xview + global.MythicalButtonX// * global.zoom
-ButtonMapSwap.y = view_yview + global.MythicalButtonY
+ButtonEditorMode.x = view_xview + global.MythicalButtonX;
+ButtonEditorMode.y = view_yview + global.MythicalButtonY -50;
 
 ButtonCharacter.x = view_xview + global.CharacterButtonX
 ButtonCharacter.y = view_yview + global.CharacterButtonY// * global.zoom

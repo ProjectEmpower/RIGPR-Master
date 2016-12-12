@@ -30,7 +30,7 @@
 //sets the initial view of the screen, this is used to to create the variable
 global.currentX = 0;
 global.currentY = 0;
-
+global.buildingMyth = 1;
 //sets the default positions of the Hud on the map screens
 global.CharacterButtonX = 100;
 global.CharacterButtonY = (room_height - 50);

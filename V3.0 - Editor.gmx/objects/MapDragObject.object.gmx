@@ -61,21 +61,16 @@ drag = 0
     
     //sets the button postions when the screen is in movement
     ButtonCharacter.x = view_xview + global.CharacterButtonX 
-    ButtonCharacter.y = view_yview + global.CharacterButtonY
-      
-    ButtonMapSwap.x = view_xview + global.MythicalButtonX
-    ButtonMapSwap.y = view_yview + global.MythicalButtonY 
-    
-    ButtonEditorMode.x = view_xview + global.MythicalButtonX-200;
-    ButtonEditorMode.y = view_yview + global.MythicalButtonY;
-    
+    ButtonCharacter.y = view_yview + global.CharacterButtonY 
+
+    ButtonEditorMode.x = view_xview + global.MythicalButtonX;
+    ButtonEditorMode.y = view_yview + global.MythicalButtonY -50;
+
     ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;
     ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
     ButtonWeekRight.x = view_xview + global.WeekRightButtonX;
     ButtonWeekRight.y = view_yview + global.WeekRightButtonY;
-       
-    TitleMap.x = view_xview + global.MapTitleX
-    TitleMap.y = view_yview + global.MapTitleY 
+
 }
 </string>
           </argument>

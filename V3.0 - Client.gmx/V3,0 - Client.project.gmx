@@ -37,8 +37,10 @@
       <sprite>sprites\TextInputBoxSprite</sprite>
       <sprite>sprites\TextInputBoxSprite_Large</sprite>
     </sprites>
-    <sprite>sprites\BuildingSprite</sprite>
-    <sprite>sprites\BuildingSprite1</sprite>
+    <sprite>sprites\BuildingSpriteNormal</sprite>
+    <sprite>sprites\BuildingSpriteMythical</sprite>
+    <sprite>sprites\BuildingSpriteBoth</sprite>
+    <sprite>sprites\BuildingSpriteNormal1</sprite>
     <sprite>sprites\BuildingSprite2</sprite>
     <sprite>sprites\No_sprite</sprite>
     <sprite>sprites\ArrowLeftSprite</sprite>
