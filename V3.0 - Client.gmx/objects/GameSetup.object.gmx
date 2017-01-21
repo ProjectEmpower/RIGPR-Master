@@ -28,27 +28,27 @@
             <string>//checks to see if the ini files exist, if they do not, it downloads them from the webhost
 if(!file_exists("location.ini"))
 {
-    location_ini = http_get_file("https://ell360.000webhostapp.com/location.ini", "location.ini");
+    location_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/location.ini", "location.ini");
 }
 if(!file_exists("cardEvent.ini"))
 {
-    cardEvent_ini = http_get_file("https://ell360.000webhostapp.com/cardEvent.ini", "cardEvent.ini");
+    cardEvent_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/cardEvent.ini", "cardEvent.ini");
 }
 if(!file_exists("cardAction.ini"))
 {
-    cardAction_ini = http_get_file("https://ell360.000webhostapp.com/cardAction.ini", "cardAction.ini");
+    cardAction_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/cardAction.ini", "cardAction.ini");
 }
 if(!file_exists("cardInfo.ini"))
 {
-    cardInfo_ini = http_get_file("https://ell360.000webhostapp.com/cardInfo.ini", "cardInfo.ini");
+    cardInfo_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/cardInfo.ini", "cardInfo.ini");
 }
 if(!file_exists("cardCons.ini"))
 {
-    cardCons_ini = http_get_file("https://ell360.000webhostapp.com/cardCons.ini", "cardCons.ini");
+    cardCons_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/cardCons.ini", "cardCons.ini");
 }
 if(!file_exists("cardChar.ini"))
 {
-    cardChar_ini = http_get_file("https://ell360.000webhostapp.com/cardChar.ini", "cardChar.ini");
+    cardChar_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/cardChar.ini", "cardChar.ini");
 }
 
 //sets the initial view of the screen, this is used to to create the variable
