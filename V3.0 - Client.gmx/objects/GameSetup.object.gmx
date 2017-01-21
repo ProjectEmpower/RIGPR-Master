@@ -26,29 +26,29 @@
           <argument>
             <kind>1</kind>
             <string>//checks to see if the ini files exist, if they do not, it downloads them from the webhost
-if(!file_exists("location.ini"))
+if(!file_exists("ini_files/location.ini"))
 {
-    location_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/location.ini", "location.ini");
+    location_ini = http_get_file("http://www.ell360.co.uk/ini_files/location.ini", "ini_files/location.ini");
 }
-if(!file_exists("cardEvent.ini"))
+if(!file_exists("ini_files/cardEvent.ini"))
 {
-    cardEvent_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/cardEvent.ini", "cardEvent.ini");
+    cardEvent_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardEvent.ini", "ini_files/cardEvent.ini");
 }
-if(!file_exists("cardAction.ini"))
+if(!file_exists("ini_files/cardAction.ini"))
 {
-    cardAction_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/cardAction.ini", "cardAction.ini");
+    cardAction_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardAction.ini", "ini_files/cardAction.ini");
 }
-if(!file_exists("cardInfo.ini"))
+if(!file_exists("ini_files/cardInfo.ini"))
 {
-    cardInfo_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/cardInfo.ini", "cardInfo.ini");
+    cardInfo_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardInfo.ini", "ini_files/cardInfo.ini");
 }
-if(!file_exists("cardCons.ini"))
+if(!file_exists("ini_files/cardCons.ini"))
 {
-    cardCons_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/cardCons.ini", "cardCons.ini");
+    cardCons_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardCons.ini", "ini_files/cardCons.ini");
 }
-if(!file_exists("cardChar.ini"))
+if(!file_exists("ini_files/cardChar.ini"))
 {
-    cardChar_ini = http_get_file("https://ell360.000webhostapp.com/INI_Files/cardChar.ini", "cardChar.ini");
+    cardChar_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardChar.ini", "ini_files/cardChar.ini");
 }
 
 //sets the initial view of the screen, this is used to to create the variable
@@ -88,14 +88,14 @@ global.totalConsCards = 0;
 global.totalCharCards = 0;
 
 //ini files
-global.locationINI = "location.ini";
-global.playerINI = "player.ini";
+global.locationINI = "ini_files/location.ini";
+global.playerINI = "ini_files/player.ini";
 
-global.cardEventINI = "cardEvent.ini";
-global.cardActionINI = "cardAction.ini";
-global.cardInfoINI = "cardInfo.ini";
-global.cardConsINI = "cardCons.ini";
-global.cardCharINI = "cardChar.ini";
+global.cardEventINI = "ini_files/cardEvent.ini";
+global.cardActionINI = "ini_files/cardAction.ini";
+global.cardInfoINI = "ini_files/cardInfo.ini";
+global.cardConsINI = "ini_files/cardCons.ini";
+global.cardCharINI = "ini_files/cardChar.ini";
 //after setup, it moves to the menu
 room = RoomMenu;
 </string>
