@@ -29,6 +29,7 @@
         <sprite>sprites\BuildingSprite2</sprite>
         <sprite>sprites\ButtonEditorModeSprite</sprite>
         <sprite>sprites\TitleEditorModeSprite</sprite>
+        <sprite>sprites\EditorMODE</sprite>
       </sprites>
       <sprites name="Character">
         <sprite>sprites\CharacterButtonSprite_Diary</sprite>
@@ -44,12 +45,6 @@
       <sprites name="LocationAdd">
         <sprite>sprites\LocationAddButtonSprite_Delete</sprite>
         <sprite>sprites\LocationAddButtonSprite_Delete_Hover</sprite>
-        <sprite>sprites\TextInputBoxSprite</sprite>
-        <sprite>sprites\SelectedTextBoxSprite</sprite>
-        <sprite>sprites\TextInputBoxSprite_Small</sprite>
-        <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
-        <sprite>sprites\TextInputBoxSprite_Large</sprite>
-        <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
         <sprite>sprites\CycleMapSprite</sprite>
         <sprite>sprites\CreateEventSprite</sprite>
         <sprite>sprites\EventEdit</sprite>
@@ -57,8 +52,13 @@
         <sprite>sprites\EventSelect</sprite>
       </sprites>
       <sprite>sprites\No_sprite</sprite>
+      <sprite>sprites\TextInputBoxSprite</sprite>
+      <sprite>sprites\SelectedTextBoxSprite</sprite>
+      <sprite>sprites\TextInputBoxSprite_Large</sprite>
+      <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
+      <sprite>sprites\TextInputBoxSprite_Small</sprite>
+      <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
       <sprite>sprites\ArrowLeftSprite</sprite>
-      <sprite>sprites\EditorMODE</sprite>
       <sprite>sprites\ArrowRightSprite</sprite>
     </sprites>
   </sprites>
@@ -80,11 +80,9 @@
       <object>objects\TitleMenu</object>
     </objects>
     <objects name="Map">
-      <object>objects\ButtonMapSwap</object>
       <object>objects\ButtonCharacter</object>
       <object>objects\MapDragObject</object>
       <object>objects\MapPosObject</object>
-      <object>objects\TitleMap</object>
       <object>objects\Building</object>
       <object>objects\BuildingSetup</object>
       <object>objects\ButtonEditorMode</object>
@@ -92,6 +90,10 @@
       <object>objects\ButtonWeekLeft</object>
       <object>objects\ButtonWeekRight</object>
       <object>objects\editorModeDisplay</object>
+      <objects name="Unused">
+        <object>objects\TitleMap</object>
+        <object>objects\ButtonMapSwap</object>
+      </objects>
     </objects>
     <objects name="Character">
       <object>objects\TitleCharacter</object>
@@ -116,7 +118,7 @@
         <object>objects\CardSetup</object>
         <object>objects\ButtonCycleMapVisibility</object>
       </objects>
-      <objects name="CardCreate">
+      <objects name="CardDeck">
         <object>objects\ButtonCardNew</object>
         <object>objects\CardListSetup</object>
       </objects>

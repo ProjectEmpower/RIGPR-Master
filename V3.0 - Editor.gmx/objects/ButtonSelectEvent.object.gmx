@@ -59,7 +59,7 @@ else
         <arguments>
           <argument>
             <kind>5</kind>
-            <sprite>CreateEventSprite</sprite>
+            <sprite>EventSelect</sprite>
           </argument>
           <argument>
             <kind>0</kind>
@@ -89,7 +89,7 @@ else
         <arguments>
           <argument>
             <kind>5</kind>
-            <sprite>CreateEventSprite</sprite>
+            <sprite>EventSelect</sprite>
           </argument>
           <argument>
             <kind>0</kind>

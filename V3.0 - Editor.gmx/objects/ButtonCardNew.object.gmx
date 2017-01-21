@@ -50,7 +50,7 @@ ButtonCardNew.y = room_height/2+90
         <arguments>
           <argument>
             <kind>5</kind>
-            <sprite>CreateEventSprite</sprite>
+            <sprite>EventCreate</sprite>
           </argument>
           <argument>
             <kind>0</kind>
@@ -80,7 +80,7 @@ ButtonCardNew.y = room_height/2+90
         <arguments>
           <argument>
             <kind>5</kind>
-            <sprite>CreateEventSprite</sprite>
+            <sprite>EventCreate</sprite>
           </argument>
           <argument>
             <kind>0</kind>
