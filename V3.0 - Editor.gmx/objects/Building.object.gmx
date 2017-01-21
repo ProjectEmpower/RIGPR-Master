@@ -27,14 +27,73 @@
             <kind>1</kind>
             <string>//creation code for buildings
 image_angle = 45;//angle of the building
-ref = string(global.objectRef); //reference of the object in string
-Name = "Location"+ref; //Location+*string*
+
+
+if(room == RoomMap)
+{
+    ref = string(global.objectRef); //reference of the object in string
+    Name = "Location"+ref; //Location+*string*
+}
+else
+{
+   Name = "Location"+global.tempID; 
+}
+ini_open(global.locationINI);
+locationEventNumber = ini_read_real(Name,"Number of Events",0);
+ini_close();
+if(locationEventNumber &gt; 0)
+        {
+            tempNormMap = 0;//set normal map to 0 (false)
+            tempMythMap = 0;//set mythical map to 0 (false)
+            for(i = 1; i &lt;= locationEventNumber; i++)//go through the events
+            {
+                tempEventID = string(i);//create a string of the event id based on the iteration (i) 
+                tempEvent = "Event"+tempEventID+"Type";//creates the tempEvent variable for use when accessing the events information from the location ini
+                ini_open(global.locationINI);//opens the location ini
+                tempEventRef = ini_read_real(Name, tempEvent, 3);//reads the events reference 
+                ini_close();//closes the location ini
+                s = string(tempEventRef)//uses the reference set above and creates a string with it
+                tempEventName = "Event"+s;//uses the string to create the event name "Event"+*string set above"
+                ini_open(global.cardEventINI);//opens the event ini
+                tempMyth = ini_read_real(tempEventName, "Mythical", 3);//reads tge mythical status of current event
+                ini_close();//closes the event ini
+                switch(tempMyth)//checks the events mythical statsus, changes the tempNormMap and tempMythMap variables accordingly
+                {
+                    case 0: tempNormMap = 1;
+                    break;
+                    case 1: tempMythMap = 1;
+                    break;
+                    case 2: tempNormMap = 1;
+                            tempMythMap = 1;
+                    default: 
+                    break;
+                }
+            }
+            //sets locationMyth variable and text input accordingly
+            if(tempNormMap == 1 and tempMythMap == 1)
+            {
+                global.locationMyth = 2;
+            }
+            if(tempNormMap == 0 and tempMythMap == 1)
+            {
+                global.locationMyth = 1;
+            }
+            if(tempNormMap == 1 and tempMythMap == 0)
+            {
+                global.locationMyth = 0
+            }
+        }
+
+    ini_open(global.locationINI);
+    ini_write_real(Name,"Mythical",global.locationMyth);
+    ini_close();
+    
 ini_open(global.locationINI); //opens the location ini file1
 myth = ini_read_real(Name,"Mythical",0); //reads the sprite
-sprite = ini_read_real(Name,"SpriteRef",0);
+global.buildingSprite = ini_read_real(Name,"SpriteRef",0);
 ini_close();//close the ini file 
 
-switch(sprite)
+switch(global.buildingSprite)
 {
     case 0: 
         if (myth == 0)
@@ -89,19 +148,22 @@ switch(sprite)
             <kind>1</kind>
             <string>//This object is the buildings object, it will instance out to each building and the code above will occur when 
 //any instance is RIGHT-clicked (we can filter their appearance down, so for example, it will only appear during a week, 
-//day, period, etc. but ). 
- for(t = 0; t &lt; global.TotalInstanceNum; t++) //runs for loop based on TotalInstanceNum (of buildings)
- {
-     ini_open(global.locationINI);//opens the ini file
-     currRef = string(t); //sets temp id to be a string of the current number of the loop
-     locationName = "Location"+currRef; //sets locationname to the current instnace in the loop
-     
-     if(id.x == ini_read_real(locationName,"X",0) &amp;&amp; id.y == ini_read_real(locationName,"Y",0))//checks what location you are selecting, it checks the x/y vs the instance (id) x/y
-     {
-         global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used later)
-         ini_close();//closes the ini file
-         room = RoomLocationAdd//moves to the next room
-     }
+//day, period, etc. but ).
+if(room == RoomMap)
+{ 
+    for(t = 0; t &lt; global.TotalInstanceNum; t++) //runs for loop based on TotalInstanceNum (of buildings)
+    {
+        ini_open(global.locationINI);//opens the ini file
+        currRef = string(t); //sets temp id to be a string of the current number of the loop
+        locationName = "Location"+currRef; //sets locationname to the current instnace in the loop
+        
+        if(id.x == ini_read_real(locationName,"X",0) &amp;&amp; id.y == ini_read_real(locationName,"Y",0))//checks what location you are selecting, it checks the x/y vs the instance (id) x/y
+        {
+            global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used later)
+            ini_close();//closes the ini file
+            room = RoomLocationAdd//moves to the next room
+        }
+    }
 }
 
 </string>

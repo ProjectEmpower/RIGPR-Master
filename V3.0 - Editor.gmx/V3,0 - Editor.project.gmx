@@ -110,6 +110,8 @@
       <object>objects\ButtonLocationRight</object>
       <object>objects\ButtonEventLeft</object>
       <object>objects\ButtonEventRight</object>
+      <object>objects\ButtonSpriteLeft</object>
+      <object>objects\ButtonSpriteRight</object>
       <object>objects\ButtonSelectEvent</object>
     </objects>
     <objects name="CardList">

@@ -747,6 +747,7 @@ if(room == RoomCardDeck)//deck of cards
             s = string(global.EventID);//creates a string using the eventID
             eventType = "Event"+s+"Type";//creates a eventname using type and the string above
             ini_write_real(global.tempLocation,eventType,global.eventType);//writes the info to the ini
+            ini_write_real(global.tempLocation,"Mythical", global.locationMyth);
             ini_close();//closes the ini
             room = RoomLocationAdd;
             
