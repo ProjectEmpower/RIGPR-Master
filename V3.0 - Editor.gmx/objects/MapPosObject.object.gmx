@@ -54,16 +54,22 @@ global.currentY = view_yview
             <string>//sets the current view to the view set when entering the screen (Room start or during initial setup)
 view_xview = global.currentX 
 view_yview = global.currentY  
-global.zoom = 1
-view_wview[0] = 1024 * global.zoom
-view_hview[0] = 768 * global.zoom
 
-editorModeDisplay.x = view_xview + 25;
-editorModeDisplay.y = view_yview + 25;
-ButtonDeckList.x = view_xview + 125;
-ButtonDeckList.y = view_yview + 25;
-ButtonEditorMode.x = view_xview + global.MythicalButtonX;
-ButtonEditorMode.y = view_yview + global.MythicalButtonY;
+
+view_wview[0] = global.roomWidth
+view_hview[0] = global.roomHeight
+
+ButtonOptions.x = view_xview + global.ButtonOptionsX;
+ButtonOptions.y = view_yview + global.ButtonOptionsY;
+    
+ButtonDeckList.x = view_xview + global.ButtonDeckListX;
+ButtonDeckList.y = view_yview + global.ButtonDeckListY;
+
+ButtonEditorMode.x = view_xview + global.ButtonEditorModeX;
+ButtonEditorMode.y = view_yview + global.ButtonEditorModeY;
+
+editorModeDisplay.x = view_xview + global.editorModeDisplayX;
+editorModeDisplay.y = view_yview + global.editorModeDisplayY;
 
 ButtonCharacter.x = view_xview + global.CharacterButtonX
 ButtonCharacter.y = view_yview + global.CharacterButtonY// * global.zoom
@@ -72,33 +78,6 @@ ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;
 ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
 ButtonWeekRight.x = view_xview + global.WeekRightButtonX;
 ButtonWeekRight.y = view_yview + global.WeekRightButtonY;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Draw week 
-//Sets up and draws text on screen.
-draw_set_halign(fa_center);//sets the horizontal allignment for the text
-draw_set_valign(fa_bottom);//sets the vertical allignment for the text
-draw_text(view_xview + global.weekX,view_yview +global.weekY,global.week);//draws the current cards name on screen 
 </string>
           </argument>
         </arguments>

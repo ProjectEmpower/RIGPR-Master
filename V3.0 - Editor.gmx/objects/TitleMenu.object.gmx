@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>//sets the Titles position
-TitleMenu.x = room_width/2
-TitleMenu.y = 50
+TitleMenu.x = global.roomWidth/2
+TitleMenu.y = global.roomHeight/10;
 </string>
           </argument>
         </arguments>

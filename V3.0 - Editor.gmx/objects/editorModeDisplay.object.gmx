@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>global.EventID = 1;
+global.editorModeDisplayX = global.roomWidth/2-115;
+global.editorModeDisplayY = 50;
 </string>
           </argument>
         </arguments>

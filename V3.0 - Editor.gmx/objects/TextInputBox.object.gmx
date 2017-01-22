@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>//This code creates the text boxes default display info
 
+
 realNameTextBoxRef = global.textBoxInstanceRef;//takes the textBoxInstanceRef (set via instance_count) and creates a variable for use on this page
 descTextBoxRef = realNameTextBoxRef+1; //creates the references to the textboxes instance, accessed via instance_id[ref]
 thirdTextBoxRef = realNameTextBoxRef+2;
@@ -952,7 +953,7 @@ if(room == RoomDeckList)
 //this includes text alignment, sizing of boxes, screen positioning
 if(room == RoomLocationAdd)
 {
-    draw_set_valign(fa_top);
+    draw_set_valign(fa_middle);
     draw_set_halign(fa_right);
     draw_text(global.InputTextX, myY, txt_display);//Draws the input text
     draw_set_halign(fa_left);
@@ -970,7 +971,7 @@ if(room == RoomCardEdit)
 {
     if(global.RoomState == 0)
     {
-        draw_set_valign(fa_top);
+        draw_set_valign(fa_middle);
         draw_set_halign(fa_right);
         draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
         draw_set_halign(fa_left);
@@ -978,7 +979,7 @@ if(room == RoomCardEdit)
     }
     if(global.RoomState == 1)
     {
-        draw_set_valign(fa_top);
+        draw_set_valign(fa_middle);
         draw_set_halign(fa_right);
         draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
         draw_set_halign(fa_left);
@@ -986,7 +987,7 @@ if(room == RoomCardEdit)
     }
     if(global.RoomState == 2)
     {
-        draw_set_valign(fa_top);
+        draw_set_valign(fa_middle);
         draw_set_halign(fa_right);
         draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
         draw_set_halign(fa_left);
@@ -994,7 +995,7 @@ if(room == RoomCardEdit)
     }
     if(global.RoomState == 3)
     {
-        draw_set_valign(fa_top);
+        draw_set_valign(fa_middle);
         draw_set_halign(fa_right);
         draw_text(global.InputTextX, myY ,txt_display);//Draws the input text
         draw_set_halign(fa_left);
@@ -1005,7 +1006,7 @@ if(room == RoomCardDeck)
 {
     if(global.RoomState == 0)
     {
-        draw_set_valign(fa_top);
+        draw_set_valign(fa_middle);
         draw_set_halign(fa_left);
         draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
         draw_text(global.InputBoxX + 0, myY, name_display);
@@ -1016,7 +1017,7 @@ if(room == RoomCardDeck)
     }
     if(global.RoomState == 1)
     {
-        draw_set_valign(fa_top);
+        draw_set_valign(fa_middle);
         draw_set_halign(fa_left);
         draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
         draw_text(global.InputBoxX + 0, myY, name_display);
@@ -1026,7 +1027,7 @@ if(room == RoomCardDeck)
     }
     if(global.RoomState == 2)
     {
-        draw_set_valign(fa_top);
+        draw_set_valign(fa_middle);
         draw_set_halign(fa_left);
         draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
         draw_text(global.InputBoxX + 0, myY, name_display);
@@ -1037,7 +1038,7 @@ if(room == RoomCardDeck)
     }
     if(global.RoomState == 3)
     {
-        draw_set_valign(fa_top);
+        draw_set_valign(fa_middle);
         draw_set_halign(fa_left);
         draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
         draw_text(global.InputBoxX + 0, myY, name_display);                
@@ -1045,7 +1046,7 @@ if(room == RoomCardDeck)
 }
 if(room == RoomDeckList)
 {
-    draw_set_valign(fa_top);
+    draw_set_valign(fa_middle);
     draw_set_halign(fa_left);
     draw_text(global.InputBoxX - 25, myY, num_display); //draws the input box text
     draw_text(global.InputBoxX + 0, myY, txt_display);

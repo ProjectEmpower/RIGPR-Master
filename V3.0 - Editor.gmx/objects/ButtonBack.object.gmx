@@ -26,8 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>//Set position on screen.
-ButtonBack.x = room_width-100
-ButtonBack.y = room_height-50
+ButtonBack.x = global.roomWidth-100;
+ButtonBack.y = global.roomHeight-50;
+
+
 </string>
           </argument>
         </arguments>
@@ -179,6 +181,10 @@ if(room == RoomCardEdit)//Room that edits an individual card
        // script_execute(SaveCharCard);
         room = RoomCardDeck;
     }
+}
+if(room == RoomOptions)
+{
+    room = global.lastRoom;
 }
 </string>
           </argument>

@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -28,7 +28,7 @@
             <string>//Draw event used in "RoomEventList"
 //Sets up and draws text on screen.
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
-draw_set_valign(fa_bottom);//sets the vertical allignment for the text
+draw_set_valign(fa_middle);//sets the vertical allignment for the text
 draw_text(global.MapTitleX,global.MapTitleY,"Deck List");//writes the room's title on screen
 
 </string>

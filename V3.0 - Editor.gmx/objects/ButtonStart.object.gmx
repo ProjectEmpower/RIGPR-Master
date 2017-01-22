@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>//sets the buttons position
-ButtonStart.x = room_width/2 
-ButtonStart.y = room_height/2
+ButtonStart.x = global.roomWidth/2;
+ButtonStart.y = global.roomHeight/2;
 </string>
           </argument>
         </arguments>
