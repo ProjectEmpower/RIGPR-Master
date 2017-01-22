@@ -10,42 +10,29 @@
     <sprites name="Rooms">
       <sprites name="Menu">
         <sprite>sprites\ButtonSpriteStart</sprite>
-        <sprite>sprites\ButtonSpriteStart_Hover</sprite>
         <sprite>sprites\MenuTitleSprite</sprite>
       </sprites>
       <sprites name="Map">
         <sprite>sprites\MapButtonSprite_Character</sprite>
-        <sprite>sprites\MapButtonSprite_Character_Hover</sprite>
-        <sprite>sprites\MapButtonSprite_MythicalMap</sprite>
-        <sprite>sprites\MapButtonSprite_MythicalMap_Hover</sprite>
-        <sprite>sprites\NormalMapTitleSprite</sprite>
-        <sprite>sprites\MythicalMapTitleSprite</sprite>
-        <sprite>sprites\MapButtonSprite_NormalMap_Hover</sprite>
-        <sprite>sprites\MapButtonSprite_NormalMap</sprite>
         <sprite>sprites\BuildingSpriteNormal</sprite>
         <sprite>sprites\BuildingSpriteMythical</sprite>
         <sprite>sprites\BuildingSpriteBoth</sprite>
         <sprite>sprites\BuildingSpriteNormal1</sprite>
         <sprite>sprites\BuildingSprite2</sprite>
         <sprite>sprites\ButtonEditorModeSprite</sprite>
-        <sprite>sprites\TitleEditorModeSprite</sprite>
         <sprite>sprites\EditorMODE</sprite>
         <sprite>sprites\DeckListSprite</sprite>
       </sprites>
       <sprites name="Character">
         <sprite>sprites\CharacterButtonSprite_Diary</sprite>
-        <sprite>sprites\CharacterButtonSprite_Diary_Hover</sprite>
         <sprite>sprites\CharacterButtonSprite_Cards</sprite>
-        <sprite>sprites\CharacterButtonSprite_Cards_Hover</sprite>
         <sprite>sprites\CharacterTitleSprite</sprite>
         <sprite>sprites\DiaryTitleSprite</sprite>
         <sprite>sprites\CardsTitleSprite</sprite>
       </sprites>
-      <sprite>sprites\GeneralButtonSprite_Back_Hover</sprite>
       <sprite>sprites\GeneralButtonSprite_Back</sprite>
       <sprites name="LocationAdd">
         <sprite>sprites\LocationAddButtonSprite_Delete</sprite>
-        <sprite>sprites\LocationAddButtonSprite_Delete_Hover</sprite>
         <sprite>sprites\CycleMapSprite</sprite>
         <sprite>sprites\CreateEventSprite</sprite>
         <sprite>sprites\EventEdit</sprite>
