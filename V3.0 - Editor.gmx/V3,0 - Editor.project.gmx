@@ -50,6 +50,7 @@
         <sprite>sprites\CreateEventSprite</sprite>
         <sprite>sprites\EventEdit</sprite>
         <sprite>sprites\EventCreate</sprite>
+        <sprite>sprites\CardCreate</sprite>
         <sprite>sprites\EventSelect</sprite>
       </sprites>
       <sprite>sprites\No_sprite</sprite>
