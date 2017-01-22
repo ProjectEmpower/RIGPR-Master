@@ -62,7 +62,7 @@ drag = 0
     editorModeDisplay.x = view_xview + 25;
     editorModeDisplay.y = view_yview + 25;
     
-    ButtonDeckList.x = view_xview + 75;
+ButtonDeckList.x = view_xview + 125;
     ButtonDeckList.y = view_yview + 25;
     
     //sets the button postions when the screen is in movement

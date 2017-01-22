@@ -30,6 +30,7 @@
         <sprite>sprites\ButtonEditorModeSprite</sprite>
         <sprite>sprites\TitleEditorModeSprite</sprite>
         <sprite>sprites\EditorMODE</sprite>
+        <sprite>sprites\DeckListSprite</sprite>
       </sprites>
       <sprites name="Character">
         <sprite>sprites\CharacterButtonSprite_Diary</sprite>

@@ -26,9 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>//sets position, if there are events to display
+ButtonSpriteRight.x = room_width - 300;
+ButtonSpriteRight.y = 250;
 
-ButtonSpriteRight.x = room_width - 65;
-ButtonSpriteRight.y = 200;
 </string>
           </argument>
         </arguments>

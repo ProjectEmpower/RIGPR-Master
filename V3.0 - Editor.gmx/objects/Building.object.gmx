@@ -36,7 +36,9 @@ if(room == RoomMap)
 }
 else
 {
-   Name = "Location"+global.tempID; 
+    Building.x = room_width - 350;
+    Building.y = 175;
+    Name = "Location"+global.tempID; 
 }
 ini_open(global.locationINI);
 locationEventNumber = ini_read_real(Name,"Number of Events",0);
