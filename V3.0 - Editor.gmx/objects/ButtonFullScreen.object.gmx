@@ -52,19 +52,15 @@ ButtonFullScreen.y = global.roomHeight/2;
             <kind>1</kind>
             <string>if(global.fullScreen == true)
 {
-    global.roomWidth = 1280;
-    global.roomHeight = 720;
     global.fullScreen = false;
     window_set_fullscreen(false);
 }
 else
 {
-    global.roomWidth = 1920;
-    global.roomHeight = 1080;
     global.fullScreen = true;
     window_set_fullscreen(true);
 }
-room = RoomResChange;
+
 </string>
           </argument>
         </arguments>

@@ -26,7 +26,7 @@ for(i = 0; i < numberOfRooms; i++)
     }
     room_set_width(roomToChange,global.roomWidth);
     room_set_height(roomToChange,global.roomHeight);
-    room_set_view(roomToChange,0,0,0,0,global.roomWidth,global.roomHeight,0,0,global.roomWidth,global.roomHeight,0,0,0,0,-1)
+    room_set_view(roomToChange,0,0,0,0,global.roomWidth,global.roomHeight,0,0,global.roomWidth,global.roomHeight,30,30,0,0,-1)
     display_set_gui_size(global.roomWidth,global.roomHeight);
     //title positions
     global.MapTitleX = global.roomWidth/2;

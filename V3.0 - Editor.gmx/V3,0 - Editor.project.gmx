@@ -12,6 +12,7 @@
         <sprite>sprites\ButtonSpriteStart</sprite>
         <sprite>sprites\MenuTitleSprite</sprite>
         <sprite>sprites\ButtonSpriteOptions</sprite>
+        <sprite>sprites\ButtonSpriteResetWindow</sprite>
         <sprite>sprites\ButtonSpriteFullScreen</sprite>
       </sprites>
       <sprites name="Map">
@@ -126,6 +127,7 @@
     <objects name="Options">
       <object>objects\ButtonFullScreen</object>
       <object>objects\ResChange</object>
+      <object>objects\ButtonResetWindow</object>
     </objects>
     <object>objects\GameSetup</object>
   </objects>

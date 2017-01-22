@@ -36,8 +36,8 @@ if(room == RoomMap)
 }
 else
 {
-    Building.x = room_width - 350;
-    Building.y = 175;
+    Building.x = global.roomWidth/5*3;
+    Building.y = global.roomHeight/5+25;
     Name = "Location"+global.tempID; 
 }
 ini_open(global.locationINI);
@@ -168,6 +168,34 @@ if(room == RoomMap)
     }
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(room == RoomLocationAdd)
+{
+    draw_set_halign(fa_center);//sets the horizontal allignment for the text
+    draw_set_valign(fa_middle);//sets the vertical allignment for the text
+    draw_text(global.roomWidth/5*3, global.roomHeight/8,"Location Image");
+}
 </string>
           </argument>
         </arguments>
