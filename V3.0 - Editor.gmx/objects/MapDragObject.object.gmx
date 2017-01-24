@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>//creates the variable drag (sets it to false)
 drag = 0
+currentPosX = 0
+currentPosY = 0
 </string>
           </argument>
         </arguments>
@@ -80,14 +82,17 @@ drag = 0
     ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
     ButtonWeekRight.x = view_xview + global.WeekRightButtonX;
     ButtonWeekRight.y = view_yview + global.WeekRightButtonY;
-
+    if(currentPosX != view_xview or currentPosY != view_yview)
+    {
+        global.moveLock = 1;
+    }
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="58">
+    <event eventtype="6" enumb="56">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -106,12 +111,13 @@ drag = 0
             <kind>1</kind>
             <string>//sets the drag variable to false
 drag = 0
+global.moveLock = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="55">
+    <event eventtype="6" enumb="53">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -133,7 +139,8 @@ drag = 1
 //sets the dragX and dragY positions to the mouse's current position
 dragX = mouse_x
 dragY = mouse_y
-
+currentPosX = view_xview;
+currentPosY = view_yview;
 </string>
           </argument>
         </arguments>
