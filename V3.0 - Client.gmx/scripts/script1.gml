@@ -1,1 +1,0 @@
-global.variable = 0;

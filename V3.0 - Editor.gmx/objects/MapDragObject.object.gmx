@@ -51,7 +51,7 @@ currentPosY = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(drag == 1) //if drag is 1 (true)
+            <string>    if(drag == 1) //if drag is 1 (true)
 {
     //sets the view when dragging
     view_xview = dragX - (mouse_x - view_xview) 
@@ -78,6 +78,9 @@ currentPosY = 0
     editorModeDisplay.x = view_xview + global.editorModeDisplayX;
     editorModeDisplay.y = view_yview + global.editorModeDisplayY;
     
+    WeekTextDraw.x = view_xview+ global.weekX;
+    WeekTextDraw.y = view_yview+ global.weekY;
+
     ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;
     ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
     ButtonWeekRight.x = view_xview + global.WeekRightButtonX;

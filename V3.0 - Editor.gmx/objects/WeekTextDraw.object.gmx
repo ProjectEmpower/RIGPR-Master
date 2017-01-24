@@ -53,7 +53,7 @@ global.weekY = 25;
 //Sets up and draws text on screen.
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
 draw_set_valign(fa_middle);//sets the vertical allignment for the text
-draw_text(view_xview + global.weekX,view_yview +global.weekY,global.week);//draws the current cards name on screen 
+draw_text(WeekTextDraw.x,WeekTextDraw.y,global.week);//draws the current cards name on screen 
 </string>
           </argument>
         </arguments>

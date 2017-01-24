@@ -10,37 +10,37 @@
     <sprites name="Rooms">
       <sprites name="Menu">
         <sprite>sprites\ButtonSpriteStart</sprite>
-        <sprite>sprites\MenuTitleSprite</sprite>
+        <sprite>sprites\TitleSpriteMenu</sprite>
         <sprite>sprites\ButtonSpriteOptions</sprite>
         <sprite>sprites\ButtonSpriteResetWindow</sprite>
         <sprite>sprites\ButtonSpriteFullScreen</sprite>
       </sprites>
       <sprites name="Map">
-        <sprite>sprites\MapButtonSprite_Character</sprite>
+        <sprite>sprites\ButtonSpriteCharacter</sprite>
         <sprite>sprites\BuildingSpriteNormal</sprite>
         <sprite>sprites\BuildingSpriteMythical</sprite>
         <sprite>sprites\BuildingSpriteBoth</sprite>
         <sprite>sprites\BuildingSpriteNormal1</sprite>
         <sprite>sprites\ButtonEditorModeSprite</sprite>
         <sprite>sprites\EditorMODE</sprite>
-        <sprite>sprites\DeckListSprite</sprite>
+        <sprite>sprites\ButtonDeckListSprite</sprite>
       </sprites>
       <sprites name="Character">
-        <sprite>sprites\CharacterButtonSprite_Diary</sprite>
-        <sprite>sprites\CharacterButtonSprite_Cards</sprite>
-        <sprite>sprites\CharacterTitleSprite</sprite>
-        <sprite>sprites\DiaryTitleSprite</sprite>
-        <sprite>sprites\CardsTitleSprite</sprite>
+        <sprite>sprites\ButtonSpriteDiary</sprite>
+        <sprite>sprites\ButtonSpriteCards</sprite>
+        <sprite>sprites\TitleSpriteCharacter</sprite>
+        <sprite>sprites\TitleSpriteDiary</sprite>
+        <sprite>sprites\TitleSpriteCards</sprite>
       </sprites>
-      <sprite>sprites\GeneralButtonSprite_Back</sprite>
+      <sprite>sprites\ButtonSpriteBack</sprite>
       <sprites name="LocationAdd">
-        <sprite>sprites\LocationAddButtonSprite_Delete</sprite>
-        <sprite>sprites\CycleMapSprite</sprite>
-        <sprite>sprites\CreateEventSprite</sprite>
-        <sprite>sprites\EventEdit</sprite>
-        <sprite>sprites\EventCreate</sprite>
-        <sprite>sprites\CardCreate</sprite>
-        <sprite>sprites\EventSelect</sprite>
+        <sprite>sprites\ButtonSpriteDelete</sprite>
+        <sprite>sprites\ButtonSpriteCycleMapVisibility</sprite>
+        <sprite>sprites\ButtonSpriteNewEvent</sprite>
+        <sprite>sprites\ButtonSpriteEditEvent</sprite>
+        <sprite>sprites\ButtonSpriteCreateEvent</sprite>
+        <sprite>sprites\ButtonSpriteCreateCard</sprite>
+        <sprite>sprites\ButtonSpriteEventSelect</sprite>
       </sprites>
       <sprite>sprites\No_sprite</sprite>
       <sprite>sprites\TextInputBoxSprite</sprite>
@@ -49,8 +49,8 @@
       <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
       <sprite>sprites\TextInputBoxSprite_Small</sprite>
       <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
-      <sprite>sprites\ArrowLeftSprite</sprite>
-      <sprite>sprites\ArrowRightSprite</sprite>
+      <sprite>sprites\ArrowSpriteLeft</sprite>
+      <sprite>sprites\ArrowSpriteRight</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">

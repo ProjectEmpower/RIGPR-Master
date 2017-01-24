@@ -9,47 +9,39 @@
   <sprites name="sprites">
     <sprites name="Rooms">
       <sprites name="Menu">
-        <sprite>sprites\MenuButtonSprite_Start</sprite>
-        <sprite>sprites\MenuButtonSprite_Start_Hover</sprite>
-        <sprite>sprites\MenuTitleSprite</sprite>
+        <sprite>sprites\ButtonSpriteStart</sprite>
+        <sprite>sprites\TitleSpriteMenu</sprite>
       </sprites>
       <sprites name="Map">
-        <sprite>sprites\MapButtonSprite_Character</sprite>
-        <sprite>sprites\MapButtonSprite_Character_Hover</sprite>
-        <sprite>sprites\MapButtonSprite_MythicalMap</sprite>
-        <sprite>sprites\MapButtonSprite_MythicalMap_Hover</sprite>
-        <sprite>sprites\NormalMapTitleSprite</sprite>
-        <sprite>sprites\MythicalMapTitleSprite</sprite>
-        <sprite>sprites\MapButtonSprite_NormalMap_Hover</sprite>
-        <sprite>sprites\MapButtonSprite_NormalMap</sprite>
+        <sprite>sprites\ButtonSpriteCharacter</sprite>
       </sprites>
       <sprites name="Character">
-        <sprite>sprites\CharacterButtonSprite_Diary</sprite>
-        <sprite>sprites\CharacterButtonSprite_Diary_Hover</sprite>
-        <sprite>sprites\CharacterButtonSprite_Cards</sprite>
-        <sprite>sprites\CharacterButtonSprite_Cards_Hover</sprite>
-        <sprite>sprites\CharacterTitleSprite</sprite>
-        <sprite>sprites\DiaryTitleSprite</sprite>
-        <sprite>sprites\CardsTitleSprite</sprite>
+        <sprite>sprites\ButtonSpriteDiary</sprite>
+        <sprite>sprites\ButtonSpriteCards</sprite>
+        <sprite>sprites\TitleSpriteCharacter</sprite>
+        <sprite>sprites\TitleSpriteDiary</sprite>
+        <sprite>sprites\TitleSpriteCards</sprite>
       </sprites>
-      <sprite>sprites\GeneralButtonSprite_Back</sprite>
-      <sprite>sprites\GeneralButtonSprite_Back_Hover</sprite>
-      <sprite>sprites\TextInputBoxSprite</sprite>
-      <sprite>sprites\TextInputBoxSprite_Large</sprite>
+      <sprite>sprites\ButtonSpriteBack</sprite>
+      <sprite>sprites\TextboxSprite</sprite>
+      <sprite>sprites\TextBoxSpriteLarge</sprite>
     </sprites>
     <sprite>sprites\BuildingSpriteNormal</sprite>
     <sprite>sprites\BuildingSpriteMythical</sprite>
     <sprite>sprites\BuildingSpriteBoth</sprite>
     <sprite>sprites\BuildingSpriteNormal1</sprite>
-    <sprite>sprites\BuildingSprite2</sprite>
     <sprite>sprites\No_sprite</sprite>
-    <sprite>sprites\ArrowLeftSprite</sprite>
-    <sprite>sprites\ArrowRightSprite</sprite>
+    <sprite>sprites\ArrowSpriteLeft</sprite>
+    <sprite>sprites\ArrowSpriteRight</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\ResolutionChange.gml</script>
+    <script>scripts\keyStep.gml</script>
+  </scripts>
   <objects name="objects">
     <objects name="Rooms">
       <objects name="Menu">
@@ -57,15 +49,14 @@
         <object>objects\TitleMenu</object>
       </objects>
       <objects name="Map">
-        <object>objects\ButtonMapSwap</object>
         <object>objects\ButtonCharacter</object>
         <object>objects\MapDragObject</object>
         <object>objects\MapPosObject</object>
-        <object>objects\TitleMap</object>
         <object>objects\Building</object>
         <object>objects\BuildingSetup</object>
         <object>objects\ButtonWeekLeft</object>
         <object>objects\ButtonWeekRight</object>
+        <object>objects\WeekTextDraw</object>
       </objects>
       <objects name="Character">
         <object>objects\TitleCharacter</object>
@@ -81,11 +72,17 @@
         <object>objects\TextInputSetup</object>
         <object>objects\TextInputBox</object>
       </objects>
+      <objects name="Options">
+        <object>objects\ResChange</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
     <room>rooms\RoomMenu</room>
+    <rooms name="Options">
+      <room>rooms\RoomResChange</room>
+    </rooms>
     <room>rooms\RoomMap</room>
     <room>rooms\RoomCharacter</room>
     <room>rooms\RoomDiary</room>

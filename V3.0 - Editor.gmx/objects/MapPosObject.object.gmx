@@ -61,7 +61,10 @@ view_hview[0] = global.roomHeight
 
 ButtonOptions.x = view_xview + global.ButtonOptionsX;
 ButtonOptions.y = view_yview + global.ButtonOptionsY;
-    
+
+WeekTextDraw.x = view_xview+ global.weekX;
+WeekTextDraw.y = view_yview+ global.weekY;
+
 ButtonDeckList.x = view_xview + global.ButtonDeckListX;
 ButtonDeckList.y = view_yview + global.ButtonDeckListY;
 

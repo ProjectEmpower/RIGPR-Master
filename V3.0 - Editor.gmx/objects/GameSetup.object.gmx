@@ -35,39 +35,39 @@ global.buildingMyth = 1;
 global.roomWidth = 1280;
 global.roomHeight = 720;
 global.fullScreen = false;
-script_execute(ResolutionChange);
+
 window_set_fullscreen(global.fullScreen);
 
 //week info
 global.week = 0;//week
 
 //instnace variables
-global.TotalInstanceNum = 0;
+global.TotalInstanceNum = 0;//used later for building placement
 global.myth = 0;
 global.locked = 0;
 global.tempNum = 0;
 global.EventID = 1;//sets the default event ID (being 0) when the map screen is entered
 
-global.moveLock = 0;
-global.lastState = 20;
+global.moveLock = 0;//locks the player from entering a location when panning the map screen
+global.lastState = 20;//used for moving betwen rooms
 global.edit = 0;
-global.totalEventCards = 0;
-global.totalActionCards = 0;
-global.totalInfoCards = 0;
-global.totalConsCards = 0;
-global.totalCharCards = 0;
+global.totalEventCards = 0;//total number of events
+global.totalActionCards = 0;//total number of action cards
+global.totalInfoCards = 0;//total number of info cards
+global.totalConsCards = 0;//total number of consequence cards
+global.totalCharCards = 0;//total number of character cards
 //ini files
-//global.eventINI = "event.ini";
 global.locationINI = "location.ini";
 global.playerINI = "player.ini";
-//global.cardINI = "card.ini";
 
 global.cardEventINI = "cardEvent.ini";
 global.cardActionINI = "cardAction.ini";
 global.cardInfoINI = "cardInfo.ini";
 global.cardConsINI = "cardCons.ini";
 global.cardCharINI = "cardChar.ini";
-room = RoomMenu;//moves to the menu
+
+global.lastRoom = room;
+room = RoomResChange;//moves to the menu
 </string>
           </argument>
         </arguments>

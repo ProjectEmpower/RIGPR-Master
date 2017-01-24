@@ -65,6 +65,9 @@ currentPosY = 0
     ButtonCharacter.x = view_xview + global.CharacterButtonX;
     ButtonCharacter.y = view_yview + global.CharacterButtonY;
     
+    WeekTextDraw.x = view_xview+ global.weekX;
+    WeekTextDraw.y = view_yview+ global.weekY;
+
     ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;
     ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
     ButtonWeekRight.x = view_xview + global.WeekRightButtonX;

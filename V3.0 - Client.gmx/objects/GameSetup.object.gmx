@@ -54,41 +54,29 @@ if(!file_exists("ini_files/cardChar.ini"))
 //sets the initial view of the screen, this is used to to create the variable
 global.currentX = 0;
 global.currentY = 0;
-
-
 //sets the default positions of the Hud on the map screens
-global.CharacterButtonX = 100 
-global.CharacterButtonY = (room_height - 50)
-global.MythicalButtonX = (room_width / 2)
-global.MythicalButtonY = 100
-global.WeekRightButtonX = room_width - 25
-global.WeekRightButtonY = 25;
-global.WeekLeftButtonX = room_width - 125
-global.WeekLeftButtonY = 25;
-global.MapTitleX = room_width/2
-global.MapTitleY = 25
-global.InputBoxX = room_width/5
-global.InputBoxY = 80
-global.InputTextX = room_width/5
-global.InputTextY = 65
-global.weekX = room_width-75
-global.weekY = global.MapTitleY
+global.roomWidth = 1280;
+global.roomHeight = 720;
+global.fullScreen = false;
+window_set_fullscreen(global.fullScreen);//checks to see if it should be full screen, applies to pc only
+
 //week info
+
 global.week = 0;//week
 
 //instnace variables
-global.TotalInstanceNum = 0;
-global.myth = 0;
+global.TotalInstanceNum = 0;//used later for building placement
+global.myth = 0; 
 global.locked = 0;
 global.tempNum = 0;
 
-global.moveLock = 0; //
+global.moveLock = 0; //locks the player from entering a location when panning the map screen
 
-global.totalEventCards = 0;
-global.totalActionCards = 0;
-global.totalInfoCards = 0;
-global.totalConsCards = 0;
-global.totalCharCards = 0;
+global.totalEventCards = 0;//total number of events
+global.totalActionCards = 0;//total number of action cards
+global.totalInfoCards = 0;//total number of info cards
+global.totalConsCards = 0;//total number of consequence cards
+global.totalCharCards = 0;//total number of character cards
 
 //ini files
 global.locationINI = "ini_files/location.ini";
@@ -99,8 +87,8 @@ global.cardActionINI = "ini_files/cardAction.ini";
 global.cardInfoINI = "ini_files/cardInfo.ini";
 global.cardConsINI = "ini_files/cardCons.ini";
 global.cardCharINI = "ini_files/cardChar.ini";
-//after setup, it moves to the menu
-room = RoomMenu;
+
+room = RoomResChange;//moves to the menu
 </string>
           </argument>
         </arguments>
