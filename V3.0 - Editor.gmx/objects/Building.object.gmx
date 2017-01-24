@@ -42,85 +42,87 @@ else
 }
 ini_open(global.locationINI);
 locationEventNumber = ini_read_real(Name,"Number of Events",0);
+global.locationMyth = ini_read_real(Name,"Mythical",2);
+global.buildingSprite = ini_read_real(Name,"SpriteRef",0);
 ini_close();
 if(locationEventNumber &gt; 0)
+{
+    tempNormMap = 0;//set normal map to 0 (false)
+    tempMythMap = 0;//set mythical map to 0 (false)
+    for(i = 1; i &lt;= locationEventNumber; i++)//go through the events
+    {
+        tempEventID = string(i);//create a string of the event id based on the iteration (i) 
+        tempEvent = "Event"+tempEventID+"Type";//creates the tempEvent variable for use when accessing the events information from the location ini
+        ini_open(global.locationINI);//opens the location ini
+        tempEventRef = ini_read_real(Name, tempEvent, 3);//reads the events reference 
+        ini_close();//closes the location ini
+        s = string(tempEventRef)//uses the reference set above and creates a string with it
+        tempEventName = "Event"+s;//uses the string to create the event name "Event"+*string set above"
+        ini_open(global.cardEventINI);//opens the event ini
+        tempMyth = ini_read_real(tempEventName, "Mythical", 3);//reads tge mythical status of current event
+        ini_close();//closes the event ini
+        switch(tempMyth)//checks the events mythical statsus, changes the tempNormMap and tempMythMap variables accordingly
         {
-            tempNormMap = 0;//set normal map to 0 (false)
-            tempMythMap = 0;//set mythical map to 0 (false)
-            for(i = 1; i &lt;= locationEventNumber; i++)//go through the events
-            {
-                tempEventID = string(i);//create a string of the event id based on the iteration (i) 
-                tempEvent = "Event"+tempEventID+"Type";//creates the tempEvent variable for use when accessing the events information from the location ini
-                ini_open(global.locationINI);//opens the location ini
-                tempEventRef = ini_read_real(Name, tempEvent, 3);//reads the events reference 
-                ini_close();//closes the location ini
-                s = string(tempEventRef)//uses the reference set above and creates a string with it
-                tempEventName = "Event"+s;//uses the string to create the event name "Event"+*string set above"
-                ini_open(global.cardEventINI);//opens the event ini
-                tempMyth = ini_read_real(tempEventName, "Mythical", 3);//reads tge mythical status of current event
-                ini_close();//closes the event ini
-                switch(tempMyth)//checks the events mythical statsus, changes the tempNormMap and tempMythMap variables accordingly
-                {
-                    case 0: tempNormMap = 1;
-                    break;
-                    case 1: tempMythMap = 1;
-                    break;
-                    case 2: tempNormMap = 1;
-                            tempMythMap = 1;
-                    default: 
-                    break;
-                }
-            }
-            //sets locationMyth variable and text input accordingly
-            if(tempNormMap == 1 and tempMythMap == 1)
-            {
-                global.locationMyth = 2;
-            }
-            if(tempNormMap == 0 and tempMythMap == 1)
-            {
-                global.locationMyth = 1;
-            }
-            if(tempNormMap == 1 and tempMythMap == 0)
-            {
-                global.locationMyth = 0
-            }
+            case 0: tempNormMap = 1;
+            break;
+            case 1: tempMythMap = 1;
+            break;
+            case 2: tempNormMap = 1;
+                    tempMythMap = 1;
+            default: 
+            break;
         }
-
+    }
+    //sets locationMyth variable and text input accordingly
+    if(tempNormMap == 1 and tempMythMap == 1)
+    {
+        global.locationMyth = 2;
+    }
+    if(tempNormMap == 0 and tempMythMap == 1)
+    {
+        global.locationMyth = 1;
+    }
+    if(tempNormMap == 1 and tempMythMap == 0)
+    {
+        global.locationMyth = 0
+    }
     ini_open(global.locationINI);
     ini_write_real(Name,"Mythical",global.locationMyth);
     ini_close();
-    
-ini_open(global.locationINI); //opens the location ini file1
-myth = ini_read_real(Name,"Mythical",0); //reads the sprite
-global.buildingSprite = ini_read_real(Name,"SpriteRef",0);
-ini_close();//close the ini file 
-
+}
+else
+{
+    global.locationMyth = 2;
+    ini_open(global.locationINI);
+    ini_write_real(Name,"Mythical",global.locationMyth);
+    ini_close();
+}
 switch(global.buildingSprite)
 {
     case 0: 
-        if (myth == 0)
+        if (global.locationMyth == 0)
         {
              sprite_index = BuildingSpriteNormal;
         }
-        else if (myth == 1)
+        else if (global.locationMyth == 1)
         {
             sprite_index = BuildingSpriteMythical;
         }
-         else if (myth == 2)
+         else if (global.locationMyth == 2)
         {
             sprite_index = BuildingSpriteBoth;
         }
     break;
     case 1: 
-        if (myth == 0)
+        if (global.locationMyth == 0)
         {
              sprite_index = BuildingSpriteNormal1;
         }
-        else if (myth == 1)
+        else if (global.locationMyth == 1)
         {
             sprite_index = BuildingSpriteMythical;
         }
-         else if (myth == 2)
+         else if (global.locationMyth == 2)
         {
             sprite_index = BuildingSpriteBoth;
         }
