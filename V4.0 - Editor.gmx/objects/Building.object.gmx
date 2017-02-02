@@ -30,6 +30,7 @@
 image_angle = 45;//angle of the building
 if(room == RoomMap)//if the room is the map screen
 {
+    Building.depth = 2;
     ref = string(global.objectRef); //set the ref variable to the current objectRef (instance number)
     Name = "Location"+ref; //sets "Location+currentID" to the name variable as a string, this is used when accessing the location in the ini file
 }
@@ -119,7 +120,7 @@ for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
     }
     
 }
-Building.depth = 2;
+
 </string>
           </argument>
         </arguments>

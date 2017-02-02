@@ -476,7 +476,7 @@ if(room == RoomLocationAdd)
 {
     //This code is used for the mythical status on location add, it goes through the list of events and if any are mythical or normal, it flags this.
     //It then takes that information and displays the correct mythical status for the location, based on all events.
-    if(id == instance_id[thirdTextBoxRef])
+    if(id == global.textboxArray[2])
     {
      if(global.locationEventNumber &gt; 0)
         {
