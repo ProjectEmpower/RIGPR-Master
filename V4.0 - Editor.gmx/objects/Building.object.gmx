@@ -100,37 +100,24 @@ else
     ini_write_real(Name,"Mythical",global.locationMyth);//rewrite the mythical status to the ini file
     ini_close();
 }
-//checks the building sprite, changes the sprite to the correct sprite, based on sprite and mythical status.
-switch(global.buildingSprite)
+for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
 {
-    case 0: 
+    if(global.buildingSprite == i)
+    {
         if (global.locationMyth == 0)
         {
-             sprite_index = BuildingSpriteNormal;
+             sprite_index = global.normBuildingArray[i];
         }
         else if (global.locationMyth == 1)
         {
-            sprite_index = BuildingSpriteMythical;
+            sprite_index = global.mythBuildingArray[i];
         }
          else if (global.locationMyth == 2)
         {
-            sprite_index = BuildingSpriteBoth;
+            sprite_index = global.bothBuildingArray[i];
         }
-    break;
-    case 1: 
-        if (global.locationMyth == 0)
-        {
-             sprite_index = BuildingSpriteNormal1;
-        }
-        else if (global.locationMyth == 1)
-        {
-            sprite_index = BuildingSpriteMythical;
-        }
-         else if (global.locationMyth == 2)
-        {
-            sprite_index = BuildingSpriteBoth;
-        }
-    break;
+    }
+    
 }
 Building.depth = 2;
 </string>

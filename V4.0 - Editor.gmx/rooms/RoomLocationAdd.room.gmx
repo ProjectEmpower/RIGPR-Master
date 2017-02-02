@@ -64,6 +64,7 @@
     <instance objName="Building" x="832" y="224" name="inst_0B2AE982" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonSpriteLeft" x="416" y="320" name="inst_FA287B4C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonSpriteRight" x="480" y="320" name="inst_07B64F29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddBuildingSprite" x="608" y="640" name="inst_C90E4E51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

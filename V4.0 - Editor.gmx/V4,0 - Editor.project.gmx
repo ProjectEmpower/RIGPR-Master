@@ -20,7 +20,6 @@
         <sprite>sprites\BuildingSpriteNormal</sprite>
         <sprite>sprites\BuildingSpriteMythical</sprite>
         <sprite>sprites\BuildingSpriteBoth</sprite>
-        <sprite>sprites\BuildingSpriteNormal1</sprite>
         <sprite>sprites\ButtonEditorModeSprite</sprite>
         <sprite>sprites\EditorMODE</sprite>
         <sprite>sprites\ButtonDeckListSprite</sprite>
@@ -41,6 +40,7 @@
         <sprite>sprites\ButtonSpriteCreateEvent</sprite>
         <sprite>sprites\ButtonSpriteCreateCard</sprite>
         <sprite>sprites\ButtonSpriteEventSelect</sprite>
+        <sprite>sprites\ButtonSpriteAddBuildingSprite</sprite>
       </sprites>
       <sprite>sprites\No_sprite</sprite>
       <sprite>sprites\TextInputBoxSprite</sprite>
@@ -114,6 +114,7 @@
       <object>objects\ButtonSpriteLeft</object>
       <object>objects\ButtonSpriteRight</object>
       <object>objects\ButtonSelectEvent</object>
+      <object>objects\ButtonAddBuildingSprite</object>
     </objects>
     <objects name="CardList">
       <object>objects\DeckListSetup</object>

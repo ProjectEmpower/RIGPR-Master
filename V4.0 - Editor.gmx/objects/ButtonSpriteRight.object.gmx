@@ -52,7 +52,7 @@ ButtonSpriteRight.y = global.roomHeight/5+25;
           <argument>
             <kind>1</kind>
             <string>//moves to the next event (if there is an event to go to)
-if(global.buildingSprite &lt; 2)//checks to see if it can move
+if(global.buildingSprite &lt; global.totalNormBuildingSprites-1)//checks to see if it can move
 {
     global.buildingSprite += 1;//moves the event number on
     script_execute(SaveLocation);//saves the current location
