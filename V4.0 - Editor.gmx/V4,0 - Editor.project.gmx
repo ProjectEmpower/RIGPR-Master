@@ -56,6 +56,8 @@
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
+    <background>background\NewMapBackground</background>
+    <background>background\MainMenuBackground</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -72,6 +74,7 @@
       <object>objects\ButtonStart</object>
       <object>objects\TitleMenu</object>
       <object>objects\ButtonOptions</object>
+      <object>objects\MenuToMap</object>
     </objects>
     <objects name="Map">
       <object>objects\ButtonCharacter</object>
@@ -91,6 +94,7 @@
       <object>objects\WeekTextDraw</object>
       <object>objects\TextOnMap</object>
       <object>objects\DrawNames</object>
+      <object>objects\Zoom</object>
     </objects>
     <objects name="Character">
       <object>objects\TitleCharacter</object>
@@ -138,22 +142,22 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
-    <room>rooms\RoomMenu</room>
-    <room>rooms\RoomOptions</room>
-    <rooms name="Options">
-      <room>rooms\RoomResChange</room>
-    </rooms>
-    <room>rooms\RoomMap</room>
-    <room>rooms\RoomCharacter</room>
-    <room>rooms\RoomDiary</room>
-    <room>rooms\RoomCards</room>
     <room>rooms\RoomLocationAdd</room>
+    <room>rooms\RoomCards</room>
+    <room>rooms\RoomDiary</room>
+    <room>rooms\RoomCharacter</room>
+    <room>rooms\RoomMap</room>
+    <room>rooms\RoomOptions</room>
+    <room>rooms\RoomMenu</room>
     <rooms name="Decks">
       <room>rooms\RoomDeckList</room>
       <rooms name="Card">
         <room>rooms\RoomCardEdit</room>
         <room>rooms\RoomCardDeck</room>
       </rooms>
+    </rooms>
+    <rooms name="Options">
+      <room>rooms\RoomResChange</room>
     </rooms>
   </rooms>
   <help>
