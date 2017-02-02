@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//creates the variable drag (sets it to false)
-drag = 0
-currentPosX = 0
+            <string>//on create, create the variable and set
+drag = 0 //drag is used when moving the sceen
+currentPosX = 0//current x/y is used when checking if the screen has been moved.
 currentPosY = 0
 </string>
           </argument>
@@ -51,9 +51,11 @@ currentPosY = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    if(drag == 1) //if drag is 1 (true)
+            <string>//step occurs when the code is running, so when the mouse button is clicked, 
+//drag will be true, the following code will run.
+if(drag == 1) //if drag is 1 (true)
 {
-    //sets the view when dragging
+    //sets the view when dragging using the mouse position
     view_xview = dragX - (mouse_x - view_xview) 
     view_yview = dragY - (mouse_y - view_yview)
         
@@ -61,31 +63,37 @@ currentPosY = 0
     view_xview = max(0, min(view_xview, room_width - view_wview)) 
     view_yview = max(0, min(view_yview, room_height - view_hview))
     
-
     
     //sets the button postions when the screen is in movement
-    ButtonOptions.x = view_xview + global.ButtonOptionsX;
-    ButtonOptions.y = view_yview + global.ButtonOptionsY;
-    
-    ButtonDeckList.x = view_xview + global.ButtonDeckListX;
-    ButtonDeckList.y = view_yview + global.ButtonDeckListY;
+   
 
-    ButtonCharacter.x = view_xview + global.CharacterButtonX 
-    ButtonCharacter.y = view_yview + global.CharacterButtonY 
-
-    ButtonEditorMode.x = view_xview + global.ButtonEditorModeX;
-    ButtonEditorMode.y = view_yview + global.ButtonEditorModeY;
-    editorModeDisplay.x = view_xview + global.editorModeDisplayX;
+    editorModeDisplay.x = view_xview + global.editorModeDisplayX;//editor mode hud element
     editorModeDisplay.y = view_yview + global.editorModeDisplayY;
     
-    WeekTextDraw.x = view_xview+ global.weekX;
+    WeekTextDraw.x = view_xview+ global.weekX;//week variable that is drawn
     WeekTextDraw.y = view_yview+ global.weekY;
 
-    ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;
+    ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;//left arrow button
     ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
-    ButtonWeekRight.x = view_xview + global.WeekRightButtonX;
+    ButtonWeekRight.x = view_xview + global.WeekRightButtonX;//right arrow button
     ButtonWeekRight.y = view_yview + global.WeekRightButtonY;
-    if(currentPosX != view_xview or currentPosY != view_yview)
+    TextOnMap.x = view_xview + global.TextOnMapX;
+    TextOnMap.y = view_yview + global.TextOnMapY;
+    //this code checks the current position vs the view, if its different (the screen has moved)
+    //then the movelock will be set to 1 (true);
+    
+
+    for(i = 0; i &lt; instance_number(TextInputBox); i++)
+    {
+        
+
+        global.textboxArray[i].x = view_xview + global.mapInputBoxX;
+        global.textboxArray[i].y = view_yview + (global.tempInputBoxY-(9*25))+(i*25);
+               
+    }
+        
+
+    if(currentPosX != view_xview or currentPosY != view_yview)//this code used to stop room change when the user is draging the screen and has clicked on a building
     {
         global.moveLock = 1;
     }
@@ -112,9 +120,9 @@ currentPosY = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets the drag variable to false
-drag = 0
-global.moveLock = 0;
+            <string>//when the left mouse button is released (after moving)
+drag = 0//remove drag
+global.moveLock = 0;//remove the lock
 </string>
           </argument>
         </arguments>
@@ -137,12 +145,13 @@ global.moveLock = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//turns on drag variable (true)
-drag = 1
-//sets the dragX and dragY positions to the mouse's current position
-dragX = mouse_x
+            <string>//When the user clicks down on the left mouse button
+drag = 1//turns on drag variable (true)
+
+dragX = mouse_x//sets the dragX and dragY positions to the mouse's current position
 dragY = mouse_y
-currentPosX = view_xview;
+
+currentPosX = view_xview;//sets the currentx/y view to the variables below, this is checked against any new view position, when the user clicks
 currentPosY = view_yview;
 </string>
           </argument>

@@ -25,12 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.InputBoxX = room_width/5
-global.InputBoxY = room_height/6
-global.InputTextX = room_width/5
-global.InputTextY = room_height/6
+            <string>global.InputBoxX = global.roomWidth/5
+global.InputBoxY = global.roomHeight/6
+global.InputTextX = global.roomWidth/5
+global.InputTextY = global.roomHeight/6
 //This code is used for actually creating the text box instances to didplay on screen
 global.tempInputBoxX = global.InputBoxX+149; //sets temp input box X
+global.mapInputBoxX = global.roomWidth-100;
+
 global.tempInputBoxY = global.InputBoxY;//sets temp input box Y
 global.tempTextBoxY = global.InputTextY;//sets temp text box Y
 global.textBoxInstanceRef = instance_count;//This is the number of objects before instances are created.
@@ -53,14 +55,14 @@ if(room == RoomLocationAdd)
     {
         if(i == 1)//if i = description box then it will set the position based on the increased size
         { 
-            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
             global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
             global.tempTextBoxY += 100;
         }
         else
         {
             //creates the instanes of the text boxes on screen.
-            inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
     
         }
             global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
@@ -84,7 +86,7 @@ if(room == RoomLocationAdd)
         global.oldWeek = global.eventWeek;
         for(i = 0; i &lt; 3; i++)//for the number of feilds (type,week,mythical)
         {
-            inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
+            global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
             global.tempInputBoxY += 25; //incrase the position of the text boxes
             global.tempTextBoxY += 25;   
         }
@@ -121,14 +123,14 @@ if(room == RoomCardEdit)
         {
             if(i == 1)//if i = description box then it will set the position based on the increased size
             { 
-                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
                 global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
                 global.tempTextBoxY += 100;
             }
             else
             {
                 //creates the instanes of the text boxes on screen.
-                inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
         
             }
             global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
@@ -149,7 +151,7 @@ if(room == RoomCardEdit)
         var inst;
         for(i = 0; i &lt; textFeilds; i++)
         {
-            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+            global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
             global.tempInputBoxY += 25;
             global.tempTextBoxY += 25;
         }
@@ -173,14 +175,14 @@ if(room == RoomCardEdit)
         {
             if(i == 1)//if i = description box then it will set the position based on the increased size
             { 
-                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
                 global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
                 global.tempTextBoxY += 100;
             }
             else
             {
                 //creates the instanes of the text boxes on screen.
-                inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
             }
             global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
             global.tempTextBoxY += 25;
@@ -203,14 +205,14 @@ if(room == RoomCardEdit)
         {
             if(i != 0)//if i = description box then it will set the position based on the increased size
             { 
-                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
                 global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
                 global.tempTextBoxY += 100;
             }
             else
             {
                 //creates the instanes of the text boxes on screen.
-                inst = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
             }
             global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
             global.tempTextBoxY += 25;
@@ -284,7 +286,7 @@ if(room == RoomCardDeck)
             ini_close();
             if(global.cardMythical == eventMythical or eventMythical == 2)
             {
-                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
                 global.tempInputBoxY += 25;
                 global.tempTextBoxY += 25;
             }
@@ -314,7 +316,7 @@ if(room == RoomCardDeck)
             global.consChar = ini_read_real(tempConsCard,"Char",0);
             global.consWell = ini_read_real(tempConsCard,"Well",0);
             ini_close();
-            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+            global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
             global.tempInputBoxY += 25;
             global.tempTextBoxY += 25;
         
@@ -343,7 +345,7 @@ if(room == RoomCardDeck)
             global.infoLink = ini_read_string(tempInfoCard,"Link",0);
             
             ini_close();
-            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+            global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
             global.tempInputBoxY += 25;
             global.tempTextBoxY += 25;
         
@@ -372,7 +374,7 @@ if(room == RoomCardDeck)
           //  global.consChar = ini_read_real(tempCharCard,"Char",0);
           //  global.consWell = ini_read_real(tempCharCard,"Well",0);
             ini_close();
-            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+            global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
             global.tempInputBoxY += 25;
             global.tempTextBoxY += 25;
         
@@ -384,7 +386,17 @@ if(room == RoomDeckList)
 {
     for(i = 0; i &lt; 5; i++)
     {
-        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);         
+        global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);         
+        global.tempInputBoxY += 25;
+        global.tempTextBoxY += 25;
+    }
+    
+}
+if(room == RoomMap)
+{
+    for(i = 0; i &lt; 9; i++)
+    {
+        global.textboxArray[i] = instance_create(global.mapInputBoxX,global.tempInputBoxY,TextInputBox);         
         global.tempInputBoxY += 25;
         global.tempTextBoxY += 25;
     }

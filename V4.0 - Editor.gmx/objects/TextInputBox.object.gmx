@@ -338,6 +338,57 @@ if(room == RoomDeckList)
     }
 }
 
+if(room == RoomMap)
+{
+    image_xscale = .8;
+    if(instance_id[realNameTextBoxRef] == id)
+    {
+        txt_display = "EDITOR MODE";     //sets display text
+        num_display = "";
+    }   
+    if(instance_id[realNameTextBoxRef+1] == id)
+    {
+        sprite_index = No_sprite;
+        txt_display = "";     //sets display text
+        num_display = "";
+    }     
+    if(instance_id[realNameTextBoxRef+2] == id)
+    {
+        txt_display = "Event";     //sets display text
+        num_display = string(global.totalEventCards) + "-";
+    }
+    if(instance_id[realNameTextBoxRef+3]  == id)
+    {
+        txt_display = "Action";     //sets display text
+        num_display = string(global.totalActionCards) + "-";
+    }
+    if(instance_id[realNameTextBoxRef+4]  == id)
+    {
+        txt_display = "Consequence";     //sets display text
+        num_display = string(global.totalConsCards) + "-";
+    }
+    if(instance_id[realNameTextBoxRef+5]  == id)
+    {
+        txt_display = "Information";     //sets display text
+        num_display = string(global.totalInfoCards) + "-";
+    }
+    if(instance_id[realNameTextBoxRef+6]  == id)
+    {
+        txt_display = "Character";     //sets display text
+        num_display = string(global.totalCharCards) + "-";
+    }
+    if(instance_id[realNameTextBoxRef+7]  == id)
+    {
+        sprite_index = No_sprite;   
+        txt_display = "";     //sets display text
+        num_display = "";
+    }
+    if(instance_id[realNameTextBoxRef+8]  == id)
+    {
+        txt_display = "  OPTIONS";     //sets display text
+        num_display = "";
+    }
+}
 myY = global.tempTextBoxY;//sets current Position (increases depending on instance)
 
 </string>
@@ -712,6 +763,7 @@ if(room == RoomCardEdit)
         }
     }
 }
+
 </string>
           </argument>
         </arguments>
@@ -735,6 +787,7 @@ if(room == RoomCardEdit)
           <argument>
             <kind>1</kind>
             <string>//If a text box is clicked on, this is what happens
+
 global.focus = id;//the focus is set to the current instances ID (button clicked ID)
 if(room == RoomCardDeck)//deck of cards
 {
@@ -894,8 +947,9 @@ if(room == RoomCardEdit)
     }
 }
 
-if(room == RoomDeckList)
+if(room == RoomDeckList)//unused
 {
+
     if(instance_id[global.textBoxInstanceRef] == id)
     {
         global.lastRoom = room;
@@ -926,6 +980,59 @@ if(room == RoomDeckList)
         global.RoomState = 4;
         room = RoomCardDeck;
     }    
+}
+
+if(room == RoomMap)
+{
+    if(global.textboxArray[0] == id)
+    {
+        if (global.myth != 2)//if not in editor mode
+        {
+            global.editorMode = global.myth;//stores the mythical status on click inside "editorMode"
+            global.myth = 2;//sets the current mythical status to 2, editor mode
+        }
+        else//if in editor mode
+        {
+            global.myth = global.editorMode;//set the mythical status back to the previous
+        }
+        room = RoomMap;//reloads the map screen
+    }
+    if(global.textboxArray[2] == id)
+    {
+        global.lastRoom = room;
+        global.RoomState = 0;
+        room = RoomCardDeck;
+    }
+    if(global.textboxArray[3] == id)
+    {
+        global.lastRoom = room;
+        global.RoomState = 1;
+        room = RoomCardDeck;
+    }
+    if(global.textboxArray[4] == id)
+    {
+        global.lastRoom = room;
+        global.RoomState = 2;
+        room = RoomCardDeck;
+    }   
+    if(global.textboxArray[5] == id)
+    {
+        global.lastRoom = room;
+        global.RoomState = 3;
+        room = RoomCardDeck;
+    }  
+    if(global.textboxArray[6] == id)
+    {
+        //global.lastRoom = room;
+        //global.RoomState = 4;
+        //room = RoomCardDeck;
+    }   
+    if(global.textboxArray[8] == id)
+    {
+        //on click
+        global.lastRoom = room;//lastRoom variable is the current room
+        room = RoomOptions;//Move to Options room
+    }  
 }
 </string>
           </argument>
@@ -1050,6 +1157,14 @@ if(room == RoomDeckList)
     draw_set_halign(fa_left);
     draw_text(global.InputBoxX - 25, myY, num_display); //draws the input box text
     draw_text(global.InputBoxX + 0, myY, txt_display);
+
+}
+if(room == RoomMap)
+{
+    draw_set_valign(fa_middle);
+    draw_set_halign(fa_left);
+    draw_text(global.mapInputBoxX - 72, myY, num_display); //draws the input box text
+    draw_text(global.mapInputBoxX - 56, myY, txt_display);
 
 }
 </string>

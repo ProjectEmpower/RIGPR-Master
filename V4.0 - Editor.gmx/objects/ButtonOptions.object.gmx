@@ -26,14 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>//Set position on screen.
-if(room == RoomMenu)
+if(room == RoomMenu)//if the option button is on the menu
 {
-    ButtonOptions.x = global.roomWidth/2;
+    ButtonOptions.x = global.roomWidth/2;//set this position
     ButtonOptions.y = global.roomHeight/2+80;
 }
-if(room == RoomMap)
+if(room == RoomMap)//if the option button is on the map
 {
-    global.ButtonOptionsX = global.roomWidth-100;
+    global.ButtonOptionsX = global.roomWidth-100;//set this position
     global.ButtonOptionsY = global.roomHeight-50;
 }
 </string>
@@ -58,8 +58,9 @@ if(room == RoomMap)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.lastRoom = room;
-room = RoomOptions;
+            <string>//on click
+global.lastRoom = room;//lastRoom variable is the current room
+room = RoomOptions;//Move to Options room
 </string>
           </argument>
         </arguments>

@@ -75,6 +75,7 @@
       <objects name="Options">
         <object>objects\ResChange</object>
       </objects>
+      <object>objects\MobileRotation</object>
     </objects>
   </objects>
   <rooms name="rooms">

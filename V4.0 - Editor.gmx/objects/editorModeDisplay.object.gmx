@@ -26,14 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>global.EventID = 1;
-global.editorModeDisplayX = global.roomWidth/2-115;
-global.editorModeDisplayY = 50;
+global.editorModeDisplayX = global.roomWidth-100;
+global.editorModeDisplayY = 64;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>

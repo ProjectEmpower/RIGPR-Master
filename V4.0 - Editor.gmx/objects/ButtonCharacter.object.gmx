@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.CharacterButtonX = 100;
+            <string>//sets the character button position to the variables
+global.CharacterButtonX = 100;
 global.CharacterButtonY = global.roomHeight-50;
 </string>
           </argument>
@@ -49,9 +50,8 @@ global.CharacterButtonY = global.roomHeight-50;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.currentX = view_xview
-global.currentY = view_yview
-room = RoomCharacter;
+            <string>//on click
+room = RoomCharacter;//move to the character screen.
 </string>
           </argument>
         </arguments>

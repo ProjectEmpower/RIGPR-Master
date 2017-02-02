@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.WeekRightButtonX = global.roomWidth-25;
-global.WeekRightButtonY = 25;
+            <string>global.WeekRightButtonX = global.roomWidth-50;
+global.WeekRightButtonY = 64;
 </string>
           </argument>
         </arguments>
@@ -49,10 +49,13 @@ global.WeekRightButtonY = 25;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.week &lt; 52)
+            <string>if (global.myth != 2)//if not in editor mode
 {
-    global.week += 1;
-    room = RoomMap;
+    if(global.week &lt; 52)
+    {
+        global.week += 1;
+        room = RoomMap;
+    }
 }
 </string>
           </argument>

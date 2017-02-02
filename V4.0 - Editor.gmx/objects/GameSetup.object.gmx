@@ -28,15 +28,15 @@
             <string>//Creation code used in "RoomSetup"
 //This sets up the inital variables 
 //sets the initial view of the screen, this is used to to create the variable
-global.currentX = 0;
+global.currentX = 0; //current map position, defaults to top left corner of map
 global.currentY = 0;
 global.buildingMyth = 1;
-//sets the default positions of the Hud on the map screens
-global.roomWidth = 1280;
-global.roomHeight = 720;
-global.fullScreen = false;
+global.roomWidth = 1280;//sets default screen width
+global.roomHeight = 720;//sets default screen height
+global.fullScreen = false;//sets full screen to false
+//eventually, these and the height will be saved/loaded if the user changes the settings/
+window_set_fullscreen(global.fullScreen);//sets the screen to full or not, depending on the variable above
 
-window_set_fullscreen(global.fullScreen);
 
 //week info
 global.week = 0;//week
@@ -57,14 +57,14 @@ global.totalInfoCards = 0;//total number of info cards
 global.totalConsCards = 0;//total number of consequence cards
 global.totalCharCards = 0;//total number of character cards
 //ini files
-global.locationINI = "location.ini";
-global.playerINI = "player.ini";
+global.locationINI = "ini_files/location.ini";
+global.playerINI = "ini_files/player.ini";
 
-global.cardEventINI = "cardEvent.ini";
-global.cardActionINI = "cardAction.ini";
-global.cardInfoINI = "cardInfo.ini";
-global.cardConsINI = "cardCons.ini";
-global.cardCharINI = "cardChar.ini";
+global.cardEventINI = "ini_files/cardEvent.ini";
+global.cardActionINI = "ini_files/cardAction.ini";
+global.cardInfoINI = "ini_files/cardInfo.ini";
+global.cardConsINI = "ini_files/cardCons.ini";
+global.cardCharINI = "ini_files/cardChar.ini";
 
 global.lastRoom = room;
 room = RoomResChange;//moves to the menu

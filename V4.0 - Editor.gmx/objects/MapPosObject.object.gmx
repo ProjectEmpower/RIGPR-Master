@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets the temp variables (used in Room Start) to the current screen position
-    
-global.currentX = view_xview
+            <string>//when the room ends
+global.currentX = view_xview//sets the current x/y position global variable to the current x/yview (view position on map screen)
 global.currentY = view_yview
 </string>
           </argument>
@@ -45,42 +44,42 @@ global.currentY = view_yview
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>other</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets the current view to the view set when entering the screen (Room start or during initial setup)
-view_xview = global.currentX 
+            <string>//when the room starts
+view_xview = global.currentX //set the current view to the view stored in global current x/y
 view_yview = global.currentY  
 
-
-view_wview[0] = global.roomWidth
+view_wview[0] = global.roomWidth //set the view width/height to the global variable roomWidth/roomHeight, this is set when the game starts and the player changes the screen size using options
 view_hview[0] = global.roomHeight
+global.mapInstanceCount = instance_count;
+//the following code sets the default positions of the buttons, set in the buttons creation code
+//this adds that position to the current view of the screen to keep them in the right place.
 
-ButtonOptions.x = view_xview + global.ButtonOptionsX;
-ButtonOptions.y = view_yview + global.ButtonOptionsY;
 
-WeekTextDraw.x = view_xview+ global.weekX;
+WeekTextDraw.x = view_xview+ global.weekX;//current week variable that is drawn on screen
 WeekTextDraw.y = view_yview+ global.weekY;
 
-ButtonDeckList.x = view_xview + global.ButtonDeckListX;
-ButtonDeckList.y = view_yview + global.ButtonDeckListY;
 
-ButtonEditorMode.x = view_xview + global.ButtonEditorModeX;
-ButtonEditorMode.y = view_yview + global.ButtonEditorModeY;
-
-editorModeDisplay.x = view_xview + global.editorModeDisplayX;
+editorModeDisplay.x = view_xview + global.editorModeDisplayX; //editor mode hud display
 editorModeDisplay.y = view_yview + global.editorModeDisplayY;
 
-ButtonCharacter.x = view_xview + global.CharacterButtonX
-ButtonCharacter.y = view_yview + global.CharacterButtonY// * global.zoom
-
-ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;
+ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX; //arrow for week left
 ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
-ButtonWeekRight.x = view_xview + global.WeekRightButtonX;
+ButtonWeekRight.x = view_xview + global.WeekRightButtonX; //arrow for week right
 ButtonWeekRight.y = view_yview + global.WeekRightButtonY;
+TextOnMap.x = view_xview + global.TextOnMapX;
+TextOnMap.y = view_yview + global.TextOnMapY;
+for(i = 0; i &lt; instance_number(TextInputBox); i++)
+{  
+    global.textboxArray[i].x = view_xview + global.mapInputBoxX;
+    global.textboxArray[i].y = view_yview + (global.tempInputBoxY-(9*25))+(i*25);
+           
+}
 </string>
           </argument>
         </arguments>

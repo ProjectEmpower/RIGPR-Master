@@ -66,7 +66,7 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
                         ini_write_real(locationName,"Mythical",tempMyth); //reads the sprite
                         LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
                         LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
-                        inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+                        global.buildingArray[i] = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
                         
                     }
                     ini_close()//closes location ini
@@ -78,7 +78,7 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
         {
             LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
             LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
-            inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+            global.buildingArray[i] = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
        
         ini_close(); //closes the ini file
         }
@@ -88,6 +88,7 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
         global.TotalInstanceNum = i;
     }
 }
+//sets up the events
 global.totalEventCards = 100;
 for(i = 0; i &lt;= global.totalEventCards; i++)
 {
@@ -99,8 +100,13 @@ for(i = 0; i &lt;= global.totalEventCards; i++)
         global.totalEventCards = i; 
         //set the total to the current loop number.
     }
+    else
+    {
+    global.eventArray[i] = currentCard;
+    }
     ini_close();
 }
+//sets up the action cards
 global.totalActionCards = 100;
 for(i = 0; i &lt;= global.totalActionCards; i ++)
 {
@@ -111,8 +117,13 @@ for(i = 0; i &lt;= global.totalActionCards; i ++)
     {
         global.totalActionCards = i;//set the total to the current loop number.
     }
+        else
+    {
+    global.actionArray[i] = currentCard;
+    }
     ini_close();
 }
+//sets up the consequence cards
 global.totalConsCards = 100;
 for(i = 0; i &lt;= global.totalConsCards; i ++)
 {
@@ -123,8 +134,13 @@ for(i = 0; i &lt;= global.totalConsCards; i ++)
     {
         global.totalConsCards = i;//set the total to the current loop number.
     }
+    else
+    {
+    global.consArray[i] = currentCard;
+    }
     ini_close();
 }
+//sets up the information cards
 global.totalInfoCards = 100;
 for(i = 0; i &lt;= global.totalInfoCards; i ++)
 {
@@ -135,8 +151,13 @@ for(i = 0; i &lt;= global.totalInfoCards; i ++)
     {
         global.totalInfoCards = i;//set the total to the current loop number.
     }
+    else
+    {
+    global.infoArray[i] = currentCard;
+    }
     ini_close();
 }
+//sets up the character cards
 global.totalCharCards = 100;
 for(i = 0; i &lt;= global.totalCharCards; i ++)
 {
@@ -146,6 +167,10 @@ for(i = 0; i &lt;= global.totalCharCards; i ++)
     if(!ini_section_exists(currentCard))//if the current event in list does not exist
     {
         global.totalCharCards = i;//set the total to the current loop number.
+    }
+    else
+    {
+    global.charArray[i] = currentCard;
     }
     ini_close();
 }
@@ -172,7 +197,7 @@ for(i = 0; i &lt;= global.totalCharCards; i ++)
           <argument>
             <kind>1</kind>
             <string>if(global.myth == 2)
-    {
+{
     //Thos object is not shown, it contains the code for right clicking on the map screen. It creates an instance and records
     //its information in an ini file. 
     LocationX = mouse_x; //current mouse x position
@@ -180,8 +205,7 @@ for(i = 0; i &lt;= global.totalCharCards; i ++)
     var inst; //creates a temp variable 
     inst = collision_rectangle( LocationX-40, LocationY-40, LocationX+40, LocationY+40, Building, false, false );
     if (inst == noone)
-    {
-        
+    {       
         currRef = string(global.TotalInstanceNum); //sets the currRef variable to a string of the global TotalInstanceNumber, this is the number of instances currently used
         locationName = "Location"+currRef;//this sets lcoation name to "location#REF#"
         inst = instance_create(LocationX,LocationY,Building); //creates an instance at the mouse position, using the test building object

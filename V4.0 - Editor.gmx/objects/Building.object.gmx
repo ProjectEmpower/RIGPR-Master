@@ -26,40 +26,42 @@
           <argument>
             <kind>1</kind>
             <string>//creation code for buildings
+//when an instances are created, each instance will run the following code
 image_angle = 45;//angle of the building
-
-
-if(room == RoomMap)
+if(room == RoomMap)//if the room is the map screen
 {
-    ref = string(global.objectRef); //reference of the object in string
-    Name = "Location"+ref; //Location+*string*
+    ref = string(global.objectRef); //set the ref variable to the current objectRef (instance number)
+    Name = "Location"+ref; //sets "Location+currentID" to the name variable as a string, this is used when accessing the location in the ini file
 }
 else
 {
-    Building.x = global.roomWidth/5*3;
+    Building.x = global.roomWidth/5*3;//set the current position on screen
     Building.y = global.roomHeight/5+25;
-    Name = "Location"+global.tempID; 
+    Name = "Location"+global.tempID; //set Name to "Location+currentID"
 }
-ini_open(global.locationINI);
-locationEventNumber = ini_read_real(Name,"Number of Events",0);
-global.locationMyth = ini_read_real(Name,"Mythical",2);
-global.buildingSprite = ini_read_real(Name,"SpriteRef",0);
-ini_close();
-if(locationEventNumber &gt; 0)
+ini_open(global.locationINI);//opens the ini file
+locationEventNumber = ini_read_real(Name,"Number of Events",0);//reads the number of events
+global.locationMyth = ini_read_real(Name,"Mythical",2);//reads the mythical status
+global.buildingSprite = ini_read_real(Name,"SpriteRef",0);//reads the sprite for the location
+ini_close();//close the ini file
+
+//the following code is used to check all events (if they exist) and see what the mythical status will be for the location itself (based on all events held in that location)
+if(locationEventNumber &gt; 0)//checks the number of events
 {
-    tempNormMap = 0;//set normal map to 0 (false)
-    tempMythMap = 0;//set mythical map to 0 (false)
-    for(i = 1; i &lt;= locationEventNumber; i++)//go through the events
+    //these are set to default to be used later when reading all events mythical status
+    tempNormMap = 0;//set temp normal map to 0 (false)
+    tempMythMap = 0;//set temp mythical map to 0 (false)
+    for(i = 1; i &lt;= locationEventNumber; i++)//go through each events
     {
         tempEventID = string(i);//create a string of the event id based on the iteration (i) 
         tempEvent = "Event"+tempEventID+"Type";//creates the tempEvent variable for use when accessing the events information from the location ini
         ini_open(global.locationINI);//opens the location ini
-        tempEventRef = ini_read_real(Name, tempEvent, 3);//reads the events reference 
+        tempEventRef = ini_read_real(Name, tempEvent, 3);//reads the current events reference from the location ini
         ini_close();//closes the location ini
-        s = string(tempEventRef)//uses the reference set above and creates a string with it
-        tempEventName = "Event"+s;//uses the string to create the event name "Event"+*string set above"
+        s = string(tempEventRef)//uses the reference set above and creates a string of it
+        tempEventName = "Event"+s;//uses the string to create the event name "Event"+*string*, set above in s
         ini_open(global.cardEventINI);//opens the event ini
-        tempMyth = ini_read_real(tempEventName, "Mythical", 3);//reads tge mythical status of current event
+        tempMyth = ini_read_real(tempEventName, "Mythical", 3);//reads the mythical status of the event, set above in tempEventName
         ini_close();//closes the event ini
         switch(tempMyth)//checks the events mythical statsus, changes the tempNormMap and tempMythMap variables accordingly
         {
@@ -73,7 +75,7 @@ if(locationEventNumber &gt; 0)
             break;
         }
     }
-    //sets locationMyth variable and text input accordingly
+    //after running the for loop, it checks the events mythical status data that was collected (if any were in normal, mythical or both)
     if(tempNormMap == 1 and tempMythMap == 1)
     {
         global.locationMyth = 2;
@@ -86,17 +88,19 @@ if(locationEventNumber &gt; 0)
     {
         global.locationMyth = 0
     }
-    ini_open(global.locationINI);
-    ini_write_real(Name,"Mythical",global.locationMyth);
+    ini_open(global.locationINI);//reopens the ini file
+    ini_write_real(Name,"Mythical",global.locationMyth); //sets the new mythical status
     ini_close();
 }
 else
 {
-    global.locationMyth = 2;
-    ini_open(global.locationINI);
-    ini_write_real(Name,"Mythical",global.locationMyth);
+    //if there are no events
+    global.locationMyth = 2;//set the locations mytical status to 2 (both)
+    ini_open(global.locationINI);//open the ini file
+    ini_write_real(Name,"Mythical",global.locationMyth);//rewrite the mythical status to the ini file
     ini_close();
 }
+//checks the building sprite, changes the sprite to the correct sprite, based on sprite and mythical status.
 switch(global.buildingSprite)
 {
     case 0: 
@@ -128,6 +132,7 @@ switch(global.buildingSprite)
         }
     break;
 }
+Building.depth = 2;
 </string>
           </argument>
         </arguments>
@@ -151,11 +156,10 @@ switch(global.buildingSprite)
           <argument>
             <kind>1</kind>
             <string>//This object is the buildings object, it will instance out to each building and the code above will occur when 
-//any instance is RIGHT-clicked (we can filter their appearance down, so for example, it will only appear during a week, 
-//day, period, etc. but ).
+//any instance is RIGHT-clicked 
 if(room == RoomMap)
 {
-    if(global.moveLock == 0)
+    if(global.moveLock == 0)//if the map screen hasnt been moved since the player pressed left button (or tap) down on the map
     { 
         for(t = 0; t &lt; global.TotalInstanceNum; t++) //runs for loop based on TotalInstanceNum (of buildings)
         {
@@ -165,7 +169,7 @@ if(room == RoomMap)
             
             if(id.x == ini_read_real(locationName,"X",0) &amp;&amp; id.y == ini_read_real(locationName,"Y",0))//checks what location you are selecting, it checks the x/y vs the instance (id) x/y
             {
-                global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used later)
+                global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used on locationadd screen)
                 ini_close();//closes the ini file
                 room = RoomLocationAdd//moves to the next room
             }
@@ -199,8 +203,9 @@ if(room == RoomMap)
 {
     draw_set_halign(fa_center);//sets the horizontal allignment for the text
     draw_set_valign(fa_middle);//sets the vertical allignment for the text
-    draw_text(global.roomWidth/5*3, global.roomHeight/8,"Location Image");
+    draw_text(global.roomWidth/5*3, global.roomHeight/8,"Location Image");//draws the text "location Image"
 }
+
 </string>
           </argument>
         </arguments>

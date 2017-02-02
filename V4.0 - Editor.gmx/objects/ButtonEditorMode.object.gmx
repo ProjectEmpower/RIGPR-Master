@@ -59,8 +59,7 @@ else//if in editor mode
 {
     global.myth = global.editorMode;//set the mythical status back to the previous
 }
-
- room = RoomMap;
+room = RoomMap;//reloads the map screen
 </string>
           </argument>
         </arguments>

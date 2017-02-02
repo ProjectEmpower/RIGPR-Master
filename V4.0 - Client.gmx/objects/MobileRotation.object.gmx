@@ -25,14 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.weekX = global.roomWidth-100;
-global.weekY = 64;
+            <string>orientation = display_get_orientation();
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -49,11 +48,47 @@ global.weekY = 64;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Draw week 
-//Sets up and draws text on screen.
-draw_set_halign(fa_center);//sets the horizontal allignment for the text
-draw_set_valign(fa_middle);//sets the vertical allignment for the text
-draw_text(WeekTextDraw.x,WeekTextDraw.y,global.week);//draws the current cards name on screen 
+            <string>newOrientation = display_get_orientation();
+global.lastResRoom = 0;
+if(orientation != newOrientation)
+{
+    if(newOrientation == display_portrait or newOrientation ==  display_portrait_flipped	)
+    {
+        if(orientation == display_portrait or orientation == display_portrait_flipped)
+        {
+            orientation = newOrientation;
+            global.lastResRoom = room;
+            room = RoomResChange;
+        }
+        else
+        {
+            orientation = newOrientation
+            tempWidth = global.roomWidth;
+            global.roomWidth = global.roomHeight
+            global.roomHeight = tempWidth;  
+            global.lastResRoom = room;
+            room = RoomResChange;
+        }
+    }
+    if(newOrientation == display_landscape or newOrientation ==  display_landscape_flipped	)
+    {
+        if(orientation == display_landscape or orientation == display_landscape_flipped)
+        {
+            orientation = newOrientation;
+            global.lastResRoom = room;
+            room = RoomResChange;
+        }
+        else
+        {
+            orientation = newOrientation
+            tempWidth = global.roomWidth;
+            global.roomWidth = global.roomHeight
+            global.roomHeight = tempWidth;  
+            global.lastResRoom = room;
+            room = RoomResChange;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>

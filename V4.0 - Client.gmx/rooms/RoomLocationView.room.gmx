@@ -54,6 +54,7 @@
     <instance objName="LocationSetup" x="32" y="32" name="inst_8E56ADF0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonBack" x="608" y="384" name="inst_5FBC7766" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="TextInputSetup" x="64" y="64" name="inst_2734CDA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="MobileRotation" x="96" y="96" name="inst_84D71ED6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

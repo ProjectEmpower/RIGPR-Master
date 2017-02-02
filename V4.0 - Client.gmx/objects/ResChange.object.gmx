@@ -26,7 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>script_execute(ResolutionChange);
-room = RoomMenu;
+if(global.lastResRoom == 0)
+{
+    room = RoomMenu;
+}
+else
+{
+    room = global.lastResRoom
+}
 </string>
           </argument>
         </arguments>

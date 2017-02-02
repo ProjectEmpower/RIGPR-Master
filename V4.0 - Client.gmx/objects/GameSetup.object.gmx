@@ -50,7 +50,6 @@ if(!file_exists("ini_files/cardChar.ini"))
 {
     cardChar_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardChar.ini", "ini_files/cardChar.ini");
 }
-
 //sets the initial view of the screen, this is used to to create the variable
 global.currentX = 0;
 global.currentY = 0;
@@ -59,7 +58,7 @@ global.roomWidth = 1280;
 global.roomHeight = 720;
 global.fullScreen = false;
 window_set_fullscreen(global.fullScreen);//checks to see if it should be full screen, applies to pc only
-
+global.lastResRoom = 0; //used for when the screen rotates on mobile devices.
 //week info
 
 global.week = 0;//week
