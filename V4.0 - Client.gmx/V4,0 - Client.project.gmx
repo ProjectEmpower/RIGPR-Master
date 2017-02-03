@@ -50,6 +50,7 @@
         <object>objects\ButtonStart</object>
         <object>objects\TitleMenu</object>
         <object>objects\MenuToMap</object>
+        <object>objects\ResizeBG</object>
       </objects>
       <objects name="Map">
         <object>objects\ButtonCharacter</object>
