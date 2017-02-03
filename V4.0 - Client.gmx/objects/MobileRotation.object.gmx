@@ -50,9 +50,25 @@
             <kind>1</kind>
             <string>newOrientation = display_get_orientation();
 global.lastResRoom = 0;
+if(global.roomHeight &lt; global.roomWidth and (orientation == display_portrait or orientation == display_portrait_flipped))
+{
+    tempWidth = global.roomWidth;
+    global.roomWidth = global.roomHeight
+    global.roomHeight = tempWidth;  
+    global.lastResRoom = room;
+    room = RoomResChange;
+}
+if(global.roomHeight &gt; global.roomWidth and (orientation == display_landscape or orientation == display_landscape_flipped))
+{
+    tempWidth = global.roomWidth;
+    global.roomWidth = global.roomHeight
+    global.roomHeight = tempWidth;  
+    global.lastResRoom = room;
+    room = RoomResChange;
+}
 if(orientation != newOrientation)
 {
-    if(newOrientation == display_portrait or newOrientation ==  display_portrait_flipped	)
+    if(newOrientation == display_portrait or newOrientation ==  display_portrait_flipped)
     {
         if(orientation == display_portrait or orientation == display_portrait_flipped)
         {
@@ -70,7 +86,7 @@ if(orientation != newOrientation)
             room = RoomResChange;
         }
     }
-    if(newOrientation == display_landscape or newOrientation ==  display_landscape_flipped	)
+    if(newOrientation == display_landscape or newOrientation ==  display_landscape_flipped)
     {
         if(orientation == display_landscape or orientation == display_landscape_flipped)
         {

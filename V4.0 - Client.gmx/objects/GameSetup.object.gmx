@@ -25,16 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets the initial view of the screen, this is used to to create the variable
+            <string>global.startOrientation = display_get_orientation();
+if(global.startOrientation != display_portrait or global.startOrientation != display_portrait_flipped)
+{
+    //mobile res    
+    global.roomWidth = 960;
+    global.roomHeight = 640;
+
+}
+else
+{
+    //mobile res
+    global.roomWidth = 640;
+    global.roomHeight = 960;
+}
+global.zooming = false;
+//pc res
+//global.roomWidth = 1280;
+//global.roomHeight = 720;
+//sets the initial view of the screen, this is used to to create the variable
 global.currentX = 0;
 global.currentY = 0;
 //sets the default positions of the Hud on the map screens
-//pc res
-global.roomWidth = 1280;
-global.roomHeight = 720;
-//mobile res
-//global.roomWidth = 640;
-//global.roomHeight = 960;
+
+
 global.fullScreen = false;
 window_set_fullscreen(global.fullScreen);//checks to see if it should be full screen, applies to pc only
 global.lastResRoom = 0; //used for when the screen rotates on mobile devices.

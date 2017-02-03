@@ -142,13 +142,16 @@ global.moveLock = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//turns on drag variable (true)
-drag = 1
-//sets the dragX and dragY positions to the mouse's current position
-dragX = mouse_x
-dragY = mouse_y
-currentPosX = view_xview;
-currentPosY = view_yview;
+            <string>if(global.zooming == false)
+{
+    //turns on drag variable (true)
+    drag = 1
+    //sets the dragX and dragY positions to the mouse's current position
+    dragX = mouse_x
+    dragY = mouse_y
+    currentPosX = view_xview;
+    currentPosY = view_yview;
+}
 </string>
           </argument>
         </arguments>

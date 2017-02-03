@@ -8,6 +8,72 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>m0x = 0;
+m0y = 0;
+m1x = 0;
+m1y = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(device_mouse_check_button(0,mb_left) &amp;&amp; (device_mouse_check_button(1,mb_left)))
+{
+    if(global.zoom &lt;= 2 and global.zoom &gt;= 1)
+    {
+        global.zooming = true;
+        distance = sqrt(sqr(m1x - m0x) + sqr(m1y - m0y));
+        global.zoom = (distance/sqrt(sqr(abs(device_mouse_raw_x(0) - device_mouse_raw_x(1))) + sqr(abs(device_mouse_raw_y(0) - device_mouse_raw_y(1)))));
+    }
+        if(global.zoom &gt; 2)
+        {
+            global.zoom = 2
+        }
+        if(global.zoom &lt; 1)
+        {
+            global.zoom = 1
+        }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="61">
       <action>
         <libid>1</libid>
@@ -55,6 +121,65 @@
 {
     global.zoom -= 0.5;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="56">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.zooming == true)
+{
+    global.zooming = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="53">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(device_mouse_check_button(0,mb_left))
+{
+    m0x = device_mouse_x(0);
+    m0y = device_mouse_y(0);
+}
+if(device_mouse_check_button(1,mb_left))
+{
+    m1x = device_mouse_x(1);
+    m1y = device_mouse_y(1);
+}
+
 </string>
           </argument>
         </arguments>
