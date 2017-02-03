@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>//when the map screens start, this will run   
-var inst;
 //This code counts the number of locations stored, asigns them instances and displays them based on their mythical status.
 global.TotalInstanceNum = 100;//sets global Num to 100 (100 is max istance ammount)
 for(i = 0; i &lt; global.TotalInstanceNum; i++) 
@@ -52,8 +51,9 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
                     tempEventWeek = "Event"+tempEventID+"Week";
                     ini_open(global.locationINI)//opens location ini
                     //sets up the events variable name for reading the events ini
-                    tempEventRef = ini_read_real(locationName, tempEventType, 3);
+                    tempEventRef = ini_read_real(locationName, tempEventType, 0);
                     tempEventWeekMap = ini_read_real(locationName, tempEventWeek, 0);
+                    locationMyth = ini_read_real(locationName,"Mythical",3);
                     ini_close();//closes location ini
                     s = string(tempEventRef)
                     tempEventName = "Event"+s;
@@ -61,7 +61,7 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
                     tempMyth = ini_read_real(tempEventName, "Mythical", 3);  
                     ini_close();//closes event ini
                     ini_open(global.locationINI);//opens location ini
-                    if(global.week == tempEventWeekMap) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
+                    if(global.week == tempEventWeekMap and locationMyth != 3) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
                     {
                         ini_write_real(locationName,"Mythical",tempMyth); //reads the sprite
                         LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
@@ -102,7 +102,7 @@ for(i = 0; i &lt;= global.totalEventCards; i++)
     }
     else
     {
-    global.eventArray[i] = currentCard;
+        global.eventArray[i] = currentCard;
     }
     ini_close();
 }
@@ -117,9 +117,9 @@ for(i = 0; i &lt;= global.totalActionCards; i ++)
     {
         global.totalActionCards = i;//set the total to the current loop number.
     }
-        else
+    else
     {
-    global.actionArray[i] = currentCard;
+        global.actionArray[i] = currentCard;
     }
     ini_close();
 }

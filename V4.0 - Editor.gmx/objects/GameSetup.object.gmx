@@ -66,7 +66,6 @@ global.cardInfoINI = "ini_files/cardInfo.ini";
 global.cardConsINI = "ini_files/cardCons.ini";
 global.cardCharINI = "ini_files/cardChar.ini";
 global.editorINI = "editor_files/editor.ini";
-global.spriteINI = "editor_files/sprite.ini";
 
 ini_open(global.editorINI);
 

@@ -39,33 +39,34 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
     {
         tempEventNum = ini_read_real(locationName, "Number of Events", 0);
         ini_close();
-         if(tempEventNum &gt; 0)//if there are events
-            {   
-                for(e = 1; e &lt;= tempEventNum; e++)
+        if(tempEventNum &gt; 0)//if there are events
+        {   
+            for(e = 1; e &lt;= tempEventNum; e++)
+            {
+                //sets up the type/week variable names for use when reading the locations ini
+                tempEventID = string(e);
+                tempEventType = "Event"+tempEventID+"Type";
+                tempEventWeek = "Event"+tempEventID+"Week";
+                ini_open(global.locationINI)//opens location ini
+                //sets up the events variable name for reading the events ini
+                tempEventRef = ini_read_real(locationName, tempEventType, 0);
+                tempEventWeekMap = ini_read_real(locationName, tempEventWeek, 0);
+                locationMyth = ini_read_real(locationName,"Mythical",3);
+                ini_close();//closes location ini
+                s = string(tempEventRef)
+                tempEventName = "Event"+s;
+                ini_open(global.cardEventINI);//opens event ini
+                tempMyth = ini_read_real(tempEventName, "Mythical", 3);  
+                ini_close();//closes event ini
+                ini_open(global.locationINI);//opens location ini
+                if(global.week == tempEventWeekMap and locationMyth != 3) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
                 {
-                    //sets up the type/week variable names for use when reading the locations ini
-                    tempEventID = string(e);
-                    tempEventType = "Event"+tempEventID+"Type";
-                    tempEventWeek = "Event"+tempEventID+"Week";
-                    ini_open(global.locationINI)//opens location ini
-                    //sets up the events variable name for reading the events ini
-                    tempEventRef = ini_read_real(locationName, tempEventType, 3);
-                    tempEventWeekMap = ini_read_real(locationName, tempEventWeek, 0);
-                    ini_close();//closes location ini
-                    s = string(tempEventRef)
-                    tempEventName = "Event"+s;
-                    ini_open(global.cardEventINI);//opens event ini
-                    tempMyth = ini_read_real(tempEventName, "Mythical", 3);  
-                    ini_close();//closes event ini
-                    ini_open(global.locationINI);//opens location ini
-                    if(global.week == tempEventWeekMap) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
-                    {
-                        ini_write_real(locationName,"Mythical",tempMyth); //reads the sprite
-                        LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
-                        LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
-                        inst = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
-                    }
-                    ini_close()//closes location ini
+                    ini_write_real(locationName,"Mythical",tempMyth); //reads the sprite
+                    LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
+                    LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
+                    global.buildingArray[i] = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+                }
+                ini_close()//closes location ini
             }
 
         }
@@ -87,8 +88,13 @@ for(i = 0; i &lt;= global.totalEventCards; i++)
         global.totalEventCards = i; 
         //set the total to the current loop number.
     }
+    else
+    {
+        global.eventArray[i] = currentCard;
+    }
     ini_close();
 }
+//sets up the action cards
 global.totalActionCards = 100;
 for(i = 0; i &lt;= global.totalActionCards; i ++)
 {
@@ -99,8 +105,13 @@ for(i = 0; i &lt;= global.totalActionCards; i ++)
     {
         global.totalActionCards = i;//set the total to the current loop number.
     }
+    else
+    {
+        global.actionArray[i] = currentCard;
+    }
     ini_close();
 }
+//sets up the consequence cards
 global.totalConsCards = 100;
 for(i = 0; i &lt;= global.totalConsCards; i ++)
 {
@@ -111,8 +122,13 @@ for(i = 0; i &lt;= global.totalConsCards; i ++)
     {
         global.totalConsCards = i;//set the total to the current loop number.
     }
+    else
+    {
+    global.consArray[i] = currentCard;
+    }
     ini_close();
 }
+//sets up the information cards
 global.totalInfoCards = 100;
 for(i = 0; i &lt;= global.totalInfoCards; i ++)
 {
@@ -123,8 +139,13 @@ for(i = 0; i &lt;= global.totalInfoCards; i ++)
     {
         global.totalInfoCards = i;//set the total to the current loop number.
     }
+    else
+    {
+    global.infoArray[i] = currentCard;
+    }
     ini_close();
 }
+//sets up the character cards
 global.totalCharCards = 100;
 for(i = 0; i &lt;= global.totalCharCards; i ++)
 {
@@ -134,6 +155,10 @@ for(i = 0; i &lt;= global.totalCharCards; i ++)
     if(!ini_section_exists(currentCard))//if the current event in list does not exist
     {
         global.totalCharCards = i;//set the total to the current loop number.
+    }
+    else
+    {
+    global.charArray[i] = currentCard;
     }
     ini_close();
 }

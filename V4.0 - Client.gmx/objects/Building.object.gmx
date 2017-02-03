@@ -30,40 +30,83 @@ image_angle = 45;//angle of the building
 ref = string(global.objectRef); //reference of the object in string
 Name = "Location"+ref; //Location+*string*
 ini_open(global.locationINI); //opens the location ini file1
-myth = ini_read_real(Name,"Mythical",0); //reads the sprite
-sprite = ini_read_real(Name,"SpriteRef",0);
-ini_close();//close the ini file 
-
-switch(sprite)
+locationEventNumber = ini_read_real(Name,"Number of Events",0);//reads the number of events
+global.locationMyth = ini_read_real(Name,"Mythical",0); //reads the sprite
+global.buildingSprite = ini_read_real(Name,"SpriteRef",0);
+ini_close();//close the ini file
+//the following code is used to check all events (if they exist) and see what the mythical status will be for the location itself (based on all events held in that location)
+if(locationEventNumber &gt; 0)//checks the number of events
 {
-    case 0: 
-        if (myth == 0)
+    //these are set to default to be used later when reading all events mythical status
+    tempNormMap = 0;//set temp normal map to 0 (false)
+    tempMythMap = 0;//set temp mythical map to 0 (false)
+    for(i = 1; i &lt;= locationEventNumber; i++)//go through each events
+    {
+        tempEventID = string(i);//create a string of the event id based on the iteration (i) 
+        tempEvent = "Event"+tempEventID+"Type";//creates the tempEvent variable for use when accessing the events information from the location ini
+        ini_open(global.locationINI);//opens the location ini
+        tempEventRef = ini_read_real(Name, tempEvent, 3);//reads the current events reference from the location ini
+        ini_close();//closes the location ini
+        s = string(tempEventRef)//uses the reference set above and creates a string of it
+        tempEventName = "Event"+s;//uses the string to create the event name "Event"+*string*, set above in s
+        ini_open(global.cardEventINI);//opens the event ini
+        tempMyth = ini_read_real(tempEventName, "Mythical", 3);//reads the mythical status of the event, set above in tempEventName
+        ini_close();//closes the event ini
+        switch(tempMyth)//checks the events mythical statsus, changes the tempNormMap and tempMythMap variables accordingly
         {
-             sprite_index = BuildingSpriteNormal;
+            case 0: tempNormMap = 1;
+            break;
+            case 1: tempMythMap = 1;
+            break;
+            case 2: tempNormMap = 1;
+                    tempMythMap = 1;
+            default: 
+            break;
         }
-        else if (myth == 1)
+    }
+    //after running the for loop, it checks the events mythical status data that was collected (if any were in normal, mythical or both)
+    if(tempNormMap == 1 and tempMythMap == 1)
+    {
+        global.locationMyth = 2;
+    }
+    if(tempNormMap == 0 and tempMythMap == 1)
+    {
+        global.locationMyth = 1;
+    }
+    if(tempNormMap == 1 and tempMythMap == 0)
+    {
+        global.locationMyth = 0
+    }
+    ini_open(global.locationINI);//reopens the ini file
+    ini_write_real(Name,"Mythical",global.locationMyth); //sets the new mythical status
+    ini_close();
+}
+else
+{
+    //if there are no events
+    global.locationMyth = 3;//set the locations mytical status to 2 (both)
+    ini_open(global.locationINI);//open the ini file
+    ini_write_real(Name,"Mythical",global.locationMyth);//rewrite the mythical status to the ini file
+    ini_close();
+} 
+for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
+{
+    if(global.buildingSprite == i)
+    {
+        if (global.locationMyth == 0)
         {
-            sprite_index = BuildingSpriteMythical;
+             sprite_index = global.normBuildingArray[i];
         }
-         else if (myth == 2)
+        else if (global.locationMyth == 1)
         {
-            sprite_index = BuildingSpriteBoth;
+            sprite_index = global.mythBuildingArray[i];
         }
-    break;
-    case 1: 
-        if (myth == 0)
+         else if (global.locationMyth == 2)
         {
-             sprite_index = BuildingSpriteNormal1;
+            sprite_index = global.bothBuildingArray[i];
         }
-        else if (myth == 1)
-        {
-            sprite_index = BuildingSpriteMythical;
-        }
-         else if (myth == 2)
-        {
-            sprite_index = BuildingSpriteBoth;
-        }
-    break;
+    }
+    
 }
 </string>
           </argument>

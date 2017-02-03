@@ -36,6 +36,8 @@
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
+    <background>background\MenuBG</background>
+    <background>background\NewMapBG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -47,6 +49,7 @@
       <objects name="Menu">
         <object>objects\ButtonStart</object>
         <object>objects\TitleMenu</object>
+        <object>objects\MenuToMap</object>
       </objects>
       <objects name="Map">
         <object>objects\ButtonCharacter</object>
@@ -57,6 +60,7 @@
         <object>objects\ButtonWeekLeft</object>
         <object>objects\ButtonWeekRight</object>
         <object>objects\WeekTextDraw</object>
+        <object>objects\DrawNames</object>
       </objects>
       <objects name="Character">
         <object>objects\TitleCharacter</object>

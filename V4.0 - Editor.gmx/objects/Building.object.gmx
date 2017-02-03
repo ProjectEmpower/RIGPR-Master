@@ -96,7 +96,7 @@ if(locationEventNumber &gt; 0)//checks the number of events
 else
 {
     //if there are no events
-    global.locationMyth = 2;//set the locations mytical status to 2 (both)
+    global.locationMyth = 3;//set the locations mytical status to 2 (both)
     ini_open(global.locationINI);//open the ini file
     ini_write_real(Name,"Mythical",global.locationMyth);//rewrite the mythical status to the ini file
     ini_close();
@@ -114,6 +114,10 @@ for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
             sprite_index = global.mythBuildingArray[i];
         }
          else if (global.locationMyth == 2)
+        {
+            sprite_index = global.bothBuildingArray[i];
+        }
+        else if(global.locationMyth == 3)
         {
             sprite_index = global.bothBuildingArray[i];
         }

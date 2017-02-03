@@ -25,32 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//checks to see if the ini files exist, if they do not, it downloads them from the webhost
-if(!file_exists("ini_files/location.ini"))
-{
-    location_ini = http_get_file("http://www.ell360.co.uk/ini_files/location.ini", "ini_files/location.ini");
-}
-if(!file_exists("ini_files/cardEvent.ini"))
-{
-    cardEvent_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardEvent.ini", "ini_files/cardEvent.ini");
-}
-if(!file_exists("ini_files/cardAction.ini"))
-{
-    cardAction_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardAction.ini", "ini_files/cardAction.ini");
-}
-if(!file_exists("ini_files/cardInfo.ini"))
-{
-    cardInfo_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardInfo.ini", "ini_files/cardInfo.ini");
-}
-if(!file_exists("ini_files/cardCons.ini"))
-{
-    cardCons_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardCons.ini", "ini_files/cardCons.ini");
-}
-if(!file_exists("ini_files/cardChar.ini"))
-{
-    cardChar_ini = http_get_file("http://www.ell360.co.uk/ini_files/cardChar.ini", "ini_files/cardChar.ini");
-}
-//sets the initial view of the screen, this is used to to create the variable
+            <string>//sets the initial view of the screen, this is used to to create the variable
 global.currentX = 0;
 global.currentY = 0;
 //sets the default positions of the Hud on the map screens
@@ -86,7 +61,78 @@ global.cardActionINI = "ini_files/cardAction.ini";
 global.cardInfoINI = "ini_files/cardInfo.ini";
 global.cardConsINI = "ini_files/cardCons.ini";
 global.cardCharINI = "ini_files/cardChar.ini";
+global.editorINI = "editor_files/editor.ini";
 
+//checks to see if the ini files exist, if they do not, it downloads them from the webhost
+if(!file_exists(global.locationINI))
+{
+    location_ini = http_get_file("http://www.ell360.co.uk/EMPOWER/ini_files/location.ini", global.locationINI);
+}
+if(!file_exists(global.cardEventINI))
+{
+    cardEvent_ini = http_get_file("http://www.ell360.co.uk/EMPOWER/ini_files/cardEvent.ini", global.cardEventINI);
+}
+if(!file_exists(global.cardActionINI))
+{
+    cardAction_ini = http_get_file("http://www.ell360.co.uk/EMPOWER/ini_files/cardAction.ini", global.cardActionINI);
+}
+if(!file_exists(global.cardInfoINI))
+{
+    cardInfo_ini = http_get_file("http://www.ell360.co.uk/EMPOWER/ini_files/cardInfo.ini", global.cardInfoINI);
+}
+if(!file_exists(global.cardConsINI))
+{
+    cardCons_ini = http_get_file("http://www.ell360.co.uk/EMPOWER/ini_files/cardCons.ini", global.cardConsINI);
+}
+if(!file_exists(global.cardCharINI))
+{
+    cardChar_ini = http_get_file("http://www.ell360.co.uk/EMPOWER/ini_files/cardChar.ini", global.cardCharINI);
+}
+if(!file_exists(global.editorINI))
+{
+   editor_ini = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/editor.ini", global.editorINI);
+}
+
+ini_open(global.editorINI);
+
+global.totalNormBuildingSprites = ini_read_real("General", "Norm Building Sprites", 0);
+global.totalMythBuildingSprites = ini_read_real("General", "Myth Building Sprites", 0);
+global.totalBothBuildingSprites = ini_read_real("General", "Both Building Sprites", 0);
+ini_close();
+
+for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
+{
+    spriteName = "BuildingSpriteN"+string(i);//set the sprite name to be Usersprite + i
+    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
+    {
+        spriteNPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
+    }
+    global.normBuildingArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
+    sprite_set_offset(global.normBuildingArray[i],sprite_get_width(global.normBuildingArray[i])/2,sprite_get_height(global.normBuildingArray[i])/2)
+
+}
+for(i = 0; i &lt; global.totalMythBuildingSprites; i++)
+{
+    spriteName = "BuildingSpriteM"+string(i);//set the sprite name to be Usersprite + i
+    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
+    {
+        spriteMPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
+    }
+    global.mythBuildingArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
+    sprite_set_offset(global.mythBuildingArray[i],sprite_get_width(global.mythBuildingArray[i])/2,sprite_get_height(global.mythBuildingArray[i])/2)
+
+}
+for(i = 0; i &lt; global.totalBothBuildingSprites; i++)
+{
+    spriteName = "BuildingSpriteB"+string(i);//set the sprite name to be Usersprite + i
+    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
+    {
+        spriteBPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
+    }
+    global.bothBuildingArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
+    sprite_set_offset(global.bothBuildingArray[i],sprite_get_width(global.bothBuildingArray[i])/2,sprite_get_height(global.bothBuildingArray[i])/2)
+
+}
 room = RoomResChange;//moves to the menu
 </string>
           </argument>

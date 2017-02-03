@@ -143,13 +143,9 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
-    <room>rooms\RoomLocationAdd</room>
-    <room>rooms\RoomCards</room>
-    <room>rooms\RoomDiary</room>
-    <room>rooms\RoomCharacter</room>
-    <room>rooms\RoomMap</room>
-    <room>rooms\RoomOptions</room>
     <room>rooms\RoomMenu</room>
+    <room>rooms\RoomMap</room>
+    <room>rooms\RoomLocationAdd</room>
     <rooms name="Decks">
       <room>rooms\RoomDeckList</room>
       <rooms name="Card">
@@ -157,9 +153,13 @@
         <room>rooms\RoomCardDeck</room>
       </rooms>
     </rooms>
+    <room>rooms\RoomOptions</room>
     <rooms name="Options">
       <room>rooms\RoomResChange</room>
     </rooms>
+    <room>rooms\RoomCharacter</room>
+    <room>rooms\RoomDiary</room>
+    <room>rooms\RoomCards</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
