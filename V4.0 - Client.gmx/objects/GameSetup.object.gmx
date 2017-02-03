@@ -29,8 +29,12 @@
 global.currentX = 0;
 global.currentY = 0;
 //sets the default positions of the Hud on the map screens
+//pc res
 global.roomWidth = 1280;
 global.roomHeight = 720;
+//mobile res
+//global.roomWidth = 640;
+//global.roomHeight = 960;
 global.fullScreen = false;
 window_set_fullscreen(global.fullScreen);//checks to see if it should be full screen, applies to pc only
 global.lastResRoom = 0; //used for when the screen rotates on mobile devices.
