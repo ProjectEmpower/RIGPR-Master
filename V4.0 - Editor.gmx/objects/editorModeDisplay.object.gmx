@@ -52,10 +52,12 @@ global.editorModeDisplayY = 64;
             <kind>1</kind>
             <string>if(global.myth == 2)
 {
+    depth = -1;
     sprite_index = EditorMODE;
 }
 else
 {
+    depth = 0;
     sprite_index = No_sprite;
 }
 </string>

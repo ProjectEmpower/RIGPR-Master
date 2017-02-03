@@ -340,7 +340,7 @@ if(room == RoomDeckList)
 
 if(room == RoomMap)
 {
-    image_xscale = .8;
+    image_xscale = global.textBoxXScale;
     if(instance_id[realNameTextBoxRef] == id)
     {
         txt_display = "EDITOR MODE";     //sets display text
@@ -984,55 +984,58 @@ if(room == RoomDeckList)//unused
 
 if(room == RoomMap)
 {
-    if(global.textboxArray[0] == id)
+    if(global.moveLock == 0)
     {
-        if (global.myth != 2)//if not in editor mode
+        if(global.textboxArray[0] == id)
         {
-            global.editorMode = global.myth;//stores the mythical status on click inside "editorMode"
-            global.myth = 2;//sets the current mythical status to 2, editor mode
+            if (global.myth != 2)//if not in editor mode
+            {
+                global.editorMode = global.myth;//stores the mythical status on click inside "editorMode"
+                global.myth = 2;//sets the current mythical status to 2, editor mode
+            }
+            else//if in editor mode
+            {
+                global.myth = global.editorMode;//set the mythical status back to the previous
+            }
+            room = RoomMap;//reloads the map screen
         }
-        else//if in editor mode
+        if(global.textboxArray[2] == id)
         {
-            global.myth = global.editorMode;//set the mythical status back to the previous
+            global.lastRoom = room;
+            global.RoomState = 0;
+            room = RoomCardDeck;
         }
-        room = RoomMap;//reloads the map screen
+        if(global.textboxArray[3] == id)
+        {
+            global.lastRoom = room;
+            global.RoomState = 1;
+            room = RoomCardDeck;
+        }
+        if(global.textboxArray[4] == id)
+        {
+            global.lastRoom = room;
+            global.RoomState = 2;
+            room = RoomCardDeck;
+        }   
+        if(global.textboxArray[5] == id)
+        {
+            global.lastRoom = room;
+            global.RoomState = 3;
+            room = RoomCardDeck;
+        }  
+        if(global.textboxArray[6] == id)
+        {
+            //global.lastRoom = room;
+            //global.RoomState = 4;
+            //room = RoomCardDeck;
+        }   
+        if(global.textboxArray[8] == id)
+        {
+            //on click
+            global.lastRoom = room;//lastRoom variable is the current room
+            room = RoomOptions;//Move to Options room
+        }  
     }
-    if(global.textboxArray[2] == id)
-    {
-        global.lastRoom = room;
-        global.RoomState = 0;
-        room = RoomCardDeck;
-    }
-    if(global.textboxArray[3] == id)
-    {
-        global.lastRoom = room;
-        global.RoomState = 1;
-        room = RoomCardDeck;
-    }
-    if(global.textboxArray[4] == id)
-    {
-        global.lastRoom = room;
-        global.RoomState = 2;
-        room = RoomCardDeck;
-    }   
-    if(global.textboxArray[5] == id)
-    {
-        global.lastRoom = room;
-        global.RoomState = 3;
-        room = RoomCardDeck;
-    }  
-    if(global.textboxArray[6] == id)
-    {
-        //global.lastRoom = room;
-        //global.RoomState = 4;
-        //room = RoomCardDeck;
-    }   
-    if(global.textboxArray[8] == id)
-    {
-        //on click
-        global.lastRoom = room;//lastRoom variable is the current room
-        room = RoomOptions;//Move to Options room
-    }  
 }
 </string>
           </argument>

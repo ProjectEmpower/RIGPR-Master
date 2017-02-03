@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//creates the variable drag (sets it to false)
-drag = 0
-currentPosX = 0
+            <string>//on create, create the variable and set
+drag = 0 //drag is used when moving the sceen
+currentPosX = 0//current x/y is used when checking if the screen has been moved.
 currentPosY = 0
+tempZoom = global.zoom;
 </string>
           </argument>
         </arguments>
@@ -62,22 +63,38 @@ currentPosY = 0
     view_yview = max(0, min(view_yview, room_height - view_hview));
     
     //sets the button postions when the screen is in movement
-    ButtonCharacter.x = view_xview + global.CharacterButtonX;
-    ButtonCharacter.y = view_yview + global.CharacterButtonY;
+    ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom
+    ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom// * global.zoom
     
-    WeekTextDraw.x = view_xview+ global.weekX;
-    WeekTextDraw.y = view_yview+ global.weekY;
-
-    ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;
-    ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
-    ButtonWeekRight.x = view_xview + global.WeekRightButtonX;
-    ButtonWeekRight.y = view_yview + global.WeekRightButtonY;
+    ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX * global.zoom;
+    ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY * global.zoom;
+    ButtonWeekRight.x = view_xview + global.WeekRightButtonX * global.zoom;
+    ButtonWeekRight.y = view_yview + global.WeekRightButtonY * global.zoom;
     if(currentPosX != view_xview or currentPosY != view_yview)
     {
         global.moveLock = 1;
     }
 }
-
+if(tempZoom != global.zoom)
+{ 
+    tempZoom = global.zoom;
+    view_wview[0] = global.roomWidth * global.zoom //set the view width/height to the global variable roomWidth/roomHeight, this is set when the game starts and the player changes the screen size using options
+    view_hview[0] = global.roomHeight * global.zoom
+    
+    ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom
+    ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom// * global.zoom    
+    ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX * global.zoom;
+    ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY * global.zoom;
+    ButtonWeekRight.x = view_xview + global.WeekRightButtonX * global.zoom;
+    ButtonWeekRight.y = view_yview + global.WeekRightButtonY * global.zoom;
+    
+    ButtonCharacter.image_xscale = global.zoom
+    ButtonCharacter.image_yscale = global.zoom// * global.zoom
+    ButtonWeekLeft.image_xscale = global.zoom;
+    ButtonWeekLeft.image_yscale = global.zoom;
+    ButtonWeekRight.image_xscale = global.zoom;
+    ButtonWeekRight.image_yscale = global.zoom;
+}
 </string>
           </argument>
         </arguments>

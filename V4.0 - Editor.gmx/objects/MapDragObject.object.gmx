@@ -29,6 +29,7 @@
 drag = 0 //drag is used when moving the sceen
 currentPosX = 0//current x/y is used when checking if the screen has been moved.
 currentPosY = 0
+tempZoom = global.zoom;
 </string>
           </argument>
         </arguments>
@@ -62,33 +63,24 @@ if(drag == 1) //if drag is 1 (true)
     //makes sure the view stays within the boundries of the room
     view_xview = max(0, min(view_xview, room_width - view_wview)) 
     view_yview = max(0, min(view_yview, room_height - view_hview))
-    
-    
+     
     //sets the button postions when the screen is in movement
-   
-
-    editorModeDisplay.x = view_xview + global.editorModeDisplayX;//editor mode hud element
-    editorModeDisplay.y = view_yview + global.editorModeDisplayY;
-    
-    WeekTextDraw.x = view_xview+ global.weekX;//week variable that is drawn
-    WeekTextDraw.y = view_yview+ global.weekY;
-
-    ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX;//left arrow button
-    ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY;
-    ButtonWeekRight.x = view_xview + global.WeekRightButtonX;//right arrow button
-    ButtonWeekRight.y = view_yview + global.WeekRightButtonY;
-    TextOnMap.x = view_xview + global.TextOnMapX;
-    TextOnMap.y = view_yview + global.TextOnMapY;
+    editorModeDisplay.x = view_xview + global.editorModeDisplayX* global.zoom;//editor mode hud element
+    editorModeDisplay.y = view_yview + global.editorModeDisplayY* global.zoom;
+    ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX * global.zoom;//left arrow button
+    ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY * global.zoom;
+    ButtonWeekRight.x = view_xview + global.WeekRightButtonX * global.zoom;//right arrow button
+    ButtonWeekRight.y = view_yview + global.WeekRightButtonY * global.zoom;
+    TextOnMap.x = view_xview + global.TextOnMapX * global.zoom;
+    TextOnMap.y = view_yview + global.TextOnMapY * global.zoom;
     //this code checks the current position vs the view, if its different (the screen has moved)
     //then the movelock will be set to 1 (true);
-    
-
     for(i = 0; i &lt; instance_number(TextInputBox); i++)
     {
         
 
-        global.textboxArray[i].x = view_xview + global.mapInputBoxX;
-        global.textboxArray[i].y = view_yview + (global.tempInputBoxY-(9*25))+(i*25);
+        global.textboxArray[i].x = view_xview + global.mapInputBoxX * global.zoom;
+        global.textboxArray[i].y = view_yview + ((global.tempInputBoxY-(9*25))+(i*25)) * global.zoom;
                
     }
         
@@ -97,6 +89,38 @@ if(drag == 1) //if drag is 1 (true)
     {
         global.moveLock = 1;
     }
+}
+if(tempZoom != global.zoom)
+{ 
+    tempZoom = global.zoom;
+    view_wview[0] = global.roomWidth * global.zoom //set the view width/height to the global variable roomWidth/roomHeight, this is set when the game starts and the player changes the screen size using options
+    view_hview[0] = global.roomHeight * global.zoom
+
+    editorModeDisplay.x = view_xview + global.editorModeDisplayX* global.zoom;//editor mode hud element
+    editorModeDisplay.y = view_yview + global.editorModeDisplayY* global.zoom;
+    ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX* global.zoom;//left arrow button
+    ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY* global.zoom;
+    ButtonWeekRight.x = view_xview + global.WeekRightButtonX* global.zoom;//right arrow button
+    ButtonWeekRight.y = view_yview + global.WeekRightButtonY* global.zoom;
+    TextOnMap.x = view_xview + global.TextOnMapX* global.zoom;
+    TextOnMap.y = view_yview + global.TextOnMapY* global.zoom;
+    
+    for(i = 0; i &lt; instance_number(TextInputBox); i++)
+    {        
+        global.textboxArray[i].x = view_xview + global.mapInputBoxX * global.zoom;
+        global.textboxArray[i].y = view_yview + ((global.tempInputBoxY-(9*25))+(i*25)) * global.zoom;             
+       
+        global.textboxArray[i].image_xscale =  global.textBoxXScale * global.zoom;
+        global.textboxArray[i].image_yscale = global.zoom;   
+    }
+    editorModeDisplay.image_xscale = global.zoom;
+    editorModeDisplay.image_yscale = global.zoom;
+    ButtonWeekLeft.image_xscale = global.zoom;
+    ButtonWeekLeft.image_yscale = global.zoom;
+    ButtonWeekRight.image_xscale = global.zoom;
+    ButtonWeekRight.image_yscale = global.zoom;
+    TextOnMap.image_xscale = global.zoom;
+    TextOnMap.image_yscale = global.zoom;
 }
 </string>
           </argument>

@@ -39,7 +39,7 @@ global.fullScreen = false;
 window_set_fullscreen(global.fullScreen);//checks to see if it should be full screen, applies to pc only
 global.lastResRoom = 0; //used for when the screen rotates on mobile devices.
 //week info
-
+global.zoom = 1;//sets start level of zoom
 global.week = 0;//week
 
 //instnace variables

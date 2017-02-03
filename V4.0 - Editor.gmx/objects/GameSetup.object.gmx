@@ -36,8 +36,8 @@ global.roomHeight = 720;//sets default screen height
 global.fullScreen = false;//sets full screen to false
 //eventually, these and the height will be saved/loaded if the user changes the settings/
 window_set_fullscreen(global.fullScreen);//sets the screen to full or not, depending on the variable above
-
-
+global.zoom = 1;//sets start level of zoom
+    global.textBoxXScale = 0.8; //sets the textboxXscale when used in zooming ont he map
 //week info
 global.week = 0;//week
 
