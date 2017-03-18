@@ -30,6 +30,11 @@ if(global.RoomState == 0)
 {
     global.tempEventID = string(global.eventRef);// takes the current cardRef (set when accessing the room)
     global.eventName = "Event"+global.tempEventID;//writes the card name
+<<<<<<< HEAD
+=======
+    
+    //room_set_background(RoomCardDeck, 0, 1, 0, EventCreation_Background, 0, 0, 1, 1, 0, 0, 0.8); // sets the event list room backround to appropriate BG
+>>>>>>> origin/master
 }
 if(global.RoomState == 1)
 {
