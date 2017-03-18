@@ -139,11 +139,12 @@ if(room == RoomCardEdit)
         //displays the cards information on the card add screen, same way as above.
         TcardRef = string(global.cardRef);
         global.cardName = "Action"+TcardRef;
-        textFeilds = 3;//number of text boxes we want.
+        textFeilds = 4;//number of text boxes we want.
         ini_open(global.cardActionINI)
         global.realCardName = ini_read_string(global.cardName,"Card Name","");
         global.cardText = ini_read_string(global.cardName,"Card Text","");
         global.cardMythical = ini_read_real(global.cardName,"Mythical",0);
+        global.cardInfoSlot = ini_read_real(global.cardName, "Info Cards",0);
         ini_close();
         var inst;
         for(i = 0; i &lt; textFeilds; i++)
@@ -151,6 +152,11 @@ if(room == RoomCardEdit)
             global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
             global.tempInputBoxY += 25;
             global.tempTextBoxY += 25;
+            if(i == 2)
+            {
+                global.tempInputBoxY += 100;
+                global.tempTextBoxY += 100;  
+            }
         }
     }
     if(global.RoomState == 2)//cons card
@@ -158,13 +164,14 @@ if(room == RoomCardEdit)
         //displays the cards information on the card add screen, same way as above.
         TconsRef = string(global.consCardRef);
         global.consName = "Cons"+TconsRef;
-        textFeilds = 5;//number of text boxes we want.
+        textFeilds = 6;//number of text boxes we want.
         ini_open(global.cardConsINI)
         global.realConsName = ini_read_string(global.consName,"Card Name","");        
         global.consInt = ini_read_real(global.consName ,"Int",0);
         global.consChar = ini_read_real(global.consName ,"Char",0);
         global.consWell = ini_read_real(global.consName ,"Well",0);
         global.consCardText = ini_read_string(global.consName ,"Card Text","");
+        global.cardInfoSlot = ini_read_real(global.cardName, "Info Cards",0);
         ini_close();
         var inst;
         
@@ -280,6 +287,7 @@ if(room == RoomCardDeck)
             global.realCardName = ini_read_string(tempCard,"Card Name","");
             global.cardText = ini_read_string(tempCard,"Card Text","");
             global.cardMythical = ini_read_real(tempCard,"Mythical",0);
+            global.cardInfoSlot = ini_read_real(global.cardName, "Info Cards",0);
             ini_close();
             if(global.cardMythical == eventMythical or eventMythical == 2)
             {
@@ -312,6 +320,7 @@ if(room == RoomCardDeck)
             global.consInt = ini_read_real(tempConsCard,"Int",0);
             global.consChar = ini_read_real(tempConsCard,"Char",0);
             global.consWell = ini_read_real(tempConsCard,"Well",0);
+            global.cardInfoSlot = ini_read_real(global.cardName, "Info Cards",0);
             ini_close();
             global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
             global.tempInputBoxY += 25;
@@ -370,6 +379,7 @@ if(room == RoomCardDeck)
           //  global.consInt = ini_read_real(tempCharCard,"Int",0);
           //  global.consChar = ini_read_real(tempCharCard,"Char",0);
           //  global.consWell = ini_read_real(tempCharCard,"Well",0);
+          //    global.cardInfoSlot = ini_read_real(global.cardName, "Info Cards",0);
             ini_close();
             global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
             global.tempInputBoxY += 25;

@@ -177,6 +177,11 @@ if(room == RoomCardEdit)
             txt_input = global.cardText;
             txt_display = "Text: "
         }
+        if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        {
+            txt_input = string(global.cardInfoSlot);
+            txt_display = "Info Card: "
+        }   
     }
     if(global.RoomState == 2)
     {
@@ -209,6 +214,11 @@ if(room == RoomCardEdit)
             txt_input = string(global.consWell);
             txt_display = "Well: "
         }
+        if(instance_id[sixthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        {
+            txt_input = string(global.cardInfoSlot);
+            txt_display = "Info Card: "
+        }   
     }
     if(global.RoomState == 3)
     {
@@ -274,6 +284,7 @@ if(room == RoomCardDeck)
                     case 1: myth_display = "M";
                     break;   
                 }
+
             }
         }
     }
@@ -289,7 +300,8 @@ if(room == RoomCardDeck)
                 int_display = global.consInt; 
                 char_display = global.consChar;
                 well_display = global.consWell;
-                text_display = global.consCardText;//not shown here        
+                text_display = global.consCardText;//not shown here    
+                inf_display = global.cardInfoSlot;    
             }
         }
     }
@@ -886,6 +898,18 @@ if(room == RoomCardDeck)//deck of cards
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
         }
+        if(global.lastState == 1)
+        {
+            global.cardType = id.ref_display;//sets the ref to "cardtype"      
+            s = string(global.currentCard);
+            cardToUpdate = "Action"+s;
+            ini_open(global.cardActionINI);//open the event ini               
+            ini_write_real(cardToUpdate,"Info Cards",global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 3;
+            global.RoomState = 1;
+            global.lastRoom = RoomCardEdit;
+        }
         else //editing the card
         {
             global.infoCardRef = id.ref_display;
@@ -942,6 +966,16 @@ if(room == RoomCardEdit)
             global.currentCard = 4;
             global.lastState = 0;  
             global.RoomState = 4;
+            room = RoomCardDeck;
+        } 
+    }
+    if(global.RoomState == 1)
+    {
+        if(instance_id[global.textBoxInstanceRef+3] == id)
+        {
+            global.currentCard = global.tempCardID;
+            global.lastState = 1;  
+            global.RoomState = 3;
             room = RoomCardDeck;
         } 
     }
@@ -1132,7 +1166,7 @@ if(room == RoomCardDeck)
         draw_text(global.InputBoxX - 25, myY, ref_display); //draws the input box text
         draw_text(global.InputBoxX + 0, myY, name_display);
         draw_text(global.InputBoxX + 25, myY, myth_display);     
-        draw_text(global.InputBoxX + 50, myY, text_display); 
+        draw_text(global.InputBoxX + 50, myY, text_display);  
         
     }
     if(global.RoomState == 2)
@@ -1143,7 +1177,7 @@ if(room == RoomCardDeck)
         draw_text(global.InputBoxX + 0, myY, name_display);
         draw_text(global.InputBoxX + 75, myY, int_display);
         draw_text(global.InputBoxX + 100, myY, char_display);     
-        draw_text(global.InputBoxX + 125, myY, well_display); 
+        draw_text(global.InputBoxX + 125, myY, well_display);   
         
     }
     if(global.RoomState == 3)

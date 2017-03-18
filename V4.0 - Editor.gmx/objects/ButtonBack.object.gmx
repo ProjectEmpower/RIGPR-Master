@@ -286,6 +286,12 @@ if(room == RoomCardDeck)//Room that shows the list of cards.
             global.RoomState = 0;
             room = RoomCardEdit;
         }
+        if(global.lastState == 1)
+        {
+            global.lastState = 1;
+            global.RoomState = 1;
+            room = RoomCardEdit;
+        }
         else
         {
             global.lastState = 3;

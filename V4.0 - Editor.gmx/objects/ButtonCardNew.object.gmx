@@ -95,6 +95,7 @@ if(room == RoomCardDeck)
         ini_write_real(global.cardName,"Well", 0);//writes a blank (0) "Well" stat
         ini_write_string(global.cardName,"Card Text","");//writes a blank "Card Text"
         ini_write_real(global.cardName,"Mythical",0);
+        ini_write_string(global.cardName, "Info Cards",0);
         ini_close();//closes the ini
         
     }
@@ -109,6 +110,7 @@ if(room == RoomCardDeck)
         ini_write_real(global.consCardName,"Char", 0);//writes a blank (0) "Char" stat
         ini_write_real(global.consCardName,"Well", 0);//writes a blank (0) "Well" stat
         ini_write_string(global.consCardName,"Card Text","");//writes a blank "Card Text"
+        ini_write_string(global.cardName, "Info Cards",0);
         ini_close();//closes the ini
     }
     if(global.RoomState == 3)

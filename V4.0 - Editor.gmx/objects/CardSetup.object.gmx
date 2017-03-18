@@ -30,7 +30,6 @@ if(global.RoomState == 0)
 {
     global.tempEventID = string(global.eventRef);// takes the current cardRef (set when accessing the room)
     global.eventName = "Event"+global.tempEventID;//writes the card name
-   
 }
 if(global.RoomState == 1)
 {
