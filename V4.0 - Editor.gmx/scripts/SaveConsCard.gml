@@ -5,5 +5,5 @@ ini_write_real(global.consName,"Int", global.consInt);
 ini_write_real(global.consName,"Char", global.consChar);
 ini_write_real(global.consName,"Well", global.consWell);
 ini_write_string(global.consName,"Card Text",global.consCardText);
-ini_read_real(global.cardName, "Info Cards",global.cardInfoSlot);
+ini_write_real(global.consName, "Info Cards",global.cardInfoSlot);
 ini_close();

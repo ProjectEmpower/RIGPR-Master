@@ -26,29 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>global.eventActionCardsNum = 0;
-
-if(global.RoomState == 0)
-{
-    room_set_background(RoomCardDeck, 0, 1, 0, EventCreation_Background, 0, 0, 1, 1, 0, 0, 0.8); // sets the event list room backround to appropriate BG
-}
-if(global.RoomState == 1)
-{
-    room_set_background(RoomCardDeck, 0, 1, 0, ActionCard_Background, 0, 0, 1, 1, 0, 0, 0.8); // sets the event list room backound to appropriate BG
-}
-if(global.RoomState == 2)
-{
-    room_set_background(RoomCardDeck, 0, 1, 0, ConsequenceCard_Background, 0, 0, 1, 1, 0, 0, 0.8); // sets the event list room backound to appropriate BG
-}
-if(global.RoomState == 3)
-{
-    room_set_background(RoomCardDeck, 0, 1, 0, InfoCard_Background, 0, 0, 1, 1, 0, 0, 0.8); // sets the event list room backound to appropriate BG
-}
-if(global.RoomState == 4)
-{
-    room_set_background(RoomCardDeck, 0, 1, 0, CharacterCard_Background, 0, 0, 1, 1, 0, 0, 0.8); // sets the event list room backound to appropriate BG
-}
-
-
 </string>
           </argument>
         </arguments>

@@ -211,4 +211,15 @@ else if(room == RoomCardEdit)
             global.infoLink = txt_input;
         }
     }
+    if(global.RoomState == 4)
+    {
+        if(instance_id[realNameTextBoxRef] == id)
+        {
+            global.charCardName = txt_input;
+        }
+        if(instance_id[descTextBoxRef] == id)
+        {
+            global.charCardText = txt_input;
+        }
+    }
 }

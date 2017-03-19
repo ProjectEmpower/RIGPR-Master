@@ -231,10 +231,25 @@ if(room == RoomLocationAdd) //checks room
 
 if(room == RoomDeckList)
 {
-    room = RoomMap;
+   // room = RoomMap;
 }
 if(room == RoomCardDeck)//Room that shows the list of cards.
 {
+    if(global.RoomState == 4)
+    {
+        if(global.lastState == 0)
+        {
+            global.lastState = 4;
+            global.RoomState = 0;
+            room = RoomCardEdit;
+        }
+        else
+        {
+            global.lastState = 4;
+            global.RoomState = 20;
+            room = RoomMap;
+        }
+    }
     if(global.RoomState == 0)
     {
         if(global.lastRoom == RoomLocationAdd)
@@ -280,40 +295,20 @@ if(room == RoomCardDeck)//Room that shows the list of cards.
     }
     if(global.RoomState == 3)
     {
-        if(global.lastState == 0)
+        if(global.lastState == 0 or global.lastState == 1 or global.lastState == 2 or global.lastState == 4)
         {
+            global.RoomState = global.lastState;
             global.lastState = 3;
-            global.RoomState = 0;
             room = RoomCardEdit;
         }
-        if(global.lastState == 1)
+        else 
         {
-            global.lastState = 1;
-            global.RoomState = 1;
-            room = RoomCardEdit;
-        }
-        else
-        {
-            global.lastState = 3;
-            global.RoomState = 20;
-            room = RoomMap;
+           global.lastState = 3;
+           global.RoomState = 20;
+           room = RoomMap;
         }
     }
-    if(global.RoomState == 4)
-    {
-        if(global.lastState == 0)
-        {
-            global.lastState = 4;
-            global.RoomState = 0;
-            room = RoomCardEdit;
-        }
-        else
-        {
-            global.lastState = 4;
-            global.RoomState = 20;
-            room = RoomMap;
-        }
-    }
+
 }
 if(room == RoomCardEdit)//Room that edits an individual card
 {
@@ -340,7 +335,7 @@ if(room == RoomCardEdit)//Room that edits an individual card
     }
     if(global.RoomState == 4)
     {
-       // script_execute(SaveCharCard);
+        script_execute(SaveCharCard);
         room = RoomCardDeck;
     }
 }

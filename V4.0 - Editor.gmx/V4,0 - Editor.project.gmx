@@ -76,6 +76,7 @@
     <script>scripts\SaveActionCard.gml</script>
     <script>scripts\SaveConsCard.gml</script>
     <script>scripts\SaveInfoCard.gml</script>
+    <script>scripts\SaveCharCard.gml</script>
     <script>scripts\ResolutionChange.gml</script>
   </scripts>
   <objects name="objects">
@@ -129,8 +130,9 @@
     <objects name="CardList">
       <object>objects\DeckListSetup</object>
       <objects name="CardEdit">
-        <object>objects\CardSetup</object>
         <object>objects\ButtonCycleMapVisibility</object>
+        <object>objects\CardSetup</object>
+        <object>objects\ButtonDeleteCard</object>
       </objects>
       <objects name="CardDeck">
         <object>objects\ButtonCardNew</object>
@@ -150,7 +152,6 @@
       </objects>
     </objects>
     <object>objects\GameSetup</object>
-    <object>objects\Test</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
