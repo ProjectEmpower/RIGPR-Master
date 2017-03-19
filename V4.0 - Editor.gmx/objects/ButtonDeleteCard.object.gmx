@@ -214,13 +214,13 @@ if(global.RoomState == 3)
                 //reads all relevent info from the next event
                 TempName = ini_read_string(NextCardName,"Card Name",""); 
                 TempText = ini_read_string(NextCardName,"Card Text","");  
-                TempLink = ini_read_real(NextCardName,"Link","");  
+                TempLink = ini_read_string(NextCardName,"Link","");  
                     
                 //writes the info to the current Location
                 ini_write_real(tempCardName,"Ref",i);
-                ini_write_string(NextCardName,"Card Name",TempName); 
-                ini_write_string(NextCardName,"Card Text",TempText);  
-                ini_write_string(NextCardName,"Link",TempLink);  
+                ini_write_string(tempCardName,"Card Name",TempName); 
+                ini_write_string(tempCardName,"Card Text",TempText);  
+                ini_write_string(tempCardName,"Link",TempLink);  
                 ini_section_delete(NextCardName); //deletes the next location
                 ini_close(); //closes the ini file       
             }        
