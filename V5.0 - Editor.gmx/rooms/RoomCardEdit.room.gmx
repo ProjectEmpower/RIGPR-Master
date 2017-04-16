@@ -57,10 +57,11 @@
     <instance objName="CardSetup" x="96" y="96" name="inst_4CB6E14A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonDeleteCard" x="128" y="640" name="inst_6DF05A04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonSave" x="1056" y="672" name="inst_F7387BA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonAddCardSprite" x="896" y="352" name="inst_6A5F93D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="CardSpriteObject" x="896" y="224" name="inst_4A5D1F03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonCardSpriteLeft" x="736" y="192" name="inst_AED94F2F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonCardSpriteRight" x="1024" y="192" name="inst_01028A53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddCardSprite" x="864" y="544" name="inst_6A5F93D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonCardSpriteLeft" x="704" y="256" name="inst_AED94F2F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonCardSpriteRight" x="1024" y="256" name="inst_01028A53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="CardSpriteObject" x="512" y="384" name="inst_FA1BE612" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="CardBacking" x="864" y="288" name="inst_487ECEC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

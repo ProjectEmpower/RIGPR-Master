@@ -429,7 +429,12 @@ if(room == RoomMap)
     }
     if(instance_id[realNameTextBoxRef+8]  == id)
     {
-        txt_display = "  OPTIONS";     //sets display text
+        txt_display = "Sprites";     //sets display text
+        num_display = "";
+    }
+    if(instance_id[realNameTextBoxRef+9]  == id)
+    {
+        txt_display = "Options";     //sets display text
         num_display = "";
     }
 }
@@ -1298,6 +1303,15 @@ if(room == RoomMap)
         if(global.textboxArray[8] == id)//options
         {
             //on click
+            global.cardSprite = -1;
+            global.RoomState = 0;
+            global.SelectWindow = false;
+            global.lastRoom = room;//lastRoom variable is the current room
+            room = RoomSprites;//Move to Sprites room
+        }  
+        if(global.textboxArray[9] == id)//options
+        {
+            //on click
             global.lastRoom = room;//lastRoom variable is the current room
             room = RoomOptions;//Move to Options room
         }  
@@ -1452,22 +1466,22 @@ if(room == RoomDeckList)
 }
 if(room == RoomMap)
 {
-    if(instance_id[11] != id and instance_id[19] != id) 
+    if(instance_id[11] != id and instance_id[19] != id and instance_id[20] != id) 
     {
         draw_set_valign(fa_middle);
         draw_set_halign(fa_right);
-        draw_text(global.mapInputBoxX - 36, myY, num_display); //draws the input box text
+        draw_text(global.mapInputBoxX - 36, myY + 0, num_display); //draws the input box text
         draw_set_halign(fa_left);
-        draw_text(global.mapInputBoxX - 36, myY, txt_display);
+        draw_text(global.mapInputBoxX - 36, myY + 0, txt_display);
 
     }
  
     else
     {
         draw_set_valign(fa_middle);
-        draw_set_halign(fa_left);
-        draw_text(global.mapInputBoxX - 56, myY, num_display); //draws the input box text
-        draw_text(global.mapInputBoxX - 56, myY, txt_display);
+        draw_set_halign(fa_center);
+        draw_text(global.mapInputBoxX - 0, myY + 0, num_display); //draws the input box text
+        draw_text(global.mapInputBoxX - 0, myY + 0, txt_display);
     }
 }
 </string>

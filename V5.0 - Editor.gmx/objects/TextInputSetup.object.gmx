@@ -434,11 +434,15 @@ if(room == RoomDeckList)
 }
 if(room == RoomMap)
 {
-    for(i = 0; i &lt; 9; i++)
-    {
+    for(i = 0; i &lt; 10; i++)
+    {    
+        if(i != 0)
+        {
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+        }
         global.textboxArray[i] = instance_create(global.mapInputBoxX,global.tempInputBoxY,TextInputBox);         
-        global.tempInputBoxY += 25;
-        global.tempTextBoxY += 25;
+
     }
     
 }

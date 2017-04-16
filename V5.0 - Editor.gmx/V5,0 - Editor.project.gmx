@@ -54,6 +54,7 @@
       <sprite>sprites\Map_Visibility</sprite>
       <sprite>sprites\ButtonSpriteSave</sprite>
       <sprite>sprites\DefaultCardSprite</sprite>
+      <sprite>sprites\CardBackingNormal</sprite>
     </sprites>
     <sprite>sprites\BackgroundSprite</sprite>
   </sprites>
@@ -135,10 +136,15 @@
         <object>objects\CardSetup</object>
         <object>objects\ButtonDeleteCard</object>
         <object>objects\ButtonSave</object>
-        <object>objects\CardSpriteObject</object>
         <object>objects\ButtonAddCardSprite</object>
         <object>objects\ButtonCardSpriteLeft</object>
         <object>objects\ButtonCardSpriteRight</object>
+        <objects name="Card">
+          <object>objects\CardBacking</object>
+          <object>objects\CardSpriteObject</object>
+          <object>objects\CardTypeSelect</object>
+          <object>objects\CardTypeButton</object>
+        </objects>
       </objects>
       <objects name="CardDeck">
         <object>objects\ButtonCardNew</object>
@@ -171,6 +177,7 @@
         <room>rooms\RoomCardDeck</room>
       </rooms>
     </rooms>
+    <room>rooms\RoomSprites</room>
     <room>rooms\RoomOptions</room>
     <rooms name="Options">
       <room>rooms\RoomResChange</room>

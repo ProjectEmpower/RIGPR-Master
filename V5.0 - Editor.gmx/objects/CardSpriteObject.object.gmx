@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.cardSprite == -1)
+            <string>CardSpriteObject.x = CardBacking.x;
+CardSpriteObject.y = CardBacking.y - 72;
+if(global.cardSprite == -1)
 {
     sprite_index = DefaultCardSprite;
 }
@@ -51,6 +53,71 @@ else
     {
         sprite_index = global.charCardSpriteArray[global.cardSprite];
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(room == RoomCardEdit)
+{
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+cardText = "";
+if(global.RoomState == 0)
+{
+    cardText = "Event";
+    draw_text_transformed(CardBacking.x, CardBacking.y + 48, global.realEventName,1,1,0);
+    draw_text_transformed(CardBacking.x, CardBacking.y + 80, "Required Int: " + string(global.reqEventInt),1,1,0);
+    draw_text_transformed(CardBacking.x, CardBacking.y + 112, "Required Cha: " + string(global.reqEventChar),1,1,0);
+    draw_text_transformed(CardBacking.x, CardBacking.y + 144, "Required Wel: " + string(global.reqEventWell),1,1,0);
+}
+if(global.RoomState == 1)
+{
+    cardText = "Action";
+    draw_text_transformed(CardBacking.x, CardBacking.y + 48, global.realCardName,1,1,0);
+    draw_text_transformed(CardBacking.x, CardBacking.y + 80, global.cardText,1,1,0);
+}
+if(global.RoomState == 2)
+{
+    cardText = "Consequence";
+        draw_text_transformed(CardBacking.x, CardBacking.y + 48, global.realConsName,1,1,0);
+    draw_text_transformed(CardBacking.x, CardBacking.y + 80, "Int: " + string(global.consInt),1,1,0);
+    draw_text_transformed(CardBacking.x, CardBacking.y + 112, "Char: " + string(global.consChar),1,1,0);
+    draw_text_transformed(CardBacking.x, CardBacking.y + 144, "Well: " + string(global.consWell),1,1,0);
+}
+if(global.RoomState == 3)
+{
+    cardText = "Information";
+    draw_text_transformed(CardBacking.x, CardBacking.y + 48, global.realInfoName,1,1,0);
+    draw_text_transformed(CardBacking.x, CardBacking.y + 80, global.infoCardText,1,1,0);
+    draw_text_transformed(CardBacking.x, CardBacking.y + 112,global.infoLink,1,1,0);
+}
+if(global.RoomState == 4)
+{
+    cardText = "Character";
+    draw_text_transformed(CardBacking.x, CardBacking.y + 48, global.charCardName,1,1,0);
+    draw_text_transformed(CardBacking.x, CardBacking.y + 80, global.charCardText,1,1,0);
+    
+}
+draw_text_transformed(CardBacking.x, CardBacking.y - 184, cardText,1.5,1.5,0);
 }
 </string>
           </argument>

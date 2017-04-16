@@ -28,7 +28,7 @@
             <string>//creation code for buildings
 //when an instances are created, each instance will run the following code
 image_angle = 45;//angle of the building
-if(room == RoomMap)//if the room is the map screen
+if(room == RoomMap or room == RoomSprites)//if the room is the map screen
 {
     Building.depth = 2;
     ref = string(global.objectRef); //set the ref variable to the current objectRef (instance number)

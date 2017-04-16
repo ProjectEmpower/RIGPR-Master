@@ -155,7 +155,9 @@ if(fileN != "" and fileM != "" and fileB != "")
         ini_close();//closes the ini
         fileB = "";//sets the open file to blank
         
-
+        global.buildingSprite = global.totalNormBuildingSprites-1;
+        script_execute(SaveLocation);//saves the current location
+        room = RoomLocationAdd;//reloads the room
 }
 </string>
           </argument>

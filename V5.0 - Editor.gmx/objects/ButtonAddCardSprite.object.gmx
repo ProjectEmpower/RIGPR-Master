@@ -98,6 +98,9 @@ if(CardImage != "")
         ini_write_real("General", "Event Card Sprites", global.totalEventCardSprites);
         ini_close();//closes the ini
         CardImage = "";//sets the open file to blank
+        global.cardSprite = global.totalEventCardSprites-1;
+        script_execute(SaveEventCard);//saves the current location
+        room = RoomCardEdit;//reloads the room
     }
     if(global.RoomState == 1)
     {
@@ -110,6 +113,9 @@ if(CardImage != "")
         ini_write_real("General", "Action Card Sprites", global.totalActionCardSprites);
         ini_close();//closes the ini
         CardImage = "";//sets the open file to blank
+        global.cardSprite = global.totalActionCardSprites-1;
+        script_execute(SaveActionCard);//saves the current location
+        room = RoomCardEdit;//reloads the room
     }
     if(global.RoomState == 2)
     {
@@ -122,6 +128,9 @@ if(CardImage != "")
         ini_write_real("General", "Cons Card Sprites", global.totalConsCardSprites);
         ini_close();//closes the ini
         CardImage = "";//sets the open file to blank
+        global.cardSprite = global.totalConsCardSprites-1;
+        script_execute(SaveConsCard);//saves the current location
+        room = RoomCardEdit;//reloads the room
     
     }
     if(global.RoomState == 3)
@@ -135,7 +144,9 @@ if(CardImage != "")
         ini_write_real("General", "Cons Card Sprites", global.totalInfoCardSprites);
         ini_close();//closes the ini
         CardImage = "";//sets the open file to blank
-    
+        global.cardSprite = global.totalInfoCardSprites-1;
+        script_execute(SaveInfoCard);//saves the current location
+        room = RoomCardEdit;//reloads the room
     }
     if(global.RoomState == 4)
     {
@@ -148,6 +159,9 @@ if(CardImage != "")
         ini_write_real("General", "Cons Card Sprites", global.totalCharCardSprites);
         ini_close();//closes the ini
         CardImage = "";//sets the open file to blank
+        global.cardSprite = global.totalCharCardSprites-1;
+        script_execute(SaveCharCard);//saves the current location
+        room = RoomCardEdit;//reloads the room
     }
 }
 </string>
