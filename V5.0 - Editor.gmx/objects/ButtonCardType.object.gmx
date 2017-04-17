@@ -25,10 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets position, if there are events to display
-ButtonSpriteRight.x = global.roomWidth/5*3+80;
-ButtonSpriteRight.y = global.roomHeight/5+25;
-
+            <string>depth -= 1;
+instanceToCard = global.buttonInstance;
 </string>
           </argument>
         </arguments>
@@ -51,16 +49,33 @@ ButtonSpriteRight.y = global.roomHeight/5+25;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tempRoom = room;
-//moves to the next event (if there is an event to go to)
-if(global.buildingSprite &lt; global.totalNormBuildingSprites-1)//checks to see if it can move
-{
-    global.buildingSprite += 1;//moves the event number on
-    if(room == RoomLocationAdd)
-        script_execute(SaveLocation);//saves the current location
-    room = tempRoom;//reloads the room
-    show_debug_message(global.buildingSprite);
-}
+            <string>global.RoomState = instanceToCard;
+global.cardSprite = -1;
+global.SelectWindow = false;
+room = RoomSprites;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_text(8,8,string(global.buildingSprite));
 </string>
           </argument>
         </arguments>

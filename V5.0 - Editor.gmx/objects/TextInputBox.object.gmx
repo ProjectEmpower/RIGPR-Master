@@ -1386,6 +1386,7 @@ if(room == RoomMap)
             //on click
             global.cardSprite = -1;
             global.RoomState = 0;
+            global.buildingSprite = -1;
             global.SelectWindow = false;
             global.lastRoom = room;//lastRoom variable is the current room
             room = RoomSprites;//Move to Sprites room

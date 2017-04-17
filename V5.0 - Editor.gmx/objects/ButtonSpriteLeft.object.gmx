@@ -50,12 +50,14 @@ ButtonSpriteLeft.y = global.roomHeight/5+25;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//moves to the previous event (if there is an event to go to)
+            <string>tempRoom = room;
+//moves to the previous event (if there is an event to go to)
 if(global.buildingSprite &gt; 0)//checks to see if it can move
 {  
     global.buildingSprite -= 1;//moves the event number back 
-    script_execute(SaveLocation);//saves the current location
-    room = RoomLocationAdd;//reloads the room
+    if(room == RoomLocationAdd)
+        script_execute(SaveLocation);//saves the current location
+    room = tempRoom;//reloads the room
     
 }
 </string>

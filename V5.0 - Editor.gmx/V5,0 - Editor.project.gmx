@@ -147,6 +147,9 @@
           <object>objects\CardSpriteObject</object>
           <object>objects\CardTypeSelect</object>
           <object>objects\CardTypeButton</object>
+          <object>objects\ButtonCardType</object>
+          <object>objects\CardTypeButtonAdder</object>
+          <object>objects\DeleteCurrentCardsprite</object>
         </objects>
       </objects>
       <objects name="CardDeck">

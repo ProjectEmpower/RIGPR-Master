@@ -33,25 +33,28 @@ if(global.cardSprite == -1)
 }
 else
 {
-    if(global.RoomState == 0)
+    if(global.cardSprite != -1)
     {
-        sprite_index = global.eventCardSpriteArray[global.cardSprite];
-    }
-    if(global.RoomState == 1)
-    {
-        sprite_index = global.actionCardSpriteArray[global.cardSprite];
-    }
-        if(global.RoomState == 2)
-    {
-        sprite_index = global.consCardSpriteArray[global.cardSprite];
-    }
-        if(global.RoomState == 3)
-    {
-        sprite_index = global.infoCardSpriteArray[global.cardSprite];
-    }
-        if(global.RoomState == 4)
-    {
-        sprite_index = global.charCardSpriteArray[global.cardSprite];
+        if(global.RoomState == 0)
+        {
+            sprite_index = global.eventCardSpriteArray[global.cardSprite];
+        }
+        if(global.RoomState == 1)
+        {
+            sprite_index = global.actionCardSpriteArray[global.cardSprite];
+        }
+            if(global.RoomState == 2)
+        {
+            sprite_index = global.consCardSpriteArray[global.cardSprite];
+        }
+            if(global.RoomState == 3)
+        {
+            sprite_index = global.infoCardSpriteArray[global.cardSprite];
+        }
+            if(global.RoomState == 4)
+        {
+            sprite_index = global.charCardSpriteArray[global.cardSprite];
+        }
     }
 }
 </string>

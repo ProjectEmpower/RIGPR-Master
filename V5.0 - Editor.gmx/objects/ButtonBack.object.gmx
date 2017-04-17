@@ -182,6 +182,10 @@ if(room == RoomCardEdit)//Room that edits an individual card
         room = RoomCardDeck;
     }
 }
+if(room == RoomSprites)
+{
+    room = global.lastRoom;
+}
 if(room == RoomOptions)
 {
     room = global.lastRoom;
@@ -388,6 +392,10 @@ if(room == RoomCardEdit)//Room that edits an individual card
         }
         room = RoomCardDeck;
     }
+}
+if(room == RoomSprites)
+{
+    room = global.lastRoom;
 }
 if(room == RoomOptions)
 {

@@ -322,6 +322,7 @@ if(room == RoomCardDeck)
             global.reqEventChar = ini_read_real(tempEvent, "Char", 0);       
             global.reqEventWell = ini_read_real(tempEvent, "Well",0);
             global.eventMythical = ini_read_real(tempEvent,"Mythical",0);
+            global.cardSprite = ini_read_real(tempEvent,"Sprite",-1);
             global.eventActionCardsNum = ini_read_real(tempEvent,"Action Cards",0);
             ini_close();
             inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
@@ -360,6 +361,7 @@ if(room == RoomCardDeck)
             global.realCardName = ini_read_string(tempCard,"Card Name","");
             global.cardText = ini_read_string(tempCard,"Card Text","");
             global.cardMythical = ini_read_real(tempCard,"Mythical",0);
+             global.cardSprite = ini_read_real(tempCard,"Sprite",-1);
             global.cardInfoSlot = ini_read_real(tempCard, "Info Cards",0);
             ini_close();
             if(global.cardMythical == eventMythical or eventMythical == 2)
@@ -393,6 +395,7 @@ if(room == RoomCardDeck)
             global.consInt = ini_read_real(tempConsCard,"Int",0);
             global.consChar = ini_read_real(tempConsCard,"Char",0);
             global.consWell = ini_read_real(tempConsCard,"Well",0);
+            global.cardSprite = ini_read_real(tempConsCard,"Sprite",-1);
             global.cardInfoSlot = ini_read_real(tempConsCard, "Info Cards",0);
             ini_close();
             global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
@@ -421,6 +424,7 @@ if(room == RoomCardDeck)
             global.infoCardRef = ini_read_real(tempInfoCard,"Ref",0);
             global.realInfoName = ini_read_string(tempInfoCard,"Card Name","");
             global.infoCardText = ini_read_string(tempInfoCard,"Card Text","");
+            global.cardSprite = ini_read_real(tempInfoCard,"Sprite",-1);
             global.infoLink = ini_read_string(tempInfoCard,"Link",0);
             
             ini_close();
@@ -450,6 +454,7 @@ if(room == RoomCardDeck)
             global.charCardRef = ini_read_real(tempCharCard,"Ref",0);
             global.charCardName = ini_read_string(tempCharCard,"Card Name","");
             global.charCardText = ini_read_string(tempCharCard,"Card Text","");
+            global.cardSprite = ini_read_real(tempCharCard,"Sprite",-1);
             global.cardInfoSlot = ini_read_real(tempCharCard, "Info Cards",0);
             ini_close();
             global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     

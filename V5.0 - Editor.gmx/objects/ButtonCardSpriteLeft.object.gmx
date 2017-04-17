@@ -25,13 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.RoomState == 0)
+            <string>tempRoom = room;
+if(global.RoomState == 0)
 {
     if(global.cardSprite &gt; 0)
     {
         global.cardSprite -= 1;
+         if(room == RoomCardEdit)
         script_execute(SaveEventCard);//saves the current location
-        room = RoomCardEdit;//reloads the room
+        room = tempRoom;//reloads the room
     }
 }
 if(global.RoomState == 1)
@@ -39,8 +41,9 @@ if(global.RoomState == 1)
     if(global.cardSprite &gt; 0)
     {
         global.cardSprite -= 1;
+         if(room == RoomCardEdit)
         script_execute(SaveActionCard);//saves the current location
-        room = RoomCardEdit;//reloads the room
+        room = tempRoom;//reloads the room
     }
 }
 if(global.RoomState == 2)
@@ -48,8 +51,9 @@ if(global.RoomState == 2)
     if(global.cardSprite &gt; 0)
     {
         global.cardSprite -= 1;
+         if(room == RoomCardEdit)
         script_execute(SaveConsCard);//saves the current location
-        room = RoomCardEdit;//reloads the room
+        room = tempRoom;//reloads the room
     }
 }
 if(global.RoomState == 3)
@@ -57,8 +61,9 @@ if(global.RoomState == 3)
     if(global.cardSprite &gt; 0)
     {
         global.cardSprite -= 1;
+         if(room == RoomCardEdit)
         script_execute(SaveInfoCard);//saves the current location
-        room = RoomCardEdit;//reloads the room
+        room = tempRoom;//reloads the room
     }
 }
 if(global.RoomState == 4)
@@ -66,8 +71,9 @@ if(global.RoomState == 4)
     if(global.cardSprite &gt; 0)
     {
         global.cardSprite -= 1;
+         if(room == RoomCardEdit)
         script_execute(SaveCharCard);//saves the current location
-        room = RoomCardEdit;//reloads the room
+        room = tempRoom;//reloads the room
     }
 }
 </string>

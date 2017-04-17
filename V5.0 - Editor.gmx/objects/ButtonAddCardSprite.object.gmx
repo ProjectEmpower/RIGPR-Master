@@ -141,7 +141,7 @@ if(CardImage != "")
         saveLoc = sprite_save_strip(global.infoCardSpriteArray[global.totalInfoCardSprites], "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
         global.totalInfoCardSprites += 1;
         ini_open(global.editorINI);//opens the editorINI
-        ini_write_real("General", "Cons Card Sprites", global.totalInfoCardSprites);
+        ini_write_real("General", "Info Card Sprites", global.totalInfoCardSprites);
         ini_close();//closes the ini
         CardImage = "";//sets the open file to blank
         global.cardSprite = global.totalInfoCardSprites-1;
@@ -156,7 +156,7 @@ if(CardImage != "")
         saveLoc = sprite_save_strip(global.charCardSpriteArray[global.totalCharCardSprites], "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
         global.totalCharCardSprites += 1;
         ini_open(global.editorINI);//opens the editorINI
-        ini_write_real("General", "Cons Card Sprites", global.totalCharCardSprites);
+        ini_write_real("General", "Char Card Sprites", global.totalCharCardSprites);
         ini_close();//closes the ini
         CardImage = "";//sets the open file to blank
         global.cardSprite = global.totalCharCardSprites-1;
