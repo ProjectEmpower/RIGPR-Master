@@ -32,7 +32,7 @@ if(global.locationEventNumber = 0)
 }
 
 ButtonEventRight.x = global.roomWidth/4+80;
-ButtonEventRight.y = global.tempInputBoxY-130;
+ButtonEventRight.y = global.roomHeight-350;
 </string>
           </argument>
         </arguments>

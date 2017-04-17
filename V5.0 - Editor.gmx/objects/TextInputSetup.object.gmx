@@ -82,13 +82,51 @@ if(room == RoomLocationAdd)
         global.eventMyth = ini_read_real(global.tempLocation, tempEventmyth, 0);//read the event mythical status
         ini_close();
         global.oldWeek = global.eventWeek;
+        if(global.eventWeek != 0)
+            global.locationWeekabc = global.eventWeek;
         for(i = 4; i &lt; 7; i++)//for the number of feilds (type,week,mythical)
         {
             global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
             global.tempInputBoxY += 25; //incrase the position of the text boxes
             global.tempTextBoxY += 25;   
         }
+        if(global.locationWeekabc != 0)
+        {
+            global.NumOfWeeksAtLocation = 0;
+            global.tempInputBoxY -= 75; //incrase the position of the text boxes
+            global.tempTextBoxY -= 75;   
+            for(t = 1; t &lt;= global.locationEventNumber; t++)
+            {
+                global.tempEventID[global.NumOfWeeksAtLocation] = string(t);
+                global.tempEvent2 = "Event"+global.tempEventID[global.NumOfWeeksAtLocation];
+                tempEventWeek = global.tempEvent2+"Week";
+                tempEventType = global.tempEvent2+"Type";
+                ini_open(global.locationINI);//open the ini
+                global.eventWeek2 = ini_read_real(global.tempLocation, tempEventWeek, 0);//read the event week
+                ini_close();
+                if(global.eventWeek2 == global.locationWeekabc)
+                {
+                    tempArray[global.NumOfWeeksAtLocation] = tempEventType; 
+                    if(global.NumOfWeeksAtLocation &lt; 3)
+                        global.NumOfWeeksAtLocation += 1;
+                        
+    
+                }
+    
+            }
+            for(i = 7; i &lt; 7 + global.NumOfWeeksAtLocation; i++)
+            {
+                 ini_open(global.locationINI);//open the ini
+    
+            global.eventType2[i - 7] = ini_read_real(global.tempLocation, tempArray[i - 7], 0);//read the event type
+                 ini_close();
+                global.textboxArray[i] = instance_create(global.tempInputBoxX + 400 ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
+                global.tempInputBoxY += 25; //incrase the position of the text boxes
+                global.tempTextBoxY += 25;   
+            }
+        }
     }
+        
 }
 if(room == RoomCardEdit)
 {
@@ -470,6 +508,7 @@ if(room == RoomMap)
             <kind>1</kind>
             <string>//if anywhere is pressed on screen, it will change focus to 0 (so if outside of a button)
 global.focus = 0;
+
 </string>
           </argument>
         </arguments>

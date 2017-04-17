@@ -163,6 +163,7 @@ if(room == RoomMap)
             {
                 global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used on locationadd screen)
                 ini_close();//closes the ini file
+                global.locationWeekabc = 0;
                 room = RoomLocationAdd//moves to the next room
             }
         }

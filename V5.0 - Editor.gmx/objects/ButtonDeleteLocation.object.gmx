@@ -51,11 +51,12 @@ ButtonDeleteLocation.y = room_height-50
           <argument>
             <kind>1</kind>
             <string>//this button deletes the currently selected location
-ini_open(global.locationINI); //opens the ini file
-ini_section_delete(global.tempLocation);//deletes the current location
-ini_close();
+
 if(global.TotalInstanceNum &gt; 0)
 {
+    ini_open(global.locationINI); //opens the ini file
+    ini_section_delete(global.tempLocation);//deletes the current location
+    ini_close();
     for(i = global.tempNum; i &lt; global.TotalInstanceNum; i++)
     {
         currRef = string(i)//sets currRef to the current loop iteration in string format
@@ -107,8 +108,9 @@ if(global.TotalInstanceNum &gt; 0)
             ini_close(); //closes the ini file       
         }
 
-        global.TotalInstanceNum -= 1; //after running, this will decrease the total instance number by 1
+        
     }
+    global.TotalInstanceNum -= 1; //after running, this will decrease the total instance number by 1
 }
 room = RoomMap; //swaps room
 </string>

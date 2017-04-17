@@ -26,8 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>//This code creates the text boxes default display info
-
-
 realNameTextBoxRef = global.textBoxInstanceRef;//takes the textBoxInstanceRef (set via instance_count) and creates a variable for use on this page
 descTextBoxRef = realNameTextBoxRef+1; //creates the references to the textboxes instance, accessed via instance_id[ref]
 thirdTextBoxRef = realNameTextBoxRef+2;
@@ -84,7 +82,84 @@ if(room == RoomLocationAdd)//checks room
     {
         sprite_index = No_sprite;
         txt_input = global.eventMyth;//sets default text
-        txt_display = "Visibility?: "
+        txt_display = "Visibility?11111: "
+    }
+    if(instance_id[seventhTextBoxRef+1] == id)
+    {
+        sprite_index = No_sprite;
+        txt_input = "Error - Event 1 type not updated"; //sets default text
+        txt_display = "Event " + global.tempEventID[0] + ": "
+        if(global.eventType2[0] != 0)//if there is an event type (other than 0, which is blank)
+            {
+                s = string(global.eventType2[0])//set string based on the type
+                tempEvent = "Event"+s;//set event name to load based on the string above
+                ini_open(global.cardEventINI);//open ini
+                if(ini_section_exists(tempEvent))
+                {
+                    txt_input = ini_read_string(tempEvent, "Event Name", "");//loads the events name using the type variable
+                }
+                else
+                {
+                    txt_input = "Editor Only: Event deleted, please replace.";
+                }
+                ini_close();//closes the ini
+            }
+            else
+            {
+                txt_input = "No event selected";//if the event is blank, display text
+            }
+    }
+    if(instance_id[seventhTextBoxRef+2] == id)
+    {
+        sprite_index = No_sprite;
+        txt_input = "Error - Event 2 type not updated";//sets default text
+        txt_display = "Event " + global.tempEventID[1] + ": "
+        
+                    if(global.eventType2[1] != 0)//if there is an event type (other than 0, which is blank)
+            {
+                s = string(global.eventType2[1])//set string based on the type
+                tempEvent = "Event"+s;//set event name to load based on the string above
+                ini_open(global.cardEventINI);//open ini
+                if(ini_section_exists(tempEvent))
+                {
+                    txt_input = ini_read_string(tempEvent, "Event Name", "");//loads the events name using the type variable
+                }
+                else
+                {
+                    txt_input = "Editor Only: Event deleted, please replace.";
+                }
+                ini_close();//closes the ini
+            }
+            else
+            {
+                txt_input = "No event selected";//if the event is blank, display text
+            }
+    }
+    if(instance_id[seventhTextBoxRef+3] == id)
+    {
+        sprite_index = No_sprite//TextInputBoxSprite_Small;
+        txt_input = "Error - Event 3 type not updated";//sets default text
+        txt_display = "Event " + global.tempEventID[2] + ": "
+                    
+            if(global.eventType2[2] != 0)//if there is an event type (other than 0, which is blank)
+            {
+                s = string(global.eventType2[2])//set string based on the type
+                tempEvent = "Event"+s;//set event name to load based on the string above
+                ini_open(global.cardEventINI);//open ini
+                if(ini_section_exists(tempEvent))
+                {
+                    txt_input = ini_read_string(tempEvent, "Event Name", "");//loads the events name using the type variable
+                }
+                else
+                {
+                    txt_input = "Editor Only: Event deleted, please replace.";
+                }
+                ini_close();//closes the ini
+            }
+            else
+            {
+                txt_input = "No event selected";//if the event is blank, display text
+            }
     }
 }
 if(room == RoomCardEdit)
@@ -523,6 +598,7 @@ if(global.focus != id)
 //individual rooms specific entry requirements, numbers, unenterable feilds (from button clicks), etc.
 if(room == RoomLocationAdd)
 {
+
     //This code is used for the mythical status on location add, it goes through the list of events and if any are mythical or normal, it flags this.
     //It then takes that information and displays the correct mythical status for the location, based on all events.
     if(id == global.textboxArray[2])
@@ -652,16 +728,18 @@ if(room == RoomLocationAdd)
                 }
             }
             ini_close();
-            if((week/2) == global.eventWeek)
-            {
-                global.eventWeek = global.oldWeek;
-            }
+
             if(global.focus != id)
             {
-                txt_input = string(global.eventWeek);      
+                if((week/3) == global.eventWeek)
+                {
+                    show_message("You can only have 3 events on any week, reverting to previous week; If you wish to see what events are asigned to that week, please set the current event's week to 0 and use the arrows to select the corresponding week.");
+                    global.eventWeek = global.oldWeek;
+                    txt_input = string(global.eventWeek);    
+                } 
+                script_execute(SaveLocation);
             }
 
-            
         }
     }
     if(id == instance_id[seventhTextBoxRef])
@@ -696,6 +774,9 @@ if(room == RoomLocationAdd)
             txt_input = "No event selected";
         }
     }
+    
+    //checks the event types mythical status and displays accordingly
+
 }
 
 if(room == RoomCardEdit)
@@ -1345,15 +1426,21 @@ if(room == RoomLocationAdd)
 {
     draw_set_valign(fa_middle);
     draw_set_halign(fa_right);
-    draw_text(global.InputTextX, myY, txt_display);//Draws the input text
+    tempX = 0;
+    if(id == instance_id[seventhTextBoxRef+1] or id == instance_id[seventhTextBoxRef+2] or id == instance_id[seventhTextBoxRef+3])
+    {
+        tempX = 400;
+    }
+    draw_text(global.InputTextX + tempX, myY, txt_display);//Draws the input text
     draw_set_halign(fa_left);
     if(id != instance_id[descTextBoxRef])
     {
-        draw_text(global.InputBoxX, myY, txt_input); //draws the input box text
+        draw_text(global.InputBoxX + tempX,myY, txt_input); //draws the input box text
     }
     else
     {   
-        draw_text_ext(global.InputBoxX, myY ,txt_input, 20, 300);
+        draw_set_valign(fa_top);
+        draw_text_ext(global.InputBoxX, myY - 8 ,txt_input, 20, 300);
     }
 }
 

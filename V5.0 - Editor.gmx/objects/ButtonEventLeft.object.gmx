@@ -31,7 +31,7 @@ if(global.locationEventNumber = 0)//checks to see if it can move
     sprite_index = No_sprite
 }
 ButtonEventLeft.x = global.roomWidth/4-80;
-ButtonEventLeft.y = global.tempInputBoxY-130;
+ButtonEventLeft.y = global.roomHeight-350;
 </string>
           </argument>
         </arguments>

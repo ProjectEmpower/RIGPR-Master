@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//sets posiition
 ButtonSelectEvent.x = global.roomWidth/4
-ButtonSelectEvent.y = global.tempInputBoxY+30;
+ButtonSelectEvent.y = global.roomHeight-200;
 
 if(global.locationEventNumber &gt; 0)//if there are events
 {

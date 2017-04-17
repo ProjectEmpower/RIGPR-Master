@@ -8,33 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(room == RoomMap)
-{
-    global.WeekRightButtonX = global.roomWidth-50;
-    global.WeekRightButtonY = 64;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="6" enumb="7">
       <action>
         <libid>1</libid>
@@ -52,25 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomMap)
-{
-    if (global.myth != 2)//if not in editor mode
-    {
-        if(global.week &lt; 52)
-        {
-            global.week += 1;
-            room = RoomMap;
-        }
-    }
-}
-if(room == RoomLocationAdd)
-{
-    if(global.locationWeekabc &lt; 52)
-    {
-        global.locationWeekabc += 1;
-        room = RoomLocationAdd;
-    }
-}
+            <string>script_execute(SaveLocation);
+room = RoomLocationAdd;
 </string>
           </argument>
         </arguments>
