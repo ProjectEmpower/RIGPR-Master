@@ -78,9 +78,8 @@ if(room == RoomCardDeck)
         ini_write_real(global.eventName,"Mythical", 0);//writes a Normal (0) "Mythical stat" stat
         ini_write_real(global.eventName, "Sprite",-1);//writes a blank (0) "Card1" 
         ini_write_real(global.eventName, "Action1",0);//writes a blank (0) "Card1" 
-        ini_write_real(global.eventName, "Cons2",0);//writes a blank (0) "Card2" 
-        ini_write_real(global.eventName, "Info3",0);//writes a blank (0) "Card3" 
-        ini_write_real(global.eventName, "Char4",0);//writes a blank (0) "Card3" 
+        ini_write_real(global.eventName, "Info Cards",0);//writes a blank (0) "Card3" 
+        ini_write_real(global.eventName, "Char Cards",0);//writes a blank (0) "Card3" 
         ini_write_real(global.eventName, "Action Cards",0);        
         ini_close();//closes the ini
     }
@@ -99,6 +98,7 @@ if(room == RoomCardDeck)
         ini_write_real(global.cardName,"Mythical",0);
         ini_write_real(global.cardName, "Sprite",-1);//writes a blank (0) "Card1" 
         ini_write_real(global.cardName, "Info Cards",0);
+        ini_read_real(global.cardName,"Cons Cards",0);
         ini_close();//closes the ini
         
     }

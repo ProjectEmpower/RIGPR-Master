@@ -150,6 +150,7 @@
           <object>objects\ButtonCardType</object>
           <object>objects\CardTypeButtonAdder</object>
           <object>objects\DeleteCurrentCardsprite</object>
+          <object>objects\DeleteCard</object>
         </objects>
       </objects>
       <objects name="CardDeck">

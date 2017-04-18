@@ -12,8 +12,7 @@ for(i = 0; i <= global.eventActionCardsNum; i++)
     tempAction = "Action"+string(i+1);
     ini_write_real(global.eventName, tempAction,global.card1[i]);
 }
-ini_write_real(global.eventName, "Cons2",global.card2);
-ini_write_real(global.eventName, "Info3",global.card3);
-ini_write_real(global.eventName, "Char4",global.card4);
+ini_write_real(global.eventName, "Info Cards",global.InfoCard);
+ini_write_real(global.eventName, "Char Cards",global.CharCard);
 ini_write_real(global.eventName, "Action Cards",global.eventActionCardsNum);
 ini_close();

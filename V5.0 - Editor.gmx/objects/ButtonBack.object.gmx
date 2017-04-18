@@ -243,8 +243,8 @@ if(room == RoomCardDeck)//Room that shows the list of cards.
     {
         if(global.lastState == 0)
         {
+            global.RoomState = global.lastState;
             global.lastState = 4;
-            global.RoomState = 0;
             room = RoomCardEdit;
         }
         else
@@ -271,8 +271,8 @@ if(room == RoomCardDeck)//Room that shows the list of cards.
     {
         if(global.lastState == 0)
         {
+            global.RoomState = global.lastState;
             global.lastState = 1;
-            global.RoomState = 0;
             room = RoomCardEdit;
         }
         else
@@ -284,10 +284,10 @@ if(room == RoomCardDeck)//Room that shows the list of cards.
     }
     if(global.RoomState == 2)
     {
-        if(global.lastState == 0)
+        if(global.lastState == 1)
         {
+            global.RoomState = global.lastState;
             global.lastState = 2;
-            global.RoomState = 0;
             room = RoomCardEdit;
         }
         else

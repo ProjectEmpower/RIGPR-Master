@@ -36,6 +36,8 @@ seventhTextBoxRef = realNameTextBoxRef+6;
 eighthTextBoxRef = realNameTextBoxRef+7;
 ninthTextBoxRef = realNameTextBoxRef+8;
 tenthTextBoxRef = realNameTextBoxRef+9;
+
+
 timer = 0;//sets timer to 0
 delay = 4;//sets the delay on text entry
 textShortLength = 30;//sets the max text for small text boxes
@@ -166,36 +168,36 @@ if(room == RoomCardEdit)
 {
     if(global.RoomState == 0)//event card
     {
-        if(instance_id[realNameTextBoxRef] == id)
+        if(instance_id[global.box0] == id)
         {
             txt_input = global.realEventName;//sets default text
             txt_display = "Event Name: ";     //sets display text
-        }
-        if(instance_id[descTextBoxRef] == id)
+    }
+        if(instance_id[global.box1] == id)
         {
             sprite_index = TextInputBoxSprite_Large;
             txt_input = global.eventText;//sets default text
             txt_display = "Event Text ";     //sets display text
         }
-        if(instance_id[thirdTextBoxRef] == id)
+        if(instance_id[global.box2] == id)
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.reqEventInt);//sets default text
             txt_display = "Required Int: "
         }
-        if(instance_id[forthTextBoxRef] == id) 
+        if(instance_id[global.box3] == id)
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.reqEventChar);
             txt_display = "Required Char: "
         }
-        if(instance_id[fifthTextBoxRef] == id) 
+        if(instance_id[global.box4] == id)
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.reqEventWell);
             txt_display = "Required Well: "
         }
-        if(instance_id[sixthTextBoxRef] == id)
+        if(instance_id[global.box5] == id)
         {
             sprite_index = No_sprite;
             txt_input = "Error - Mythical status not set";
@@ -204,25 +206,21 @@ if(room == RoomCardEdit)
 
         for(i = 0; i &lt;= global.eventActionCardsNum; i++)
         {
-            if(instance_id[seventhTextBoxRef + i] == id) 
+            if(instance_id[global.box6 + i] == id) 
             {
                 txt_input = global.card1[i];
-                txt_display = "Action Card: "
+                txt_display = "Action Card " + string(i) + ": ";
             }
         }
-        if(instance_id[eighthTextBoxRef + global.eventActionCardsNum] == id) 
+
+        if(instance_id[global.box7 + global.eventActionCardsNum] == id) 
         {
-            txt_input = global.card2;
-            txt_display = "Consequence Card: "
-        }
-        if(instance_id[ninthTextBoxRef + global.eventActionCardsNum] == id) 
-        {
-            txt_input = global.card3;
+            txt_input = global.CharCard;
             txt_display = "Information Card: "
         }
-        if(instance_id[tenthTextBoxRef + global.eventActionCardsNum] == id) 
+        if(instance_id[global.box8 + global.eventActionCardsNum] == id) 
         {
-            txt_input = global.card4;
+            txt_input = global.CharCard;
             txt_display = "Character Card: "
         }
     }
@@ -254,8 +252,13 @@ if(room == RoomCardEdit)
         }
         if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
         {
+            txt_input = global.ConsCard;
+            txt_display = "Consequence Card: "
+        }  
+        if(instance_id[fifthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        {
             txt_input = global.cardInfoSlot;
-            txt_display = "Info Card: "
+            txt_display = "Information Card: "
         }   
     }
     if(global.RoomState == 2)
@@ -783,19 +786,19 @@ if(room == RoomCardEdit)
 {
     if(global.RoomState == 0)
     {
-        if(id == instance_id[thirdTextBoxRef])
+        if(instance_id[global.box2-1] == id)
         {
             txt_input = string(global.reqEventInt);
         }
-        if(id == instance_id[forthTextBoxRef])
+        if(instance_id[global.box3-1] == id)
         {
             txt_input = string(global.reqEventChar);
         }
-        if(id == instance_id[fifthTextBoxRef])
+        if(instance_id[global.box4-1] == id)
         {
             txt_input = string(global.reqEventWell);
         }
-        if(id == instance_id[sixthTextBoxRef])
+        if(instance_id[global.box5-1] == id)
         {
         //checks the event mythical status and displays accordingly
             switch(global.eventMythical)
@@ -809,7 +812,7 @@ if(room == RoomCardEdit)
         }
         for(i = 0; i &lt;= global.eventActionCardsNum; i++)
         {
-            if(instance_id[seventhTextBoxRef + i] == id) 
+            if(instance_id[global.box6-1 + i] == id) 
             {
               
                 //checks to see if there is a card selected, if so, it displays the cards name
@@ -839,41 +842,17 @@ if(room == RoomCardEdit)
                 }
             }
         }
-        if(instance_id[eighthTextBoxRef+global.eventActionCardsNum] == id) 
+    
+        if(instance_id[global.box7-1 + global.eventActionCardsNum] == id)
         {
          //checks to see if there is a card selected, if so, it displays the cards name
-            if(global.card2 == 0)
+            if(global.InfoCard == 0)
             {
                 txt_input = "Click to add card";
             }
             else
             {
-                s = string(global.card2);
-                cardName = "Cons"+s;
-                ini_open(global.cardConsINI);
-                if(!ini_section_exists(cardName))
-                {
-
-                    txt_input = "Deleted, please replace"
-                }
-                else
-                {
-                    realCardName = ini_read_string(cardName,"Card Name","");
-                    txt_input = realCardName;
-                }
-                ini_close();
-            }
-        }
-        if(instance_id[ninthTextBoxRef+global.eventActionCardsNum] == id) 
-        {
-         //checks to see if there is a card selected, if so, it displays the cards name
-            if(global.card3 == 0)
-            {
-                txt_input = "Click to add card";
-            }
-            else
-            {
-                s = string(global.card3);
+                s = string(global.InfoCard);
                 cardName = "Info"+s;
                 ini_open(global.cardInfoINI);
                 if(!ini_section_exists(cardName))
@@ -889,16 +868,16 @@ if(room == RoomCardEdit)
                 ini_close();
             }
         }
-        if(instance_id[tenthTextBoxRef+global.eventActionCardsNum] == id) 
+        if(instance_id[global.box8-1 + global.eventActionCardsNum] == id) 
         {
          //checks to see if there is a card selected, if so, it displays the cards name
-            if(global.card4 == 0)
+            if(global.CharCard == 0)
             {
                 txt_input = "Click to add card";
             }
             else
             {
-                s = string(global.card4);
+                s = string(global.CharCard);
                 cardName = "Char"+s;
                 ini_open(global.cardCharINI);
                 if(!ini_section_exists(cardName))
@@ -917,7 +896,7 @@ if(room == RoomCardEdit)
     }
     if(global.RoomState == 1)
     {
-        if(id == instance_id[descTextBoxRef])
+        if(id == instance_id[descTextBoxRef-1])
         {
             switch(global.cardMythical)
             {
@@ -928,7 +907,31 @@ if(room == RoomCardEdit)
                 default: txt_input = "Error: Card mythical status not loaded"; 
             }
         }
-        if(id == instance_id[forthTextBoxRef])
+        if(id == instance_id[forthTextBoxRef-1])
+        {
+          if(global.ConsCard == 0)
+            {
+                txt_input = "Click to add card";
+            }
+            else
+            {
+                s = string(global.ConsCard);
+                cardName = "Cons"+s;
+                ini_open(global.cardConsINI);
+                if(!ini_section_exists(cardName))
+                {
+
+                    txt_input = "Deleted, please replace"
+                }
+                else
+                {
+                    realCardName = ini_read_string(cardName,"Card Name","");
+                    txt_input = realCardName;
+                }
+                ini_close();
+            }
+        }
+        if(id == instance_id[fifthTextBoxRef-1])
         {
           if(global.cardInfoSlot == 0)
             {
@@ -956,19 +959,19 @@ if(room == RoomCardEdit)
     if(global.RoomState == 2)
     {
 
-       if(id == instance_id[thirdTextBoxRef])
+       if(id == instance_id[thirdTextBoxRef-1])
         {
             txt_input = string(global.consInt);
         }
-        if(id == instance_id[forthTextBoxRef])
+        if(id == instance_id[forthTextBoxRef-1])
         {
             txt_input = string(global.consChar);
         }
-        if(id == instance_id[fifthTextBoxRef])
+        if(id == instance_id[fifthTextBoxRef-1])
         {
             txt_input = string(global.consWell);
         }
-          if(id == instance_id[sixthTextBoxRef])
+          if(id == instance_id[sixthTextBoxRef-1])
         {
           if(global.cardInfoSlot == 0)
             {
@@ -995,7 +998,7 @@ if(room == RoomCardEdit)
     }
      if(global.RoomState == 4)
     {
-        if(id == instance_id[thirdTextBoxRef])
+        if(id == instance_id[thirdTextBoxRef-1])
         {
           if(global.cardInfoSlot == 0)
             {
@@ -1106,17 +1109,17 @@ if(room == RoomCardDeck)//deck of cards
     }
     if(global.RoomState == 2)
     {
-        if(global.lastState == 0)//selecing the card
+        if(global.lastState == 1)//selecing the card
         {
             //writes the cards type to the event inside the event ini file
             global.cardType = id.ref_display;//sets the ref to "cardtype"
-            ini_open(global.cardEventINI);//open the event ini
+            ini_open(global.cardActionINI);//open the event ini
             s = string(global.currentCard);
             cardToUpdate = "Cons"+s;
-            ini_write_real(global.eventName,cardToUpdate,global.cardType);
+            ini_write_real(global.cardName,"Cons Cards",global.cardType);
             ini_close();//closes the ini
             global.lastState = 2;
-            global.RoomState = 0;
+            global.RoomState = 1;
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
         }
@@ -1216,7 +1219,7 @@ if(room == RoomCardEdit)
     {
         for(i = 0; i &lt;= global.eventActionCardsNum; i++)
         {
-            if(instance_id[global.textBoxInstanceRef+6+i] == id)
+            if(instance_id[global.box6-1+i] == id)
             {
                 global.currentCard = 1+i;//action slot
                 s = string(global.currentCard);
@@ -1238,21 +1241,14 @@ if(room == RoomCardEdit)
                 room = RoomCardDeck;
             }    
         }
-        if(instance_id[global.textBoxInstanceRef+7+global.eventActionCardsNum] == id)
-        {
-            global.currentCard = 2;
-            global.lastState = 0;  
-            global.RoomState = 2;
-            room = RoomCardDeck;
-        }    
-        if(instance_id[global.textBoxInstanceRef+8+global.eventActionCardsNum] == id)
+        if(instance_id[global.box7-1+global.eventActionCardsNum] == id)
         {
             global.currentCard = 3;
             global.lastState = 0;  
             global.RoomState = 3;
             room = RoomCardDeck;
         } 
-        if(instance_id[global.textBoxInstanceRef+9+global.eventActionCardsNum] == id)
+        if(instance_id[global.box8-1+global.eventActionCardsNum] == id)
         {
             global.currentCard = 4;
             global.lastState = 0;  
@@ -1262,7 +1258,14 @@ if(room == RoomCardEdit)
     }
     if(global.RoomState == 1)
     {
-        if(instance_id[global.textBoxInstanceRef+3] == id)
+       if(instance_id[global.textBoxInstanceRef+3-1] == id)
+        {
+            global.currentCard = 2;
+            global.lastState = 1;  
+            global.RoomState = 2;
+            room = RoomCardDeck;
+        } 
+        if(instance_id[global.textBoxInstanceRef+4-1] == id)
         {
             global.lastState = 1;  
             global.RoomState = 3;
@@ -1271,7 +1274,7 @@ if(room == RoomCardEdit)
     }
     if(global.RoomState == 2)
     {
-        if(instance_id[global.textBoxInstanceRef+5] == id)
+        if(instance_id[global.textBoxInstanceRef+5-1] == id)
         {
             global.lastState = 2;  
             global.RoomState = 3;
@@ -1280,7 +1283,7 @@ if(room == RoomCardEdit)
     }
     if(global.RoomState == 4)
     {
-        if(instance_id[global.textBoxInstanceRef+2] == id)
+        if(instance_id[global.textBoxInstanceRef+2-1] == id)
         {
             global.lastState = 4;  
             global.RoomState = 3;
@@ -1292,31 +1295,31 @@ if(room == RoomCardEdit)
 if(room == RoomDeckList)//unused
 {
 
-    if(instance_id[global.textBoxInstanceRef] == id)
+    if(instance_id[global.textBoxInstanceRef-1] == id)
     {
         global.lastRoom = room;
         global.RoomState = 0;
         room = RoomCardDeck;
     }
-    if(instance_id[global.textBoxInstanceRef+1] == id)
+    if(instance_id[global.textBoxInstanceRef+1-1] == id)
     {
         global.lastRoom = room;
         global.RoomState = 1;
         room = RoomCardDeck;
     }
-    if(instance_id[global.textBoxInstanceRef+2] == id)
+    if(instance_id[global.textBoxInstanceRef+2-1] == id)
     {
         global.lastRoom = room;
         global.RoomState = 2;
         room = RoomCardDeck;
     }   
-    if(instance_id[global.textBoxInstanceRef+3] == id)
+    if(instance_id[global.textBoxInstanceRef+3-1] == id)
     {
         global.lastRoom = room;
         global.RoomState = 3;
         room = RoomCardDeck;
     }  
-    if(instance_id[global.textBoxInstanceRef+4] == id)
+    if(instance_id[global.textBoxInstanceRef+4-1] == id)
     {
         global.lastRoom = room;
         global.RoomState = 4;
