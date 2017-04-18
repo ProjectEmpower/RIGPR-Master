@@ -152,6 +152,8 @@
           <object>objects\DeleteCurrentCardsprite</object>
           <object>objects\DeleteCard</object>
         </objects>
+        <object>objects\ButtonListDown</object>
+        <object>objects\ButtonListUp</object>
       </objects>
       <objects name="CardDeck">
         <object>objects\ButtonCardNew</object>
