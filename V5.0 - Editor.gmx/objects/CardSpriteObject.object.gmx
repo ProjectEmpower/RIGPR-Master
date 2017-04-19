@@ -26,36 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>depth = 1;
-if(global.cardSprite == -1)
+if(room != RoomSprites)
 {
-    sprite_index = DefaultCardSprite;
-}
-else
-{
-    if(global.cardSprite != -1)
-    {
-        if(global.RoomState == 0)
-        {
-            sprite_index = global.eventCardSpriteArray[global.cardSprite];
-        }
-        if(global.RoomState == 1)
-        {
-            sprite_index = global.actionCardSpriteArray[global.cardSprite];
-        }
-            if(global.RoomState == 2)
-        {
-            sprite_index = global.consCardSpriteArray[global.cardSprite];
-        }
-            if(global.RoomState == 3)
-        {
-            sprite_index = global.infoCardSpriteArray[global.cardSprite];
-        }
-            if(global.RoomState == 4)
-        {
-            sprite_index = global.charCardSpriteArray[global.cardSprite];
-        }
-    }
-}
 if(global.RoomState == 0)
 {
     ref_display = global.eventRef;
@@ -91,6 +63,38 @@ if(global.RoomState == 4)
     RealName = global.charCardName;
     CardText = global.charCardText;
 }
+}
+if(global.cardSprite == -1)
+{
+    sprite_index = DefaultCardSprite;
+}
+else
+{
+    if(global.cardSprite != -1)
+    {
+        if(global.RoomState == 0)
+        {
+            sprite_index = global.eventCardSpriteArray[global.cardSprite];
+        }
+        if(global.RoomState == 1)
+        {
+            sprite_index = global.actionCardSpriteArray[global.cardSprite];
+        }
+            if(global.RoomState == 2)
+        {
+            sprite_index = global.consCardSpriteArray[global.cardSprite];
+        }
+            if(global.RoomState == 3)
+        {
+            sprite_index = global.infoCardSpriteArray[global.cardSprite];
+        }
+            if(global.RoomState == 4)
+        {
+            sprite_index = global.charCardSpriteArray[global.cardSprite];
+        }
+    }
+}
+
 </string>
           </argument>
         </arguments>
@@ -195,45 +199,70 @@ if(global.RoomState == 4)
             <kind>1</kind>
             <string>if(room == RoomCardEdit or room == RoomCardDeck)
 {
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    cardNameText = "";
+    if(global.RoomState == 0)
+    {
+        cardNameText = "Event";
+        draw_text_transformed(x, y + 120, RealName,1,1,0);
+        draw_text_transformed(x, y + 152, "Required Int: " + string(reqINT),1,1,0);
+        draw_text_transformed(x, y + 184, "Required Cha: " + string(reqCha),1,1,0);
+        draw_text_transformed(x, y + 216, "Required Wel: " + string(reqWel),1,1,0);
+    }
+    if(global.RoomState == 1)
+    {
+        cardNameText = "Action";
+        draw_text_transformed(x, y + 120, RealName,1,1,0);
+        draw_text_transformed(x, y + 152, CardText,1,1,0);
+    }
+    if(global.RoomState == 2)
+    {
+        cardNameText = "Consequence";
+        draw_text_transformed(x, y + 120, RealName,1,1,0);
+        draw_text_transformed(x, y + 80, "Int: " + string(INT),1,1,0);
+        draw_text_transformed(x, y + 112, "Char: " + string(Cha),1,1,0);
+        draw_text_transformed(x, y + 144, "Well: " + string(Wel),1,1,0);
+    }
+    if(global.RoomState == 3)
+    {
+        cardNameText = "Information";
+        draw_text_transformed(x, y + 120, RealName,1,1,0);
+        draw_text_transformed(x, y + 80, CardText,1,1,0);
+        draw_text_transformed(x, y + 112,Link,1,1,0);
+    }
+    if(global.RoomState == 4)
+    {
+        cardNameText = "Character";
+        draw_text_transformed(x, y + 120, RealName,1,1,0);
+        draw_text_transformed(x, y + 80, CardText,1,1,0);
+        
+    }
+    draw_text_transformed(x, y - 112, cardNameText,1.5,1.5,0);
+}
+else
+{
 cardNameText = "";
-if(global.RoomState == 0)
-{
-    cardNameText = "Event";
-    draw_text_transformed(x, y + 120, RealName,1,1,0);
-    draw_text_transformed(x, y + 152, "Required Int: " + string(reqINT),1,1,0);
-    draw_text_transformed(x, y + 184, "Required Cha: " + string(reqCha),1,1,0);
-    draw_text_transformed(x, y + 216, "Required Wel: " + string(reqWel),1,1,0);
-}
-if(global.RoomState == 1)
-{
-    cardNameText = "Action";
-    draw_text_transformed(x, y + 120, RealName,1,1,0);
-    draw_text_transformed(x, y + 152, CardText,1,1,0);
-}
-if(global.RoomState == 2)
-{
-    cardNameText = "Consequence";
-    draw_text_transformed(x, y + 120, RealName,1,1,0);
-    draw_text_transformed(x, y + 80, "Int: " + string(INT),1,1,0);
-    draw_text_transformed(x, y + 112, "Char: " + string(Cha),1,1,0);
-    draw_text_transformed(x, y + 144, "Well: " + string(Wel),1,1,0);
-}
-if(global.RoomState == 3)
-{
-    cardNameText = "Information";
-    draw_text_transformed(x, y + 120, RealName,1,1,0);
-    draw_text_transformed(x, y + 80, CardText,1,1,0);
-    draw_text_transformed(x, y + 112,Link,1,1,0);
-}
-if(global.RoomState == 4)
-{
-    cardNameText = "Character";
-    draw_text_transformed(x, y + 120, RealName,1,1,0);
-    draw_text_transformed(x, y + 80, CardText,1,1,0);
-    
-}
+   if(global.RoomState == 0)
+    {
+        cardNameText = "Event";
+    }
+    if(global.RoomState == 1)
+    {
+        cardNameText = "Action";
+    }
+    if(global.RoomState == 2)
+    {
+        cardNameText = "Consequence";
+    }
+    if(global.RoomState == 3)
+    {
+        cardNameText = "Information";
+    }
+    if(global.RoomState == 4)
+    {
+        cardNameText = "Character";
+    }
 draw_text_transformed(x, y - 112, cardNameText,1.5,1.5,0);
 }
 </string>

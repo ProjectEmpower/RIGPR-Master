@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>depth = 2;
 inst = instance_create(x,y- 72,CardSpriteObject);
+if(room != RoomSprites)
+{
 if(global.RoomState == 0)
 {
     ref_display = global.eventRef;
@@ -47,6 +49,8 @@ if(global.RoomState == 4)
 {
     ref_display = global.charCardRef;
 }
+}
+
 </string>
           </argument>
         </arguments>

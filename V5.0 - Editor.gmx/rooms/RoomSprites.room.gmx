@@ -56,7 +56,6 @@
     <instance objName="CardTypeSelect" x="128" y="256" name="inst_2A60C3ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Building" x="736" y="192" name="inst_DC0B0DFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="CardBacking" x="224" y="480" name="inst_04E63582" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="CardSpriteObject" x="224" y="416" name="inst_775B2027" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonCardSpriteLeft" x="32" y="416" name="inst_72E3651F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonCardSpriteRight" x="416" y="416" name="inst_6D8BCE51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonSpriteLeft" x="640" y="192" name="inst_B84E1B05" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
