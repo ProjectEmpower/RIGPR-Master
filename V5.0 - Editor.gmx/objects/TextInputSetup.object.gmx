@@ -150,6 +150,7 @@ if(room == RoomCardEdit)
         {
             tempAction = "Action"+string(i+1);
             global.card1[i] = ini_read_real(global.eventName,tempAction,0);
+
         }
         //global.card2 = ini_read_real(global.eventName,"Cons2",0);
         global.InfoCard = ini_read_real(global.eventName,"Info Cards",0);

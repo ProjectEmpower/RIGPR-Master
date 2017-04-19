@@ -207,14 +207,15 @@ if(room == RoomCardEdit)
         {
             if(instance_id[global.box6 + i] == id) 
             {
+            
                 txt_input = global.card1[i];
-                txt_display = "Action Card " + string(i) + ": ";
+                txt_display = "Action Card " + string(i+1) + ": ";
             }
         }
 
         if(instance_id[global.box7 + global.eventActionCardsNum] == id) 
         {
-            txt_input = global.CharCard;
+            txt_input = global.InfoCard;
             txt_display = "Information Card: "
         }
         if(instance_id[global.box8 + global.eventActionCardsNum] == id) 
@@ -1087,6 +1088,7 @@ if(room == RoomCardDeck)//deck of cards
             if(global.edit == 0)
             {
                 global.eventActionCardsNum = ini_read_real(global.eventName,"Action Cards",0);
+                if( global.eventActionCardsNum &lt; 2)
                 global.eventActionCardsNum += 1;
                 ini_write_real(global.eventName,"Action Cards",global.eventActionCardsNum);
             }
@@ -1113,8 +1115,6 @@ if(room == RoomCardDeck)//deck of cards
        //writes the cards type to the event inside the event ini file
             global.cardType = id.ref_display;//sets the ref to "cardtype"
             ini_open(global.cardActionINI);//open the event ini
-            s = string(global.currentCard);
-            cardToUpdate = "Cons"+s;
             ini_write_real(global.cardName,"Cons Cards",global.cardType);
             ini_close();//closes the ini
             global.lastState = 2;
@@ -1137,9 +1137,7 @@ if(room == RoomCardDeck)//deck of cards
               //writes the cards type to the event inside the event ini file
             global.cardType = id.ref_display;//sets the ref to "cardtype"
             ini_open(global.cardEventINI);//open the event ini
-            s = string(global.currentCard);
-            cardToUpdate = "Info"+s;
-            ini_write_real(global.eventName,cardToUpdate,global.cardType);
+            ini_write_real(global.eventName,"Info Cards",global.cardType);
             ini_close();//closes the ini
             global.lastState = 3;
             global.RoomState = 0;
@@ -1196,9 +1194,7 @@ if(room == RoomCardDeck)//deck of cards
             //writes the cards type to the event inside the event ini file
             global.cardType = id.ref_display;//sets the ref to "cardtype"
             ini_open(global.cardEventINI);//open the event ini
-            s = string(global.currentCard);
-            cardToUpdate = "Char"+s;
-            ini_write_real(global.eventName,cardToUpdate,global.cardType);
+            ini_write_real(global.eventName,"Char Cards",global.cardType);
             ini_close();//closes the ini
             global.lastState = 4;
             global.RoomState = 0;
