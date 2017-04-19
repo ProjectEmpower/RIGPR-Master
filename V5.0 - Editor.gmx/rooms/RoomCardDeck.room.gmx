@@ -57,6 +57,9 @@
     <instance objName="CardListSetup" x="32" y="32" name="inst_03DE20D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonListDown" x="224" y="640" name="inst_0A038F56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonListUp" x="224" y="32" name="inst_B47412E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ListStyleSwap" x="576" y="32" name="inst_921E071C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonMoveFastUp" x="320" y="32" name="inst_9A91C76E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonMoveFastDown" x="320" y="640" name="inst_5B33D5BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

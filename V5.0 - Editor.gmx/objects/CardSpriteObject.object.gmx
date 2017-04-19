@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>CardBacking</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardSpriteObject.x = CardBacking.x;
-CardSpriteObject.y = CardBacking.y - 72;
+            <string>depth = 1;
 if(global.cardSprite == -1)
 {
     sprite_index = DefaultCardSprite;
@@ -57,6 +56,121 @@ else
         }
     }
 }
+if(global.RoomState == 0)
+{
+    ref_display = global.eventRef;
+    RealName = global.realEventName;
+    reqINT = global.reqEventInt;
+    reqCha = global.reqEventChar;
+    reqWel = global.reqEventWell;
+}
+if(global.RoomState == 1)
+{
+    ref_display = global.cardRef;
+    RealName = global.realCardName;
+    CardText = global.cardText;
+}
+if(global.RoomState == 2)
+{
+    ref_display = global.consCardRef;
+    RealName = global.realConsName;
+    INT = global.consInt;
+    Cha = global.consChar;
+    Wel = global.consWell;
+}
+if(global.RoomState == 3)
+{
+    ref_display = global.infoCardRef;
+    RealName = global.realInfoName;
+    CardText = global.infoCardText;
+    Link = global.infoLink;
+}
+if(global.RoomState == 4)
+{
+    ref_display = global.charCardRef;
+    RealName = global.charCardName;
+    CardText = global.charCardText;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(room == RoomCardDeck)
+{
+    if(global.RoomState == 0)
+    {
+        if(global.lastRoom == RoomLocationAdd)//if your selecting the card
+        {
+        global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
+
+            //this opens the location ini, and updates the type section inside
+            global.eventType = id.ref_display;//takes the ref displayed
+            ini_open(global.locationINI);//opens locatio ini
+            s = string(global.EventID);//creates a string using the eventID
+            eventType = "Event"+s+"Type";//creates a eventname using type and the string above
+            ini_write_real(global.tempLocation,eventType,global.eventType);//writes the info to the ini
+            ini_write_real(global.tempLocation,"Mythical", global.locationMyth);
+            ini_close();//closes the ini
+            room = RoomLocationAdd;
+            
+        }
+        else//if you are editing the card
+        {
+            global.eventRef = id.ref_display;//takes the ref displayed in this instance, and sets it to the global eventRef
+            global.lastState = 0;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//changes room         
+        }
+    }
+    if(global.RoomState == 1)
+    {
+        if(global.lastState == 0)//selecing the card
+        {
+            //writes the cards type to the event inside the event ini file
+            global.cardType = id.ref_display;//sets the ref to "cardtype"
+            ini_open(global.cardEventINI);//open the event ini
+            s = string(global.currentCard);
+            cardToUpdate = "Action"+s;
+            if(global.edit == 0)
+            {
+                global.eventActionCardsNum = ini_read_real(global.eventName,"Action Cards",0);
+                global.eventActionCardsNum += 1;
+                ini_write_real(global.eventName,"Action Cards",global.eventActionCardsNum);
+            }
+            ini_write_real(global.eventName,cardToUpdate,global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 1;
+            global.RoomState = 0;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
+        }
+        else //editing the card
+        {
+            global.cardRef = id.ref_display;
+            global.lastState = 1;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//changes room      
+        }
+    }    
+}
 </string>
           </argument>
         </arguments>
@@ -79,48 +193,48 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomCardEdit)
+            <string>if(room == RoomCardEdit or room == RoomCardDeck)
 {
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-cardText = "";
+cardNameText = "";
 if(global.RoomState == 0)
 {
-    cardText = "Event";
-    draw_text_transformed(CardBacking.x, CardBacking.y + 48, global.realEventName,1,1,0);
-    draw_text_transformed(CardBacking.x, CardBacking.y + 80, "Required Int: " + string(global.reqEventInt),1,1,0);
-    draw_text_transformed(CardBacking.x, CardBacking.y + 112, "Required Cha: " + string(global.reqEventChar),1,1,0);
-    draw_text_transformed(CardBacking.x, CardBacking.y + 144, "Required Wel: " + string(global.reqEventWell),1,1,0);
+    cardNameText = "Event";
+    draw_text_transformed(x, y + 120, RealName,1,1,0);
+    draw_text_transformed(x, y + 152, "Required Int: " + string(reqINT),1,1,0);
+    draw_text_transformed(x, y + 184, "Required Cha: " + string(reqCha),1,1,0);
+    draw_text_transformed(x, y + 216, "Required Wel: " + string(reqWel),1,1,0);
 }
 if(global.RoomState == 1)
 {
-    cardText = "Action";
-    draw_text_transformed(CardBacking.x, CardBacking.y + 48, global.realCardName,1,1,0);
-    draw_text_transformed(CardBacking.x, CardBacking.y + 80, global.cardText,1,1,0);
+    cardNameText = "Action";
+    draw_text_transformed(x, y + 120, RealName,1,1,0);
+    draw_text_transformed(x, y + 152, CardText,1,1,0);
 }
 if(global.RoomState == 2)
 {
-    cardText = "Consequence";
-        draw_text_transformed(CardBacking.x, CardBacking.y + 48, global.realConsName,1,1,0);
-    draw_text_transformed(CardBacking.x, CardBacking.y + 80, "Int: " + string(global.consInt),1,1,0);
-    draw_text_transformed(CardBacking.x, CardBacking.y + 112, "Char: " + string(global.consChar),1,1,0);
-    draw_text_transformed(CardBacking.x, CardBacking.y + 144, "Well: " + string(global.consWell),1,1,0);
+    cardNameText = "Consequence";
+    draw_text_transformed(x, y + 120, RealName,1,1,0);
+    draw_text_transformed(x, y + 80, "Int: " + string(INT),1,1,0);
+    draw_text_transformed(x, y + 112, "Char: " + string(Cha),1,1,0);
+    draw_text_transformed(x, y + 144, "Well: " + string(Wel),1,1,0);
 }
 if(global.RoomState == 3)
 {
-    cardText = "Information";
-    draw_text_transformed(CardBacking.x, CardBacking.y + 48, global.realInfoName,1,1,0);
-    draw_text_transformed(CardBacking.x, CardBacking.y + 80, global.infoCardText,1,1,0);
-    draw_text_transformed(CardBacking.x, CardBacking.y + 112,global.infoLink,1,1,0);
+    cardNameText = "Information";
+    draw_text_transformed(x, y + 120, RealName,1,1,0);
+    draw_text_transformed(x, y + 80, CardText,1,1,0);
+    draw_text_transformed(x, y + 112,Link,1,1,0);
 }
 if(global.RoomState == 4)
 {
-    cardText = "Character";
-    draw_text_transformed(CardBacking.x, CardBacking.y + 48, global.charCardName,1,1,0);
-    draw_text_transformed(CardBacking.x, CardBacking.y + 80, global.charCardText,1,1,0);
+    cardNameText = "Character";
+    draw_text_transformed(x, y + 120, RealName,1,1,0);
+    draw_text_transformed(x, y + 80, CardText,1,1,0);
     
 }
-draw_text_transformed(CardBacking.x, CardBacking.y - 184, cardText,1.5,1.5,0);
+draw_text_transformed(x, y - 112, cardNameText,1.5,1.5,0);
 }
 </string>
           </argument>

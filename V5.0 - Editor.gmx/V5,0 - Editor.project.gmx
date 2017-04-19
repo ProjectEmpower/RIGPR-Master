@@ -141,6 +141,7 @@
         <object>objects\ButtonSave</object>
         <object>objects\ButtonAddCardSprite</object>
         <object>objects\ButtonCardSpriteLeft</object>
+        <object>objects\ListStyleSwap</object>
         <object>objects\ButtonCardSpriteRight</object>
         <objects name="Card">
           <object>objects\CardBacking</object>
@@ -153,7 +154,9 @@
           <object>objects\DeleteCard</object>
         </objects>
         <object>objects\ButtonListDown</object>
+        <object>objects\ButtonMoveFastDown</object>
         <object>objects\ButtonListUp</object>
+        <object>objects\ButtonMoveFastUp</object>
       </objects>
       <objects name="CardDeck">
         <object>objects\ButtonCardNew</object>

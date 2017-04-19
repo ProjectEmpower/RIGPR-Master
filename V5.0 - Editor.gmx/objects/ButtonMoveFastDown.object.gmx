@@ -59,7 +59,7 @@ if(global.ListStyle == 0)
 }
 if(global.ListStyle == 1)
 {
-    if(global.listLength == 4 and global.tempPos + 4 &lt; cardNum)
+    if(global.listLength == 4 and global.tempPos + 7 &lt; cardNum)
     {
         sprite_index = ArrowSpriteRight;
     }
@@ -93,17 +93,14 @@ if(global.ListStyle == 1)
             <string>
 if(global.ListStyle == 0)
 {
-    if(cardNum &gt; 20 + global.tempPos)
-    {
-        global.tempPos += 1;
-        room = RoomCardDeck;
-    }
+    global.tempPos = cardNum - 20;
+    room = RoomCardDeck;
 }
 if(global.ListStyle == 1)
 {
-    if(cardNum &gt; 4 + global.tempPos)
+    if(global.tempPos + 7 &lt; cardNum)
     {
-        global.tempPos += 1;
+        global.tempPos += 4;
         room = RoomCardDeck;
     }
 }

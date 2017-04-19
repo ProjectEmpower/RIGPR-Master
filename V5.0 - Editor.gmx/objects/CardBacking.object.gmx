@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,109 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardBacking.depth = 2;
+            <string>depth = 2;
+inst = instance_create(x,y- 72,CardSpriteObject);
+if(global.RoomState == 0)
+{
+    ref_display = global.eventRef;
+}
+if(global.RoomState == 1)
+{
+    ref_display = global.cardRef;
+}
+if(global.RoomState == 2)
+{
+    ref_display = global.consCardRef;
+}
+if(global.RoomState == 3)
+{
+    ref_display = global.infoCardRef;
+}
+if(global.RoomState == 4)
+{
+    ref_display = global.charCardRef;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(room == RoomCardDeck)
+{
+    if(global.RoomState == 0)
+    {
+        if(global.lastRoom == RoomLocationAdd)//if your selecting the card
+        {
+        global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
+
+            //this opens the location ini, and updates the type section inside
+            global.eventType = id.ref_display;//takes the ref displayed
+            ini_open(global.locationINI);//opens locatio ini
+            s = string(global.EventID);//creates a string using the eventID
+            eventType = "Event"+s+"Type";//creates a eventname using type and the string above
+            ini_write_real(global.tempLocation,eventType,global.eventType);//writes the info to the ini
+            ini_write_real(global.tempLocation,"Mythical", global.locationMyth);
+            ini_close();//closes the ini
+            room = RoomLocationAdd;
+            
+        }
+        else//if you are editing the card
+        {
+
+            global.eventRef = id.ref_display;//takes the ref displayed in this instance, and sets it to the global eventRef
+            global.lastState = 0;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//changes room         
+        }
+    }
+    if(global.RoomState == 1)
+    {
+        if(global.lastState == 0)//selecing the card
+        {
+            //writes the cards type to the event inside the event ini file
+            global.cardType = id.ref_display;//sets the ref to "cardtype"
+            ini_open(global.cardEventINI);//open the event ini
+            s = string(global.currentCard);
+            cardToUpdate = "Action"+s;
+            if(global.edit == 0)
+            {
+                global.eventActionCardsNum = ini_read_real(global.eventName,"Action Cards",0);
+                global.eventActionCardsNum += 1;
+                ini_write_real(global.eventName,"Action Cards",global.eventActionCardsNum);
+            }
+            ini_write_real(global.eventName,cardToUpdate,global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 1;
+            global.RoomState = 0;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
+        }
+        else //editing the card
+        {
+            global.cardRef = id.ref_display;
+            global.lastState = 1;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//changes room      
+        }
+    }    
+}
 </string>
           </argument>
         </arguments>

@@ -30,6 +30,7 @@
 //sets the initial view of the screen, this is used to to create the variable
 global.currentX = 0; //current map position, defaults to top left corner of map
 global.currentY = 0;
+global.ListStyle = 0;
 global.buildingMyth = 1;
 global.roomWidth = 1280;//sets default screen width
 global.roomHeight = 720;//sets default screen height

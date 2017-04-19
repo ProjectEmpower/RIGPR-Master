@@ -25,32 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.RoomState == 0)
+            <string>if(global.ListStyle == 0)
 {
-    cardNum = global.totalEventCards;
-}
-if(global.RoomState == 1)
-{
-    cardNum = global.totalActionCards;
-}
-if(global.RoomState == 2)
-{
-    cardNum = global.totalConsCards;
-}
-if(global.RoomState == 3)
-{
-    cardNum = global.totalInfoCards;
-}
-if(global.RoomState == 4)
-{
-    cardNum = global.totalCharCards;
-}
-
-if(global.ListStyle == 0)
-{
-    if(global.listLength == 20 and global.tempPos + 20 &lt; cardNum)
+    if(global.listLength == 20 and global.tempPos &gt; 0)
     {
-        sprite_index = ArrowSpriteRight;
+        sprite_index = ArrowSpriteLeft;
     }
     else
     {
@@ -59,9 +38,9 @@ if(global.ListStyle == 0)
 }
 if(global.ListStyle == 1)
 {
-    if(global.listLength == 4 and global.tempPos + 4 &lt; cardNum)
+    if(global.listLength == 4 and global.tempPos &gt; 3)
     {
-        sprite_index = ArrowSpriteRight;
+        sprite_index = ArrowSpriteLeft;
     }
     else
     {
@@ -90,22 +69,21 @@ if(global.ListStyle == 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if(global.ListStyle == 0)
+            <string>if(global.ListStyle == 0)
 {
-    if(cardNum &gt; 20 + global.tempPos)
-    {
-        global.tempPos += 1;
-        room = RoomCardDeck;
-    }
+if(global.tempPos &gt; 0)
+{
+    global.tempPos = 0;
+    room = RoomCardDeck;
+}
 }
 if(global.ListStyle == 1)
 {
-    if(cardNum &gt; 4 + global.tempPos)
-    {
-        global.tempPos += 1;
-        room = RoomCardDeck;
-    }
+if(global.tempPos &gt; 3)
+{
+    global.tempPos -= 4;
+    room = RoomCardDeck;
+}
 }
 </string>
           </argument>
