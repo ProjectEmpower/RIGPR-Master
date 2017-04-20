@@ -553,7 +553,7 @@ if(room == RoomCardDeck)
                 global.realInfoName = ini_read_string(tempInfoCard,"Card Name","");
                 global.infoCardText = ini_read_string(tempInfoCard,"Card Text","");
                 global.cardSprite = ini_read_real(tempInfoCard,"Sprite",-1);
-                global.infoLink = ini_read_string(tempInfoCard,"Link",0);
+                global.infoLink = ini_read_string(tempInfoCard,"Link","");
                 
                 ini_close();
                 global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     

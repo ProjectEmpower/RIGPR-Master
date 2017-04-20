@@ -25,7 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(RoomMap);
+            <string>if(global.NewGame == true)
+{
+    room_goto(RoomMap);
+}
+else
+{
+    room_goto(RoomNewGame);
+}
 </string>
           </argument>
         </arguments>

@@ -279,20 +279,28 @@ if(room == RoomCardEdit)
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.consInt);
             txt_display = "Int: "
+            global.tempVal = 2;
+            inst = instance_create(global.tempInputBoxX + 50 ,global.tempInputBoxY,ConsType);  //creats an instance at the location using the object 
         }
-        if(instance_id[forthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        if(instance_id[forthTextBoxRef+1] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.consChar);
             txt_display = "Char: "
+            global.tempVal = 3;
+            inst = instance_create(global.tempInputBoxX + 50 ,global.tempInputBoxY,ConsType);  //creats an instance at the location using the object 
+ 
         }
-        if(instance_id[fifthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        if(instance_id[fifthTextBoxRef+2] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.consWell);
             txt_display = "Well: "
+            global.tempVal = 4;
+            inst = instance_create(global.tempInputBoxX + 50 ,global.tempInputBoxY,ConsType);  //creats an instance at the location using the object 
+ 
         }
-        if(instance_id[sixthTextBoxRef] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
+        if(instance_id[sixthTextBoxRef+3] == id) //Currently unused, there if we need more text boses, must change textFields in TextInputBoxAddObject - Create
         {
             txt_input = global.cardInfoSlot;
             txt_display = "Info Card: "

@@ -38,47 +38,183 @@ global.focus = 0; //box focus
 
 if(room == RoomLocationView)
 {
+
     eventType = 0;
     //global.tempLocation
     ini_open(global.locationINI);  
     global.locationEventNumber = ini_read_real(global.tempLocation, "Number of Events",0); //reads the number of events from ini
-
+    ini_close();
     for(i = 0; i &lt; global.locationEventNumber; i++)
     { 
+        ini_open(global.locationINI);  
         tempEventWeek = "Event"+string(i+1)+"Week";
         tempWeek = ini_read_real(global.tempLocation, tempEventWeek,0); //reads the number of events from ini
         if(tempWeek == global.week)
         {
+            show_debug_message(string(global.week));
             tempEventType = "Event"+string(i+1)+"Type";
             eventType = ini_read_real(global.tempLocation, tempEventType,0); //reads the number of events from ini
+            ini_close();   
+            if(eventType != 0)
+            { 
+                eventName = "Event"+string(eventType);
+                ini_open(global.cardEventINI);
+                global.eventRef = ini_read_real(eventName,"Ref","");
+                global.realEventName = ini_read_string(eventName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
+                global.eventText = ini_read_string(eventName,"Event Text","");
+                global.reqEventInt = ini_read_real(eventName,"Int",0);
+                global.reqEventChar = ini_read_real(eventName, "Char", 0);
+                global.reqEventWell = ini_read_real(eventName, "Well",0);
+                global.cardSprite = ini_read_real(eventName,"Sprite",-1);
+                ini_close();
+                tempY = global.roomHeight/2;
+                tempX = (global.roomWidth / 4);
+                            global.RoomState = 0;
+                inst = instance_create(tempX * (i+1),tempY,CardBacking); 
+            }
+
         }
-    }
-    ini_close();
-    eventName = "Event"+string(eventType);
-    ini_open(global.cardEventINI);
-    global.eventActionCardsNum = ini_read_real(eventName,"Action Cards",0);
-    global.card1[global.eventActionCardsNum] = 0;
-    global.eventActionCardsNum -= 1;
-    for(i = 0; i &lt;= global.eventActionCardsNum; i++)
-    {
-        tempAction = "Action"+string(i+1);
-        global.card1[i] = ini_read_real(eventName,tempAction,0);
-    }
-    global.card2 = ini_read_real(eventName,"Cons2",0);
-    global.card3 = ini_read_real(eventName,"Info3",0);
-    global.card4 = ini_read_real(eventName,"Char4",0);
-    ini_close();
-    var inst;
-    textFeilds = global.eventActionCardsNum + 4;//number of text boxes we want.
-    for(i = 0; i &lt; textFeilds; i++)
-    {      
-        
-        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
-        global.tempInputBoxY += 25;
-        global.tempTextBoxY += 25;
+        ini_close();
     }
 
 }
+if(room == RoomEventSelect)
+{
+
+    eventType = 0;
+    //global.tempLocation
+        ini_open(global.cardEventINI);  
+        eventName = "Event"+string(global.eventRef);
+        global.eventActionCardsNum = ini_read_real(eventName,"Action Cards",0);
+        global.card1[global.eventActionCardsNum] = 0;
+        ini_close();
+        for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+        {
+            ini_open(global.cardEventINI);  
+            tempAction = "Action"+string(i+1);
+            global.card1[i] = ini_read_real(global.eventName,tempAction,0);
+            ini_close();
+            ini_open(global.cardActionINI);  
+            if(global.card1[i] != 0)
+            {
+                tempActionCard = "Action"+string(global.card1[i]);
+                global.cardRef = ini_read_real(tempActionCard,"Ref",0);
+                global.realCardName = ini_read_string(tempActionCard,"Card Name","");
+                global.cardText = ini_read_string(tempActionCard,"Card Text","");
+                global.cardSprite = ini_read_real(tempActionCard,"Sprite",-1);
+                ini_close();
+                tempY = global.roomHeight/2;
+                tempX = (global.roomWidth / 4);
+                            global.RoomState = 1;
+                inst = instance_create(tempX * (i+1),tempY,CardBacking); 
+            }
+        }
+
+
+}
+if(room == RoomActionView)
+{
+
+
+    //global.tempLocation
+        ini_open(global.cardActionINI);  
+        tempActionCard = "Action"+string(global.cardRef);
+        global.realCardName = ini_read_string(tempActionCard,"Card Name","");
+        global.cardText = ini_read_string(tempActionCard,"Card Text","");
+        global.cardSprite = ini_read_real(tempActionCard,"Sprite",-1);
+        global.infoCardRef = ini_read_real(tempActionCard, "Info Cards",0);
+        ini_close();
+        tempY = global.roomHeight/2;
+        tempX = (global.roomWidth / 3);
+        global.RoomState = 1;
+        inst = instance_create(tempX * (1),tempY,CardBacking); 
+        if(global.infoCardRef != 0)
+        {
+            ini_open(global.cardInfoINI); 
+            tempInfoCard = "Info"+string(global.infoCardRef);
+            global.realInfoName = ini_read_string(tempInfoCard,"Card Name","");
+            global.infoCardText = ini_read_string(tempInfoCard,"Card Text","");
+            global.cardSprite = ini_read_real(tempInfoCard,"Sprite",-1);
+            global.infoLink = ini_read_string(tempInfoCard,"Link","");
+            ini_close();
+            global.RoomState = 3;
+            inst = instance_create(tempX * (2),tempY,CardBacking); 
+        }
+
+
+
+
+
+}
+if(room == RoomConsView)
+{
+
+
+    //global.tempLocation
+        ini_open(global.cardConsINI);  
+        tempConsCard = "Cons"+string(global.consCardRef);
+        global.realConsName = ini_read_string(tempConsCard,"Card Name","");
+        global.consInt = ini_read_real(tempConsCard ,"Int",0);
+        global.consChar = ini_read_real(tempConsCard ,"Char",0);
+        global.consWell = ini_read_real(tempConsCard ,"Well",0);
+        global.cardSprite = ini_read_real(tempConsCard,"Sprite",-1);
+        global.infoCardRef = ini_read_real(tempConsCard, "Info Cards",0);
+        ini_close();
+        tempY = global.roomHeight/2;
+        tempX = (global.roomWidth / 3);
+        global.RoomState = 2;
+        inst = instance_create(tempX * (1),tempY,CardBacking); 
+        if(global.infoCardRef != 0)
+        {
+            ini_open(global.cardInfoINI); 
+            tempInfoCard = "Info"+string(global.infoCardRef);
+            global.realInfoName = ini_read_string(tempInfoCard,"Card Name","");
+            global.infoCardText = ini_read_string(tempInfoCard,"Card Text","");
+            global.cardSprite = ini_read_real(tempInfoCard,"Sprite",-1);
+            global.infoLink = ini_read_string(tempInfoCard,"Link","");
+            ini_close();
+    
+            global.RoomState = 3;
+            inst = instance_create(tempX * (2),tempY,CardBacking); 
+        }
+
+
+}
+if(room == RoomNewGame)
+{
+        textFeilds = 1;//number of text boxes we want.
+    for(i = 0; i &lt; textFeilds; i++)
+  {      
+    
+        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+       global.tempInputBoxY += 25;
+       global.tempTextBoxY += 25;
+   }
+}
+// if(100000 == 2)  
+    //global.eventActionCardsNum = ini_read_real(eventName,"Action Cards",0);
+    //global.card1[global.eventActionCardsNum] = 0;
+    //global.eventActionCardsNum -= 1;
+    //for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+    //{
+    //    tempAction = "Action"+string(i+1);
+    //    global.card1[i] = ini_read_real(eventName,tempAction,0);
+    //}
+    //global.card2 = ini_read_real(eventName,"Cons2",0);
+    //global.card3 = ini_read_real(eventName,"Info3",0);
+    //global.card4 = ini_read_real(eventName,"Char4",0);
+//    ini_close();
+  //  var inst;
+    //textFeilds = global.eventActionCardsNum + 4;//number of text boxes we want.
+//    for(i = 0; i &lt; textFeilds; i++)
+  //  {      
+    //    
+//        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+//        global.tempInputBoxY += 25;
+//        global.tempTextBoxY += 25;
+  //  }
+
+
 
 </string>
           </argument>

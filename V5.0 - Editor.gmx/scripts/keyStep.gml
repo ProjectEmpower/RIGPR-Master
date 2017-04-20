@@ -41,12 +41,13 @@ else if (k==vk_enter)
 {
     
 }
-else if k>=65 and k<=90 or k>=97 and k<=122 or k>=48 and k<=57 or k==192 or k==32
+if(k == 95)
+    k = vk_subtract;
+else if k>=65 and k<=90 or k>=97 and k<=122 or k>=48 and k<=57 or k==192 or k==32 or k==vk_subtract
 {
     // 65-90  : upcase letters
     // 122-192 : lowercase letters
     // 48-57  : numbers
-    // 192   : I don't remember :P
     // 32   : space
     
    if(room == RoomLocationAdd)

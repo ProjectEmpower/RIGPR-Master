@@ -23,16 +23,21 @@
         <sprite>sprites\TitleSpriteCards</sprite>
       </sprites>
       <sprite>sprites\ButtonSpriteBack</sprite>
-      <sprite>sprites\TextboxSprite</sprite>
-      <sprite>sprites\TextBoxSpriteLarge</sprite>
+      <sprite>sprites\TextInputBoxSprite_Small</sprite>
+      <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
+      <sprite>sprites\TextInputBoxSprite</sprite>
+      <sprite>sprites\SelectedTextBoxSprite</sprite>
+      <sprite>sprites\TextInputBoxSprite_Large</sprite>
+      <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
     </sprites>
     <sprite>sprites\BuildingSpriteNormal</sprite>
     <sprite>sprites\BuildingSpriteMythical</sprite>
     <sprite>sprites\BuildingSpriteBoth</sprite>
-    <sprite>sprites\BuildingSpriteNormal1</sprite>
     <sprite>sprites\No_sprite</sprite>
     <sprite>sprites\ArrowSpriteLeft</sprite>
     <sprite>sprites\ArrowSpriteRight</sprite>
+    <sprite>sprites\DefaultCardSprite</sprite>
+    <sprite>sprites\CardBackingNormal</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
@@ -43,6 +48,7 @@
   <scripts name="scripts">
     <script>scripts\ResolutionChange.gml</script>
     <script>scripts\keyStep.gml</script>
+    <script>scripts\PlayerSave.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Rooms">
@@ -63,6 +69,8 @@
         <object>objects\WeekTextDraw</object>
         <object>objects\Zoom</object>
         <object>objects\DrawNames</object>
+        <object>objects\CardSpriteObject</object>
+        <object>objects\CardBacking</object>
       </objects>
       <objects name="Character">
         <object>objects\TitleCharacter</object>
@@ -82,11 +90,13 @@
         <object>objects\ResChange</object>
       </objects>
       <object>objects\MobileRotation</object>
+      <object>objects\ButtonNext</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
     <room>rooms\RoomMenu</room>
+    <room>rooms\RoomNewGame</room>
     <rooms name="Options">
       <room>rooms\RoomResChange</room>
     </rooms>
@@ -95,6 +105,9 @@
     <room>rooms\RoomDiary</room>
     <room>rooms\RoomCards</room>
     <room>rooms\RoomLocationView</room>
+    <room>rooms\RoomEventSelect</room>
+    <room>rooms\RoomActionView</room>
+    <room>rooms\RoomConsView</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

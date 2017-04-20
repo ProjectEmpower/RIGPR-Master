@@ -65,6 +65,18 @@ if(room == RoomLocationView)
 {
     room = RoomMap; //swaps room  
 }
+if(room == RoomEventSelect)
+{
+    room = RoomLocationView; //swaps room  
+}
+if(room == RoomActionView)
+{
+    room = RoomEventSelect; //swaps room  
+}
+if(room == RoomConsView)
+{
+    room = RoomActionView
+}
 </string>
           </argument>
         </arguments>
@@ -102,6 +114,18 @@ if(room == RoomCards)
 if(room == RoomLocationView)
 {
     room = RoomMap; //swaps room  
+}
+if(room == RoomEventSelect)
+{
+    room = RoomLocationView; //swaps room  
+}
+if(room == RoomActionView)
+{
+    room = RoomEventSelect; //swaps room  
+}
+if(room == RoomConsView)
+{
+    room = RoomActionView
 }
 </string>
           </argument>

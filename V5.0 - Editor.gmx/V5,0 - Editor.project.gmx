@@ -42,6 +42,8 @@
         <sprite>sprites\ButtonSpriteEventSelect</sprite>
         <sprite>sprites\ButtonSpriteAddBuildingSprite</sprite>
       </sprites>
+      <sprite>sprites\Plus</sprite>
+      <sprite>sprites\Minus</sprite>
       <sprite>sprites\No_sprite</sprite>
       <sprite>sprites\TextInputBoxSprite</sprite>
       <sprite>sprites\SelectedTextBoxSprite</sprite>
@@ -162,6 +164,7 @@
         <object>objects\ButtonCardNew</object>
         <object>objects\CardListSetup</object>
       </objects>
+      <object>objects\ConsType</object>
     </objects>
     <objects name="Multiple Rooms">
       <object>objects\TextInputSetup</object>
