@@ -70,6 +70,8 @@
         <object>objects\Zoom</object>
         <object>objects\DrawNames</object>
         <object>objects\CardSpriteObject</object>
+        <object>objects\ButtonCardLeft</object>
+        <object>objects\ButtonCardRight</object>
         <object>objects\CardBacking</object>
       </objects>
       <objects name="Character">

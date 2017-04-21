@@ -49,7 +49,8 @@ ButtonBack.y = room_height-50
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomCharacter) //checks room
+            <string>global.tempPos = 0;
+if(room == RoomCharacter) //checks room
 {
     room = RoomMap; //swaps room
 }
@@ -99,7 +100,8 @@ if(room == RoomConsView)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomCharacter) //checks room
+            <string>global.tempPos = 0;
+if(room == RoomCharacter) //checks room
 {
     room = RoomMap; //swaps room
 }

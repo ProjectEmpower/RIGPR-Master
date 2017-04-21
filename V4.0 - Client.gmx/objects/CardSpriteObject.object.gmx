@@ -118,11 +118,13 @@ else
             <string>if(room == RoomLocationView)
 {
     global.eventRef = id.ref_display;
+    global.tempPos = 0;
     room = RoomEventSelect;
 }
 if(room == RoomEventSelect)
 {
     global.cardRef = id.ref_display;
+        global.tempPos = 0;
     room = RoomActionView;
 }
 if(room == RoomActionView)

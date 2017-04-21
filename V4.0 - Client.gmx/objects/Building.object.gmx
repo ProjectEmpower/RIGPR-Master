@@ -172,6 +172,7 @@ if(global.moveLock == 0)
             }
             global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used later)
             ini_close();//closes the ini file
+            global.tempPos = 0;
             room = RoomLocationView//moves to the next room
         }
     }     
