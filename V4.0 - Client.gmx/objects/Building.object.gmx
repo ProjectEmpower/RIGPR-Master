@@ -135,6 +135,7 @@ for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
 //day, period, etc. but ). 
 if(global.moveLock == 0)
 {
+    global.LoadText = "";
     for(t = 0; t &lt; global.TotalInstanceNum; t++) //runs for loop based on TotalInstanceNum (of buildings)
     {
         ini_open(global.locationINI);//opens the ini file

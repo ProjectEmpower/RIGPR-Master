@@ -51,6 +51,12 @@ y = 25;
             <kind>1</kind>
             <string>if(global.JWeek &lt; 52)
 {
+    ini_open(global.historyINI);
+    if(ini_section_exists("Year"+string(global.JYear) + " - Week"+string(global.JWeek)))
+    {
+        script_execute(SaveHistory);
+    }
+    ini_close()
     global.JWeek += 1;
     room = RoomDiary;
 }

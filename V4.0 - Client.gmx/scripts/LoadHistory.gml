@@ -1,4 +1,5 @@
 ini_open(global.historyINI);
+global.tempLocation = ini_read_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"LocationRef","");
 global.LocationStore = ini_read_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Location","");
 global.EventStore = ini_read_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Event", "");
 global.ActionStore = ini_read_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Action", "");
@@ -8,4 +9,5 @@ global.LoadTempWell = ini_read_real("Year"+string(global.JYear) + " - Week"+stri
 global.LoadInt = ini_read_real("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"NewInt", 0);
 global.LoadChar = ini_read_real("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"NewChar", 0);
 global.LoadWell = ini_read_real("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"NewWell", 0);    
+global.LoadText = ini_read_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Text", "");    
 ini_close()

@@ -91,18 +91,60 @@ if(room == RoomActionView)
     room = RoomConsView;
 }
 if(room == RoomConsView)
-{
-    global.playerTempInt = global.playerInt;
-    global.playerTempChar = global.playerChar;
-    global.playerTempWell = global.playerWell;
-    global.playerInt += global.consInt;
-    global.playerChar += global.consChar;
-    global.playerWell += global.consWell;
+{    
+    if(global.TimeTravel != true)
+    {
+        global.LoadTempInt = global.playerInt;
+        global.LoadTempChar = global.playerChar;
+        global.LoadTempWell = global.playerWell;
+        global.playerInt += global.consInt;
+        global.playerChar += global.consChar;
+        global.playerWell += global.consWell;
+        global.LoadInt = global.playerInt
+        global.LoadChar = global.playerChar
+        global.LoadWell = global.playerWell
+        global.JWeek = global.playerWeek;
+        global.JYear = global.playerYear;
+        script_execute(SaveHistory);
+        global.playerWeek += 1;
+        script_execute(PlayerSave); 
 
-    script_execute(SaveHistory);
-    global.playerWeek += 1;
-    script_execute(PlayerSave);
-    room = RoomMap;
+        room = RoomMap;
+    }
+    else
+    {
+        //sets old stats
+        global.LoadTempInt = global.playerInt;
+        global.LoadTempChar = global.playerChar;
+        global.LoadTempWell = global.playerWell;
+        //updates current states
+        global.playerInt += global.consInt;
+        global.playerChar += global.consChar;
+        global.playerWell += global.consWell;
+        //sets the current stat in hostory
+        global.LoadInt = global.playerInt
+        global.LoadChar = global.playerChar
+        global.LoadWell = global.playerWell
+        script_execute(SaveHistory);
+        //sets the player stats back to what they should be 
+        global.playerInt = global.playerTempInt;
+        global.playerChar = global.playerTempChar;
+        global.playerWell = global.playerTempWell;
+        //removes the stat changes from previous 
+        global.playerInt += global.DiffInt;
+        global.playerChar += global.DiffChar;
+        global.playerWell += global.DiffWell;
+        //adds the new stats back to stats
+        global.playerInt += global.consInt;
+        global.playerChar += global.consChar;
+        global.playerWell += global.consWell;
+
+        global.TimeTravel = false;
+        global.playerWeek = global.playerTempWeek;
+        global.playerYear = global.playerTempYear;
+        script_execute(PlayerSave); 
+        room = RoomDiary;
+    }
 }
 </string>
           </argument>

@@ -558,7 +558,7 @@ if(room == RoomDiary)
     if(ini_section_exists("Year"+string(global.JYear) + " - Week"+string(global.JWeek)))
     {
         script_execute(LoadHistory);  
-        textFeilds = 6;//number of text boxes we want.
+        textFeilds = 7;//number of text boxes we want.
         for(i = 0; i &lt; textFeilds; i++)
         {      
             if(i == 0)
@@ -604,10 +604,15 @@ if(room == RoomDiary)
             {
                 //Well
                 inst = instance_create(global.roomWidth/5,global.tempInputBoxY,TextInputBox);     
-                global.tempInputBoxY += 25;
-                global.tempTextBoxY += 25;
+                global.tempInputBoxY += 50;
+                global.tempTextBoxY += 50;
             }
-
+            if(i == 6)
+            {
+                inst = instance_create(global.roomWidth/5,global.tempInputBoxY,TextInputBox);     
+                global.tempInputBoxY += 75;
+                global.tempTextBoxY += 75;
+            }
         }
     }
     ini_close();

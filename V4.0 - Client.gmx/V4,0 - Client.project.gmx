@@ -78,6 +78,7 @@
         <object>objects\ButtonCardLeft</object>
         <object>objects\ButtonCardRight</object>
         <object>objects\CardBacking</object>
+        <object>objects\RedoEvent</object>
       </objects>
       <objects name="Character">
         <object>objects\TitleCharacter</object>

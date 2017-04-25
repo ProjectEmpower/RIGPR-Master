@@ -58,6 +58,7 @@
     <instance objName="ButtonJWeekRight" x="1216" y="64" name="inst_51A972D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="JWeekDraw" x="1152" y="64" name="inst_9467FFD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="TextInputSetup" x="192" y="352" name="inst_0BA442A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="RedoEvent" x="288" y="608" name="inst_2C87F197" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -136,17 +136,30 @@ if(room == RoomActionView)
 }
 if(room == RoomConsView)
 {
-    global.playerTempInt = global.playerInt;
-    global.playerTempChar = global.playerChar;
-    global.playerTempWell = global.playerWell;
+    global.LoadTempInt = global.playerInt;
+    global.LoadTempChar = global.playerChar;
+    global.LoadTempWell = global.playerWell;
     global.playerInt += global.consInt;
     global.playerChar += global.consChar;
     global.playerWell += global.consWell;
-
+    global.LoadInt = global.playerInt
+    global.LoadChar = global.playerChar
+    global.LoadWell = global.playerWell
+    global.JWeek = global.playerWeek;
+    global.JYear = global.playerYear;
     script_execute(SaveHistory);
-    global.playerWeek += 1;
-    script_execute(PlayerSave);
-    room = RoomMap;
+    if(global.TimeTravel != true)
+        global.playerWeek += 1;
+    script_execute(PlayerSave); 
+    if(global.TimeTravel != true)
+        room = RoomMap;
+     if(global.TimeTravel == true)
+    {
+        global.TimeTravel = false;
+        global.playerWeek = global.playerTempWeek;
+        global.playerYear = global.playerTempYear;
+        room = RoomDiary;
+    }
 }
 </string>
           </argument>

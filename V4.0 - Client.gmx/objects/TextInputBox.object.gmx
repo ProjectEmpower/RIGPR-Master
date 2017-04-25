@@ -151,6 +151,13 @@ if(room == RoomDiary)
         txt_display = "WELL: ";
         txt_input = "OLD - " + string(global.LoadTempWell)+ ", NEW - " + string(global.LoadWell);
     }   
+    if(id == instance_id[realNameTextBoxRef+8])
+    {
+        image_xscale = 2;
+        sprite_index = TextInputBoxSprite_Large;
+        txt_display = "";
+        txt_input = global.LoadText;
+    }   
 }
 myY = global.tempTextBoxY;//sets current Position (increases depending on instance)
 
@@ -240,6 +247,13 @@ if(room == RoomNewGame)
     {
         global.Name = txt_input;
     }   
+}
+if(room == RoomDiary)
+{
+    if(id == instance_id[realNameTextBoxRef+4])
+    {
+        global.LoadText = txt_input;
+    }
 }
 </string>
           </argument>

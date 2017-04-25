@@ -70,7 +70,7 @@ global.TotalInstanceNum = 0;//used later for building placement
 global.myth = 0; 
 global.locked = 0;
 global.tempNum = 0;
-
+global.TimeTravel = false;
 global.moveLock = 0; //locks the player from entering a location when panning the map screen
 
 global.totalEventCards = 0;//total number of events
