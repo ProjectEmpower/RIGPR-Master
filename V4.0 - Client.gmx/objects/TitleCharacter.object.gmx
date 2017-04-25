@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>TitleCharacter.x = room_width/2
 TitleCharacter.y = 50
+global.JYear = global.playerYear;
+global.JWeek = global.playerWeek;
 </string>
           </argument>
         </arguments>

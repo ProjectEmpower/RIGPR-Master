@@ -117,12 +117,14 @@ else
             <kind>1</kind>
             <string>if(room == RoomLocationView)
 {
+    global.EventStore = "Event"+string(id.ref_display);
     global.eventRef = id.ref_display;
     global.tempPos = 0;
     room = RoomEventSelect;
 }
 if(room == RoomEventSelect)
 {
+    global.ActionStore = "Action"+string(id.ref_display);  
     global.cardRef = id.ref_display;
         global.tempPos = 0;
     room = RoomActionView;
@@ -134,9 +136,15 @@ if(room == RoomActionView)
 }
 if(room == RoomConsView)
 {
+    global.playerTempInt = global.playerInt;
+    global.playerTempChar = global.playerChar;
+    global.playerTempWell = global.playerWell;
     global.playerInt += global.consInt;
     global.playerChar += global.consChar;
     global.playerWell += global.consWell;
+
+    script_execute(SaveHistory);
+    global.playerWeek += 1;
     script_execute(PlayerSave);
     room = RoomMap;
 }

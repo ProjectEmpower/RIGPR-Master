@@ -54,6 +54,10 @@
     <instance objName="ButtonBack" x="832" y="640" name="inst_BBF8E2B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="TitleDiary" x="256" y="128" name="inst_94AB7F91" locked="0" code="" scaleX="1" scaleY="1" colour="4278190080" rotation="0"/>
     <instance objName="MobileRotation" x="32" y="32" name="inst_A2982EE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonJWeekLeft" x="1120" y="64" name="inst_44011A5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonJWeekRight" x="1216" y="64" name="inst_51A972D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="JWeekDraw" x="1152" y="64" name="inst_9467FFD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="TextInputSetup" x="192" y="352" name="inst_0BA442A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

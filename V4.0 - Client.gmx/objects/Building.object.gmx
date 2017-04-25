@@ -144,32 +144,32 @@ if(global.moveLock == 0)
         {
             tempEventNum = ini_read_real(locationName, "Number of Events", 0);
             global.realLocationName = ini_read_string(locationName, "Real Location Name", "");
-            for(e = 1; e &lt;= tempEventNum; e++)
-            {
-                tempEventID = string(e);
-                tempEventWeek = "Event"+tempEventID+"Week";
-                tempEventType = "Event"+tempEventID+"Type";
-                tempEventWeekMap = ini_read_real(locationName, tempEventWeek, 0);
-                if(global.week == tempEventWeekMap) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
-                {
-                    global.eventRef = ini_read_real(locationName, tempEventType, 0);
-                    
-    
-                    for(i = 1; i &lt;= global.totalEventCards; i++)
-                    {
-                        if(global.eventRef == i)
-                        {
-                            tempID = string(i);
-                            tempEvent = "Event"+tempID;
-                            ini_close();
-                            ini_open(global.cardEventINI)
-                            global.realEventName = ini_read_string(tempEvent, "Event Name", "");
-                            ini_close();
-                            ini_open(global.locationINI);
-                        }   
-                    }
-                }
-            }
+           // for(e = 1; e &lt;= tempEventNum; e++)
+            //{
+               // tempEventID = string(e);
+                //tempEventWeek = "Event"+tempEventID+"Week";
+                //tempEventType = "Event"+tempEventID+"Type";
+               // tempEventWeekMap = ini_read_real(locationName, tempEventWeek, 0);
+               //  if(global.week == tempEventWeekMap) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
+               //  {
+                //     global.eventRef = ini_read_real(locationName, tempEventType, 0);
+                //     
+    // 
+                //     for(i = 1; i &lt;= global.totalEventCards; i++)
+                //     {
+                //         if(global.eventRef == i)
+                //         {
+               //              tempID = string(i);
+               //              tempEvent = "Event"+tempID;
+               //              ini_close();
+               //              ini_open(global.cardEventINI)
+               //              global.realEventName = ini_read_string(tempEvent, "Event Name", "");
+               //              ini_close();
+              //               ini_open(global.locationINI);
+             //            }   
+             //        }
+             //   }
+            //}
             global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used later)
             ini_close();//closes the ini file
             global.tempPos = 0;

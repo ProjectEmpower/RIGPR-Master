@@ -1,0 +1,49 @@
+if(global.RoomState == 0)
+{
+    ini_open(global.cardEventINI);
+    global.eventRef = ini_read_real(global.EventLoadName,"Ref","");
+    global.realEventName = ini_read_string(global.EventLoadName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
+    global.eventText = ini_read_string(global.EventLoadName,"Event Text","");
+    global.reqEventInt = ini_read_real(global.EventLoadName,"Int",0);
+    global.reqEventChar = ini_read_real(global.EventLoadName, "Char", 0);
+    global.reqEventWell = ini_read_real(global.EventLoadName, "Well",0);
+    global.cardSprite = ini_read_real(global.EventLoadName,"Sprite",-1);
+    ini_close();
+}
+if(global.RoomState == 1)
+{    
+    ini_open(global.cardActionINI);
+    global.cardRef = ini_read_real(global.ActionLoadName,"Ref",0);
+    global.realCardName = ini_read_string(global.ActionLoadName,"Card Name","");
+    global.cardText = ini_read_string(global.ActionLoadName,"Card Text","");
+    global.cardSprite = ini_read_real(global.ActionLoadName,"Sprite",-1);
+    global.infoCardRef = ini_read_real(global.ActionLoadName, "Info Cards",0);
+    ini_close();
+}
+if(global.RoomState == 2)
+{
+    ini_open(global.cardConsINI);  
+    global.realConsName = ini_read_string(global.ConsLoadName,"Card Name","");
+    global.consInt = ini_read_real(global.ConsLoadName ,"Int",0);
+    global.consChar = ini_read_real(global.ConsLoadName ,"Char",0);
+    global.consWell = ini_read_real(global.ConsLoadName ,"Well",0);
+    global.cardSprite = ini_read_real(global.ConsLoadName,"Sprite",-1);
+    global.infoCardRef = ini_read_real(global.ConsLoadName, "Info Cards",0);
+    ini_close();
+}
+if(global.RoomState == 3)
+{
+    ini_open(global.cardInfoINI); 
+    global.realInfoName = ini_read_string(global.InfoLoadName,"Card Name","");
+    global.infoCardText = ini_read_string(global.InfoLoadName,"Card Text","");
+    global.cardSprite = ini_read_real(global.InfoLoadName,"Sprite",-1);
+    global.infoLink = ini_read_string(global.InfoLoadName,"Link","");
+    ini_close();
+}
+if(global.RoomState == 4)
+{
+    ref_display = global.charCardRef;
+    RealName = global.charCardName;
+    CardText = global.charCardText;
+}
+

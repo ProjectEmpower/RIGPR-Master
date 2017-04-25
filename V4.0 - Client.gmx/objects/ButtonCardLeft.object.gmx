@@ -25,16 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.startOrientation == display_portrait or global.startOrientation == display_portrait_flipped)
+            <string>if(os_type == os_android)
 {
-
-    if(room == RoomEventSelect or RoomLocationView)
+    global.startOrientation = display_get_orientation();
+    if(global.startOrientation == display_portrait or global.startOrientation == display_portrait_flipped)
     {
-        if(global.tempPos &gt; 0)
-            sprite_index = ArrowSpriteLeft;
-        else
-            sprite_index = No_sprite;
+    
+        if(room == RoomEventSelect or RoomLocationView)
+        {
+            if(global.tempPos &gt; 0)
+                sprite_index = ArrowSpriteLeft;
+            else
+                sprite_index = No_sprite;
+        }
     }
+    else
+    {
+        sprite_index = No_sprite;
+    }
+
 }
 else
 {

@@ -49,7 +49,11 @@
   <scripts name="scripts">
     <script>scripts\ResolutionChange.gml</script>
     <script>scripts\keyStep.gml</script>
+    <script>scripts\PlayerLoad.gml</script>
+    <script>scripts\SaveHistory.gml</script>
+    <script>scripts\LoadHistory.gml</script>
     <script>scripts\PlayerSave.gml</script>
+    <script>scripts\LoadCards.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Rooms">
@@ -81,6 +85,11 @@
         <object>objects\ButtonCards</object>
         <object>objects\TitleDiary</object>
         <object>objects\TitleCards</object>
+        <objects name="Journal">
+          <object>objects\ButtonJWeekLeft</object>
+          <object>objects\ButtonJWeekRight</object>
+          <object>objects\JWeekDraw</object>
+        </objects>
       </objects>
       <object>objects\GameSetup</object>
       <object>objects\ButtonBack</object>

@@ -27,8 +27,9 @@
             <kind>1</kind>
             <string>global.tempID = string(global.tempNum);// takes the current tempNum (set when accessing this object via left click)
 global.tempLocation = "Location"+global.tempID;//writes the location+#Ref#  to a temp variable
-global.tempEventID = string(global.eventRef);// takes the current cardRef (set when accessing the room)
-global.eventName = "Event"+global.tempEventID;//writes the card name
+
+//global.tempEventID = string(global.eventRef);// takes the current cardRef (set when accessing the room)
+//global.eventName = "Event"+global.tempEventID;//writes the card name
 </string>
           </argument>
         </arguments>
@@ -55,7 +56,7 @@ global.eventName = "Event"+global.tempEventID;//writes the card name
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
 draw_set_valign(fa_bottom);
 draw_text(global.MapTitleX,global.MapTitleY,global.realLocationName);//draws the text in the middle of the screen, 25 pixels down, the text = the location#ref#
-draw_text(global.MapTitleX,global.MapTitleY+25,global.realEventName)
+
 </string>
           </argument>
         </arguments>

@@ -27,12 +27,7 @@
             <kind>1</kind>
             <string>if(global.NewGame == false)
 {
-    ini_open(global.playerINI)
-    global.Name = ini_read_string("Player","Name","")
-    global.playerInt = ini_read_real("Player","Int",5);
-    global.playerChar = ini_read_real("Player","Char",5);
-    global.playerWell = ini_read_real("Player","Well",5);
-    ini_close();
+    script_execute(PlayerLoad);
     room_goto(RoomMap);
 }
 else
