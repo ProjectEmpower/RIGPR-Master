@@ -38,6 +38,7 @@
     <sprite>sprites\ArrowSpriteRight</sprite>
     <sprite>sprites\DefaultCardSprite</sprite>
     <sprite>sprites\CardBackingNormal</sprite>
+    <sprite>sprites\DefaultUserSprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
@@ -93,6 +94,7 @@
       </objects>
       <object>objects\MobileRotation</object>
       <object>objects\ButtonNext</object>
+      <object>objects\UserImage</object>
     </objects>
   </objects>
   <rooms name="rooms">

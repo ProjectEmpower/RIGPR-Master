@@ -600,15 +600,26 @@ else////////////////////////////////////////////////////////////////////////////
     }
     if(room == RoomNewGame)
     {
-            textFeilds = 1;//number of text boxes we want.
+        textFeilds = 1;//number of text boxes we want.
         for(i = 0; i &lt; textFeilds; i++)
-      {      
+        {      
         
             inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
            global.tempInputBoxY += 25;
            global.tempTextBoxY += 25;
-       }
+        }
     }
+}
+if(room == RoomCharacter)
+{
+        textFeilds = 4;//number of text boxes we want.
+        for(i = 0; i &lt; textFeilds; i++)
+        {      
+        
+            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+        }
 }
     // if(100000 == 2)  
         //global.eventActionCardsNum = ini_read_real(eventName,"Action Cards",0);

@@ -48,6 +48,34 @@ if(room == RoomNewGame)
         txt_input = "";
     }   
 }
+if(room == RoomCharacter)
+{    
+    image_xscale = 1.5;
+    if(id == instance_id[realNameTextBoxRef])
+    {
+        sprite_index = No_sprite;
+        txt_display = "";
+        txt_input = global.Name;
+    }   
+    if(id == instance_id[realNameTextBoxRef+1])
+    {
+        sprite_index = No_sprite;
+        txt_display = "Int: ";
+        txt_input = global.playerInt;
+    }   
+        if(id == instance_id[realNameTextBoxRef+2])
+    {
+        sprite_index = No_sprite;
+        txt_display = "Char: ";
+        txt_input = global.playerChar;
+    }   
+        if(id == instance_id[realNameTextBoxRef+3])
+    {
+        sprite_index = No_sprite;
+        txt_display = "Well: ";
+        txt_input = global.playerWell;
+    }   
+}
 if(room == RoomLocationView)
 {
     image_xscale = 1.5;
@@ -183,7 +211,7 @@ if(room == RoomNewGame)
 {
     if(id == instance_id[realNameTextBoxRef])
     {
-        global.name = txt_input;
+        global.Name = txt_input;
     }   
 }
 </string>
@@ -232,6 +260,14 @@ if(room == RoomNewGame)
           <argument>
             <kind>1</kind>
             <string>if(room == RoomNewGame)
+{
+    draw_set_valign(fa_middle);
+    draw_set_halign(fa_right);
+    draw_text(global.InputBoxX, myY ,txt_display);//Draws the input text
+    draw_set_halign(fa_left);
+    draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
+}
+if(room == RoomCharacter)
 {
     draw_set_valign(fa_middle);
     draw_set_halign(fa_right);

@@ -32,6 +32,12 @@
     ini_write_real("Player","Int",5);
     ini_write_real("Player","Char",5);
     ini_write_real("Player","Well",5);
+    ini_write_real("Player","Week",0);
+    ini_write_real("Player","Year",1);
+    ini_write_real("Player","Sprite",0);
+    global.playerInt = ini_read_real("Player","Int",5);
+    global.playerChar = ini_read_real("Player","Char",5);
+    global.playerWell = ini_read_real("Player","Well",5);
     ini_close();
     room = RoomMap;
 }

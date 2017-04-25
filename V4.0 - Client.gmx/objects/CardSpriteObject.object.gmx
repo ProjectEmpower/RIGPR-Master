@@ -134,10 +134,10 @@ if(room == RoomActionView)
 }
 if(room == RoomConsView)
 {
-    tempInt = global.consInt;
-    tempChar = global.consChar;
-    tempWell = global.consWell;
-    //save character here and advance week
+    global.playerInt += global.consInt;
+    global.playerChar += global.consChar;
+    global.playerWell += global.consWell;
+    script_execute(PlayerSave);
     room = RoomMap;
 }
 </string>
@@ -162,7 +162,7 @@ if(room == RoomConsView)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomLocationView or room ==RoomEventSelect or room ==RoomActionView)
+            <string>if(room == RoomLocationView or room ==RoomEventSelect or room ==RoomActionView or room == RoomConsView)
 {
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
