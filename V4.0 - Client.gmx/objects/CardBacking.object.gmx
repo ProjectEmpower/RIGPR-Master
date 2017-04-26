@@ -31,6 +31,9 @@ inst = instance_create(x,y- 72,CardSpriteObject);
 if(RoomState == 0)
 {
     ref_display = global.eventRef;
+    reqInt = global.reqEventInt;
+    reqChar = global.reqEventChar;
+    reqWell = global.reqEventWell;
 }
 if(RoomState == 1)
 {
@@ -72,11 +75,14 @@ if(RoomState == 4)
           <argument>
             <kind>1</kind>
             <string>if(room == RoomLocationView)
-{
-    global.EventStore = "Event"+string(id.ref_display);
-    global.eventRef = id.ref_display;
-    global.tempPos = 0;
-    room = RoomEventSelect;
+{   
+    if(global.playerInt &gt;= reqInt and global.playerChar &gt;= reqChar and global.playerWell &gt;= reqWell)
+    {
+        global.EventStore = "Event"+string(id.ref_display);
+        global.eventRef = id.ref_display;
+        global.tempPos = 0;
+        room = RoomEventSelect;
+    }
 }
 if(room == RoomEventSelect)
 {

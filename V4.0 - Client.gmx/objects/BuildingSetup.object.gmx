@@ -258,7 +258,7 @@ if(global.firstLoad == false)
     charOrder = ds_list_write(global.charCardOrder);
     infoOrder = ds_list_write(global.infoCardOrder);
     consOrder = ds_list_write(global.consCardOrder);
-    ini_open("AllCards.ini");
+    ini_open(global.AllCards);
     ini_write_string("All Cards","Event List",eventList);
     ini_write_string("All Cards","Action List",actionList);
     ini_write_string("All Cards","Char List",charList);

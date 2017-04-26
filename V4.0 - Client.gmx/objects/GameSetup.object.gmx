@@ -102,6 +102,7 @@ global.cardCharINI = "ini_files/cardChar.ini";
 global.editorINI = "editor_files/editor.ini";
 global.playerINI = "editor_files/player.ini";
 global.historyINI = "editor_files/history.ini";
+global.AllCards = "editor_files/AllCards.ini";
 //checks to see if the ini files exist, if they do not, it downloads them from the webhost
 if(!file_exists(global.locationINI))
 {

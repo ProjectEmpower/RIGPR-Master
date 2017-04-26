@@ -31,9 +31,9 @@ if(RoomState == 0)
 {
     ref_display = global.eventRef;
     RealName = global.realEventName;
-    reqINT = global.reqEventInt;
-    reqCha = global.reqEventChar;
-    reqWel = global.reqEventWell;
+    reqInt = global.reqEventInt;
+    reqChar = global.reqEventChar;
+    reqWell = global.reqEventWell;
 }
 if(RoomState == 1)
 {
@@ -117,10 +117,13 @@ else
             <kind>1</kind>
             <string>if(room == RoomLocationView)
 {
-    global.EventStore = "Event"+string(id.ref_display);
-    global.eventRef = id.ref_display;
-    global.tempPos = 0;
-    room = RoomEventSelect;
+    if(global.playerInt &gt;= reqInt and global.playerChar &gt;= reqChar and global.playerWell &gt;= reqWell)
+    {
+        global.EventStore = "Event"+string(id.ref_display);
+        global.eventRef = id.ref_display;
+        global.tempPos = 0;
+        room = RoomEventSelect;
+    }
 }
 if(room == RoomEventSelect)
 {
@@ -183,7 +186,7 @@ if(room == RoomConsView)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomLocationView or room ==RoomEventSelect or room ==RoomActionView or room == RoomConsView or room == RoomCards)
+            <string>if(room == RoomLocationView or room ==RoomEventSelect or room ==RoomActionView or room == RoomConsView or room == RoomCards or room == RoomDiary)
 {
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
@@ -192,9 +195,9 @@ if(room == RoomConsView)
     {
         cardNameText = "Event";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-        draw_text_transformed(x, y + 152, "Required Int: " + string(reqINT),1,1,0);
-        draw_text_transformed(x, y + 184, "Required Cha: " + string(reqCha),1,1,0);
-        draw_text_transformed(x, y + 216, "Required Wel: " + string(reqWel),1,1,0);
+        draw_text_transformed(x, y + 152, "Required Int: " + string(reqInt),1,1,0);
+        draw_text_transformed(x, y + 184, "Required Cha: " + string(reqChar),1,1,0);
+        draw_text_transformed(x, y + 216, "Required Wel: " + string(reqWell),1,1,0);
     }
     if(RoomState == 1)
     {
