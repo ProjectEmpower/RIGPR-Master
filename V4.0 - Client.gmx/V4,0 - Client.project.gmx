@@ -92,6 +92,7 @@
           <object>objects\JWeekDraw</object>
         </objects>
       </objects>
+      <object>objects\CardOrderDisplay</object>
       <object>objects\GameSetup</object>
       <object>objects\ButtonBack</object>
       <objects name="LocationView">

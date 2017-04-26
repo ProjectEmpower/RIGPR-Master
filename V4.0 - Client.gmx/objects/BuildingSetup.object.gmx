@@ -76,91 +76,208 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
         global.TotalInstanceNum = i;
     }
 }
-//this code counts the number of current events in the system.
-global.totalEventCards = 100;
-for(i = 0; i &lt;= global.totalEventCards; i++)
+if(global.firstLoad == false)
 {
-    currentCardRef = string(i+1);//writes i as a string to a variable
-    currentCard = "Event"+currentCardRef; //writes the current event + position in for loop
-    ini_open(global.cardEventINI);  //opens the event ini file
-    if(!ini_section_exists(currentCard))//if the current event in list does not exist
+
+    //this code counts the number of current events in the system.
+    global.totalEventCards = 100;
+    for(i = 0; i &lt;= global.totalEventCards; i++)
     {
-        global.totalEventCards = i; 
-        //set the total to the current loop number.
+        currentCardRef = string(i+1);//writes i as a string to a variable
+        currentCard = "Event"+currentCardRef; //writes the current event + position in for loop
+        ini_open(global.cardEventINI);  //opens the event ini file
+        if(!ini_section_exists(currentCard))//if the current event in list does not exist
+        {
+            global.totalEventCards = i; 
+            //set the total to the current loop number.
+        }
+        else
+        {
+            global.eventArray[i] = currentCard;
+            tempCard = ini_read_string(currentCard,"Event Name","");
+            ds_list_add(global.eventCardList,tempCard);
+        }
+        ini_close();
     }
-    else
+    //sets up the action cards
+    global.totalActionCards = 100;
+    for(i = 0; i &lt;= global.totalActionCards; i ++)
     {
-        global.eventArray[i] = currentCard;
+        currentCardRef = string(i+1);//writes i as a string to a variable
+        currentCard = "Action"+currentCardRef; //writes the current event + position in for loop
+        ini_open(global.cardActionINI);  //opens the event ini file
+        if(!ini_section_exists(currentCard))//if the current event in list does not exist
+        {
+            global.totalActionCards = i;//set the total to the current loop number.
+        }
+        else
+        {
+            global.actionArray[i] = currentCard;
+            tempCard = ini_read_string(currentCard,"Card Name","");
+            ds_list_add(global.actionCardList,tempCard);
+        }
+        ini_close();
     }
+    //sets up the consequence cards
+    global.totalConsCards = 100;
+    for(i = 0; i &lt;= global.totalConsCards; i ++)
+    {
+        currentCardRef = string(i+1);//writes i as a string to a variable
+        currentCard = "Cons"+currentCardRef; //writes the current event + position in for loop
+        ini_open(global.cardConsINI);  //opens the event ini file
+        if(!ini_section_exists(currentCard))//if the current event in list does not exist
+        {
+            global.totalConsCards = i;//set the total to the current loop number.
+        }
+        else
+        {
+        global.consArray[i] = currentCard;
+        tempCard = ini_read_string(currentCard,"Card Name","");
+        ds_list_add(global.consCardList,tempCard);
+        }
+        ini_close();
+    }
+    //sets up the information cards
+    global.totalInfoCards = 100;
+    for(i = 0; i &lt;= global.totalInfoCards; i ++)
+    {
+        currentCardRef = string(i+1);//writes i as a string to a variable
+        currentCard = "Info"+currentCardRef; //writes the current event + position in for loop
+        ini_open(global.cardInfoINI);  //opens the event ini file
+        if(!ini_section_exists(currentCard))//if the current event in list does not exist
+        {
+            global.totalInfoCards = i;//set the total to the current loop number.
+        }
+        else
+        {
+        global.infoArray[i] = currentCard;
+        tempCard = ini_read_string(currentCard,"Card Name","");
+        ds_list_add(global.infoCardList,tempCard);
+        }
+        ini_close();
+    }
+    //sets up the character cards
+    global.totalCharCards = 100;
+    for(i = 0; i &lt;= global.totalCharCards; i ++)
+    {
+        currentCardRef = string(i+1);//writes i as a string to a variable
+        currentCard = "Char"+currentCardRef; //writes the current event + position in for loop
+        ini_open(global.cardCharINI);  //opens the event ini file
+        if(!ini_section_exists(currentCard))//if the current event in list does not exist
+        {
+            global.totalCharCards = i;//set the total to the current loop number.
+        }
+        else
+        {
+            tempCard = ini_read_string(currentCard,"Card Name","");
+            ds_list_add(global.charCardList,tempCard);
+            global.charArray[i] = currentCard;
+        }
+        ini_close();
+    }
+
+    ds_list_sort(global.eventCardList,true);
+
+    ds_list_sort(global.actionCardList,true);
+    ds_list_sort(global.charCardList,true);
+    ds_list_sort(global.infoCardList,true);
+    ds_list_sort(global.consCardList,true);
+    
+    i = 0;
+    for(e = 0; e &lt;= global.totalEventCards; e++)
+    {    
+        
+        ini_open(global.cardEventINI)
+        if(ds_list_find_value(global.eventCardList,i) == ini_read_string("Event"+string(e),"Event Name",""))
+        {
+            ds_list_add(global.eventCardOrder,string(ini_read_real("Event"+string(e),"Ref","")));
+            i += 1;
+        }
+        ini_close();
+
+    }
+    i = 0;
+    for(e = 0; e &lt;= global.totalActionCards; e++)
+    {
+        ini_open(global.cardActionINI)
+        if(ds_list_find_value(global.actionCardList,i) == ini_read_string("Action"+string(e),"Card Name",""))
+        {
+            ds_list_add(global.actionCardOrder,string(ini_read_real("Action"+string(e),"Ref","")));
+            i += 1;
+        }
+        ini_close();
+
+    }
+    i = 0;
+    for(e = 0; e &lt;= global.totalCharCards; e++)
+    {
+        ini_open(global.cardCharINI)
+        if(ds_list_find_value(global.charCardList,i) == ini_read_string("Char"+string(e),"Card Name",""))
+        {
+            ds_list_add(global.charCardOrder,string(ini_read_real("Char"+string(e),"Ref","")));
+           i += 1;
+        }
+        ini_close();
+    }
+    i = 0;
+    for(e = 0; e &lt;= global.totalInfoCards; e++)
+    {
+        ini_open(global.cardInfoINI)
+        if(ds_list_find_value(global.infoCardList,i) == ini_read_string("Info"+string(e),"Card Name",""))
+        {
+            ds_list_add(global.infoCardOrder,string(ini_read_real("Info"+string(e),"Ref","")));
+           i += 1;
+        }
+        ini_close();
+    }
+    i = 0;
+    for(e = 0; e &lt;= global.totalConsCards; e++)
+    {
+        ini_open(global.cardConsINI)
+        if(ds_list_find_value(global.consCardList,i) == ini_read_string("Cons"+string(e),"Card Name",""))
+        {
+            ds_list_add(global.consCardOrder,string(ini_read_real("Cons"+string(e),"Ref","")));
+            i += 1;
+        }
+        ini_close();
+    }
+    eventList = ds_list_write(global.eventCardList);
+    actionList = ds_list_write(global.actionCardList);
+    charList = ds_list_write(global.charCardList);
+    infoList = ds_list_write(global.infoCardList);
+    consList = ds_list_write(global.consCardList);
+    
+    eventOrder = ds_list_write(global.eventCardOrder);
+    actionOrder = ds_list_write(global.actionCardOrder);
+    charOrder = ds_list_write(global.charCardOrder);
+    infoOrder = ds_list_write(global.infoCardOrder);
+    consOrder = ds_list_write(global.consCardOrder);
+    ini_open("AllCards.ini");
+    ini_write_string("All Cards","Event List",eventList);
+    ini_write_string("All Cards","Action List",actionList);
+    ini_write_string("All Cards","Char List",charList);
+    ini_write_string("All Cards","Info List",infoList);
+    ini_write_string("All Cards","Cons List",consList);
+    
+    ini_write_string("All Cards","Event Order",eventOrder);
+    ini_write_string("All Cards","Action Order",actionOrder);
+    ini_write_string("All Cards","Char Order",charOrder);
+    ini_write_string("All Cards","Info Order",infoOrder);
+    ini_write_string("All Cards","Cons Order",consOrder);
+    ds_list_clear(global.eventCardList);
+    ds_list_clear(global.actionCardList);
+    ds_list_clear(global.charCardList);
+    ds_list_clear(global.infoCardList);
+    ds_list_clear(global.consCardList);
+    
+    ds_list_clear(global.eventCardOrder);                                        
+    ds_list_clear(global.actionCardOrder);
+    ds_list_clear(global.charCardOrder);
+    ds_list_clear(global.infoCardOrder);
+    ds_list_clear(global.consCardOrder);
+                                    
     ini_close();
-}
-//sets up the action cards
-global.totalActionCards = 100;
-for(i = 0; i &lt;= global.totalActionCards; i ++)
-{
-    currentCardRef = string(i+1);//writes i as a string to a variable
-    currentCard = "Action"+currentCardRef; //writes the current event + position in for loop
-    ini_open(global.cardActionINI);  //opens the event ini file
-    if(!ini_section_exists(currentCard))//if the current event in list does not exist
-    {
-        global.totalActionCards = i;//set the total to the current loop number.
-    }
-    else
-    {
-        global.actionArray[i] = currentCard;
-    }
-    ini_close();
-}
-//sets up the consequence cards
-global.totalConsCards = 100;
-for(i = 0; i &lt;= global.totalConsCards; i ++)
-{
-    currentCardRef = string(i+1);//writes i as a string to a variable
-    currentCard = "Cons"+currentCardRef; //writes the current event + position in for loop
-    ini_open(global.cardConsINI);  //opens the event ini file
-    if(!ini_section_exists(currentCard))//if the current event in list does not exist
-    {
-        global.totalConsCards = i;//set the total to the current loop number.
-    }
-    else
-    {
-    global.consArray[i] = currentCard;
-    }
-    ini_close();
-}
-//sets up the information cards
-global.totalInfoCards = 100;
-for(i = 0; i &lt;= global.totalInfoCards; i ++)
-{
-    currentCardRef = string(i+1);//writes i as a string to a variable
-    currentCard = "Info"+currentCardRef; //writes the current event + position in for loop
-    ini_open(global.cardInfoINI);  //opens the event ini file
-    if(!ini_section_exists(currentCard))//if the current event in list does not exist
-    {
-        global.totalInfoCards = i;//set the total to the current loop number.
-    }
-    else
-    {
-    global.infoArray[i] = currentCard;
-    }
-    ini_close();
-}
-//sets up the character cards
-global.totalCharCards = 100;
-for(i = 0; i &lt;= global.totalCharCards; i ++)
-{
-    currentCardRef = string(i+1);//writes i as a string to a variable
-    currentCard = "Char"+currentCardRef; //writes the current event + position in for loop
-    ini_open(global.cardCharINI);  //opens the event ini file
-    if(!ini_section_exists(currentCard))//if the current event in list does not exist
-    {
-        global.totalCharCards = i;//set the total to the current loop number.
-    }
-    else
-    {
-    global.charArray[i] = currentCard;
-    }
-    ini_close();
+    global.firstLoad = true;
 }
 </string>
           </argument>

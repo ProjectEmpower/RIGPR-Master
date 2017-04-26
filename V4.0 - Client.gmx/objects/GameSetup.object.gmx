@@ -56,7 +56,7 @@ global.zooming = false;
 global.currentX = 0;
 global.currentY = 0;
 //sets the default positions of the Hud on the map screens
-
+global.firstLoad = false;
 
 global.fullScreen = false;
 window_set_fullscreen(global.fullScreen);//checks to see if it should be full screen, applies to pc only
@@ -64,6 +64,17 @@ global.lastResRoom = 0; //used for when the screen rotates on mobile devices.
 //week info
 global.zoom = 1;//sets start level of zoom
 
+global.eventCardList = ds_list_create();
+global.actionCardList = ds_list_create();
+global.charCardList = ds_list_create();
+global.infoCardList = ds_list_create();
+global.consCardList = ds_list_create();
+
+global.eventCardOrder = ds_list_create();
+global.actionCardOrder = ds_list_create();
+global.charCardOrder = ds_list_create();
+global.infoCardOrder = ds_list_create();
+global.consCardOrder = ds_list_create();
 
 //instnace variables
 global.TotalInstanceNum = 0;//used later for building placement
