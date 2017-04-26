@@ -25,24 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.RoomState = 0;
-if(global.RoomState == 0)
-{    
-    list = ds_list_create();
-    ini_open("AllCards.ini")
-    eventCardOrder = ini_read_string("All Cards","Event Order","");
-    ds_list_read(list,eventCardOrder)
-    ini_close();
-    for(i = 0; i &lt; ds_list_size(list); i++)
-    {            
-        ini_open(global.cardEventINI)
-        if(ini_section_exists("Event"+ds_list_find_value(list,i)))
-        {
-            show_debug_message(ds_list_find_value(list,i));
-        }
-        ini_close();
-    }
-}
+            <string>
+
 if(global.RoomState == 1)
 {    
     list = ds_list_create();

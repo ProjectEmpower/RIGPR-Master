@@ -79,6 +79,8 @@
         <object>objects\ButtonCardRight</object>
         <object>objects\CardBacking</object>
         <object>objects\RedoEvent</object>
+        <object>objects\ButtonListStyle</object>
+        <object>objects\ButtonCardType</object>
       </objects>
       <objects name="Character">
         <object>objects\TitleCharacter</object>
@@ -92,7 +94,6 @@
           <object>objects\JWeekDraw</object>
         </objects>
       </objects>
-      <object>objects\CardOrderDisplay</object>
       <object>objects\GameSetup</object>
       <object>objects\ButtonBack</object>
       <objects name="LocationView">

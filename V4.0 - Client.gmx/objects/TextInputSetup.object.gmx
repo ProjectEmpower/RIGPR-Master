@@ -541,6 +541,362 @@ else////////////////////////////////////////////////////////////////////////////
            }
         }
 }
+if(room == RoomCards)
+{        
+    if(global.RoomState == 0)//event card
+    {
+        list = ds_list_create();
+        listtemo = ds_list_create()
+        ini_open("AllCards.ini")
+        eventCardOrder = ini_read_string("All Cards","Event Order","");
+        ds_list_read(list,eventCardOrder)
+        for(a = 0; a &lt; ds_list_size(list); a++)
+        {
+            show_debug_message(ds_list_find_value(list,a));
+        }
+        ini_close();
+        if(global.ListStyle == 0)
+        {
+            //this code is to make sure that the list length doesnt exceed 20
+            if(global.totalEventCards  &gt;= 20)
+            {
+                global.listLength = 20;   
+            }
+            else
+            {
+                global.listLength = 20 - (20 - global.totalEventCards);
+            }
+            e = 0;
+            //used to display the lists of events, works the same as previously
+            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+            {
+                
+                global.EventLoadName = "Event"+string(ds_list_find_value(list,e));
+                ini_open(global.cardEventINI);
+                if(ini_section_exists("Event"+string(ds_list_find_value(list,e))) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Event"+string(i),"Ref",""))) == -1)
+                {
+                    ds_list_add(listtemo,string(ini_read_real("Event"+string(i),"Ref","")))
+                    script_execute(LoadCards);
+                    inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                    global.tempInputBoxY += 25;
+                    global.tempTextBoxY += 25;
+                    e += 1;
+                    i = 0;
+                }
+
+            }
+        }
+        if(global.ListStyle == 1)
+        {
+            //this code is to make sure that the list length doesnt exceed 20
+            if(global.totalEventCards  &gt;= 4)
+            {
+                global.listLength = 4;   
+            }
+            else
+            {
+                global.listLength = 4 - (4 - global.totalEventCards);
+            }
+            e = 0;
+            //used to display the lists of events, works the same as previously
+            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+            {
+                ini_open(global.cardEventINI)
+                global.EventLoadName = "Event"+string(ds_list_find_value(list,e));
+                if(ini_section_exists("Event"+string(ds_list_find_value(list,e))) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Event"+string(i),"Ref",""))) == -1)
+                {
+                    ds_list_add(listtemo,string(ini_read_real("Event"+string(i),"Ref","")))
+                    script_execute(LoadCards);
+                    tempY = global.roomHeight/2;
+                    tempX = (global.roomWidth / 6)-25;
+                    inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);     
+                    e +=1;
+                    i = 0;
+                }
+            }
+        }
+    }
+    if(global.RoomState == 1)//Action card
+    {
+        list = ds_list_create();
+        listtemo = ds_list_create();
+        ini_open("AllCards.ini")
+        actionCardOrder = ini_read_string("All Cards","Action Order","");
+        ds_list_read(list,actionCardOrder)
+        ini_close();
+        if(global.ListStyle == 0)
+        {
+            //this code is to make sure that the list length doesnt exceed 20
+            if(global.totalActionCards  &gt;= 20)
+            {
+                global.listLength = 20;   
+            }
+            else
+            {
+                global.listLength = 20 - (20 - global.totalActionCards);
+            e = 0;
+             //used to display the lists of card, works the same as previously
+                for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+                {
+                    ini_open(global.cardActionINI);
+                    global.ActionLoadName = "Action"+string(ds_list_find_value(list,e));
+                    if(ini_section_exists(global.ActionLoadName) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Action"+string(i),"Ref",""))) == -1)
+                    {
+                        ds_list_add(listtemo,string(ini_read_real("Action"+string(i),"Ref","")))
+                        script_execute(LoadCards);
+                        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                        global.tempInputBoxY += 25;
+                        global.tempTextBoxY += 25;
+                        e +=1;
+                        i = 0;
+                    }
+                    ini_close();
+                }
+            }
+        }
+        
+        if(global.ListStyle == 1)
+        {
+                    //this code is to make sure that the list length doesnt exceed 20
+            if(global.totalActionCards  &gt;= 4)
+            {
+                global.listLength = 4;   
+            }
+            else
+            {
+                global.listLength = 4 - (4 - global.totalActionCards);
+            }
+            e = 0;
+             //used to display the lists of card, works the same as previously
+            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+            {
+                ini_open(global.cardActionINI);
+                global.ActionLoadName = "Action"+string(ds_list_find_value(list,e));
+                if(ini_section_exists(global.ActionLoadName) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Action"+string(i),"Ref",""))) == -1)
+                {
+                    ds_list_add(listtemo,string(ini_read_real("Action"+string(i),"Ref","")))
+                    script_execute(LoadCards);
+                    tempY = global.roomHeight/2;
+                    tempX = (global.roomWidth / 6)-25;
+                    inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);     
+                    e +=1;
+                    i = 0;
+                }
+                ini_close()
+            }
+        }
+    }
+    if(global.RoomState == 2)//Consequence
+    {    
+        list = ds_list_create();
+        listtemo = ds_list_create();
+        ini_open("AllCards.ini")
+        consCardOrder = ini_read_string("All Cards","Cons Order","");
+        ds_list_read(list,consCardOrder)
+        ini_close();
+        if(global.ListStyle == 0)
+        {
+            //this code is to make sure that the list length doesnt exceed 20
+            if(global.totalConsCards  &gt;= 20)
+            {
+                global.listLength = 20;   
+            }
+            else
+            {
+                global.listLength = 20 - (20 - global.totalConsCards);
+            }
+                        e = 0;
+             //used to display the lists of card, works the same as previously
+            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+            {
+                    ini_open(global.cardConsINI);
+                    global.ConsLoadName = "Cons"+string(ds_list_find_value(list,e));
+                    if(ini_section_exists(global.ConsLoadName) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Cons"+string(i),"Ref",""))) == -1)
+                    {
+                        ds_list_add(listtemo,string(ini_read_real("Cons"+string(i),"Ref","")))
+                        script_execute(LoadCards);
+                        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                        global.tempInputBoxY += 25;
+                        global.tempTextBoxY += 25;
+                        e +=1;
+                        i = 0;
+                    }
+                    ini_close();
+            
+            }
+        }
+        if(global.ListStyle == 1)
+        {
+        //this code is to make sure that the list length doesnt exceed 20
+            if(global.totalConsCards  &gt;= 4)
+            {
+                global.listLength = 4;   
+            }
+            else
+            {
+                global.listLength = 4 - (4 - global.totalConsCards);
+            }
+                        e = 0;
+             //used to display the lists of card, works the same as previously
+            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+            {
+                ini_open(global.cardConsINI);
+                global.ConsLoadName = "Cons"+string(ds_list_find_value(list,e));
+                if(ini_section_exists(global.ConsLoadName) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Cons"+string(i),"Ref",""))) == -1)
+                {
+                    ds_list_add(listtemo,string(ini_read_real("Cons"+string(i),"Ref","")))
+                    script_execute(LoadCards);
+                    tempY = global.roomHeight/2;
+                    tempX = (global.roomWidth / 6)-25;
+                    inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);     
+                    e +=1;
+                    i = 0;
+                }
+             ini_close();
+            }
+        }
+    }
+    if(global.RoomState == 3)//Info
+    {
+        list = ds_list_create();
+        listtemo = ds_list_create();
+        ini_open("AllCards.ini")
+        infoCardOrder = ini_read_string("All Cards","Info Order","");
+        ds_list_read(list,infoCardOrder)
+        ini_close();
+        if(global.ListStyle == 0)
+        {
+            //this code is to make sure that the list length doesnt exceed 20
+            if(global.totalInfoCards  &gt;= 20)
+            {
+                global.listLength = 20;   
+            }
+            else
+            {
+                global.listLength = 20 - (20 - global.totalInfoCards);
+            }
+                        e = 0;
+             //used to display the lists of card, works the same as previously
+            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+            {
+                   ini_open(global.cardInfoINI);
+                    global.InfoLoadName = "Info"+string(ds_list_find_value(list,e));
+                    if(ini_section_exists(global.InfoLoadName) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Info"+string(i),"Ref",""))) == -1)
+                    {
+                        ds_list_add(listtemo,string(ini_read_real("Info"+string(i),"Ref","")))
+                        script_execute(LoadCards);
+                        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                        global.tempInputBoxY += 25;
+                        global.tempTextBoxY += 25;
+                        e +=1;
+                        i = 0;
+                    }
+                ini_close();
+            
+            }
+        }
+        if(global.ListStyle == 1)
+        {
+            //this code is to make sure that the list length doesnt exceed 20
+            if(global.totalInfoCards  &gt;= 4)
+            {
+                global.listLength = 4;   
+            }
+            else
+            {
+                global.listLength = 4 - (4 - global.totalInfoCards);
+            }
+            e = 0;
+             //used to display the lists of card, works the same as previously
+            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+            {
+             ini_open(global.cardInfoINI);
+                global.InfoLoadName = "Info"+string(ds_list_find_value(list,e));
+                if(ini_section_exists(global.InfoLoadName) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Info"+string(i),"Ref",""))) == -1)
+                {
+                    ds_list_add(listtemo,string(ini_read_real("Info"+string(i),"Ref","")))
+                    script_execute(LoadCards);
+                    tempY = global.roomHeight/2;
+                    tempX = (global.roomWidth / 6)-25;
+                    inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);     
+                    e +=1;
+                    i = 0;
+                }
+             ini_close();   
+              }  
+        }
+    }
+    if(global.RoomState == 4)//Character
+    {
+        list = ds_list_create();
+        listtemo = ds_list_create();
+        ini_open("AllCards.ini")
+        charCardOrder = ini_read_string("All Cards","Char Order","");
+        ds_list_read(list,charCardOrder)
+        ini_close();
+        if(global.ListStyle == 0)
+        {
+            //this code is to make sure that the list length doesnt exceed 20
+            if(global.totalCharCards  &gt;= 20)
+            {
+                global.listLength = 20;   
+            }
+            else
+            {
+                global.listLength = 20 - (20 - global.totalCharCards);
+            }
+            e = 0;
+            //used to display the lists of card, works the same as previously
+            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+            {
+                   ini_open(global.cardCharINI);
+                    global.CharLoadName = "Char"+string(ds_list_find_value(list,e));
+                    if(ini_section_exists(global.CharLoadName) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Char"+string(i),"Ref",""))) == -1)
+                    {
+                        ds_list_add(listtemo,string(ini_read_real("Char"+string(i),"Ref","")))
+                        script_execute(LoadCards);
+                        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                        global.tempInputBoxY += 25;
+                        global.tempTextBoxY += 25;
+                        e +=1;
+                        i = 0;
+                    }
+                ini_close();
+            
+            }
+        }
+        if(global.ListStyle == 1)
+        {
+        //this code is to make sure that the list length doesnt exceed 20
+            if(global.totalCharCards  &gt;= 4)
+            {
+                global.listLength = 4;   
+            }
+            else
+            {
+                global.listLength = 4 - (4 - global.totalCharCards);
+            }
+            e = 0;
+            //used to display the lists of card, works the same as previously
+            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+            {
+             ini_open(global.cardCharINI);
+                global.CharLoadName = "Char"+string(ds_list_find_value(list,e));
+                if(ini_section_exists(global.CharLoadName) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Char"+string(i),"Ref",""))) == -1)
+                {
+                    ds_list_add(listtemo,string(ini_read_real("Char"+string(i),"Ref","")))
+                    script_execute(LoadCards);
+                    tempY = global.roomHeight/2;
+                    tempX = (global.roomWidth / 6)-25;
+                    inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);     
+                    e +=1;
+                    i = 0;
+                }
+             ini_close();   
+            }
+        }
+    }
+}
 if(room == RoomCharacter)
 {
         textFeilds = 4;//number of text boxes we want.

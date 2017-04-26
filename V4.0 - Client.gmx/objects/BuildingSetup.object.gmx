@@ -176,22 +176,24 @@ if(global.firstLoad == false)
         ini_close();
     }
 
+    ds_list_shuffle(global.eventCardList);
     ds_list_sort(global.eventCardList,true);
-
     ds_list_sort(global.actionCardList,true);
     ds_list_sort(global.charCardList,true);
     ds_list_sort(global.infoCardList,true);
     ds_list_sort(global.consCardList,true);
-    
+
     i = 0;
     for(e = 0; e &lt;= global.totalEventCards; e++)
     {    
         
         ini_open(global.cardEventINI)
-        if(ds_list_find_value(global.eventCardList,i) == ini_read_string("Event"+string(e),"Event Name",""))
+        if(ds_list_find_value(global.eventCardList,i) == ini_read_string("Event"+string(e),"Event Name","") &amp;&amp; ds_list_find_index(global.eventCardOrder,string(ini_read_real("Event"+string(e),"Ref",""))) == -1)
         {
             ds_list_add(global.eventCardOrder,string(ini_read_real("Event"+string(e),"Ref","")));
             i += 1;
+            e = 0;
+
         }
         ini_close();
 
@@ -200,10 +202,11 @@ if(global.firstLoad == false)
     for(e = 0; e &lt;= global.totalActionCards; e++)
     {
         ini_open(global.cardActionINI)
-        if(ds_list_find_value(global.actionCardList,i) == ini_read_string("Action"+string(e),"Card Name",""))
+        if(ds_list_find_value(global.actionCardList,i) == ini_read_string("Action"+string(e),"Card Name","")&amp;&amp; ds_list_find_index(global.actionCardOrder,string(ini_read_real("Action"+string(e),"Ref",""))) == -1)
         {
             ds_list_add(global.actionCardOrder,string(ini_read_real("Action"+string(e),"Ref","")));
             i += 1;
+            e = 0;
         }
         ini_close();
 
@@ -212,10 +215,11 @@ if(global.firstLoad == false)
     for(e = 0; e &lt;= global.totalCharCards; e++)
     {
         ini_open(global.cardCharINI)
-        if(ds_list_find_value(global.charCardList,i) == ini_read_string("Char"+string(e),"Card Name",""))
+        if(ds_list_find_value(global.charCardList,i) == ini_read_string("Char"+string(e),"Card Name","") &amp;&amp; ds_list_find_index(global.charCardOrder,string(ini_read_real("Char"+string(e),"Ref",""))) == -1)
         {
             ds_list_add(global.charCardOrder,string(ini_read_real("Char"+string(e),"Ref","")));
            i += 1;
+           e = 0;
         }
         ini_close();
     }
@@ -223,10 +227,11 @@ if(global.firstLoad == false)
     for(e = 0; e &lt;= global.totalInfoCards; e++)
     {
         ini_open(global.cardInfoINI)
-        if(ds_list_find_value(global.infoCardList,i) == ini_read_string("Info"+string(e),"Card Name",""))
+        if(ds_list_find_value(global.infoCardList,i) == ini_read_string("Info"+string(e),"Card Name","") &amp;&amp; ds_list_find_index(global.infoCardOrder,string(ini_read_real("Info"+string(e),"Ref",""))) == -1)
         {
             ds_list_add(global.infoCardOrder,string(ini_read_real("Info"+string(e),"Ref","")));
            i += 1;
+           e = 0;
         }
         ini_close();
     }
@@ -234,10 +239,11 @@ if(global.firstLoad == false)
     for(e = 0; e &lt;= global.totalConsCards; e++)
     {
         ini_open(global.cardConsINI)
-        if(ds_list_find_value(global.consCardList,i) == ini_read_string("Cons"+string(e),"Card Name",""))
+        if(ds_list_find_value(global.consCardList,i) == ini_read_string("Cons"+string(e),"Card Name","") &amp;&amp; ds_list_find_index(global.consCardOrder,string(ini_read_real("Cons"+string(e),"Ref",""))) == -1)
         {
             ds_list_add(global.consCardOrder,string(ini_read_real("Cons"+string(e),"Ref","")));
             i += 1;
+            e = 0;
         }
         ini_close();
     }

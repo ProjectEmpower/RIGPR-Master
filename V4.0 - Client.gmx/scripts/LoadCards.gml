@@ -22,7 +22,8 @@ if(global.RoomState == 1)
 }
 if(global.RoomState == 2)
 {
-    ini_open(global.cardConsINI);  
+    ini_open(global.cardConsINI);
+    global.consCardRef = ini_read_real(global.ConsLoadName,"Ref",0);  
     global.realConsName = ini_read_string(global.ConsLoadName,"Card Name","");
     global.consInt = ini_read_real(global.ConsLoadName ,"Int",0);
     global.consChar = ini_read_real(global.ConsLoadName ,"Char",0);
@@ -34,6 +35,7 @@ if(global.RoomState == 2)
 if(global.RoomState == 3)
 {
     ini_open(global.cardInfoINI); 
+    global.infoCardRef = ini_read_real(global.InfoLoadName,"Ref",0);
     global.realInfoName = ini_read_string(global.InfoLoadName,"Card Name","");
     global.infoCardText = ini_read_string(global.InfoLoadName,"Card Text","");
     global.cardSprite = ini_read_real(global.InfoLoadName,"Sprite",-1);
