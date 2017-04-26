@@ -93,6 +93,8 @@
           <object>objects\ButtonJWeekRight</object>
           <object>objects\JWeekDraw</object>
         </objects>
+        <object>objects\ButtonUploadSprite</object>
+        <object>objects\ButtonDeleteSprite</object>
       </objects>
       <object>objects\GameSetup</object>
       <object>objects\ButtonBack</object>

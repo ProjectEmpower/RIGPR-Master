@@ -134,6 +134,8 @@ if(!file_exists(global.editorINI))
 if(!file_exists(global.playerINI))
 {
    global.NewGame = true;
+   global.UserSprite = 0;
+    global.playerSprite = 0;
 }
 else
 {
@@ -141,15 +143,28 @@ else
     if(ini_key_exists("Player","Name"))
     {
         global.NewGame = false;
+        if(ini_read_real("Player","Sprite",0) == 1)
+        {
+            spriteName = "UserSprite";
+            if(!file_exists("editor_files/sprites/"+spriteName+".png"))
+            {
+                spritePNG = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
+            }
+            global.UserSprite = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
+            sprite_set_offset(global.UserSprite,sprite_get_width(global.UserSprite)/2,sprite_get_height(global.UserSprite)/2)
+
+        }
+        
     }
     else
     {
-          global.NewGame = true; 
+        global.UserSprite = 0;
+        global.playerSprite = 0;
+        global.NewGame = true; 
 
     }
   ini_close();
 }
-global.UserSprite = 0; //set this above, if 1 load user sprite, 0 = default
 ini_open(global.editorINI);
 
 global.totalNormBuildingSprites = ini_read_real("General", "Norm Building Sprites", 0);

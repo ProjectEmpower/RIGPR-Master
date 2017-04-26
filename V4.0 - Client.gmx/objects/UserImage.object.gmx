@@ -25,13 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.UserSprite == 0)
+            <string>if(global.playerSprite == 0)
 {
     sprite_index = DefaultUserSprite;
 }
 else
 {
-    sprite_index = DefaultUserSprite;
+    sprite_index = global.UserSprite;
 }
 </string>
           </argument>
