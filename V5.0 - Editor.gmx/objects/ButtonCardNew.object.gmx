@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Sets position on screen
+            <string>x = global.roomWidth/2
+y = global.roomHeight-100
+//Sets position on screen
 if(global.RoomState == 0)
 {
     sprite_index = ButtonSpriteCreateEvent;
@@ -34,8 +36,7 @@ else
 {
     sprite_index = ButtonSpriteCreateCard;
 }
-ButtonCardNew.x = room_width-50
-ButtonCardNew.y = room_height/2+90
+
 </string>
           </argument>
         </arguments>

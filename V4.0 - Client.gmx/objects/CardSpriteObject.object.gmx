@@ -209,22 +209,22 @@ if(room == RoomConsView)
     {
         cardNameText = "Consequence";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-        draw_text_transformed(x, y + 80, "Int: " + string(INT),1,1,0);
-        draw_text_transformed(x, y + 112, "Char: " + string(Cha),1,1,0);
-        draw_text_transformed(x, y + 144, "Well: " + string(Wel),1,1,0);
+        draw_text_transformed(x, y + 152, "Int: " + string(INT),1,1,0);
+        draw_text_transformed(x, y + 184, "Char: " + string(Cha),1,1,0);
+        draw_text_transformed(x, y + 216, "Well: " + string(Wel),1,1,0);
     }
     if(RoomState == 3)
     {
         cardNameText = "Information";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-        draw_text_transformed(x, y + 80, CardText,1,1,0);
+        draw_text_transformed(x, y + 152, CardText,1,1,0);
         draw_text_transformed(x, y + 112,Link,1,1,0);
     }
     if(RoomState == 4)
     {
         cardNameText = "Character";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-        draw_text_transformed(x, y + 80, CardText,1,1,0);
+        draw_text_transformed(x, y + 152, CardText,1,1,0);
         
     }
     draw_text_transformed(x, y - 112, cardNameText,1.5,1.5,0);

@@ -48,6 +48,18 @@ else
         global.roomWidth = 1280;
         global.roomHeight = 720;
 }
+global.editorINI = "editor_files/editor.ini";
+ini_open(global.editorINI);
+global.totalNormBuildingSprites = ini_read_real("General", "Norm Building Sprites", 0);
+global.totalMythBuildingSprites = ini_read_real("General", "Myth Building Sprites", 0);
+global.totalBothBuildingSprites = ini_read_real("General", "Both Building Sprites", 0);
+global.totalEventCardSprites = ini_read_real("General", "Event Card Sprites", 0);
+global.totalActionCardSprites = ini_read_real("General", "Action Card Sprites", 0);
+global.totalConsCardSprites = ini_read_real("General", "Cons Card Sprites", 0);
+global.totalInfoCardSprites = ini_read_real("General", "Info Card Sprites", 0);
+global.totalCharCardSprites = ini_read_real("General", "Char Card Sprites", 0);
+ini_close();
+script_execute(CheckSprites);
 global.zooming = false;
 //pc res
 //global.roomWidth = 1280;
@@ -63,7 +75,7 @@ window_set_fullscreen(global.fullScreen);//checks to see if it should be full sc
 global.lastResRoom = 0; //used for when the screen rotates on mobile devices.
 //week info
 global.zoom = 1;//sets start level of zoom
-
+global.Name = "";
 global.eventCardList = ds_list_create();
 global.actionCardList = ds_list_create();
 global.charCardList = ds_list_create();
@@ -99,7 +111,7 @@ global.cardActionINI = "ini_files/cardAction.ini";
 global.cardInfoINI = "ini_files/cardInfo.ini";
 global.cardConsINI = "ini_files/cardCons.ini";
 global.cardCharINI = "ini_files/cardChar.ini";
-global.editorINI = "editor_files/editor.ini";
+
 global.playerINI = "editor_files/player.ini";
 global.historyINI = "editor_files/history.ini";
 global.AllCards = "editor_files/AllCards.ini";
@@ -147,10 +159,6 @@ else
         if(ini_read_real("Player","Sprite",0) == 1)
         {
             spriteName = "UserSprite";
-            if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-            {
-                spritePNG = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-            }
             global.UserSprite = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
             sprite_set_offset(global.UserSprite,sprite_get_width(global.UserSprite)/2,sprite_get_height(global.UserSprite)/2)
 
@@ -166,103 +174,10 @@ else
     }
   ini_close();
 }
-ini_open(global.editorINI);
 
-global.totalNormBuildingSprites = ini_read_real("General", "Norm Building Sprites", 0);
-global.totalMythBuildingSprites = ini_read_real("General", "Myth Building Sprites", 0);
-global.totalBothBuildingSprites = ini_read_real("General", "Both Building Sprites", 0);
-global.totalEventCardSprites = ini_read_real("General", "Event Card Sprites", 0);
-global.totalActionCardSprites = ini_read_real("General", "Action Card Sprites", 0);
-global.totalConsCardSprites = ini_read_real("General", "Cons Card Sprites", 0);
-global.totalInfoCardSprites = ini_read_real("General", "Info Card Sprites", 0);
-global.totalCharCardSprites = ini_read_real("General", "Char Card Sprites", 0);
-ini_close();
+room = RoomResChange;
 
-for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
-{
-    spriteName = "BuildingSpriteN"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteNPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
-    global.normBuildingArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
-    sprite_set_offset(global.normBuildingArray[i],sprite_get_width(global.normBuildingArray[i])/2,sprite_get_height(global.normBuildingArray[i])/2)
-
-}
-for(i = 0; i &lt; global.totalMythBuildingSprites; i++)
-{
-    spriteName = "BuildingSpriteM"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteMPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
-    global.mythBuildingArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
-    sprite_set_offset(global.mythBuildingArray[i],sprite_get_width(global.mythBuildingArray[i])/2,sprite_get_height(global.mythBuildingArray[i])/2)
-
-}
-for(i = 0; i &lt; global.totalBothBuildingSprites; i++)
-{
-    spriteName = "BuildingSpriteB"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
-    global.bothBuildingArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
-    sprite_set_offset(global.bothBuildingArray[i],sprite_get_width(global.bothBuildingArray[i])/2,sprite_get_height(global.bothBuildingArray[i])/2)
-
-}
-for(i = 0; i &lt; global.totalEventCardSprites; i++)
-{
-    spriteName = "EventCardSprite"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
-    global.eventCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
-    sprite_set_offset(global.eventCardSpriteArray[i],sprite_get_width(global.eventCardSpriteArray[i])/2,sprite_get_height(global.eventCardSpriteArray[i])/2);
-}
-
-for(i = 0; i &lt; global.totalActionCardSprites; i++)
-{
-    spriteName = "ActionCardSprite"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
-    global.actionCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
-    sprite_set_offset(global.actionCardSpriteArray[i],sprite_get_width(global.actionCardSpriteArray[i])/2,sprite_get_height(global.actionCardSpriteArray[i])/2);
-}
-for(i = 0; i &lt; global.totalConsCardSprites; i++)
-{
-    spriteName = "ConsCardSprite"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
-    global.consCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
-    sprite_set_offset(global.consCardSpriteArray[i],sprite_get_width(global.consCardSpriteArray[i])/2,sprite_get_height(global.consCardSpriteArray[i])/2);
-}
-for(i = 0; i &lt; global.totalInfoCardSprites; i++)
-{
-    spriteName = "InfoCardSprite"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
-    global.infoCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
-    sprite_set_offset(global.infoCardSpriteArray[i],sprite_get_width(global.infoCardSpriteArray[i])/2,sprite_get_height(global.infoCardSpriteArray[i])/2);
-}
-for(i = 0; i &lt; global.totalCharCardSprites; i++)
-{
-    spriteName = "CharCardSprite"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
-    global.charCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
-    sprite_set_offset(global.charCardSpriteArray[i],sprite_get_width(global.charCardSpriteArray[i])/2,sprite_get_height(global.charCardSpriteArray[i])/2);
-}
-room = RoomResChange;//moves to the menu
+;//moves to the menu
 </string>
           </argument>
         </arguments>

@@ -30,10 +30,16 @@
         <sprite>sprites\TitleSpriteCharacter</sprite>
         <sprite>sprites\TitleSpriteDiary</sprite>
         <sprite>sprites\TitleSpriteCards</sprite>
+        <sprite>sprites\SwapList</sprite>
       </sprites>
       <sprite>sprites\ButtonSpriteBack</sprite>
       <sprites name="LocationAdd">
         <sprite>sprites\ButtonSpriteDelete</sprite>
+        <sprite>sprites\ButtonSpriteDeleteEvent</sprite>
+        <sprite>sprites\ButtonSpriteDeleteLocationSprite</sprite>
+        <sprite>sprites\ButtonSpriteDeleteLocation</sprite>
+        <sprite>sprites\ButtonSpriteDeleteCard</sprite>
+        <sprite>sprites\ButtonSpriteDeleteCardSprite</sprite>
         <sprite>sprites\ButtonSpriteCycleMapVisibility</sprite>
         <sprite>sprites\ButtonSpriteNewEvent</sprite>
         <sprite>sprites\ButtonSpriteEditEvent</sprite>
@@ -41,6 +47,12 @@
         <sprite>sprites\ButtonSpriteCreateCard</sprite>
         <sprite>sprites\ButtonSpriteEventSelect</sprite>
         <sprite>sprites\ButtonSpriteAddBuildingSprite</sprite>
+        <sprite>sprites\ButtonSpriteUpArrow</sprite>
+        <sprite>sprites\ButtonSpriteDownArrow</sprite>
+        <sprite>sprites\ButtonSpriteDownFastArrow</sprite>
+        <sprite>sprites\ButtonSpriteLeftFastArrow</sprite>
+        <sprite>sprites\ButtonSpriteRightFastArrow</sprite>
+        <sprite>sprites\ButtonSpriteUpFastArrow</sprite>
       </sprites>
       <sprite>sprites\Plus</sprite>
       <sprite>sprites\Minus</sprite>
@@ -96,14 +108,14 @@
       <object>objects\MapPosObject</object>
       <object>objects\Building</object>
       <object>objects\BuildingSetup</object>
-      <object>objects\ButtonEditorMode</object>
-      <object>objects\ButtonDeckList</object>
       <object>objects\ButtonWeekLeft</object>
       <object>objects\ButtonWeekRight</object>
       <object>objects\editorModeDisplay</object>
       <objects name="Unused">
         <object>objects\TitleMap</object>
         <object>objects\ButtonMapSwap</object>
+        <object>objects\ButtonDeckList</object>
+        <object>objects\ButtonEditorMode</object>
       </objects>
       <object>objects\WeekTextDraw</object>
       <object>objects\TextOnMap</object>

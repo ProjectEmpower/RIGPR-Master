@@ -30,8 +30,8 @@ if(global.RoomState == 2 or global.RoomState == 3 or global.RoomState == 4)
 {
     sprite_index = No_sprite;
 }
-ButtonCycleMapVisibility.x = room_width-50
-ButtonCycleMapVisibility.y = room_height/2-90
+ButtonCycleMapVisibility.x = room_width/2
+ButtonCycleMapVisibility.y = room_height-100
 </string>
           </argument>
         </arguments>

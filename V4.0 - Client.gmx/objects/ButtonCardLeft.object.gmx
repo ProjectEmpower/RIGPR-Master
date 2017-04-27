@@ -49,8 +49,8 @@ else
 {
     sprite_index = No_sprite;
 }
-x = global.roomWidth-125;
-y = 25;
+x = global.roomWidth-150;
+y = 40;
 </string>
           </argument>
         </arguments>

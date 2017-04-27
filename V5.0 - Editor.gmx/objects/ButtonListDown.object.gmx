@@ -50,7 +50,7 @@ if(global.ListStyle == 0)
 {
     if(global.listLength == 20 and global.tempPos + 20 &lt; cardNum)
     {
-        sprite_index = ArrowSpriteRight;
+        sprite_index = ButtonSpriteDownArrow;
     }
     else
     {

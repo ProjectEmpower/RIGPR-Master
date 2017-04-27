@@ -11,6 +11,8 @@
       <sprites name="Menu">
         <sprite>sprites\ButtonSpriteStart</sprite>
         <sprite>sprites\TitleSpriteMenu</sprite>
+        <sprite>sprites\ButtonSpriteNext</sprite>
+        <sprite>sprites\ButtonSpriteUploadSprite</sprite>
       </sprites>
       <sprites name="Map">
         <sprite>sprites\ButtonSpriteCharacter</sprite>
@@ -29,6 +31,7 @@
       <sprite>sprites\SelectedTextBoxSprite</sprite>
       <sprite>sprites\TextInputBoxSprite_Large</sprite>
       <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
+      <sprite>sprites\DeleteSprite</sprite>
     </sprites>
     <sprite>sprites\BuildingSpriteNormal</sprite>
     <sprite>sprites\BuildingSpriteMythical</sprite>
@@ -38,6 +41,9 @@
     <sprite>sprites\ArrowSpriteRight</sprite>
     <sprite>sprites\DefaultCardSprite</sprite>
     <sprite>sprites\CardBackingNormal</sprite>
+    <sprite>sprites\RedoEventSprite</sprite>
+    <sprite>sprites\SwapType</sprite>
+    <sprite>sprites\CardType</sprite>
     <sprite>sprites\DefaultUserSprite</sprite>
   </sprites>
   <backgrounds name="background">
@@ -54,6 +60,7 @@
     <script>scripts\LoadHistory.gml</script>
     <script>scripts\PlayerSave.gml</script>
     <script>scripts\LoadCards.gml</script>
+    <script>scripts\CheckSprites.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Rooms">

@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ButtonDiary.x = 100;
-ButtonDiary.y = room_height-50;
+            <string>x = 75;
+y = room_height-75;
 
 </string>
           </argument>

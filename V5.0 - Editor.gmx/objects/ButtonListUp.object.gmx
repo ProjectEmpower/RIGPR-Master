@@ -29,7 +29,7 @@
 {
     if(global.listLength == 20 and global.tempPos &gt; 0)
     {
-        sprite_index = ArrowSpriteLeft;
+        sprite_index = ButtonSpriteUpArrow;
     }
     else
     {

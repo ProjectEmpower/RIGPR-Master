@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.WeekLeftButtonX = global.roomWidth-125;
-global.WeekLeftButtonY = 25;
+            <string>global.WeekLeftButtonX = global.roomWidth-150;
+global.WeekLeftButtonY = 40;
 </string>
           </argument>
         </arguments>

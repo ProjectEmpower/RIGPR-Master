@@ -30,7 +30,7 @@ ButtonSave.x = global.roomWidth-200;
 ButtonSave.y = global.roomHeight-50;
 if(global.cardState == 1)
 {
-    sprite_index = ButtonSpriteSave;
+    sprite_index = No_sprite;
 }
 else
 {

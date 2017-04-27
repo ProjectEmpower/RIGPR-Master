@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.playerSprite == 0)
+            <string>x = global.roomWidth - 200;
+y = 200
+if(global.playerSprite == 0)
 {
     sprite_index = DefaultUserSprite;
 }

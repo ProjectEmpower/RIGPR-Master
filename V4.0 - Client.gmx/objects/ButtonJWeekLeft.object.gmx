@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = global.roomWidth-125;
-y = 25;
+            <string>x = global.roomWidth-150;
+y = 40;
 </string>
           </argument>
         </arguments>
