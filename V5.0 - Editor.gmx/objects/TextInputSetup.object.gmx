@@ -389,6 +389,7 @@ if(room == RoomCardDeck)
         global.eventText = ini_read_string(tempEvent,"Event Text","");
         global.reqEventInt = ini_read_real(tempEvent,"Int",0);
         global.reqEventChar = ini_read_real(tempEvent, "Char", 0);
+            global.eventMythical = ini_read_real(tempEvent,"Mythical",0);
         global.reqEventWell = ini_read_real(tempEvent, "Well",0);
                 global.cardSprite = ini_read_real(tempEvent,"Sprite",-1);
                 ini_close();
@@ -694,7 +695,7 @@ if(room == RoomDeckList)
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="56">
+    <event eventtype="6" enumb="53">
       <action>
         <libid>1</libid>
         <id>603</id>

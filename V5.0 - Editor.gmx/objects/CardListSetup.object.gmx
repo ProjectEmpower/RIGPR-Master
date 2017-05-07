@@ -27,6 +27,11 @@
             <kind>1</kind>
             <string>global.eventActionCardsNum = 0;
 global.cardState = 0; //clear
+background_visible[0] = false;
+background_visible[1] = false;
+background_visible[2] = false;
+background_visible[3] = false;
+background_visible[4] = false;
 //This code creates a "cardName" variable for use inside the room "RoomCardEdit"
 if(global.RoomState == 0)
 {

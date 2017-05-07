@@ -70,7 +70,8 @@ ButtonWeekRight.x = view_xview + global.WeekRightButtonX* global.zoom;//right ar
 ButtonWeekRight.y = view_yview + global.WeekRightButtonY* global.zoom;
 TextOnMap.x = view_xview + global.TextOnMapX* global.zoom;
 TextOnMap.y = view_yview + global.TextOnMapY* global.zoom;
-
+ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom;
+ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom;
 for(i = 0; i &lt; instance_number(TextInputBox); i++)
 {
     global.textboxArray[i].x = view_xview + global.mapInputBoxX * global.zoom;
@@ -87,6 +88,8 @@ ButtonWeekRight.image_xscale = global.zoom;
 ButtonWeekRight.image_yscale = global.zoom;
 TextOnMap.image_xscale = global.zoom;
 TextOnMap.image_yscale = global.zoom;
+ButtonCharacter.image_xscale = global.zoom;
+ButtonCharacter.image_yscale = global.zoom;
 </string>
           </argument>
         </arguments>

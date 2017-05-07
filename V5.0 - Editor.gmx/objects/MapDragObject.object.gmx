@@ -73,6 +73,8 @@ if(drag == 1) //if drag is 1 (true)
     ButtonWeekRight.y = view_yview + global.WeekRightButtonY * global.zoom;
     TextOnMap.x = view_xview + global.TextOnMapX * global.zoom;
     TextOnMap.y = view_yview + global.TextOnMapY * global.zoom;
+    ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom;
+    ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom;
     //this code checks the current position vs the view, if its different (the screen has moved)
     //then the movelock will be set to 1 (true);
     for(i = 0; i &lt; instance_number(TextInputBox); i++)
@@ -104,7 +106,8 @@ if(tempZoom != global.zoom)
     ButtonWeekRight.y = view_yview + global.WeekRightButtonY* global.zoom;
     TextOnMap.x = view_xview + global.TextOnMapX* global.zoom;
     TextOnMap.y = view_yview + global.TextOnMapY* global.zoom;
-    
+    ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom;
+    ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom;
     for(i = 0; i &lt; instance_number(TextInputBox); i++)
     {        
         global.textboxArray[i].x = view_xview + global.mapInputBoxX * global.zoom;
@@ -121,6 +124,8 @@ if(tempZoom != global.zoom)
     ButtonWeekRight.image_yscale = global.zoom;
     TextOnMap.image_xscale = global.zoom;
     TextOnMap.image_yscale = global.zoom;
+    ButtonCharacter.image_xscale = global.zoom;
+    ButtonCharacter.image_yscale = global.zoom;
 }
 </string>
           </argument>

@@ -25,7 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>background_visible[0] = false;
+background_visible[1] = false;
+background_visible[2] = false;
+background_visible[3] = false;
+background_visible[4] = false;
+background_visible[5] = false;
+switch(global.RoomState)
+{
+    case -1: background_visible[0] = true;
+    break;
+    case 0: background_visible[1] = true;
+    break;
+    case 1: background_visible[2] = true;
+    break;
+    case 2: background_visible[3] = true;
+    break;
+    case 3: background_visible[4] = true;
+    break;
+    case 4: background_visible[5] = true;
+    break;
+}   
+</string>
           </argument>
         </arguments>
       </action>

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = room_width-100
+            <string>script_execute(DownloadFiles)
+x = room_width-100
 y = room_height-50
 </string>
           </argument>

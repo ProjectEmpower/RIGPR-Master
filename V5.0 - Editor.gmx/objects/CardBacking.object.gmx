@@ -34,13 +34,14 @@ if(room != RoomSprites)
         inst2 = instance_create(x,y + 176, ButtonInfoLink);
     if(global.RoomState == 0)
     {
-        Mythical = global.eventMythical;
         ref_display = global.eventRef;
+        Mythical = global.eventMythical;
     }
     if(global.RoomState == 1)
     {
-        Mythical = global.cardMythical;
+
         ref_display = global.cardRef;
+        Mythical = global.cardMythical;
     }
     if(global.RoomState == 2)
     {

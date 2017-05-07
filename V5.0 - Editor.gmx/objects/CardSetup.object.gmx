@@ -25,10 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//This code creates a "cardName" variable for use inside the room "RoomCardEdit"
+            <string>background_visible[0] = false;
+background_visible[1] = false;
+background_visible[2] = false;
+background_visible[3] = false;
+background_visible[4] = false;
+ //This code creates a "cardName" variable for use inside the room "RoomCardEdit"
 if(global.RoomState == 0)
 {
     background_visible[0] = true;
+    
     global.tempEventID = string(global.eventRef);// takes the current cardRef (set when accessing the room)
     global.eventName = "Event"+global.tempEventID;//writes the card name
     

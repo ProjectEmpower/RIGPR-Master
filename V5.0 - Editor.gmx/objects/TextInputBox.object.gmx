@@ -1585,7 +1585,7 @@ if(room == RoomDeckList)
 }
 if(room == RoomMap)
 {
-    if(instance_id[10] != id and instance_id[18] != id and instance_id[19] != id) 
+    if(instance_id[11] != id and instance_id[19] != id and instance_id[20] != id) 
     {
         draw_set_valign(fa_middle);
         draw_set_halign(fa_right);

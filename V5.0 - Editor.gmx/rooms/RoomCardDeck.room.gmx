@@ -53,8 +53,8 @@
   <instances>
     <instance objName="ButtonBack" x="1152" y="640" name="inst_8641F99B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonCardNew" x="1152" y="384" name="inst_9084CC35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="TextInputSetup" x="96" y="96" name="inst_E27E9E01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="CardListSetup" x="64" y="64" name="inst_03DE20D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="TextInputSetup" x="96" y="96" name="inst_E27E9E01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonListDown" x="832" y="640" name="inst_0A038F56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonListUp" x="160" y="640" name="inst_B47412E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ListStyleSwap" x="544" y="608" name="inst_921E071C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

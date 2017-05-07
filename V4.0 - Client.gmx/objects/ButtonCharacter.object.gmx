@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>global.CharacterButtonX = 75;
 global.CharacterButtonY = global.roomHeight-75;
+
 </string>
           </argument>
         </arguments>

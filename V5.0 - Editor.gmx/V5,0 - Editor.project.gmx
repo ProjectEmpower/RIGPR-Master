@@ -93,6 +93,7 @@
     <background>background\JournalScreen_Background</background>
     <background>background\OptionsScreen_Background</background>
     <background>background\EventCard_Background</background>
+    <background>background\CharacterScreen_Background</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -199,9 +200,12 @@
       <objects name="Res Change">
         <object>objects\ResChange</object>
       </objects>
+      <object>objects\ButtonSwapCards</object>
     </objects>
     <object>objects\GameSetup</object>
     <object>objects\ButtonAddNormalCardBack</object>
+    <object>objects\ButtonAddBackground</object>
+    <object>objects\ButtonDeleteBackground</object>
     <object>objects\ButtonAddMap</object>
     <object>objects\ButtonDeleteNormalCardBack</object>
     <object>objects\DeleteMap</object>
