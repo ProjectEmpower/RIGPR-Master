@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>if(global.SelectWindow)
 {
-    for(i = 0; i &lt; 5; i++)
+    for(i = 0; i &lt; 4; i++)
     {
         if(i &lt; 3)
         {
@@ -39,7 +39,10 @@
             tempX = x + ((i-3) * 50);
             tempY = y+50;
         }
-        global.buttonInstance = i;
+        if(i != 3)
+            global.buttonInstance = i;
+        else
+            global.buttonInstance = 4;
         instance_create(tempX,tempY,ButtonCardType);  //creats an instance at the location using the object
     }
 }
