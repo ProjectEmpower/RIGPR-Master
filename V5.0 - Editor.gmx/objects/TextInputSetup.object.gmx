@@ -39,10 +39,25 @@ global.tempTextBoxY = global.InputTextY;//sets temp text box Y
 global.textBoxInstanceRef = instance_count;//This is the number of objects before instances are created.
 
 global.focus = 0; //box focus
+if(room == RoomMap)
+{
+    for(i = 0; i &lt; 10; i++)
+    {    
+        if(i != 0)
+        {
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+        }
+        global.textboxArray[i] = instance_create(global.mapInputBoxX,global.tempInputBoxY,TextInputBox);         
+
+    }
+    
+}
 
 if(room == RoomLocationAdd)
 {
-
+    global.tempInputBoxY += 85;
+    global.tempTextBoxY += 85;
     //this displays the text on the location add screen (once you click on a location to edit its information)
     textFeilds = 4;//number of text boxes we want.
     ini_open(global.locationINI)//open ini file
@@ -130,8 +145,11 @@ if(room == RoomLocationAdd)
     }
         
 }
+
 if(room == RoomCardEdit)
 {
+    global.tempInputBoxY += 85;
+    global.tempTextBoxY += 85;
     if(global.RoomState == 0)//event card
     {
         //works the same as above, but for roomEventAdd and roomEvenEdit, this is used to display the events information 
@@ -313,6 +331,8 @@ if(room == RoomCardEdit)
 }
 if(room == RoomCardDeck)
 {
+    global.tempInputBoxY += 85;
+    global.tempTextBoxY += 85;
     if(global.RoomState == 0)//event card
     {
         if(global.ListStyle == 0)
@@ -658,6 +678,8 @@ if(room == RoomCardDeck)
 
 if(room == RoomDeckList)
 {
+    global.tempInputBoxY += 85;
+    global.tempTextBoxY += 85;
     for(i = 0; i &lt; 5; i++)
     {
         global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);         
@@ -666,26 +688,13 @@ if(room == RoomDeckList)
     }
     
 }
-if(room == RoomMap)
-{
-    for(i = 0; i &lt; 10; i++)
-    {    
-        if(i != 0)
-        {
-            global.tempInputBoxY += 25;
-            global.tempTextBoxY += 25;
-        }
-        global.textboxArray[i] = instance_create(global.mapInputBoxX,global.tempInputBoxY,TextInputBox);         
 
-    }
-    
-}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="53">
+    <event eventtype="6" enumb="56">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -719,7 +728,10 @@ if(room == RoomCardEdit)
     if(global.RoomState == 4)
         script_execute(SaveCharCard);
 }
-room = tempRoom;
+if(room != RoomMap)
+{   
+    room = tempRoom;
+}
 </string>
           </argument>
         </arguments>
