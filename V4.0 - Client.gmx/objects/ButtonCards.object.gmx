@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>x = room_width/2;
 y = room_height-75;
+global.JYear = global.playerYear;
+global.JWeek = global.playerWeek;
 
 </string>
           </argument>
