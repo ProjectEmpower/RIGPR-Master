@@ -41,7 +41,7 @@ global.zoom = 1;//sets start level of zoom
     global.textBoxXScale = 0.8; //sets the textboxXscale when used in zooming ont he map
 //week info
 global.week = 0;//week
-
+            global.tempCardBackMythStatus = 0;
 //instnace variables
 global.TotalInstanceNum = 0;//used later for building placement
 global.myth = 0;
@@ -78,8 +78,23 @@ global.totalActionCardSprites = ini_read_real("General", "Action Card Sprites", 
 global.totalConsCardSprites = ini_read_real("General", "Cons Card Sprites", 0);
 global.totalInfoCardSprites = ini_read_real("General", "Info Card Sprites", 0);
 global.totalCharCardSprites = ini_read_real("General", "Char Card Sprites", 0);
+global.normalCardBacking = ini_read_real("General","Normal Card Back",0);
+global.mythCardBacking = ini_read_real("General","Myth Card Back",0);
 ini_close();
-
+if(global.normalCardBacking != 0)
+{
+    global.normalCardBack = sprite_add("editor_files/sprites/NormalCardBack.png",1,false,true,0,0)
+    sprite_set_offset(global.normalCardBack,sprite_get_width(global.normalCardBack)/2,sprite_get_height(global.normalCardBack)/2);
+    global.normalInfoCardBack = sprite_add("editor_files/sprites/NormalInfoCardBack.png",1,false,true,0,0)
+    sprite_set_offset(global.normalInfoCardBack,sprite_get_width(global.normalInfoCardBack)/2,sprite_get_height(global.normalInfoCardBack)/2);
+}
+if(global.mythCardBacking != 0)
+{
+    global.mythCardBack = sprite_add("editor_files/sprites/MythCardBack.png",1,false,true,0,0)
+    sprite_set_offset(global.mythCardBack,sprite_get_width(global.mythCardBack)/2,sprite_get_height(global.mythCardBack)/2);
+    global.mythInfoCardBack = sprite_add("editor_files/sprites/MythInfoCardBack.png",1,false,true,0,0)
+    sprite_set_offset(global.mythInfoCardBack,sprite_get_width(global.mythInfoCardBack)/2,sprite_get_height(global.mythInfoCardBack)/2);
+}
 for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
 {
     spriteName = "BuildingSpriteN"+string(i);//set the sprite name to be Usersprite + i

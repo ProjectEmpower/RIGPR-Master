@@ -31,8 +31,8 @@ global.InputTextX = room_width/5
 global.InputTextY = room_height/6
 //This code is used for actually creating the text box instances to didplay on screen
 global.tempInputBoxX = global.InputBoxX+149; //sets temp input box X
-global.tempInputBoxY = global.InputBoxY;//sets temp input box Y
-global.tempTextBoxY = global.InputTextY;//sets temp text box Y
+global.tempInputBoxY = global.InputBoxY + 75//sets temp input box Y
+global.tempTextBoxY = global.InputTextY + 75;//sets temp text box Y
 global.textBoxInstanceRef = instance_count;//This is the number of objects before instances are created.
 global.focus = 0; //box focus
 if(os_type == os_android)

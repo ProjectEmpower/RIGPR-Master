@@ -65,6 +65,10 @@
     <instance objName="DeleteCurrentCardsprite" x="544" y="544" name="inst_9B304924" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonAddBuildingSprite" x="768" y="448" name="inst_0C6B017B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonAddCardSprite" x="544" y="448" name="inst_DBC584D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddNormalCardBack" x="992" y="448" name="inst_B09C0A43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddMythicalCardBack" x="992" y="544" name="inst_74B40EEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonDeleteNormalCardBack" x="1184" y="448" name="inst_A10F3659" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonDeleteMythCardBack" x="1184" y="544" name="inst_D7CE9B02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

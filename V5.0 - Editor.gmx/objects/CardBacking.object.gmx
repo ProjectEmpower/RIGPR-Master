@@ -27,18 +27,19 @@
             <kind>1</kind>
             <string>depth = 2;
 inst = instance_create(x,y- 72,CardSpriteObject);
-if(global.RoomState == 3)
-    sprite_index = CardBackingNormalInfo;
+Mythical = global.tempCardBackMythStatus;
 if(room != RoomSprites)
 {
     if(global.RoomState != 3)
         inst2 = instance_create(x,y + 176, ButtonInfoLink);
     if(global.RoomState == 0)
     {
+        Mythical = global.eventMythical;
         ref_display = global.eventRef;
     }
     if(global.RoomState == 1)
     {
+        Mythical = global.cardMythical;
         ref_display = global.cardRef;
     }
     if(global.RoomState == 2)
@@ -54,7 +55,38 @@ if(room != RoomSprites)
         ref_display = global.charCardRef;
     }
 }
-
+if(Mythical == 0)
+{
+    if(global.normalCardBacking != 0)
+    {
+        sprite_index = global.normalCardBack;
+        if(global.RoomState == 3)
+            sprite_index = global.normalInfoCardBack;
+    }
+    else
+    {
+        if(global.RoomState == 3)
+            sprite_index = CardBackingNormalInfo;
+        else
+            sprite_index = CardBackingNormal;
+    }
+}
+if(Mythical == 1)
+{
+    if(global.mythCardBacking != 0)
+    {
+        sprite_index = global.mythCardBack;
+        if(global.RoomState == 3)
+            sprite_index = global.mythInfoCardBack;
+    }
+    else
+    {
+        if(global.RoomState == 3)
+            sprite_index = CardBackingMythInfo;
+        else
+            sprite_index = CardBackingMyth;
+    }
+}
 </string>
           </argument>
         </arguments>

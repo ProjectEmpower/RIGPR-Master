@@ -47,6 +47,10 @@
         <sprite>sprites\ButtonSpriteCreateCard</sprite>
         <sprite>sprites\ButtonSpriteEventSelect</sprite>
         <sprite>sprites\ButtonSpriteAddBuildingSprite</sprite>
+        <sprite>sprites\ButtonSpriteAddCardBackingNormal</sprite>
+        <sprite>sprites\ButtonSpriteAddMap</sprite>
+        <sprite>sprites\ButtonSpriteAddBackground</sprite>
+        <sprite>sprites\ButtonSpriteAddCardBackingMythical</sprite>
         <sprite>sprites\ButtonSpriteUpArrow</sprite>
         <sprite>sprites\ButtonSpriteDownArrow</sprite>
         <sprite>sprites\ButtonSpriteDownFastArrow</sprite>
@@ -69,7 +73,9 @@
       <sprite>sprites\ButtonSpriteSave</sprite>
       <sprite>sprites\DefaultCardSprite</sprite>
       <sprite>sprites\CardBackingNormal</sprite>
+      <sprite>sprites\CardBackingMyth</sprite>
       <sprite>sprites\CardBackingNormalInfo</sprite>
+      <sprite>sprites\CardBackingMythInfo</sprite>
     </sprites>
     <sprite>sprites\BackgroundSprite</sprite>
     <sprite>sprites\MenuButton</sprite>
@@ -195,6 +201,10 @@
       </objects>
     </objects>
     <object>objects\GameSetup</object>
+    <object>objects\ButtonAddNormalCardBack</object>
+    <object>objects\ButtonDeleteNormalCardBack</object>
+    <object>objects\ButtonDeleteMythCardBack</object>
+    <object>objects\ButtonAddMythicalCardBack</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>

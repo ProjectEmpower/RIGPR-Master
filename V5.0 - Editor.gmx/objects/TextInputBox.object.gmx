@@ -1419,6 +1419,7 @@ if(room == RoomMap)
             global.buildingSprite = -1;
             global.SelectWindow = false;
             global.lastRoom = room;//lastRoom variable is the current room
+
             room = RoomSprites;//Move to Sprites room
         }  
         if(global.textboxArray[9] == id)//options
