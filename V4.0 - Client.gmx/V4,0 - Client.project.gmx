@@ -48,7 +48,9 @@
     <sprite>sprites\ButtonSpriteContinue</sprite>
     <sprite>sprites\ButtonSpriteNewGame</sprite>
     <sprite>sprites\ButtonSpriteInfoLink</sprite>
+    <sprite>sprites\CardBackingMyth</sprite>
     <sprite>sprites\CardBackingNormalInfo</sprite>
+    <sprite>sprites\CardBackingMythInfo</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\EventCard_Background</background>

@@ -9,6 +9,7 @@ if(global.RoomState == 0)
     global.reqEventWell = ini_read_real(global.EventLoadName, "Well",0);
     global.infoCardRef = ini_read_real(global.EventLoadName, "Info Cards",0);
     global.cardSprite = ini_read_real(global.EventLoadName,"Sprite",-1);
+    global.eventMythical = ini_read_real(global.EventLoadName,"Mythical",0);
     ini_close();
 }
 if(global.RoomState == 1)
@@ -20,6 +21,7 @@ if(global.RoomState == 1)
     global.cardSprite = ini_read_real(global.ActionLoadName,"Sprite",-1);
     global.infoCardRef = ini_read_real(global.ActionLoadName, "Info Cards",0);
     global.consCardRef = ini_read_real(global.ActionLoadName,"Cons Cards",0);  
+    global.cardMythical = ini_read_real(global.ActionLoadName,"Mythical",0);
     ini_close();
 }
 if(global.RoomState == 2)

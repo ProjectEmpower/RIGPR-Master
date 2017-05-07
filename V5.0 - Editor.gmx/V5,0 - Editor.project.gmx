@@ -202,7 +202,9 @@
     </objects>
     <object>objects\GameSetup</object>
     <object>objects\ButtonAddNormalCardBack</object>
+    <object>objects\ButtonAddMap</object>
     <object>objects\ButtonDeleteNormalCardBack</object>
+    <object>objects\DeleteMap</object>
     <object>objects\ButtonDeleteMythCardBack</object>
     <object>objects\ButtonAddMythicalCardBack</object>
   </objects>

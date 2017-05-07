@@ -34,6 +34,8 @@ else
     inst2 = instance_create(x,y + 176, ButtonInfoLink);
 if(RoomState == 0)
 {
+    Mythical = global.eventMythical;
+    global.tempCardBackMythStatus = global.eventMythical;
     ref_display = global.eventRef;
     reqInt = global.reqEventInt;
     reqChar = global.reqEventChar;
@@ -41,6 +43,8 @@ if(RoomState == 0)
 }
 if(RoomState == 1)
 {
+    Mythical = global.cardMythical;
+    global.tempCardBackMythStatus = global.eventMythical;
     ref_display = global.cardRef;
 }
 if(RoomState == 2)
@@ -55,7 +59,38 @@ if(RoomState == 4)
 {
     ref_display = global.charCardRef;
 }
-
+if(Mythical == 0)
+{
+    if(global.normalCardBacking != 0)
+    {
+        sprite_index = global.normalCardBack;
+        if(global.RoomState == 3)
+            sprite_index = global.normalInfoCardBack;
+    }
+    else
+    {
+        if(global.RoomState == 3)
+            sprite_index = CardBackingNormalInfo;
+        else
+            sprite_index = CardBackingNormal;
+    }
+}
+if(Mythical == 1)
+{
+    if(global.mythCardBacking != 0)
+    {
+        sprite_index = global.mythCardBack;
+        if(global.RoomState == 3)
+            sprite_index = global.mythInfoCardBack;
+    }
+    else
+    {
+        if(global.RoomState == 3)
+            sprite_index = CardBackingMythInfo;
+        else
+            sprite_index = CardBackingMyth;
+    }
+}
 </string>
           </argument>
         </arguments>
