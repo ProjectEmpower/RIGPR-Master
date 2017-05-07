@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.InputBoxX = global.roomWidth/5
+            <string>tempRoom = room;
+global.InputBoxX = global.roomWidth/5
 global.InputBoxY = global.roomHeight/6
 global.InputTextX = global.roomWidth/5
 global.InputTextY = global.roomHeight/6
@@ -703,7 +704,22 @@ if(room == RoomMap)
             <kind>1</kind>
             <string>//if anywhere is pressed on screen, it will change focus to 0 (so if outside of a button)
 global.focus = 0;
-
+if(room == RoomLocationAdd)
+    script_execute(SaveLocation);
+if(room == RoomCardEdit)
+{
+    if(global.RoomState == 0)
+        script_execute(SaveEventCard);
+    if(global.RoomState == 1)
+        script_execute(SaveActionCard);
+    if(global.RoomState == 2)
+        script_execute(SaveConsCard);
+    if(global.RoomState == 3)
+        script_execute(SaveInfoCard);
+    if(global.RoomState == 4)
+        script_execute(SaveCharCard);
+}
+room = tempRoom;
 </string>
           </argument>
         </arguments>

@@ -135,6 +135,7 @@ for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
 //day, period, etc. but ). 
 if(global.moveLock == 0)
 {
+    global.Cont = 0;
     global.LoadText = "";
     for(t = 0; t &lt; global.TotalInstanceNum; t++) //runs for loop based on TotalInstanceNum (of buildings)
     {
@@ -145,6 +146,7 @@ if(global.moveLock == 0)
         {
             tempEventNum = ini_read_real(locationName, "Number of Events", 0);
             global.realLocationName = ini_read_string(locationName, "Real Location Name", "");
+            global.locDesc = ini_read_string(locationName, "Description", "");
            // for(e = 1; e &lt;= tempEventNum; e++)
             //{
                // tempEventID = string(e);

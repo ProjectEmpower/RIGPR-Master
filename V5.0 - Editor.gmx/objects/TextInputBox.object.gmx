@@ -744,9 +744,9 @@ if(room == RoomLocationAdd)
             {
                 if((week/3) == global.eventWeek)
                 {
-                    show_message("You can only have 3 events on any week, reverting to previous week; If you wish to see what events are asigned to that week, please set the current event's week to 0 and use the arrows to select the corresponding week.");
-                    global.eventWeek = global.oldWeek;
+                    global.eventWeek = 0;
                     txt_input = string(global.eventWeek);    
+                    show_message("You can only have 3 events on any week, if you wish to see all events on a given week, please select an event with the corresponding week");
                 } 
                 script_execute(SaveLocation);
             }

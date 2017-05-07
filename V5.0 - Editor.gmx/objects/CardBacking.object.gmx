@@ -27,28 +27,32 @@
             <kind>1</kind>
             <string>depth = 2;
 inst = instance_create(x,y- 72,CardSpriteObject);
+if(global.RoomState == 3)
+    sprite_index = CardBackingNormalInfo;
 if(room != RoomSprites)
 {
-if(global.RoomState == 0)
-{
-    ref_display = global.eventRef;
-}
-if(global.RoomState == 1)
-{
-    ref_display = global.cardRef;
-}
-if(global.RoomState == 2)
-{
-    ref_display = global.consCardRef;
-}
-if(global.RoomState == 3)
-{
-    ref_display = global.infoCardRef;
-}
-if(global.RoomState == 4)
-{
-    ref_display = global.charCardRef;
-}
+    if(global.RoomState != 3)
+        inst2 = instance_create(x,y + 176, ButtonInfoLink);
+    if(global.RoomState == 0)
+    {
+        ref_display = global.eventRef;
+    }
+    if(global.RoomState == 1)
+    {
+        ref_display = global.cardRef;
+    }
+    if(global.RoomState == 2)
+    {
+        ref_display = global.consCardRef;
+    }
+    if(global.RoomState == 3)
+    {
+        ref_display = global.infoCardRef;
+    }
+    if(global.RoomState == 4)
+    {
+        ref_display = global.charCardRef;
+    }
 }
 
 </string>

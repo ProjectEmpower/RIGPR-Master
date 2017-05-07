@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>tempRoom = room;
+if(global.RoomState == 3)
+    sprite_index = No_sprite;
 if(global.RoomState == 0 and global.totalEventCardSprites &gt; 0 and global.cardSprite != -1)
 {
     for(i = global.cardSprite; i &lt; global.totalEventCardSprites; i++)

@@ -1,6 +1,6 @@
 window_set_size( global.roomWidth, global.roomHeight );
 surface_resize(application_surface,global.roomWidth,global.roomHeight);
-numberOfRooms = 9
+numberOfRooms = 10
 //display_reset(8,false);
 for(i = 0; i < numberOfRooms; i++)
 {
@@ -18,11 +18,13 @@ for(i = 0; i < numberOfRooms; i++)
         break;
         case 5: roomToChange = RoomEventSelect;
         break;
-        case 6: roomToChange = RoomActionView;
+        case 6: roomToChange = RoomInfoView;
         break;
         case 7: roomToChange = RoomConsView;
         break;
         case 8: roomToChange = RoomNewGame;
+        break;
+        case 9: roomToChange = RoomNewGame;
         break;
 
     }

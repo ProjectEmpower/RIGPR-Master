@@ -30,13 +30,7 @@
     global.WeekRightButtonX = global.roomWidth-50;
     global.WeekRightButtonY = 64;
 }
-if(room == RoomLocationAdd)
-{
-    if(global.locationWeekabc == 0)
-    {
-        sprite_index = No_sprite;
-    }
-}
+
 </string>
           </argument>
         </arguments>
@@ -70,14 +64,7 @@ if(room == RoomLocationAdd)
         }
     }
 }
-if(room == RoomLocationAdd)
-{
-    if(global.locationWeekabc &lt; 52)
-    {
-        global.locationWeekabc += 1;
-        room = RoomLocationAdd;
-    }
-}
+
 </string>
           </argument>
         </arguments>

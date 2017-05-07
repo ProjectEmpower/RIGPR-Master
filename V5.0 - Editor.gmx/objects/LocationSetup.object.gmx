@@ -60,11 +60,11 @@ draw_text(global.MapTitleX,global.MapTitleY,global.tempLocation);//draws the tex
 draw_text(global.roomWidth/4, global.roomHeight/8,"Location Info");//draws "location info" on the screen
 if(global.locationEventNumber &gt; 0)//if there is more than 1 or more event
 {
-    draw_text(global.roomWidth/4, global.roomHeight-350,"Event " + string(global.EventID)  + " Info");//draw the current events name + info to the screen
+    draw_text(global.roomWidth/4, global.roomHeight-370,"Event " + string(global.EventID)  + " Info");//draw the current events name + info to the screen
 }
 if(global.locationWeekabc != 0)//if there is more than 1 or more event
 {
-    draw_text(global.roomWidth/2, global.roomHeight-350,"Events on week - " + string(global.locationWeekabc));//draw the current events name + info to the screen
+    draw_text(global.roomWidth/2, global.roomHeight-350,"Events on week: " + string(global.locationWeekabc));//draw the current events name + info to the screen
 }
 </string>
           </argument>

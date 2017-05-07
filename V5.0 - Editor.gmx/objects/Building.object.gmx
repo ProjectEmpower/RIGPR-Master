@@ -34,7 +34,7 @@ if(room == RoomMap or room == RoomSprites)//if the room is the map screen
     ref = string(global.objectRef); //set the ref variable to the current objectRef (instance number)
     Name = "Location"+ref; //sets "Location+currentID" to the name variable as a string, this is used when accessing the location in the ini file
 }
-else
+if(room == RoomLocationAdd)
 {
     Building.x = global.roomWidth/5*3;//set the current position on screen
     Building.y = global.roomHeight/5+25;

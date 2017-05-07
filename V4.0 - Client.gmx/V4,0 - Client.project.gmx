@@ -45,6 +45,10 @@
     <sprite>sprites\SwapType</sprite>
     <sprite>sprites\CardType</sprite>
     <sprite>sprites\DefaultUserSprite</sprite>
+    <sprite>sprites\ButtonSpriteContinue</sprite>
+    <sprite>sprites\ButtonSpriteNewGame</sprite>
+    <sprite>sprites\ButtonSpriteInfoLink</sprite>
+    <sprite>sprites\CardBackingNormalInfo</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
@@ -60,14 +64,13 @@
     <script>scripts\LoadHistory.gml</script>
     <script>scripts\PlayerSave.gml</script>
     <script>scripts\LoadCards.gml</script>
-    <script>scripts\CheckSprites.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Rooms">
       <objects name="Menu">
         <object>objects\ButtonStart</object>
         <object>objects\TitleMenu</object>
-        <object>objects\MenuToMap</object>
+        <object>objects\SplashToMenu</object>
         <object>objects\ResizeBG</object>
       </objects>
       <objects name="Map">
@@ -87,6 +90,7 @@
         <object>objects\CardBacking</object>
         <object>objects\RedoEvent</object>
         <object>objects\ButtonListStyle</object>
+        <object>objects\ButtonInfoLink</object>
         <object>objects\ButtonCardType</object>
       </objects>
       <objects name="Character">
@@ -117,9 +121,12 @@
       <object>objects\ButtonNext</object>
       <object>objects\UserImage</object>
     </objects>
+    <object>objects\ButtonContinueGame</object>
+    <object>objects\ButtonNewGame</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
+    <room>rooms\RoomSplash</room>
     <room>rooms\RoomMenu</room>
     <room>rooms\RoomNewGame</room>
     <rooms name="Options">
@@ -131,7 +138,7 @@
     <room>rooms\RoomCards</room>
     <room>rooms\RoomLocationView</room>
     <room>rooms\RoomEventSelect</room>
-    <room>rooms\RoomActionView</room>
+    <room>rooms\RoomInfoView</room>
     <room>rooms\RoomConsView</room>
   </rooms>
   <help>

@@ -31,8 +31,8 @@ if(global.locationEventNumber = 0)
     sprite_index = No_sprite
 }
 
-ButtonEventRight.x = global.roomWidth/4+80;
-ButtonEventRight.y = global.roomHeight-350;
+ButtonEventRight.x = global.roomWidth/4+100;
+ButtonEventRight.y = global.roomHeight-370;
 </string>
           </argument>
         </arguments>

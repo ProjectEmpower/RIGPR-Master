@@ -48,18 +48,7 @@ else
         global.roomWidth = 1280;
         global.roomHeight = 720;
 }
-global.editorINI = "editor_files/editor.ini";
-ini_open(global.editorINI);
-global.totalNormBuildingSprites = ini_read_real("General", "Norm Building Sprites", 0);
-global.totalMythBuildingSprites = ini_read_real("General", "Myth Building Sprites", 0);
-global.totalBothBuildingSprites = ini_read_real("General", "Both Building Sprites", 0);
-global.totalEventCardSprites = ini_read_real("General", "Event Card Sprites", 0);
-global.totalActionCardSprites = ini_read_real("General", "Action Card Sprites", 0);
-global.totalConsCardSprites = ini_read_real("General", "Cons Card Sprites", 0);
-global.totalInfoCardSprites = ini_read_real("General", "Info Card Sprites", 0);
-global.totalCharCardSprites = ini_read_real("General", "Char Card Sprites", 0);
-ini_close();
-script_execute(CheckSprites);
+
 global.zooming = false;
 //pc res
 //global.roomWidth = 1280;
@@ -111,10 +100,14 @@ global.cardActionINI = "ini_files/cardAction.ini";
 global.cardInfoINI = "ini_files/cardInfo.ini";
 global.cardConsINI = "ini_files/cardCons.ini";
 global.cardCharINI = "ini_files/cardChar.ini";
-
+global.editorINI = "editor_files/editor.ini";
 global.playerINI = "editor_files/player.ini";
 global.historyINI = "editor_files/history.ini";
 global.AllCards = "editor_files/AllCards.ini";
+if(!file_exists(global.editorINI))
+{
+   editor_ini = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/editor.ini", global.editorINI);
+}
 //checks to see if the ini files exist, if they do not, it downloads them from the webhost
 if(!file_exists(global.locationINI))
 {
@@ -140,10 +133,7 @@ if(!file_exists(global.cardCharINI))
 {
     cardChar_ini = http_get_file("http://www.ell360.co.uk/EMPOWER/ini_files/cardChar.ini", global.cardCharINI);
 }
-if(!file_exists(global.editorINI))
-{
-   editor_ini = http_get_file("http://www.ell360.co.uk/EMPOWER/editor_files/editor.ini", global.editorINI);
-}
+
 if(!file_exists(global.playerINI))
 {
    global.NewGame = true;
@@ -174,6 +164,7 @@ else
     }
   ini_close();
 }
+
 
 room = RoomResChange;
 

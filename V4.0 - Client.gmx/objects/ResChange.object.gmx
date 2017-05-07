@@ -28,7 +28,7 @@
             <string>script_execute(ResolutionChange);
 if(global.lastResRoom == 0)
 {
-    room = RoomMenu;
+    room = RoomSplash;
 }
 else
 {

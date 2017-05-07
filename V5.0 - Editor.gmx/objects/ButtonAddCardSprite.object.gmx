@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardImage = "";
+            <string>tempRoom = room;
+CardImage = "";
+if(global.RoomState == 3)
+    sprite_index = No_sprite;
 </string>
           </argument>
         </arguments>
@@ -100,7 +103,7 @@ if(CardImage != "")
         CardImage = "";//sets the open file to blank
         global.cardSprite = global.totalEventCardSprites-1;
         script_execute(SaveEventCard);//saves the current location
-        room = RoomCardEdit;//reloads the room
+        room = tempRoom;//reloads the room
     }
     if(global.RoomState == 1)
     {
@@ -115,7 +118,7 @@ if(CardImage != "")
         CardImage = "";//sets the open file to blank
         global.cardSprite = global.totalActionCardSprites-1;
         script_execute(SaveActionCard);//saves the current location
-        room = RoomCardEdit;//reloads the room
+        room = tempRoom;//reloads the room
     }
     if(global.RoomState == 2)
     {
@@ -130,7 +133,7 @@ if(CardImage != "")
         CardImage = "";//sets the open file to blank
         global.cardSprite = global.totalConsCardSprites-1;
         script_execute(SaveConsCard);//saves the current location
-        room = RoomCardEdit;//reloads the room
+        room = tempRoom;//reloads the room
     
     }
     if(global.RoomState == 3)
@@ -146,7 +149,7 @@ if(CardImage != "")
         CardImage = "";//sets the open file to blank
         global.cardSprite = global.totalInfoCardSprites-1;
         script_execute(SaveInfoCard);//saves the current location
-        room = RoomCardEdit;//reloads the room
+        room = tempRoom;//reloads the room
     }
     if(global.RoomState == 4)
     {
@@ -161,7 +164,7 @@ if(CardImage != "")
         CardImage = "";//sets the open file to blank
         global.cardSprite = global.totalCharCardSprites-1;
         script_execute(SaveCharCard);//saves the current location
-        room = RoomCardEdit;//reloads the room
+        room = tempRoom;//reloads the room
     }
 }
 </string>

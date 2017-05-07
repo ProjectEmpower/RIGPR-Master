@@ -7,6 +7,7 @@ if(global.RoomState == 0)
     global.reqEventInt = ini_read_real(global.EventLoadName,"Int",0);
     global.reqEventChar = ini_read_real(global.EventLoadName, "Char", 0);
     global.reqEventWell = ini_read_real(global.EventLoadName, "Well",0);
+    global.infoCardRef = ini_read_real(global.EventLoadName, "Info Cards",0);
     global.cardSprite = ini_read_real(global.EventLoadName,"Sprite",-1);
     ini_close();
 }

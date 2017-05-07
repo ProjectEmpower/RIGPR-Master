@@ -69,8 +69,11 @@
       <sprite>sprites\ButtonSpriteSave</sprite>
       <sprite>sprites\DefaultCardSprite</sprite>
       <sprite>sprites\CardBackingNormal</sprite>
+      <sprite>sprites\CardBackingNormalInfo</sprite>
     </sprites>
     <sprite>sprites\BackgroundSprite</sprite>
+    <sprite>sprites\MenuButton</sprite>
+    <sprite>sprites\InfoLinkSprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
@@ -142,7 +145,6 @@
       <object>objects\ButtonSpriteRight</object>
       <object>objects\ButtonSelectEvent</object>
       <object>objects\ButtonAddBuildingSprite</object>
-      <object>objects\UpdateWeekList</object>
       <object>objects\DeleteCurrentEvent</object>
       <object>objects\DeleteCurrentSprite</object>
     </objects>
@@ -166,6 +168,7 @@
           <object>objects\CardTypeButtonAdder</object>
           <object>objects\DeleteCurrentCardsprite</object>
           <object>objects\DeleteCard</object>
+          <object>objects\ButtonInfoLink</object>
         </objects>
         <object>objects\ButtonListDown</object>
         <object>objects\ButtonMoveFastDown</object>
