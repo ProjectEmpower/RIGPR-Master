@@ -48,8 +48,12 @@
         <sprite>sprites\ButtonSpriteEventSelect</sprite>
         <sprite>sprites\ButtonSpriteAddBuildingSprite</sprite>
         <sprite>sprites\ButtonSpriteAddCardBackingNormal</sprite>
+        <sprite>sprites\ButtonSpriteDeleteCardBackingNormal</sprite>
+        <sprite>sprites\ButtonSpriteDeleteCardBackingMythical</sprite>
         <sprite>sprites\ButtonSpriteAddMap</sprite>
+        <sprite>sprites\ButtonSpriteDeleteMap</sprite>
         <sprite>sprites\ButtonSpriteAddBackground</sprite>
+        <sprite>sprites\ButtonSpriteDeleteBackground</sprite>
         <sprite>sprites\ButtonSpriteAddCardBackingMythical</sprite>
         <sprite>sprites\ButtonSpriteUpArrow</sprite>
         <sprite>sprites\ButtonSpriteDownArrow</sprite>

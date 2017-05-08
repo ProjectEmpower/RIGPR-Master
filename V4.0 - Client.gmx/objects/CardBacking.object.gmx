@@ -26,7 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>depth = 2;
+if(room != RoomCards)
+    y = y + 100;
 RoomState = global.RoomState;
+Mythical = 0;
 inst = instance_create(x,y- 72,CardSpriteObject);
 if(global.RoomState == 3)
     sprite_index = CardBackingNormalInfo;
