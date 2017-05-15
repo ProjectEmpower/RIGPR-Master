@@ -133,11 +133,66 @@ if(room == RoomEventSelect)
 {
     if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
     {
-        global.ActionStore = "Action"+string(id.ref_display);   
-        global.cardRef = id.ref_display;
-        global.consCardRef = id.ref_display;
-        global.tempPos = 0;
-        room = RoomConsView;
+            global.ActionStore = "Action"+string(id.ref_display);   
+            global.cardRef = id.ref_display;
+            global.consCardRef = id.ref_display;
+            global.tempPos = 0;
+            room = RoomConsView;
+
+    }
+}
+if(room == RoomCharView)
+{    
+    if(global.TimeTravel != true)
+    {
+        if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
+        {
+            global.CharStore = "Char"+string(id.ref_display);   
+            global.CharSelected = 1;
+            global.LoadTempInt = global.playerInt;
+            global.LoadTempChar = global.playerChar;
+            global.LoadTempWell = global.playerWell;
+            global.LoadInt = global.playerInt
+            global.LoadChar = global.playerChar
+            global.LoadWell = global.playerWell
+            global.JWeek = global.playerWeek;
+            global.JYear = global.playerYear;
+            script_execute(SaveHistory);
+            global.playerWeek += 1;
+            script_execute(PlayerSave); 
+            room = RoomMap;
+        }
+    }
+    else
+    {
+        if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
+        {       
+            global.CharStore = "Char"+string(id.ref_display);       
+            global.CharSelected = 1;
+            //sets old stats
+            global.LoadTempInt = global.playerInt;
+            global.LoadTempChar = global.playerChar;
+            global.LoadTempWell = global.playerWell;
+            //sets the current stat in hostory
+            global.LoadInt = global.playerInt
+            global.LoadChar = global.playerChar
+            global.LoadWell = global.playerWell
+            script_execute(SaveHistory);
+            //sets the player stats back to what they should be 
+            global.playerInt = global.playerTempInt;
+            global.playerChar = global.playerTempChar;
+            global.playerWell = global.playerTempWell;
+            //removes the stat changes from previous 
+            global.playerInt += global.DiffInt;
+            global.playerChar += global.DiffChar;
+            global.playerWell += global.DiffWell;
+    
+            global.TimeTravel = false;
+            global.playerWeek = global.playerTempWeek;
+            global.playerYear = global.playerTempYear;
+            script_execute(PlayerSave); 
+            room = RoomDiary;
+        }
     }
 }
 if(room == RoomConsView)
@@ -147,6 +202,7 @@ if(room == RoomConsView)
         if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
         {
             global.LoadTempInt = global.playerInt;
+            global.CharSelected = 0
             global.LoadTempChar = global.playerChar;
             global.LoadTempWell = global.playerWell;
             global.playerInt += global.consInt;
@@ -168,6 +224,7 @@ if(room == RoomConsView)
     {
         if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
         {
+            global.CharSelected = 0
             //sets old stats
             global.LoadTempInt = global.playerInt;
             global.LoadTempChar = global.playerChar;

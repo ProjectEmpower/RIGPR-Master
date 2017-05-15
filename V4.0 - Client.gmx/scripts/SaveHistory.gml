@@ -2,7 +2,11 @@ ini_open(global.historyINI);
 ini_write_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"LocationRef",global.tempLocation);
 ini_write_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Location", global.LocationStore);
 ini_write_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Event", global.EventStore);
-ini_write_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Action", global.ActionStore);
+if(global.CharSelected == 0)
+    ini_write_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Action", global.ActionStore);
+else
+    ini_write_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Char", global.CharStore);
+ini_write_real("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Char Selected", global.CharSelected);
 ini_write_real("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"OldInt", global.LoadTempInt);
 ini_write_real("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"OldChar", global.LoadTempChar);
 ini_write_real("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"OldWell", global.LoadTempWell);

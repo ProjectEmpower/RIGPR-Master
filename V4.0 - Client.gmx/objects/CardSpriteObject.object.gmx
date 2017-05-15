@@ -132,31 +132,121 @@ if(room == RoomEventSelect)
     global.consCardRef = id.ref_display;
     room = RoomConsView;
 }
-if(room == RoomConsView)
+if(room == RoomCharView)
 {
-    global.LoadTempInt = global.playerInt;
-    global.LoadTempChar = global.playerChar;
-    global.LoadTempWell = global.playerWell;
-    global.playerInt += global.consInt;
-    global.playerChar += global.consChar;
-    global.playerWell += global.consWell;
-    global.LoadInt = global.playerInt
-    global.LoadChar = global.playerChar
-    global.LoadWell = global.playerWell
-    global.JWeek = global.playerWeek;
-    global.JYear = global.playerYear;
-    script_execute(SaveHistory);
-    if(global.TimeTravel != true)
-        global.playerWeek += 1;
-    script_execute(PlayerSave); 
-    if(global.TimeTravel != true)
-        room = RoomMap;
-     if(global.TimeTravel == true)
+   if(global.TimeTravel != true)
     {
-        global.TimeTravel = false;
-        global.playerWeek = global.playerTempWeek;
-        global.playerYear = global.playerTempYear;
-        room = RoomDiary;
+        if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
+        {
+            global.CharStore = "Char"+string(id.ref_display);   
+            global.CharSelected = 1;
+            global.LoadTempInt = global.playerInt;
+            global.LoadTempChar = global.playerChar;
+            global.LoadTempWell = global.playerWell;
+            global.LoadInt = global.playerInt
+            global.LoadChar = global.playerChar
+            global.LoadWell = global.playerWell
+            global.JWeek = global.playerWeek;
+            global.JYear = global.playerYear;
+            script_execute(SaveHistory);
+            global.playerWeek += 1;
+            script_execute(PlayerSave); 
+            room = RoomMap;
+        }
+    }
+    else
+    {
+        if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
+        {       
+            global.CharStore = "Char"+string(id.ref_display);       
+            global.CharSelected = 1;
+            //sets old stats
+            global.LoadTempInt = global.playerInt;
+            global.LoadTempChar = global.playerChar;
+            global.LoadTempWell = global.playerWell;
+            //sets the current stat in hostory
+            global.LoadInt = global.playerInt
+            global.LoadChar = global.playerChar
+            global.LoadWell = global.playerWell
+            script_execute(SaveHistory);
+            //sets the player stats back to what they should be 
+            global.playerInt = global.playerTempInt;
+            global.playerChar = global.playerTempChar;
+            global.playerWell = global.playerTempWell;
+            //removes the stat changes from previous 
+            global.playerInt += global.DiffInt;
+            global.playerChar += global.DiffChar;
+            global.playerWell += global.DiffWell;
+    
+            global.TimeTravel = false;
+            global.playerWeek = global.playerTempWeek;
+            global.playerYear = global.playerTempYear;
+            script_execute(PlayerSave); 
+            room = RoomDiary;
+        }
+    }
+}
+if(room == RoomConsView)
+{    
+    if(global.TimeTravel != true)
+    {
+        if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
+        {
+            global.LoadTempInt = global.playerInt;
+            global.CharSelected = 0
+            global.LoadTempChar = global.playerChar;
+            global.LoadTempWell = global.playerWell;
+            global.playerInt += global.consInt;
+            global.playerChar += global.consChar;
+            global.playerWell += global.consWell;
+            global.LoadInt = global.playerInt
+            global.LoadChar = global.playerChar
+            global.LoadWell = global.playerWell
+            global.JWeek = global.playerWeek;
+            global.JYear = global.playerYear;
+            script_execute(SaveHistory);
+            global.playerWeek += 1;
+            script_execute(PlayerSave); 
+    
+            room = RoomMap;
+        }
+    }
+    else
+    {
+        if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
+        {
+            //sets old stats
+            global.LoadTempInt = global.playerInt;
+            global.LoadTempChar = global.playerChar;
+            global.LoadTempWell = global.playerWell;
+            //updates current states
+            global.playerInt += global.consInt;
+            global.playerChar += global.consChar;
+            global.playerWell += global.consWell;
+            //sets the current stat in hostory
+            global.LoadInt = global.playerInt
+            global.LoadChar = global.playerChar
+            global.LoadWell = global.playerWell
+            script_execute(SaveHistory);
+            //sets the player stats back to what they should be 
+            global.playerInt = global.playerTempInt;
+            global.playerChar = global.playerTempChar;
+            global.playerWell = global.playerTempWell;
+            //removes the stat changes from previous 
+            global.playerInt += global.DiffInt;
+            global.playerChar += global.DiffChar;
+            global.playerWell += global.DiffWell;
+            //adds the new stats back to stats
+            global.playerInt += global.consInt;
+            global.playerChar += global.consChar;
+            global.playerWell += global.consWell;
+    
+            global.TimeTravel = false;
+            global.playerWeek = global.playerTempWeek;
+            global.playerYear = global.playerTempYear;
+            script_execute(PlayerSave); 
+            room = RoomDiary;
+        }
     }
 }
 </string>
@@ -198,7 +288,7 @@ if(room == RoomConsView)
     {
         cardNameText = "Action";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-        draw_text_transformed(x, y + 152, CardText,1,1,0);
+         draw_text_ext(x, y + 152, CardText,20,200);
     }
     if(RoomState == 2)
     {

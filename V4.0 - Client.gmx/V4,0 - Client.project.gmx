@@ -51,6 +51,7 @@
     <sprite>sprites\CardBackingMyth</sprite>
     <sprite>sprites\CardBackingNormalInfo</sprite>
     <sprite>sprites\CardBackingMythInfo</sprite>
+    <sprite>sprites\CharSprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\EventCard_Background</background>
@@ -103,6 +104,7 @@
         <object>objects\ButtonListStyle</object>
         <object>objects\ButtonInfoLink</object>
         <object>objects\ButtonCardType</object>
+        <object>objects\CharCard</object>
       </objects>
       <objects name="Character">
         <object>objects\TitleCharacter</object>
@@ -148,6 +150,7 @@
     <room>rooms\RoomLocationView</room>
     <room>rooms\RoomEventSelect</room>
     <room>rooms\RoomInfoView</room>
+    <room>rooms\RoomCharView</room>
     <room>rooms\RoomConsView</room>
   </rooms>
   <help>

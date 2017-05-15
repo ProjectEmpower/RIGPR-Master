@@ -56,6 +56,8 @@
     <instance objName="TextInputSetup" x="128" y="96" name="inst_948D7E70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonListStyle" x="608" y="608" name="inst_AE976835" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonCardType" x="928" y="640" name="inst_728E579E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonCardLeft" x="64" y="384" name="inst_7FF10937" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonCardRight" x="1216" y="352" name="inst_6EBD9C25" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

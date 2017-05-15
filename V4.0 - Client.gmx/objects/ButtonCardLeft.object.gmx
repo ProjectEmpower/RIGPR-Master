@@ -49,7 +49,33 @@ else
 {
     sprite_index = No_sprite;
 }
-x = global.roomWidth-150;
+if(room == RoomCards)
+{
+
+    if(global.ListStyle == 1)
+    {
+        if(global.listLength == 4 and global.tempPos &gt; 0)
+        {
+            sprite_index = ArrowSpriteLeft;   
+        }
+        else
+        {
+            sprite_index = No_sprite;
+        }
+    }
+    else
+    {
+            if(global.listLength == 20 and global.tempPos &gt; 0)
+        {
+            sprite_index = ArrowSpriteLeft;   
+        }
+        else
+        {
+            sprite_index = No_sprite;
+        }
+    }
+}
+x = 50;
 y = 40;
 </string>
           </argument>

@@ -316,6 +316,7 @@ if(room == RoomCardDeck)//Room that shows the list of cards.
 }
 if(room == RoomCardEdit)//Room that edits an individual card
 {
+global.lastState = -1
 global.cardState = 0;
     if(global.RoomState == 0)
     {

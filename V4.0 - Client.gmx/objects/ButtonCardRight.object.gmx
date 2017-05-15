@@ -56,6 +56,33 @@ else
 {
     sprite_index = No_sprite;
 }
+
+if(room == RoomCards)
+{
+
+    if(global.ListStyle == 1)
+    {           
+        if(global.listLength == 4 and global.tempPos + 4 &lt; global.cardListNum )
+        {
+            sprite_index = ArrowSpriteRight;   
+        }
+        else
+        {
+            sprite_index = No_sprite;
+        }
+    }
+    else
+    {
+        if(global.listLength == 20 and global.tempPos + 20 &lt; global.cardListNum )
+        {
+            sprite_index = ArrowSpriteRight;   
+        }
+        else
+        {
+            sprite_index = No_sprite;
+        }
+    }
+}
 x = global.roomWidth-50;
 y = 40;
 </string>
@@ -89,14 +116,33 @@ if(global.tempPos &lt; global.eventNum)
     room = tempRoom;
 }
 }
-else if(room == RoomEventSelect)
+if(room == RoomEventSelect)
 {
-if(global.tempPos &lt; global.cardNum)
-{
-    tempRoom = room;
-    global.tempPos += 1;
-    room = tempRoom;
+    if(global.tempPos &lt; global.cardNum)
+    {
+        tempRoom = room;
+        global.tempPos += 1;
+        room = tempRoom;
+    }
 }
+if(room == RoomCards)
+{
+    if(global.ListStyle == 1)
+    {
+        if(global.cardListNum  &gt; 4 + global.tempPos)
+        {
+            global.tempPos += 1;
+            room = RoomCards;
+        }
+    }
+    if(global.ListStyle == 0)
+    {
+        if(global.cardListNum  &gt; 20 + global.tempPos)
+        {
+            global.tempPos += 1;
+            room = RoomCards;
+        }
+    }
 }
 </string>
           </argument>

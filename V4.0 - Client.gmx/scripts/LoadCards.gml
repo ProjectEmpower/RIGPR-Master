@@ -3,7 +3,6 @@ if(global.RoomState == 0)
     ini_open(global.cardEventINI);
     global.eventRef = ini_read_real(global.EventLoadName,"Ref","");
     global.realEventName = ini_read_string(global.EventLoadName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
-    global.eventText = ini_read_string(global.EventLoadName,"Event Text","");
     global.reqEventInt = ini_read_real(global.EventLoadName,"Int",0);
     global.reqEventChar = ini_read_real(global.EventLoadName, "Char", 0);
     global.reqEventWell = ini_read_real(global.EventLoadName, "Well",0);
@@ -48,8 +47,11 @@ if(global.RoomState == 3)
 }
 if(global.RoomState == 4)
 {
-    ref_display = global.charCardRef;
-    RealName = global.charCardName;
-    CardText = global.charCardText;
+    ini_open(global.cardInfoINI); 
+    global.charCardRef = ini_read_real(global.CharLoadName,"Ref",0);
+    global.charCardName = ini_read_string(global.CharLoadName,"Card Name","");
+    global.cardSprite = ini_read_real(global.CharLoadName,"Sprite",-1);
+    global.charCardText = ini_read_string(global.CharLoadName,"Card Text","");
+    ini_close();
 }
 

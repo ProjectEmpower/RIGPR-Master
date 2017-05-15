@@ -1066,7 +1066,7 @@ if(room == RoomCardDeck)//deck of cards
             room = RoomLocationAdd;
             
         }
-        else//if you are editing the card
+        else if(global.lastState == -1)//if you are editing the card
         {
             global.eventRef = id.ref_display;//takes the ref displayed in this instance, and sets it to the global eventRef
             global.lastState = 0;
@@ -1098,7 +1098,7 @@ if(room == RoomCardDeck)//deck of cards
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
         }
-        else //editing the card
+        else if(global.lastState == -1) //editing the card
         {
             global.cardRef = id.ref_display;
             global.lastState = 1;
@@ -1121,7 +1121,7 @@ if(room == RoomCardDeck)//deck of cards
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
         }
-        else //editing the card
+        else if(global.lastState == -1) //editing the card
         {
             global.consCardRef = id.ref_display;
             global.lastState = 2;
@@ -1154,19 +1154,6 @@ if(room == RoomCardDeck)//deck of cards
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;
         }
-        else if(global.lastState == 2)
-        {
-        global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
-            global.cardType = id.ref_display;
-            ini_open(global.cardConsINI);//open the event ini               
-            ini_write_real(global.consName,"Info Cards",global.cardType);
-            ini_close();//closes the ini
-            global.lastState = 3;
-            global.RoomState = 2;
-            global.lastRoom = RoomCardDeck;
-            room = RoomCardEdit;
-        }
         else if(global.lastState == 4)
         {
             global.cardType = id.ref_display;
@@ -1178,6 +1165,18 @@ if(room == RoomCardDeck)//deck of cards
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;
         }
+        else if(global.lastState == 2)
+        {
+            global.cardType = id.ref_display;
+            ini_open(global.cardConsINI);//open the event ini               
+            ini_write_real(global.consName,"Info Cards",global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 3;
+            global.RoomState = 2;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;
+        }
+
         else //editing the card
         {
             global.infoCardRef = id.ref_display;
@@ -1200,7 +1199,8 @@ if(room == RoomCardDeck)//deck of cards
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
         }
-        else //editing the card
+        
+        else if(global.lastState == -1) //editing the card
         {
             global.charCardRef = id.ref_display;
             global.lastState = 4;
@@ -1241,8 +1241,7 @@ if(room == RoomCardEdit)
         }
         if(instance_id[global.box6-1+global.eventActionCardsNum] == id)
         {
-        global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
+            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
             global.currentCard = 3;
             global.lastState = 0;  
             global.RoomState = 3;
@@ -1250,8 +1249,7 @@ if(room == RoomCardEdit)
         } 
         if(instance_id[global.box7-1+global.eventActionCardsNum] == id)
         {
-        global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
+            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
             global.currentCard = 4;
             global.lastState = 0;  
             global.RoomState = 4;
@@ -1262,8 +1260,7 @@ if(room == RoomCardEdit)
     {
        if(instance_id[global.textBoxInstanceRef+3-1] == id)
         {
-        global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
+            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
             global.currentCard = 2;
             global.lastState = 1;  
             global.RoomState = 2;
@@ -1271,8 +1268,8 @@ if(room == RoomCardEdit)
         } 
         if(instance_id[global.textBoxInstanceRef+4-1] == id)
         {
-        global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
+            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
+            global.currentCard = 3;
             global.lastState = 1;  
             global.RoomState = 3;
             room = RoomCardDeck;
@@ -1282,8 +1279,8 @@ if(room == RoomCardEdit)
     {
         if(instance_id[global.textBoxInstanceRef+6] == id)
         {
-        global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
+            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
+            global.currentCard = 3;
             global.lastState = 2;  
             global.RoomState = 3;
             room = RoomCardDeck;
@@ -1293,58 +1290,14 @@ if(room == RoomCardEdit)
     {
         if(instance_id[global.textBoxInstanceRef+2-1] == id)
         {
-        global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
+            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
+            global.currentCard = 3;
             global.lastState = 4;  
             global.RoomState = 3;
             room = RoomCardDeck;
         } 
     }
 }
-
-if(room == RoomDeckList)//unused
-{
-
-    if(instance_id[global.textBoxInstanceRef-1] == id)
-    {
-    global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
-        global.lastRoom = room;
-        global.RoomState = 0;
-        room = RoomCardDeck;
-    }
-    if(instance_id[global.textBoxInstanceRef+1-1] == id)
-    {
-    global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
-        global.lastRoom = room;
-        global.RoomState = 1;
-        room = RoomCardDeck;
-    }
-    if(instance_id[global.textBoxInstanceRef+2-1] == id)
-    {
-    global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
-        global.lastRoom = room;
-        global.RoomState = 2;
-        room = RoomCardDeck;
-    }   
-    if(instance_id[global.textBoxInstanceRef+3-1] == id)
-    {global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
-        global.lastRoom = room;
-        global.RoomState = 3;
-        room = RoomCardDeck;
-    }  
-    if(instance_id[global.textBoxInstanceRef+4-1] == id)
-    {global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
-        global.lastRoom = room;
-        global.RoomState = 4;
-        room = RoomCardDeck;
-    }    
-}
-
 if(room == RoomMap)
 {
     if(global.moveLock == 0)
@@ -1367,7 +1320,7 @@ if(room == RoomMap)
             global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
             global.lastRoom = room;
             global.RoomState = 0;
-            global.lastState = 0;
+            global.lastState = -1;
             room = RoomCardDeck;
         }
         if(global.textboxArray[3] == id)//action cards
@@ -1375,7 +1328,7 @@ if(room == RoomMap)
             global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
             global.lastRoom = room;
             global.RoomState = 1;
-             global.lastState = 1;
+            global.lastState = -1;
             room = RoomCardDeck;
         }
         if(global.textboxArray[4] == id)//cons cards
@@ -1383,7 +1336,7 @@ if(room == RoomMap)
             global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
             global.lastRoom = room;
             global.RoomState = 2;
-             global.lastState = 2;
+            global.lastState = -1;
             room = RoomCardDeck;
         }   
         if(global.textboxArray[5] == id)//info cards
@@ -1391,7 +1344,7 @@ if(room == RoomMap)
             global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
             global.lastRoom = room;
             global.RoomState = 3;
-             global.lastState = 3;
+            global.lastState = -1;
             room = RoomCardDeck;
         }  
         if(global.textboxArray[6] == id)//char cards
@@ -1399,7 +1352,7 @@ if(room == RoomMap)
             global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
             global.lastRoom = room;
             global.RoomState = 4;
-             global.lastState = 4;
+            global.lastState = -1;
             room = RoomCardDeck;
         }   
         if(global.textboxArray[8] == id)//options

@@ -77,16 +77,17 @@ if(room == RoomLocationView)
 
         
 }
+if(room == RoomCharView)
+{
+    room = RoomEventSelect
+}
 if(room == RoomEventSelect)
 {
     room = RoomLocationView; //swaps room  
 }
 if(room == RoomInfoView)
 {
-    if(global.InfoViewLastRoom == RoomCards)
-    {
-        global.RoomState = global.InfoViewRoomState;
-    }
+    global.RoomState = global.InfoViewRoomState;
     room = global.InfoViewLastRoom; //swaps room  
 }
 if(room == RoomConsView)
@@ -138,11 +139,14 @@ if(room == RoomEventSelect)
 }
 if(room == RoomInfoView)
 {    
-    if(global.InfoViewLastRoom == RoomCards)
-        global.RoomState = global.tempRoomState;
+    global.RoomState = global.InfoViewRoomState;
     room = global.InfoViewLastRoom; //swaps room  
 }
 if(room == RoomConsView)
+{
+    room = RoomEventSelect
+}
+if(room == RoomCharView)
 {
     room = RoomEventSelect
 }

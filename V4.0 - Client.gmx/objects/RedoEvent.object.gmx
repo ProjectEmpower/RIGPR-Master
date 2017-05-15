@@ -72,6 +72,10 @@ global.playerWell = global.LoadTempWell;
 global.playerWeek = global.JWeek;
 global.playerYear = global.JYear;
 global.realLocationName = global.LocationStore;
+ini_open(global.locationINI)
+global.locDesc = ini_read_string(global.tempLocation,"Description","");
+ini_close();
+global.Cont = 0;
 global.TimeTravel = true;
 room = RoomLocationView;
 </string>
