@@ -69,6 +69,10 @@
       <sprite>sprites\SelectedTextBoxSprite</sprite>
       <sprite>sprites\TextInputBoxSprite_Large</sprite>
       <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
+      <sprite>sprites\ActionCardSprite</sprite>
+      <sprite>sprites\EventCardSprite</sprite>
+      <sprite>sprites\CharCardSprite</sprite>
+      <sprite>sprites\ConsCardSprite</sprite>
       <sprite>sprites\TextInputBoxSprite_Small</sprite>
       <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
       <sprite>sprites\ArrowSpriteLeft</sprite>
@@ -98,6 +102,7 @@
     <background>background\OptionsScreen_Background</background>
     <background>background\EventCard_Background</background>
     <background>background\CharacterScreen_Background</background>
+    <background>background\Blank_background</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">

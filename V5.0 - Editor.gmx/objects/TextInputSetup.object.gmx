@@ -157,7 +157,6 @@ if(room == RoomCardEdit)
         global.eventName = "Event"+TeventRef;
         ini_open(global.cardEventINI)
         global.realEventName = ini_read_string(global.eventName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
-        global.eventText = ini_read_string(global.eventName,"Event Text","");
         global.reqEventInt = ini_read_real(global.eventName,"Int",0);
         global.reqEventChar = ini_read_real(global.eventName, "Char", 0);
         global.reqEventWell = ini_read_real(global.eventName, "Well",0);
@@ -174,7 +173,7 @@ if(room == RoomCardEdit)
         //global.card2 = ini_read_real(global.eventName,"Cons2",0);
         global.InfoCard = ini_read_real(global.eventName,"Info Cards",0);
         global.CharCard = ini_read_real(global.eventName,"Char Cards",0);
-        textFeilds = global.eventActionCardsNum + 9;//number of text boxes we want.
+        textFeilds = global.eventActionCardsNum + 8;//number of text boxes we want.
         ini_close();
         global.box0 = instance_count;
         global.box1 = instance_count+1;
@@ -188,18 +187,9 @@ if(room == RoomCardEdit)
         global.box9 = instance_count+9;
         for(i = 0; i &lt; textFeilds; i++)
         {
-            if(i == 1)//if i = description box then it will set the position based on the increased size
-            { 
-                global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-                global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
-                global.tempTextBoxY += 100;
-            }
-            else
-            {
                 //creates the instanes of the text boxes on screen.
                 global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-        
-            }
+
 
             global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
             global.tempTextBoxY += 25;
@@ -237,13 +227,12 @@ if(room == RoomCardEdit)
         //displays the cards information on the card add screen, same way as above.
         TconsRef = string(global.consCardRef);
         global.consName = "Cons"+TconsRef;
-        textFeilds = 6;//number of text boxes we want.
+        textFeilds = 5;//number of text boxes we want.
         ini_open(global.cardConsINI)
         global.realConsName = ini_read_string(global.consName,"Card Name","");        
         global.consInt = ini_read_real(global.consName ,"Int",0);
         global.consChar = ini_read_real(global.consName ,"Char",0);
         global.consWell = ini_read_real(global.consName ,"Well",0);
-        global.consCardText = ini_read_string(global.consName ,"Card Text","");
         global.cardSprite = ini_read_real(global.consName,"Sprite",-1);
         global.cardInfoSlot = ini_read_real(global.consName, "Info Cards",0);
         ini_close();
@@ -251,17 +240,9 @@ if(room == RoomCardEdit)
         
         for(i = 0; i &lt; textFeilds; i++)
         {
-            if(i == 1)//if i = description box then it will set the position based on the increased size
-            { 
-                global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-                global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
-                global.tempTextBoxY += 100;
-            }
-            else
-            {
+
                 //creates the instanes of the text boxes on screen.
                 global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-            }
             global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
             global.tempTextBoxY += 25;
         }
@@ -430,7 +411,6 @@ if(room == RoomCardDeck)
                 ini_open(global.cardActionINI);
                 global.cardRef = ini_read_real(tempCard,"Ref",0);
                 global.realCardName = ini_read_string(tempCard,"Card Name","");
-                global.cardText = ini_read_string(tempCard,"Card Text","");
                 global.cardMythical = ini_read_real(tempCard,"Mythical",0);
                  global.cardSprite = ini_read_real(tempCard,"Sprite",-1);
                 global.cardInfoSlot = ini_read_real(tempCard, "Info Cards",0);

@@ -27,6 +27,14 @@
             <kind>1</kind>
             <string>depth -= 1;
 instanceToCard = global.buttonInstance;
+if(instanceToCard == 0)
+    sprite_index = EventCardSprite;
+if(instanceToCard == 1)
+    sprite_index = ActionCardSprite;
+if(instanceToCard == 2)
+    sprite_index = ConsCardSprite;
+if(instanceToCard == 4)
+    sprite_index = CharCardSprite;
 </string>
           </argument>
         </arguments>
@@ -53,29 +61,6 @@ instanceToCard = global.buttonInstance;
 global.cardSprite = -1;
 global.SelectWindow = false;
 room = RoomSprites;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_text(8,8,string(global.buildingSprite));
 </string>
           </argument>
         </arguments>

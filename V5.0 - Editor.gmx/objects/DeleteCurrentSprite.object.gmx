@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>
     x = global.roomWidth -125;
-    y = global.roomHeight /2+50;
+    y = global.roomHeight /2-50;
 
 </string>
           </argument>

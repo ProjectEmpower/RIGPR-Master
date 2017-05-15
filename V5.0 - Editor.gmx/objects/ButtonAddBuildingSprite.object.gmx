@@ -34,7 +34,7 @@ inputM = "";
 inputB = "";
 
     x = global.roomWidth - 125;
-    y = global.roomHeight /2 - 50;
+    y = global.roomHeight /2 - 150;
 </string>
           </argument>
         </arguments>

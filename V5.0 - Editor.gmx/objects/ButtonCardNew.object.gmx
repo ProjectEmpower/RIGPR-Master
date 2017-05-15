@@ -72,7 +72,6 @@ if(room == RoomCardDeck)
         ini_open(global.cardEventINI);//opens the event ini
         ini_write_real(global.eventName,"Ref", global.totalEventCards);//writes the current TotalEventNum as the "Ref"
         ini_write_string(global.eventName,"Event Name", "");//writes a blank "Event Name"
-        ini_write_string(global.eventName,"Event Text", "");//writes a blank "Event Name"
         ini_write_real(global.eventName,"Int", 0);//writes a bank (0) "Int" stat
         ini_write_real(global.eventName,"Char", 0);//writes a blank (0) "Char" stat
         ini_write_real(global.eventName,"Well", 0);//writes a blank (0) "Well" stat
@@ -114,7 +113,6 @@ if(room == RoomCardDeck)
         ini_write_real(global.consCardName,"Int", 0); //writes a bank (0) "Int" stat
         ini_write_real(global.consCardName,"Char", 0);//writes a blank (0) "Char" stat
         ini_write_real(global.consCardName,"Well", 0);//writes a blank (0) "Well" stat
-        ini_write_string(global.consCardName,"Card Text","");//writes a blank "Card Text"
         ini_write_real(global.consCardName, "Sprite",-1);//writes a blank (0) "Card1"  
         ini_write_real(global.consCardName, "Info Cards",0);
         ini_close();//closes the ini

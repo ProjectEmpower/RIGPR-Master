@@ -131,19 +131,15 @@ else if(room == RoomCardEdit)
             global.realEventName = txt_input;
         }
         if(instance_id[global.box1-1] == id)
-        {           
-            global.eventText = txt_input;
-        }
-        if(instance_id[global.box2-1] == id)
         {
             global.reqEventInt = real(txt_input);
         }
-        if(instance_id[global.box3-1] == id)
+        if(instance_id[global.box2-1] == id)
         {
         
             global.reqEventChar = real(txt_input);
         }
-        if(instance_id[global.box4-1] == id)
+        if(instance_id[global.box3-1] == id)
         {
             global.reqEventWell = real(txt_input);
         }
@@ -154,23 +150,9 @@ else if(room == RoomCardEdit)
         {
             global.realCardName = txt_input;
         }
-        if(instance_id[descTextBoxRef-1] == id)
-        {
-            global.int = real(txt_input);
-        }
         if(instance_id[thirdTextBoxRef-1] == id)
         {
-        
-            global.char = real(txt_input);
-        }
-        if(instance_id[forthTextBoxRef-1] == id)
-        {
-            global.well = real(txt_input);
-        }
-        if(instance_id[fifthTextBoxRef-1] == id)
-        {
             global.cardText = txt_input;
-        
         }
     }
     if(global.RoomState == 2)
@@ -181,10 +163,6 @@ else if(room == RoomCardEdit)
         }
         if(instance_id[descTextBoxRef-1] == id)
         {
-            global.consCardText = txt_input;
-        }
-        if(instance_id[thirdTextBoxRef-1] == id)
-        {
             global.consInt = real(txt_input);
         }
         if(instance_id[forthTextBoxRef-1] == id)
@@ -192,7 +170,7 @@ else if(room == RoomCardEdit)
         
             global.consChar = real(txt_input);
         }
-        if(instance_id[fifthTextBoxRef-1] == id)
+        if(instance_id[sixthTextBoxRef-1] == id)
         {
             global.consWell = real(txt_input);
         }

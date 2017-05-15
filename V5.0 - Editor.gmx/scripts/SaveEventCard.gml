@@ -1,7 +1,6 @@
 //this opens the ini and saves the variables into the corresponding event
 ini_open(global.cardEventINI);
 ini_write_string(global.eventName,"Event Name",global.realEventName);
-ini_write_string(global.eventName,"Event Text",global.eventText);
 ini_write_real(global.eventName,"Int", global.reqEventInt);
 ini_write_real(global.eventName,"Char", global.reqEventChar);
 ini_write_real(global.eventName,"Well",  global.reqEventWell);
