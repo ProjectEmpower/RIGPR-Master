@@ -140,9 +140,7 @@
     <room>rooms\RoomSplash</room>
     <room>rooms\RoomMenu</room>
     <room>rooms\RoomNewGame</room>
-    <rooms name="Options">
-      <room>rooms\RoomResChange</room>
-    </rooms>
+    <room>rooms\RoomResChange</room>
     <room>rooms\RoomMap</room>
     <room>rooms\RoomCharacter</room>
     <room>rooms\RoomDiary</room>

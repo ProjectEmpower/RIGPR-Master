@@ -133,25 +133,25 @@ if(room == RoomDiary)
         txt_display = global.LocationStore;
         txt_input = "";
     }   
-    if(id == instance_id[realNameTextBoxRef+5])
+    if(id == instance_id[realNameTextBoxRef+7])
     {
         sprite_index = No_sprite;
         txt_display = "INT: ";
         txt_input = "OLD - " + string(global.LoadTempInt)+ ", NEW - " + string(global.LoadInt);
     }   
-    if(id == instance_id[realNameTextBoxRef+6])
+    if(id == instance_id[realNameTextBoxRef+8])
     {
         sprite_index = No_sprite;
         txt_display = "CHAR: ";
         txt_input = "OLD - " + string(global.LoadTempChar)+ ", NEW - " + string(global.LoadChar);
     }   
-    if(id == instance_id[realNameTextBoxRef+7])
+    if(id == instance_id[realNameTextBoxRef+9])
     {
         sprite_index = No_sprite;
         txt_display = "WELL: ";
         txt_input = "OLD - " + string(global.LoadTempWell)+ ", NEW - " + string(global.LoadWell);
     }   
-    if(id == instance_id[realNameTextBoxRef+8])
+    if(id == instance_id[realNameTextBoxRef+10])
     {
         image_xscale = 2;
         sprite_index = TextInputBoxSprite_Large;

@@ -613,12 +613,7 @@ else////////////////////////////////////////////////////////////////////////////
     cardNum = 0;
     if(global.RoomState == 0)//event card
     {    
-        list = ds_list_create();
         listtemo = ds_list_create()
-        ini_open(global.AllCards)
-        eventCardOrder = ini_read_string("All Cards","Event Order","");
-        ds_list_read(list,eventCardOrder)
-        ini_close();
         if(global.ListStyle == 0)
         {
             //this code is to make sure that the list length doesnt exceed 20
@@ -630,31 +625,29 @@ else////////////////////////////////////////////////////////////////////////////
             {
                 global.listLength = 20 - (20 - global.totalEventCards);
             }
-            //used to display the lists of events, works the same as previously
             for(i = global.tempPos; i &lt;= global.listLength+global.tempPos; i++)
             {
                 ini_open(global.historyINI);
-                EventStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Event", "");                       
+                EventStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Event", "");//loads the event to check
                 ini_close();
-                ini_open(global.cardEventINI)
-                if(ini_section_exists("Event"+string(ds_list_find_value(list,e))) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Event"+string(i),"Ref",""))) == -1)
-                {           
-                    if("Event"+string(ini_read_real("Event"+string(e),"Ref","")) == EventStore)
+                     if("Event"+string(i) == EventStore &amp;&amp; ds_list_find_index(listtemo,"Event"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
-                        global.EventLoadName = EventStore;
-                        ds_list_add(listtemo,string(ini_read_real("Event"+string(i),"Ref","")))
-                        script_execute(LoadCards);
-                        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
-                        global.tempInputBoxY += 25;
-                        global.tempTextBoxY += 25;
-                        e +=1;
+                        ds_list_add(listtemo,EventStore) 
                         i = 0;
                         cardNum += 1;
                         Week +=1;
                     }
 
-                }
-
+            }
+            ds_list_sort(listtemo,true);//sorts the list
+            //displays the list
+            for(i = 0; i &lt;= ds_list_size(listtemo)-1; i++)
+            {
+                global.EventLoadName = EventStore;//sets the card to load to the nae laoded above
+                script_execute(LoadCards);//loads the cards info
+                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     //displays the card
+                global.tempInputBoxY += 25;//sets the next cards text box position
+                global.tempTextBoxY += 25;//sets next cards text position
             }
 
         }
@@ -668,47 +661,37 @@ else////////////////////////////////////////////////////////////////////////////
             else
             {
                 global.listLength = 4 - (4 - global.totalEventCards);
-            }
-
+            } 
             //used to display the lists of events, works the same as previously
             for(i = global.tempPos; i &lt;= global.listLength+global.tempPos; i++)
             {
                 ini_open(global.historyINI);
-                EventStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Event", "");                       
+                EventStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Event", "");//loads the event to check
                 ini_close();
-                ini_open(global.cardEventINI)
-                if(ini_section_exists("Event"+string(ds_list_find_value(list,e))) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Event"+string(i),"Ref",""))) == -1)
-                {                            
-                    
-                    if("Event"+string(ini_read_real("Event"+string(i),"Ref","")) == EventStore)
+                    if("Event"+string(i) == EventStore &amp;&amp; ds_list_find_index(listtemo,"Event"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
-                        global.EventLoadName = EventStore;
-                        ds_list_add(listtemo,string(ini_read_real("Event"+string(i),"Ref",""))) 
-                        script_execute(LoadCards);
-                        tempY = global.roomHeight/2;
-                        tempX = (global.roomWidth / 6)-25;
-                        inst = instance_create(tempX + 300*(cardNum-global.tempPos),tempY,CardBacking);     
-                        e +=1;
+                        ds_list_add(listtemo,EventStore) 
                         i = 0;
                         cardNum += 1;
                         Week +=1;
                     }
 
-                    
-                }
-                ini_close();
-
+            }
+            ds_list_sort(listtemo,true);//sorts the list
+            //displays the list
+            for(i = 0; i &lt;= ds_list_size(listtemo)-1; i++)
+            {
+                global.EventLoadName = ds_list_find_value(listtemo,i)
+                script_execute(LoadCards);
+                tempY = global.roomHeight/2;
+                tempX = (global.roomWidth / 6)-25;
+                inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);     
             }
         }
     }
     if(global.RoomState == 1)//Action card
     {   
-        list = ds_list_create();
         listtemo = ds_list_create();
-        ini_open(global.AllCards)
-        actionCardOrder = ini_read_string("All Cards","Action Order","");
-        ds_list_read(list,actionCardOrder)
-        ini_close();
         if(global.ListStyle == 0)
         {
             //this code is to make sure that the list length doesnt exceed 20
@@ -719,32 +702,32 @@ else////////////////////////////////////////////////////////////////////////////
             else
             {
                 global.listLength = 20 - (20 - global.totalActionCards);
+            }
              //used to display the lists of card, works the same as previously
-                for(i = global.tempPos; i &lt;= global.listLength+global.tempPos; i++)
-                {                
-                    ini_open(global.historyINI);
-                    ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");                
-                    ini_close();
-                    ini_open(global.cardActionINI);
-                    if(ini_section_exists("Action"+string(ds_list_find_value(list,e))) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Action"+string(i),"Ref",""))) == -1)
-                    {                                         
-                        if("Action"+string(ini_read_real("Action"+string(i),"Ref","")) == ActionStore)
-                        {   
-                            global.ActionLoadName = ActionStore;
-                            ds_list_add(listtemo,string(ini_read_real("Action"+string(i),"Ref","")))
-                            script_execute(LoadCards);
-                            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
-                            global.tempInputBoxY += 25;
-                            global.tempTextBoxY += 25;
-                            e +=1;
-                            i = 0;
-                            cardNum += 1;
-                            Week +=1;
-                        }
-      
+              for(i = global.tempPos; i &lt;= global.listLength+global.tempPos; i++)
+            {
+                ini_open(global.historyINI);
+                ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");//loads the event to check
+                ini_close();
+                   
+                    if("Action"+string(i) == ActionStore &amp;&amp; ds_list_find_index(listtemo,"Action"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
+                    {
+                        ds_list_add(listtemo,ActionStore)
+                        i = 0;
+                        cardNum += 1;
+                        Week +=1;
                     }
-                    ini_close();
-                }
+
+            }
+            ds_list_sort(listtemo,true);//sorts the list
+            //displays the list
+            for(i = 0; i &lt;= ds_list_size(listtemo)-1; i++)
+            {
+                global.ActionLoadName = ds_list_find_value(listtemo,i);
+                script_execute(LoadCards);
+                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                global.tempInputBoxY += 25;
+                global.tempTextBoxY += 25;  
             }
         }
         
@@ -761,31 +744,32 @@ else////////////////////////////////////////////////////////////////////////////
             }
              //used to display the lists of card, works the same as previously
             for(i = global.tempPos; i &lt;= global.listLength+global.tempPos; i++)
-            {                    
+            {
                 ini_open(global.historyINI);
-                ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");                
+                ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");//loads the event to check
                 ini_close();
-                ini_open(global.cardActionINI);
-                if(ini_section_exists("Action"+string(ds_list_find_value(list,e))) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Action"+string(i),"Ref",""))) == -1)
-                {                                         
-                    if("Action"+string(ini_read_real("Action"+string(i),"Ref","")) == ActionStore)
-                    {                                        
-                        global.ActionLoadName = ActionStore;
-                        ds_list_add(listtemo,string(ini_read_real("Action"+string(i),"Ref","")))     
-                        script_execute(LoadCards);
-                        tempY = global.roomHeight/2;
-                        tempX = (global.roomWidth / 6)-25;
-                        inst = instance_create(tempX + 300*(cardNum-global.tempPos),tempY,CardBacking);     
-                        e +=1;
+                    if("Action"+string(i) == ActionStore &amp;&amp; ds_list_find_index(listtemo,"Action"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
+                    {
+                        ds_list_add(listtemo,ActionStore)
                         i = 0;
                         cardNum += 1;
                         Week +=1;
                     }
 
-                }
-                ini_close()
+            }
+            ds_list_sort(listtemo,true);//sorts the list
+            //displays the list
+            for(i = 0; i &lt;= ds_list_size(listtemo)-1; i++)
+            {
+                global.ActionLoadName = ds_list_find_value(listtemo,i);
+                script_execute(LoadCards);
+                tempY = global.roomHeight/2;
+                tempX = (global.roomWidth / 6)-25;
+                inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);     
             }
         }
+            
+        
     }
     if(global.RoomState == 2)//Consequence
     {    
@@ -806,37 +790,32 @@ else////////////////////////////////////////////////////////////////////////////
             {
                 global.listLength = 20 - (20 - global.totalConsCards);
             }
-
-             //used to display the lists of card, works the same as previously
             for(i = global.tempPos; i &lt;= global.listLength+global.tempPos; i++)
             {
                     ini_open(global.historyINI);
                     ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");                
                     ini_close();
                     ini_open(global.cardActionINI);
-                    show_debug_message(ActionStore);
                     ConsStore = "Cons"+string(ini_read_real(ActionStore,"Cons Cards", 0));
                     ini_close();
-                    ini_open(global.cardConsINI);
-                    show_debug_message(ActionStore);
-                    if(ini_section_exists("Cons"+string(ds_list_find_value(list,e))) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Cons"+string(i),"Ref",""))) == -1)
+                    if("Cons"+string(i) == ConsStore &amp;&amp; ds_list_find_index(listtemo,"Cons"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
-                        if("Cons"+string(ini_read_real("Cons"+string(i),"Ref","")) == ConsStore)
-                        {      
-                            global.ConsLoadName = ConsStore;
-                            ds_list_add(listtemo,string(ini_read_real("Cons"+string(i),"Ref","")))
-                            script_execute(LoadCards);
-                            inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
-                            global.tempInputBoxY += 25;
-                            global.tempTextBoxY += 25;
-                            e +=1;
-                            i = 0;
-                            cardNum += 1;
-                            Week +=1;
-                        }
+                        ds_list_add(listtemo,ConsStore) 
+                        i = 0;
+                        cardNum += 1;
+                        Week +=1;
                     }
-                    ini_close();
-            
+
+            }
+            ds_list_sort(listtemo,true);//sorts the list
+            //displays the list
+            for(i = 0; i &lt;= ds_list_size(listtemo)-1; i++)
+            {
+                global.ConsLoadName = ds_list_find_value(listtemo,i)
+                script_execute(LoadCards);
+                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                global.tempInputBoxY += 25;
+                global.tempTextBoxY += 25; 
             }
         }
         if(global.ListStyle == 1)
@@ -850,35 +829,34 @@ else////////////////////////////////////////////////////////////////////////////
             {
                 global.listLength = 4 - (4 - global.totalConsCards);
             }
-             //used to display the lists of card, works the same as previously
             for(i = global.tempPos; i &lt;= global.listLength+global.tempPos; i++)
             {
-                ini_open(global.historyINI);
-                ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");                
-                ini_close();
-                ini_open(global.cardActionINI);
-                ConsStore = "Cons"+string(ini_read_real(ActionStore,"Cons Cards", 0));
-                ini_close();
-                ini_open(global.cardConsINI);
-
-                if(ini_section_exists("Cons"+string(ds_list_find_value(list,e))) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Cons"+string(i),"Ref",""))) == -1)
-                {
-                    if("Cons"+string(ini_read_real("Cons"+string(i),"Ref","")) == ConsStore)
-                    {                                 
-                        global.ConsLoadName = ConsStore;
-                        ds_list_add(listtemo,string(ini_read_real("Cons"+string(i),"Ref","")))
-                        script_execute(LoadCards);
-                        tempY = global.roomHeight/2;
-                        tempX = (global.roomWidth / 6)-25;
-                        inst = instance_create(tempX + 300*(cardNum-global.tempPos),tempY,CardBacking);     
-                        e +=1;
+                    ini_open(global.historyINI);
+                    ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");                
+                    ini_close();
+                    ini_open(global.cardActionINI);
+                    ConsStore = "Cons"+string(ini_read_real(ActionStore,"Cons Cards", 0));
+                    ini_close();
+                    if("Cons"+string(i) == ConsStore &amp;&amp; ds_list_find_index(listtemo,"Cons"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
+                    {
+                        ds_list_add(listtemo,ConsStore) 
                         i = 0;
                         cardNum += 1;
                         Week +=1;
                     }
-                }
-             ini_close();
+
             }
+            ds_list_sort(listtemo,true);//sorts the list
+            //displays the list
+            for(i = 0; i &lt;= ds_list_size(listtemo)-1; i++)
+            {
+                global.ConsLoadName = ds_list_find_value(listtemo,i)
+                script_execute(LoadCards);
+                tempY = global.roomHeight/2;
+                tempX = (global.roomWidth / 6)-25;
+                inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);     
+            }
+             //used to display the lists of card, works the same as previously
         }
     }
     if(global.RoomState == 3)//Info
@@ -900,25 +878,78 @@ else////////////////////////////////////////////////////////////////////////////
             {
                 global.listLength = 20 - (20 - global.totalInfoCards);
             }
-                        e = 0;
-             //used to display the lists of card, works the same as previously
-            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+            //used to display the lists of card, works the same as previously
+          for(i = global.tempPos; i &lt;= global.listLength+global.tempPos; i++)
             {
-                   ini_open(global.cardInfoINI);
-                    global.InfoLoadName = "Info"+string(ds_list_find_value(list,e));
-                    if(ini_section_exists(global.InfoLoadName) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Info"+string(i),"Ref",""))) == -1)
+                for(e = 0; e &lt; 4; e++)
+                {
+                    if(e ==0)
                     {
-                        ds_list_add(listtemo,string(ini_read_real("Info"+string(i),"Ref","")))
-                        script_execute(LoadCards);
-                        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
-                        global.tempInputBoxY += 25;
-                        global.tempTextBoxY += 25;
-                        e +=1;
-                        i = 0;
+                        ini_open(global.historyINI);
+                        EventStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Event", "");                
+                        ini_close();
+                        ini_open(global.cardEventINI);
+                        InfoStore = "Info"+string(ini_read_real(EventStore,"Info Cards", 0));
+                        ini_close();
                     }
-                ini_close();
-            
+                    if(e ==1)
+                    {
+                        ini_open(global.historyINI);
+                        ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");                
+                        ini_close();
+                        ini_open(global.cardActionINI);
+                        InfoStore = "Info"+string(ini_read_real(ActionStore,"Info Cards", 0));
+                        ini_close();
+                    }
+                    if(e ==2)
+                    {
+                        ini_open(global.historyINI);
+                        ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");                
+                        ini_close();
+                        ini_open(global.cardActionINI);
+                        ConsStore = "Cons"+string(ini_read_real(ActionStore,"Cons Cards", 0));
+                        ini_close();
+                        ini_open(global.cardActionINI);
+                        InfoStore = "Info"+string(ini_read_real(ConsStore,"Info Cards", 0));
+                        ini_close();
+                        
+                    }  
+                    if(e ==3)
+                    {
+                        ini_open(global.historyINI);
+                        EventStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Event", "");                
+                        ini_close();
+                        ini_open(global.cardActionINI);
+                        CharStore = "Cons"+string(ini_read_real(EventStore,"Char Cards", 0));
+                        ini_close();
+                        ini_open(global.cardActionINI);
+                        InfoStore = "Info"+string(ini_read_real(CharStore,"Info Cards", 0));
+                        ini_close();
+                        
+                    }                         
+                    if("Info"+string(i) == InfoStore &amp;&amp; ds_list_find_index(listtemo,"Info"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
+                    {
+                        ds_list_add(listtemo,InfoStore) 
+                        i = 0;
+                        cardNum += 1;
+                        Week +=1;
+                    }
+                }
+
+
+
             }
+            ds_list_sort(listtemo,true);//sorts the list
+            //displays the list
+            for(i = 0; i &lt;= ds_list_size(listtemo)-1; i++)
+            {
+                global.InfoLoadName = ds_list_find_value(listtemo,i)
+                script_execute(LoadCards);
+                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                global.tempInputBoxY += 25;
+                global.tempTextBoxY += 25;
+            }
+             
         }
         if(global.ListStyle == 1)
         {
@@ -931,25 +962,80 @@ else////////////////////////////////////////////////////////////////////////////
             {
                 global.listLength = 4 - (4 - global.totalInfoCards);
             }
-            e = 0;
-             //used to display the lists of card, works the same as previously
-            for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
+                  for(i = global.tempPos; i &lt;= global.listLength+global.tempPos; i++)
             {
-             ini_open(global.cardInfoINI);
-                global.InfoLoadName = "Info"+string(ds_list_find_value(list,e));
-                if(ini_section_exists(global.InfoLoadName) &amp;&amp; ds_list_find_index(listtemo,string(ini_read_real("Info"+string(i),"Ref",""))) == -1)
+                for(e = 0; e &lt; 4; e++)
                 {
-                    ds_list_add(listtemo,string(ini_read_real("Info"+string(i),"Ref","")))
-                    script_execute(LoadCards);
+                    if(e ==0)
+                    {
+                        ini_open(global.historyINI);
+                        EventStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Event", "");                
+                        ini_close();
+                        ini_open(global.cardEventINI);
+                        InfoStore = "Info"+string(ini_read_real(EventStore,"Info Cards", 0));
+                        ini_close();
+                    }
+                    if(e ==1)
+                    {
+                        ini_open(global.historyINI);
+                        ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");                
+                        ini_close();
+                        ini_open(global.cardActionINI);
+                        InfoStore = "Info"+string(ini_read_real(ActionStore,"Info Cards", 0));
+                        ini_close();
+                    }
+                    if(e ==2)
+                    {
+                        ini_open(global.historyINI);
+                        ActionStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Action", "");                
+                        ini_close();
+                        ini_open(global.cardActionINI);
+                        ConsStore = "Cons"+string(ini_read_real(ActionStore,"Cons Cards", 0));
+                        ini_close();
+                        ini_open(global.cardActionINI);
+                        InfoStore = "Info"+string(ini_read_real(ConsStore,"Info Cards", 0));
+                        ini_close();
+                        
+                    }  
+                    if(e ==3)
+                    {
+                        ini_open(global.historyINI);
+                        EventStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Event", "");                
+                        ini_close();
+                        ini_open(global.cardActionINI);
+                        CharStore = "Cons"+string(ini_read_real(EventStore,"Char Cards", 0));
+                        ini_close();
+                        ini_open(global.cardActionINI);
+                        InfoStore = "Info"+string(ini_read_real(CharStore,"Info Cards", 0));
+                        ini_close();
+                        
+                    }                         
+                    if("Info"+string(i) == InfoStore &amp;&amp; ds_list_find_index(listtemo,"Info"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
+                    {
+                        ds_list_add(listtemo,InfoStore) 
+                        i = 0;
+                        cardNum += 1;
+                        Week +=1;
+                    }
+                }
+
+
+
+            }
+            ds_list_sort(listtemo,true);//sorts the list
+            //displays the list
+            for(i = 0; i &lt;= ds_list_size(listtemo)-1; i++)
+            {
+                global.InfoLoadName = ds_list_find_value(listtemo,i)
+                script_execute(LoadCards);
                     tempY = global.roomHeight/2;
                     tempX = (global.roomWidth / 6)-25;
-                    inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);     
-                    e +=1;
-                    i = 0;
-                }
-             ini_close();   
-              }  
+                    inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);   
+            }
+             
         }
+           
+        
     }
     if(global.RoomState == 4)//Character
     {
@@ -970,7 +1056,33 @@ else////////////////////////////////////////////////////////////////////////////
             {
                 global.listLength = 20 - (20 - global.totalCharCards);
             }
-            e = 0;
+                     for(i = global.tempPos; i &lt;= global.listLength+global.tempPos; i++)
+            {
+                    ini_open(global.historyINI);
+                    EventStore = ini_read_string("Year"+string(Year) + " - Week"+string(Week),"Event", "");                
+                    ini_close();
+                    ini_open(global.cardActionINI);
+                    ConsStore = "Cons"+string(ini_read_real(EventStore,"Char Cards", 0));
+                    ini_close();
+                    if("Cons"+string(i) == ConsStore &amp;&amp; ds_list_find_index(listtemo,"Cons"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
+                    {
+                        ds_list_add(listtemo,ConsStore) 
+                        i = 0;
+                        cardNum += 1;
+                        Week +=1;
+                    }
+
+            }
+            ds_list_sort(listtemo,true);//sorts the list
+            //displays the list
+            for(i = 0; i &lt;= ds_list_size(listtemo)-1; i++)
+            {
+                global.CharLoadName = ds_list_find_value(listtemo,i)
+                script_execute(LoadCards);
+                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+                global.tempInputBoxY += 25;
+                global.tempTextBoxY += 25;
+            }
             //used to display the lists of card, works the same as previously
             for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
             {
@@ -1126,6 +1238,38 @@ if(room == RoomCharacter)
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="53">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.focus = 0;
+if(room == RoomDiary)
+{
+    ini_open(global.historyINI);
+    if(ini_section_exists("Year"+string(global.JYear) + " - Week"+string(global.JWeek)))
+    {
+        script_execute(SaveHistory);
+    }
+    ini_close();
+}
 </string>
           </argument>
         </arguments>
