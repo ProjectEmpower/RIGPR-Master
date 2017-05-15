@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>//sets positions
-x = 100;
-y = room_height-50
+x = 125;
+y = room_height-70
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Map = "";
+            <string>x = global.roomWidth - 375;
+y = global.roomHeight - 70;
+Map = "";
 CardBackF = "";
 </string>
           </argument>

@@ -25,7 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tempRoom = room;
+            <string>if(room == RoomSprites)
+{
+    x = 125;
+    y = global.roomHeight - 170;
+}
+else
+{
+    x = global.roomWidth - 375;
+    y = global.roomHeight - 70;
+}
+tempRoom = room;
 CardImage = "";
 if(global.RoomState == 3)
     sprite_index = No_sprite;

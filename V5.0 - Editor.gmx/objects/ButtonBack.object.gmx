@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>//Set position on screen.
-x = global.roomWidth-100;
-y = global.roomHeight-50;
+x = global.roomWidth-125;
+y = global.roomHeight-70;
 
 
 </string>

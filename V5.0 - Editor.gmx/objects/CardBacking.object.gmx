@@ -25,7 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = 2;
+            <string>if(room == RoomCardEdit)
+{
+    x = global.roomWidth - 375;
+    y = global.roomHeight /2;
+}
+if(room == RoomSprites)
+{
+    x = 375;
+    y = global.roomHeight /2- 100;
+}
+depth = 2;
 inst = instance_create(x,y- 72,CardSpriteObject);
 Mythical = global.tempCardBackMythStatus;
 if(room != RoomSprites)
@@ -56,6 +66,7 @@ if(room != RoomSprites)
         ref_display = global.charCardRef;
     }
 }
+
 if(Mythical == 0)
 {
     if(global.normalCardBacking != 0)

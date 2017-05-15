@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets posiition
-ButtonSelectEvent.x = global.roomWidth/4
-ButtonSelectEvent.y = global.roomHeight-200;
+            <string>x = global.roomWidth /2 + 215;
+y = global.roomHeight - 70;
 
 if(global.locationEventNumber &gt; 0)//if there are events
 {

@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Background = "";
+            <string>x = global.roomWidth /2;
+y = global.roomHeight /2;
+Background = "";
 BackgroundF = "";
 tempRoom = room;
 </string>

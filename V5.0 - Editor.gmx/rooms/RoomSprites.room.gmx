@@ -60,17 +60,17 @@
     <instance objName="ButtonCardSpriteRight" x="448" y="224" name="inst_6D8BCE51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonSpriteLeft" x="832" y="224" name="inst_B84E1B05" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonSpriteRight" x="1024" y="224" name="inst_2FE52B14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="DeleteCurrentSprite" x="928" y="640" name="inst_A3294841" locked="0" code="" scaleX="0.873786389827728" scaleY="0.725490212440491" colour="4294967295" rotation="0"/>
+    <instance objName="DeleteCurrentSprite" x="1184" y="352" name="inst_A3294841" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="CardTypeButtonAdder" x="96" y="64" name="inst_E58AAC2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="DeleteCurrentCardsprite" x="128" y="640" name="inst_9B304924" locked="0" code="" scaleX="0.893442630767822" scaleY="0.821782171726227" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonAddBuildingSprite" x="928" y="544" name="inst_0C6B017B" locked="0" code="" scaleX="0.863636374473572" scaleY="0.821782171726227" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonAddCardSprite" x="128" y="544" name="inst_DBC584D4" locked="0" code="" scaleX="0.773381292819977" scaleY="0.823529422283173" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonAddNormalCardBack" x="384" y="544" name="inst_B09C0A43" locked="0" code="" scaleX="0.76113361120224" scaleY="0.811881184577942" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonAddMythicalCardBack" x="640" y="544" name="inst_74B40EEA" locked="0" code="" scaleX="0.76113361120224" scaleY="0.811881184577942" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonDeleteNormalCardBack" x="384" y="640" name="inst_A10F3659" locked="0" code="" scaleX="0.750865042209625" scaleY="0.862745106220245" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonDeleteMythCardBack" x="640" y="640" name="inst_D7CE9B02" locked="0" code="" scaleX="0.750865042209625" scaleY="0.862745106220245" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonAddMap" x="1184" y="352" name="inst_6E2E34C7" locked="0" code="" scaleX="0.707509875297546" scaleY="0.676470577716827" colour="4294967295" rotation="0"/>
-    <instance objName="DeleteMap" x="1184" y="448" name="inst_038E8F84" locked="0" code="" scaleX="0.886639654636383" scaleY="0.811881184577942" colour="4294967295" rotation="0"/>
+    <instance objName="DeleteCurrentCardsprite" x="128" y="640" name="inst_9B304924" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddBuildingSprite" x="1184" y="256" name="inst_0C6B017B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddCardSprite" x="128" y="544" name="inst_DBC584D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddNormalCardBack" x="384" y="544" name="inst_B09C0A43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddMythicalCardBack" x="640" y="544" name="inst_74B40EEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonDeleteNormalCardBack" x="384" y="640" name="inst_A10F3659" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonDeleteMythCardBack" x="640" y="640" name="inst_D7CE9B02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddMap" x="896" y="544" name="inst_6E2E34C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="DeleteMap" x="896" y="640" name="inst_038E8F84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

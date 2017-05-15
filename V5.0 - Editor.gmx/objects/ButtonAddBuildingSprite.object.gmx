@@ -33,11 +33,8 @@ inputN = "";
 inputM = "";
 inputB = "";
 
-if(room == RoomLocationAdd)
-{
-    ButtonAddBuildingSprite.x = global.roomWidth/2;
-    ButtonAddBuildingSprite.y = global.roomHeight - 50;
-}
+    x = global.roomWidth - 125;
+    y = global.roomHeight /2 - 50;
 </string>
           </argument>
         </arguments>
@@ -160,7 +157,8 @@ if(fileN != "" and fileM != "" and fileB != "")
         fileB = "";//sets the open file to blank
         
         global.buildingSprite = global.totalNormBuildingSprites-1;
-        script_execute(SaveLocation);//saves the current location
+        if(room != RoomSprites)
+            script_execute(SaveLocation);//saves the current location
         room = tempRoom;//reloads the room
 }
 </string>

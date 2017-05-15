@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>script_execute(DownloadFiles)
-
+x = global.roomWidth / 2;
+y = global.roomHeight / 2 - 50;
 </string>
           </argument>
         </arguments>

@@ -25,12 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room != RoomSprites)
-{
-//sets position, if there are events to display
-    ButtonSpriteRight.x = global.roomWidth/5*3+80;
-    ButtonSpriteRight.y = global.roomHeight/5+25;
-}
+            <string>//sets position, if there are events to display
+    ButtonSpriteRight.x = global.roomWidth/5*3+90;
+    ButtonSpriteRight.y = global.roomHeight/5+125;
+
 </string>
           </argument>
         </arguments>

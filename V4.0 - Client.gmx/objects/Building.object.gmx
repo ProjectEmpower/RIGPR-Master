@@ -93,6 +93,7 @@ for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
 {
     if(global.buildingSprite == i)
     {
+    image_angle = 0;//angle of the building
         if (global.locationMyth == 0)
         {
              sprite_index = global.normBuildingArray[i];

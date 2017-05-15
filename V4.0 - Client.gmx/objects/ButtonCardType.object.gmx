@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_visible[0] = false;
+            <string>x = 375;
+y = global.roomHeight - 70;
+background_visible[0] = false;
 background_visible[1] = false;
 background_visible[2] = false;
 background_visible[3] = false;

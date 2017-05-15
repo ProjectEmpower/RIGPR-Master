@@ -56,15 +56,15 @@ global.RoomState = 0;
             <string>//This code is used to draw the current instances' location#REF# to the screen
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
 draw_set_valign(fa_middle);//sets the vertical allignment for the text
-draw_text(global.MapTitleX,global.MapTitleY,global.tempLocation);//draws the text in the middle of the screen, 25 pixels down, the text = the location#ref#
-draw_text(global.roomWidth/4, global.roomHeight/8,"Location Info");//draws "location info" on the screen
+//draw_text(global.MapTitleX,global.MapTitleY,global.tempLocation);//draws the text in the middle of the screen, 25 pixels down, the text = the location#ref#
+draw_text(global.roomWidth/4, global.roomHeight/8+86,"Location Info");//draws "location info" on the screen
 if(global.locationEventNumber &gt; 0)//if there is more than 1 or more event
 {
-    draw_text(global.roomWidth/4, global.roomHeight-370,"Event " + string(global.EventID)  + " Info");//draw the current events name + info to the screen
+    draw_text(global.roomWidth/4, global.roomHeight-280,"Event " + string(global.EventID)  + " Info");//draw the current events name + info to the screen
 }
 if(global.locationWeekabc != 0)//if there is more than 1 or more event
 {
-    draw_text(global.roomWidth/2, global.roomHeight-350,"Events on week: " + string(global.locationWeekabc));//draw the current events name + info to the screen
+    draw_text(global.roomWidth/2, global.roomHeight-270,"Events on week: " + string(global.locationWeekabc));//draw the current events name + info to the screen
 }
 </string>
           </argument>

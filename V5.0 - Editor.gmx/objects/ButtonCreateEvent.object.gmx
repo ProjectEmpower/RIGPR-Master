@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets positions
-ButtonCreateEvent.x = room_width-75
-ButtonCreateEvent.y = room_height/2+100
+            <string>x = global.roomWidth /2;
+y = global.roomHeight - 70;
 </string>
           </argument>
         </arguments>

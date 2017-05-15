@@ -30,8 +30,8 @@ if(global.RoomState == 2 or global.RoomState == 3 or global.RoomState == 4)
 {
     sprite_index = No_sprite;
 }
-//ButtonCycleMapVisibility.x = room_width/2
-//ButtonCycleMapVisibility.y = room_height-100
+x = global.roomWidth /2;
+y = global.roomHeight - 70;
 </string>
           </argument>
         </arguments>
@@ -90,6 +90,7 @@ if(global.RoomState == 2 or global.RoomState == 3 or global.RoomState == 4)
         
         global.focus = 0; //release the text boxes focus
     }
+    room = RoomCardEdit;
 }
 </string>
           </argument>

@@ -1157,7 +1157,7 @@ if(room == RoomDiary)
             global.EventLoadName = ini_read_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Event","");
             ini_close();
             script_execute(LoadCards);  
-            inst = instance_create((global.roomWidth/5)*3,global.roomHeight/2,CardBacking);     
+            inst = instance_create((global.roomWidth/5)*3,global.roomHeight/2-100,CardBacking);     
             }
             if(i == 2)
             {
@@ -1166,7 +1166,7 @@ if(room == RoomDiary)
                 global.ActionLoadName = ini_read_string("Year"+string(global.JYear) + " - Week"+string(global.JWeek),"Action","");
                 ini_close();
                 script_execute(LoadCards);  
-                inst = instance_create(((global.roomWidth/5)*4)+25,global.roomHeight/2,CardBacking);       
+                inst = instance_create(((global.roomWidth/5)*4)+25,global.roomHeight/2-100,CardBacking);       
             }
             if(i == 3)
             {

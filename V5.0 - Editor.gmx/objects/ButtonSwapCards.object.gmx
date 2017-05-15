@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>switch(global.RoomState)
+            <string>x = global.roomWidth /2;
+y = global.roomHeight /2 - 100;
+switch(global.RoomState)
 {
     case -1: background_visible[0] = true;
                  background_visible[1] = false;

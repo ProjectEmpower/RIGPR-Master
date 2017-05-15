@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//x = room_width/3
-y = room_height-75
+            <string>x = global.roomWidth - 375;
+y = global.roomHeight - 70;
 </string>
           </argument>
         </arguments>

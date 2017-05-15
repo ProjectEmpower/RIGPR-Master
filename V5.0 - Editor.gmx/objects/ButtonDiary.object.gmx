@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//sets position on screen
 ButtonDiary.x = 100
-ButtonDiary.y = room_height-50
+ButtonDiary.y = room_height-80
 </string>
           </argument>
         </arguments>

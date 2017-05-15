@@ -25,10 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ini_open(global.historyINI);
+            <string>x = 125;
+y = global.roomHeight - 70;
+ini_open(global.historyINI);
 if(ini_section_exists("Year"+string(global.JYear) + " - Week"+string(global.JWeek)))
 {
-    sprite_index = BuildingSpriteNormal;
+    sprite_index = RedoEventSprite;
 }
 else
 {

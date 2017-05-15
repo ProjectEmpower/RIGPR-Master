@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>x = 125;
+y = global.roomHeight - 70;
+</string>
           </argument>
         </arguments>
       </action>

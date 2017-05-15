@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardBack = "";
+            <string>x = 375;
+y = global.roomHeight - 170;
+CardBack = "";
 CardBackF = "";
 InfoBack = "";
 InfoBackF = "";
