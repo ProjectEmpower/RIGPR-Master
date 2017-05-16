@@ -202,3 +202,47 @@ else if(room == RoomCardEdit)
         }
     }
 }
+if(room == RoomTutorial)
+{
+    if(instance_id[global.boX0] == id)
+    {
+        global.TutorialOrder[0] = real(txt_input);
+
+    }
+    if(instance_id[global.boX1] == id)
+    {
+        global.TutorialOrder[1] = real(txt_input);
+    }
+    if(instance_id[global.boX2] == id)
+    {
+        global.TutorialOrder[2] = real(txt_input);
+    }
+    if(instance_id[global.boX3] == id)
+    {
+        global.TutorialOrder[3] = real(txt_input);
+    }
+        if(instance_id[global.boX4] == id)
+    {
+        global.TutorialOrder[4] = real(txt_input);
+    }
+        if(instance_id[global.boX5] == id)
+    {
+        global.TutorialOrder[5] = real(txt_input);
+    }
+        if(instance_id[global.boX6] == id)
+    {
+        global.TutorialOrder[6] = real(txt_input);
+    }
+        if(instance_id[global.boX7] == id)
+    {
+        global.TutorialOrder[7] = real(txt_input);
+    }
+        if(instance_id[global.boX8] == id)
+    {
+        global.TutorialOrder[8] = real(txt_input);
+    }
+        if(instance_id[global.boX9] == id)
+    {
+        global.TutorialOrder[9] = real(txt_input);
+    }
+}

@@ -91,9 +91,6 @@ if(room == RoomCardDeck)
         ini_open(global.cardActionINI);//opens the card ini
         ini_write_real(global.cardName,"Ref", global.totalActionCards);//writes the current TotalCardNum as the "Ref"
         ini_write_string(global.cardName,"Card Name", ""); //writes a blank "Card Name"
-        ini_write_real(global.cardName,"Int", 0); //writes a bank (0) "Int" stat
-        ini_write_real(global.cardName,"Char", 0);//writes a blank (0) "Char" stat
-        ini_write_real(global.cardName,"Well", 0);//writes a blank (0) "Well" stat
         ini_write_string(global.cardName,"Card Text","");//writes a blank "Card Text"
         ini_write_real(global.cardName,"Mythical",0);
         ini_write_real(global.cardName, "Sprite",-1);//writes a blank (0) "Card1" 

@@ -28,6 +28,8 @@
             <string>//sets positions
 x = 125;
 y = room_height-70
+if(global.TutorialSetup == true)
+    sprite_index = No_sprite;
 </string>
           </argument>
         </arguments>

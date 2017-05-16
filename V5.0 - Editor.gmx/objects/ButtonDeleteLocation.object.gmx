@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets positions
+            <string>if(global.TutorialSetup == true)
+    sprite_index = No_sprite;
+//sets positions
 x = 125;
 y = room_height-70
 </string>

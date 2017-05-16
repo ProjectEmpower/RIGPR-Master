@@ -1,6 +1,6 @@
 window_set_size( global.roomWidth, global.roomHeight );
 surface_resize(application_surface,global.roomWidth,global.roomHeight);
-numberOfRooms = 9
+numberOfRooms = 11
 //display_reset(8,false);
 for(i = 0; i < numberOfRooms; i++)
 {
@@ -23,6 +23,10 @@ for(i = 0; i < numberOfRooms; i++)
         case 7: roomToChange = RoomCardDeck;
         break;
         case 8: roomToChange = RoomOptions;
+        break;
+        case 9: roomToChange = RoomTutorial;
+        break;
+        case 10: roomToChange = RoomSprites;
         break;
     }
 

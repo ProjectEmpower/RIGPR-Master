@@ -34,33 +34,28 @@ background_visible[4] = false;
 if(global.RoomState == 0)
 {
     background_visible[0] = true;
-    
-    global.tempEventID = string(global.eventRef);// takes the current cardRef (set when accessing the room)
+
     global.eventName = "Event"+global.tempEventID;//writes the card name
     
 }
 if(global.RoomState == 1)
 {
     background_visible[1] = true;
-    global.tempCardID = string(global.cardRef);// takes the current cardRef (set when accessing the room)
     global.cardName = "Action"+global.tempCardID;//writes the card name
 }
 if(global.RoomState == 2)
 {
     background_visible[2] = true;
-    global.tempConID = string(global.consCardRef);// takes the current cardRef (set when accessing the room)
     global.consName = "Cons"+global.tempConID;//writes the card name
 }
 if(global.RoomState == 3)
 {
     background_visible[3] = true;
-    global.tempInfoID = string(global.infoCardRef);
     global.infoName = "Info"+global.tempInfoID;
 }
 if(global.RoomState == 4)
 {
     background_visible[4] = true;
-    global.tempCharID = string(global.charCardRef);
     global.charName = "Char"+global.tempCharID;
 }
 </string>

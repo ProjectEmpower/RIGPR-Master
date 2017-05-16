@@ -41,110 +41,221 @@ global.textBoxInstanceRef = instance_count;//This is the number of objects befor
 
 global.focus = 0; //box focus
 if(room == RoomMap)
-{
-    for(i = 0; i &lt; 10; i++)
+{            
+    global.tempInputBoxY -= 30;
+    global.tempTextBoxY -= 5;
+    for(i = 0; i &lt; 11; i++)
     {    
         if(i != 0)
         {
             global.tempInputBoxY += 25;
             global.tempTextBoxY += 25;
         }
+
         global.textboxArray[i] = instance_create(global.mapInputBoxX,global.tempInputBoxY,TextInputBox);         
 
     }
     
 }
+if(room == RoomTutorial)
+{
+        global.box0 = instance_count;
+        global.box1 = instance_count+3;
+        global.box2 = instance_count+6;
+        global.box3 = instance_count+9;
+        global.box4 = instance_count+12;
+        global.box5 = instance_count+15;
+        global.box6 = instance_count+18;
+        global.box7 = instance_count+20;
+        global.box8 = instance_count+22;
+        global.box9 = instance_count+24;
+        
+        global.boX0 = instance_count+1;
+        global.boX1 = instance_count+4;
+        global.boX2 = instance_count+7;
+        global.boX3 = instance_count+10;
+        global.boX4 = instance_count+13;
+        global.boX5 = instance_count+16;
+        global.boX6 = instance_count+19;
+        global.boX7 = instance_count+21;
+        global.boX8 = instance_count+23;
+        global.boX9 = instance_count+25;
+        global.tempInputBoxY += 25;
+        global.tempTextBoxY += 25;
+    for(i = 0; i &lt; 10; i++)
+    {            
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+        global.textboxArray[i] = instance_create(global.roomWidth/2-50,global.tempInputBoxY,TextInputBox);    
+        global.textboxArray2[i] = instance_create(global.roomWidth/2-205,global.tempInputBoxY,TextInputBox);   
+        if(i != 6 and i != 7 and i != 8 and i != 9)
+            global.textboxArray3[i] = instance_create(global.roomWidth/2+170,global.tempInputBoxY,ConsType);           
 
+    }
+}
 if(room == RoomLocationAdd)
 {
-    global.tempInputBoxY += 85;
-    global.tempTextBoxY += 85;
-    //this displays the text on the location add screen (once you click on a location to edit its information)
-    textFeilds = 4;//number of text boxes we want.
-    ini_open(global.locationINI)//open ini file
-    global.realLocationName = ini_read_string(global.tempLocation,"Real Location Name",""); //Reads the name of location from ini
-    global.description = ini_read_string(global.tempLocation,"Description","");//reads the description from ini
-    global.locationMyth = ini_read_real(global.tempLocation, "Mythical", "");//reads the mythical status from ini
-    global.locationEventNumber = ini_read_real(global.tempLocation, "Number of Events",0); //reads the number of events from ini
-    ini_close();//closes the ini
-    for(i = 0; i &lt; textFeilds; i++)//for the number of text boxes set above
+    if(global.tempLocation != "LocationT")
     {
-        if(i == 1)//if i = description box then it will set the position based on the increased size
-        { 
-            global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-            global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
-            global.tempTextBoxY += 100;
-        }
-        else
+        global.tempInputBoxY += 85;
+        global.tempTextBoxY += 85;
+        //this displays the text on the location add screen (once you click on a location to edit its information)
+        textFeilds = 4;//number of text boxes we want.
+        ini_open(global.locationINI)//open ini file
+        global.realLocationName = ini_read_string(global.tempLocation,"Real Location Name",""); //Reads the name of location from ini
+        global.description = ini_read_string(global.tempLocation,"Description","");//reads the description from ini
+        global.locationMyth = ini_read_real(global.tempLocation, "Mythical", "");//reads the mythical status from ini
+        global.locationEventNumber = ini_read_real(global.tempLocation, "Number of Events",0); //reads the number of events from ini
+        ini_close();//closes the ini
+        for(i = 0; i &lt; textFeilds; i++)//for the number of text boxes set above
         {
-            //creates the instanes of the text boxes on screen.
-            global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
-    
-        }
-            global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
-            global.tempTextBoxY += 25;
-    }
-    if(global.locationEventNumber &gt; 0)//if there are events
-    {
-        global.tempInputBoxY += 75; //set the position 
-        global.tempTextBoxY += 75;   
-       
-        tempEventID = string(global.EventID);
-        global.tempEvent = "Event"+tempEventID;//setup the event name for accessig the ini
-        tempEventType = global.tempEvent+"Type";
-        tempEventWeek = global.tempEvent+"Week";
-        tempEventmyth = global.tempEvent+"Mythical";
-        ini_open(global.locationINI);//open the ini
-        global.eventType = ini_read_real(global.tempLocation, tempEventType, 0);//read the event type
-        global.eventWeek = ini_read_real(global.tempLocation, tempEventWeek, 0);//read the event week
-        global.eventMyth = ini_read_real(global.tempLocation, tempEventmyth, 0);//read the event mythical status
-        ini_close();
-        global.oldWeek = global.eventWeek;
-        if(global.eventWeek != 0)
-            global.locationWeekabc = global.eventWeek;
-        for(i = 4; i &lt; 7; i++)//for the number of feilds (type,week,mythical)
-        {
-            global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
-            global.tempInputBoxY += 25; //incrase the position of the text boxes
-            global.tempTextBoxY += 25;   
-        }
-        if(global.locationWeekabc != 0)
-        {
-            global.NumOfWeeksAtLocation = 0;
-            global.tempInputBoxY -= 75; //incrase the position of the text boxes
-            global.tempTextBoxY -= 75;   
-            for(t = 1; t &lt;= global.locationEventNumber; t++)
-            {
-                global.tempEventID[global.NumOfWeeksAtLocation] = string(t);
-                global.tempEvent2 = "Event"+global.tempEventID[global.NumOfWeeksAtLocation];
-                tempEventWeek = global.tempEvent2+"Week";
-                tempEventType = global.tempEvent2+"Type";
-                ini_open(global.locationINI);//open the ini
-                global.eventWeek2 = ini_read_real(global.tempLocation, tempEventWeek, 0);//read the event week
-                ini_close();
-                if(global.eventWeek2 == global.locationWeekabc)
-                {
-                    tempArray[global.NumOfWeeksAtLocation] = tempEventType; 
-                    if(global.NumOfWeeksAtLocation &lt; 3)
-                        global.NumOfWeeksAtLocation += 1;
-                        
-    
-                }
-    
+            if(i == 1)//if i = description box then it will set the position based on the increased size
+            { 
+                global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
+                global.tempTextBoxY += 100;
             }
-            for(i = 7; i &lt; 7 + global.NumOfWeeksAtLocation; i++)
+            else
             {
-                 ini_open(global.locationINI);//open the ini
-    
-            global.eventType2[i - 7] = ini_read_real(global.tempLocation, tempArray[i - 7], 0);//read the event type
-                 ini_close();
-                global.textboxArray[i] = instance_create(global.tempInputBoxX + 400 ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
+                //creates the instanes of the text boxes on screen.
+                global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+        
+            }
+                global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
+                global.tempTextBoxY += 25;
+        }
+        if(global.locationEventNumber &gt; 0)//if there are events
+        {
+            global.tempInputBoxY += 75; //set the position 
+            global.tempTextBoxY += 75;   
+           
+            tempEventID = string(global.EventID);
+            global.tempEvent = "Event"+tempEventID;//setup the event name for accessig the ini
+            tempEventType = global.tempEvent+"Type";
+            tempEventWeek = global.tempEvent+"Week";
+            tempEventmyth = global.tempEvent+"Mythical";
+            ini_open(global.locationINI);//open the ini
+            global.eventType = ini_read_real(global.tempLocation, tempEventType, 0);//read the event type
+            global.eventWeek = ini_read_real(global.tempLocation, tempEventWeek, 0);//read the event week
+            global.eventMyth = ini_read_real(global.tempLocation, tempEventmyth, 0);//read the event mythical status
+            ini_close();
+            global.oldWeek = global.eventWeek;
+            if(global.eventWeek != 0)
+                global.locationWeekabc = global.eventWeek;
+            for(i = 4; i &lt; 7; i++)//for the number of feilds (type,week,mythical)
+            {
+                global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
                 global.tempInputBoxY += 25; //incrase the position of the text boxes
                 global.tempTextBoxY += 25;   
             }
+            if(global.locationWeekabc != 0)
+            {
+                global.NumOfWeeksAtLocation = 0;
+                global.tempInputBoxY -= 75; //incrase the position of the text boxes
+                global.tempTextBoxY -= 75;   
+                for(t = 1; t &lt;= global.locationEventNumber; t++)
+                {
+                    global.tempEventID[global.NumOfWeeksAtLocation] = string(t);
+                    global.tempEvent2 = "Event"+global.tempEventID[global.NumOfWeeksAtLocation];
+                    tempEventWeek = global.tempEvent2+"Week";
+                    tempEventType = global.tempEvent2+"Type";
+                    ini_open(global.locationINI);//open the ini
+                    global.eventWeek2 = ini_read_real(global.tempLocation, tempEventWeek, 0);//read the event week
+                    ini_close();
+                    if(global.eventWeek2 == global.locationWeekabc)
+                    {
+                        tempArray[global.NumOfWeeksAtLocation] = tempEventType; 
+                        if(global.NumOfWeeksAtLocation &lt; 3)
+                            global.NumOfWeeksAtLocation += 1;
+                            
+        
+                    }
+        
+                }
+                for(i = 7; i &lt; 7 + global.NumOfWeeksAtLocation; i++)
+                {
+                     ini_open(global.locationINI);//open the ini
+        
+                global.eventType2[i - 7] = ini_read_real(global.tempLocation, tempArray[i - 7], 0);//read the event type
+                     ini_close();
+                    global.textboxArray[i] = instance_create(global.tempInputBoxX + 400 ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
+                    global.tempInputBoxY += 25; //incrase the position of the text boxes
+                    global.tempTextBoxY += 25;   
+                }
+            }
         }
     }
+    else
+    {
+    global.tempInputBoxY += 85;
+        global.tempTextBoxY += 85;
+        //this displays the text on the location add screen (once you click on a location to edit its information)
+        textFeilds = 4;//number of text boxes we want.
+        ini_open(global.locationINI)//open ini file
+        global.realLocationName = ini_read_string(global.tempLocation,"Real Location Name",""); //Reads the name of location from ini
+        global.description = ini_read_string(global.tempLocation,"Description","");//reads the description from ini
+        global.locationMyth = ini_read_real(global.tempLocation, "Mythical", "");//reads the mythical status from ini
+        global.locationEventNumber = ini_read_real(global.tempLocation, "Number of Events",0); //reads the number of events from ini
+        ini_close();//closes the ini
+        for(i = 0; i &lt; textFeilds; i++)//for the number of text boxes set above
+        {
+            if(i == 1)//if i = description box then it will set the position based on the increased size
+            { 
+                global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
+                global.tempInputBoxY += 100;//increases the location of the text/input boxes (large increase for multiple line)
+                global.tempTextBoxY += 100;
+            }
+            else
+            {
+                //creates the instanes of the text boxes on screen.
+                global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //creats an instance at the location using the object 
         
+            }
+                global.tempInputBoxY += 25; //increases the location of the text/input boxes (standard increase for one line)
+                global.tempTextBoxY += 25;
+        }
+        if(global.locationEventNumber &gt; 0)//if there are events
+        {
+            global.tempInputBoxY += 75; //set the position 
+            global.tempTextBoxY += 75;   
+           
+            global.tempEvent = "Event1";//setup the event name for accessig the ini
+            tempEventType = global.tempEvent+"Type";
+            tempEventWeek = global.tempEvent+"Week";
+            tempEventmyth = global.tempEvent+"Mythical";
+            ini_open(global.locationINI);//open the ini
+            global.eventType = ini_read_real(global.tempLocation, tempEventType, 0);//read the event type
+            global.eventWeek = ini_read_real(global.tempLocation, tempEventWeek, 0);//read the event week
+            global.eventMyth = ini_read_real(global.tempLocation, tempEventmyth, 0);//read the event mythical status
+            ini_close();
+            global.oldWeek = global.eventWeek;
+            global.locationWeekabc = global.eventWeek;
+            for(i = 4; i &lt; 7; i++)//for the number of feilds (type,week,mythical)
+            {
+                global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
+                global.tempInputBoxY += 25; //incrase the position of the text boxes
+                global.tempTextBoxY += 25;   
+            }
+            if(global.locationWeekabc != 0)
+            {
+                global.NumOfWeeksAtLocation = 1;
+                global.tempInputBoxY -= 75; //incrase the position of the text boxes
+                global.tempTextBoxY -= 75;   
+   
+                for(i = 7; i &lt; 7 + global.NumOfWeeksAtLocation; i++)
+                {
+                     ini_open(global.locationINI);//open the ini
+        
+                global.eventType2[i - 7] = ini_read_real(global.tempLocation, tempArray[i - 7], 0);//read the event type
+                     ini_close();
+                    global.textboxArray[i] = instance_create(global.tempInputBoxX + 400 ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
+                    global.tempInputBoxY += 25; //incrase the position of the text boxes
+                    global.tempTextBoxY += 25;   
+                }
+            }
+        }
+    } 
+       
 }
 
 if(room == RoomCardEdit)
@@ -168,8 +279,14 @@ background_yscale[5] = 1 * ((room_height) / background_height[0]);
     if(global.RoomState == 0)//event card
     {
         //works the same as above, but for roomEventAdd and roomEvenEdit, this is used to display the events information 
-        TeventRef = string(global.eventRef);
-        global.eventName = "Event"+TeventRef;
+        if(global.TutorialSetup == false)
+            global.tempEventID = string(global.eventRef);// takes the current cardRef (set when accessing the room)
+        else
+        {
+            global.eventRef = "T";
+            global.tempEventID = "T";
+        }
+        global.eventName = "Event"+global.tempEventID 
         ini_open(global.cardEventINI)
         global.realEventName = ini_read_string(global.eventName,"Event Name",""); //writes the instance number (global TotalInstanceNum) to "instanceRef" inside the ini file.;
         global.reqEventInt = ini_read_real(global.eventName,"Int",0);
@@ -212,9 +329,15 @@ background_yscale[5] = 1 * ((room_height) / background_height[0]);
     }
     if(global.RoomState == 1)//action card
     {
+        if(global.TutorialSetup == false)
+            global.tempCardID = string(global.cardRef);// takes the current cardRef (set when accessing the room)
+        else
+        {
+            global.cardRef = "T";
+            global.tempCardID = "T";
+        }
         //displays the cards information on the card add screen, same way as above.
-        TcardRef = string(global.cardRef);
-        global.cardName = "Action"+TcardRef;
+        global.cardName = "Action"+global.tempCardID;
         textFeilds = 5;//number of text boxes we want.
         ini_open(global.cardActionINI)
         global.realCardName = ini_read_string(global.cardName,"Card Name","");
@@ -239,9 +362,15 @@ background_yscale[5] = 1 * ((room_height) / background_height[0]);
     }
     if(global.RoomState == 2)//cons card
     {
+        if(global.TutorialSetup == false)
+            global.tempConID = string(global.consCardRef);// takes the current cardRef (set when accessing the room)
+        else
+        {
+            global.consCardRef = "T";
+            global.tempConID = "T";
+        }
         //displays the cards information on the card add screen, same way as above.
-        TconsRef = string(global.consCardRef);
-        global.consName = "Cons"+TconsRef;
+        global.consName = "Cons"+global.tempConID;
         textFeilds = 5;//number of text boxes we want.
         ini_open(global.cardConsINI)
         global.realConsName = ini_read_string(global.consName,"Card Name","");        
@@ -264,9 +393,15 @@ background_yscale[5] = 1 * ((room_height) / background_height[0]);
     }
     if(global.RoomState == 3)//info card
     {
+        if(global.TutorialSetup == false)
+            global.tempInfoID = string(global.infoCardRef);// takes the current cardRef (set when accessing the room)
+        else
+        {
+            global.infoCardRef = "T";
+            global.tempInfoID = "T";
+        }
         //displays the cards information on the card add screen, same way as above.
-        TinfoRef = string(global.infoCardRef);
-        global.infoName = "Info"+TinfoRef;
+        global.infoName = "Info"+global.tempInfoID;
         textFeilds = 3;//number of text boxes we want.
         ini_open(global.cardInfoINI)
         global.realInfoName = ini_read_string(global.infoName,"Card Name","");
@@ -295,9 +430,15 @@ background_yscale[5] = 1 * ((room_height) / background_height[0]);
     }
     if(global.RoomState == 4)//CHAR card
     {
+        if(global.TutorialSetup == false)
+            global.tempCharID = string(global.charCardRef);// takes the current cardRef (set when accessing the room)
+        else
+        {
+            global.charCardRef = "T";
+            global.tempCharID = "T";
+        }
         //displays the cards information on the card add screen, same way as above.
-        TcharRef = string(global.charCardRef);
-        global.charName = "Char"+TcharRef;
+        global.charName = "Char"+global.tempCharID;
         textFeilds = 3;//number of text boxes we want.
         ini_open(global.cardCharINI)
         global.charCardName = ini_read_string(global.charName,"Card Name","");
@@ -736,6 +877,10 @@ if(room == RoomCardEdit)
         script_execute(SaveInfoCard);
     if(global.RoomState == 4)
         script_execute(SaveCharCard);
+}
+if(room == RoomTutorial)
+{
+    script_execute(SaveTutorial);
 }
 if(room != RoomMap)
 {   

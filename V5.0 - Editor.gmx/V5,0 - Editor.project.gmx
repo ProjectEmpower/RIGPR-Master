@@ -113,6 +113,7 @@
     <script>scripts\SaveConsCard.gml</script>
     <script>scripts\SaveInfoCard.gml</script>
     <script>scripts\SaveCharCard.gml</script>
+    <script>scripts\SaveTutorial.gml</script>
     <script>scripts\ResolutionChange.gml</script>
   </scripts>
   <objects name="objects">
@@ -242,6 +243,7 @@
     <room>rooms\RoomCharacter</room>
     <room>rooms\RoomDiary</room>
     <room>rooms\RoomCards</room>
+    <room>rooms\RoomTutorial</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -71,11 +71,14 @@ if(room == RoomLocationAdd)//checks room
     {
         sprite_index = No_sprite;
         txt_input = "Error - Event type not updated";//sets default text
-        txt_display = "Event Type: "
+        txt_display = "Event: "
     }
     if(instance_id[sixthTextBoxRef] == id)
     {
-        sprite_index = TextInputBoxSprite_Small;
+        if(global.TutorialSetup == false)
+            sprite_index = TextInputBoxSprite_Small;
+        else
+            sprite_index = No_sprite;
         txt_input = string(global.eventWeek);//sets default text
         txt_display = "Acvailable week: "
     }
@@ -89,26 +92,29 @@ if(room == RoomLocationAdd)//checks room
     {
         sprite_index = No_sprite;
         txt_input = "Error - Event 1 type not updated"; //sets default text
-        txt_display = "Event " + global.tempEventID[0] + ": "
-        if(global.eventType2[0] != 0)//if there is an event type (other than 0, which is blank)
-            {
-                s = string(global.eventType2[0])//set string based on the type
-                tempEvent = "Event"+s;//set event name to load based on the string above
-                ini_open(global.cardEventINI);//open ini
-                if(ini_section_exists(tempEvent))
+
+            txt_display = "Event " + global.tempEventID[0] + ": "
+            if(global.eventType2[0] != 0)//if there is an event type (other than 0, which is blank)
                 {
-                    txt_input = ini_read_string(tempEvent, "Event Name", "");//loads the events name using the type variable
+                    s = string(global.eventType2[0])//set string based on the type
+                    tempEvent = "Event"+s;//set event name to load based on the string above
+                    ini_open(global.cardEventINI);//open ini
+                    if(ini_section_exists(tempEvent))
+                    {
+                        txt_input = ini_read_string(tempEvent, "Event Name", "");//loads the events name using the type variable
+                    }
+                    else
+                    {
+                        txt_input = "Editor Only: Event deleted, please replace.";
+                    }
+                    ini_close();//closes the ini
                 }
                 else
                 {
-                    txt_input = "Editor Only: Event deleted, please replace.";
+                    txt_input = "No event selected";//if the event is blank, display text
                 }
-                ini_close();//closes the ini
-            }
-            else
-            {
-                txt_input = "No event selected";//if the event is blank, display text
-            }
+    
+
     }
     if(instance_id[seventhTextBoxRef+2] == id)
     {
@@ -163,6 +169,193 @@ if(room == RoomLocationAdd)//checks room
             }
     }
 }
+if(room == RoomTutorial)
+{
+image_xscale = 2
+    if(instance_id[global.box0] == id)
+    {
+        switch(global.LocationTutorial)
+        {
+            case 0:  txt_input = "Not Included";//sets default text
+            break;
+            case 1: txt_input = "Included";
+            break;
+        }
+        txt_display = "Location Tutorial: ";     //sets display text
+    }
+    if(instance_id[global.box1] == id)
+    {
+        switch(global.EventTutorial)
+        {
+            case 0:  txt_input = "Not Included";//sets default text
+            break;
+            case 1: txt_input = "Included";
+            break;
+        }
+        txt_display = "Event Card Tutorial: ";     //sets display text
+    }
+    if(instance_id[global.box2] == id)
+    {
+        switch(global.ActionTutorial)
+        {
+            case 0:  txt_input = "Not Included";//sets default text
+            break;
+            case 1: txt_input = "Included";
+            break;
+        }
+        txt_display = "Action Card Tutorial: ";     //sets display text
+    }   
+    if(instance_id[global.box3] == id)
+    {
+        switch(global.ConsTutorial)
+        {
+            case 0:  txt_input = "Not Included";//sets default text
+            break;
+            case 1: txt_input = "Included";
+            break;
+        }
+        txt_display = "Consequence Card Tutorial: ";     //sets display text
+    }   
+    if(instance_id[global.box4] == id)
+    {
+        switch(global.InfoTutorial)
+        {
+            case 0:  txt_input = "Not Included";//sets default text
+            break;
+            case 1: txt_input = "Included";
+            break;
+        }
+        txt_display = "Information Card Tutorial: ";     //sets display text
+    }  
+    if(instance_id[global.box5] == id)
+    {
+        switch(global.CharTutorial)
+        {
+            case 0:  txt_input = "Not Included";//sets default text
+            break;
+            case 1: txt_input = "Included";
+            break;
+        }
+        txt_display = "Character Card Tutorial: ";     //sets display text
+    }  
+    if(instance_id[global.box6] == id)
+    {
+        switch(global.MythTutorial)
+        {
+            case 0:  txt_input = "Not Included";//sets default text
+            break;
+            case 1: txt_input = "Included";
+            break;
+        }
+        txt_display = "Mythical Tutorial: ";     //sets display text
+    } 
+    if(instance_id[global.box7] == id)
+    {
+        switch(global.PlayerStatsTutorial)
+        {
+            case 0:  txt_input = "Not Included";//sets default text
+            break;
+            case 1: txt_input = "Included";
+            break;
+        }
+        txt_display = "Player Stats Tutorial: ";     //sets display text
+    } 
+    if(instance_id[global.box8] == id)
+    {
+        switch(global.DiaryTutorial)
+        {
+            case 0:  txt_input = "Not Included";//sets default text
+            break;
+            case 1: txt_input = "Included";
+            break;
+        }
+        txt_display = "Journal Tutorial: ";     //sets display text
+    } 
+    if(instance_id[global.box9] == id)
+    {
+        switch(global.CardsTutorial)
+        {
+            case 0:  txt_input = "Not Included";//sets default text
+            break;
+            case 1: txt_input = "Included";
+            break;
+        }
+        txt_display = "Cards Page Tutorial: ";     //sets display text
+    } 
+    
+    
+
+    if(instance_id[global.boX0] == id)
+    {   
+        image_xscale = 1
+        sprite_index = TextInputBoxSprite_Small
+        txt_input = string(global.TutorialOrder[0]);
+        txt_display = "";     //sets display text
+    }
+    if(instance_id[global.boX1] == id)
+    {    
+      image_xscale = 1
+    sprite_index = TextInputBoxSprite_Small
+        txt_input = string(global.TutorialOrder[1]);
+        txt_display = "";     //sets display text
+    }
+    if(instance_id[global.boX2] == id)
+    {   
+      image_xscale = 1
+    sprite_index = TextInputBoxSprite_Small
+        txt_input = string(global.TutorialOrder[2]);
+        txt_display = "";     //sets display text
+    }   
+    if(instance_id[global.boX3] == id)
+    {    
+      image_xscale = 1
+    sprite_index = TextInputBoxSprite_Small
+        txt_input = string(global.TutorialOrder[3]);
+        txt_display = "";     //sets display text
+    }   
+    if(instance_id[global.boX4] == id)
+    {    
+      image_xscale = 1
+    sprite_index = TextInputBoxSprite_Small
+        txt_input = string(global.TutorialOrder[4]);
+        txt_display = "";     //sets display text
+    }  
+    if(instance_id[global.boX5] == id)
+    {    
+      image_xscale = 1
+    sprite_index = TextInputBoxSprite_Small
+        txt_input = string(global.TutorialOrder[5]);
+        txt_display = "";     //sets display text
+    }  
+    if(instance_id[global.boX6] == id)
+    {
+      image_xscale = 1
+    sprite_index = TextInputBoxSprite_Small
+        txt_input = string(global.TutorialOrder[6]);
+        txt_display = "";     //sets display text
+    } 
+    if(instance_id[global.boX7] == id)
+    {
+      image_xscale = 1
+    sprite_index = TextInputBoxSprite_Small
+        txt_input = string(global.TutorialOrder[7]);
+        txt_display = "";     //sets display text
+    } 
+    if(instance_id[global.boX8] == id)
+    {
+      image_xscale = 1
+    sprite_index = TextInputBoxSprite_Small
+        txt_input = string(global.TutorialOrder[8]);
+        txt_display = "";     //sets display text
+    } 
+    if(instance_id[global.boX9] == id)
+    {
+      image_xscale = 1
+    sprite_index = TextInputBoxSprite_Small
+        txt_input = string(global.TutorialOrder[9]);
+        txt_display = "";     //sets display text
+    } 
+}
 if(room == RoomCardEdit)
 {
     if(global.RoomState == 0)//event card
@@ -197,16 +390,29 @@ if(room == RoomCardEdit)
             txt_display = "Event Type: "
         }
 
-        for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+        if(global.TutorialSetup == false)
         {
-            if(instance_id[global.box5 + i] == id) 
+            for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+            {
+                if(instance_id[global.box5 + i] == id) 
+                {
+                
+                    txt_input = global.card1[i];
+                    txt_display = "Tutorial Action Card: ";
+                }
+            }
+        }
+        else
+        {
+            if(instance_id[global.box5] == id) 
             {
             
                 txt_input = global.card1[i];
                 txt_display = "Action Card " + string(i+1) + ": ";
             }
         }
-
+        if(global.TutorialSetup == false)
+            global.eventActionCardsNum = 0;
         if(instance_id[global.box6 + global.eventActionCardsNum] == id) 
         {
             txt_input = global.InfoCard;
@@ -502,10 +708,15 @@ if(room == RoomMap)
     }
     if(instance_id[realNameTextBoxRef+8]  == id)
     {
-        txt_display = "Image managment";     //sets display text
+        txt_display = "Image Managment";     //sets display text
         num_display = "";
     }
     if(instance_id[realNameTextBoxRef+9]  == id)
+    {
+        txt_display = "Tutorial Setup";     //sets display text
+        num_display = "";
+    }
+    if(instance_id[realNameTextBoxRef+10]  == id)
     {
         txt_display = "Options";     //sets display text
         num_display = "";
@@ -601,71 +812,79 @@ if(room == RoomLocationAdd)
     //It then takes that information and displays the correct mythical status for the location, based on all events.
     if(id == global.textboxArray[2])
     {
-     if(global.locationEventNumber &gt; 0)
+        if(global.locationEventNumber &gt; 0)
         {
-            tempNormMap = 0;//set normal map to 0 (false)
-            tempMythMap = 0;//set mythical map to 0 (false)
-            for(i = 1; i &lt;= global.locationEventNumber; i++)//go through the events
+            if(global.TutorialSetup == false)
             {
-                tempEventID = string(i);//create a string of the event id based on the iteration (i) 
-                tempEvent = "Event"+tempEventID+"Type";//creates the tempEvent variable for use when accessing the events information from the location ini
-                ini_open(global.locationINI);//opens the location ini
-                tempEventRef = ini_read_real(global.tempLocation, tempEvent, 3);//reads the events reference 
-                ini_close();//closes the location ini
-                s = string(tempEventRef)//uses the reference set above and creates a string with it
-                tempEventName = "Event"+s;//uses the string to create the event name "Event"+*string set above"
-                ini_open(global.cardEventINI);//opens the event ini
-
-                tempMyth = ini_read_real(tempEventName, "Mythical", 3);//reads tge mythical status of current event
-                ini_close();//closes the event ini
-                switch(tempMyth)//checks the events mythical statsus, changes the tempNormMap and tempMythMap variables accordingly
+                tempNormMap = 0;//set normal map to 0 (false)
+                tempMythMap = 0;//set mythical map to 0 (false)
+                for(i = 1; i &lt;= global.locationEventNumber; i++)//go through the events
                 {
-                    case 0: tempNormMap = 1;
-                    break;
-                    case 1: tempMythMap = 1;
-                    break;
-                    case 2: tempNormMap = 1;
-                            tempMythMap = 1;
-                    break;
-                    case 3: txt_input = "Editor only: Mythical status not set somewhere";
-                    break;
-                    default: txt_input = "None - Error: L93";
-                    break;
+                    tempEventID = string(i);//create a string of the event id based on the iteration (i) 
+                    tempEvent = "Event"+tempEventID+"Type";//creates the tempEvent variable for use when accessing the events information from the location ini
+                    ini_open(global.locationINI);//opens the location ini
+                    tempEventRef = ini_read_real(global.tempLocation, tempEvent, 3);//reads the events reference 
+                    ini_close();//closes the location ini
+                    s = string(tempEventRef)//uses the reference set above and creates a string with it
+                    tempEventName = "Event"+s;//uses the string to create the event name "Event"+*string set above"
+                    ini_open(global.cardEventINI);//opens the event ini
+    
+                    tempMyth = ini_read_real(tempEventName, "Mythical", 3);//reads tge mythical status of current event
+                    ini_close();//closes the event ini
+                    switch(tempMyth)//checks the events mythical statsus, changes the tempNormMap and tempMythMap variables accordingly
+                    {
+                        case 0: tempNormMap = 1;
+                        break;
+                        case 1: tempMythMap = 1;
+                        break;
+                        case 2: tempNormMap = 1;
+                                tempMythMap = 1;
+                        break;
+                        case 3: txt_input = "Editor only: Mythical status not set somewhere";
+                        break;
+                        default: txt_input = "None - Error: L93";
+                        break;
                     }
+                    
+                }
+                //sets locationMyth variable and text input accordingly
+                if(tempNormMap == 1 and tempMythMap == 1)
+                {
+                    global.locationMyth = 2;
+                    //global.eventMyth = 2; //unsure if needed.... I don't think so anymore. testing required.
+                    txt_input = "Both Maps";
+                }
+                if(tempNormMap == 0 and tempMythMap == 1)
+                {
+                    global.locationMyth = 1;
+                   // global.eventMyth = 1;
+                    txt_input = "Mythical Map";
+                }
+                if(tempNormMap == 1 and tempMythMap == 0)
+                {
+                    global.locationMyth = 0
+                    //global.eventMyth = 0;
+                    txt_input = "Normal Map";
+                }
+                if(global.locationEventNumber == 0)//sets mythical status if there are no buttons visible.
+                {
+                    switch(global.locationMyth)
+                    {
+                        case 0: txt_input = "Normal Map";
+                        break;
+                        case 1: txt_input = "Mythical Map";
+                        break;
+                        case 2: txt_input = "Editor only - Event missing";
+                        break;
+                        default: txt_input = "None - Error: L127";
+                    }
+                }
+            }
+            else
+            {
+                txt_input = "Tutorial";
+            }
 
-            }
-            //sets locationMyth variable and text input accordingly
-            if(tempNormMap == 1 and tempMythMap == 1)
-            {
-                global.locationMyth = 2;
-                //global.eventMyth = 2; //unsure if needed.... I don't think so anymore. testing required.
-                txt_input = "Both Maps";
-            }
-            if(tempNormMap == 0 and tempMythMap == 1)
-            {
-                global.locationMyth = 1;
-               // global.eventMyth = 1;
-                txt_input = "Mythical Map";
-            }
-            if(tempNormMap == 1 and tempMythMap == 0)
-            {
-                global.locationMyth = 0
-                //global.eventMyth = 0;
-                txt_input = "Normal Map";
-            }
-        }
-        if(global.locationEventNumber == 0)//sets mythical status if there are no buttons visible.
-        {
-            switch(global.locationMyth)
-            {
-                case 0: txt_input = "Normal Map";
-                break;
-                case 1: txt_input = "Mythical Map";
-                break;
-                case 2: txt_input = "Editor only - Event missing";
-                break;
-                default: txt_input = "None - Error: L127";
-            }
         }
     }
     if(id == instance_id[forthTextBoxRef])
@@ -674,25 +893,42 @@ if(room == RoomLocationAdd)
     }
     if(id == instance_id[fifthTextBoxRef])
     {
-        //checks to see the events type, it displays the event name
-        if(global.eventType != 0)//if there is an event type (other than 0, which is blank)
+        if(global.TutorialSetup == false)
         {
-            s = string(global.eventType)//set string based on the type
-            tempEvent = "Event"+s;//set event name to load based on the string above
-            ini_open(global.cardEventINI);//open ini
-            if(ini_section_exists(tempEvent))
+            //checks to see the events type, it displays the event name
+            if(global.eventType != 0)//if there is an event type (other than 0, which is blank)
             {
-                txt_input = ini_read_string(tempEvent, "Event Name", "");//loads the events name using the type variable
+                s = string(global.eventType)//set string based on the type
+                tempEvent = "Event"+s;//set event name to load based on the string above
+                ini_open(global.cardEventINI);//open ini
+                if(ini_section_exists(tempEvent))
+                {
+                    txt_input = ini_read_string(tempEvent, "Event Name", "");//loads the events name using the type variable
+                }
+                else
+                {
+                    txt_input = "Editor Only: Event deleted, please replace.";
+                }
+                ini_close();//closes the ini
             }
             else
             {
-                txt_input = "Editor Only: Event deleted, please replace.";
+                txt_input = "No event selected";//if the event is blank, display text
             }
-            ini_close();//closes the ini
         }
         else
         {
-            txt_input = "No event selected";//if the event is blank, display text
+                tempEvent = "EventT";//set event name to load based on the string above
+                ini_open(global.cardEventINI);//open ini
+                if(ini_section_exists(tempEvent))
+                {
+                    txt_input = ini_read_string(tempEvent, "Event Name", "");//loads the events name using the type variable
+                }
+                else
+                {
+                    txt_input = "Editor Only: Error.";
+                }
+                ini_close();//closes the ini
         }
 
     }
@@ -742,6 +978,8 @@ if(room == RoomLocationAdd)
     }
     if(id == instance_id[seventhTextBoxRef])
     {
+    if(global.TutorialSetup == false)
+    {
     //checks the event types mythical status and displays accordingly
         if(global.eventType != 0)
         {
@@ -772,11 +1010,57 @@ if(room == RoomLocationAdd)
             txt_input = "No event selected";
         }
     }
-    
+    else
+    {
+    txt_input = "Tutorial";
+    }
+    }
     //checks the event types mythical status and displays accordingly
 
 }
-
+if(room == RoomTutorial)
+{
+    if(instance_id[global.boX0] == id)
+    {
+        txt_input = string(global.TutorialOrder[0]);   
+    }
+    if(instance_id[global.boX1] == id)
+    {
+        txt_input = string(global.TutorialOrder[1]);
+    }
+    if(instance_id[global.boX2] == id)
+    {
+        txt_input = string(global.TutorialOrder[2]);
+    }
+    if(instance_id[global.boX3] == id)
+    {
+        txt_input = string(global.TutorialOrder[3]);
+    }
+    if(instance_id[global.boX4] == id)
+    {
+        txt_input = string(global.TutorialOrder[4]);
+    }
+    if(instance_id[global.boX5] == id)
+    {
+        txt_input = string(global.TutorialOrder[5]);
+    }
+    if(instance_id[global.boX6] == id)
+    {
+        txt_input = string(global.TutorialOrder[6]);
+    }
+    if(instance_id[global.boX7] == id)
+    {
+        txt_input = string(global.TutorialOrder[7]);
+    }
+    if(instance_id[global.boX8] == id)
+    {
+        txt_input = string(global.TutorialOrder[8]);
+    }
+    if(instance_id[global.boX9] == id)
+    {
+        txt_input = string(global.TutorialOrder[9]);
+    }
+}
 if(room == RoomCardEdit)
 {
     if(global.RoomState == 0)
@@ -805,36 +1089,53 @@ if(room == RoomCardEdit)
                 default: txt_input = "Error - Missing event mythical info";
             }
         }
-        for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+        if(global.TutorialSetup == false)
         {
-            if(instance_id[global.box5-1 + i] == id) 
+            for(i = 0; i &lt;= global.eventActionCardsNum; i++)
             {
-              
-                //checks to see if there is a card selected, if so, it displays the cards name
-                if(global.card1[i] == 0)
+                if(instance_id[global.box5-1 + i] == id) 
                 {
-                    txt_input = "Click to add card";
-                }
-                else
-                {
-                    ini_open(global.cardEventINI);
-                    ini_write_real(global.eventName, "Action Cards",global.eventActionCardsNum);
-                    ini_close();
-                    s = string(global.card1[i]);
-                    cardName = "Action"+s;
-                    ini_open(global.cardActionINI);
-                    if(!ini_section_exists(cardName))
-                    {
 
-                        txt_input = "Deleted, please replace"
+                    //checks to see if there is a card selected, if so, it displays the cards name
+                    if(global.card1[i] == 0)
+                    {
+                        txt_input = "Click to add card";
                     }
                     else
                     {
-                        realCardName = ini_read_string(cardName,"Card Name","");
-                        txt_input = realCardName;
+                        ini_open(global.cardEventINI);
+                        ini_write_real(global.eventName, "Action Cards",global.eventActionCardsNum);
+                        ini_close();
+                        s = string(global.card1[i]);
+                        cardName = "Action"+s;
+                        ini_open(global.cardActionINI);
+                        if(!ini_section_exists(cardName))
+                        {
+                    
+                            txt_input = "Deleted, please replace"
+                        }
+                        else
+                        {
+                            realCardName = ini_read_string(cardName,"Card Name","");
+                            txt_input = realCardName;
+                        }
+                        ini_close();
                     }
-                    ini_close();
                 }
+            }
+        }
+        else
+        {                
+            if(instance_id[global.box5] == id) 
+            {
+                ini_open(global.cardEventINI);
+                ini_write_real(global.eventName, "Action Cards",global.eventActionCardsNum);
+                ini_close();
+                cardName = "ActionT"
+                ini_open(global.cardActionINI);
+                realCardName = ini_read_string(cardName,"Card Name","");
+                txt_input = realCardName;
+                ini_close();
             }
         }
     
@@ -1024,6 +1325,7 @@ if(room == RoomCardEdit)
     }
 }
 
+
 </string>
           </argument>
         </arguments>
@@ -1209,6 +1511,121 @@ if(room == RoomCardDeck)//deck of cards
         }   
     }
 }
+if(room == RoomTutorial)
+{
+    if(instance_id[global.box0] == id)
+    {
+            switch(global.LocationTutorial)
+        {
+            case 0:  global.LocationTutorial = 1;//sets default text
+            break;
+            case 1: global.LocationTutorial = 0;
+            break;
+        }
+            room = RoomTutorial;
+    }
+    if(instance_id[global.box1] == id)
+    {
+            switch(global.EventTutorial)
+        {
+            case 0:  global.EventTutorial = 1;//sets default text
+            break;
+            case 1: global.EventTutorial = 0;
+            break;
+        }
+            room = RoomTutorial;
+    }
+        if(instance_id[global.box2] == id)
+    {
+            switch(global.ActionTutorial)
+        {
+            case 0:  global.ActionTutorial = 1;//sets default text
+            break;
+            case 1: global.ActionTutorial = 0;
+            break;
+        }
+            room = RoomTutorial;
+    }
+        if(instance_id[global.box3] == id)
+    {
+            switch(global.ConsTutorial)
+        {
+            case 0:  global.ConsTutorial = 1;//sets default text
+            break;
+            case 1: global.ConsTutorial = 0;
+            break;
+        }
+            room = RoomTutorial;
+    }
+        if(instance_id[global.box4] == id)
+    {
+            switch(global.InfoTutorial)
+        {
+            case 0:  global.InfoTutorial = 1;//sets default text
+            break;
+            case 1: global.InfoTutorial = 0;
+            break;
+        }
+            room = RoomTutorial;
+    }
+        if(instance_id[global.box5] == id)
+    {
+            switch(global.CharTutorial)
+        {
+            case 0:  global.CharTutorial = 1;//sets default text
+            break;
+            case 1: global.CharTutorial = 0;
+            break;
+        }
+            room = RoomTutorial;
+    }
+        if(instance_id[global.box6] == id)
+    {
+            switch(global.MythTutorial)
+        {
+            case 0:  global.MythTutorial = 1;//sets default text
+            break;
+            case 1: global.MythTutorial = 0;
+            break;
+        }
+            room = RoomTutorial;
+    }
+        if(instance_id[global.box7] == id)
+    {
+            switch(global.PlayerStatsTutorial)
+        {
+            case 0:  global.PlayerStatsTutorial = 1;//sets default text
+            break;
+            case 1: global.PlayerStatsTutorial = 0;
+            break;
+        }
+            room = RoomTutorial;
+    }
+        if(instance_id[global.box8] == id)
+    {
+            switch(global.DiaryTutorial)
+        {
+            case 0:  global.DiaryTutorial = 1;//sets default text
+            break;
+            case 1: global.DiaryTutorial = 0;
+            break;
+        }
+            room = RoomTutorial;
+    }
+    if(instance_id[global.box9] == id)
+    {
+            switch(global.CardsTutorial)
+        {
+            case 0:  global.CardsTutorial = 1;//sets default text
+            break;
+            case 1: global.CardsTutorial = 0;
+            break;
+        }
+            room = RoomTutorial;
+    }
+
+
+}
 if(room == RoomCardEdit)
 {
     if(global.RoomState == 0)
@@ -1370,6 +1787,12 @@ if(room == RoomMap)
         {
             //on click
             global.lastRoom = room;//lastRoom variable is the current room
+            room = RoomTutorial;//Move to Options room
+        }  
+        if(global.textboxArray[10] == id)//options
+        {
+            //on click
+            global.lastRoom = room;//lastRoom variable is the current room
             room = RoomOptions;//Move to Options room
         }  
     }
@@ -1470,6 +1893,20 @@ if(room == RoomCardEdit)
         draw_set_halign(fa_left);
         draw_text(global.InputBoxX, myY ,txt_input); //draws the input box text
 }
+if(room == RoomTutorial)
+{
+        draw_set_valign(fa_middle);
+        draw_set_halign(fa_right);
+        draw_text(global.roomWidth/2 , myY ,txt_display);//Draws the input text
+        draw_set_halign(fa_left);
+        if(instance_id[global.boX0] != id and instance_id[global.boX1] != id and instance_id[global.boX2] != id and instance_id[global.boX3] != id and instance_id[global.boX4] != id and instance_id[global.boX5] != id and instance_id[global.boX6] != id and instance_id[global.boX7] != id and instance_id[global.boX8] != id and instance_id[global.boX9] != id)
+            draw_text(global.roomWidth/2 , myY ,txt_input); //draws the input box text
+        else
+        {
+            draw_set_halign(fa_center);
+            draw_text(global.roomWidth/2-280 , myY ,txt_input); //draws the input box text
+        }
+}
 if(room == RoomCardDeck)
 {
     if(global.RoomState == 0)
@@ -1528,7 +1965,7 @@ if(room == RoomDeckList)
 }
 if(room == RoomMap)
 {
-    if(instance_id[11] != id and instance_id[19] != id and instance_id[20] != id) 
+    if(instance_id[11] != id and instance_id[19] != id and instance_id[20] != id and instance_id[21] != id) 
     {
         draw_set_valign(fa_middle);
         draw_set_halign(fa_right);

@@ -25,41 +25,46 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-tempVal = global.tempVal;
-if(tempVal == 2)
+            <string>if(room == RoomCardEdit)
 {
-    if (global.consInt &gt; 0)
+    tempVal = global.tempVal;
+    if(tempVal == 2)
     {
-        sprite_index = Minus;
+        if (global.consInt &gt; 0)
+        {
+            sprite_index = Minus;
+        }
+        if (global.consInt &lt;= 0)
+        {
+            sprite_index = Plus;
+        }
     }
-    if (global.consInt &lt;= 0)
+    if(tempVal == 3)
     {
-        sprite_index = Plus;
+        if (global.consChar &gt; 0)
+        {
+            sprite_index = Minus;
+        }
+        if (global.consChar &lt;= 0)
+        {
+            sprite_index = Plus;
+        }
+    }
+    if(tempVal == 4)
+    {
+        if (global.consWell &gt; 0)
+        {
+            sprite_index = Minus;
+        }
+        if (global.consWell &lt;= 0)
+        {
+            sprite_index = Plus;
+        }
     }
 }
-if(tempVal == 3)
-{
-    if (global.consChar &gt; 0)
-    {
-        sprite_index = Minus;
-    }
-    if (global.consChar &lt;= 0)
-    {
-        sprite_index = Plus;
-    }
-}
-if(tempVal == 4)
-{
-    if (global.consWell &gt; 0)
-    {
-        sprite_index = Minus;
-    }
-    if (global.consWell &lt;= 0)
-    {
-        sprite_index = Plus;
-    }
-}
+if(room == RoomTutorial)
+    sprite_index = Plus;
+    
 </string>
           </argument>
         </arguments>
@@ -82,20 +87,56 @@ if(tempVal == 4)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(tempVal == 2)
+            <string>if(room == RoomCardEdit)
 {
-    global.consInt = global.consInt * -1;
+    if(tempVal == 2)
+    {
+        global.consInt = global.consInt * -1;
+    }
+    if(tempVal == 3)
+    {
+        global.consChar = global.consChar * -1;
+    }
+    if(tempVal == 4)
+    {
+        global.consWell = global.consWell * -1;
+    }
+    script_execute(SaveConsCard);
+    room = RoomCardEdit;
 }
-if(tempVal == 3)
+if(room == RoomTutorial)
 {
-    global.consChar = global.consChar * -1;
+    global.TutorialSetup = true;
+    if(instance_id[global.box0+2] == id)
+    {
+        room = RoomLocationAdd
+    }
+    if(instance_id[global.box1+2] == id)
+    {
+        global.RoomState = 0;
+        room = RoomCardEdit;       
+    }
+    if(instance_id[global.box2+2] == id)
+    {
+        global.RoomState = 1;
+        room = RoomCardEdit;  
+    }
+    if(instance_id[global.box3+2] == id)
+    {
+        global.RoomState = 2;
+        room = RoomCardEdit;  
+    }
+    if(instance_id[global.box4+2] == id)
+    {
+        global.RoomState = 3;
+        room = RoomCardEdit;  
+    }
+    if(instance_id[global.box5+2] == id)
+    {
+        global.RoomState = 4;
+        room = RoomCardEdit;  
+    }
 }
-if(tempVal == 4)
-{
-    global.consWell = global.consWell * -1;
-}
-script_execute(SaveConsCard);
-room = RoomCardEdit;
 </string>
           </argument>
         </arguments>

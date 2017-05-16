@@ -25,25 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomCharacter)
-    draw_text(global.roomWidth/2, 125, "Player Stats Background Edit");
+            <string>draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+if(room == RoomCharacter)
+    draw_text(global.roomWidth/2, 125, "Player Stats Background Setup");
 if(room == RoomDiary)
-    draw_text(global.roomWidth/2, 125, "Player Journal Background Edit");
+    draw_text(global.roomWidth/2, 125, "Player Journal Background Setup");
 if(room == RoomCards)
 {
     if(global.RoomState == -1)
-        draw_text(global.roomWidth/2, 125, "Cards Page Background Edit");
+        draw_text(global.roomWidth/2, 125, "Cards Page Background Setup");
     if(global.RoomState == 0)
-        draw_text(global.roomWidth/2, 125, "Event Cards Background Edit");
+        draw_text(global.roomWidth/2, 125, "Event Cards Background Setup");
     if(global.RoomState == 1)
-        draw_text(global.roomWidth/2, 125, "Action Cards Background Edit");
+        draw_text(global.roomWidth/2, 125, "Action Cards Background Setup");
     if(global.RoomState == 2)
-        draw_text(global.roomWidth/2, 125, "Consequence Cards Background Edit");
+        draw_text(global.roomWidth/2, 125, "Consequence Cards Background Setup");
     if(global.RoomState == 3)
-        draw_text(global.roomWidth/2, 125, "Information Cards Background Edit");
+        draw_text(global.roomWidth/2, 125, "Information Cards Background Setup");
     if(global.RoomState == 4)
-        draw_text(global.roomWidth/2, 125, "Char Cards Background Edit");
+        draw_text(global.roomWidth/2, 125, "Char Cards Background Setup");
 }
+if(room == RoomTutorial)
+    draw_text(global.roomWidth/2, 125, "Tutorial Setup");
 
 </string>
           </argument>

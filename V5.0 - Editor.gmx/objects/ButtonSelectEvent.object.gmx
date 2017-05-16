@@ -36,6 +36,8 @@ else
 {
     sprite_index = No_sprite; //dont display the button
 }
+if(global.TutorialSetup == true)
+    sprite_index = No_sprite;
 </string>
           </argument>
         </arguments>

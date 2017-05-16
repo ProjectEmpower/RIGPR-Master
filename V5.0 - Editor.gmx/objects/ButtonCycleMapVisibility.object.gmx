@@ -32,6 +32,8 @@ if(global.RoomState == 2 or global.RoomState == 3 or global.RoomState == 4)
 }
 x = global.roomWidth /2;
 y = global.roomHeight - 70;
+if(global.TutorialSetup == true)
+    sprite_index = No_sprite;
 </string>
           </argument>
         </arguments>

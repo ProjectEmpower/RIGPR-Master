@@ -75,7 +75,7 @@ else
 }
 
 
-if(os_type != os_android)
+if(os_type == os_android)
 {
     global.startOrientation = display_get_orientation();
     if(global.startOrientation != display_portrait or global.startOrientation != display_portrait_flipped)
