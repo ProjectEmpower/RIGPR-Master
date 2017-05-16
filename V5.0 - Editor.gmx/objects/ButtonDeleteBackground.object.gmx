@@ -29,6 +29,31 @@
 y = global.roomHeight /2 + 100;
 Background = "";
 tempRoom = room;
+if(room == RoomCharacter and global.CharacterBGing = 0)
+{        
+    sprite_index = No_sprite
+}
+if(room == RoomDiary and global.DiaryBGing = 0)
+{        
+    sprite_index = No_sprite
+}
+
+if(room == RoomCards)
+{        
+    if(global.RoomState = -1 and global.CardsBGing = 0)
+    sprite_index = No_sprite
+    if(global.RoomState = 0 and global.EventCardBGing = 0)
+    sprite_index = No_sprite    
+    if(global.RoomState = 1 and global.ActionCardBGing = 0)
+    sprite_index = No_sprite    
+    if(global.RoomState = 2 and global.ConsCardBGing = 0)
+    sprite_index = No_sprite
+    if(global.RoomState = 3 and global.InfoCardBGing = 0)
+    sprite_index = No_sprite    
+    if(global.RoomState = 4 and global.CharCardBGing = 0)
+    sprite_index = No_sprite  
+}
+
 </string>
           </argument>
         </arguments>

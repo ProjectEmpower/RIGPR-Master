@@ -284,6 +284,10 @@ if(os_type == os_android)
     {
         msg = get_string_async("Please enter your name","");
     }
+    if(room == RoomDiary)
+    {
+        msg = get_string_async("Journal Entry:",global.LoadText);
+    }
 }
 </string>
           </argument>
@@ -309,18 +313,37 @@ if(os_type == os_android)
             <kind>1</kind>
             <string>if(os_type == os_android)
 {
-    i_d = ds_map_find_value(async_load, "id");
-    if(i_d == msg)
+    if(room == RoomNewGame)
     {
-       if ds_map_find_value(async_load, "status")
-          {
-          if ds_map_find_value(async_load, "result") != ""
-             {
-                global.Name = ds_map_find_value(async_load, "result");
-                room = RoomNewGame;
-             }
+        i_d = ds_map_find_value(async_load, "id");
+        if(i_d == msg)
+        {
+           if ds_map_find_value(async_load, "status")
+              {
+              if ds_map_find_value(async_load, "result") != ""
+                 {
+                    global.Name = ds_map_find_value(async_load, "result");
+                    room = RoomNewGame;
+                 }
+              }
           }
       }
+    if(room == RoomDiary)
+    {
+        i_d = ds_map_find_value(async_load, "id");
+        if(i_d == msg)
+        {
+           if ds_map_find_value(async_load, "status")
+              {
+              if ds_map_find_value(async_load, "result") != ""
+                 {
+                    global.LoadText = ds_map_find_value(async_load, "result");
+                    room = RoomDiary;
+                 }
+              }
+          }
+      }
+            
 }
 </string>
           </argument>

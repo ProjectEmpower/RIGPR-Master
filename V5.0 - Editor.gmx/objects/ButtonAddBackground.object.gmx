@@ -30,6 +30,19 @@ y = global.roomHeight /2;
 Background = "";
 BackgroundF = "";
 tempRoom = room;
+background_xscale[0] = 1 * ((room_width) / background_width[0]);
+background_yscale[0] = 1 * ((room_height) / background_height[0]);
+background_xscale[1] = 1 * ((room_width) / background_width[0]);
+background_yscale[1] = 1 * ((room_height) / background_height[0]);
+background_xscale[2] = 1 * ((room_width) / background_width[0]);
+background_yscale[2] = 1 * ((room_height) / background_height[0]);
+background_xscale[3] = 1 * ((room_width) / background_width[0]);
+background_yscale[3] = 1 * ((room_height) / background_height[0]);
+background_xscale[4] = 1 * ((room_width) / background_width[0]);
+background_yscale[4] = 1 * ((room_height) / background_height[0]);
+background_xscale[5] = 1 * ((room_width) / background_width[0]);
+background_yscale[5] = 1 * ((room_height) / background_height[0]);
+
 </string>
           </argument>
         </arguments>
@@ -93,26 +106,24 @@ if(i_d == Background)
 if(BackgroundF != "")
 {
     if(room == RoomCharacter)
-    {
+    {        
         spriteName = "CharacterBackground"
-        global.CharacterBG = sprite_add(BackgroundF,1,false,true,0,0)
-        sprite_set_offset(global.CharacterBG,sprite_get_width(global.CharacterBG)/2,sprite_get_height(global.CharacterBG)/2);
-        saveLoc = sprite_save_strip(global.CharacterBG, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
+         global.CharacterBG = background_add(BackgroundF,0,0);
+        background_save(global.CharacterBG , "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
          global.CharacterBGing = 1;
-         test = background_add("editor_files/sprites/CharacterBackground.png",0,0);
-        room_set_background(RoomCharacter, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-        Background = "";
+
+         room_set_background(RoomCharacter, 0, 1, 0, global.CharacterBG, 0, 0, 0, 0, 0, 0, 1);
+      Background = "";
 
     }
     if(room == RoomDiary)
     {
         spriteName = "DiaryBackground"
-        global.DiaryBG = sprite_add(BackgroundF,1,false,true,0,0)
-        sprite_set_offset(global.DiaryBG,sprite_get_width(global.DiaryBG)/2,sprite_get_height(global.DiaryBG)/2);
-        saveLoc = sprite_save_strip(global.DiaryBG, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
+         global.DiaryBG = background_add(BackgroundF,0,0);
+        background_save(global.DiaryBG , "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
         global.DiaryBGing = 1;
-              test = background_add("editor_files/sprites/DiaryBackground.png",0,0);
-    room_set_background(RoomDiary, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+
+         room_set_background(RoomDiary, 0, 1, 0, global.DiaryBG, 0, 0, 0, 0, 0, 0, 1);
     Background = "";
 
     }
@@ -121,81 +132,77 @@ if(BackgroundF != "")
         if(global.RoomState == -1)
         {
             spriteName = "CardsBackground"
-            global.CardsBG = sprite_add(BackgroundF,1,false,true,0,0)
-            sprite_set_offset(global.CardsBG,sprite_get_width(global.CardsBG)/2,sprite_get_height(global.CardsBG)/2);
-            saveLoc = sprite_save_strip(global.CardsBG, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
-            global.CardsBGing = 1;
-           test = background_add("editor_files/sprites/CardsBackground.png",0,0);
-            room_set_background(RoomCards, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+         global.CardsBG = background_add(BackgroundF,0,0);
+                    background_save(global.CardsBG , "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
+        global.CardsBGing = 1;
+
+         room_set_background(RoomCards, 0, 1, 0, global.CardsBG, 0, 0, 0, 0, 0, 0, 1);
             Background = "";
         }
+
 
         if(global.RoomState == 0)
         {
             spriteName = "EventCardBackground"
-            global.EventCardBG = sprite_add(BackgroundF,1,false,true,0,0)
-            sprite_set_offset(global.EventCardBG,sprite_get_width(global.EventCardBG)/2,sprite_get_height(global.EventCardBG)/2);
-            saveLoc = sprite_save_strip(global.EventCardBG, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
+                global.EventCardBG = background_add(BackgroundF,0,0);
+            background_save( global.EventCardBG, "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
             global.EventCardBGing = 1;
-            test = background_add("editor_files/sprites/EventCardBackground.png",0,0);
-            room_set_background(RoomCardEdit, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-            room_set_background(RoomCardDeck, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-            room_set_background(RoomCards, 1, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+
+            room_set_background(RoomCards, 1, 1, 0, global.EventCardBG, 0, 0, 0, 0, 0, 0, 1);
+             room_set_background(RoomCardEdit, 0, 1, 0, global.EventCardBG, 0, 0, 0, 0, 0, 0, 1);
+            room_set_background(RoomCardDeck, 0, 1, 0, global.EventCardBG, 0, 0, 0, 0, 0, 0, 1);
+            
             Background = "";
         }   
         if(global.RoomState == 1)
         {
             spriteName = "ActionCardBackground"
-            global.ActionCardBG = sprite_add(BackgroundF,1,false,true,0,0)
-            sprite_set_offset(global.ActionCardBG,sprite_get_width(global.ActionCardBG)/2,sprite_get_height(global.ActionCardBG)/2);
-            saveLoc = sprite_save_strip(global.ActionCardBG, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
+                        global.ActionCardBG = background_add(BackgroundF,0,0);
+                        background_save(global.ActionCardBG, "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
             global.ActionCardBGing = 1;
-            test = background_add("editor_files/sprites/ActionCardBackground.png",0,0);
-            room_set_background(RoomCardEdit, 1, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-            room_set_background(RoomCardDeck, 1, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-            room_set_background(RoomCards, 2, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+
+            room_set_background(RoomCards, 2, 1, 0, global.ActionCardBG, 0, 0, 0, 0, 0, 0, 1);
+             room_set_background(RoomCardEdit, 1, 1, 0, global.ActionCardBG, 0, 0, 0, 0, 0, 0, 1);
+            room_set_background(RoomCardDeck, 1, 1, 0, global.ActionCardBG, 0, 0, 0, 0, 0, 0, 1);
             Background = "";
         }     
         if(global.RoomState == 2)
         {
             spriteName = "ConsCardBackground"
-            global.ConsCardBG = sprite_add(BackgroundF,1,false,true,0,0)
-            sprite_set_offset(global.ConsCardBG,sprite_get_width(global.ConsCardBG)/2,sprite_get_height(global.ConsCardBG)/2);
-            saveLoc = sprite_save_strip(global.ConsCardBG, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
+                        global.ConsCardBG = background_add(BackgroundF,0,0);
+                        background_save(global.ConsCardBG, "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
             global.ConsCardBGing = 1;
-            test = background_add("editor_files/sprites/ConsCardBackground.png",0,0);
-            room_set_background(RoomCardEdit, 2, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-            room_set_background(RoomCardDeck, 2, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-            room_set_background(RoomCards, 3, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+
+            room_set_background(RoomCards, 3, 1, 0, global.ConsCardBG, 0, 0, 0, 0, 0, 0, 1);
+             room_set_background(RoomCardEdit, 2, 1, 0, global.ConsCardBG, 0, 0, 0, 0, 0, 0, 1);
+            room_set_background(RoomCardDeck, 2, 1, 0, global.ConsCardBG, 0, 0, 0, 0, 0, 0, 1);
             Background = "";
     
         }   
         if(global.RoomState == 3)
         {
             spriteName = "InfoCardBackground"
-            global.InfoCardBG = sprite_add(BackgroundF,1,false,true,0,0)
-            sprite_set_offset(global.InfoCardBG,sprite_get_width(global.InfoCardBG)/2,sprite_get_height(global.InfoCardBG)/2);
-            saveLoc = sprite_save_strip(global.InfoCardBG, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
+                        global.InfoCardBG = background_add(BackgroundF,0,0);
+                        background_save(global.InfoCardBG, "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
             global.InfoCardBGing = 1;
-            test = background_add("editor_files/sprites/InfoCardBackground.png",0,0);
-            room_set_background(RoomCardEdit, 3, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-            room_set_background(RoomCardDeck, 3, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-            room_set_background(RoomCards, 4, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+
+            room_set_background(RoomCards, 4, 1, 0, global.InfoCardBG, 0, 0, 0, 0, 0, 0, 1);
+             room_set_background(RoomCardEdit, 3, 1, 0, global.InfoCardBG, 0, 0, 0, 0, 0, 0, 1);
+            room_set_background(RoomCardDeck, 3, 1, 0, global.InfoCardBG, 0, 0, 0, 0, 0, 0, 1);
             Background = "";
         }   
         if(global.RoomState == 4)
         {
             spriteName = "CharCardBackground"
-            global.CharCardBG = sprite_add(BackgroundF,1,false,true,0,0)
-            sprite_set_offset(global.CharCardBG,sprite_get_width(global.CharCardBG)/2,sprite_get_height(global.CharCardBG)/2);
-            saveLoc = sprite_save_strip(global.CharCardBG, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
+                        global.CharCardBG = background_add(BackgroundF,0,0);
+                        background_save(global.CharCardBG, "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
             global.CharCardBGing = 1;
-            test = background_add("editor_files/sprites/CharCardBackground.png",0,0);
-            room_set_background(RoomCardEdit, 4, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-            room_set_background(RoomCardDeck, 4, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-            room_set_background(RoomCards, 5, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+
+            room_set_background(RoomCards, 5, 1, 0, global.CharCardBG, 0, 0, 0, 0, 0, 0, 1);
+             room_set_background(RoomCardEdit, 4, 1, 0, global.CharCardBG, 0, 0, 0, 0, 0, 0, 1);
+            room_set_background(RoomCardDeck, 4, 1, 0, global.CharCardBG, 0, 0, 0, 0, 0, 0, 1);
             Background = "";
-        }  
+        }   
     }           
     ini_open(global.editorINI);//opens the editorINI
     ini_write_real("General","Character Background",global.CharacterBGing);

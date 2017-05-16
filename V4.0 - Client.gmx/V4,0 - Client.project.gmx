@@ -76,6 +76,7 @@
     <script>scripts\PlayerSave.gml</script>
     <script>scripts\LoadCards.gml</script>
     <script>scripts\DownloadFiles.gml</script>
+    <script>scripts\StartGame.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Rooms">
@@ -136,9 +137,11 @@
     </objects>
     <object>objects\ButtonContinueGame</object>
     <object>objects\ButtonNewGame</object>
+    <object>objects\CheckDL</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
+    <room>rooms\RoomDLCheck</room>
     <room>rooms\RoomSplash</room>
     <room>rooms\RoomMenu</room>
     <room>rooms\RoomNewGame</room>

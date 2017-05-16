@@ -94,76 +94,59 @@ global.CharCardBGing = ini_read_real("General","Char Cards Background",0);
 ini_close();
 if(global.CharacterBGing != 0)
 {
-    global.CharacterBG = sprite_add("editor_files/sprites/CharacterBackground.png",1,false,true,0,0)
-    sprite_set_offset(global.CharacterBG,sprite_get_width(global.CharacterBG)/2,sprite_get_height(global.CharacterBG)/2);
-    test = background_add("editor_files/sprites/CharacterBackground.png",0,0);
-    room_set_background(RoomCharacter, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+
+   global.CharacterBG = background_add("editor_files/BG/CharacterBackground.png",0,0);
+    room_set_background(RoomCharacter, 0, 1, 0, global.CharacterBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.DiaryBGing != 0)
 {
-    global.DiaryBG = sprite_add("editor_files/sprites/DiaryBackground.png",1,false,true,0,0)
-    sprite_set_offset(global.DiaryBG,sprite_get_width(global.DiaryBG)/2,sprite_get_height(global.DiaryBG)/2);
-      test = background_add("editor_files/sprites/DiaryBackground.png",0,0);
-    room_set_background(RoomDiary, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+      global.DiaryBG = background_add("editor_files/BG/DiaryBackground.png",0,0);
+    room_set_background(RoomDiary, 0, 1, 0, global.DiaryBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.CardsBGing != 0)
 {
-    global.CardsBG = sprite_add("editor_files/sprites/CardsBackground.png",1,false,true,0,0)
-    sprite_set_offset(global.CardsBG,sprite_get_width(global.CardsBG)/2,sprite_get_height(global.CardsBG)/2);
-   test = background_add("editor_files/sprites/CardsBackground.png",0,0);
-    room_set_background(RoomCards, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+    global.CardsBG = background_add("editor_files/BG/CardsBackground.png",0,0);
+    room_set_background(RoomCards, 0, 1, 0, global.CardsBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.EventCardBGing != 0)
 {
-    global.EventCardBG = sprite_add("editor_files/sprites/EventCardBackground.png",1,false,true,0,0)
-    sprite_set_offset(global.EventCardBG,sprite_get_width(global.EventCardBG)/2,sprite_get_height(global.EventCardBG)/2);
-    test = background_add("editor_files/sprites/EventCardBackground.png",0,0);
-    room_set_background(RoomCardEdit, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-    room_set_background(RoomCardDeck, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-    room_set_background(RoomCards, 1, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+   global.EventCardBG = background_add("editor_files/BG/EventCardBackground.png",0,0);
+    room_set_background(RoomCardEdit, 0, 1, 0, global.EventCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCardDeck, 0, 1, 0, global.EventCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCards, 1, 1, 0, global.EventCardBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.ActionCardBGing != 0)
 {
-    global.ActionCardBG = sprite_add("editor_files/sprites/ActionCardBackground.png",1,false,true,0,0)
-    sprite_set_offset(global.ActionCardBG,sprite_get_width(global.ActionCardBG)/2,sprite_get_height(global.ActionCardBG)/2);
-   test = background_add("editor_files/sprites/ActionCardBackground.png",0,0);
-    room_set_background(RoomCardEdit, 1, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-    room_set_background(RoomCardDeck, 1, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-    room_set_background(RoomCards, 2, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+    global.ActionCardBG = background_add("editor_files/BG/ActionCardBackground.png",0,0);
+    room_set_background(RoomCardEdit, 1, 1, 0, global.ActionCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCardDeck, 1, 1, 0, global.ActionCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCards, 2, 1, 0, global.ActionCardBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.ConsCardBGing != 0)
 {
-    global.ConsCardBG = sprite_add("editor_files/sprites/ConsCardBackground.png",1,false,true,0,0)
-    sprite_set_offset(global.ConsCardBG,sprite_get_width(global.ConsCardBG)/2,sprite_get_height(global.ConsCardBG)/2);
-   test = background_add("editor_files/sprites/ConsCardBackground.png",0,0);
-    room_set_background(RoomCardEdit, 2, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-    room_set_background(RoomCardDeck, 2, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-    room_set_background(RoomCards, 3, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+    global.ConsCardBG = background_add("editor_files/BG/ConsCardBackground.png",0,0);
+    room_set_background(RoomCardEdit, 2, 1, 0, global.ConsCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCardDeck, 2, 1, 0, global.ConsCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCards, 3, 1, 0, global.ConsCardBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.InfoCardBGing != 0)
 {
-    global.InfoCardBG = sprite_add("editor_files/sprites/InfoCardBackground.png",1,false,true,0,0)
-    sprite_set_offset(global.InfoCardBG,sprite_get_width(global.InfoCardBG)/2,sprite_get_height(global.InfoCardBG)/2);
-    test = background_add("editor_files/sprites/InfoCardBackground.png",0,0);
-    room_set_background(RoomCardEdit, 3, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-    room_set_background(RoomCardDeck, 3, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-    room_set_background(RoomCards, 4, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+    global.InfoCardBG = background_add("editor_files/BG/InfoCardBackground.png",0,0);
+    room_set_background(RoomCardEdit, 3, 1, 0, global.InfoCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCardDeck, 3, 1, 0, global.InfoCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCards, 4, 1, 0, global.InfoCardBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.CharCardBGing != 0)
 {
-    global.CharCardBG = sprite_add("editor_files/sprites/CharCardBackground.png",1,false,true,0,0)
-    sprite_set_offset(global.CharCardBG,sprite_get_width(global.CharCardBG)/2,sprite_get_height(global.CharCardBG)/2);
-    test = background_add("editor_files/sprites/CharCardBackground.png",0,0);
-    room_set_background(RoomCardEdit, 4, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-    room_set_background(RoomCardDeck, 4, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-    room_set_background(RoomCards, 5, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+    global.CharCardBG = background_add("editor_files/BG/CharCardBackground.png",0,0);
+    room_set_background(RoomCardEdit, 4, 1, 0, global.CharCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCardDeck, 4, 1, 0, global.CharCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCards, 5, 1, 0, global.CharCardBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.MapBacking != 0)
 {
-    global.MapBack = sprite_add("editor_files/sprites/Map.png",1,false,true,0,0)
-    sprite_set_offset(global.MapBack,sprite_get_width(global.MapBack)/2,sprite_get_height(global.MapBack)/2);
-    test = background_add("editor_files/sprites/Map.png",0,0);
-    room_set_background(RoomMap, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+    global.MapBack = background_add("editor_files/BG/Map.png",0,0);
+    room_set_background(RoomMap, 0, 1, 0, global.MapBack , 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.normalCardBacking != 0)
 {

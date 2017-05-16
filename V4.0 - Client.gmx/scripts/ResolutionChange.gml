@@ -1,6 +1,6 @@
 window_set_size( global.roomWidth, global.roomHeight );
 surface_resize(application_surface,global.roomWidth,global.roomHeight);
-numberOfRooms = 11
+numberOfRooms = 12
 //display_reset(8,false);
 for(i = 0; i < numberOfRooms; i++)
 {
@@ -24,9 +24,11 @@ for(i = 0; i < numberOfRooms; i++)
         break;
         case 8: roomToChange = RoomNewGame;
         break;
-        case 9: roomToChange = RoomNewGame;
+        case 9: roomToChange = RoomSplash;
         break;
         case 10: roomToChange = RoomCharView;
+        break;
+        case 11: roomToChange = RoomSetup;
         break;
 
     }

@@ -202,6 +202,7 @@
       <object>objects\TextInputSetup</object>
       <object>objects\TextInputBox</object>
       <object>objects\ButtonBack</object>
+      <object>objects\DrawTitles</object>
     </objects>
     <objects name="Options">
       <object>objects\ButtonFullScreen</object>

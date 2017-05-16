@@ -91,10 +91,9 @@ if(i_d == Map)
 if(MapF != "")
 {
     spriteName = "Map"
-    global.MapBack = sprite_add(MapF,1,false,true,0,0)
-    sprite_set_offset(global.MapBack,sprite_get_width(global.MapBack)/2,sprite_get_height(global.MapBack)/2);
-    saveLoc = sprite_save_strip(global.MapBack, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
-    test = background_add("editor_files/sprites/Map.png",0,0);
+    global.MapBack = background_add("editor_files/BG/Map.png",0,0);
+    background_save(global.MapBack , "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
+         
     room_set_background(RoomMap, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
     global.MapBacking = 1;
     ini_open(global.editorINI);//opens the editorINI

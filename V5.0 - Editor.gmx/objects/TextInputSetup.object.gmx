@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tempRoom = room;
+            <string>
+tempRoom = room;
 global.InputBoxX = global.roomWidth/5
 global.InputBoxY = global.roomHeight/6
 global.InputTextX = global.roomWidth/5
@@ -148,6 +149,20 @@ if(room == RoomLocationAdd)
 
 if(room == RoomCardEdit)
 {
+background_xscale[0] = 1 * ((room_width) / background_width[0]);
+background_yscale[0] = 1 * ((room_height) / background_height[0]);
+background_xscale[1] = 1 * ((room_width) / background_width[0]);
+background_yscale[1] = 1 * ((room_height) / background_height[0]);
+background_xscale[2] = 1 * ((room_width) / background_width[0]);
+background_yscale[2] = 1 * ((room_height) / background_height[0]);
+background_xscale[3] = 1 * ((room_width) / background_width[0]);
+background_yscale[3] = 1 * ((room_height) / background_height[0]);
+background_xscale[4] = 1 * ((room_width) / background_width[0]);
+background_yscale[4] = 1 * ((room_height) / background_height[0]);
+background_xscale[5] = 1 * ((room_width) / background_width[0]);
+background_yscale[5] = 1 * ((room_height) / background_height[0]);
+
+
     global.tempInputBoxY += 85;
     global.tempTextBoxY += 85;
     if(global.RoomState == 0)//event card
@@ -312,8 +327,21 @@ if(room == RoomCardEdit)
 }
 if(room == RoomCardDeck)
 {
-    global.tempInputBoxY += 85;
-    global.tempTextBoxY += 85;
+background_xscale[0] = 1 * ((room_width) / background_width[0]);
+background_yscale[0] = 1 * ((room_height) / background_height[0]);
+background_xscale[1] = 1 * ((room_width) / background_width[0]);
+background_yscale[1] = 1 * ((room_height) / background_height[0]);
+background_xscale[2] = 1 * ((room_width) / background_width[0]);
+background_yscale[2] = 1 * ((room_height) / background_height[0]);
+background_xscale[3] = 1 * ((room_width) / background_width[0]);
+background_yscale[3] = 1 * ((room_height) / background_height[0]);
+background_xscale[4] = 1 * ((room_width) / background_width[0]);
+background_yscale[4] = 1 * ((room_height) / background_height[0]);
+background_xscale[5] = 1 * ((room_width) / background_width[0]);
+background_yscale[5] = 1 * ((room_height) / background_height[0]);
+
+    global.tempInputBoxY += 25;
+    global.tempTextBoxY += 25;
     if(global.RoomState == 0)//event card
     {
         if(global.ListStyle == 0)

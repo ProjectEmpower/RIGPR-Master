@@ -252,9 +252,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>script_execute(DownloadFiles)
+            <string>
 if(global.NewGame == false)
 {
+    script_execute(DownloadFiles)
     script_execute(PlayerLoad);
     room_goto(RoomMenu);
 }
