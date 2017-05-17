@@ -58,7 +58,19 @@ view_yview = global.currentY
 view_wview[0] = global.roomWidth * global.zoom //set the view width/height to the global variable roomWidth/roomHeight, this is set when the game starts and the player changes the screen size using options
 view_hview[0] = global.roomHeight * global.zoom
 
-
+    if(global.TutorialSetup == true)
+    {    
+        for(i = 0; i &lt; global.numberOfBackgrounds; i++)
+        {
+            if(global.TutBG[i].instCheck != 1)
+            {
+                global.TutBG[i].x = view_xview + global.TutBG[i].instX * global.zoom;
+                global.TutBG[i].y = view_yview + global.TutBG[i].instY * global.zoom;
+                global.TutBG[i].image_xscale = global.zoom;
+                global.TutBG[i].image_yscale = global.zoom;
+            }
+        }
+    }
 ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom
 ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom// * global.zoom
 

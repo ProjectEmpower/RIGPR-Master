@@ -49,7 +49,7 @@ y = 40;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.JWeek &gt; 0)
+            <string>if(global.JWeek &gt; 1)
 {
     ini_open(global.historyINI);
     if(ini_section_exists("Year"+string(global.JYear) + " - Week"+string(global.JWeek)))

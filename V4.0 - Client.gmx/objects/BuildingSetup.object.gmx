@@ -30,50 +30,87 @@
 global.TotalInstanceNum = 100;//sets global Num to 100 (100 is max istance ammount)
 for(i = 0; i &lt; global.TotalInstanceNum; i++) 
 {
-    global.objectRef = i;//not sure if needed anymore
-    currRef = string(i);//sets currRef to the current loop iteration in string format
-    locationName = "Location"+currRef;//writes "Location#loopREF#" to a variable
-    ini_open(global.locationINI); //opens the ini file
-    
-    if(ini_section_exists(locationName)==true) //checks the ini file for the location name (Location#REF#) using the current loop iteration, if it exits it will continue
+    if(global.playerWeek != 0)
     {
-        tempEventNum = ini_read_real(locationName, "Number of Events", 0);
-        ini_close();
-        if(tempEventNum &gt; 0)//if there are events
-        {   
-            for(e = 1; e &lt;= tempEventNum; e++)
-            {
-                //sets up the type/week variable names for use when reading the locations ini
-                tempEventID = string(e);
-                tempEventType = "Event"+tempEventID+"Type";
-                tempEventWeek = "Event"+tempEventID+"Week";
-                ini_open(global.locationINI)//opens location ini
-                //sets up the events variable name for reading the events ini
-                tempEventRef = ini_read_real(locationName, tempEventType, 0);
-                tempEventWeekMap = ini_read_real(locationName, tempEventWeek, 0);
-                locationMyth = ini_read_real(locationName,"Mythical",3);
-                ini_close();//closes location ini
-                s = string(tempEventRef)
-                tempEventName = "Event"+s;
-                ini_open(global.cardEventINI);//opens event ini
-                tempMyth = ini_read_real(tempEventName, "Mythical", 3);  
-                ini_close();//closes event ini
-                ini_open(global.locationINI);//opens location ini
-                if(global.playerWeek == tempEventWeekMap and locationMyth != 3) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
+        global.objectRef = i;//not sure if needed anymore
+        currRef = string(i);//sets currRef to the current loop iteration in string format
+        locationName = "Location"+currRef;//writes "Location#loopREF#" to a variable
+        ini_open(global.locationINI); //opens the ini file
+        
+        if(ini_section_exists(locationName)==true) //checks the ini file for the location name (Location#REF#) using the current loop iteration, if it exits it will continue
+        {
+            tempEventNum = ini_read_real(locationName, "Number of Events", 0);
+            ini_close();
+            if(tempEventNum &gt; 0)//if there are events
+            {   
+                for(e = 1; e &lt;= tempEventNum; e++)
                 {
-                    ini_write_real(locationName,"Mythical",tempMyth); //reads the sprite
-                    LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
-                    LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
-                    global.buildingArray[i] = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+                    //sets up the type/week variable names for use when reading the locations ini
+                    tempEventID = string(e);
+                    tempEventType = "Event"+tempEventID+"Type";
+                    tempEventWeek = "Event"+tempEventID+"Week";
+                    ini_open(global.locationINI)//opens location ini
+                    //sets up the events variable name for reading the events ini
+                    tempEventRef = ini_read_real(locationName, tempEventType, 0);
+                    tempEventWeekMap = ini_read_real(locationName, tempEventWeek, 0);
+                    locationMyth = ini_read_real(locationName,"Mythical",3);
+                    ini_close();//closes location ini
+                    s = string(tempEventRef)
+                    tempEventName = "Event"+s;
+                    ini_open(global.cardEventINI);//opens event ini
+                    tempMyth = ini_read_real(tempEventName, "Mythical", 3);  
+                    ini_close();//closes event ini
+                    ini_open(global.locationINI);//opens location ini
+                    if(global.playerWeek == tempEventWeekMap and locationMyth != 3) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
+                    {
+                        ini_write_real(locationName,"Mythical",tempMyth); //reads the sprite
+                        LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
+                        LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
+                        global.buildingArray[i] = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+                    }
+                    ini_close()//closes location ini
                 }
-                ini_close()//closes location ini
+    
             }
-
+        }
+        else //if the location doesn't exist (IE max locations stored have been written), set the totalInstanceNumber to the current loop number.
+        {
+            global.TotalInstanceNum = i;
         }
     }
-    else //if the location doesn't exist (IE max locations stored have been written), set the totalInstanceNumber to the current loop number.
+    else
     {
-        global.TotalInstanceNum = i;
+        global.objectRef = "T";//not sure if needed anymore
+        locationName = "LocationT";//writes "Location#loopREF#" to a variable
+        ini_open(global.locationINI); //opens the ini file
+        
+        if(ini_section_exists(locationName)==true) //checks the ini file for the location name (Location#REF#) using the current loop iteration, if it exits it will continue
+        {    
+        //sets up the type/week variable names for use when reading the locations ini
+            tempEventType = "Event1Type";
+            tempEventWeek = "Event1Week";
+            ini_open(global.locationINI)//opens location ini
+            //sets up the events variable name for reading the events ini
+            tempEventRef = ini_read_real(locationName, tempEventType, 0);
+            tempEventWeekMap = ini_read_real(locationName, tempEventWeek, 0);
+            locationMyth = ini_read_real(locationName,"Mythical",3);
+            ini_close();//closes location ini
+            s = string(tempEventRef)
+            tempEventName = "EventT";
+            ini_open(global.cardEventINI);//opens event ini
+            tempMyth = ini_read_real(tempEventName, "Mythical", 3);  
+            ini_close();//closes event ini
+            ini_open(global.locationINI);//opens location ini
+            if(global.playerWeek == tempEventWeekMap and locationMyth != 3) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
+            {
+                ini_write_real(locationName,"Mythical",tempMyth); //reads the sprite
+                LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
+                LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
+                global.buildingArray[i] = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+            }
+            ini_close()//closes location ini
+            global.TotalInstanceNum = i+1;
+        }    
     }
 }
 

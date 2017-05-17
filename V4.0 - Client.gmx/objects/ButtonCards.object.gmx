@@ -29,7 +29,15 @@
 y = room_height-80;
 global.JYear = global.playerYear;
 global.JWeek = global.playerWeek;
+if(global.TutorialSetup == true)
+{
+    global.textToInput = "This is the Cards button, selecting this will take you to the Cards. Selecting this now will provide a tutorial on the Cards";
+    global.instCheck = 0;
+    global.instX = x+150   
+    global.instY = y - 75
+    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
 
+}
 </string>
           </argument>
         </arguments>

@@ -1,5 +1,7 @@
-
-
+global.MythicalTutorial = false;
+global.CharacterTutorial = false;
+global.InformationTutorial = false;
+global.numberOfBackgrounds = 0;
 //ini files
 global.locationINI = "ini_files/location.ini";
 global.playerINI = "ini_files/player.ini";
@@ -42,7 +44,7 @@ if(!file_exists(global.cardCharINI))
 {
     cardChar_ini = http_get_file(global.Address+"ini_files/cardChar.ini", global.cardCharINI);
 }
-
+global.TutorialSetup = false;
 if(!file_exists(global.playerINI))
 {
    global.NewGame = true;
@@ -139,6 +141,7 @@ global.totalActionCards = 0;//total number of action cards
 global.totalInfoCards = 0;//total number of info cards
 global.totalConsCards = 0;//total number of consequence cards
 global.totalCharCards = 0;//total number of character cards
+script_execute(LoadTutorial);
 room = RoomResChange;
 
 //moves to the menu

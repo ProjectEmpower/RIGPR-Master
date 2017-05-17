@@ -48,6 +48,14 @@ switch(global.RoomState)
     case 4: background_visible[5] = true;
     break;
 }   
+if(global.TutorialSetup == true)
+{
+    global.textToInput = "This changes the cards type, selecting this will cycle between all card types showing cards you have collected. However, in the tutorial, you have no cards";
+    global.instCheck = 0;
+        global.instX = x   
+        global.instY = y - 225
+    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+}
 </string>
           </argument>
         </arguments>

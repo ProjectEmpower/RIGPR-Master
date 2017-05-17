@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>script_execute(DownloadFiles)
-x = room_width-100
-y = room_height-50
+x = room_width-125
+y = room_height-75
 </string>
           </argument>
         </arguments>
@@ -57,7 +57,11 @@ y = room_height-50
     ini_write_real("Player","Int",5);
     ini_write_real("Player","Char",5);
     ini_write_real("Player","Well",5);
-    ini_write_real("Player","Week",0);
+    if(global.TutorialSetup)
+        week = 0;
+    else
+        week = 1;
+    ini_write_real("Player","Week",week);
     ini_write_real("Player","Year",1);
     ini_write_real("Player","Sprite",global.UserSprite);
     ini_close();

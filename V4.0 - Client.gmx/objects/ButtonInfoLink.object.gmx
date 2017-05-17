@@ -42,6 +42,12 @@ if(RoomState == 4)
 {
     ref_display = global.charCardRef;
 }
+TempState = global.TempState;
+if(RoomState == 3)
+{
+    y = y-10
+    Link = global.infoLink;
+}
 
 </string>
           </argument>
@@ -67,10 +73,25 @@ if(RoomState == 4)
             <kind>1</kind>
             <string>if(room != RoomInfoView)
 {
-    global.InfoViewRoomState = id.RoomState;
-    global.InfoViewRef = id.ref_display;
-    global.InfoViewLastRoom = room;
-    room = RoomInfoView;
+    if(global.TutorialSetup == true and global.InformationTutorial == true)
+    {
+        global.InfoViewRoomState = id.RoomState;
+        global.InfoViewRef = id.ref_display;
+        global.InfoViewLastRoom = room;
+        global.numberOfBackgrounds = 0;
+        room = RoomInfoView;
+    }
+    if(global.TutorialSetup == false)
+    {
+        global.InfoViewRoomState = id.RoomState;
+        global.InfoViewRef = id.ref_display;
+        global.InfoViewLastRoom = room;
+        room = RoomInfoView;
+    }
+}
+if(room == RoomInfoView and TempState == 3)
+{
+    url_open(Link);
 }
 </string>
           </argument>

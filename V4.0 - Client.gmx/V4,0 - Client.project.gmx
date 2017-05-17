@@ -52,6 +52,9 @@
     <sprite>sprites\CardBackingNormalInfo</sprite>
     <sprite>sprites\CardBackingMythInfo</sprite>
     <sprite>sprites\CharSprite</sprite>
+    <sprite>sprites\ButtonSpriteSkipTutorial</sprite>
+    <sprite>sprites\ButtonSpriteViewTutorial</sprite>
+    <sprite>sprites\BackgroundSprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\EventCard_Background</background>
@@ -77,6 +80,7 @@
     <script>scripts\LoadCards.gml</script>
     <script>scripts\DownloadFiles.gml</script>
     <script>scripts\StartGame.gml</script>
+    <script>scripts\LoadTutorial.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Rooms">
@@ -106,6 +110,7 @@
         <object>objects\ButtonInfoLink</object>
         <object>objects\ButtonCardType</object>
         <object>objects\CharCard</object>
+        <object>objects\SpawnTutorial</object>
       </objects>
       <objects name="Character">
         <object>objects\TitleCharacter</object>
@@ -134,10 +139,13 @@
       <object>objects\MobileRotation</object>
       <object>objects\ButtonNext</object>
       <object>objects\UserImage</object>
+      <object>objects\drawBGText</object>
     </objects>
     <object>objects\ButtonContinueGame</object>
     <object>objects\ButtonNewGame</object>
     <object>objects\CheckDL</object>
+    <object>objects\ButtonTutorial</object>
+    <object>objects\Background</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>

@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>//This code creates the text boxes default display info
-
+msg ="";
 realNameTextBoxRef = global.textBoxInstanceRef;//takes the textBoxInstanceRef (set via instance_count) and creates a variable for use on this page
 descTextBoxRef = realNameTextBoxRef+1; //creates the references to the textboxes instance, accessed via instance_id[ref]
 thirdTextBoxRef = realNameTextBoxRef+2;
@@ -284,10 +284,11 @@ if(os_type == os_android)
     {
         msg = get_string_async("Please enter your name","");
     }
-    if(room == RoomDiary)
-    {
-        msg = get_string_async("Journal Entry:",global.LoadText);
-    }
+
+}
+if(room == RoomDiary)
+{
+    msg = get_string_async("Journal Entry:",global.LoadText);
 }
 </string>
           </argument>
@@ -323,28 +324,33 @@ if(os_type == os_android)
               if ds_map_find_value(async_load, "result") != ""
                  {
                     global.Name = ds_map_find_value(async_load, "result");
+                     msg = "";
                     room = RoomNewGame;
+
                  }
               }
           }
       }
-    if(room == RoomDiary)
-    {
-        i_d = ds_map_find_value(async_load, "id");
-        if(i_d == msg)
-        {
-           if ds_map_find_value(async_load, "status")
-              {
-              if ds_map_find_value(async_load, "result") != ""
-                 {
-                    global.LoadText = ds_map_find_value(async_load, "result");
-                    room = RoomDiary;
-                 }
-              }
-          }
-      }
+ 
             
 }
+if(room == RoomDiary)
+ {
+     i_d = ds_map_find_value(async_load, "id");
+     if(i_d == msg)
+     {
+        if ds_map_find_value(async_load, "status")
+           {
+           if ds_map_find_value(async_load, "result") != ""
+              {
+                 global.LoadText = ds_map_find_value(async_load, "result");
+                  msg = "";
+                  script_execute(SaveHistory);
+                 room = RoomDiary;
+              }
+           }
+       }
+   }
 </string>
           </argument>
         </arguments>
@@ -396,7 +402,13 @@ if(room == RoomDiary)
     draw_set_valign(fa_middle);
     draw_set_halign(fa_left);
     draw_text(global.roomWidth/5-25, myY ,txt_display);//Draws the input text
-    draw_text(global.roomWidth/5+25, myY ,txt_input); //draws the input box text
+
+    if(instance_id[seventhTextBoxRef+2] == id)
+    {
+        draw_text_ext(global.roomWidth/5-175, myY+25 ,txt_input,20,350); //draws the input box text
+    }
+    else
+        draw_text(global.roomWidth/5+25, myY ,txt_input); //draws the input box text
 }
 </string>
           </argument>

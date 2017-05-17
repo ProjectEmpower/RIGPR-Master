@@ -60,26 +60,18 @@ if(room == RoomMap)
 if(room == RoomTutorial)
 {
         global.box0 = instance_count;
-        global.box1 = instance_count+3;
-        global.box2 = instance_count+6;
-        global.box3 = instance_count+9;
-        global.box4 = instance_count+12;
-        global.box5 = instance_count+15;
-        global.box6 = instance_count+18;
-        global.box7 = instance_count+20;
-        global.box8 = instance_count+22;
-        global.box9 = instance_count+24;
+        global.box1 = instance_count+2;
+        global.box2 = instance_count+4;
+        global.box3 = instance_count+6;
+        global.box4 = instance_count+8;
+        global.box5 = instance_count+10;
         
-        global.boX0 = instance_count+1;
-        global.boX1 = instance_count+4;
-        global.boX2 = instance_count+7;
-        global.boX3 = instance_count+10;
-        global.boX4 = instance_count+13;
-        global.boX5 = instance_count+16;
-        global.boX6 = instance_count+19;
-        global.boX7 = instance_count+21;
-        global.boX8 = instance_count+23;
-        global.boX9 = instance_count+25;
+        global.box6 = instance_count+12;
+        global.box7 = instance_count+13;
+        global.box8 = instance_count+14;
+        global.box9 = instance_count+15;
+        
+
         global.tempInputBoxY += 25;
         global.tempTextBoxY += 25;
     for(i = 0; i &lt; 10; i++)
@@ -87,7 +79,6 @@ if(room == RoomTutorial)
             global.tempInputBoxY += 25;
             global.tempTextBoxY += 25;
         global.textboxArray[i] = instance_create(global.roomWidth/2-50,global.tempInputBoxY,TextInputBox);    
-        global.textboxArray2[i] = instance_create(global.roomWidth/2-205,global.tempInputBoxY,TextInputBox);   
         if(i != 6 and i != 7 and i != 8 and i != 9)
             global.textboxArray3[i] = instance_create(global.roomWidth/2+170,global.tempInputBoxY,ConsType);           
 

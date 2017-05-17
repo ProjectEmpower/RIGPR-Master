@@ -8,6 +8,36 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(room == RoomEventSelect and global.MythicalTutorial == false and global.CharacterTutorial == true)
+{
+    global.textToInput = "In some events, there will be a character screen, selecting this will take you to the character card.";
+    global.instCheck = 0;
+    global.instX = x;   
+    global.instY = y + 225;   
+    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="7">
       <action>
         <libid>1</libid>
@@ -25,10 +55,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.RoomState = 4;
-global.CharLoadName = "Char"+string(global.eventCharCard);
-script_execute(LoadCards);
-room = RoomCharView;
+            <string>if(global.TutorialSetup == true and global.CharacterTutorial == true)
+{
+    global.RoomState = 4;
+    global.CharLoadName = "CharT";
+    script_execute(LoadCards);
+    room = RoomCharView;  
+}
+else if(global.TutorialSetup == false)
+{
+    global.RoomState = 4;
+    global.CharLoadName = "Char"+string(global.eventCharCard);
+    script_execute(LoadCards);
+    room = RoomCharView;
+}
+
 </string>
           </argument>
         </arguments>

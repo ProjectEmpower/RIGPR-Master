@@ -27,6 +27,22 @@
             <kind>1</kind>
             <string>global.CharacterButtonX = 75;
 global.CharacterButtonY = global.roomHeight-75;
+if(global.TutorialSetup == true)
+{
+    global.textToInput = "When not in the tutorial, you can access the character screen via this button. The character screen itself will be explained further in the tutorial.";
+    global.instCheck = 0;
+    global.instX = global.CharacterButtonX+20   
+    global.instY = global.CharacterButtonY - 225
+    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    global.numberOfBackgrounds += 1;
+    
+    global.textToInput = "Click/tap and hold to look around the map. Use the scroll wheel/pinch your screen to zoom in/out";
+    global.instCheck = 0;
+    global.instX = global.roomWidth - 100;   
+    global.instY = global.roomHeight /2;   
+    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    global.numberOfBackgrounds += 1;   
+}
 
 </string>
           </argument>
@@ -52,7 +68,8 @@ global.CharacterButtonY = global.roomHeight-75;
             <kind>1</kind>
             <string>global.currentX = view_xview
 global.currentY = view_yview
-room = RoomCharacter;
+if(global.TutorialSetup == false)
+    room = RoomCharacter;
 </string>
           </argument>
         </arguments>

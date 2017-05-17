@@ -54,6 +54,7 @@ tempZoom = global.zoom;
             <kind>1</kind>
             <string>if(drag == 1) //if drag is 1 (true)
 {
+
     //sets the view when dragging
     view_xview = dragX - (mouse_x - view_xview);
     view_yview = dragY - (mouse_y - view_yview);
@@ -62,6 +63,17 @@ tempZoom = global.zoom;
     view_xview = max(0, min(view_xview, room_width - view_wview));
     view_yview = max(0, min(view_yview, room_height - view_hview));
     
+if(global.TutorialSetup == true)
+{
+    for(i = 0; i &lt; global.numberOfBackgrounds; i++)
+    {    
+        if(global.TutBG[i].instCheck != 1)
+        {
+        global.TutBG[i].x = view_xview + global.TutBG[i].instX * global.zoom;
+        global.TutBG[i].y = view_yview + global.TutBG[i].instY * global.zoom;
+        }
+    }
+}
     //sets the button postions when the screen is in movement
     ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom
     ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom// * global.zoom
@@ -87,7 +99,19 @@ if(tempZoom != global.zoom)
     ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY * global.zoom;
     ButtonWeekRight.x = view_xview + global.WeekRightButtonX * global.zoom;
     ButtonWeekRight.y = view_yview + global.WeekRightButtonY * global.zoom;
-    
+    if(global.TutorialSetup == true)
+    {    
+        for(i = 0; i &lt; global.numberOfBackgrounds; i++)
+        {
+            if(global.TutBG[i].instCheck != 1)
+            {
+                global.TutBG[i].x = view_xview + global.TutBG[i].instX * global.zoom;
+                global.TutBG[i].y = view_yview + global.TutBG[i].instY * global.zoom;
+                global.TutBG[i].image_xscale = global.zoom;
+                global.TutBG[i].image_yscale = global.zoom;
+            }
+        }
+    }
     ButtonCharacter.image_xscale = global.zoom
     ButtonCharacter.image_yscale = global.zoom// * global.zoom
     ButtonWeekLeft.image_xscale = global.zoom;

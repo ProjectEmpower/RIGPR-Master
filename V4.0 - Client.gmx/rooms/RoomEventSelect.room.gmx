@@ -56,6 +56,7 @@
     <instance objName="TextInputSetup" x="32" y="32" name="inst_400434FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonCardLeft" x="192" y="256" name="inst_B9E0AD0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonCardRight" x="256" y="256" name="inst_582810FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="SpawnTutorial" x="64" y="96" name="inst_5AA83ED7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

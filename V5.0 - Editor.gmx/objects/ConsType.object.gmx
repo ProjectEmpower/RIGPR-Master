@@ -107,31 +107,31 @@ if(room == RoomTutorial)
 if(room == RoomTutorial)
 {
     global.TutorialSetup = true;
-    if(instance_id[global.box0+2] == id)
+    if(instance_id[global.box0+1] == id)
     {
         room = RoomLocationAdd
     }
-    if(instance_id[global.box1+2] == id)
+    if(instance_id[global.box1+1] == id)
     {
         global.RoomState = 0;
         room = RoomCardEdit;       
     }
-    if(instance_id[global.box2+2] == id)
+    if(instance_id[global.box2+1] == id)
     {
         global.RoomState = 1;
         room = RoomCardEdit;  
     }
-    if(instance_id[global.box3+2] == id)
+    if(instance_id[global.box3+1] == id)
     {
         global.RoomState = 2;
         room = RoomCardEdit;  
     }
-    if(instance_id[global.box4+2] == id)
+    if(instance_id[global.box4+1] == id)
     {
         global.RoomState = 3;
         room = RoomCardEdit;  
     }
-    if(instance_id[global.box5+2] == id)
+    if(instance_id[global.box5+1] == id)
     {
         global.RoomState = 4;
         room = RoomCardEdit;  

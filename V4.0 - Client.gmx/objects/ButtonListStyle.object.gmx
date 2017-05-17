@@ -27,6 +27,14 @@
             <kind>1</kind>
             <string>x = 125;
 y = global.roomHeight - 70;
+if(global.TutorialSetup == true)
+{
+    global.textToInput = "This allows you to view Cards as a list or as their card Art. However, in the tutorial, you have no cards";
+    global.instCheck = 0;
+        global.instX = x   
+        global.instY = y - 225
+    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+}
 </string>
           </argument>
         </arguments>

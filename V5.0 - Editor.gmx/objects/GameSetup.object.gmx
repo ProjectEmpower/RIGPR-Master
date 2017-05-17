@@ -30,7 +30,7 @@
 //sets the initial view of the screen, this is used to to create the variable
 global.currentX = 0; //current map position, defaults to top left corner of map
 global.currentY = 0;
-global.ListStyle = 0;
+global.ListStyle = 1;
 global.buildingMyth = 1;
 global.roomWidth = 1280;//sets default screen width
 global.roomHeight = 720;//sets default screen height
@@ -70,16 +70,16 @@ global.cardCharINI = "ini_files/cardChar.ini";
 global.editorINI = "editor_files/editor.ini";
 global.tempPos = 0;
 ini_open(global.editorINI);
-global.LocationTutorial = ini_read_real("Tutorial","Location Include",0);
-global.EventTutorial = ini_read_real("Tutorial","Event Include",0);
-global.ActionTutorial = ini_read_real("Tutorial","Action Include",0);
-global.ConsTutorial = ini_read_real("Tutorial","Cons Include",0);
-global.InfoTutorial = ini_read_real("Tutorial","Info Include",0);
-global.CharTutorial = ini_read_real("Tutorial","Char Include",0);
-global.MythTutorial = ini_read_real("Tutorial","Myth Include",0);
-global.PlayerStatsTutorial = ini_read_real("Tutorial","Stats Include",0);
-global.DiaryTutorial = ini_read_real("Tutorial","Diary Include",0);
-global.CardsTutorial = ini_read_real("Tutorial","Cards Include",0);
+global.LocationTutorial = ini_read_real("Tutorial","Location Include",1);
+global.EventTutorial = ini_read_real("Tutorial","Event Include",1);
+global.ActionTutorial = ini_read_real("Tutorial","Action Include",1);
+global.ConsTutorial = ini_read_real("Tutorial","Cons Include",1);
+global.InfoTutorial = ini_read_real("Tutorial","Info Include",1);
+global.CharTutorial = ini_read_real("Tutorial","Char Include",1);
+global.MythTutorial = ini_read_real("Tutorial","Myth Include",1);
+global.PlayerStatsTutorial = ini_read_real("Tutorial","Stats Include",1);
+global.DiaryTutorial = ini_read_real("Tutorial","Diary Include",1);
+global.CardsTutorial = ini_read_real("Tutorial","Cards Include",1);
     for(i = 0; i &lt; 10; i++)
     {            
         global.TutorialOrder[i] = ini_read_real("Tutorial","Order"+string(i),i+1);;

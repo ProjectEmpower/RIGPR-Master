@@ -35,6 +35,15 @@ if(ini_section_exists("Year"+string(global.JYear) + " - Week"+string(global.JWee
 else
 {
     sprite_index = No_sprite;
+} 
+if(global.TutorialSetup == true)
+{
+
+    global.textToInput = "Outside of the tutorial, clicking this will allow you to redo events in your Journal, this means you can change stats later if you wish.";
+    global.instCheck = 0;
+    global.instX = x+200;   
+    global.instY = y - 100
+    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
 }
 </string>
           </argument>
@@ -58,26 +67,29 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.playerTempWeek = global.playerWeek;
-global.playerTempYear = global.playerYear;
-global.playerTempInt = global.playerInt
-global.playerTempChar = global.playerChar
-global.playerTempWell = global.playerWell
-global.DiffInt =  (global.LoadTempInt - global.LoadInt);
-global.DiffChar = (global.LoadTempChar - global.LoadChar);
-global.DiffWell = (global.LoadTempWell - global.LoadWell );
-global.playerInt = global.LoadTempInt;
-global.playerChar = global.LoadTempChar;
-global.playerWell = global.LoadTempWell;
-global.playerWeek = global.JWeek;
-global.playerYear = global.JYear;
-global.realLocationName = global.LocationStore;
-ini_open(global.locationINI)
-global.locDesc = ini_read_string(global.tempLocation,"Description","");
-ini_close();
-global.Cont = 0;
-global.TimeTravel = true;
-room = RoomLocationView;
+            <string>if(global.TutorialSetup == false)
+{
+    global.playerTempWeek = global.playerWeek;
+    global.playerTempYear = global.playerYear;
+    global.playerTempInt = global.playerInt
+    global.playerTempChar = global.playerChar
+    global.playerTempWell = global.playerWell
+    global.DiffInt =  (global.LoadTempInt - global.LoadInt);
+    global.DiffChar = (global.LoadTempChar - global.LoadChar);
+    global.DiffWell = (global.LoadTempWell - global.LoadWell );
+    global.playerInt = global.LoadTempInt;
+    global.playerChar = global.LoadTempChar;
+    global.playerWell = global.LoadTempWell;
+    global.playerWeek = global.JWeek;
+    global.playerYear = global.JYear;
+    global.realLocationName = global.LocationStore;
+    ini_open(global.locationINI)
+    global.locDesc = ini_read_string(global.tempLocation,"Description","");
+    ini_close();
+    global.Cont = 0;
+    global.TimeTravel = true;
+    room = RoomLocationView;
+}
 </string>
           </argument>
         </arguments>

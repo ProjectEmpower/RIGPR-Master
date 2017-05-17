@@ -29,10 +29,9 @@
 RoomState = global.RoomState;
 Mythical = 0;
 inst = instance_create(x,y- 72,CardSpriteObject);
-if(global.RoomState == 3)
-    sprite_index = CardBackingNormalInfo;
-else
-    inst2 = instance_create(x,y + 176, ButtonInfoLink);
+sprite_index = CardBackingNormalInfo;
+global.TempState = RoomState;
+inst2 = instance_create(x,y + 176, ButtonInfoLink);
 if(RoomState == 0)
 {
     Mythical = global.eventMythical;
@@ -59,6 +58,14 @@ if(RoomState == 3)
 if(RoomState == 4)
 {
     ref_display = global.charCardRef;
+}
+if(global.MythicalTutorial == true)
+{
+    selfI = global.i;
+    if(selfI == 1)
+    {   
+        Mythical = 1;
+    }
 }
 if(Mythical == 0)
 {
@@ -90,6 +97,105 @@ if(Mythical == 1)
             sprite_index = CardBackingMythInfo;
         else
             sprite_index = CardBackingMyth;
+    }
+}
+if(global.TutorialSetup == true)
+{
+    if(room == RoomLocationView)
+    {
+        global.textToInput = "This is an Event Card, to select this card, you must meet the stat requirements as shown on the card. Selecting this will advance you to the next screen.";
+        global.instCheck = 0;
+        global.instX = x + 225;   
+        global.instY = y;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
+    if(room == RoomConsView)
+    {
+        global.textToInput = "This is an Consequense Card, when you select an action, there is a consequense (good or bad) and your stats will be effected as a result.";
+        global.instCheck = 0;
+        global.instX = x + 225;   
+        global.instY = y;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
+    if(room == RoomConsView)
+    {
+        global.textToInput = "This is an Consequense Card, when you select an action, there is a consequense (good or bad) and your stats will be effected as a result.";
+        global.instCheck = 0;
+        global.instX = x + 225;   
+        global.instY = y;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
+    if(room == RoomCharView)
+    {
+        global.textToInput = "This is an Character Card, these are a form of collectables that you can collect throughout the game.";
+        global.instCheck = 0;
+        global.instX = x + 225;   
+        global.instY = y;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
+    if(room == RoomInfoView)
+    {
+        if(global.numberOfBackgrounds == 0)
+        {
+            global.textToInput = "This is the card that's information you selected.";
+            global.instCheck = 0;
+            global.instX = x - 225;   
+            global.instY = y;   
+            global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+            global.numberOfBackgrounds += 1;
+        }
+        if(global.numberOfBackgrounds == 1)
+        {
+            global.textToInput = "This is an Information Card, this will provide information regarding the paired card and provide a link for further reading. Clicking the 'Info Link' Button on the Information Card will take you to the web adderss assosiated with it. Press the Back button to continue.";
+            global.instCheck = 0;
+            global.instX = x + 520;   
+            global.instY = y;   
+            global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+            global.numberOfBackgrounds += 1;
+        }
+    }
+    if(room == RoomEventSelect and global.MythicalTutorial == false and global.CharacterTutorial == false and global.InformationTutorial == false)
+    {
+        global.textToInput = "This is an Action Card, on this screen you will be presented up to 3 Action Cards to choose from. Selecting this will advance to the next screen.";
+        global.instCheck = 0;
+        global.instX = x + 225;   
+        global.instY = y;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
+    if(room == RoomEventSelect and global.CharacterTutorial == true)
+    {
+        global.textToInput = "Action Cards are disabled for this section of the tutorial";
+        global.instCheck = 0;
+        global.instX = x + 225;   
+        global.instY = y;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
+    if(room == RoomEventSelect and global.InformationTutorial == true)
+    {
+        global.textToInput = "At the bottom of all cards (with the exception of Information cards themselves), there is an 'Info Card' button. Selecting this button will allow you to view information about the current card.";
+        global.instCheck = 0;
+        global.instX = x + 225;   
+        global.instY = y;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
+    if(room == RoomEventSelect and global.MythicalTutorial == true)
+    {
+        if(selfI == 0)
+        {
+            global.textToInput = "Cards with this background are Normal Cards. Select either card to continue.";
+            global.instCheck = 0;
+            global.instX = x - 225;   
+            global.instY = y;   
+            global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+        }
+        else
+        {
+            global.textToInput = "Cards with this background are Mythical Cards. Select either card to continue.";
+            global.instCheck = 0;
+            global.instX = x + 225;   
+            global.instY = y;   
+            global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+         }       
     }
 }
 </string>
@@ -129,7 +235,7 @@ if(Mythical == 1)
 }
 if(room == RoomEventSelect)
 {
-    if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
+    if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink) and global.TutorialSetup == false)
     {
             global.ActionStore = "Action"+string(id.ref_display);   
             global.cardRef = id.ref_display;
@@ -138,10 +244,29 @@ if(room == RoomEventSelect)
             room = RoomConsView;
 
     }
+    if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink) and global.TutorialSetup == true and global.CharacterTutorial == false and global.InformationTutorial == false)
+    {
+            global.ActionStore = "Action"+string(id.ref_display);   
+            global.cardRef = id.ref_display;
+            global.consCardRef = id.ref_display;
+            global.tempPos = 0;
+            room = RoomConsView;
+
+    }
+    if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink) and global.TutorialSetup == true and global.MythicalTutorial == true and global.InformationTutorial == false)
+    {
+            global.ActionStore = "Action"+string(id.ref_display);   
+            global.cardRef = id.ref_display;
+            global.consCardRef = id.ref_display;
+            global.tempPos = 0;
+            global.MythicalTutorial = false
+            room = RoomCharacter;
+
+    }
 }
 if(room == RoomCharView)
 {    
-    if(global.TimeTravel != true)
+    if(global.TimeTravel != true and global.TutorialSetup == false)
     {
         if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
         {
@@ -161,7 +286,19 @@ if(room == RoomCharView)
             room = RoomMap;
         }
     }
-    else
+    else if(global.TimeTravel != true and global.TutorialSetup == true)
+    {            
+        global.CharacterTutorial = false;
+        if(global.MythTutorial  == 1)
+        {
+             global.MythicalTutorial = true;
+            room = RoomEventSelect;       
+        }
+        else         
+            room = RoomCharacter;
+
+    }
+    else if(global.TimeTravel == true and global.TutorialSetup == false)
     {
         if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
         {       
@@ -195,7 +332,7 @@ if(room == RoomCharView)
 }
 if(room == RoomConsView)
 {    
-    if(global.TimeTravel != true)
+    if(global.TimeTravel != true and global.TutorialSetup == false)
     {
         if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
         {
@@ -218,7 +355,25 @@ if(room == RoomConsView)
             room = RoomMap;
         }
     }
-    else
+    else if(global.TimeTravel != true and global.TutorialSetup == true and global.InformationTutorial == false)
+    {
+        global.InformationTutorial = true;
+        global.LoadTempInt = global.playerInt;
+        global.CharSelected = 0
+        global.LoadTempChar = global.playerChar;
+        global.LoadTempWell = global.playerWell;
+        global.playerInt += global.consInt;
+        global.playerChar += global.consChar;
+        global.playerWell += global.consWell;
+        global.LoadInt = global.playerInt
+        global.LoadChar = global.playerChar
+        global.LoadWell = global.playerWell
+        global.JWeek = global.playerWeek;
+        global.JYear = global.playerYear;
+        script_execute(SaveHistory);
+        room = RoomEventSelect;
+    }
+    else if(global.TimeTravel == true and global.TutorialSetup == false)
     {
         if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink))
         {
