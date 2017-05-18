@@ -27,7 +27,9 @@
             <kind>1</kind>
             <string>//Set position on screen.
 x = global.roomWidth-125;
-y = global.roomHeight-70;
+y = global.roomHeight- 70;
+if(room == RoomSprites)
+    y = global.roomHeight - 270;
 
 
 </string>
@@ -83,28 +85,10 @@ if(room == RoomLocationAdd) //checks room
 
 }
 
-if(room == RoomDeckList)
-{
-   // room = RoomMap;
-}
 if(room == RoomCardDeck)//Room that shows the list of cards.
 {
-    if(global.RoomState == 4)
-    {
-        if(global.lastState == 0)
-        {
-            global.RoomState = global.lastState;
-            global.lastState = 4;
-            room = RoomCardEdit;
-        }
-        else
-        {
-            global.lastState = 4;
-            global.RoomState = 20;
-room = RoomMap
-        }
-    }
-    if(global.RoomState == 0)
+change = true;
+    if(global.RoomState == 0 and change == true)
     {
         if(global.lastRoom == RoomLocationAdd)
         {
@@ -114,10 +98,11 @@ room = RoomMap
         {
             global.lastState = 1;
             global.RoomState = 20;
-room = RoomMap
+            room = RoomMap
         }
+        change = false;
     }
-    if(global.RoomState == 1)
+    if(global.RoomState == 1 and change == true)
     {
         if(global.lastState == 0)
         {
@@ -129,10 +114,11 @@ room = RoomMap
         {
             global.lastState = 1;
             global.RoomState = 20;
-room = RoomMap
+            room = RoomMap
         }
+        change = false;
     }
-    if(global.RoomState == 2)
+    if(global.RoomState == 2 and change == true)
     {
         if(global.lastState == 1)
         {
@@ -144,10 +130,11 @@ room = RoomMap
         {
             global.lastState = 2;
             global.RoomState = 20;
-room = RoomMap
+            room = RoomMap
         }
+        change = false;
     }
-    if(global.RoomState == 3)
+    if(global.RoomState == 3 and change == true)
     {
         if(global.lastState == 0 or global.lastState == 1 or global.lastState == 2 or global.lastState == 4)
         {
@@ -161,8 +148,27 @@ room = RoomMap
             global.RoomState = 20;
             room = RoomMap
         }
+        change = false;
     }
-
+    if(global.RoomState == 4 and change == true)
+    {
+        show_debug_message(global.lastState);
+        if(global.lastState == 0)
+        {
+            show_debug_message("de");
+            global.RoomState = global.lastState;
+            global.lastState = 4;
+            room = RoomCardEdit;
+        }
+        else
+        {
+            show_debug_message("map");
+            global.lastState = 4;
+            global.RoomState = 20;
+            room = RoomMap
+        }
+        change = false;
+    }
 }
 if(room == RoomCardEdit)//Room that edits an individual card
 {
@@ -320,28 +326,10 @@ if(room == RoomLocationAdd) //checks room
 
 }
 
-if(room == RoomDeckList)
-{
-   // room = RoomMap;
-}
 if(room == RoomCardDeck)//Room that shows the list of cards.
 {
-    if(global.RoomState == 4)
-    {
-        if(global.lastState == 0)
-        {
-            global.RoomState = global.lastState;
-            global.lastState = 4;
-            room = RoomCardEdit;
-        }
-        else
-        {
-            global.lastState = 4;
-            global.RoomState = 20;
-room = RoomMap
-        }
-    }
-    if(global.RoomState == 0)
+change = true;
+    if(global.RoomState == 0 and change == true)
     {
         if(global.lastRoom == RoomLocationAdd)
         {
@@ -351,10 +339,11 @@ room = RoomMap
         {
             global.lastState = 1;
             global.RoomState = 20;
-room = RoomMap
+            room = RoomMap
         }
+        change = false;
     }
-    if(global.RoomState == 1)
+    if(global.RoomState == 1 and change == true)
     {
         if(global.lastState == 0)
         {
@@ -366,10 +355,11 @@ room = RoomMap
         {
             global.lastState = 1;
             global.RoomState = 20;
-room = RoomMap
+            room = RoomMap
         }
+        change = false;
     }
-    if(global.RoomState == 2)
+    if(global.RoomState == 2 and change == true)
     {
         if(global.lastState == 1)
         {
@@ -381,10 +371,11 @@ room = RoomMap
         {
             global.lastState = 2;
             global.RoomState = 20;
-room = RoomMap
+            room = RoomMap
         }
+        change = false;
     }
-    if(global.RoomState == 3)
+    if(global.RoomState == 3 and change == true)
     {
         if(global.lastState == 0 or global.lastState == 1 or global.lastState == 2 or global.lastState == 4)
         {
@@ -398,8 +389,27 @@ room = RoomMap
             global.RoomState = 20;
             room = RoomMap
         }
+        change = false;
     }
-
+    if(global.RoomState == 4 and change == true)
+    {
+        show_debug_message(global.lastState);
+        if(global.lastState == 0)
+        {
+            show_debug_message("de");
+            global.RoomState = global.lastState;
+            global.lastState = 4;
+            room = RoomCardEdit;
+        }
+        else
+        {
+            show_debug_message("map");
+            global.lastState = 4;
+            global.RoomState = 20;
+            room = RoomMap
+        }
+        change = false;
+    }
 }
 if(room == RoomCardEdit)//Room that edits an individual card
 {

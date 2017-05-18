@@ -476,10 +476,14 @@ else////////////////////////////////////////////////////////////////////////////
         }
         if(room == RoomNewGame)
         {
-                textFeilds = 1;//number of text boxes we want.
+                textFeilds = 2;//number of text boxes we want.
             for(i = 0; i &lt; textFeilds; i++)
           {      
-            
+            if(i == 1)
+            {
+                global.tempInputBoxY += 50;
+               global.tempTextBoxY += 50;           
+            }
                 inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
                global.tempInputBoxY += 25;
                global.tempTextBoxY += 25;

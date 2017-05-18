@@ -75,6 +75,10 @@ if(drag == 1) //if drag is 1 (true)
     TextOnMap.y = view_yview + global.TextOnMapY * global.zoom;
     ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom;
     ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom;
+    ButtonYearLeft.x = view_xview + global.YearLeftButtonX* global.zoom;//left arrow button
+    ButtonYearLeft.y = view_yview + global.YearLeftButtonY* global.zoom;
+    ButtonYearRight.x = view_xview + global.YearRightButtonX* global.zoom;//right arrow button
+    ButtonYearRight.y = view_yview + global.YearRightButtonY* global.zoom;
     //this code checks the current position vs the view, if its different (the screen has moved)
     //then the movelock will be set to 1 (true);
     for(i = 0; i &lt; instance_number(TextInputBox); i++)
@@ -116,6 +120,14 @@ if(tempZoom != global.zoom)
         global.textboxArray[i].image_xscale =  global.textBoxXScale * global.zoom;
         global.textboxArray[i].image_yscale = global.zoom;   
     }
+    ButtonYearLeft.x = view_xview + global.YearLeftButtonX* global.zoom;//left arrow button
+ButtonYearLeft.y = view_yview + global.YearLeftButtonY* global.zoom;
+ButtonYearRight.x = view_xview + global.YearRightButtonX* global.zoom;//right arrow button
+ButtonYearRight.y = view_yview + global.YearRightButtonY* global.zoom;
+ButtonYearLeft.image_xscale = global.zoom;
+ButtonYearLeft.image_yscale = global.zoom;
+ButtonYearRight.image_xscale = global.zoom;
+ButtonYearRight.image_yscale = global.zoom;
     editorModeDisplay.image_xscale = global.zoom;
     editorModeDisplay.image_yscale = global.zoom;
     ButtonWeekLeft.image_xscale = global.zoom;

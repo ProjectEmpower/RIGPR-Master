@@ -281,7 +281,15 @@ if(room == RoomCharView)
             global.JWeek = global.playerWeek;
             global.JYear = global.playerYear;
             script_execute(SaveHistory);
-            global.playerWeek += 1;
+            if(global.playerWeek &lt; 52)
+                global.playerWeek += 1;
+            else if(global.playerYear &lt; 3)
+            {
+                global.playerYear += 1;
+                global.playerWeek = 1;
+            }
+            else
+                room = RoomEndScreen;
             script_execute(PlayerSave); 
             room = RoomMap;
         }
@@ -349,7 +357,15 @@ if(room == RoomConsView)
             global.JWeek = global.playerWeek;
             global.JYear = global.playerYear;
             script_execute(SaveHistory);
-            global.playerWeek += 1;
+            if(global.playerWeek &lt; 52)
+                global.playerWeek += 1;
+            else if(global.playerYear &lt; 3)
+            {
+                global.playerYear += 1;
+                global.playerWeek = 1;
+            }
+            else
+                room = RoomEndScreen;
             script_execute(PlayerSave); 
     
             room = RoomMap;

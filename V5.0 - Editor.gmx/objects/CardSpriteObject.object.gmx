@@ -116,14 +116,13 @@ if(global.RoomState == 3)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomCardDeck)
+            <string>if(room == RoomCardDeck)//deck of cards
 {
     if(global.RoomState == 0)
     {
         if(global.lastRoom == RoomLocationAdd)//if your selecting the card
         {
-        global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-
+            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
             //this opens the location ini, and updates the type section inside
             global.eventType = id.ref_display;//takes the ref displayed
             ini_open(global.locationINI);//opens locatio ini
@@ -142,12 +141,13 @@ if(global.RoomState == 3)
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//changes room         
         }
+
     }
     if(global.RoomState == 1)
     {
         if(global.lastState == 0)//selecing the card
         {
-            //writes the cards type to the event inside the event ini file
+           //writes the cards type to the event inside the event ini file
             global.cardType = id.ref_display;//sets the ref to "cardtype"
             ini_open(global.cardEventINI);//open the event ini
             s = string(global.currentCard);
@@ -155,6 +155,7 @@ if(global.RoomState == 3)
             if(global.edit == 0)
             {
                 global.eventActionCardsNum = ini_read_real(global.eventName,"Action Cards",0);
+                if( global.eventActionCardsNum &lt; 2)
                 global.eventActionCardsNum += 1;
                 ini_write_real(global.eventName,"Action Cards",global.eventActionCardsNum);
             }
@@ -172,7 +173,109 @@ if(global.RoomState == 3)
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//changes room      
         }
-    }    
+
+    }
+    if(global.RoomState == 2)
+    {
+        if(global.lastState == 1)//selecing the card
+        {
+       //writes the cards type to the event inside the event ini file
+            global.cardType = id.ref_display;//sets the ref to "cardtype"
+            ini_open(global.cardActionINI);//open the event ini
+            ini_write_real(global.cardName,"Cons Cards",global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 2;
+            global.RoomState = 1;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
+        }
+        else //editing the card
+        {
+            global.consCardRef = id.ref_display;
+            global.lastState = 2;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//changes room       
+        }   
+    }
+    if(global.RoomState == 3)
+    {
+        if(global.lastState == 0)//selecing the card
+        {
+              //writes the cards type to the event inside the event ini file
+            global.cardType = id.ref_display;//sets the ref to "cardtype"
+            ini_open(global.cardEventINI);//open the event ini
+            ini_write_real(global.eventName,"Info Cards",global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 3;
+            global.RoomState = 0;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
+        }
+        else if(global.lastState == 1)
+        {
+             global.cardType = id.ref_display;
+            ini_open(global.cardActionINI);//open the event ini               
+            ini_write_real(global.cardName,"Info Cards",global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 3;
+            global.RoomState = 1;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;
+        }
+        else if(global.lastState == 4)
+        {
+            global.cardType = id.ref_display;
+            ini_open(global.cardCharINI);//open the event ini               
+            ini_write_real(global.charName,"Info Cards",global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 3;
+            global.RoomState = 4;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;
+        }
+        else if(global.lastState == 2)
+        {
+            global.cardType = id.ref_display;
+            ini_open(global.cardConsINI);//open the event ini               
+            ini_write_real(global.consName,"Info Cards",global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 3;
+            global.RoomState = 2;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;
+        }
+
+        else //editing the card
+        {
+            global.infoCardRef = id.ref_display;
+            global.lastState = 3;
+            global.lastRoom = RoomCardDeck; 
+            room = RoomCardEdit;//changes room      
+        }    
+    }   
+    if(global.RoomState == 4)
+    {
+        if(global.lastState == 0)//selecing the card
+        {
+            //writes the cards type to the event inside the event ini file
+            global.cardType = id.ref_display;//sets the ref to "cardtype"
+            ini_open(global.cardEventINI);//open the event ini
+            ini_write_real(global.eventName,"Char Cards",global.cardType);
+            ini_close();//closes the ini
+            global.lastState = 4;
+            global.RoomState = 0;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
+        }
+        
+        else if(global.lastState == -1) //editing the card
+        {
+            global.charCardRef = id.ref_display;
+            global.lastState = 4;
+            global.lastRoom = RoomCardDeck;
+            room = RoomCardEdit;//changes room       
+        }   
+    }
 }
 </string>
           </argument>
@@ -229,9 +332,6 @@ if(global.RoomState == 3)
         draw_text_transformed(x, y - 70, RealName,1,1,0);
         draw_set_valign(fa_top);
         draw_text_ext(x, y - 48, CardText,20,200);
-        draw_set_valign(fa_middle);
-        draw_text_ext(x, y +200, Link,20,200);
-
     }
     if(global.RoomState == 4)
     {

@@ -42,7 +42,7 @@
                     tempName = ini_read_string(locationName,"Real Location Name","");
                     draw_set_halign(fa_center);//sets the horizontal allignment for the text
                     draw_set_valign(fa_middle);//sets the vertical allignment for the text
-                    draw_text(inst.x, inst.y+65,tempName);//draws the text "location Image"
+                    draw_text(inst.x, inst.y+70,tempName);//draws the text "location Image"
                 }
                 ini_close();//closes the ini file
             }

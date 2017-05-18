@@ -47,6 +47,18 @@ if(room == RoomNewGame)
         txt_display = "Name: ";
         txt_input = global.Name;
     }   
+    if(id == instance_id[descTextBoxRef])
+    {
+        txt_display = "Tutorial: ";
+        sprite_index = No_sprite;
+        switch(global.TutorialSetup)
+        {
+            case true: txt_input = "Viewing";
+            break;
+            case false: txt_input = "Skipping";
+            break;
+        }
+    }   
 }
 if(room == RoomCharacter)
 {    

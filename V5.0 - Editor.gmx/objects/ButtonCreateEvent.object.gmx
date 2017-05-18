@@ -57,9 +57,11 @@ global.locationEventNumber += 1; //adds 1 to the number of events
 eventRef= string(global.locationEventNumber); //creates a string of the number of events (current number = this event)
 eventNameType = "Event"+eventRef+"Type"; //creates the string used in the ini file
 eventNameWeek = "Event"+eventRef+"Week";//creates the string used in the ini file
+eventNameYear = "Event"+eventRef+"Year";//creates the string used in the ini file
 eventNameMyth = "Event"+eventRef+"Mythical";//creates the string used in the ini file
 ini_write_real(global.tempLocation, eventNameType, 0);//stores blank info for type
 ini_write_real(global.tempLocation, eventNameWeek, 0);//stores blank info for week
+ini_write_real(global.tempLocation, eventNameYear, 1);//stores blank info for week
 ini_write_real(global.tempLocation, eventNameMyth, 0);//stores blank info for mythical status
 global.eventMyth = 3;
 global.EventID = global.locationEventNumber;//moves the currently selected event to the new one

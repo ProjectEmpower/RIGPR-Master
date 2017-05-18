@@ -26,11 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>//sets position, if there are events to display
-if(global.locationEventNumber = 0)
+if(global.locationEventNumber = 0 or global.EventID == global.locationEventNumber)
 {
     sprite_index = No_sprite
 }
-
 ButtonEventRight.x = global.roomWidth/4+100;
 ButtonEventRight.y = global.roomHeight-280;
 </string>

@@ -119,6 +119,11 @@ if(room == RoomLocationAdd)
     }
     if(instance_id[seventhTextBoxRef] == id)
     {
+        global.eventYear = real(txt_input);
+
+    }
+    if(instance_id[seventhTextBoxRef+1] == id)
+    {
         global.eventMyth = txt_input;
     }
 }

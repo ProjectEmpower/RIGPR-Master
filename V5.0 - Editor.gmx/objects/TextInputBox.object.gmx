@@ -85,13 +85,30 @@ if(room == RoomLocationAdd)//checks room
         txt_input = string(global.eventWeek);//sets default text
         txt_display = "Acvailable week: "
     }
-    if(instance_id[seventhTextBoxRef] == id)
+    if(instance_id[sixthTextBoxRef+1] == id)
+    {
+        if(global.TutorialSetup == false)
+            sprite_index = TextInputBoxSprite_Small;
+        else
+            sprite_index = No_sprite;
+            
+
+        if(1 != global.eventYear and 2 != global.eventYear and 3 != global.eventYear)
+        {
+            global.eventYear = 1;
+            show_message("Year must be 1, 2 or 3");
+        }            
+        txt_input = string(global.eventYear);    
+        txt_display = "Acvailable Year: "
+    }
+
+    if(instance_id[seventhTextBoxRef+1] == id)
     {
         sprite_index = No_sprite;
         txt_input = global.eventMyth;//sets default text
         txt_display = "Event Type: "
     }
-    if(instance_id[seventhTextBoxRef+1] == id)
+    if(instance_id[seventhTextBoxRef+2] == id)
     {
         sprite_index = No_sprite;
         txt_input = "Error - Event 1 type not updated"; //sets default text
@@ -119,7 +136,7 @@ if(room == RoomLocationAdd)//checks room
     
 
     }
-    if(instance_id[seventhTextBoxRef+2] == id)
+    if(instance_id[seventhTextBoxRef+3] == id)
     {
         sprite_index = No_sprite;
         txt_input = "Error - Event 2 type not updated";//sets default text
@@ -145,7 +162,7 @@ if(room == RoomLocationAdd)//checks room
                 txt_input = "No event selected";//if the event is blank, display text
             }
     }
-    if(instance_id[seventhTextBoxRef+3] == id)
+    if(instance_id[seventhTextBoxRef+4] == id)
     {
         sprite_index = No_sprite//TextInputBoxSprite_Small;
         txt_input = "Error - Event 3 type not updated";//sets default text
@@ -281,7 +298,7 @@ if(room == RoomCardEdit)
                 {
                 
                     txt_input = global.card1[i];
-                    txt_display = "Tutorial Action Card: ";
+                    txt_display = "Action Card: ";
                 }
             }
         }
@@ -519,36 +536,6 @@ if(room == RoomCardDeck)
         }
     }
 }
-if(room == RoomDeckList)
-{
-    image_xscale = 2;
-    if(instance_id[realNameTextBoxRef] == id)
-    {
-        txt_display = "Event Cards Deck";     //sets display text
-        num_display = global.totalEventCards;
-    }
-    if(instance_id[descTextBoxRef] == id)
-    {
-        txt_display = "Action Cards Deck";     //sets display text
-        num_display = global.totalActionCards;
-    }
-    if(instance_id[thirdTextBoxRef] == id)
-    {
-        txt_display = "Consequence Cards Deck";     //sets display text
-        num_display = global.totalConsCards;
-    }
-    if(instance_id[forthTextBoxRef] == id)
-    {
-        txt_display = "Information Cards Deck";     //sets display text
-        num_display = global.totalInfoCards;
-    }
-    if(instance_id[fifthTextBoxRef] == id)
-    {
-        txt_display = "Character Cards Deck";     //sets display text
-        num_display = global.totalCharCards;
-    }
-}
-
 if(room == RoomMap)
 {
     image_xscale = global.textBoxXScale;
@@ -829,26 +816,20 @@ if(room == RoomLocationAdd)
         if(global.eventWeek != 0)
         {
             ini_open(global.locationINI);
-            for(i = 1; i &lt; global.EventID; i++)
+            for(i = 0; i &lt;= global.locationEventNumber; i++)
             {   
-            
+            if(i != global.EventID)
+            {
                 s = string(i)
                 tempEventWeek = "Event"+s+"Week";
                 tempWeek = ini_read_real(global.tempLocation,tempEventWeek,0);
-                if(tempWeek == global.eventWeek)
+                tempEventYear = "Event"+s+"Year";
+                tempYear = ini_read_real(global.tempLocation,tempEventYear,1);
+                if(tempWeek == global.eventWeek and tempYear == global.eventYear)
                 {
                     week += global.eventWeek;
                 }
             }
-            for(i = global.EventID+1; i &lt;= global.locationEventNumber; i++)
-            {   
-                s = string(i)
-                tempEventWeek = "Event"+s+"Week";
-                tempWeek = ini_read_real(global.tempLocation,tempEventWeek,0);
-                if(tempWeek == global.eventWeek)
-                {
-                    week += global.eventWeek;
-                }
             }
             ini_close();
 
@@ -856,16 +837,23 @@ if(room == RoomLocationAdd)
             {
                 if((week/3) == global.eventWeek)
                 {
+                    
                     global.eventWeek = 0;
                     txt_input = string(global.eventWeek);    
-                    show_message("You can only have 3 events on any week, if you wish to see all events on a given week, please select an event with the corresponding week");
+                    show_message("You can only have 3 events on any week, if you wish to see all events on a given week, please select an event with the corresponding week.");
                 } 
                 script_execute(SaveLocation);
             }
 
         }
+        if(global.eventWeek &gt; 52)
+        {
+            global.eventWeek = 0;
+            txt_input = string(global.eventWeek);    
+            show_message("There are only 52 weeks in a year!");           
+        }
     }
-    if(id == instance_id[seventhTextBoxRef])
+    if(id == instance_id[seventhTextBoxRef+1])
     {
     if(global.TutorialSetup == false)
     {
@@ -1279,7 +1267,7 @@ if(room == RoomCardDeck)//deck of cards
             room = RoomLocationAdd;
             
         }
-        else if(global.lastState == -1)//if you are editing the card
+        else//if you are editing the card
         {
             global.eventRef = id.ref_display;//takes the ref displayed in this instance, and sets it to the global eventRef
             global.lastState = 0;
@@ -1311,7 +1299,7 @@ if(room == RoomCardDeck)//deck of cards
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
         }
-        else if(global.lastState == -1) //editing the card
+        else //editing the card
         {
             global.cardRef = id.ref_display;
             global.lastState = 1;
@@ -1334,7 +1322,7 @@ if(room == RoomCardDeck)//deck of cards
             global.lastRoom = RoomCardDeck;
             room = RoomCardEdit;//reads the "lastroom" variable and sets that to room
         }
-        else if(global.lastState == -1) //editing the card
+        else //editing the card
         {
             global.consCardRef = id.ref_display;
             global.lastState = 2;
@@ -1753,7 +1741,7 @@ if(room == RoomLocationAdd)
     draw_set_valign(fa_middle);
     draw_set_halign(fa_right);
     tempX = 0;
-    if(id == instance_id[seventhTextBoxRef+1] or id == instance_id[seventhTextBoxRef+2] or id == instance_id[seventhTextBoxRef+3])
+    if(id == instance_id[seventhTextBoxRef+2] or id == instance_id[seventhTextBoxRef+3] or id == instance_id[seventhTextBoxRef+4])
     {
         tempX = 400;
     }
@@ -1890,17 +1878,9 @@ if(room == RoomCardDeck)
         draw_text(global.InputBoxX + 0, myY, name_display);                
     }
 }
-if(room == RoomDeckList)
-{
-    draw_set_valign(fa_middle);
-    draw_set_halign(fa_left);
-    draw_text(global.InputBoxX - 25, myY, num_display); //draws the input box text
-    draw_text(global.InputBoxX + 0, myY, txt_display);
-
-}
 if(room == RoomMap)
 {
-    if(instance_id[11] != id and instance_id[19] != id and instance_id[20] != id and instance_id[21] != id) 
+    if(instance_id[13] != id and instance_id[21] != id and instance_id[22] != id and instance_id[23] != id) 
     {
         draw_set_valign(fa_middle);
         draw_set_halign(fa_right);

@@ -49,24 +49,29 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
                     tempEventID = string(e);
                     tempEventType = "Event"+tempEventID+"Type";
                     tempEventWeek = "Event"+tempEventID+"Week";
+                    tempEventYear = "Event"+tempEventID+"Year";
                     ini_open(global.locationINI)//opens location ini
                     //sets up the events variable name for reading the events ini
                     tempEventRef = ini_read_real(locationName, tempEventType, 0);
                     tempEventWeekMap = ini_read_real(locationName, tempEventWeek, 0);
+                    tempEventYearMap = ini_read_real(locationName, tempEventYear, 1);           
                     locationMyth = ini_read_real(locationName,"Mythical",3);
                     ini_close();//closes location ini
                     s = string(tempEventRef)
                     tempEventName = "Event"+s;
                     ini_open(global.cardEventINI);//opens event ini
                     tempMyth = ini_read_real(tempEventName, "Mythical", 3);  
-                    ini_close();//closes event ini
-                    ini_open(global.locationINI);//opens location ini
-                    if(global.playerWeek == tempEventWeekMap and locationMyth != 3) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
-                    {
-                        ini_write_real(locationName,"Mythical",tempMyth); //reads the sprite
-                        LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
-                        LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
-                        global.buildingArray[i] = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+                    if(ini_section_exists(tempEventName))//checks to make sure that the event exits before finally displaying, this is incase it is deleted by the user
+                    {                        
+                        ini_close();//closes event ini
+                        ini_open(global.locationINI);//opens location ini
+                        if(global.playerWeek == tempEventWeekMap and global.playerYear == tempEventYearMap and locationMyth != 3) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
+                        {
+                            ini_write_real(locationName,"Mythical",tempMyth); //reads the sprite
+                            LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable
+                            LocationY = ini_read_real(locationName,"Y",0)//reads the y location in the ini file, and sets that to a variable
+                            global.buildingArray[i] = instance_create(LocationX,LocationY,Building);  //creats an instance at the location using the object
+                        }
                     }
                     ini_close()//closes location ini
                 }

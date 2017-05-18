@@ -54,6 +54,11 @@ global.WeekRightButtonY = 40;
     global.playerWeek += 1;
     room = RoomMap;
 }
+else if(global.playerYear &lt; 3)
+{
+    global.playerWeek = 1;
+    global.playerYear += 1;
+}
 </string>
           </argument>
         </arguments>

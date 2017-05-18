@@ -26,9 +26,17 @@
           <argument>
             <kind>1</kind>
             <string>
-    x = global.roomWidth -125;
-    y = global.roomHeight /2-50;
 
+if(room == RoomSprites)
+{
+    x = global.roomWidth - 375;
+    y = global.roomHeight-70;
+}
+else
+{
+    x = global.roomWidth - 125;
+    y = global.roomHeight/2 -50;
+}
 </string>
           </argument>
         </arguments>

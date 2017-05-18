@@ -42,6 +42,7 @@ global.zoom = 1;//sets start level of zoom
 //week info.
 global.TutorialSetup = false;
 global.week = 0;//week
+global.year = 1;
             global.tempCardBackMythStatus = 0;
 //instnace variables
 global.TotalInstanceNum = 0;//used later for building placement

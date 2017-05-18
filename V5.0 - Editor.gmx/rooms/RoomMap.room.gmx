@@ -63,6 +63,8 @@
     <instance objName="Zoom" x="32" y="128" name="inst_8AB0DAD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="MapDragObject" x="32" y="64" name="inst_CDCCCA4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonCharacter" x="128" y="512" name="inst_F1F599DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonYearLeft" x="256" y="128" name="inst_54C42DC1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonYearRight" x="320" y="96" name="inst_4E917639" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

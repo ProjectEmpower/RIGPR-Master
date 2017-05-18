@@ -59,6 +59,8 @@
     <instance objName="TextInputSetup" x="192" y="352" name="inst_0BA442A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="RedoEvent" x="160" y="640" name="inst_2C87F197" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="SpawnTutorial" x="224" y="192" name="inst_26FF241B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonJYearLeft" x="448" y="256" name="inst_A5DFAD43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonJYearRight" x="544" y="256" name="inst_13A9A907" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

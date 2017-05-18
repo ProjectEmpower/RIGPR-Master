@@ -32,11 +32,14 @@ global.tempLocation = "Location"+global.tempID;//writes the location+#Ref#  to a
 //global.eventName = "Event"+global.tempEventID;//writes the card name
 if(room == RoomLocationView)
 {
-    global.textToInput = "This is the Location Screen, click anywhere to view the available events";
-    global.instCheck = 0;
-    global.instX =  100;   
-    global.instY = global.roomHeight/2;   
-    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    if(global.TutorialSetup == true)
+    {
+        global.textToInput = "This is the Location Screen, click anywhere to view the available events";
+        global.instCheck = 0;
+        global.instX =  100;   
+        global.instY = global.roomHeight/2;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
 }
 </string>
           </argument>

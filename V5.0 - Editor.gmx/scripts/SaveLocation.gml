@@ -7,6 +7,8 @@ if(global.locationEventNumber > 0) //if there is more than one
 {
     tempEventWeek = global.tempEvent+"Week";
     ini_write_real(global.tempLocation,tempEventWeek,global.eventWeek);//write the week 
+    tempEventYear = global.tempEvent+"Year";
+    ini_write_real(global.tempLocation,tempEventYear,global.eventYear);//write the week 
     tempEventmyth = global.tempEvent+"Mythical";
     ini_write_real(global.tempLocation,tempEventmyth,global.eventMyth);//write the mythical status of the event
 }

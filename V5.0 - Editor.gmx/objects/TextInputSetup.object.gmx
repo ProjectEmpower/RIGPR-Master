@@ -42,8 +42,8 @@ global.textBoxInstanceRef = instance_count;//This is the number of objects befor
 global.focus = 0; //box focus
 if(room == RoomMap)
 {            
-    global.tempInputBoxY -= 30;
-    global.tempTextBoxY -= 5;
+    global.tempInputBoxY -= 15;
+    global.tempTextBoxY += 10;
     for(i = 0; i &lt; 11; i++)
     {    
         if(i != 0)
@@ -124,16 +124,17 @@ if(room == RoomLocationAdd)
             global.tempEvent = "Event"+tempEventID;//setup the event name for accessig the ini
             tempEventType = global.tempEvent+"Type";
             tempEventWeek = global.tempEvent+"Week";
+            tempEventYear = global.tempEvent+"Year";
             tempEventmyth = global.tempEvent+"Mythical";
             ini_open(global.locationINI);//open the ini
             global.eventType = ini_read_real(global.tempLocation, tempEventType, 0);//read the event type
             global.eventWeek = ini_read_real(global.tempLocation, tempEventWeek, 0);//read the event week
+            global.eventYear = ini_read_real(global.tempLocation, tempEventYear, 1);//read the event week
             global.eventMyth = ini_read_real(global.tempLocation, tempEventmyth, 0);//read the event mythical status
             ini_close();
             global.oldWeek = global.eventWeek;
-            if(global.eventWeek != 0)
-                global.locationWeekabc = global.eventWeek;
-            for(i = 4; i &lt; 7; i++)//for the number of feilds (type,week,mythical)
+            global.locationWeekabc = global.eventWeek;
+            for(i = 4; i &lt; 8; i++)//for the number of feilds (type,week,mythical)
             {
                 global.textboxArray[i] = instance_create(global.tempInputBoxX ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
                 global.tempInputBoxY += 25; //incrase the position of the text boxes
@@ -142,18 +143,21 @@ if(room == RoomLocationAdd)
             if(global.locationWeekabc != 0)
             {
                 global.NumOfWeeksAtLocation = 0;
-                global.tempInputBoxY -= 75; //incrase the position of the text boxes
-                global.tempTextBoxY -= 75;   
+                global.tempInputBoxY -= 100; //incrase the position of the text boxes
+                global.tempTextBoxY -= 100;   
                 for(t = 1; t &lt;= global.locationEventNumber; t++)
                 {
                     global.tempEventID[global.NumOfWeeksAtLocation] = string(t);
                     global.tempEvent2 = "Event"+global.tempEventID[global.NumOfWeeksAtLocation];
                     tempEventWeek = global.tempEvent2+"Week";
+                    tempEventYear = global.tempEvent2+"Year";
                     tempEventType = global.tempEvent2+"Type";
                     ini_open(global.locationINI);//open the ini
                     global.eventWeek2 = ini_read_real(global.tempLocation, tempEventWeek, 0);//read the event week
+                    global.eventYear2 = ini_read_real(global.tempLocation, tempEventYear, 1);//read the event week
+                                        
                     ini_close();
-                    if(global.eventWeek2 == global.locationWeekabc)
+                    if(global.eventWeek2 == global.locationWeekabc and global.eventYear2 == global.eventYear)
                     {
                         tempArray[global.NumOfWeeksAtLocation] = tempEventType; 
                         if(global.NumOfWeeksAtLocation &lt; 3)
@@ -163,11 +167,11 @@ if(room == RoomLocationAdd)
                     }
         
                 }
-                for(i = 7; i &lt; 7 + global.NumOfWeeksAtLocation; i++)
+                for(i = 8; i &lt; 8 + global.NumOfWeeksAtLocation; i++)
                 {
                      ini_open(global.locationINI);//open the ini
         
-                global.eventType2[i - 7] = ini_read_real(global.tempLocation, tempArray[i - 7], 0);//read the event type
+                global.eventType2[i - 8] = ini_read_real(global.tempLocation, tempArray[i - 8], 0);//read the event type
                      ini_close();
                     global.textboxArray[i] = instance_create(global.tempInputBoxX + 400 ,global.tempInputBoxY,TextInputBox);  //create an instance at the location using the object 
                     global.tempInputBoxY += 25; //incrase the position of the text boxes
@@ -817,18 +821,6 @@ background_yscale[5] = 1 * ((room_height) / background_height[0]);
     }
 }
 
-if(room == RoomDeckList)
-{
-    global.tempInputBoxY += 85;
-    global.tempTextBoxY += 85;
-    for(i = 0; i &lt; 5; i++)
-    {
-        global.textboxArray[i] = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);         
-        global.tempInputBoxY += 25;
-        global.tempTextBoxY += 25;
-    }
-    
-}
 
 </string>
           </argument>

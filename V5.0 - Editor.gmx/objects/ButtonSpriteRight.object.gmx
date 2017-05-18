@@ -26,9 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>//sets position, if there are events to display
-    ButtonSpriteRight.x = global.roomWidth/5*3+90;
-    ButtonSpriteRight.y = global.roomHeight/5+125;
-
+x = Building.x+90;
+y = Building.y;
+if(global.buildingSprite == global.totalNormBuildingSprites-1)
+sprite_index = No_sprite
 </string>
           </argument>
         </arguments>

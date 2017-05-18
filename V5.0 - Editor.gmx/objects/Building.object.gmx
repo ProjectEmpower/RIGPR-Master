@@ -42,8 +42,8 @@ if(room == RoomLocationAdd)
 }
 if(room == RoomSprites)
 {
-    Building.x = global.roomWidth/5*3;//set the current position on screen
-    Building.y = global.roomHeight/5+125;
+    Building.x = global.roomWidth-375;//set the current position on screen
+    Building.y = global.roomHeight/2;
     Building.depth = 2;
     ref = string(global.objectRef); //set the ref variable to the current objectRef (instance number)
     Name = "Location"+ref; //sets "Location+currentID" to the name varia

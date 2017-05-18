@@ -63,7 +63,10 @@ view_wview[0] = global.roomWidth * global.zoom //set the view width/height to th
 view_hview[0] = global.roomHeight * global.zoom
 editorModeDisplay.x = view_xview + global.editorModeDisplayX* global.zoom;//editor mode hud element
 editorModeDisplay.y = view_yview + global.editorModeDisplayY* global.zoom;
-
+ButtonYearLeft.x = view_xview + global.YearLeftButtonX* global.zoom;//left arrow button
+ButtonYearLeft.y = view_yview + global.YearLeftButtonY* global.zoom;
+ButtonYearRight.x = view_xview + global.YearRightButtonX* global.zoom;//right arrow button
+ButtonYearRight.y = view_yview + global.YearRightButtonY* global.zoom;
 ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX* global.zoom;//left arrow button
 ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY* global.zoom;
 ButtonWeekRight.x = view_xview + global.WeekRightButtonX* global.zoom;//right arrow button
@@ -81,7 +84,10 @@ for(i = 0; i &lt; instance_number(TextInputBox); i++)
 }
 editorModeDisplay.image_xscale = global.zoom;
 editorModeDisplay.image_yscale = global.zoom;
-
+ButtonYearLeft.image_xscale = global.zoom;
+ButtonYearLeft.image_yscale = global.zoom;
+ButtonYearRight.image_xscale = global.zoom;
+ButtonYearRight.image_yscale = global.zoom;
 ButtonWeekLeft.image_xscale = global.zoom;
 ButtonWeekLeft.image_yscale = global.zoom;
 ButtonWeekRight.image_xscale = global.zoom;

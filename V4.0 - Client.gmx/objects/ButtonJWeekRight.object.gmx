@@ -26,7 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>x = global.roomWidth-50;
-y = 40;
+y = 80;
+if(global.JWeek == 52 and global.JYear == 3)
+    sprite_index = No_sprite;
 </string>
           </argument>
         </arguments>
@@ -49,17 +51,22 @@ y = 40;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.JWeek &lt; 52)
+            <string>ini_open(global.historyINI);
+if(ini_section_exists("Year"+string(global.JYear) + " - Week"+string(global.JWeek)))
 {
-    ini_open(global.historyINI);
-    if(ini_section_exists("Year"+string(global.JYear) + " - Week"+string(global.JWeek)))
-    {
-        script_execute(SaveHistory);
-    }
-    ini_close()
-    global.JWeek += 1;
-    room = RoomDiary;
+    script_execute(SaveHistory);
 }
+ini_close()
+if(global.JWeek &lt; 52)
+{
+    global.JWeek += 1;
+}    
+else if(global.JYear &lt; 3)
+{
+    global.JWeek = 1;
+    global.JYear += 1;
+}
+room = RoomDiary;
 </string>
           </argument>
         </arguments>

@@ -35,6 +35,9 @@ if(room == RoomSprites)
     x = 200;
     y = global.roomHeight /2- 100;
 }
+if(global.cardSprite &lt;= 0)
+    sprite_index = No_sprite;
+    
 </string>
           </argument>
         </arguments>

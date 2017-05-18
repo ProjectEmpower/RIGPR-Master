@@ -130,7 +130,9 @@
       <object>objects\Building</object>
       <object>objects\BuildingSetup</object>
       <object>objects\ButtonWeekLeft</object>
+      <object>objects\ButtonYearLeft</object>
       <object>objects\ButtonWeekRight</object>
+      <object>objects\ButtonYearRight</object>
       <object>objects\editorModeDisplay</object>
       <objects name="Unused">
         <object>objects\TitleMap</object>
@@ -167,7 +169,6 @@
       <object>objects\DeleteCurrentSprite</object>
     </objects>
     <objects name="CardList">
-      <object>objects\DeckListSetup</object>
       <objects name="CardEdit">
         <object>objects\ButtonCycleMapVisibility</object>
         <object>objects\CardSetup</object>
@@ -229,7 +230,6 @@
     <room>rooms\RoomMap</room>
     <room>rooms\RoomLocationAdd</room>
     <rooms name="Decks">
-      <room>rooms\RoomDeckList</room>
       <rooms name="Card">
         <room>rooms\RoomCardEdit</room>
         <room>rooms\RoomCardDeck</room>

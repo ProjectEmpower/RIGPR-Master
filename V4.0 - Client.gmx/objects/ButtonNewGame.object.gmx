@@ -79,6 +79,7 @@ if i_d == msg
     if ds_map_find_value(async_load, "status")
     {
         file_delete(global.historyINI);
+        file_delete(global.playerINI);
         global.Name = "";
         room = RoomNewGame;
     }
