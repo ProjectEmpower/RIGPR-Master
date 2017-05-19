@@ -52,6 +52,9 @@
   </views>
   <instances>
     <instance objName="MenuToMap" x="288" y="384" name="inst_E08E2B40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonBack" x="1152" y="608" name="inst_F95A5AB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonDeleteBackground" x="576" y="384" name="inst_5F003576" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddBackground" x="512" y="160" name="inst_F6674F9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

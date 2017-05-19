@@ -73,8 +73,15 @@ ButtonWeekRight.x = view_xview + global.WeekRightButtonX* global.zoom;//right ar
 ButtonWeekRight.y = view_yview + global.WeekRightButtonY* global.zoom;
 TextOnMap.x = view_xview + global.TextOnMapX* global.zoom;
 TextOnMap.y = view_yview + global.TextOnMapY* global.zoom;
-ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom;
-ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom;
+ButtonAddMap.x = view_xview + global.AddMapX* global.zoom;
+ButtonAddMap.y = view_yview + global.AddMapY* global.zoom;
+DeleteMap.x = view_xview + global.DelMapX* global.zoom;
+DeleteMap.y = view_yview + global.DelMapY* global.zoom;
+ButtonBack.x = view_xview + global.BackX* global.zoom;
+ButtonBack.y = view_yview + global.BackY* global.zoom;
+ButtonCharacter.x = view_xview + global.CharacterButtonX* global.zoom;//editor mode hud element
+ButtonCharacter.y = view_yview + global.CharacterButtonY* global.zoom;
+
 for(i = 0; i &lt; instance_number(TextInputBox); i++)
 {
     global.textboxArray[i].x = view_xview + global.mapInputBoxX * global.zoom;
@@ -94,7 +101,13 @@ ButtonWeekRight.image_xscale = global.zoom;
 ButtonWeekRight.image_yscale = global.zoom;
 TextOnMap.image_xscale = global.zoom;
 TextOnMap.image_yscale = global.zoom;
-ButtonCharacter.image_xscale = global.zoom;
+ButtonAddMap.image_xscale = global.zoom;
+ButtonAddMap.image_yscale =  global.zoom;
+DeleteMap.image_xscale = global.zoom;
+DeleteMap.image_yscale =  global.zoom;
+ButtonBack.image_xscale = global.zoom;
+ButtonBack.image_yscale =  global.zoom;
+ButtonCharacter.image_xscale = global.zoom;//editor mode hud element
 ButtonCharacter.image_yscale = global.zoom;
 </string>
           </argument>

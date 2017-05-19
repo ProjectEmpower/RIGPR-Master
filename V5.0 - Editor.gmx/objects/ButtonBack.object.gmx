@@ -25,13 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Set position on screen.
-x = global.roomWidth-125;
+            <string>x = global.roomWidth-125;
 y = global.roomHeight- 70;
-if(room == RoomSprites)
-    y = global.roomHeight - 270;
-
-
+if(room == RoomMap)
+{
+    if(global.BackgroundSetup == false)
+        sprite_index = No_sprite;
+    global.BackX = global.roomWidth-125;
+    global.BackY = global.roomHeight-70;
+    
+}
+if(room == RoomMenu and global.BackgroundSetup == false)
+{
+    sprite_index = No_sprite;
+}
 </string>
           </argument>
         </arguments>
@@ -59,11 +66,41 @@ if(room == RoomSprites)
 //This is used in multiple rooms and behaves differently depending on the room.
 if(room == RoomCharacter) //checks room
 {
-    room = RoomMap; //swaps room
+    if(global.BackgroundSetup == true)
+    {
+        global.BackgroundSetup = false
+        room = RoomBackgrounds; //swaps room
+    }
+    else
+    {
+        room = RoomMap
+    }
+}
+if(room == RoomMap)
+{
+    global.BackgroundSetup = false;
+    room = RoomBackgrounds;
+}
+if(room == RoomMenu)
+{
+    global.BackgroundSetup = false;
+    room = RoomBackgrounds;
+}
+if(room == RoomBackgrounds)
+{
+    room = RoomMap;
 }
 if(room == RoomDiary)
 {
-    room = RoomCharacter;
+    if(global.BackgroundSetup == true)
+    {
+        global.BackgroundSetup = false
+        room = RoomBackgrounds; //swaps room
+    }
+    else
+    {
+        room = RoomCharacter
+    }
 }
 if(room == RoomTutorial)
 {
@@ -72,7 +109,15 @@ global.TutorialSetup = false;
 }
 if(room == RoomCards)
 {
-    room = RoomCharacter;
+    if(global.BackgroundSetup == true)
+    {
+        global.BackgroundSetup = false
+        room = RoomBackgrounds; //swaps room
+    }
+    else
+    {
+        room = RoomCharacter
+    }
 }
 if(room == RoomLocationAdd) //checks room
 {
@@ -300,11 +345,41 @@ if(room == RoomOptions)
 //This is used in multiple rooms and behaves differently depending on the room.
 if(room == RoomCharacter) //checks room
 {
-    room = RoomMap; //swaps room
+    if(global.BackgroundSetup == true)
+    {
+        global.BackgroundSetup = false
+        room = RoomBackgrounds; //swaps room
+    }
+    else
+    {
+        room = RoomMap
+    }
+}
+if(room == RoomMap)
+{
+    global.BackgroundSetup = false;
+    room = RoomBackgrounds;
+}
+if(room == RoomMenu)
+{
+    global.BackgroundSetup = false;
+    room = RoomBackgrounds;
+}
+if(room == RoomBackgrounds)
+{
+    room = RoomMap;
 }
 if(room == RoomDiary)
 {
-    room = RoomCharacter;
+    if(global.BackgroundSetup == true)
+    {
+        global.BackgroundSetup = false
+        room = RoomBackgrounds; //swaps room
+    }
+    else
+    {
+        room = RoomCharacter
+    }
 }
 if(room == RoomTutorial)
 {
@@ -313,7 +388,15 @@ global.TutorialSetup = false;
 }
 if(room == RoomCards)
 {
-    room = RoomCharacter;
+    if(global.BackgroundSetup == true)
+    {
+        global.BackgroundSetup = false
+        room = RoomBackgrounds; //swaps room
+    }
+    else
+    {
+        room = RoomCharacter
+    }
 }
 if(room == RoomLocationAdd) //checks room
 {

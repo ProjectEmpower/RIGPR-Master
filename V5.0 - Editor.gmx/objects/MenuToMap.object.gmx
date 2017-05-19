@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(RoomMap);
+            <string>if(global.BackgroundSetup == false)
+room_goto(RoomMap);
 </string>
           </argument>
         </arguments>

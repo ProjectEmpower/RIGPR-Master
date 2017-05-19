@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-x = global.roomWidth - 125;
-y = global.roomHeight - 170;
+            <string>if(global.BackgroundSetup == false)
+    sprite_index = No_sprite;
+global.AddMapX = global.roomWidth/2;
+global.AddMapY = global.roomHeight/2-50;
+
 Map = "";
 MapF = "";
 </string>
@@ -92,15 +94,15 @@ if(i_d == Map)
 if(MapF != "")
 {
     spriteName = "Map"
-    global.MapBack = background_add("editor_files/BG/Map.png",0,0);
+    global.MapBack = background_add(MapF,0,0);
     background_save(global.MapBack , "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
          
-    room_set_background(RoomMap, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
+    room_set_background(RoomMap, 0, 1, 0, global.MapBack, 0, 0, 1, 1, 0, 0, 1);
     global.MapBacking = 1;
     ini_open(global.editorINI);//opens the editorINI
     ini_write_real("General","Map Background",global.MapBacking);
     ini_close();//closes the ini
-    room = RoomSprites;//reloads the room
+    room = RoomMap;//reloads the room
 }
 </string>
           </argument>

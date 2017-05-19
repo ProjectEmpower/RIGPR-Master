@@ -50,7 +50,7 @@ global.myth = 0;
 global.locked = 0;
 global.tempNum = 0;
 global.EventID = 1;//sets the default event ID (being 0) when the map screen is entered
-
+global.BackgroundSetup = false;
 global.moveLock = 0;//locks the player from entering a location when panning the map screen
 global.lastState = 20;//used for moving betwen rooms
 global.edit = 0;
@@ -101,6 +101,7 @@ global.MapBacking = ini_read_real("General","Map Background",0);
 global.CharacterBGing = ini_read_real("General","Character Background",0);
 global.DiaryBGing = ini_read_real("General","Diary Background",0);
 global.CardsBGing = ini_read_real("General","Cards Background",0);
+global.MenuBGing = ini_read_real("General","Menu Background",0);
 
 global.EventCardBGing = ini_read_real("General","Event Cards Background",0);
 global.ActionCardBGing = ini_read_real("General","Action Cards Background",0);
@@ -184,6 +185,13 @@ if(!ini_section_exists("InfoT"))
     ini_write_string("InfoT","Link","http://www.google.com");//write the mythical status of the event
 }
 ini_close();
+
+if(global.MenuBGing != 0)
+{
+
+    global.MenuBG = background_add("editor_files/BG/MenuBackground.png",0,0);
+    room_set_background(RoomMenu, 0, 1, 0, global.MenuBG, 0, 0, 0, 0, 0, 0, 1);
+}
 if(global.CharacterBGing != 0)
 {
 

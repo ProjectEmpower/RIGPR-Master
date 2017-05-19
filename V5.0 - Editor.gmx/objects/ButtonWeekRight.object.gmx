@@ -29,7 +29,7 @@
 {
     global.WeekRightButtonX = global.roomWidth-30;
     global.WeekRightButtonY = 80;
-    if(global.myth == 2 or global.week == 52 and global.year == 3)
+    if(global.myth == 2 or global.week == 52 and global.year == 3 or global.BackgroundSetup == true)
         sprite_index = No_sprite;
 }
 

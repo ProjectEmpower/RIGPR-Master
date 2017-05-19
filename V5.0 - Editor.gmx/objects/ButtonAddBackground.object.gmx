@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>x = global.roomWidth /2;
-y = global.roomHeight /2;
+y = global.roomHeight /2-50;
 Background = "";
 BackgroundF = "";
 tempRoom = room;
@@ -42,7 +42,8 @@ background_xscale[4] = 1 * ((room_width) / background_width[0]);
 background_yscale[4] = 1 * ((room_height) / background_height[0]);
 background_xscale[5] = 1 * ((room_width) / background_width[0]);
 background_yscale[5] = 1 * ((room_height) / background_height[0]);
-
+if(room == RoomMenu and global.BackgroundSetup == false)
+    sprite_index = No_sprite;
 </string>
           </argument>
         </arguments>
@@ -127,6 +128,17 @@ if(BackgroundF != "")
     Background = "";
 
     }
+    if(room == RoomMenu)
+    {
+        spriteName = "MenuBackground"
+         global.MenuBG = background_add(BackgroundF,0,0);
+        background_save(global.MenuBG , "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
+        global.MenuBGing = 1;
+
+         room_set_background(RoomMenu, 0, 1, 0, global.MenuBG, 0, 0, 0, 0, 0, 0, 1);
+        Background = "";
+
+    }
     if(room == RoomCards)
     {
         if(global.RoomState == -1)
@@ -208,6 +220,8 @@ if(BackgroundF != "")
     ini_write_real("General","Character Background",global.CharacterBGing);
     ini_write_real("General","Diary Background",global.DiaryBGing);
     ini_write_real("General","Cards Background",global.CardsBGing);
+    ini_write_real("General","Menu Background",global.MenuBGing);
+    
     ini_write_real("General","Event Cards Background",global.EventCardBGing);
     ini_write_real("General","Action Cards Background",global.ActionCardBGing);
     ini_write_real("General","Cons Cards Background",global.ConsCardBGing);

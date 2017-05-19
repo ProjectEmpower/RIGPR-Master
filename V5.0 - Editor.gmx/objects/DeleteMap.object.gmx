@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = global.roomWidth - 125;
-y = global.roomHeight - 70;
+            <string>if(global.BackgroundSetup == false or global.MapBacking == 0)
+    sprite_index = No_sprite;
+global.DelMapX = global.roomWidth/2;
+global.DelMapY = global.roomHeight/2+50;
 Map = "";
-CardBackF = "";
 </string>
           </argument>
         </arguments>
@@ -85,7 +86,7 @@ if(i_d == Map)
     ini_close();//closes the ini
     room_set_background(RoomMap, 0, 1, 0, NewMapBackground, 0, 0, 1, 1, 0, 0, 1);
     show_message_async("File deleted"); 
-    room = RoomSprites
+    room = RoomMap
 
 }
 </string>

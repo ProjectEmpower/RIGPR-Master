@@ -589,10 +589,15 @@ if(room == RoomMap)
     }
     if(instance_id[realNameTextBoxRef+9]  == id)
     {
-        txt_display = "Tutorial Setup";     //sets display text
+        txt_display = "Background Setup";     //sets display text
         num_display = "";
     }
     if(instance_id[realNameTextBoxRef+10]  == id)
+    {
+        txt_display = "Tutorial Setup";     //sets display text
+        num_display = "";
+    }
+    if(instance_id[realNameTextBoxRef+11]  == id)
     {
         txt_display = "Options";     //sets display text
         num_display = "";
@@ -1548,84 +1553,93 @@ if(room == RoomCardEdit)
 }
 if(room == RoomMap)
 {
-    if(global.moveLock == 0)
+    if(global.BackgroundSetup == false)
     {
-        if(global.textboxArray[0] == id)
+        if(global.moveLock == 0)
         {
-            if (global.myth != 2)//if not in editor mode
+            if(global.textboxArray[0] == id)
             {
-                global.editorMode = global.myth;//stores the mythical status on click inside "editorMode"
-                global.myth = 2;//sets the current mythical status to 2, editor mode
+                if (global.myth != 2)//if not in editor mode
+                {
+                    global.editorMode = global.myth;//stores the mythical status on click inside "editorMode"
+                    global.myth = 2;//sets the current mythical status to 2, editor mode
+                }
+                else//if in editor mode
+                {
+                    global.myth = global.editorMode;//set the mythical status back to the previous
+                }
+                room = RoomMap;//reloads the map screen
             }
-            else//if in editor mode
+            if(global.textboxArray[2] == id)//event cards
             {
-                global.myth = global.editorMode;//set the mythical status back to the previous
+                global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
+                global.lastRoom = room;
+                global.RoomState = 0;
+                global.lastState = -1;
+                room = RoomCardDeck;
             }
-            room = RoomMap;//reloads the map screen
+            if(global.textboxArray[3] == id)//action cards
+            {
+                global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
+                global.lastRoom = room;
+                global.RoomState = 1;
+                global.lastState = -1;
+                room = RoomCardDeck;
+            }
+            if(global.textboxArray[4] == id)//cons cards
+            {
+                global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
+                global.lastRoom = room;
+                global.RoomState = 2;
+                global.lastState = -1;
+                room = RoomCardDeck;
+            }   
+            if(global.textboxArray[5] == id)//info cards
+            {
+                global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
+                global.lastRoom = room;
+                global.RoomState = 3;
+                global.lastState = -1;
+                room = RoomCardDeck;
+            }  
+            if(global.textboxArray[6] == id)//char cards
+            {
+                global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
+                global.lastRoom = room;
+                global.RoomState = 4;
+                global.lastState = -1;
+                room = RoomCardDeck;
+            }   
+            if(global.textboxArray[8] == id)//options
+            {
+                //on click
+                global.cardSprite = -1;
+                global.RoomState = 0;
+                global.buildingSprite = -1;
+                global.SelectWindow = false;
+                global.lastRoom = room;//lastRoom variable is the current room
+    
+                room = RoomSprites;//Move to Sprites room
+            } 
+            if(global.textboxArray[9] == id)//options
+            {
+                //on click
+                global.lastRoom = room;//lastRoom variable is the current room
+                room = RoomBackgrounds;//Move to Options room
+            }   
+            if(global.textboxArray[10] == id)//options
+            {
+                //on click
+                global.lastRoom = room;//lastRoom variable is the current room
+                room = RoomTutorial;//Move to Options room
+            }  
+            if(global.textboxArray[11] == id)//options
+            {
+                //on click
+                global.lastRoom = room;//lastRoom variable is the current room
+                room = RoomOptions;//Move to Options room
+            }  
         }
-        if(global.textboxArray[2] == id)//event cards
-        {
-            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-            global.lastRoom = room;
-            global.RoomState = 0;
-            global.lastState = -1;
-            room = RoomCardDeck;
-        }
-        if(global.textboxArray[3] == id)//action cards
-        {
-            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-            global.lastRoom = room;
-            global.RoomState = 1;
-            global.lastState = -1;
-            room = RoomCardDeck;
-        }
-        if(global.textboxArray[4] == id)//cons cards
-        {
-            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-            global.lastRoom = room;
-            global.RoomState = 2;
-            global.lastState = -1;
-            room = RoomCardDeck;
-        }   
-        if(global.textboxArray[5] == id)//info cards
-        {
-            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-            global.lastRoom = room;
-            global.RoomState = 3;
-            global.lastState = -1;
-            room = RoomCardDeck;
-        }  
-        if(global.textboxArray[6] == id)//char cards
-        {
-            global.tempPos = 0; //creates the tempPos variable used for when a list is goes off screen and needs to be moved by x amount.
-            global.lastRoom = room;
-            global.RoomState = 4;
-            global.lastState = -1;
-            room = RoomCardDeck;
-        }   
-        if(global.textboxArray[8] == id)//options
-        {
-            //on click
-            global.cardSprite = -1;
-            global.RoomState = 0;
-            global.buildingSprite = -1;
-            global.SelectWindow = false;
-            global.lastRoom = room;//lastRoom variable is the current room
-
-            room = RoomSprites;//Move to Sprites room
-        }  
-        if(global.textboxArray[9] == id)//options
-        {
-            //on click
-            global.lastRoom = room;//lastRoom variable is the current room
-            room = RoomTutorial;//Move to Options room
-        }  
-        if(global.textboxArray[10] == id)//options
-        {
-            //on click
-            global.lastRoom = room;//lastRoom variable is the current room
-            room = RoomOptions;//Move to Options room
-        }  
     }
 }
 </string>
@@ -1880,7 +1894,7 @@ if(room == RoomCardDeck)
 }
 if(room == RoomMap)
 {
-    if(instance_id[13] != id and instance_id[21] != id and instance_id[22] != id and instance_id[23] != id) 
+    if(instance_id[16] != id and instance_id[27] != id and instance_id[24] != id and instance_id[25] != id and instance_id[26] != id) 
     {
         draw_set_valign(fa_middle);
         draw_set_halign(fa_right);

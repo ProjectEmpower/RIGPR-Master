@@ -29,9 +29,9 @@
 {
     global.WeekLeftButtonX = global.roomWidth-170;
     global.WeekLeftButtonY = 80;
-    if(global.week == 0 and global.year == 1 or global.myth == 2)
+    if(global.week == 0 and global.year == 1 or global.myth == 2 or global.BackgroundSetup == true)
         sprite_index = No_sprite;
-}
+}   
 </string>
           </argument>
         </arguments>

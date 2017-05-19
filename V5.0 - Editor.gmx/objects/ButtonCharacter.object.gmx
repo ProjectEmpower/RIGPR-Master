@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>global.CharacterButtonX = 75;
 global.CharacterButtonY = global.roomHeight-75;
-
+global.RoomState = -1;
 </string>
           </argument>
         </arguments>
@@ -50,7 +50,9 @@ global.CharacterButtonY = global.roomHeight-75;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.RoomState = -1;
+            <string>if(room == RoomBackgrounds)
+    global.BackgroundSetup = true;
+
 room = RoomCharacter;//move to the character screen.
 </string>
           </argument>

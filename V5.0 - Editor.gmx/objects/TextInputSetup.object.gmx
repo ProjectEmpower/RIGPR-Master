@@ -42,16 +42,16 @@ global.textBoxInstanceRef = instance_count;//This is the number of objects befor
 global.focus = 0; //box focus
 if(room == RoomMap)
 {            
-    global.tempInputBoxY -= 15;
-    global.tempTextBoxY += 10;
-    for(i = 0; i &lt; 11; i++)
+    global.tempInputBoxY -= 52;
+    global.tempTextBoxY -= 2;
+    for(i = 0; i &lt; 12; i++)
     {    
         if(i != 0)
         {
             global.tempInputBoxY += 25;
             global.tempTextBoxY += 25;
         }
-
+        
         global.textboxArray[i] = instance_create(global.mapInputBoxX,global.tempInputBoxY,TextInputBox);         
 
     }

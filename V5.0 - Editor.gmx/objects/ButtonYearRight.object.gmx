@@ -29,7 +29,7 @@
 {
     global.YearRightButtonX = global.roomWidth-30;
     global.YearRightButtonY = 32;
-    if(global.myth == 2 or global.year == 3)
+    if(global.myth == 2 or global.year == 3 or global.BackgroundSetup == true)
         sprite_index = No_sprite;
 }
 

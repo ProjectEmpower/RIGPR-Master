@@ -63,7 +63,8 @@ if(drag == 1) //if drag is 1 (true)
     //makes sure the view stays within the boundries of the room
     view_xview = max(0, min(view_xview, room_width - view_wview)) 
     view_yview = max(0, min(view_yview, room_height - view_hview))
-     
+
+
     //sets the button postions when the screen is in movement
     editorModeDisplay.x = view_xview + global.editorModeDisplayX* global.zoom;//editor mode hud element
     editorModeDisplay.y = view_yview + global.editorModeDisplayY* global.zoom;
@@ -73,12 +74,18 @@ if(drag == 1) //if drag is 1 (true)
     ButtonWeekRight.y = view_yview + global.WeekRightButtonY * global.zoom;
     TextOnMap.x = view_xview + global.TextOnMapX * global.zoom;
     TextOnMap.y = view_yview + global.TextOnMapY * global.zoom;
-    ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom;
-    ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom;
     ButtonYearLeft.x = view_xview + global.YearLeftButtonX* global.zoom;//left arrow button
     ButtonYearLeft.y = view_yview + global.YearLeftButtonY* global.zoom;
     ButtonYearRight.x = view_xview + global.YearRightButtonX* global.zoom;//right arrow button
     ButtonYearRight.y = view_yview + global.YearRightButtonY* global.zoom;
+    ButtonAddMap.x = view_xview + global.AddMapX * global.zoom;
+    ButtonAddMap.y = view_yview + global.AddMapY * global.zoom;
+    DeleteMap.x = view_xview + global.DelMapX * global.zoom;
+    DeleteMap.y = view_yview + global.DelMapY * global.zoom;
+    ButtonBack.x = view_xview + global.BackX * global.zoom;
+    ButtonBack.y = view_yview + global.BackY * global.zoom;
+    ButtonCharacter.x = view_xview + global.CharacterButtonX* global.zoom;//editor mode hud element
+    ButtonCharacter.y = view_yview + global.CharacterButtonY* global.zoom;
     //this code checks the current position vs the view, if its different (the screen has moved)
     //then the movelock will be set to 1 (true);
     for(i = 0; i &lt; instance_number(TextInputBox); i++)
@@ -101,7 +108,12 @@ if(tempZoom != global.zoom)
     tempZoom = global.zoom;
     view_wview[0] = global.roomWidth * global.zoom //set the view width/height to the global variable roomWidth/roomHeight, this is set when the game starts and the player changes the screen size using options
     view_hview[0] = global.roomHeight * global.zoom
-
+    ButtonAddMap.x = view_xview + global.AddMapX* global.zoom;
+    ButtonAddMap.y = view_yview + global.AddMapY* global.zoom;
+    DeleteMap.x = view_xview + global.DelMapX* global.zoom;
+    DeleteMap.y = view_yview + global.DelMapY* global.zoom;
+    ButtonBack.x = view_xview + global.BackX* global.zoom;
+    ButtonBack.y = view_yview + global.BackY* global.zoom;
     editorModeDisplay.x = view_xview + global.editorModeDisplayX* global.zoom;//editor mode hud element
     editorModeDisplay.y = view_yview + global.editorModeDisplayY* global.zoom;
     ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX* global.zoom;//left arrow button
@@ -110,8 +122,8 @@ if(tempZoom != global.zoom)
     ButtonWeekRight.y = view_yview + global.WeekRightButtonY* global.zoom;
     TextOnMap.x = view_xview + global.TextOnMapX* global.zoom;
     TextOnMap.y = view_yview + global.TextOnMapY* global.zoom;
-    ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom;
-    ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom;
+    ButtonCharacter.x = view_xview + global.CharacterButtonX* global.zoom;//editor mode hud element
+    ButtonCharacter.y = view_yview + global.CharacterButtonY* global.zoom;
     for(i = 0; i &lt; instance_number(TextInputBox); i++)
     {        
         global.textboxArray[i].x = view_xview + global.mapInputBoxX * global.zoom;
@@ -121,13 +133,13 @@ if(tempZoom != global.zoom)
         global.textboxArray[i].image_yscale = global.zoom;   
     }
     ButtonYearLeft.x = view_xview + global.YearLeftButtonX* global.zoom;//left arrow button
-ButtonYearLeft.y = view_yview + global.YearLeftButtonY* global.zoom;
-ButtonYearRight.x = view_xview + global.YearRightButtonX* global.zoom;//right arrow button
-ButtonYearRight.y = view_yview + global.YearRightButtonY* global.zoom;
-ButtonYearLeft.image_xscale = global.zoom;
-ButtonYearLeft.image_yscale = global.zoom;
-ButtonYearRight.image_xscale = global.zoom;
-ButtonYearRight.image_yscale = global.zoom;
+    ButtonYearLeft.y = view_yview + global.YearLeftButtonY* global.zoom;
+    ButtonYearRight.x = view_xview + global.YearRightButtonX* global.zoom;//right arrow button
+    ButtonYearRight.y = view_yview + global.YearRightButtonY* global.zoom;
+    ButtonYearLeft.image_xscale = global.zoom;
+    ButtonYearLeft.image_yscale = global.zoom;
+    ButtonYearRight.image_xscale = global.zoom;
+    ButtonYearRight.image_yscale = global.zoom;
     editorModeDisplay.image_xscale = global.zoom;
     editorModeDisplay.image_yscale = global.zoom;
     ButtonWeekLeft.image_xscale = global.zoom;
@@ -136,7 +148,13 @@ ButtonYearRight.image_yscale = global.zoom;
     ButtonWeekRight.image_yscale = global.zoom;
     TextOnMap.image_xscale = global.zoom;
     TextOnMap.image_yscale = global.zoom;
-    ButtonCharacter.image_xscale = global.zoom;
+    ButtonAddMap.image_xscale = global.zoom;
+    ButtonAddMap.image_yscale =  global.zoom;
+    DeleteMap.image_xscale = global.zoom;
+    DeleteMap.image_yscale =  global.zoom;
+    ButtonBack.image_xscale = global.zoom;
+    ButtonBack.image_yscale =  global.zoom;
+    ButtonCharacter.image_xscale = global.zoom;//editor mode hud element
     ButtonCharacter.image_yscale = global.zoom;
 }
 </string>

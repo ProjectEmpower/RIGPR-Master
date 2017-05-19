@@ -223,6 +223,8 @@
     <object>objects\DeleteMap</object>
     <object>objects\ButtonDeleteMythCardBack</object>
     <object>objects\ButtonAddMythicalCardBack</object>
+    <object>objects\GotoMap</object>
+    <object>objects\GotoSplash</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
@@ -243,6 +245,7 @@
     <room>rooms\RoomCharacter</room>
     <room>rooms\RoomDiary</room>
     <room>rooms\RoomCards</room>
+    <room>rooms\RoomBackgrounds</room>
     <room>rooms\RoomTutorial</room>
   </rooms>
   <help>
