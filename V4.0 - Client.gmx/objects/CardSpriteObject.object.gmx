@@ -114,7 +114,9 @@ if(global.RoomState == 3)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomLocationView)
+            <string>if(room != RoomInfoView)
+    global.tempPos = 0;
+if(room == RoomLocationView)
 {   
     if(global.playerInt &gt;= reqInt and global.playerChar &gt;= reqChar and global.playerWell &gt;= reqWell)
     {
@@ -138,7 +140,7 @@ if(room == RoomEventSelect)
             room = RoomConsView;
 
     }
-    if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink) and global.TutorialSetup == true and global.CharacterTutorial == false)
+    if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink) and global.TutorialSetup == true and global.CharacterTutorial == false and global.InformationTutorial == false)
     {
             global.ActionStore = "Action"+string(id.ref_display);   
             global.cardRef = id.ref_display;
@@ -147,17 +149,14 @@ if(room == RoomEventSelect)
             room = RoomConsView;
 
     }
-    if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink) and global.TutorialSetup == true and global.MythicalTutorial == true)
+    if (!position_meeting(mouse_x, mouse_y, ButtonInfoLink) and global.TutorialSetup == true and global.MythicalTutorial == true and global.InformationTutorial == false)
     {
             global.ActionStore = "Action"+string(id.ref_display);   
             global.cardRef = id.ref_display;
             global.consCardRef = id.ref_display;
             global.tempPos = 0;
-            if(selfI == 1)
-                global.i = 1;
-            else
-                global.i = 0;
-            room = RoomConsView;
+            global.MythicalTutorial = false
+            room = RoomCharacter;
 
     }
 }
@@ -192,10 +191,16 @@ if(room == RoomCharView)
         }
     }
     else if(global.TimeTravel != true and global.TutorialSetup == true)
-    {
-        global.MythicalTutorial = true;
+    {            
         global.CharacterTutorial = false;
-        room = RoomEventSelect;
+        if(global.MythTutorial  == 1)
+        {
+             global.MythicalTutorial = true;
+            room = RoomEventSelect;       
+        }
+        else         
+            room = RoomCharacter;
+
     }
     else if(global.TimeTravel == true and global.TutorialSetup == false)
     {
@@ -262,9 +267,9 @@ if(room == RoomConsView)
             room = RoomMap;
         }
     }
-    else if(global.TimeTravel != true and global.TutorialSetup == true and global.MythicalTutorial == false)
+    else if(global.TimeTravel != true and global.TutorialSetup == true and global.InformationTutorial == false)
     {
-        global.CharacterTutorial = true;
+        global.InformationTutorial = true;
         global.LoadTempInt = global.playerInt;
         global.CharSelected = 0
         global.LoadTempChar = global.playerChar;
@@ -279,11 +284,6 @@ if(room == RoomConsView)
         global.JYear = global.playerYear;
         script_execute(SaveHistory);
         room = RoomEventSelect;
-    }
-    else if(global.TimeTravel != true and global.TutorialSetup == true and global.MythicalTutorial == true)
-    {
-        global.MythicalTutorial = false
-        room = RoomCharacter;
     }
     else if(global.TimeTravel == true and global.TutorialSetup == false)
     {
@@ -346,7 +346,7 @@ if(room == RoomConsView)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomLocationView or room ==RoomEventSelect or room ==RoomInfoView or room == RoomConsView or room == RoomCards or room == RoomDiary)
+            <string>if(room == RoomLocationView or room == RoomCharView or room ==RoomEventSelect or room ==RoomInfoView or room == RoomConsView or room == RoomCards or room == RoomDiary)
 {
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);

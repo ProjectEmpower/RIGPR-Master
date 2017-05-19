@@ -415,7 +415,7 @@ if(room == RoomDiary)
     draw_set_halign(fa_left);
     draw_text(global.roomWidth/5-25, myY ,txt_display);//Draws the input text
 
-    if(instance_id[seventhTextBoxRef+2] == id)
+    if(instance_id[seventhTextBoxRef+4] == id)
     {
         draw_text_ext(global.roomWidth/5-175, myY+25 ,txt_input,20,350); //draws the input box text
     }

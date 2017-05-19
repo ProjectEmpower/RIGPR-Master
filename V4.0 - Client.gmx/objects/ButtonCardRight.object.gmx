@@ -32,18 +32,20 @@
     {
         if(room == RoomLocationView)
         {
-            if(global.tempPos &lt; global.eventNum-1)
-                   sprite_index = ArrowSpriteRight;
-            else
             sprite_index = No_sprite; 
+            if(global.Cont == 1)
+            {
+                if(global.tempPos &lt; global.eventNum-1)
+                       sprite_index = ArrowSpriteRight;
+            }
 
         }
-        else if(room == RoomEventSelect)
+        else if(room == RoomEventSelect or room == RoomInfoView)
         {
             if(global.tempPos &lt; global.cardNum-1)
             sprite_index = ArrowSpriteRight;   
             else
-                    sprite_index = No_sprite; 
+              sprite_index = No_sprite; 
         }
     }
     else
@@ -116,7 +118,7 @@ if(global.tempPos &lt; global.eventNum)
     room = tempRoom;
 }
 }
-if(room == RoomEventSelect)
+if(room == RoomEventSelect or room == RoomInfoView)
 {
     if(global.tempPos &lt; global.cardNum)
     {

@@ -59,8 +59,10 @@ switch(global.TutorialSetup)
             <string>switch(global.TutorialSetup)
 {
     case true: global.TutorialSetup = false;
+    global.CompletedTutorial = 1;
     break;
     case false: global.TutorialSetup = true;
+    global.CompletedTutorial = 0;
     break;
 }
 room = RoomNewGame;

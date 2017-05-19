@@ -66,6 +66,7 @@ else if(global.TutorialSetup == false)
 {
     global.RoomState = 4;
     global.CharLoadName = "Char"+string(global.eventCharCard);
+
     script_execute(LoadCards);
     room = RoomCharView;
 }

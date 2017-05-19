@@ -47,7 +47,7 @@ if(global.RoomState == 3)
 }
 if(global.RoomState == 4)
 {
-    ini_open(global.cardInfoINI); 
+    ini_open(global.cardCharINI); 
     global.charCardRef = ini_read_real(global.CharLoadName,"Ref",0);
     global.charCardName = ini_read_string(global.CharLoadName,"Card Name","");
     global.cardSprite = ini_read_real(global.CharLoadName,"Sprite",-1);

@@ -30,7 +30,7 @@ instX = global.instX;
 instY = global.instY;
 instCheck = global.instCheck
 tap = 0;
-if(room == RoomDiary)
+if(room == RoomDiary or room == RoomEventSelect)
     depth = -1;
 </string>
           </argument>

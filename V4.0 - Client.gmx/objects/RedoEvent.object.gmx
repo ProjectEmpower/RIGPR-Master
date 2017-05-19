@@ -36,13 +36,14 @@ else
 {
     sprite_index = No_sprite;
 } 
-if(global.TutorialSetup == true)
+
+if(global.TutorialSetup == true and (global.startOrientation != display_portrait or global.startOrientation != display_portrait_flipped))
 {
 
     global.textToInput = "Outside of the tutorial, clicking this will allow you to redo events in your Journal, this means you can change stats later if you wish.";
     global.instCheck = 0;
-    global.instX = x+200;   
-    global.instY = y - 100
+    global.instX = x;   
+    global.instY = y - 200
     global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
 }
 </string>

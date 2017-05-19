@@ -44,19 +44,23 @@ if(!file_exists(global.cardCharINI))
 {
     cardChar_ini = http_get_file(global.Address+"ini_files/cardChar.ini", global.cardCharINI);
 }
-global.TutorialSetup = false;
+
 if(!file_exists(global.playerINI))
 {
    global.NewGame = true;
    global.UserSprite = 0;
     global.playerSprite = 0;
+    global.TutorialSetup = true;  
+    global.CompletedTutorial = 0;
 }
 else
 {
     ini_open(global.playerINI)
+    global.CompletedTutorial = ini_read_real("Player","Tutorial",0);
     if(ini_key_exists("Player","Name"))
     {
         global.NewGame = false;
+
         if(ini_read_real("Player","Sprite",0) == 1)
         {
             spriteName = "UserSprite";
@@ -64,6 +68,7 @@ else
             sprite_set_offset(global.UserSprite,sprite_get_width(global.UserSprite)/2,sprite_get_height(global.UserSprite)/2)
 
         }
+        ini_close()
         
     }
     else
@@ -73,14 +78,18 @@ else
         global.NewGame = true; 
 
     }
+    if(global.CompletedTutorial == 1)
+        global.TutorialSetup = false;
+    else
+        global.TutorialSetup = true;  
   ini_close();
 }
-
+global.tempPos = 0;
 
 if(os_type == os_android)
 {
     global.startOrientation = display_get_orientation();
-    if(global.startOrientation != display_portrait or global.startOrientation != display_portrait_flipped)
+    if(global.startOrientation != display_portrait and global.startOrientation != display_portrait_flipped)
     {
         //mobile res    
         global.roomWidth = 960;

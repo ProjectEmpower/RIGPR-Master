@@ -29,8 +29,8 @@
 //Sets up and draws text on screen.
 draw_set_halign(fa_center);//sets the horizontal allignment for the text
 draw_set_valign(fa_middle);//sets the vertical allignment for the text
-draw_text(global.roomWidth-100,80,global.JWeek);//draws the current cards name on screen 
-draw_text(global.roomWidth-100,32,global.JYear);//draws the current cards name on screen 
+draw_text(global.roomWidth-100,80,"Week: " + string(global.JWeek));//draws the current cards name on screen 
+draw_text(global.roomWidth-100,32,"Year: " + string(global.JYear));//draws the current cards name on screen 
 
 </string>
           </argument>

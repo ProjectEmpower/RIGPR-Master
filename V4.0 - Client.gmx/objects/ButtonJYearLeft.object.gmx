@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = global.roomWidth-150;
+            <string>x = global.roomWidth-170;
 y = 32;
 if(global.JYear == 1)
     sprite_index = No_sprite;

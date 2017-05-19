@@ -27,28 +27,53 @@
             <kind>1</kind>
             <string>if(room == RoomEventSelect and global.MythicalTutorial == true)
 {
-    global.textToInput = "Some cards can be Mythical, these are special Actions/Events that will may provide a large boost to your stats.";
-    global.instCheck = 0;
-    global.instX = 125;   
-    global.instY = 150;   
-    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    global.startOrientation = display_get_orientation();
+    if(global.startOrientation == display_portrait or global.startOrientation == display_portrait_flipped)
+    {
+        global.instX = global.roomWidth/2-225;   
+        global.textToInput = "Some cards can be Mythical, these are special Actions/Events that will may provide a large boost to your stats.";
+        global.instCheck = 0;
+        
+        global.instY = global.roomHeight/2;     
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
+    else
+    {
+        global.textToInput = "Some cards can be Mythical, these are special Actions/Events that will may provide a large boost to your stats.";
+        global.instCheck = 0;
+        global.instX = global.roomWidth/2;   
+        global.instY = global.roomHeight/2;     
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
 }
-if(room == RoomCharacter and global.TutorialSetup == true)
+global.startOrientation = display_get_orientation();
+if(global.startOrientation != display_portrait or global.startOrientation != display_portrait_flipped)
 {
-    global.textToInput = "This screen shows you your stats and allows you to access your Journal and Cards screens.";
-    global.instCheck = 0;
-    global.instX = global.roomWidth/2-75;   
-    global.instY = global.roomHeight/2;   
-    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    if(room == RoomCharacter and global.TutorialSetup == true)
+    {
+        global.textToInput = "This screen shows you your stats and allows you to access your Journal and Cards screens.";
+        global.instCheck = 0;
+        global.instX = global.roomWidth - 125;   
+        global.instY =  global.roomHeight/2; 
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
+    if(room == RoomDiary and global.TutorialSetup == true)
+    {
+    
+        global.textToInput = "On this screen you can view previously selected events/actions, see what stat changes occured and add a Journal entry about this if you wish.";
+        global.instCheck = 0;
+        global.instX = global.roomWidth/2-25;   
+        global.instY = global.roomHeight/2;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+    }
 }
-if(room == RoomDiary and global.TutorialSetup == true)
+else if(room == RoomDiary or room == RoomCards)
 {
-
-    global.textToInput = "On this screen you can view previously selected events/actions, see what stat changes occured and add a Journal entry about this if you wish.";
-    global.instCheck = 0;
-    global.instX = global.roomWidth/2 - 75;   
-    global.instY = global.roomHeight/2;   
-    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+        global.textToInput = "This screen can only be viewed on landscape, please rotate your device.";
+        global.instCheck = 0;
+        global.instX = global.roomWidth/2;   
+        global.instY = global.roomHeight/2;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
 }
 </string>
           </argument>

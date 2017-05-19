@@ -57,11 +57,13 @@ y = room_height-75
     ini_write_real("Player","Int",5);
     ini_write_real("Player","Char",5);
     ini_write_real("Player","Well",5);
+
     if(global.TutorialSetup)
         week = 0;
     else
         week = 1;
     ini_write_real("Player","Week",week);
+    ini_write_real("Player","Tutorial",global.CompletedTutorial);
     ini_write_real("Player","Year",1);
     ini_write_real("Player","Sprite",global.UserSprite);
     ini_close();

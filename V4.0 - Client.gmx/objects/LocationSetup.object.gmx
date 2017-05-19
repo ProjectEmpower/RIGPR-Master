@@ -32,7 +32,7 @@ global.tempLocation = "Location"+global.tempID;//writes the location+#Ref#  to a
 //global.eventName = "Event"+global.tempEventID;//writes the card name
 if(room == RoomLocationView)
 {
-    if(global.TutorialSetup == true)
+    if(global.TutorialSetup == true and global.Cont == 0)
     {
         global.textToInput = "This is the Location Screen, click anywhere to view the available events";
         global.instCheck = 0;

@@ -25,10 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = global.roomWidth-150;
+            <string>x = global.roomWidth-170;
 y = 80;
 if(global.JWeek == 1 and global.JYear == 1)
     sprite_index = No_sprite;
+if(global.TutorialSetup == true and (global.startOrientation != display_portrait or global.startOrientation != display_portrait_flipped))
+{
+    global.textToInput = "These arrows can be used to select different years/months and view the action you took on a given week.";
+    global.instCheck = 0;
+        global.instX = x+70   
+        global.instY = y + 175
+    global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+}
 </string>
           </argument>
         </arguments>

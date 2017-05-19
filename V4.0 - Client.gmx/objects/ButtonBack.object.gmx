@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>x = room_width-125
 y = room_height-70
-if(global.TutorialSetup == true and room == RoomLocationView)
+if(global.TutorialSetup == true and room == RoomLocationView and global.Cont == 0)
 {
     global.textToInput = "The Back button can be used to go back to the previous page.";
     global.instCheck = 0;
@@ -64,6 +64,8 @@ if(room == RoomCharacter) //checks room
     {
         global.TutorialSetup = false;
         global.playerWeek += 1;
+        global.CompletedTutorial = 1;
+        script_execute(PlayerSave);
     }
     room = RoomMap; //swaps room
 }
@@ -158,6 +160,13 @@ if(room == RoomConsView)
             <string>global.tempPos = 0;
 if(room == RoomCharacter) //checks room
 {
+    if(global.TutorialSetup == true)
+    {
+        global.TutorialSetup = false;
+        global.playerWeek += 1;
+        global.CompletedTutorial = 1;
+        script_execute(PlayerSave);
+    }
     room = RoomMap; //swaps room
 }
 if(room == RoomDiary)
@@ -170,22 +179,59 @@ if(room == RoomCards)
 }
 if(room == RoomLocationView)
 {
-    room = RoomMap; //swaps room  
+    if(global.TimeTravel == false)
+        room = RoomMap; //swaps room  
+    else
+    {
+        global.playerInt = global.playerTempInt;
+        global.playerChar = global.playerTempChar;
+        global.playerWell = global.playerTempWell;
+        global.TimeTravel = false;
+        room = RoomDiary
+    }
+global.numberOfBackgrounds = 0;
+        
+}
+if(room == RoomCharView)
+{
+    room = RoomEventSelect
 }
 if(room == RoomEventSelect)
 {
     room = RoomLocationView; //swaps room  
 }
 if(room == RoomInfoView)
-{    
-    global.RoomState = global.InfoViewRoomState;
-    room = global.InfoViewLastRoom; //swaps room  
+{
+    if(global.TutorialSetup == true and global.InformationTutorial == true)
+    {
+        global.numberOfBackgrounds = 0;
+        global.InformationTutorial = false;
+        if(global.CharTutorial == 1)
+        {
+            global.CharacterTutorial = true;
+            room = RoomEventSelect;   
+        }
+        else
+        {
+            if(global.MythTutorial == 1)
+            {
+                global.MythicalTutorial = true;
+                room = RoomEventSelect;   
+            }
+            else
+            {
+                room = RoomCharacter;
+            }
+        }
+        
+    }
+    else
+    {
+        global.RoomState = global.InfoViewRoomState;
+        room = global.InfoViewLastRoom; //swaps room  
+    }
 }
 if(room == RoomConsView)
-{
-    room = RoomEventSelect
-}
-if(room == RoomCharView)
 {
     room = RoomEventSelect
 }

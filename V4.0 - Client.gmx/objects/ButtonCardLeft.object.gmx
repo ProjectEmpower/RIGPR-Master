@@ -31,7 +31,7 @@
     if(global.startOrientation == display_portrait or global.startOrientation == display_portrait_flipped)
     {
     
-        if(room == RoomEventSelect or RoomLocationView)
+        if(room == RoomEventSelect or room == RoomLocationView or room == RoomInfoView)
         {
             if(global.tempPos &gt; 0)
                 sprite_index = ArrowSpriteLeft;

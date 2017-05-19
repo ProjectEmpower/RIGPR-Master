@@ -40,176 +40,8 @@ if(os_type == os_android and (global.startOrientation == display_portrait or glo
 {
         if(room == RoomLocationView)
         {
-    
-            eventType = 0;
-            //global.tempLocation
-            ini_open(global.locationINI);  
-             global.LocationStore = ini_read_string(global.tempLocation,"Real Location Name","");
-            global.locationEventNumber = ini_read_real(global.tempLocation, "Number of Events",0); //reads the number of events from ini
-            ini_close();
-            global.eventNum = 0;
-            for(i = 0; i &lt;=  global.locationEventNumber; i++)
+           if(global.Cont == 1)
             { 
-            show_debug_message(global.eventNum);
-                ini_open(global.locationINI);  
-                tempEventWeek = "Event"+string(i+1)+"Week";
-                tempWeek = ini_read_real(global.tempLocation, tempEventWeek,0); //reads the number of events from ini
-                if(tempWeek == global.playerWeek)
-                {
-    
-                    global.event[global.locationEventNumber] = 0;
-                    tempEventType = "Event"+string(i+1)+"Type";
-                    global.event[global.eventNum] = ini_read_real(global.tempLocation, tempEventType,0); //reads the number of events from ini
-                    ini_close();   
-                    if(global.event[global.eventNum] != 0)
-                    { 
-                        global.eventNum += 1;
-
-                    }
-    
-                }
-                ini_close();
-            }
-             for(i = 0; i &lt; global.eventNum; i++)
-            {
-                global.EventLoadName = "Event"+string(global.event[i]);
-                global.RoomState = 0;
-                script_execute(LoadCards);
-            }
-            global.EventLoadName = "Event"+string(global.event[global.tempPos]);
-            global.RoomState = 0;
-            script_execute(LoadCards);
-            tempX = (global.roomWidth / 2)
-            tempY = (global.roomHeight / 2)
-            inst = instance_create(tempX,tempY,CardBacking); 
-        }
-        if(room == RoomEventSelect)
-        {
-            global.cardNum = 0;
-            eventType = 0;
-            //global.tempLocation
-                ini_open(global.cardEventINI);  
-                eventName = "Event"+string(global.eventRef);
-                global.eventActionCardsNum = ini_read_real(eventName,"Action Cards",0);
-                global.card1[global.eventActionCardsNum] = 0;
-                ini_close();
-                for(i = 0; i &lt;= global.eventActionCardsNum; i++)
-                {
-                        show_debug_message("card: " + string(global.cardNum));
-                    ini_open(global.cardEventINI);  
-                    tempAction = "Action"+string(i+1);
-                    global.card1[global.cardNum] = ini_read_real(eventName,tempAction,0);
-                    ini_close();
-                    if(global.card1[global.cardNum] != 0)
-                    {
-                        global.cardNum +=1;
-                    }
-                       global.RoomState = 1;
-                global.ActionLoadName = "Action"+string(global.card[i]);
-                script_execute(LoadCards);
-                }
-
-                tempX = (global.roomWidth / 2);
-                tempY = global.roomHeight/2;
-                inst = instance_create(tempX,tempY,CardBacking); 
-        
-        }
-if(room == RoomInfoView)
-        {
-        
-            switch(global.InfoViewRoomState)
-            {
-                case 0: 
-                global.EventLoadName = "Event"+string(global.InfoViewRef);
-                script_execute(LoadCards);
-                global.RoomState = 0;
-                break;
-                case 1: 
-                global.ActionLoadName = "Action"+string(global.InfoViewRef);
-                script_execute(LoadCards);
-                global.RoomState = 1;
-                break;
-                case 2: 
-                global.ConsLoadName = "Cons"+string(global.InfoViewRef);
-                script_execute(LoadCards);
-                global.RoomState = 2;
-                break;
-                case 4: 
-                //global.ActionLoadName = "Char"+string(global.InfoViewRef);
-                //script_execute(LoadCards);
-                global.RoomState = 4;
-                break;
-            }
-
-                tempY = global.roomHeight/2;
-                tempX = (global.roomWidth / 2);
-
-        
-                if(global.infoCardRef != 0)
-                {
-                    tempX = (global.roomWidth / 2)-150;
-                    inst = instance_create(tempX * (1),tempY,CardBacking); 
-                    global.RoomState = 3;
-                    global.InfoLoadName = "Info"+string(global.infoCardRef);
-                    script_execute(LoadCards);
-                    tempX = (global.roomWidth / 2)+150;
-
-                    inst = instance_create(tempX * (1),tempY,CardBacking); 
-                }
-                else if(global.infoCardRef == 0)
-                    inst = instance_create(tempX * (1),tempY,CardBacking); 
-        
-        
-        
-        
-        }
-        if(room == RoomConsView)
-        {
-        
-        
-            //global.tempLocation
-                global.RoomState = 2;  
-                global.ConsLoadName = "Cons"+string(global.consCardRef);
-                script_execute(LoadCards);
-                tempY = global.roomHeight/2;
-                tempX = (global.roomWidth / 2);        
-                if(global.infoCardRef != 0)
-                {
-                    tempX = (global.roomWidth / 2)-150;
-                    inst = instance_create(tempX * (1),tempY,CardBacking); 
-                    global.RoomState = 3;
-                    global.InfoLoadName = "Info"+string(global.infoCardRef);
-                    script_execute(LoadCards);
-                    tempX = (global.roomWidth / 2)+150;
-                    inst = instance_create(tempX * (2),tempY,CardBacking); 
-                }
-                else if(global.infoCardRef == 0)
-                    inst = instance_create(tempX * (1),tempY,CardBacking); 
-        
-        
-        }
-        if(room == RoomNewGame)
-        {
-                textFeilds = 1;//number of text boxes we want.
-            for(i = 0; i &lt; textFeilds; i++)
-          {      
-            
-                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
-               global.tempInputBoxY += 25;
-               global.tempTextBoxY += 25;
-           }
-        }
-    }
-
-//PC or mobile Landscape
-else//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-{
-   if(room == RoomLocationView)
-        {
-
-            if(global.Cont == 1)
-            {
-
                 eventType = 0;
                 //global.tempLocation
                 ini_open(global.locationINI);  
@@ -217,62 +49,88 @@ else////////////////////////////////////////////////////////////////////////////
                 global.locationEventNumber = ini_read_real(global.tempLocation, "Number of Events",0); //reads the number of events from ini
                 ini_close();
                 global.eventNum = 0;
-                for(i = 0; i &lt;= global.locationEventNumber; i++)
-                {           
-                    ini_open(global.locationINI);  
-                        tempEventWeek = "Event"+string(i+1)+"Week";
+                for(i = 0; i &lt;=  global.locationEventNumber; i++)
+                { 
+                    ini_open(global.locationINI);      
+                    tempEventWeek = "Event"+string(i+1)+"Week";
                     tempWeek = ini_read_real(global.tempLocation, tempEventWeek,0); //reads the number of events from ini
                     if(tempWeek == global.playerWeek)
-                    {
-                            tempEventType = "Event"+string(i+1)+"Type";
+                    {       
+                        tempEventType = "Event"+string(i+1)+"Type";
                         global.event[global.eventNum] = ini_read_real(global.tempLocation, tempEventType,0); //reads the number of events from ini
                         ini_close();   
                         if(global.event[global.eventNum] != 0)
-                        {          
+                        { 
                             global.eventNum += 1;
+    
                         }
-                    if(global.playerWeek == 0)
-                        global.eventNum = 1;
+                        if(global.playerWeek == 0)
+                            global.eventNum = 1;
                     }
                     ini_close();
                 }
                 for(i = 0; i &lt; global.eventNum; i++)
                 {                        
                     if(global.playerWeek != 0)
-                        global.EventLoadName = "Event"+string(global.event[i]);
+                        global.EventLoadName = "Event"+string(global.event[global.tempPos]);
                     else
                         global.EventLoadName = "EventT";
                     global.RoomState = 0;
                     script_execute(LoadCards);
-                    if(global.eventNum == 1)
-                    {
-                        tempX = (global.roomWidth / 2);
-                    }
-                    if(global.eventNum == 2)
-                    {
-                        if(i == 0)
-                            tempX = (global.roomWidth / 2) - 150;
-                        if(i == 1)
-                            tempX = (global.roomWidth / 2) + 150;
-                    }
-                    if(global.eventNum == 3)
-                    {
-                        if(i == 0)
-                            tempX = (global.roomWidth / 2) - 275;
-                        if(i == 1)
-                            tempX = (global.roomWidth / 2);
-                        if(i == 2)
-                            tempX = (global.roomWidth / 2) + 275;
-                    }
-                    tempY = global.roomHeight/2;
-                    inst = instance_create(tempX,tempY,CardBacking); 
                 }
+
+                tempX = (global.roomWidth / 2)
+                tempY = (global.roomHeight / 2)
+                inst = instance_create(tempX,tempY,CardBacking); 
             }
         }
+        
         if(room == RoomEventSelect)
         {
             if(global.MythicalTutorial == false)
             {
+                global.cardNum = 0;
+                eventType = 0;
+                //global.tempLocation
+                ini_open(global.cardEventINI);  
+                if(global.playerWeek != 0) 
+                    eventName = "Event"+string(global.eventRef);
+                else
+                {
+                    eventName = "EventT";
+                 }   
+                global.eventActionCardsNum = ini_read_real(eventName,"Action Cards",0);
+                global.eventCharCard = ini_read_real(eventName,"Char Cards",0);
+                ini_close();
+                for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+                {
+                    ini_open(global.cardEventINI); 
+                    tempAction = "Action"+string(i+1);
+                    global.card[global.cardNum] = ini_read_real(eventName,tempAction,0);
+                    ini_close();
+                    if(global.card[global.cardNum] != 0)
+                    {
+                        global.cardNum +=1;
+                    }
+                       
+
+                }
+                global.RoomState = 1;
+                if(global.playerWeek != 0) 
+                    global.ActionLoadName = "Action"+string(global.card[global.tempPos]);
+                else
+                    global.ActionLoadName = "ActionT";
+                script_execute(LoadCards);
+                tempX = (global.roomWidth / 2);
+                tempY = global.roomHeight/2;
+                inst = instance_create(tempX,tempY,CardBacking); 
+               if(global.eventCharCard != 0 and global.eventCharCard != -1 or (global.TutorialSetup == true and global.CharacterTutorial == true))
+               {
+                    inst2 = instance_create(global.roomWidth - 125,125,CharCard);
+               }
+            }
+            else
+           {
                 global.cardNum = 0;
                 eventType = 0;
                 //global.tempLocation
@@ -294,110 +152,313 @@ else////////////////////////////////////////////////////////////////////////////
                         ini_close();
                         if(global.card[global.cardNum] != 0)
                         {
-                            global.cardNum +=1;
+                            global.cardNum +=2;
     
                         }
                     }
-                    for(i = 0; i &lt; global.cardNum; i++)
-                   {
-                       global.RoomState = 1;
-                       if(global.playerWeek != 0) 
-                            global.ActionLoadName = "Action"+string(global.card[i]);
-                        else
-                            global.ActionLoadName = "ActionT";
+                for(i = 0; i &lt; global.cardNum; i++)
+                {
+
+                    if(global.tempPos == i)
+                    {
+                        global.RoomState = 1;
+                        global.ActionLoadName = "ActionT";
                         script_execute(LoadCards);
-                       if(global.cardNum == 1)
-                        {
-                            tempX = (global.roomWidth / 2);
-                        }
-                        if(global.cardNum == 2)
-                        {
-                            if(i == 0)
-                                tempX = (global.roomWidth / 2) - 150;
-                            if(i == 1)
-                                tempX = (global.roomWidth / 2) + 150;
-                        }
-                        if(global.cardNum == 3)
-                        {
-                            if(i == 0)
-                                tempX = (global.roomWidth / 2) - 275;
-                            if(i == 1)
-                                tempX = (global.roomWidth / 2);
-                            if(i == 2)
-                                tempX = (global.roomWidth / 2) + 275;
-                        }
+                        tempX = global.roomWidth / 2;
                         tempY = global.roomHeight/2;
-    
-                        inst = instance_create(tempX,tempY,CardBacking); 
-                   }
-                   if(global.eventCharCard != 0 or (global.TutorialSetup == true and global.CharacterTutorial == true))
-                   {
-                        inst = instance_create(global.roomWidth - 125,125,CharCard);
-                   }
-               }
-               else
-               {
-                    global.cardNum = 0;
-                    eventType = 0;
-                    //global.tempLocation
-                        ini_open(global.cardEventINI); 
-                        if(global.playerWeek != 0) 
-                            eventName = "Event"+string(global.eventRef);
-                        else
-                        {
-                            eventName = "EventT";
-                         }   
-                        global.eventActionCardsNum = ini_read_real(eventName,"Action Cards",0);
-                        global.eventCharCard = ini_read_real(eventName,"Char",0);
-                        ini_close();
-                        for(i = 0; i &lt;= global.eventActionCardsNum; i++)
-                        {
-                            ini_open(global.cardEventINI);  
-                            tempAction = "Action"+string(i+1);
-                            global.card[global.cardNum] = ini_read_real(eventName,tempAction,0);
-                            ini_close();
-                            if(global.card[global.cardNum] != 0)
-                            {
-                                global.cardNum +=2;
-        
-                            }
-                        }
-                        for(i = 0; i &lt; global.cardNum; i++)
-                       {
-                           global.RoomState = 1;
-                                global.ActionLoadName = "ActionT";
-                            script_execute(LoadCards);
-                           if(global.cardNum == 1)
-                            {
-                                tempX = (global.roomWidth / 2);
-                            }
-                            if(global.cardNum == 2)
-                            {
-                                if(i == 0)
-                                    tempX = (global.roomWidth / 2) - 150;
-                                if(i == 1)
-                                    tempX = (global.roomWidth / 2) + 150;
-                            }
-                            if(global.cardNum == 3)
-                            {
-                                if(i == 0)
-                                    tempX = (global.roomWidth / 2) - 275;
-                                if(i == 1)
-                                    tempX = (global.roomWidth / 2);
-                                if(i == 2)
-                                    tempX = (global.roomWidth / 2) + 275;
-                            }
-                            tempY = global.roomHeight/2;
-                            global.i = i;
-                            inst = instance_create(tempX,tempY,CardBacking); 
-                       }            
-               }
-               
-        
+                        global.i = i;     
+                        inst = instance_create(tempX,tempY,CardBacking);    
+                                   
+                    }
+                }            
+            }
         }
-        if(room == RoomInfoView)
+    if(room == RoomInfoView)
+    {
+        global.cardNum = 0;
+        switch(global.InfoViewRoomState)
+        {
+            case 0: 
+            if(global.playerWeek != 0) 
+                global.EventLoadName = "Event"+string(global.InfoViewRef);
+            else
+                global.EventLoadName = "EventT";     
+            global.RoomState = 0;           
+            script_execute(LoadCards);
+            global.cardNum += 1;
+
+            break;
+            case 1: 
+            if(global.playerWeek != 0) 
+                global.ActionLoadName = "Action"+string(global.InfoViewRef);
+            else
+                global.ActionLoadName = "ActionT";    
+            global.RoomState = 1;
+            script_execute(LoadCards);
+            global.cardNum += 1;
+
+            break;
+            case 2: 
+            if(global.playerWeek != 0) 
+                global.ConsLoadName = "Cons"+string(global.InfoViewRef);
+            else
+                global.ConsLoadName = "ConsT";    
+            global.RoomState = 2;
+            script_execute(LoadCards);
+            global.cardNum += 1;
+
+            break;
+            case 4: 
+            if(global.playerWeek != 0) 
+                global.CharLoadName = "Char"+string(global.InfoViewRef);
+            else
+                global.CharLoadName = "CharT";    
+            global.RoomState = 4;
+            script_execute(LoadCards);
+            global.cardNum += 1;
+
+            break;
+        }
+            tempY = global.roomHeight/2;
+            tempX = (global.roomWidth / 2);   
+            if(global.infoCardRef != 0)
+            {
+
+                global.cardNum += 1;
+                if(global.tempPos == 0)
+                    inst = instance_create(tempX * (1),tempY,CardBacking); 
+                global.RoomState = 3;
+                if(global.playerWeek != 0) 
+                    global.InfoLoadName = "Info"+string(global.infoCardRef);
+                else
+                    global.InfoLoadName = "InfoT";
+                script_execute(LoadCards);
+                if(global.tempPos == 1)
+                    inst = instance_create(tempX * (1),tempY,CardBacking);                     
+            }
+            else
+                inst = instance_create(tempX * (1),tempY,CardBacking);    
+    }
+        if(room == RoomConsView)
         {
         
+                  global.RoomState = 2;  
+                if(global.playerWeek != 0) 
+                    global.ConsLoadName = "Cons"+string(global.consCardRef);
+                else
+                    global.ConsLoadName = "ConsT";
+                script_execute(LoadCards);
+                tempY = global.roomHeight/2;
+                tempX = (global.roomWidth / 2);
+                inst = instance_create(tempX * (1),tempY,CardBacking); 
+        
+        
+        }
+        if(room == RoomNewGame)
+        {
+                textFeilds = 2;//number of text boxes we want.
+            for(i = 0; i &lt; textFeilds; i++)
+          {      
+            if(i == 1)
+            {
+                global.tempInputBoxY += 50;
+               global.tempTextBoxY += 50;           
+            }
+                inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
+               global.tempInputBoxY += 25;
+               global.tempTextBoxY += 25;
+           }
+        }
+       if(room == RoomCharView)
+        {
+                if(global.playerWeek != 0) 
+                    global.CharLoadName = "Char"+string(global.eventCharCard);
+                else
+                    global.CharLoadName = "CharT";
+              global.RoomState = 4;  
+              script_execute(LoadCards);
+            inst = instance_create(global.roomWidth/2,global.roomHeight/2,CardBacking);     
+        }
+        if(room == RoomCards or room == RoomDiary)
+        {                 
+            
+        }
+}
+
+//PC or mobile Landscape
+else//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+{
+   if(room == RoomLocationView)
+    {
+        if(global.Cont == 1)
+        {
+            eventType = 0;
+            ini_open(global.locationINI);  
+             global.LocationStore = ini_read_string(global.tempLocation,"Real Location Name","");
+            global.locationEventNumber = ini_read_real(global.tempLocation, "Number of Events",0); //reads the number of events from ini
+            ini_close();
+            global.eventNum = 0;
+            for(i = 0; i &lt;= global.locationEventNumber; i++)
+            {           
+                ini_open(global.locationINI);  
+                tempEventWeek = "Event"+string(i+1)+"Week";
+                tempWeek = ini_read_real(global.tempLocation, tempEventWeek,0); //reads the number of events from ini
+                if(tempWeek == global.playerWeek)
+                {
+                    tempEventType = "Event"+string(i+1)+"Type";
+                    global.event[global.eventNum] = ini_read_real(global.tempLocation, tempEventType,0); //reads the number of events from ini
+                    ini_close();   
+                    if(global.event[global.eventNum] != 0)
+                    {          
+                        global.eventNum += 1;
+                    }
+                    if(global.playerWeek == 0)
+                        global.eventNum = 1;
+                }
+                ini_close();
+            }
+            for(i = 0; i &lt; global.eventNum; i++)
+            {                        
+                if(global.playerWeek != 0)
+                    global.EventLoadName = "Event"+string(global.event[i]);
+                else
+                    global.EventLoadName = "EventT";
+                global.RoomState = 0;
+                script_execute(LoadCards);
+                if(global.eventNum == 1)
+                {
+                    tempX = (global.roomWidth / 2);
+                }
+                if(global.eventNum == 2)
+                {
+                    if(i == 0)
+                        tempX = (global.roomWidth / 2) - 150;
+                    if(i == 1)
+                        tempX = (global.roomWidth / 2) + 150;
+                }
+                if(global.eventNum == 3)
+                {
+                    if(i == 0)
+                        tempX = (global.roomWidth / 2) - 275;
+                    if(i == 1)
+                        tempX = (global.roomWidth / 2);
+                    if(i == 2)
+                        tempX = (global.roomWidth / 2) + 275;
+                }
+                tempY = global.roomHeight/2;
+                inst = instance_create(tempX,tempY,CardBacking); 
+            }
+        }
+    }
+    if(room == RoomEventSelect)
+    {
+        if(global.MythicalTutorial == false)
+        {
+            global.cardNum = 0;
+            eventType = 0;
+            //global.tempLocation
+            ini_open(global.cardEventINI); 
+            if(global.playerWeek != 0) 
+                eventName = "Event"+string(global.eventRef);
+            else
+            {
+                eventName = "EventT";
+             }   
+
+            global.eventActionCardsNum = ini_read_real(eventName,"Action Cards",0);
+            global.eventCharCard = ini_read_real(eventName,"Char Cards",0);
+            ini_close();
+            for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+            {
+                ini_open(global.cardEventINI);  
+                tempAction = "Action"+string(i+1);
+                global.card[global.cardNum] = ini_read_real(eventName,tempAction,0);
+                ini_close();
+                if(global.card[global.cardNum] != 0)
+                {
+                    global.cardNum +=1;
+
+                }
+            }
+            for(i = 0; i &lt; global.cardNum; i++)
+            {
+                global.RoomState = 1;
+                if(global.playerWeek != 0) 
+                    global.ActionLoadName = "Action"+string(global.card[i]);
+                else
+                    global.ActionLoadName = "ActionT";
+                script_execute(LoadCards);
+                if(global.cardNum == 1)
+                {
+                    tempX = (global.roomWidth / 2);
+                }
+                if(global.cardNum == 2)
+                {
+                    if(i == 0)
+                        tempX = (global.roomWidth / 2) - 150;
+                    if(i == 1)
+                        tempX = (global.roomWidth / 2) + 150;
+                }
+                if(global.cardNum == 3)
+                {
+                    if(i == 0)
+                        tempX = (global.roomWidth / 2) - 275;
+                    if(i == 1)
+                        tempX = (global.roomWidth / 2);
+                    if(i == 2)
+                        tempX = (global.roomWidth / 2) + 275;
+                }
+                tempY = global.roomHeight/2;
+                inst = instance_create(tempX,tempY,CardBacking); 
+           }
+           if(global.eventCharCard != 0 and global.eventCharCard != -1 or (global.TutorialSetup == true and global.CharacterTutorial == true))
+           {
+                inst2 = instance_create(global.roomWidth - 125,125,CharCard);
+           }
+       }
+       else
+       {
+            global.cardNum = 0;
+            eventType = 0;
+                ini_open(global.cardEventINI); 
+                if(global.playerWeek != 0) 
+                    eventName = "Event"+string(global.eventRef);
+                else
+                {
+                    eventName = "EventT";
+                 }   
+                global.eventActionCardsNum = ini_read_real(eventName,"Action Cards",0);
+                global.eventCharCard = ini_read_real(eventName,"Char",0);
+                ini_close();
+                for(i = 0; i &lt;= global.eventActionCardsNum; i++)
+                {
+                    ini_open(global.cardEventINI);  
+                    tempAction = "Action"+string(i+1);
+                    global.card[global.cardNum] = ini_read_real(eventName,tempAction,0);
+                    ini_close();
+                    if(global.card[global.cardNum] != 0)
+                    {
+                        global.cardNum +=2;
+
+                    }
+                }
+            for(i = 0; i &lt; global.cardNum; i++)
+            {
+                global.RoomState = 1;
+                global.ActionLoadName = "ActionT";
+                script_execute(LoadCards);
+                    if(i == 0)
+                        tempX = (global.roomWidth / 2) - 150;
+                    if(i == 1)
+                        tempX = (global.roomWidth / 2) + 150;
+                tempY = global.roomHeight/2;
+                global.i = i;
+                inst = instance_create(tempX,tempY,CardBacking); 
+            }            
+        }
+    }
+    if(room == RoomInfoView)
+    {
             switch(global.InfoViewRoomState)
             {
                 case 0: 
@@ -433,7 +494,6 @@ else////////////////////////////////////////////////////////////////////////////
                 global.RoomState = 4;
                 break;
             }
-
                 tempY = global.roomHeight/2;
                 tempX = (global.roomWidth / 2);
 
@@ -449,7 +509,6 @@ else////////////////////////////////////////////////////////////////////////////
                         global.InfoLoadName = "InfoT";
                     script_execute(LoadCards);
                     tempX = (global.roomWidth / 2)+150;
-
                     inst = instance_create(tempX * (1),tempY,CardBacking); 
                 }
                 else if(global.infoCardRef == 0)
@@ -489,8 +548,14 @@ else////////////////////////////////////////////////////////////////////////////
                global.tempTextBoxY += 25;
            }
         }
-        if(room == RoomCharView)
+       if(room == RoomCharView)
         {
+                if(global.playerWeek != 0) 
+                    global.CharLoadName = "Char"+string(global.eventCharCard);
+                else
+                    global.CharLoadName = "CharT";
+              global.RoomState = 4;  
+              script_execute(LoadCards);
             inst = instance_create(global.roomWidth/2,global.roomHeight/2,CardBacking);     
         }
         if(room == RoomCards)
@@ -1092,7 +1157,7 @@ if(room == RoomDiary)
                     global.CharLoadName = global.CharStore
                 }
                 script_execute(LoadCards);  
-                inst = instance_create(((global.roomWidth/5)*4)+25,global.roomHeight/2,CardBacking);       
+                inst = instance_create(((global.roomWidth/5)*3)+300,global.roomHeight/2,CardBacking);       
             }
             if(i == 3)
             {
@@ -1138,31 +1203,6 @@ if(room == RoomCharacter)
             global.tempTextBoxY += 25;
         }
 }
-
-    // if(100000 == 2)  
-        //global.eventActionCardsNum = ini_read_real(eventName,"Action Cards",0);
-        //global.card1[global.eventActionCardsNum] = 0;
-        //global.eventActionCardsNum -= 1;
-        //for(i = 0; i &lt;= global.eventActionCardsNum; i++)
-        //{
-        //    tempAction = "Action"+string(i+1);
-        //    global.card1[i] = ini_read_real(eventName,tempAction,0);
-        //}
-        //global.card2 = ini_read_real(eventName,"Cons2",0);
-        //global.card3 = ini_read_real(eventName,"Info3",0);
-        //global.card4 = ini_read_real(eventName,"Char4",0);
-    //    ini_close();
-      //  var inst;
-        //textFeilds = global.eventActionCardsNum + 4;//number of text boxes we want.
-    //    for(i = 0; i &lt; textFeilds; i++)
-      //  {      
-        //    
-    //        inst = instance_create(global.tempInputBoxX,global.tempInputBoxY,TextInputBox);     
-    //        global.tempInputBoxY += 25;
-    //        global.tempTextBoxY += 25;
-      //  }
-
-
 
 </string>
           </argument>

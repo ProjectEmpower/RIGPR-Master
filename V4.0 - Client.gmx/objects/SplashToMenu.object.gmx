@@ -261,7 +261,6 @@ if(global.NewGame == false)
 }
 else
 {
-    global.TutorialSetup = true;
     room_goto(RoomNewGame);
 }
 

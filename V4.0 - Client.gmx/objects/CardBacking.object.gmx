@@ -135,24 +135,23 @@ if(global.TutorialSetup == true)
     }
     if(room == RoomInfoView)
     {
-        if(global.numberOfBackgrounds == 0)
+        global.instX = x + 225;   
+        if(RoomState == 1)
         {
-            global.textToInput = "This is the card that's information you selected.";
-            global.instCheck = 0;
             global.instX = x - 225;   
-            global.instY = y;   
-            global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
-            global.numberOfBackgrounds += 1;
+            if(os_type == os_android)
+                txt = "This is the card that's information you selected. If you are using portrate view, you can use the arrows in each corner to select different cards in the list."
+            else
+                txt = "This is the card that's information you selected."
         }
-        if(global.numberOfBackgrounds == 1)
-        {
-            global.textToInput = "This is an Information Card, this will provide information regarding the paired card and provide a link for further reading. Clicking the 'Info Link' Button on the Information Card will take you to the web adderss assosiated with it. Press the Back button to continue.";
-            global.instCheck = 0;
-            global.instX = x + 520;   
-            global.instY = y;   
-            global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
-            global.numberOfBackgrounds += 1;
-        }
+        if(RoomState == 3)
+            txt = "Infomation cards allow you to see further info about a card. Clicking the 'Info Link' Button on the Information Card will take you to the web adderss assosiated with it. To continue, press the back button.";
+        global.textToInput = txt;
+        global.instCheck = 0;
+
+        global.instY = y;   
+        global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
+        global.numberOfBackgrounds += 1;
     }
     if(room == RoomEventSelect and global.MythicalTutorial == false and global.CharacterTutorial == false and global.InformationTutorial == false)
     {
@@ -166,7 +165,7 @@ if(global.TutorialSetup == true)
     {
         global.textToInput = "Action Cards are disabled for this section of the tutorial";
         global.instCheck = 0;
-        global.instX = x + 225;   
+        global.instX = x - 225;   
         global.instY = y;   
         global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
     }
@@ -182,9 +181,19 @@ if(global.TutorialSetup == true)
     {
         if(selfI == 0)
         {
-            global.textToInput = "Cards with this background are Normal Cards. Select either card to continue.";
+            if(os_type == os_android)
+            {
+                txt = "Cards with this background are Normal Cards. REMEMBER: If you are using portrate view, you can use the arrows in each corner to select different cards in the list."
+                global.instX = x + 225;  
+            }
+            else
+            {
+                global.instX = x - 225;  
+                txt = "Cards with this background are Normal Cards."
+            }
+            global.textToInput = txt;
             global.instCheck = 0;
-            global.instX = x - 225;   
+ 
             global.instY = y;   
             global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
         }
@@ -220,7 +229,9 @@ if(global.TutorialSetup == true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomLocationView)
+            <string>if(room != RoomInfoView)
+    global.tempPos = 0;
+if(room == RoomLocationView)
 {   
     if(global.playerInt &gt;= reqInt and global.playerChar &gt;= reqChar and global.playerWell &gt;= reqWell)
     {
