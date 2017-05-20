@@ -69,6 +69,7 @@
     <background>background\ActionCard_Background</background>
     <background>background\Character_Background</background>
     <background>background\SplashClick</background>
+    <background>background\Blank_background</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">

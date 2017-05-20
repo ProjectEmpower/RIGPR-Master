@@ -115,7 +115,7 @@ ini_open(global.locationINI);
 if(!ini_section_exists("LocationT"))
 {
         ini_write_string("LocationT","Real Location Name","Tutorial Location"); //writes the location name on exit
-    ini_write_string("LocationT","Description","When you access a location you will be given a description about the area and unpon clicking in the location screen you will be shown the events for the location"); //writes the description on exit.
+    ini_write_string("LocationT","Description",""); //writes the description on exit.
     ini_write_real("LocationT","NumRef", -1);//saves the number of events
     ini_write_real("LocationT","X", 500);//saves the number of events
     ini_write_real("LocationT","Y", 250);//saves the number of events

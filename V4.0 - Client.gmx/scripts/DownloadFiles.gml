@@ -10,7 +10,7 @@ global.totalCharCardSprites = ini_read_real("General", "Char Card Sprites", 0)
 global.normalCardBacking = ini_read_real("General","Normal Card Back",0);
 global.mythCardBacking = ini_read_real("General","Myth Card Back",0);;
 global.MapBacking = ini_read_real("General","Map Background",0);
-
+global.totalLocationBackgrounds = ini_read_real("General", "Location Backgrounds", 0); 
 global.CharacterBGing = ini_read_real("General","Character Background",0);
 global.DiaryBGing = ini_read_real("General","Diary Background",0);
 global.CardsBGing = ini_read_real("General","Cards Background",0);
@@ -24,7 +24,12 @@ global.InfoCardBGing = ini_read_real("General","Info Cards Background",0);
 global.CharCardBGing = ini_read_real("General","Char Cards Background",0);
 ini_close();
 
-
+for(i = 0; i < global.totalLocationBackgrounds;i++)
+{
+    spriteName = "LocBack"+string(i);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
+    global.locationBGArray[i] = background_add("editor_files/BG/"+spriteName+".png",0,0);
+    
+}
 for(i = 0; i < global.totalNormBuildingSprites; i++)
 {
     spriteName = "BuildingSpriteN"+string(i);//set the sprite name to be Usersprite + i
@@ -154,7 +159,7 @@ if(global.CardsBGing != 0)
 if(global.EventCardBGing != 0)
 {
     EventCardBG = background_add("editor_files/BG/EventCardBackground.png",0,0);
-    room_set_background(RoomLocationView, 0, 1, 0, EventCardBG, 0, 0, 0, 0, 0, 0, 1);    
+    room_set_background(RoomLocationView, 1, 1, 0, EventCardBG, 0, 0, 0, 0, 0, 0, 1);    
     room_set_background(RoomCards, 1, 1, 0, EventCardBG, 0, 0, 0, 0, 0, 0, 1);
     
 }

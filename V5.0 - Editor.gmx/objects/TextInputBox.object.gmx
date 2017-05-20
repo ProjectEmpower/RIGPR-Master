@@ -39,6 +39,7 @@ tenthTextBoxRef = realNameTextBoxRef+9;
 msg = "";
 InfoDesc = "";
 actDesc = "";
+locDesc = "";
 charsText = "";
 timer = 0;//sets timer to 0
 delay = 4;//sets the delay on text entry
@@ -768,11 +769,11 @@ if(room == RoomLocationAdd)
 
         }
     }
-    if(id == instance_id[forthTextBoxRef])
+    if(id == instance_id[forthTextBoxRef-1])
     {
         txt_input = global.locationEventNumber;
     }
-    if(id == instance_id[fifthTextBoxRef])
+    if(id == instance_id[fifthTextBoxRef-1])
     {
         if(global.TutorialSetup == false)
         {
@@ -813,7 +814,7 @@ if(room == RoomLocationAdd)
         }
 
     }
-    if(id == instance_id[sixthTextBoxRef])
+    if(id == instance_id[sixthTextBoxRef-1])
     {
         //this code stops the user from adding more than 1 events in a week (for this location only)
         week = 0;
@@ -858,7 +859,7 @@ if(room == RoomLocationAdd)
             show_message("There are only 52 weeks in a year!");           
         }
     }
-    if(id == instance_id[seventhTextBoxRef+1])
+    if(id == instance_id[seventhTextBoxRef])
     {
     if(global.TutorialSetup == false)
     {
@@ -1254,6 +1255,13 @@ if(room == RoomCardEdit)
             <kind>1</kind>
             <string>//If a text box is clicked on, this is what happens
 global.focus = id;//the focus is set to the current instances ID (button clicked ID)
+if(room == RoomLocationAdd)
+{
+    if(instance_id[realNameTextBoxRef] == id)
+    {
+        locDesc = get_string_async("Please enter the Location's Descrption",global.description);
+    } 
+}
 if(room == RoomCardDeck)//deck of cards
 {
     if(global.RoomState == 0)
@@ -1688,6 +1696,16 @@ if(i_d == msg)
          }
       }
   }
+  if(i_d == locDesc)
+{
+   if (ds_map_find_value(async_load, "status"))
+      {
+            global.description = ds_map_find_value(async_load, "result");
+            script_execute(SaveLocation);
+            locDesc = "";
+            room = RoomLocationAdd;
+      }
+}
 if(i_d == actDesc)
 {
    if (ds_map_find_value(async_load, "status"))
@@ -1756,13 +1774,13 @@ if(room == RoomLocationAdd)
     draw_set_valign(fa_middle);
     draw_set_halign(fa_right);
     tempX = 0;
-    if(id == instance_id[seventhTextBoxRef+2] or id == instance_id[seventhTextBoxRef+3] or id == instance_id[seventhTextBoxRef+4])
+    if(id == instance_id[seventhTextBoxRef+1] or id == instance_id[seventhTextBoxRef+2] or id == instance_id[seventhTextBoxRef+3])
     {
         tempX = 400;
     }
     draw_text(global.InputTextX + tempX, myY, txt_display);//Draws the input text
     draw_set_halign(fa_left);
-    if(id != instance_id[descTextBoxRef])
+    if(id != instance_id[descTextBoxRef-1])
     {
         draw_text(global.InputBoxX + tempX,myY, txt_input); //draws the input box text
     }

@@ -34,6 +34,8 @@
     global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
     global.numberOfBackgrounds += 1;
 }
+
+
 //creation code for buildings
 image_angle = 45;//angle of the building
 ref = string(global.objectRef); //reference of the object in string
@@ -159,6 +161,12 @@ if(global.moveLock == 0)
                 tempEventNum = ini_read_real(locationName, "Number of Events", 0);
                 global.realLocationName = ini_read_string(locationName, "Real Location Name", "");
                 global.locDesc = ini_read_string(locationName, "Description", "");
+                global.BGRef = ini_read_real(locationName,"Background",-1);
+                if(global.BGRef != -1)
+                    room_set_background(RoomLocationView, 0, 1, 0, global.locationBGArray[global.BGRef], 0, 0, 0, 0, 0, 0, 1); 
+                else
+                    room_set_background(RoomLocationView, 0, 1, 0, EventCreation_Background, 0, 0, 0, 0, 0, 0, 1); 
+               
                // for(e = 1; e &lt;= tempEventNum; e++)
                 //{
                    // tempEventID = string(e);
@@ -205,6 +213,12 @@ if(global.moveLock == 0)
                 tempEventNum = ini_read_real(locationName, "Number of Events", 0);
                 global.realLocationName = ini_read_string(locationName, "Real Location Name", "");
                 global.locDesc = ini_read_string(locationName, "Description", "");
+                global.BGRef = ini_read_real(locationName,"Background",-1);
+                if(global.BGRef != -1)
+                    room_set_background(RoomLocationView, 0, 1, 0, global.locationBGArray[global.BGRef], 0, 0, 0, 0, 0, 0, 1); 
+                else
+                    room_set_background(RoomLocationView, 0, 1, 0, EventCreation_Background, 0, 0, 0, 0, 0, 0, 1); 
+               
                 global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used later)
                 ini_close();//closes the ini file
                 global.tempPos = 0;

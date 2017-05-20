@@ -38,6 +38,8 @@ if(room == RoomLocationAdd)
 {
     Building.x = global.roomWidth/5*3;//set the current position on screen
     Building.y = global.roomHeight/5+125;
+    Building.depth = 2;
+    ref = string(global.objectRef); 
     Name = "Location"+global.tempID; //set Name to "Location+currentID"
 }
 if(room == RoomSprites)
@@ -159,6 +161,7 @@ for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
         }
         else if(global.locationMyth == 3)
         {
+            image_angle = 45;
             sprite_index = BuildingSpriteBoth;
         }
     }

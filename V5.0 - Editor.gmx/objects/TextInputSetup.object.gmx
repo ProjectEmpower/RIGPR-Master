@@ -228,10 +228,12 @@ if(room == RoomLocationAdd)
             global.tempEvent = "Event1";//setup the event name for accessig the ini
             tempEventType = global.tempEvent+"Type";
             tempEventWeek = global.tempEvent+"Week";
+            tempEventYear = global.tempEvent+"Year";
             tempEventmyth = global.tempEvent+"Mythical";
             ini_open(global.locationINI);//open the ini
             global.eventType = ini_read_real(global.tempLocation, tempEventType, 0);//read the event type
             global.eventWeek = ini_read_real(global.tempLocation, tempEventWeek, 0);//read the event week
+            global.eventYear = ini_read_real(global.tempLocation, tempEventYear, 1);//read the event week
             global.eventMyth = ini_read_real(global.tempLocation, tempEventmyth, 0);//read the event mythical status
             ini_close();
             global.oldWeek = global.eventWeek;

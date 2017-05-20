@@ -109,6 +109,14 @@ if(room == RoomTutorial)
     global.TutorialSetup = true;
     if(instance_id[global.box0+1] == id)
     {
+        ini_open(global.locationINI)
+        global.BGRef = ini_read_real("LocationT","Background",-1);
+        ini_close();
+        if(global.BGRef != -1)
+            room_set_background(RoomLocationAdd, 0, 1, 0, global.locationBGArray[global.BGRef], 0, 0, 0, 0, 0, 0, 1); 
+        else
+            room_set_background(RoomLocationAdd, 0, 1, 0, EventCreation_Background, 0, 0, 0, 0, 0, 0, 1); 
+                
         room = RoomLocationAdd
     }
     if(instance_id[global.box1+1] == id)

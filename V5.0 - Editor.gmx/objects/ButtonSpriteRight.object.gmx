@@ -28,7 +28,7 @@
             <string>//sets position, if there are events to display
 x = Building.x+90;
 y = Building.y;
-if(global.buildingSprite == global.totalNormBuildingSprites-1)
+if(global.buildingSprite == global.totalNormBuildingSprites-1 or global.locationMyth == 3)
 sprite_index = No_sprite
 </string>
           </argument>

@@ -107,6 +107,20 @@ else
         ini_close();
         
     }
+        ini_open(global.locationINI);
+        LocationName = "LocationT";
+        tempRef = ini_read_real(LocationName,"SpriteRef",-1);
+        if(tempRef == global.buildingSprite)
+        {
+            tempRef = -1;
+            ini_write_real(LocationName,"SpriteRef", tempRef);
+        }
+        if(tempRef &gt; global.buildingSprite)
+        {
+            tempRef -= 1;
+            ini_write_real(LocationName,"SpriteRef", tempRef);
+        }
+        ini_close();
     global.buildingSprite = -1;
     global.totalNormBuildingSprites -= 1;
     global.totalMythBuildingSprites -= 1;

@@ -27,7 +27,17 @@
             <kind>1</kind>
             <string>global.tempID = string(global.tempNum);// takes the current tempNum (set when accessing this object via left click)
 global.tempLocation = "Location"+global.tempID;//writes the location+#Ref#  to a temp variable
-
+switch(global.Cont)
+{
+    case 0: 
+        background_visible[0] = true;
+        background_visible[1] = false;
+    break;
+    case 1:
+        background_visible[0] = false;
+        background_visible[1] = true;
+    break;
+}
 //global.tempEventID = string(global.eventRef);// takes the current cardRef (set when accessing the room)
 //global.eventName = "Event"+global.tempEventID;//writes the card name
 if(room == RoomLocationView)
@@ -64,6 +74,8 @@ if(room == RoomLocationView)
           <argument>
             <kind>1</kind>
             <string>global.Cont = 1;
+background_visible[0] = false;
+background_visible[1] = true;
 room = RoomLocationView
 </string>
           </argument>

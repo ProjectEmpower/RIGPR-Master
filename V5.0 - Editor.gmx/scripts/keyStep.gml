@@ -91,38 +91,38 @@ else if k>=65 and k<=90 or k>=97 and k<=122 or k>=48 and k<=57 or k==192 or k==3
 //updates relevent variable with the text stored in txt_input
 if(room == RoomLocationAdd)
 {
-    if(instance_id[realNameTextBoxRef] == id)
+    if(instance_id[realNameTextBoxRef-1] == id)
     {
         global.realLocationName = txt_input;
     }
-    if(instance_id[descTextBoxRef] == id)
+    if(instance_id[descTextBoxRef-1] == id)
     {
         global.description = txt_input;
     }
-    if(instance_id[thirdTextBoxRef] == id)
+    if(instance_id[thirdTextBoxRef-1] == id)
     {
     
         global.locationMyth = txt_input;
     }
-    if(instance_id[forthTextBoxRef] == id)
+    if(instance_id[forthTextBoxRef-1] == id)
     {
         global.locationEventNumber = txt_input;
     }
-    if(instance_id[fifthTextBoxRef] == id)
+    if(instance_id[fifthTextBoxRef-1] == id)
     {
         global.eventType = txt_input;
     }
-    if(instance_id[sixthTextBoxRef] == id)
+    if(instance_id[sixthTextBoxRef-1] == id)
     {
         global.eventWeek = real(txt_input);
 
     }
-    if(instance_id[seventhTextBoxRef] == id)
+    if(instance_id[seventhTextBoxRef-1] == id)
     {
         global.eventYear = real(txt_input);
 
     }
-    if(instance_id[seventhTextBoxRef+1] == id)
+    if(instance_id[seventhTextBoxRef] == id)
     {
         global.eventMyth = txt_input;
     }

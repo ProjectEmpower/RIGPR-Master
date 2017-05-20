@@ -85,6 +85,22 @@ if(global.BGRef == -1)
         ini_close();
         
     }
+    ini_open(global.locationINI);
+    LocationName = "LocationT";
+    tempRef = ini_read_real(LocationName,"Background",-1);
+    if(tempRef == global.BGRef)
+    {
+        tempRef = -1;
+        ini_write_real(LocationName,"Background", tempRef);
+    }
+    if(tempRef &gt; global.BGRef)
+    {
+        tempRef -= 1;
+        ini_write_real(LocationName,"Background", tempRef);
+    }
+    ini_close();
+        
+
     global.totalLocationBackgrounds -= 1;
     if(global.totalLocationBackgrounds &gt; 0)
         global.BGRef-= 1
