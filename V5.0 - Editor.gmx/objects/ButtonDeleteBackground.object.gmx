@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>x = global.roomWidth /2;
 y = global.roomHeight /2 + 50;
-Background = "";
+BackgroundD = "";
 tempRoom = room;
 if(room == RoomCharacter and global.CharacterBGing == 0)
 {        
@@ -37,7 +37,14 @@ if(room == RoomDiary and global.DiaryBGing == 0)
 {        
     sprite_index = No_sprite
 }
-
+if(room == RoomNewGame and global.NewGBGing == 0)
+{        
+    sprite_index = No_sprite
+}
+if(room == RoomPlayerMenu and global.PlayerMenuBGing == 0)
+{        
+    sprite_index = No_sprite
+}
 if(room == RoomCards)
 {        
     if(global.RoomState == -1 and global.CardsBGing == 0)
@@ -77,144 +84,8 @@ if(room == RoomMenu and (global.MenuBGing == 0 or global.BackgroundSetup == fals
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if((room == RoomMenu and global.MenuBGing &gt; 0) or(room == RoomCharacter and global.CharacterBGing &gt; 0) or (room == RoomDiary and global.DiaryBGing &gt; 0) or (room == RoomCards and (global.CardsBGing &gt; 0 and global.RoomState == -1) or (global.EventCardBGing &gt; 0 and global.RoomState == 0) or (global.ActionCardBGing &gt; 0 and global.RoomState == 1) or (global.ConsCardBGing &gt; 0 and global.RoomState == 2) or (global.InfoCardBGing &gt; 0 and global.RoomState == 3) or (global.CharCardBGing &gt; 0 and global.RoomState == 4)))
-    Background = show_question_async("File will be deleted, is this ok?");
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="63">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>i_d = ds_map_find_value(async_load,"id");
-if(room == RoomCharacter and Background != "")
-{
-    if(i_d == Background)
-    {
-        file_delete("editor_files/sprites/CharacterBackground.png");
-        global.CharacterBGing = 0;
-        room_set_background(RoomCharacter, 0, 1, 0, CharacterScreen_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        Background = "";
-    }
-
-}
-if(room == RoomDiary and Background != "")
-{
-    if(i_d == Background)
-    {
-        file_delete("editor_files/sprites/DiaryBackground.png");
-        global.DiaryBGing = 0;
-        room_set_background(RoomDiary, 0, 1, 0, JournalScreen_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        Background = "";
-    }
-}
-if(room == RoomMenu and Background != "")
-{
-    if(i_d == Background)
-    {
-        file_delete("editor_files/sprites/MenuBackground.png");
-        global.MenuBGing = 0;
-        room_set_background(RoomMenu, 0, 1, 0, MainMenuBackground, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        Background = "";
-    }
-}
-if(room == RoomCards and Background != "")
-{
-    if(global.RoomState == -1)
-    {
-        if(i_d == Background)
-        {
-            file_delete("editor_files/sprites/CardsBackground.png");
-            global.CardsBGing = 0;
-            room_set_background(RoomCards, 0, 1, 0, CharacterScreen_Background, 0, 0, 1, 1, 0, 0, 1);
-            show_message_async("File deleted"); 
-            Background = "";
-        }
-    }
-
-    if(global.RoomState == 0)
-    {
-        file_delete("editor_files/sprites/EventCardBackground.png");
-        global.EventCardBGing = 0;
-        room_set_background(RoomCards, 1, 1, 0, EventCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardEdit, 0, 1, 0, EventCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardDeck, 0, 1, 0, EventCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted");
-        Background = ""; 
-    }   
-    if(global.RoomState == 1)
-    {
-                    file_delete("editor_files/sprites/ActionCardBackground.png");
-        global.ActionCardBGing = 0;
-        room_set_background(RoomCards, 2, 1, 0, ActionCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardEdit, 1, 1, 0, ActionCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardDeck, 1, 1, 0, ActionCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        Background = "";
-    }     
-    if(global.RoomState == 2)
-    {
-        file_delete("editor_files/sprites/ConsCardBackground.png");
-        global.ConsCardBGing = 0;
-        room_set_background(RoomCards, 3, 1, 0, ConsequenceCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardEdit, 2, 1, 0, ConsequenceCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardDeck, 2, 1, 0, ConsequenceCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        Background = "";
-
-    }   
-    if(global.RoomState == 3)
-    {
-                    file_delete("editor_files/sprites/InfoCardBackground.png");
-        global.InfoCardBGing = 0;
-        room_set_background(RoomCards, 4, 1, 0, InfoCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardEdit, 3, 1, 0, InfoCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardDeck, 3, 1, 0, InfoCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        Background = "";
-    }   
-    if(global.RoomState == 4)
-    {
-        file_delete("editor_files/sprites/CharCardBackground.png");
-        global.CharCardBGing = 0;
-        room_set_background(RoomCards, 5, 1, 0, CharacterCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardEdit, 4, 1, 0, CharacterCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardDeck, 4, 1, 0, CharacterCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        Background = "";
-    }  
-}           
-ini_open(global.editorINI);//opens the editorINI
-ini_write_real("General","Character Background",global.CharacterBGing);
-ini_write_real("General","Diary Background",global.DiaryBGing);
-ini_write_real("General","Cards Background",global.CardsBGing);
-ini_write_real("General","Menu Background",global.MenuBGing);
-ini_write_real("General","Event Cards Background",global.EventCardBGing);
-ini_write_real("General","Action Cards Background",global.ActionCardBGing);
-ini_write_real("General","Cons Cards Background",global.ConsCardBGing);
-ini_write_real("General","Info Cards Background",global.InfoCardBGing);
-ini_write_real("General","Char Cards Background",global.CharCardBGing);
-ini_close();//closes the ini
-room = tempRoom;//reloads the room
+            <string>if((room == RoomPlayerMenu and global.PlayerMenuBGing &gt; 0) or (room == RoomNewGame and global.NewGBGing &gt; 0) or (room == RoomMenu and global.MenuBGing &gt; 0) or(room == RoomCharacter and global.CharacterBGing &gt; 0) or (room == RoomDiary and global.DiaryBGing &gt; 0) or (room == RoomCards and (global.CardsBGing &gt; 0 and global.RoomState == -1) or (global.EventCardBGing &gt; 0 and global.RoomState == 0) or (global.ActionCardBGing &gt; 0 and global.RoomState == 1) or (global.ConsCardBGing &gt; 0 and global.RoomState == 2) or (global.InfoCardBGing &gt; 0 and global.RoomState == 3) or (global.CharCardBGing &gt; 0 and global.RoomState == 4)))
+    BackgroundD = show_question_async("File will be deleted, is this ok?");
 
 </string>
           </argument>

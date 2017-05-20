@@ -28,6 +28,12 @@
             <string>global.CharacterButtonX = 75;
 global.CharacterButtonY = global.roomHeight-75;
 global.RoomState = -1;
+if(room == RoomBackgrounds)
+{
+    sprite_index = CharScreen
+    x = global.roomWidth/2
+    y = global.roomHeight/2+200
+}
 </string>
           </argument>
         </arguments>

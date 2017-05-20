@@ -28,7 +28,6 @@
             <string>script_execute(ResolutionChange);
 if(global.lastResRoom == 0)
 {
-    script_execute(DownloadFiles);
     room = RoomSplash;
 }
 else

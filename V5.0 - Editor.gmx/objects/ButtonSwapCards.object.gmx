@@ -106,7 +106,7 @@ switch(global.RoomState)
     break;
     case 3: global.RoomState = 4;
     break;
-    case 4: global.RoomState = 0;
+    case 4: global.RoomState = -1;
     break;
 }   
 room = RoomCards;

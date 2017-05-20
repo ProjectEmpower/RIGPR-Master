@@ -81,11 +81,12 @@ global.MythTutorial = ini_read_real("Tutorial","Myth Include",1);
 global.PlayerStatsTutorial = ini_read_real("Tutorial","Stats Include",1);
 global.DiaryTutorial = ini_read_real("Tutorial","Diary Include",1);
 global.CardsTutorial = ini_read_real("Tutorial","Cards Include",1);
+
     for(i = 0; i &lt; 10; i++)
     {            
         global.TutorialOrder[i] = ini_read_real("Tutorial","Order"+string(i),i+1);;
     }
-    
+global.totalLocationBackgrounds = ini_read_real("General", "Location Backgrounds", 0);   
 global.totalNormBuildingSprites = ini_read_real("General", "Norm Building Sprites", 0);
 global.totalMythBuildingSprites = ini_read_real("General", "Myth Building Sprites", 0);
 global.totalBothBuildingSprites = ini_read_real("General", "Both Building Sprites", 0);
@@ -102,11 +103,12 @@ global.CharacterBGing = ini_read_real("General","Character Background",0);
 global.DiaryBGing = ini_read_real("General","Diary Background",0);
 global.CardsBGing = ini_read_real("General","Cards Background",0);
 global.MenuBGing = ini_read_real("General","Menu Background",0);
-
+global.NewGBGing = ini_read_real("General","New Game Background",0);
+global.PlayerMenuBGing = ini_read_real("General","Player Menu Background",0); 
 global.EventCardBGing = ini_read_real("General","Event Cards Background",0);
 global.ActionCardBGing = ini_read_real("General","Action Cards Background",0);
-global.ConsCardBGing = ini_read_real("General","Cons Cards Cards  Background",0);
-global.InfoCardBGing = ini_read_real("General","Info Cards Cards Background",0);
+global.ConsCardBGing = ini_read_real("General","Cons Cards Background",0);
+global.InfoCardBGing = ini_read_real("General","Info Cards Background",0);
 global.CharCardBGing = ini_read_real("General","Char Cards Background",0);
 ini_close();
 ini_open(global.locationINI);
@@ -115,6 +117,8 @@ if(!ini_section_exists("LocationT"))
         ini_write_string("LocationT","Real Location Name","Tutorial Location"); //writes the location name on exit
     ini_write_string("LocationT","Description","When you access a location you will be given a description about the area and unpon clicking in the location screen you will be shown the events for the location"); //writes the description on exit.
     ini_write_real("LocationT","NumRef", -1);//saves the number of events
+    ini_write_real("LocationT","X", 500);//saves the number of events
+    ini_write_real("LocationT","Y", 250);//saves the number of events
 
     ini_write_real("LocationT","Number of Events", 1);//saves the number of events
 
@@ -185,12 +189,24 @@ if(!ini_section_exists("InfoT"))
     ini_write_string("InfoT","Link","http://www.google.com");//write the mythical status of the event
 }
 ini_close();
+if(global.PlayerMenuBGing != 0)
+{
 
+    global.PlayerMenuBG = background_add("editor_files/BG/MenuBackground.png",0,0);
+    room_set_background(RoomPlayerMenu, 0, 1, 0, global.PlayerMenuBG, 0, 0, 0, 0, 0, 0, 1);
+}
 if(global.MenuBGing != 0)
 {
 
-    global.MenuBG = background_add("editor_files/BG/MenuBackground.png",0,0);
-    room_set_background(RoomMenu, 0, 1, 0, global.MenuBG, 0, 0, 0, 0, 0, 0, 1);
+    global.MenuBG = background_add("editor_files/BG/SplashBackground.png",0,0);
+    global.MenuClickBG = background_add("editor_files/BG/SplashClickBackground.png",0,0);
+    room_set_background(RoomMenu, 0, 1, 0, global.MenuClickBG, 0, 0, 0, 0, 0, 0, 1);
+}
+if(global.NewGBGing != 0)
+{
+
+    global.NewGBG = background_add("editor_files/BG/NewGameBackground.png",0,0);
+    room_set_background(RoomNewGame, 0, 1, 0, global.NewGBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.CharacterBGing != 0)
 {
@@ -268,6 +284,12 @@ for(i = 0; i &lt; global.totalNormBuildingSprites; i++)
     global.normBuildingArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
     sprite_set_offset(global.normBuildingArray[i],sprite_get_width(global.normBuildingArray[i])/2,sprite_get_height(global.normBuildingArray[i])/2);
 
+}
+for(i = 0; i &lt; global.totalLocationBackgrounds;i++)
+{
+    spriteName = "LocBack"+string(i);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
+    global.locationBGArray[i] = background_add("editor_files/BG/"+spriteName+".png",0,0);
+    
 }
 for(i = 0; i &lt; global.totalMythBuildingSprites; i++)
 {

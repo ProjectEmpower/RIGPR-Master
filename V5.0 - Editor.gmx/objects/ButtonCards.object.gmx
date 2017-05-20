@@ -28,6 +28,12 @@
             <string>//sets position on screen
 ButtonCards.x = room_width/2
 ButtonCards.y = room_height-80
+if(room == RoomBackgrounds)
+{
+    x = global.roomWidth/2+110
+    y = global.roomHeight/2+100
+    sprite_index = CardsScreen
+}
 </string>
           </argument>
         </arguments>

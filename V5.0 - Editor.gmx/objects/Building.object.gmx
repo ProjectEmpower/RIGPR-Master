@@ -204,6 +204,12 @@ if(room == RoomMap)
             if(id.x == ini_read_real(locationName,"X",0) &amp;&amp; id.y == ini_read_real(locationName,"Y",0))//checks what location you are selecting, it checks the x/y vs the instance (id) x/y
             {
                 global.tempNum = ini_read_real(locationName,"NumRef",0);//reads the location's ref to the global tempNum (used on locationadd screen)
+                global.BGRef = ini_read_real(locationName,"Background",-1);
+                if(global.BGRef != -1)
+                    room_set_background(RoomLocationAdd, 0, 1, 0, global.locationBGArray[global.BGRef], 0, 0, 0, 0, 0, 0, 1); 
+                else
+                    room_set_background(RoomLocationAdd, 0, 1, 0, EventCreation_Background, 0, 0, 0, 0, 0, 0, 1); 
+                
                 ini_close();//closes the ini file
                 global.locationWeekabc = 0;
                 room = RoomLocationAdd//moves to the next room

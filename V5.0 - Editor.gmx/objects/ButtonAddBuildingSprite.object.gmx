@@ -65,7 +65,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>inputN = show_message_async("Please select normal building's image to upload");
+            <string>inputN = show_message_async("Please select normal building's image to upload.");
                 
 </string>
           </argument>
@@ -90,18 +90,29 @@ else
           <argument>
             <kind>1</kind>
             <string>i_d = ds_map_find_value(async_load,"id");
-
-        
+if(i_d == ButtonAddLocationBackground.Background)
+{
+    ButtonAddLocationBackground.BackgroundF = get_open_filename("PNG|*.png", "");//opens the file
+    if(ButtonAddLocationBackground.BackgroundF != "")//if it finds a file, do this
+    {
+        show_message_async("Background uploaded");
+    }
+    else
+    {
+        show_message_async("You did not upload a background.");
+    }
+    
+}
 if(i_d == inputN)
 {
     fileN = get_open_filename("PNG|*.png", "");//opens the file
     if(fileN != "")//if it finds a file, do this
     {
-        inputM = show_message_async("Please select mythical building's image to upload");
+        inputM = show_message_async("Please select mythical building's image to upload.");
     }
     else
     {
-        show_message_async("You did not select normal map's building's image to upload");
+        show_message_async("You did not select normal map's building's image to upload.");
     }
     
 }
@@ -110,11 +121,11 @@ if(i_d == inputM)
     fileM = get_open_filename("PNG|*.png", "");//opens the file
     if(fileM != "")//if it finds a file, do this
     {
-        inputB = show_message_async("Please select both building's image to upload");
+        inputB = show_message_async("Please select both building's image to upload.");
     }
     else
     {
-        show_message_async("You did not select mythical map's building's image to upload");
+        show_message_async("You did not select mythical map's building's image to upload.");
     }
     
 }
@@ -123,15 +134,30 @@ if(i_d == inputB)
     fileB = get_open_filename("PNG|*.png", "");//opens the file
     if(fileB != "")//if it finds a file, do this
     {
-        show_message_async("Sprite set added successfully");
+        show_message_async("Sprite set added successfully.");
     }
     else
     {
-        show_message_async("You did not select both map's building's image to upload");
+        show_message_async("You did not select both map's building's image to upload.");
     }
    
 }
-
+if(ButtonAddLocationBackground.BackgroundF != "")
+{
+    spriteName = "LocBack"+string(global.totalLocationBackgrounds);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
+    global.locationBGArray[global.totalLocationBackgrounds] = background_add(ButtonAddLocationBackground.BackgroundF,0,0);
+    background_save(global.locationBGArray[global.totalLocationBackgrounds], "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
+    room_set_background(RoomLocationAdd, 0, 1, 0, global.locationBGArray[global.totalLocationBackgrounds], 0, 0, 0, 0, 0, 0, 1); 
+    Background = "";
+    global.BGRef = global.totalLocationBackgrounds;
+    script_execute(SaveLocation);
+    global.totalLocationBackgrounds += 1;
+    ini_open(global.editorINI)
+    ini_write_real("General","Location Backgrounds",global.totalLocationBackgrounds);
+    ini_close();
+    room = RoomLocationAdd;
+            
+}
 if(fileN != "" and fileM != "" and fileB != "")
 {
         spriteName = "BuildingSpriteN"+string(global.totalNormBuildingSprites);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)

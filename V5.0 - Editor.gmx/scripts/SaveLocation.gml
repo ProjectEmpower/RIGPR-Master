@@ -1,7 +1,7 @@
 ini_open(global.locationINI)//opens locatio ini
 ini_write_string(global.tempLocation,"Real Location Name",global.realLocationName); //writes the location name on exit
 ini_write_string(global.tempLocation,"Description",global.description); //writes the description on exit.
-
+ini_write_real(global.tempLocation,"Background",global.BGRef);
 ini_write_real(global.tempLocation,"Number of Events", global.locationEventNumber);//saves the number of events
 if(global.locationEventNumber > 0) //if there is more than one
 {

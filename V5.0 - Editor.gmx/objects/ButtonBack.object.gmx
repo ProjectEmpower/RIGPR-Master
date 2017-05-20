@@ -76,14 +76,22 @@ if(room == RoomCharacter) //checks room
         room = RoomMap
     }
 }
-if(room == RoomMap)
+if(room == RoomMap and global.BackgroundSetup == true)
 {
     global.BackgroundSetup = false;
+    room = RoomBackgrounds;
+}
+if(room == RoomPlayerMenu)
+{
     room = RoomBackgrounds;
 }
 if(room == RoomMenu)
 {
     global.BackgroundSetup = false;
+    room = RoomBackgrounds;
+}
+if(room == RoomNewGame)
+{
     room = RoomBackgrounds;
 }
 if(room == RoomBackgrounds)
@@ -355,14 +363,22 @@ if(room == RoomCharacter) //checks room
         room = RoomMap
     }
 }
-if(room == RoomMap)
+if(room == RoomMap and global.BackgroundSetup == true)
 {
     global.BackgroundSetup = false;
+    room = RoomBackgrounds;
+}
+if(room == RoomPlayerMenu)
+{
     room = RoomBackgrounds;
 }
 if(room == RoomMenu)
 {
     global.BackgroundSetup = false;
+    room = RoomBackgrounds;
+}
+if(room == RoomNewGame)
+{
     room = RoomBackgrounds;
 }
 if(room == RoomBackgrounds)

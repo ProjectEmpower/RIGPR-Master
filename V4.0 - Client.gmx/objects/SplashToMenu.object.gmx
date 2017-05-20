@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>script_execute(DownloadFiles)
+            <string>
     //this code counts the number of current events in the system.
     global.totalEventCards = 100;
     for(i = 0; i &lt;= global.totalEventCards; i++)
@@ -252,10 +252,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>script_execute(DownloadFiles)
 if(global.NewGame == false)
 {
-    script_execute(DownloadFiles)
+
     script_execute(PlayerLoad);
     room_goto(RoomMenu);
 }

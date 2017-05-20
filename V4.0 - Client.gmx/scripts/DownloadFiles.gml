@@ -14,11 +14,13 @@ global.MapBacking = ini_read_real("General","Map Background",0);
 global.CharacterBGing = ini_read_real("General","Character Background",0);
 global.DiaryBGing = ini_read_real("General","Diary Background",0);
 global.CardsBGing = ini_read_real("General","Cards Background",0);
-
+global.MenuBGing = ini_read_real("General","Menu Background",0);
+global.NewGBGing = ini_read_real("General","New Game Background",0);
+global.PlayerMenuBGing = ini_read_real("General","Player Menu Background",0);
 global.EventCardBGing = ini_read_real("General","Event Cards Background",0);
 global.ActionCardBGing = ini_read_real("General","Action Cards Background",0);
-global.ConsCardBGing = ini_read_real("General","Cons Cards Cards  Background",0);
-global.InfoCardBGing = ini_read_real("General","Info Cards Cards Background",0);
+global.ConsCardBGing = ini_read_real("General","Cons Cards Background",0);
+global.InfoCardBGing = ini_read_real("General","Info Cards Background",0);
 global.CharCardBGing = ini_read_real("General","Char Cards Background",0);
 ini_close();
 
@@ -107,93 +109,78 @@ for(i = 0; i < global.totalCharCardSprites; i++)
     global.charCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
     sprite_set_offset(global.charCardSpriteArray[i],sprite_get_width(global.charCardSpriteArray[i])/2,sprite_get_height(global.charCardSpriteArray[i])/2);
 }
+if(global.PlayerMenuBGing != 0)
+{
 
+    PlayerMenuBG = background_add("editor_files/BG/MenuBackground.png",0,0);
+    room_set_background(RoomMenu, 0, 1, 0, PlayerMenuBG, 0, 0, 0, 0, 0, 0, 1);
+}
+if(global.MenuBGing != 0)
+{
+    MenuClickBG = background_add("editor_files/BG/SplashClickBackground.png",0,0);
+    MenuBG = background_add("editor_files/BG/SplashBackground.png",0,0);
+    if(os_type == os_android)
+        room_set_background(RoomSplash, 0, 1, 0, MenuBG, 0, 0, 0, 0, 0, 0, 1);
+    else
+        room_set_background(RoomSplash, 0, 1, 0, MenuClickBG, 0, 0, 0, 0, 0, 0, 1);      
+}
+if(global.NewGBGing != 0)
+{
+
+    NewGBG = background_add("editor_files/BG/NewGameBackground.png",0,0);
+    room_set_background(RoomNewGame, 0, 1, 0, NewGBG, 0, 0, 0, 0, 0, 0, 1);
+}
 if(global.MapBacking != 0)
 {
-    if(!file_exists("editor_files/BG/Map.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/BG/Map.png", "editor_files/BG/Map.png");
-    }
-    global.MapBack = background_add("editor_files/BG/Map.png",0,0);
-    room_set_background(RoomMap, 0, 1, 0, global.MapBack, 0, 0, 0, 0, 0, 0, 1);
+    MapBack = background_add("editor_files/BG/Map.png",0,0);
+    room_set_background(RoomMap, 0, 1, 0, MapBack , 0, 0, 0, 0, 0, 0, 1);
    
 }
 if(global.CharacterBGing != 0)
 {
-    if(!file_exists("editor_files/BG/CharacterBackground.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/BG/CharacterBackground.png", "editor_files/BG/CharacterBackground.png");
-    }
-   global.CharacterBG = background_add("editor_files/BG/CharacterBackground.png",0,0);
-    room_set_background(RoomCharacter, 0, 1, 0, global.CharacterBG, 0, 0, 0, 0, 0, 0, 1);
+   CharacterBG = background_add("editor_files/BG/CharacterBackground.png",0,0);
+    room_set_background(RoomCharacter, 0, 1, 0, CharacterBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.DiaryBGing != 0)
 {    
-    if(!file_exists("editor_files/BG/DiaryBackground.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/BG/DiaryBackground.png", "editor_files/BG/DiaryBackground.png");
-    }
-      global.DiaryBG = background_add("editor_files/BG/DiaryBackground.png",0,0);
-    room_set_background(RoomDiary, 0, 1, 0, global.DiaryBG, 0, 0, 0, 0, 0, 0, 1);
+      DiaryBG = background_add("editor_files/BG/DiaryBackground.png",0,0);
+    room_set_background(RoomDiary, 0, 1, 0, DiaryBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.CardsBGing != 0)
 {
-    if(!file_exists("editor_files/BG/CardsBackground.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/BG/CardsBackground.png", "editor_files/BG/CardsBackground.png");
-    }
-    global.CardsBG = background_add("editor_files/BG/CardsBackground.png",0,0);
-    room_set_background(RoomCards, 0, 1, 0, global.CardsBG, 0, 0, 0, 0, 0, 0, 1);
+    CardsBG = background_add("editor_files/BG/CardsBackground.png",0,0);
+    room_set_background(RoomCards, 0, 1, 0, CardsBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.EventCardBGing != 0)
 {
-    if(!file_exists("editor_files/BG/EventCardBackground.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/BG/EventCardBackground.png", "editor_files/BG/EventCardBackground.png");
-    }
-    global.EventCardBG = background_add("editor_files/BG/EventCardBackground.png",0,0);
-    room_set_background(RoomLocationView, 0, 1, 0, global.EventCardBG, 0, 0, 0, 0, 0, 0, 1);    
-    room_set_background(RoomCards, 1, 1, 0, global.EventCardBG, 0, 0, 0, 0, 0, 0, 1);
+    EventCardBG = background_add("editor_files/BG/EventCardBackground.png",0,0);
+    room_set_background(RoomLocationView, 0, 1, 0, EventCardBG, 0, 0, 0, 0, 0, 0, 1);    
+    room_set_background(RoomCards, 1, 1, 0, EventCardBG, 0, 0, 0, 0, 0, 0, 1);
+    
 }
 if(global.ActionCardBGing != 0)
 {
-    if(!file_exists("editor_files/BG/ActionCardBackground.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/BG/ActionCardBackground.png", "editor_files/BG/ActionCardBackground.png");
-    }
- global.ActionCardBG = background_add("editor_files/BG/ActionCardBackground.png",0,0);
-    room_set_background(RoomEventSelect, 0, 1, 0, global.ActionCardBG, 0, 0, 0, 0, 0, 0, 1);    
-    room_set_background(RoomCards, 2, 1, 0, global.ActionCardBG, 0, 0, 0, 0, 0, 0, 1);
+ ActionCardBG = background_add("editor_files/BG/ActionCardBackground.png",0,0);
+    room_set_background(RoomEventSelect, 0, 1, 0, ActionCardBG, 0, 0, 0, 0, 0, 0, 1);    
+    room_set_background(RoomCards, 2, 1, 0, ActionCardBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.ConsCardBGing != 0)
 {
-    if(!file_exists("editor_files/BG/ConsCardBackground.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/BG/ConsCardBackground.png", "editor_files/BG/ConsCardBackground.png");
-    }
-global.ConsCardBG = background_add("editor_files/BG/ConsCardBackground.png",0,0);
-    room_set_background(RoomConsView, 0, 1, 0, global.ConsCardBG, 0, 0, 0, 0, 0, 0, 1);    
-    room_set_background(RoomCards, 3, 1, 0, global.ConsCardBG, 0, 0, 0, 0, 0, 0, 1);
+ConsCardBG = background_add("editor_files/BG/ConsCardBackground.png",0,0);
+    room_set_background(RoomConsView, 0, 1, 0, ConsCardBG, 0, 0, 0, 0, 0, 0, 1);    
+    room_set_background(RoomCards, 3, 1, 0, ConsCardBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.InfoCardBGing != 0)
 {
-    if(!file_exists("editor_files/BG/InfoCardBackground.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/BG/InfoCardBackground.png", "editor_files/BG/InfoCardBackground.png");
-    }
-    global.InfoCardBG = background_add("editor_files/BG/InfoCardBackground.png",0,0);
-    room_set_background(RoomInfoView, 0, 1, 0, global.InfoCardBG, 0, 0, 0, 0, 0, 0, 1);    
-    room_set_background(RoomCards, 4, 1, 0, global.InfoCardBG, 0, 0, 0, 0, 0, 0, 1);
+    InfoCardBG = background_add("editor_files/BG/InfoCardBackground.png",0,0);
+    room_set_background(RoomInfoView, 0, 1, 0, InfoCardBG, 0, 0, 0, 0, 0, 0, 1);    
+    room_set_background(RoomCards, 4, 1, 0, InfoCardBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.CharCardBGing != 0)
 {
-    if(!file_exists("editor_files/BG/CharCardBackground.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/BG/CharCardBackground.png", "editor_files/BG/CharCardBackground.png");
-    }
-    global.CharCardBG = background_add("editor_files/BG/CharCardBackground.png",0,0);
-    room_set_background(RoomCards, 5, 1, 0, global.CharCardBG, 0, 0, 0, 0, 0, 0, 1);
-    room_set_background(RoomCharView, 4, 1, 0, global.CharCardBG, 0, 0, 0, 0, 0, 0, 1);
+    CharCardBG = background_add("editor_files/BG/CharCardBackground.png",0,0);
+    room_set_background(RoomCards, 5, 1, 0, CharCardBG, 0, 0, 0, 0, 0, 0, 1);
+    room_set_background(RoomCharView, 4, 1, 0, CharCardBG, 0, 0, 0, 0, 0, 0, 1);
 }
 
 if(global.normalCardBacking != 0)

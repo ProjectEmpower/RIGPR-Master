@@ -223,6 +223,7 @@ for(i = 0; i &lt;= global.totalCharCards; i ++)
         ini_write_string(locationName,"Description","");//writes a blank default description
         ini_write_real(locationName,"Number of Events", 0);
         ini_write_real(locationName,"SpriteRef",-1);
+        ini_write_real(locationName,"Background",-1);
         ini_close();//close the ini file 
         global.TotalInstanceNum += 1; //increase the global TotalInstanceNum by 1, this means the next location added will be the next instanc
     }

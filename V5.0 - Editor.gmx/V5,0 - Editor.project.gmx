@@ -84,10 +84,18 @@
       <sprite>sprites\CardBackingMyth</sprite>
       <sprite>sprites\CardBackingNormalInfo</sprite>
       <sprite>sprites\CardBackingMythInfo</sprite>
+      <sprite>sprites\SplashScreen</sprite>
+      <sprite>sprites\MapScreen</sprite>
+      <sprite>sprites\JournalScreen</sprite>
+      <sprite>sprites\CardsScreen</sprite>
+      <sprite>sprites\CharScreen</sprite>
+      <sprite>sprites\NewGameScreen</sprite>
+      <sprite>sprites\GameMenuScreen</sprite>
     </sprites>
     <sprite>sprites\BackgroundSprite</sprite>
     <sprite>sprites\MenuButton</sprite>
     <sprite>sprites\InfoLinkSprite</sprite>
+    <sprite>sprites\SwapSplashButtonSprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
@@ -96,13 +104,14 @@
     <background>background\ActionCard_Background</background>
     <background>background\CharacterCard_Background</background>
     <background>background\ConsequenceCard_Background</background>
-    <background>background\EventCreatio2n_Background</background>
+    <background>background\EventCreation_Background</background>
     <background>background\InfoCard_Background</background>
     <background>background\JournalScreen_Background</background>
     <background>background\OptionsScreen_Background</background>
     <background>background\EventCard_Background</background>
     <background>background\CharacterScreen_Background</background>
     <background>background\Blank_background</background>
+    <background>background\MenuBackground</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -167,6 +176,7 @@
       <object>objects\ButtonAddBuildingSprite</object>
       <object>objects\DeleteCurrentEvent</object>
       <object>objects\DeleteCurrentSprite</object>
+      <object>objects\ButtonAddLocationBackground</object>
     </objects>
     <objects name="CardList">
       <objects name="CardEdit">
@@ -224,7 +234,10 @@
     <object>objects\ButtonDeleteMythCardBack</object>
     <object>objects\ButtonAddMythicalCardBack</object>
     <object>objects\GotoMap</object>
+    <object>objects\ButtonSwapSplash</object>
     <object>objects\GotoSplash</object>
+    <object>objects\GoToNewG</object>
+    <object>objects\GoToPlayerMenu</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
@@ -246,6 +259,8 @@
     <room>rooms\RoomDiary</room>
     <room>rooms\RoomCards</room>
     <room>rooms\RoomBackgrounds</room>
+    <room>rooms\RoomPlayerMenu</room>
+    <room>rooms\RoomNewGame</room>
     <room>rooms\RoomTutorial</room>
   </rooms>
   <help>

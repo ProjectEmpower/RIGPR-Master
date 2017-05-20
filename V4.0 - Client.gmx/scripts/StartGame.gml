@@ -105,6 +105,8 @@ if(os_type == os_android)
 }
 else
 {
+        room_set_background(RoomSplash, 0, 1, 0, SplashClick, 0, 0, 0, 0, 0, 0, 1);
+        room_set_background(RoomSetup, 0, 1, 0, SplashClick, 0, 0, 0, 0, 0, 0, 1);
         global.roomWidth = 1280;
         global.roomHeight = 720;
 }

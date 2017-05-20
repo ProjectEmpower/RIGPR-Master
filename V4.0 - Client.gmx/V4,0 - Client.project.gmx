@@ -59,7 +59,7 @@
   <backgrounds name="background">
     <background>background\EventCard_Background</background>
     <background>background\Menu_Background</background>
-    <background>background\MenuBG</background>
+    <background>background\SplashBG</background>
     <background>background\NewMapBG</background>
     <background>background\CharacterCard_Background</background>
     <background>background\ConsequenceCard_Background</background>
@@ -68,6 +68,7 @@
     <background>background\OptionsScreen_Background</background>
     <background>background\ActionCard_Background</background>
     <background>background\Character_Background</background>
+    <background>background\SplashClick</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
