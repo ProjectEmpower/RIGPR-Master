@@ -33,10 +33,6 @@ for(i = 0; i < global.totalLocationBackgrounds;i++)
 for(i = 0; i < global.totalNormBuildingSprites; i++)
 {
     spriteName = "BuildingSpriteN"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteNPNG[i] = http_get_file(global.Address+"editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
     global.normBuildingArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
     sprite_set_offset(global.normBuildingArray[i],sprite_get_width(global.normBuildingArray[i])/2,sprite_get_height(global.normBuildingArray[i])/2)
 
@@ -44,10 +40,6 @@ for(i = 0; i < global.totalNormBuildingSprites; i++)
 for(i = 0; i < global.totalMythBuildingSprites; i++)
 {
     spriteName = "BuildingSpriteM"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteMPNG[i] = http_get_file(global.Address+"editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
     global.mythBuildingArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
     sprite_set_offset(global.mythBuildingArray[i],sprite_get_width(global.mythBuildingArray[i])/2,sprite_get_height(global.mythBuildingArray[i])/2)
 
@@ -55,10 +47,6 @@ for(i = 0; i < global.totalMythBuildingSprites; i++)
 for(i = 0; i < global.totalBothBuildingSprites; i++)
 {
     spriteName = "BuildingSpriteB"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file(global.Address+"editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
     global.bothBuildingArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
     sprite_set_offset(global.bothBuildingArray[i],sprite_get_width(global.bothBuildingArray[i])/2,sprite_get_height(global.bothBuildingArray[i])/2)
 
@@ -66,10 +54,6 @@ for(i = 0; i < global.totalBothBuildingSprites; i++)
 for(i = 0; i < global.totalEventCardSprites; i++)
 {
     spriteName = "EventCardSprite"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file(global.Address+"editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
     global.eventCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
     sprite_set_offset(global.eventCardSpriteArray[i],sprite_get_width(global.eventCardSpriteArray[i])/2,sprite_get_height(global.eventCardSpriteArray[i])/2);
 }
@@ -77,40 +61,24 @@ for(i = 0; i < global.totalEventCardSprites; i++)
 for(i = 0; i < global.totalActionCardSprites; i++)
 {
     spriteName = "ActionCardSprite"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file(global.Address+"editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
     global.actionCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
     sprite_set_offset(global.actionCardSpriteArray[i],sprite_get_width(global.actionCardSpriteArray[i])/2,sprite_get_height(global.actionCardSpriteArray[i])/2);
 }
 for(i = 0; i < global.totalConsCardSprites; i++)
 {
     spriteName = "ConsCardSprite"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file(global.Address+"editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
     global.consCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
     sprite_set_offset(global.consCardSpriteArray[i],sprite_get_width(global.consCardSpriteArray[i])/2,sprite_get_height(global.consCardSpriteArray[i])/2);
 }
 for(i = 0; i < global.totalInfoCardSprites; i++)
 {
     spriteName = "InfoCardSprite"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file(global.Address+"editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
     global.infoCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
     sprite_set_offset(global.infoCardSpriteArray[i],sprite_get_width(global.infoCardSpriteArray[i])/2,sprite_get_height(global.infoCardSpriteArray[i])/2);
 }
 for(i = 0; i < global.totalCharCardSprites; i++)
 {
     spriteName = "CharCardSprite"+string(i);//set the sprite name to be Usersprite + i
-    if(!file_exists("editor_files/sprites/"+spriteName+".png"))
-    {
-        spriteBPNG[i] = http_get_file(global.Address+"editor_files/sprites/"+spriteName+".png", "editor_files/sprites/"+spriteName+".png");
-    }
     global.charCardSpriteArray[i] = sprite_add("editor_files/sprites/"+spriteName+".png",1,false,false,0,0);//creates the sprite using image above
     sprite_set_offset(global.charCardSpriteArray[i],sprite_get_width(global.charCardSpriteArray[i])/2,sprite_get_height(global.charCardSpriteArray[i])/2);
 }
@@ -190,14 +158,6 @@ if(global.CharCardBGing != 0)
 
 if(global.normalCardBacking != 0)
 {
-    if(!file_exists("editor_files/sprites/NormalCardBack.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/sprites/NormalCardBack.png", "editor_files/sprites/NormalCardBack.png");
-    }
-    if(!file_exists("editor_files/sprites/NormalInfoCardBack.png"))
-    {
-        spriteIPNG = http_get_file(global.Address+"editor_files/sprites/NormalInfoCardBack.png", "editor_files/sprites/NormalInfoCardBack.png");
-    }
     global.normalCardBack = sprite_add("editor_files/sprites/NormalCardBack.png",1,false,true,0,0)
     sprite_set_offset(global.normalCardBack,sprite_get_width(global.normalCardBack)/2,sprite_get_height(global.normalCardBack)/2);
     global.normalInfoCardBack = sprite_add("editor_files/sprites/NormalInfoCardBack.png",1,false,true,0,0)
@@ -205,14 +165,6 @@ if(global.normalCardBacking != 0)
 }
 if(global.mythCardBacking != 0)
 {
-    if(!file_exists("editor_files/sprites/MythCardBack.png"))
-    {
-        spritePNG = http_get_file(global.Address+"editor_files/sprites/MythCardBack.png", "editor_files/sprites/MythCardBack.png");
-    }
-    if(!file_exists("editor_files/sprites/MythInfoCardBack.png"))
-    {
-        spriteIPNG = http_get_file(global.Address+"editor_files/sprites/MythInfoCardBack.png", "editor_files/sprites/MythInfoCardBack.png");
-    }
     global.mythCardBack = sprite_add("editor_files/sprites/MythCardBack.png",1,false,true,0,0)
     sprite_set_offset(global.mythCardBack,sprite_get_width(global.mythCardBack)/2,sprite_get_height(global.mythCardBack)/2);
     global.mythInfoCardBack = sprite_add("editor_files/sprites/MythInfoCardBack.png",1,false,true,0,0)

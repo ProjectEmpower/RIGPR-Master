@@ -81,6 +81,7 @@
       <sprite>sprites\ButtonSpriteSave</sprite>
       <sprite>sprites\DefaultCardSprite</sprite>
       <sprite>sprites\CardBackingNormal</sprite>
+      <sprite>sprites\PushUpdateSprite</sprite>
       <sprite>sprites\CardBackingMyth</sprite>
       <sprite>sprites\CardBackingNormalInfo</sprite>
       <sprite>sprites\CardBackingMythInfo</sprite>
@@ -91,11 +92,14 @@
       <sprite>sprites\CharScreen</sprite>
       <sprite>sprites\NewGameScreen</sprite>
       <sprite>sprites\GameMenuScreen</sprite>
+      <sprite>sprites\ReduceActionsSprite</sprite>
     </sprites>
     <sprite>sprites\BackgroundSprite</sprite>
     <sprite>sprites\MenuButton</sprite>
     <sprite>sprites\InfoLinkSprite</sprite>
     <sprite>sprites\SwapSplashButtonSprite</sprite>
+    <sprite>sprites\SpriteDelLocBack</sprite>
+    <sprite>sprites\SpriteAddLocBack</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
@@ -179,6 +183,8 @@
       <object>objects\DeleteCurrentSprite</object>
       <object>objects\ButtonDelLocationBackground</object>
       <object>objects\BGAddDialog</object>
+      <object>objects\ButtonPushUpdate</object>
+      <object>objects\ShowVer</object>
       <object>objects\ButtonAddLocationBackground</object>
     </objects>
     <objects name="CardList">
@@ -228,6 +234,7 @@
       <object>objects\ButtonSwapCards</object>
     </objects>
     <object>objects\GameSetup</object>
+    <object>objects\ReduceActions</object>
     <object>objects\ButtonAddNormalCardBack</object>
     <object>objects\ButtonAddBackground</object>
     <object>objects\ButtonDeleteBackground</object>

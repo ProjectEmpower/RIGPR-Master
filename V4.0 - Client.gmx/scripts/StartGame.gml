@@ -11,39 +11,11 @@ global.cardActionINI = "ini_files/cardAction.ini";
 global.cardInfoINI = "ini_files/cardInfo.ini";
 global.cardConsINI = "ini_files/cardCons.ini";
 global.cardCharINI = "ini_files/cardChar.ini";
-global.editorINI = "editor_files/editor.ini";
+
 global.playerINI = "editor_files/player.ini";
 global.historyINI = "editor_files/history.ini";
 global.AllCards = "editor_files/AllCards.ini";
-if(!file_exists(global.editorINI))
-{
-   editor_ini = http_get_file(global.Address+"editor_files/editor.ini", global.editorINI);
-}
-//checks to see if the ini files exist, if they do not, it downloads them from the webhost
-if(!file_exists(global.locationINI))
-{
-    location_ini = http_get_file(global.Address+"ini_files/location.ini", global.locationINI);
-}
-if(!file_exists(global.cardEventINI))
-{
-    cardEvent_ini = http_get_file(global.Address+"ini_files/cardEvent.ini", global.cardEventINI);
-}
-if(!file_exists(global.cardActionINI))
-{
-    cardAction_ini = http_get_file(global.Address+"ini_files/cardAction.ini", global.cardActionINI);
-}
-if(!file_exists(global.cardInfoINI))
-{
-    cardInfo_ini = http_get_file(global.Address+"ini_files/cardInfo.ini", global.cardInfoINI);
-}
-if(!file_exists(global.cardConsINI))
-{
-    cardCons_ini = http_get_file(global.Address+"ini_files/cardCons.ini", global.cardConsINI);
-}
-if(!file_exists(global.cardCharINI))
-{
-    cardChar_ini = http_get_file(global.Address+"ini_files/cardChar.ini", global.cardCharINI);
-}
+
 
 if(!file_exists(global.playerINI))
 {
@@ -153,6 +125,6 @@ global.totalInfoCards = 0;//total number of info cards
 global.totalConsCards = 0;//total number of consequence cards
 global.totalCharCards = 0;//total number of character cards
 script_execute(LoadTutorial);
-room = RoomResChange;
-
+//room = RoomResChange;
+room = RoomResChange;    
 //moves to the menu

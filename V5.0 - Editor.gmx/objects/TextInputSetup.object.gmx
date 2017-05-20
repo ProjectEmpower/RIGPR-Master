@@ -610,6 +610,7 @@ background_yscale[5] = 1 * ((room_height) / background_height[5]);
                 eventMythical = ini_read_real(global.eventName,"Mythical", 0);
                 ini_close();  
             }
+            tempCount = 0;
              //used to display the lists of card, works the same as previously
             for(i = global.tempPos; i &lt; global.listLength+global.tempPos; i++)
             {
@@ -624,9 +625,11 @@ background_yscale[5] = 1 * ((room_height) / background_height[5]);
                 ini_close();
                 if(global.cardMythical == eventMythical or eventMythical == 2)
                 {
+
                     tempY = global.roomHeight/2;
                     tempX = (global.roomWidth / 6)-25;
-                    inst = instance_create(tempX + 300*(i-global.tempPos),tempY,CardBacking);     
+                    inst = instance_create(tempX + 300*(tempCount),tempY,CardBacking);
+                    tempCount += 1;     
                     
                 }
             }

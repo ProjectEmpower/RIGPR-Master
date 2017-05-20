@@ -99,7 +99,7 @@ else
           <argument>
             <kind>1</kind>
             <string>i_d = ds_map_find_value(async_load,"id");
-show_debug_message(i_d);
+
 if(i_d == BackgroundS)
 {
     BackgroundFS = get_open_filename("PNG|*.png", "");//opens the file
@@ -291,11 +291,14 @@ if(room == RoomCharacter and ButtonDeleteBackground.BackgroundD != "")
 {
     if(i_d == ButtonDeleteBackground.BackgroundD)
     {
-        file_delete("editor_files/BG/CharacterBackground.png");
-        global.CharacterBGing = 0;
-        room_set_background(RoomCharacter, 0, 1, 0, CharacterScreen_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        ButtonDeleteBackground.BackgroundD = "";
+        if ds_map_find_value(async_load, "status")
+        {
+            file_delete("editor_files/BG/CharacterBackground.png");
+            global.CharacterBGing = 0;
+            room_set_background(RoomCharacter, 0, 1, 0, CharacterScreen_Background, 0, 0, 1, 1, 0, 0, 1);
+            show_message_async("File deleted"); 
+            ButtonDeleteBackground.BackgroundD = "";
+        }
     }
 
 }
@@ -303,11 +306,14 @@ if(room == RoomNewGame and ButtonDeleteBackground.BackgroundD != "")
 {
     if(i_d == ButtonDeleteBackground.BackgroundD)
     {
-        file_delete("editor_files/BG/NewGameBackground.png");
-        global.NewGBGing = 0;
-        room_set_background(RoomNewGame, 0, 1, 0, MenuBackground, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        ButtonDeleteBackground.BackgroundD = "";
+        if ds_map_find_value(async_load, "status")
+        {
+            file_delete("editor_files/BG/NewGameBackground.png");
+            global.NewGBGing = 0;
+            room_set_background(RoomNewGame, 0, 1, 0, MenuBackground, 0, 0, 1, 1, 0, 0, 1);
+            show_message_async("File deleted"); 
+            ButtonDeleteBackground.BackgroundD = "";
+        }
     }
 
 }
@@ -315,34 +321,43 @@ if(room == RoomDiary and ButtonDeleteBackground.BackgroundD != "")
 {
     if(i_d == ButtonDeleteBackground.BackgroundD)
     {
-        file_delete("editor_files/BG/DiaryBackground.png");
-        global.DiaryBGing = 0;
-        room_set_background(RoomDiary, 0, 1, 0, JournalScreen_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        ButtonDeleteBackground.BackgroundD = "";
+        if ds_map_find_value(async_load, "status")
+        {
+            file_delete("editor_files/BG/DiaryBackground.png");
+            global.DiaryBGing = 0;
+            room_set_background(RoomDiary, 0, 1, 0, JournalScreen_Background, 0, 0, 1, 1, 0, 0, 1);
+            show_message_async("File deleted"); 
+            ButtonDeleteBackground.BackgroundD = "";
+        }
     }
 }
 if(room == RoomMenu and ButtonDeleteBackground.BackgroundD != "")
 {
     if(i_d == ButtonDeleteBackground.BackgroundD)
     {
-        file_delete("editor_files/BG/SplashBackground.png");
-        file_delete("editor_files/BG/SplashClickBackground.png");
-        global.MenuBGing = 0;
-        room_set_background(RoomMenu, 0, 1, 0, MainMenuBackground, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        ButtonDeleteBackground.BackgroundD = "";
+        if ds_map_find_value(async_load, "status")
+        {
+            file_delete("editor_files/BG/SplashBackground.png");
+            file_delete("editor_files/BG/SplashClickBackground.png");
+            global.MenuBGing = 0;
+            room_set_background(RoomMenu, 0, 1, 0, MainMenuBackground, 0, 0, 1, 1, 0, 0, 1);
+            show_message_async("File deleted"); 
+            ButtonDeleteBackground.BackgroundD = "";
+        }
     }
 }
 if(room == RoomPlayerMenu and ButtonDeleteBackground.BackgroundD != "")
 {
     if(i_d == ButtonDeleteBackground.BackgroundD)
     {
-        file_delete("editor_files/BG/MenuBackground.png");
-        global.PlayerMenuBGing = 0;
-        room_set_background(RoomPlayerMenu, 0, 1, 0, MenuBackground, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        ButtonDeleteBackground.BackgroundD = "";
+        if ds_map_find_value(async_load, "status")
+        {
+            file_delete("editor_files/BG/MenuBackground.png");
+            global.PlayerMenuBGing = 0;
+            room_set_background(RoomPlayerMenu, 0, 1, 0, MenuBackground, 0, 0, 1, 1, 0, 0, 1);
+            show_message_async("File deleted"); 
+            ButtonDeleteBackground.BackgroundD = "";
+        }
     }
 }
 if(room == RoomCards and ButtonDeleteBackground.BackgroundD != "")
@@ -351,11 +366,14 @@ if(room == RoomCards and ButtonDeleteBackground.BackgroundD != "")
     {
         if(i_d == ButtonDeleteBackground.BackgroundD)
         {
-            file_delete("editor_files/BG/CardsBackground.png");
-            global.CardsBGing = 0;
-            room_set_background(RoomCards, 0, 1, 0, CharacterScreen_Background, 0, 0, 1, 1, 0, 0, 1);
-            show_message_async("File deleted"); 
-            ButtonDeleteBackground.BackgroundD = "";
+            if ds_map_find_value(async_load, "status")
+            {
+                file_delete("editor_files/BG/CardsBackground.png");
+                global.CardsBGing = 0;
+                room_set_background(RoomCards, 0, 1, 0, CharacterScreen_Background, 0, 0, 1, 1, 0, 0, 1);
+                show_message_async("File deleted"); 
+                ButtonDeleteBackground.BackgroundD = "";
+            }
         }
     }
 
@@ -363,64 +381,80 @@ if(room == RoomCards and ButtonDeleteBackground.BackgroundD != "")
     {
         if(i_d == ButtonDeleteBackground.BackgroundD)
         {
-        file_delete("editor_files/BG/EventCardBackground.png");
-        global.EventCardBGing = 0;
-        room_set_background(RoomCards, 1, 1, 0, EventCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardEdit, 0, 1, 0, EventCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardDeck, 0, 1, 0, EventCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted");
-        ButtonDeleteBackground.BackgroundD = "";    
+            if ds_map_find_value(async_load, "status")
+            {
+                file_delete("editor_files/BG/EventCardBackground.png");
+                global.EventCardBGing = 0;
+                room_set_background(RoomCards, 1, 1, 0, EventCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                room_set_background(RoomCardEdit, 0, 1, 0, EventCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                room_set_background(RoomCardDeck, 0, 1, 0, EventCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                show_message_async("File deleted");
+                ButtonDeleteBackground.BackgroundD = "";    
+            }
         }
     }   
     if(global.RoomState == 1)
     {
         if(i_d == ButtonDeleteBackground.BackgroundD)
         {
-                               file_delete("editor_files/BG/ActionCardBackground.png");
-        global.ActionCardBGing = 0;
-        room_set_background(RoomCards, 2, 1, 0, ActionCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardEdit, 1, 1, 0, ActionCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardDeck, 1, 1, 0, ActionCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        ButtonDeleteBackground.BackgroundD = "";
-        }
+            if ds_map_find_value(async_load, "status")
+            {
+               file_delete("editor_files/BG/ActionCardBackground.png");
+                global.ActionCardBGing = 0;
+                room_set_background(RoomCards, 2, 1, 0, ActionCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                room_set_background(RoomCardEdit, 1, 1, 0, ActionCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                room_set_background(RoomCardDeck, 1, 1, 0, ActionCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                show_message_async("File deleted"); 
+                ButtonDeleteBackground.BackgroundD = "";
+            }
+        }    
     }     
     if(global.RoomState == 2)
     {        
         if(i_d == ButtonDeleteBackground.BackgroundD)
         {
-        file_delete("editor_files/BG/ConsCardBackground.png");
-        global.ConsCardBGing = 0;
-        room_set_background(RoomCards, 3, 1, 0, ConsequenceCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardEdit, 2, 1, 0, ConsequenceCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardDeck, 2, 1, 0, ConsequenceCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        ButtonDeleteBackground.BackgroundD = "";
-}
-    }   
+            if ds_map_find_value(async_load, "status")
+            {
+                file_delete("editor_files/BG/ConsCardBackground.png");
+                global.ConsCardBGing = 0;
+                room_set_background(RoomCards, 3, 1, 0, ConsequenceCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                room_set_background(RoomCardEdit, 2, 1, 0, ConsequenceCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                room_set_background(RoomCardDeck, 2, 1, 0, ConsequenceCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                show_message_async("File deleted"); 
+                ButtonDeleteBackground.BackgroundD = "";
+            }
+        } 
+    }  
     if(global.RoomState == 3)
     {
-                   if(i_d == ButtonDeleteBackground.BackgroundD)
+        if(i_d == ButtonDeleteBackground.BackgroundD)
         {
-                 file_delete("editor_files/BG/InfoCardBackground.png");
-        global.InfoCardBGing = 0;
-        room_set_background(RoomCards, 4, 1, 0, InfoCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardEdit, 3, 1, 0, InfoCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardDeck, 3, 1, 0, InfoCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        ButtonDeleteBackground.BackgroundD = "";
-        }
-    }   
+            if ds_map_find_value(async_load, "status")
+            {
+                file_delete("editor_files/BG/InfoCardBackground.png");
+                global.InfoCardBGing = 0;
+                room_set_background(RoomCards, 4, 1, 0, InfoCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                room_set_background(RoomCardEdit, 3, 1, 0, InfoCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                room_set_background(RoomCardDeck, 3, 1, 0, InfoCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                show_message_async("File deleted"); 
+                ButtonDeleteBackground.BackgroundD = "";
+            }
+        }   
+    }
     if(global.RoomState == 4)
-    {        if(i_d == ButtonDeleteBackground.BackgroundD)
+    {        
+        if(i_d == ButtonDeleteBackground.BackgroundD)
         {
-        file_delete("editor_files/BG/CharCardBackground.png");
-        global.CharCardBGing = 0;
-        room_set_background(RoomCards, 5, 1, 0, CharacterCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardEdit, 4, 1, 0, CharacterCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        room_set_background(RoomCardDeck, 4, 1, 0, CharacterCard_Background, 0, 0, 1, 1, 0, 0, 1);
-        show_message_async("File deleted"); 
-        ButtonDeleteBackground.BackgroundD = "";
+            if ds_map_find_value(async_load, "status")
+            {
+                file_delete("editor_files/BG/CharCardBackground.png");
+                global.CharCardBGing = 0;
+                room_set_background(RoomCards, 5, 1, 0, CharacterCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                room_set_background(RoomCardEdit, 4, 1, 0, CharacterCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                room_set_background(RoomCardDeck, 4, 1, 0, CharacterCard_Background, 0, 0, 1, 1, 0, 0, 1);
+                show_message_async("File deleted"); 
+                ButtonDeleteBackground.BackgroundD = "";
+            }
         }
     }  
 

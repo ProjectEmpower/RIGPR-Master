@@ -62,7 +62,6 @@ global.totalCharCards = 0;//total number of character cards
 //ini files
 global.locationINI = "ini_files/location.ini";
 global.playerINI = "ini_files/player.ini";
-
 global.cardEventINI = "ini_files/cardEvent.ini";
 global.cardActionINI = "ini_files/cardAction.ini";
 global.cardInfoINI = "ini_files/cardInfo.ini";
@@ -70,6 +69,9 @@ global.cardConsINI = "ini_files/cardCons.ini";
 global.cardCharINI = "ini_files/cardChar.ini";
 global.editorINI = "editor_files/editor.ini";
 global.tempPos = 0;
+ini_open("Update.ini");
+global.ECurVer = ini_read_real("Update","Version",1.0);
+ini_close();
 ini_open(global.editorINI);
 global.LocationTutorial = ini_read_real("Tutorial","Location Include",1);
 global.EventTutorial = ini_read_real("Tutorial","Event Include",1);

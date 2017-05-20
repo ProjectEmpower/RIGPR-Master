@@ -25,20 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.AddressINI = "editor_files/Address.ini";
+            <string>tempAddress = "";
+check = false;
+zip = ""
+msg = ""
+update = ""
+updateMsg = ""
+ECurVer = 1.0
+global.AddressINI = "editor_files/Address.ini";
+global.editorINI = "editor_files/editor.ini";
 if(!file_exists(global.AddressINI))
 {
-   msg = get_string_async("Please enter web address","");
+   msg = get_string_async("Please enter web address; First run download must complete, this may take a few seconds.","");
 }
 else
 {
     ini_open(global.AddressINI);
     global.Address = ini_read_string("Address","Link","");
     ini_close();
-    script_execute(StartGame);
+    ini_open(global.editorINI)
+    global.CurVer = ini_read_real("General","Version",1.0);
+    ini_close();
+    update = http_get_file(global.Address+"Update.ini", "Update.ini");
+
 }
-tempAddress = "";
-            check = false;
+
 </string>
           </argument>
         </arguments>
@@ -106,11 +117,93 @@ if(i_d == msg)
             {
                 global.Address = global.Address + "/" 
             } 
-              http_get_file(global.Address + "editor_files/editor.ini","editor_files/editor.ini");
-            check = true;
+            zip = http_get_file(global.Address+"Files.zip", "Files.zip");
+
          }
       }
   }
+  if(i_d == updateMsg)
+  {
+    if (ds_map_find_value(async_load, "status"))
+    {
+        show_debug_message("Update");
+        updateMsg = ""; 
+        zip = http_get_file(global.Address+"Files.zip", "Files.zip");
+
+    }
+    else
+    {
+        show_debug_message("No update");
+        script_execute(StartGame);  
+        updateMsg = "";
+        
+    }
+  }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="62">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if ds_map_find_value(async_load, "id") == zip
+   {
+
+    status = ds_map_find_value(async_load, "status");
+    if status == 0
+    {
+        path = ds_map_find_value(async_load, "result");
+        zip = zip_unzip(path, working_directory);
+        if zip &gt; 0
+        {
+            global.Download = true;
+            ini_open(global.editorINI)
+            global.CurVer = ECurVer;
+            ini_write_real("General","Version",global.CurVer);
+            ini_close(); 
+            show_message_async("Download Complete");
+            file_delete("Files.zip");
+            check = true;
+        
+        }
+        else
+        {
+            msg = get_string_async("Download failed, please make sure that the address has been entered correctly.",global.Address);  
+            zip = "";
+        }
+    }
+}
+if ds_map_find_value(async_load, "id") == update
+   {
+
+    status = ds_map_find_value(async_load, "status");
+    if status == 0
+    {
+        ini_open("Update.ini")
+        ECurVer = ini_read_real("Update","Version",1.0)
+        ini_close();
+        if(global.CurVer &lt; ECurVer)
+            updateMsg = show_question_async("There is an update, do you wish to update?");
+        else
+            script_execute(StartGame);  
+    }
+}
+
 </string>
           </argument>
         </arguments>

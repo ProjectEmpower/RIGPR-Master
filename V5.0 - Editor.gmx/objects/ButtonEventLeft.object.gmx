@@ -30,6 +30,8 @@ if(global.locationEventNumber = 0 or global.EventID == 1)//checks to see if it c
 {
     sprite_index = No_sprite
 }
+if(global.TutorialSetup == true)
+sprite_index = No_sprite
 ButtonEventLeft.x = global.roomWidth/4-100;
 ButtonEventLeft.y = global.roomHeight-280;
 </string>

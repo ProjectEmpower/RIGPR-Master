@@ -44,7 +44,7 @@ charsText = "";
 timer = 0;//sets timer to 0
 delay = 4;//sets the delay on text entry
 textShortLength = 30;//sets the max text for small text boxes
-textLongLength = 200;//sets the max text for large text boxes
+textLongLength = 90;//sets the max text for large text boxes
 image_xscale = 1.5; //sets the scale to be 1.5 (default is 1)
 if(room == RoomLocationAdd)//checks room
 {    
@@ -297,7 +297,6 @@ if(room == RoomCardEdit)
             {
                 if(instance_id[global.box5 + i] == id) 
                 {
-                
                     txt_input = global.card1[i];
                     txt_display = "Action Card: ";
                 }
@@ -312,7 +311,7 @@ if(room == RoomCardEdit)
                 txt_display = "Tutorial Action Card: ";
             }
         }
-        if(global.TutorialSetup == false)
+        if(global.TutorialSetup == true)
             global.eventActionCardsNum = 0;
         if(instance_id[global.box6 + global.eventActionCardsNum] == id) 
         {

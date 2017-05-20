@@ -165,7 +165,7 @@ if(global.moveLock == 0)
                 if(global.BGRef != -1)
                     room_set_background(RoomLocationView, 0, 1, 0, global.locationBGArray[global.BGRef], 0, 0, 0, 0, 0, 0, 1); 
                 else
-                    room_set_background(RoomLocationView, 0, 1, 0, EventCreation_Background, 0, 0, 0, 0, 0, 0, 1); 
+                    room_set_background(RoomLocationView, 0, 1, 0, EventCard_Background, 0, 0, 0, 0, 0, 0, 1); 
                
                // for(e = 1; e &lt;= tempEventNum; e++)
                 //{

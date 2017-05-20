@@ -27,44 +27,57 @@
             <kind>1</kind>
             <string>if(room == RoomCardEdit)
 {
-    tempVal = global.tempVal;
-    if(tempVal == 2)
+    if(global.RoomState == 1)
     {
-        if (global.consInt &gt; 0)
-        {
-            sprite_index = Minus;
-        }
-        if (global.consInt &lt;= 0)
-        {
-            sprite_index = Plus;
-        }
+        AIREF = global.ActionIRef;
     }
-    if(tempVal == 3)
+    if(global.RoomState == 2)
     {
-        if (global.consChar &gt; 0)
+        tempVal = global.tempVal;
+        if(tempVal == 2)
         {
-            sprite_index = Minus;
+            if (global.consInt &gt; 0)
+            {
+                sprite_index = Minus;
+            }
+            if (global.consInt &lt;= 0)
+            {
+                sprite_index = Plus;
+            }
         }
-        if (global.consChar &lt;= 0)
+        if(tempVal == 3)
         {
-            sprite_index = Plus;
+            if (global.consChar &gt; 0)
+            {
+                sprite_index = Minus;
+            }
+            if (global.consChar &lt;= 0)
+            {
+                sprite_index = Plus;
+            }
         }
-    }
-    if(tempVal == 4)
-    {
-        if (global.consWell &gt; 0)
+        if(tempVal == 4)
         {
-            sprite_index = Minus;
-        }
-        if (global.consWell &lt;= 0)
-        {
-            sprite_index = Plus;
+            if (global.consWell &gt; 0)
+            {
+                sprite_index = Minus;
+            }
+            if (global.consWell &lt;= 0)
+            {
+                sprite_index = Plus;
+            }
         }
     }
 }
 if(room == RoomTutorial)
     sprite_index = Plus;
     
+if(room == RoomOptions)
+{
+    MINUS = global.MINUS;
+    if(MINUS == false)
+        sprite_index = Plus;
+}
 </string>
           </argument>
         </arguments>
@@ -89,20 +102,33 @@ if(room == RoomTutorial)
             <kind>1</kind>
             <string>if(room == RoomCardEdit)
 {
-    if(tempVal == 2)
+    if(global.RoomState == 1)
     {
-        global.consInt = global.consInt * -1;
+        
+        for(i = AIREF; i &lt;= global.eventActionCardsNum; i++)
+        {
+            global.card1[i] = global.card1[i+1]
+        }
+        global.eventActionCardsNum -=1;
+        room = RoomCardEdit;
     }
-    if(tempVal == 3)
+    if(global.RoomState == 2)
     {
-        global.consChar = global.consChar * -1;
+        if(tempVal == 2)
+        {
+            global.consInt = global.consInt * -1;
+        }
+        if(tempVal == 3)
+        {
+            global.consChar = global.consChar * -1;
+        }
+        if(tempVal == 4)
+        {
+            global.consWell = global.consWell * -1;
+        }
+        script_execute(SaveConsCard);
+        room = RoomCardEdit;
     }
-    if(tempVal == 4)
-    {
-        global.consWell = global.consWell * -1;
-    }
-    script_execute(SaveConsCard);
-    room = RoomCardEdit;
 }
 if(room == RoomTutorial)
 {
@@ -144,6 +170,17 @@ if(room == RoomTutorial)
         global.RoomState = 4;
         room = RoomCardEdit;  
     }
+}
+if(room == RoomOptions)
+{
+    
+    if(MINUS == true)
+    {   
+        if(global.ECurVer &lt; global.TempVer)
+            global.TempVer -= 0.1;            
+    }
+    else
+        global.TempVer += 0.1;
 }
 </string>
           </argument>

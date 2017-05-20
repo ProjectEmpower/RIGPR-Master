@@ -54,6 +54,7 @@
     <instance objName="ButtonBack" x="576" y="416" name="inst_2621CB19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonFullScreen" x="576" y="320" name="inst_A18C1A1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonResetWindow" x="576" y="544" name="inst_7B7EB101" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonPushUpdate" x="576" y="160" name="inst_E24EE7E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

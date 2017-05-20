@@ -357,13 +357,14 @@ if(room == RoomConsView)
         draw_text_transformed(x, y + 120, RealName,1,1,0);
         draw_text_transformed(x, y + 152, "Required Int: " + string(reqInt),1,1,0);
         draw_text_transformed(x, y + 184, "Required Cha: " + string(reqChar),1,1,0);
-        draw_text_transformed(x, y + 216, "Required Wel: " + string(reqWell),1,1,0);
+        draw_text_transformed(x, y + 216, "Required Wel: " + string(reqWell),1,1,0); 
     }
     if(RoomState == 1)
     {
         cardNameText = "Action";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-         draw_text_ext(x, y + 152, CardText,20,200);
+        draw_set_valign(fa_top);
+        draw_text_ext(x, y + 125, CardText,20,200);
     }
     if(RoomState == 2)
     {
@@ -379,12 +380,14 @@ if(room == RoomConsView)
         draw_text_transformed(x, y - 70, RealName,1,1,0);
         draw_set_valign(fa_top);
         draw_text_ext(x, y - 48, CardText,20,200);
+        draw_set_valign(fa_middle);
     }
     if(RoomState == 4)
     {
         cardNameText = "Character";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-            draw_text_ext(x, y + 152, CardText,20,200);
+            draw_set_valign(fa_top);
+            draw_text_ext(x, y + 125, CardText,20,200);
         
     }
     draw_text_transformed(x, y - 112, cardNameText,1.5,1.5,0);
@@ -414,6 +417,7 @@ cardNameText = "";
     }
 draw_text_transformed(x, y - 112, cardNameText,1.5,1.5,0);
 }
+ 
 </string>
           </argument>
         </arguments>

@@ -416,7 +416,6 @@ if(room == RoomCards)
 }
 if(room == RoomLocationAdd) //checks room
 {
-
     script_execute(SaveLocation);//runs save location script
     if(global.TutorialSetup == false)
         room = RoomMap; //swaps room

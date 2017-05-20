@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>tempRoom = room;
+BuildDel = "";
 if(room == RoomSprites)
 {
     x = global.roomWidth - 375;
@@ -60,80 +61,11 @@ else
             <kind>1</kind>
             <string>if(global.totalBothBuildingSprites &gt; 0 and global.buildingSprite != -1)//if there are events
 {
-        
-    for(i = global.buildingSprite; i &lt; global.totalBothBuildingSprites; i++)
-    {
-        file_delete("editor_files/sprites/BuildingSpriteN"+string(i)+".png");
-        sprite_delete("BuildingSpriteN"+string(i)+".png");
-        file_delete("editor_files/sprites/BuildingSpriteM"+string(i)+".png");
-        sprite_delete("BuildingSpriteM"+string(i)+".png");
-        file_delete("editor_files/sprites/BuildingSpriteB"+string(i)+".png");
-        sprite_delete("BuildingSpriteB"+string(i)+".png");
-        if(!sprite_exists("BuildingSpriteN"+string(i)+".png") and file_exists("editor_files/sprites/BuildingSpriteN"+string(i+1)+".png"))
-        {
+    BuildDel = show_question_async("Are you sure you want to delete the current building image?")
     
-            file_rename("editor_files/sprites/BuildingSpriteN"+string(i+1)+".png","editor_files/sprites/BuildingSpriteN"+string(i)+".png");
-            global.normBuildingArray[i] = sprite_add("editor_files/sprites/BuildingSpriteN"+string(i)+".png",1,false,true,0,0);//creates the sprite using image above
-            sprite_set_offset(global.normBuildingArray[i],sprite_get_width(global.normBuildingArray[i])/2,sprite_get_height(global.normBuildingArray[i])/2)
-            sprite_delete("BuildingSpriteN"+string(i+1)+".png");
-                
-            file_rename("editor_files/sprites/BuildingSpriteM"+string(i+1)+".png","editor_files/sprites/BuildingSpriteM"+string(i)+".png");
-            global.mythBuildingArray[i] = sprite_add("editor_files/sprites/BuildingSpriteM"+string(i)+".png",1,false,true,0,0);//creates the sprite using image above
-            sprite_set_offset(global.mythBuildingArray[i],sprite_get_width(global.mythBuildingArray[i])/2,sprite_get_height(global.mythBuildingArray[i])/2)
-            sprite_delete("BuildingSpriteM"+string(i+1)+".png");
-                
-            file_rename("editor_files/sprites/BuildingSpriteB"+string(i+1)+".png","editor_files/sprites/BuildingSpriteB"+string(i)+".png");
-            global.bothBuildingArray[i] = sprite_add("editor_files/sprites/BuildingSpriteB"+string(i)+".png",1,false,true,0,0);//creates the sprite using image above
-            sprite_set_offset(global.bothBuildingArray[i],sprite_get_width(global.bothBuildingArray[i])/2,sprite_get_height(global.bothBuildingArray[i])/2)
-            sprite_delete("BuildingSpriteB"+string(i+1)+".png");
-            show_debug_message("yes2");
-        }
-    }
-    for(i = 0; i &lt; global.TotalInstanceNum; i++)
-    {
-        ini_open(global.locationINI);
-        LocationName = "Location"+string(i);
-        tempRef = ini_read_real(LocationName,"SpriteRef",-1);
-        if(tempRef == global.buildingSprite)
-        {
-            tempRef = -1;
-            ini_write_real(LocationName,"SpriteRef", tempRef);
-        }
-        if(tempRef &gt; global.buildingSprite)
-        {
-            tempRef -= 1;
-            ini_write_real(LocationName,"SpriteRef", tempRef);
-        }
-        ini_close();
-        
-    }
-        ini_open(global.locationINI);
-        LocationName = "LocationT";
-        tempRef = ini_read_real(LocationName,"SpriteRef",-1);
-        if(tempRef == global.buildingSprite)
-        {
-            tempRef = -1;
-            ini_write_real(LocationName,"SpriteRef", tempRef);
-        }
-        if(tempRef &gt; global.buildingSprite)
-        {
-            tempRef -= 1;
-            ini_write_real(LocationName,"SpriteRef", tempRef);
-        }
-        ini_close();
-    global.buildingSprite = -1;
-    global.totalNormBuildingSprites -= 1;
-    global.totalMythBuildingSprites -= 1;
-    global.totalBothBuildingSprites -= 1;
-
-    ini_open(global.editorINI);
-    ini_write_real("General", "Norm Building Sprites", global.totalNormBuildingSprites);
-    ini_write_real("General", "Myth Building Sprites", global.totalMythBuildingSprites);
-    ini_write_real("General", "Both Building Sprites", global.totalBothBuildingSprites);
-    ini_close();
 
 }
-room = tempRoom;
+
 </string>
           </argument>
         </arguments>
