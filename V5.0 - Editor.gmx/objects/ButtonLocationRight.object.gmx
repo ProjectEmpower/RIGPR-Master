@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//sets position
-ButtonLocationRight.x = room_width-50;
-ButtonLocationRight.y = 50;
+            <string>x = ButtonAddLocationBackground.x + 55;
+y = ButtonAddLocationBackground.y + 75;
+if(global.BGRef == global.totalLocationBackgrounds-1)//if it can move
+    sprite_index = No_sprite
+tempRoom = room;
 </string>
           </argument>
         </arguments>
@@ -51,12 +53,14 @@ ButtonLocationRight.y = 50;
           <argument>
             <kind>1</kind>
             <string>//moves to the next location (if there is an event to go to)
-if(global.tempNum &lt; global.TotalInstanceNum-1)//if it can move
+if(global.BGRef &lt; global.totalLocationBackgrounds-1)//if it can move
 {
-    script_execute(SaveLocation);//save
-    global.tempNum += 1;//move to next locatio
+    if(room == RoomLocationAdd)
+        script_execute(SaveLocation);//save
+    global.BGRef += 1;//move to next locatio
     global.EventID = 0;//default the eventID 
-    room = RoomLocationAdd;//reload the room
+    room_set_background(tempRoom, 0, 1, 0, global.locationBGArray[global.BGRef], 0, 0, 0, 0, 0, 0, 1); 
+    room = tempRoom;//reload the room
 }
 </string>
           </argument>

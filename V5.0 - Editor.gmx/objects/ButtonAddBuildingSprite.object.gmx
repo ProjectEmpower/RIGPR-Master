@@ -147,7 +147,7 @@ if(ButtonAddLocationBackground.BackgroundF != "")
     spriteName = "LocBack"+string(global.totalLocationBackgrounds);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
     global.locationBGArray[global.totalLocationBackgrounds] = background_add(ButtonAddLocationBackground.BackgroundF,0,0);
     background_save(global.locationBGArray[global.totalLocationBackgrounds], "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
-    room_set_background(RoomLocationAdd, 0, 1, 0, global.locationBGArray[global.totalLocationBackgrounds], 0, 0, 0, 0, 0, 0, 1); 
+    room_set_background(tempRoom, 0, 1, 0, global.locationBGArray[global.totalLocationBackgrounds], 0, 0, 0, 0, 0, 0, 1); 
     Background = "";
     global.BGRef = global.totalLocationBackgrounds;
     script_execute(SaveLocation);
@@ -155,7 +155,7 @@ if(ButtonAddLocationBackground.BackgroundF != "")
     ini_open(global.editorINI)
     ini_write_real("General","Location Backgrounds",global.totalLocationBackgrounds);
     ini_close();
-    room = RoomLocationAdd;
+    room = tempRoom;
             
 }
 if(fileN != "" and fileM != "" and fileB != "")

@@ -52,13 +52,14 @@
   </views>
   <instances>
     <instance objName="ButtonBack" x="1152" y="608" name="inst_CFD10A2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="GotoMap" x="768" y="320" name="inst_0DB23631" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonCharacter" x="640" y="512" name="inst_93B8529D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonDiary" x="544" y="416" name="inst_9059C976" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonCards" x="768" y="416" name="inst_FE174592" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="GotoSplash" x="544" y="224" name="inst_E6620634" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="GoToNewG" x="544" y="320" name="inst_92F06CA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="GoToPlayerMenu" x="768" y="224" name="inst_2A3952BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="GotoMap" x="352" y="640" name="inst_0DB23631" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonCharacter" x="704" y="576" name="inst_93B8529D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonDiary" x="544" y="544" name="inst_9059C976" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonCards" x="544" y="640" name="inst_FE174592" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="GotoSplash" x="128" y="544" name="inst_E6620634" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="GoToNewG" x="352" y="544" name="inst_92F06CA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="GoToPlayerMenu" x="128" y="640" name="inst_2A3952BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonAddLocationBackground" x="608" y="224" name="inst_18F4C101" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

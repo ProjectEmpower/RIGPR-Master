@@ -166,6 +166,7 @@
       <object>objects\LocationSetup</object>
       <object>objects\ButtonDeleteLocation</object>
       <object>objects\ButtonCreateEvent</object>
+      <object>objects\DrawLocBG</object>
       <object>objects\ButtonLocationLeft</object>
       <object>objects\ButtonLocationRight</object>
       <object>objects\ButtonEventLeft</object>
@@ -176,6 +177,8 @@
       <object>objects\ButtonAddBuildingSprite</object>
       <object>objects\DeleteCurrentEvent</object>
       <object>objects\DeleteCurrentSprite</object>
+      <object>objects\ButtonDelLocationBackground</object>
+      <object>objects\BGAddDialog</object>
       <object>objects\ButtonAddLocationBackground</object>
     </objects>
     <objects name="CardList">

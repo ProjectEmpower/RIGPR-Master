@@ -1617,14 +1617,15 @@ if(room == RoomMap)
                 global.RoomState = 0;
                 global.buildingSprite = -1;
                 global.SelectWindow = false;
-                global.lastRoom = room;//lastRoom variable is the current room
-    
+                global.lastRoom = room;//lastRoom variable is the current room                    
                 room = RoomSprites;//Move to Sprites room
             } 
             if(global.textboxArray[9] == id)//options
             {
                 //on click
+                global.BGRef = -1
                 global.lastRoom = room;//lastRoom variable is the current room
+                room_set_background(RoomBackgrounds, 0, 1, 0, Blank_background, 0, 0, 0, 0, 0, 0, 1); 
                 room = RoomBackgrounds;//Move to Options room
             }   
             if(global.textboxArray[10] == id)//options

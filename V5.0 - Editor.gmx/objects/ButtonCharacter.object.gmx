@@ -31,8 +31,8 @@ global.RoomState = -1;
 if(room == RoomBackgrounds)
 {
     sprite_index = CharScreen
-    x = global.roomWidth/2
-    y = global.roomHeight/2+200
+x = 875;
+y = global.roomHeight - 70;
 }
 </string>
           </argument>

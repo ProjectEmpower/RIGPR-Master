@@ -32,8 +32,8 @@ ButtonDiary.y = room_height-80
 if(room == RoomBackgrounds)
 {
         sprite_index = JournalScreen
-        x = global.roomWidth/2-110
-        y = global.roomHeight/2+100
+x = 625;
+y = global.roomHeight - 170;
 }
 </string>
           </argument>
