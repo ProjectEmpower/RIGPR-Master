@@ -66,6 +66,7 @@
     <instance objName="ButtonAddBuildingSprite" x="1152" y="224" name="inst_C90E4E51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="DeleteCurrentEvent" x="416" y="640" name="inst_BFF93C71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="DeleteCurrentSprite" x="1152" y="320" name="inst_2A238313" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Dialog" x="64" y="128" name="inst_93E38DE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

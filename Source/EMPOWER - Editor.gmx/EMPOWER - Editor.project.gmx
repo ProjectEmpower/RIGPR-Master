@@ -164,7 +164,6 @@
       <object>objects\DeleteCurrentEvent</object>
       <object>objects\DeleteCurrentSprite</object>
       <object>objects\ButtonDelLocationBackground</object>
-      <object>objects\BGAddDialog</object>
       <object>objects\ButtonPushUpdate</object>
       <object>objects\ShowVer</object>
       <object>objects\ButtonAddLocationBackground</object>
@@ -199,6 +198,7 @@
         <object>objects\CardListSetup</object>
       </objects>
       <object>objects\ConsType</object>
+      <object>objects\Dialog</object>
     </objects>
     <objects name="Multiple Rooms">
       <object>objects\TextInputSetup</object>

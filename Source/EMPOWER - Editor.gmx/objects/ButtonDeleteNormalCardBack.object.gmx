@@ -51,44 +51,9 @@ CardBackF = "";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardBack = show_question_async("Are you sure you wish to delete the Regular Card background?");
-                
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="63">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>i_d = ds_map_find_value(async_load,"id");
-if(i_d == CardBack)
-{
-    file_delete("editor_files/sprites/NormalCardBack.png");
-    file_delete("editor_files/sprites/NormalInfoCardBack.png");
-    global.normalCardBacking = 0;
-    ini_open(global.editorINI);//opens the editorINI
-    ini_write_real("General","Normal Card Back",global.normalCardBacking);
-    ini_close();//closes the ini
-    global.tempCardBackMythStatus = 0;
-    show_message_async("Card Background deleted."); 
-    room = RoomSprites
+            <string>if(global.normalCardBacking != 0)
+CardBack = show_question_async("Are you sure you wish to delete the Regular Card background?");
 
-}
 </string>
           </argument>
         </arguments>

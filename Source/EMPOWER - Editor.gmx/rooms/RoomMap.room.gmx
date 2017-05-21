@@ -68,6 +68,7 @@
     <instance objName="ButtonAddMap" x="96" y="352" name="inst_291779EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonBack" x="352" y="320" name="inst_3C64D68B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonCharacter" x="352" y="96" name="inst_1355C5E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Dialog" x="160" y="64" name="inst_3B7D6E05" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

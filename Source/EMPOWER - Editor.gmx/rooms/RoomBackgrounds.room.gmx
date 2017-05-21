@@ -60,6 +60,7 @@
     <instance objName="GoToNewG" x="352" y="544" name="inst_92F06CA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="GoToPlayerMenu" x="128" y="640" name="inst_2A3952BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonAddLocationBackground" x="608" y="224" name="inst_18F4C101" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Dialog" x="160" y="96" name="inst_24822607" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

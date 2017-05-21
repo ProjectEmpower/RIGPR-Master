@@ -55,8 +55,9 @@
     <instance objName="MenuToMap" x="288" y="192" name="inst_DA6BA86D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonAddBackground" x="512" y="192" name="inst_A6DA8708" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonDeleteBackground" x="544" y="320" name="inst_4930A0DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonSwapSplash" x="320" y="224" name="inst_6FD7A0B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ButtonSwapSplash" x="320" y="256" name="inst_6FD7A0B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="DrawSplash" x="128" y="64" name="inst_58BC8303" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Dialog" x="160" y="64" name="inst_6B88A3A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -1954,7 +1954,7 @@ if(room == RoomCardDeck)
 }
 if(room == RoomMap)
 {
-    if(instance_id[16] != id and instance_id[27] != id and instance_id[24] != id and instance_id[25] != id and instance_id[26] != id) 
+    if(instance_id[17] != id and instance_id[27] != id and instance_id[28] != id and instance_id[25] != id and instance_id[26] != id) 
     {
         draw_set_valign(fa_middle);
         draw_set_halign(fa_right);

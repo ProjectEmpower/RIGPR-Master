@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>x = 125;
 y = global.roomHeight - 70;
+deleteCardArt = "";
+if(global.RoomState == 3)
+    sprite_index = No_sprite;
 </string>
           </argument>
         </arguments>
@@ -49,11 +52,11 @@ y = global.roomHeight - 70;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tempRoom = room;
-if(global.RoomState == 3)
-    sprite_index = No_sprite;
-if(global.RoomState == 0 and global.totalEventCardSprites &gt; 0 and global.cardSprite != -1)
+            <string>if(global.cardSprite != -1)
+    deleteCardArt = show_question_async("Are you sure you want to delete the Card art?");
+/*if(global.RoomState == 0 and global.totalEventCardSprites &gt; 0 and global.cardSprite != -1)
 {
+    
     for(i = global.cardSprite; i &lt; global.totalEventCardSprites; i++)
     {
         file_delete("editor_files/sprites/EventCardSprite"+string(i)+".png");
@@ -166,44 +169,7 @@ if(global.RoomState == 2 and global.totalConsCardSprites &gt; 0 and global.cardS
         ini_write_real("General", "Cons Card Sprites", global.totalConsCardSprites);
         ini_close();
 }
-if(global.RoomState == 3 and global.totalInfoCardSprites &gt; 0 and global.cardSprite != -1)
-{
-    for(i = global.cardSprite; i &lt; global.totalInfoCardSprites; i++)
-    {
-        file_delete("editor_files/sprites/InfoCardSprite"+string(i)+".png");
-        sprite_delete("InfoCardSprite"+string(i)+".png");
-        if(!sprite_exists("InfoCardSprite"+string(i)+".png") and file_exists("editor_files/sprites/InfoCardSprite"+string(i+1)+".png"))
-        {
-            file_rename("editor_files/sprites/InfoCardSprite"+string(i+1)+".png","editor_files/sprites/InfoCardSprite"+string(i)+".png");
-            global.infoCardSpriteArray[i] = sprite_add("editor_files/sprites/InfoCardSprite"+string(i)+".png",1,false,true,0,0);//creates the sprite using image above
-            sprite_set_offset(global.infoCardSpriteArray[i],sprite_get_width(global.infoCardSpriteArray[i])/2,sprite_get_height(global.infoCardSpriteArray[i])/2)
-            sprite_delete("InfoCardSprite"+string(i+1)+".png");
-        }
-    }
-    for(i = 1; i &lt;= global.totalInfoCards; i++)
-    {
-        ini_open(global.cardInfoINI);
-        cardName = "Info"+string(i);
-        tempRef = ini_read_real(cardName,"Sprite",-1);
-        if(tempRef == global.cardSprite)
-        {
-            tempRef = -1;
-            ini_write_real(cardName,"Sprite", tempRef);
-        }
-        if(tempRef &gt; global.cardSprite)
-        {
-            tempRef -= 1;
-            ini_write_real(cardName,"Sprite", tempRef);
-        }
-        ini_close();
-    }
 
-        global.cardSprite = -1;
-        global.totalInfoCardSprites -= 1;
-        ini_open(global.editorINI);
-        ini_write_real("General", "Info Card Sprites", global.totalInfoCardSprites);
-        ini_close();
-}
 if(global.RoomState == 4 and global.totalCharCardSprites &gt; 0 and global.cardSprite != -1)
 {
     for(i = global.cardSprite; i &lt; global.totalCharCardSprites; i++)

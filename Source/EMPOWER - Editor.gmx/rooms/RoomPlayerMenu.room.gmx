@@ -54,6 +54,7 @@
     <instance objName="ButtonAddBackground" x="352" y="192" name="inst_122B66F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonDeleteBackground" x="320" y="320" name="inst_53E9FA54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonBack" x="672" y="192" name="inst_1BB094F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Dialog" x="64" y="96" name="inst_CE7C745B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -40,7 +40,6 @@ if(room == RoomBackgrounds)
     x = global.roomWidth/2
     y = global.roomHeight/2-150
     inst = instance_create(x,y+150,ButtonDelLocationBackground);
-    inst = instance_create(x,y,BGAddDialog);
 }
 inst1 = instance_create(x,y+75,DrawLocBG);
 inst2 = instance_create(x,y,ButtonLocationRight);
