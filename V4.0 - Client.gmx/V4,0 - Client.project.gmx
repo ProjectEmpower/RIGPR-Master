@@ -8,21 +8,12 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="Rooms">
-      <sprites name="Menu">
-        <sprite>sprites\ButtonSpriteStart</sprite>
-        <sprite>sprites\TitleSpriteMenu</sprite>
-        <sprite>sprites\ButtonSpriteNext</sprite>
-        <sprite>sprites\ButtonSpriteUploadSprite</sprite>
-      </sprites>
       <sprites name="Map">
         <sprite>sprites\ButtonSpriteCharacter</sprite>
       </sprites>
       <sprites name="Character">
         <sprite>sprites\ButtonSpriteDiary</sprite>
         <sprite>sprites\ButtonSpriteCards</sprite>
-        <sprite>sprites\TitleSpriteCharacter</sprite>
-        <sprite>sprites\TitleSpriteDiary</sprite>
-        <sprite>sprites\TitleSpriteCards</sprite>
       </sprites>
       <sprite>sprites\ButtonSpriteBack</sprite>
       <sprite>sprites\TextInputBoxSprite_Small</sprite>
@@ -31,7 +22,6 @@
       <sprite>sprites\SelectedTextBoxSprite</sprite>
       <sprite>sprites\TextInputBoxSprite_Large</sprite>
       <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
-      <sprite>sprites\DeleteSprite</sprite>
     </sprites>
     <sprite>sprites\BuildingSpriteNormal</sprite>
     <sprite>sprites\BuildingSpriteMythical</sprite>
@@ -91,8 +81,6 @@
   <objects name="objects">
     <objects name="Rooms">
       <objects name="Menu">
-        <object>objects\ButtonStart</object>
-        <object>objects\TitleMenu</object>
         <object>objects\SplashToMenu</object>
         <object>objects\ResizeBG</object>
       </objects>
@@ -119,11 +107,8 @@
         <object>objects\SpawnTutorial</object>
       </objects>
       <objects name="Character">
-        <object>objects\TitleCharacter</object>
         <object>objects\ButtonDiary</object>
         <object>objects\ButtonCards</object>
-        <object>objects\TitleDiary</object>
-        <object>objects\TitleCards</object>
         <objects name="Journal">
           <object>objects\ButtonJWeekLeft</object>
           <object>objects\ButtonJYearLeft</object>
@@ -131,8 +116,6 @@
           <object>objects\ButtonJYearRight</object>
           <object>objects\JWeekDraw</object>
         </objects>
-        <object>objects\ButtonUploadSprite</object>
-        <object>objects\ButtonDeleteSprite</object>
       </objects>
       <object>objects\GameSetup</object>
       <object>objects\ButtonBack</object>
