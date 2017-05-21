@@ -65,7 +65,7 @@ for(i = 0; i &lt; global.TotalInstanceNum; i++)
                     {                        
                         ini_close();//closes event ini
                         ini_open(global.locationINI);//opens location ini
-                        if(global.playerWeek == tempEventWeekMap and global.playerYear == tempEventYearMap and locationMyth != 3) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
+                        if(global.playerWeek == tempEventWeekMap and global.playerYear == tempEventYearMap and global.playerWeek != 0 and locationMyth != 3) //if tempMyth is current mythical status (global.myth) or 2 (both) and the week matches the events week
                         {
                             ini_write_real(locationName,"Mythical",tempMyth); //reads the sprite
                             LocationX = ini_read_real(locationName,"X",0)//reads the x location in the ini file, and sets that to a variable

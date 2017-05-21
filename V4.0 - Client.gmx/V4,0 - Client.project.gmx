@@ -55,6 +55,10 @@
     <sprite>sprites\ButtonSpriteSkipTutorial</sprite>
     <sprite>sprites\ButtonSpriteViewTutorial</sprite>
     <sprite>sprites\BackgroundSprite</sprite>
+    <sprite>sprites\ButtonOptionsSprite</sprite>
+    <sprite>sprites\ButtonSpriteCredits</sprite>
+    <sprite>sprites\FullScreenSprite</sprite>
+    <sprite>sprites\SpriteResChange</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\EventCard_Background</background>
@@ -149,7 +153,12 @@
     <object>objects\ButtonContinueGame</object>
     <object>objects\ButtonNewGame</object>
     <object>objects\CheckDL</object>
+    <object>objects\DrawCredits</object>
+    <object>objects\ButtonOptions</object>
+    <object>objects\ButtonCredits</object>
     <object>objects\ButtonTutorial</object>
+    <object>objects\ButtonFullScreen</object>
+    <object>objects\ButtonResetWindow</object>
     <object>objects\Background</object>
   </objects>
   <rooms name="rooms">
@@ -167,6 +176,8 @@
     <room>rooms\RoomEventSelect</room>
     <room>rooms\RoomInfoView</room>
     <room>rooms\RoomCharView</room>
+    <room>rooms\RoomCredits</room>
+    <room>rooms\RoomOptions</room>
     <room>rooms\RoomConsView</room>
   </rooms>
   <help>

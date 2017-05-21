@@ -51,7 +51,7 @@ CardBackF = "";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardBack = show_question_async("Are you sure you wish to delete the normal card backing?");
+            <string>CardBack = show_question_async("Are you sure you wish to delete the Regular Card background?");
                 
 </string>
           </argument>
@@ -85,7 +85,7 @@ if(i_d == CardBack)
     ini_write_real("General","Normal Card Back",global.normalCardBacking);
     ini_close();//closes the ini
     global.tempCardBackMythStatus = 0;
-    show_message_async("File deleted"); 
+    show_message_async("Card Background deleted."); 
     room = RoomSprites
 
 }

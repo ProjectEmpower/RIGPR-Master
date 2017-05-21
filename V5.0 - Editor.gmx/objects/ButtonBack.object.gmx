@@ -76,6 +76,8 @@ if(room == RoomCharacter) //checks room
         room = RoomMap
     }
 }
+if(room == RoomCredits)
+room = RoomOptions
 if(room == RoomMap and global.BackgroundSetup == true)
 {
     global.BackgroundSetup = false;
@@ -129,7 +131,6 @@ if(room == RoomCards)
 }
 if(room == RoomLocationAdd) //checks room
 {
-
     script_execute(SaveLocation);//runs save location script
     if(global.TutorialSetup == false)
         room = RoomMap; //swaps room
@@ -363,6 +364,8 @@ if(room == RoomCharacter) //checks room
         room = RoomMap
     }
 }
+if(room == RoomCredits)
+room = RoomOptions
 if(room == RoomMap and global.BackgroundSetup == true)
 {
     global.BackgroundSetup = false;

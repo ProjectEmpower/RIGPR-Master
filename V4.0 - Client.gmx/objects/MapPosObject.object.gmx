@@ -74,19 +74,19 @@ view_hview[0] = global.roomHeight * global.zoom
 ButtonCharacter.x = view_xview + global.CharacterButtonX * global.zoom
 ButtonCharacter.y = view_yview + global.CharacterButtonY * global.zoom// * global.zoom
 
-ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX * global.zoom;
-ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY * global.zoom;
-ButtonWeekRight.x = view_xview + global.WeekRightButtonX * global.zoom;
-ButtonWeekRight.y = view_yview + global.WeekRightButtonY * global.zoom;
+//ButtonWeekLeft.x = view_xview + global.WeekLeftButtonX * global.zoom;
+//ButtonWeekLeft.y = view_yview + global.WeekLeftButtonY * global.zoom;
+//ButtonWeekRight.x = view_xview + global.WeekRightButtonX * global.zoom;
+//ButtonWeekRight.y = view_yview + global.WeekRightButtonY * global.zoom;
 
 
 ButtonCharacter.image_xscale = global.zoom
 ButtonCharacter.image_yscale = global.zoom// * global.zoom
 
-ButtonWeekLeft.image_xscale = global.zoom;
-ButtonWeekLeft.image_yscale = global.zoom;
-ButtonWeekRight.image_xscale = global.zoom;
-ButtonWeekRight.image_yscale = global.zoom;
+//ButtonWeekLeft.image_xscale = global.zoom;
+//ButtonWeekLeft.image_yscale = global.zoom;
+//ButtonWeekRight.image_xscale = global.zoom;
+//ButtonWeekRight.image_yscale = global.zoom;
 </string>
           </argument>
         </arguments>

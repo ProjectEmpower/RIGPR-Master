@@ -93,6 +93,7 @@
       <sprite>sprites\NewGameScreen</sprite>
       <sprite>sprites\GameMenuScreen</sprite>
       <sprite>sprites\ReduceActionsSprite</sprite>
+      <sprite>sprites\ButtonSpriteCredits</sprite>
     </sprites>
     <sprite>sprites\BackgroundSprite</sprite>
     <sprite>sprites\MenuButton</sprite>
@@ -233,6 +234,7 @@
       </objects>
       <object>objects\ButtonSwapCards</object>
     </objects>
+    <object>objects\DrawCredits</object>
     <object>objects\GameSetup</object>
     <object>objects\ReduceActions</object>
     <object>objects\ButtonAddNormalCardBack</object>
@@ -247,6 +249,7 @@
     <object>objects\ButtonSwapSplash</object>
     <object>objects\GotoSplash</object>
     <object>objects\GoToNewG</object>
+    <object>objects\ButtonCredits</object>
     <object>objects\GoToPlayerMenu</object>
   </objects>
   <rooms name="rooms">
@@ -270,6 +273,7 @@
     <room>rooms\RoomCards</room>
     <room>rooms\RoomBackgrounds</room>
     <room>rooms\RoomPlayerMenu</room>
+    <room>rooms\RoomCredits</room>
     <room>rooms\RoomNewGame</room>
     <room>rooms\RoomTutorial</room>
   </rooms>

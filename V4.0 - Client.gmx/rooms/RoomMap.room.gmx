@@ -55,8 +55,6 @@
     <instance objName="MapDragObject" x="32" y="32" name="inst_00D3A779" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="MapPosObject" x="64" y="32" name="inst_841D1840" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="BuildingSetup" x="96" y="64" name="inst_C1319B50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonWeekLeft" x="64" y="256" name="inst_6936DF82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ButtonWeekRight" x="128" y="256" name="inst_C2D758F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="WeekTextDraw" x="128" y="96" name="inst_E547BE80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="MobileRotation" x="160" y="128" name="inst_F0596F5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="DrawNames" x="192" y="160" name="inst_C701BFB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

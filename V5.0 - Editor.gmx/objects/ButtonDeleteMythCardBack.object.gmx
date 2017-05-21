@@ -51,7 +51,7 @@ CardBackF = "";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardBack = show_question_async("Are you sure you wish to delete the normal card backing?");
+            <string>CardBack = show_question_async("Are you sure you wish to delete the Myhthical Card background?");
                 
 </string>
           </argument>

@@ -53,7 +53,7 @@ InfoBackF = "";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardBack = show_message_async("Please select mythical card backing to upload");
+            <string>CardBack = show_message_async("Please select Mythical Card backing to upload, must be 256x424.");
                 
 </string>
           </argument>
@@ -79,39 +79,68 @@ InfoBackF = "";
             <kind>1</kind>
             <string>i_d = ds_map_find_value(async_load,"id");
 if(i_d == CardBack)
-{
+{    
     CardBackF = get_open_filename("PNG|*.png", "");//opens the file
+    spriteName = "MythCardBack"
+    global.mythCardBack = sprite_add(CardBackF,1,false,true,0,0);
+
     if(CardBackF != "")
     {
-       InfoBack = show_message_async("Please select the info card backing"); 
+        if(sprite_get_width(global.mythCardBack) == 256 and sprite_get_height(global.mythCardBack) == 424)
+        {
+            InfoBack = show_message_async("Please select the Mythical Info card background, must be 256x424.");
+        } 
+        else
+        {
+            sprite_delete(global.mythCardBack)
+            show_message_async("Failed to upload card background, must be 256x424.");
+            CardBackF = "";
+            CardBack = "";
+        }
     }
     else
     {
-        show_message_async("You did not select card back to upload");
+        show_message_async("Card background failed to upload.");
     }
+
 }
 if(i_d == InfoBack)
 {
+
     InfoBackF = get_open_filename("PNG|*.png", "");//opens the file
+    spriteName = "MythInfoCardBack"
+    global.mythInfoCardBack = sprite_add(InfoBackF,1,false,true,0,0)
+
     if(InfoBackF != "")
-    {
-       InfoBack = show_message_async("Card back added"); 
+    {    
+        if(sprite_get_width(global.mythCardBack) == 256 and sprite_get_height(global.mythCardBack) == 424)
+        {
+           InfoBack = show_message_async("Card backgrounds added."); 
+        }
+        else
+        {
+            sprite_delete(global.mythCardBack)
+            sprite_delete(global.mythInfoCardBack)
+            show_message_async("Failed to upload card backgrounds, must be 256x424.");
+            CardBackF = "";
+            CardBack = "";
+            InfoBackF = ""
+            InfoBack = ""
+        }
     }
     else
     {
-        show_message_async("You did not select the info card back to upload");
+        show_message_async("Card background failed to upload.");
     }
 }
 if(CardBackF != "" and InfoBackF != "")
 {
     spriteName = "MythCardBack"
-    global.mythCardBack = sprite_add(CardBackF,1,false,true,0,0);
     sprite_set_offset(global.mythCardBack,sprite_get_width(global.mythCardBack)/2,sprite_get_height(global.mythCardBack)/2);
     saveLoc = sprite_save_strip(global.mythCardBack, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
     CardBack = "";//sets the open file to blank
     
     spriteName = "MythInfoCardBack"
-    global.mythInfoCardBack = sprite_add(InfoBackF,1,false,true,0,0)
     sprite_set_offset(global.mythInfoCardBack,sprite_get_width(global.mythInfoCardBack)/2,sprite_get_height(global.mythInfoCardBack)/2);
     saveLoc = sprite_save_strip(global.mythInfoCardBack, "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
     InfoBack = "";//sets the open file to blank

@@ -52,12 +52,12 @@ global.WeekLeftButtonY = 40;
             <string>if(global.playerWeek &gt; 0)
 {
     global.playerWeek -= 1;
+    if(global.playerWeek == 0 and global.playerYear &gt; 1)
+    {
+        global.playerWeek = 52
+        global.playerYear -= 1;
+    }
     room = RoomMap;
-}
-else if(global.playerYear &gt; 1)
-{
-    global.playerWeek = 52;
-    global.playerYear -=1;
 }
 </string>
           </argument>

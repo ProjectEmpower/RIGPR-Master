@@ -65,7 +65,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>inputN = show_message_async("Please select normal building's image to upload.");
+            <string>inputN = show_message_async("Please select Regular Building's image to upload.");
                 
 </string>
           </argument>
@@ -171,60 +171,123 @@ if(room != RoomSprites)
     if(i_d == ButtonAddLocationBackground.Background)
     {
         ButtonAddLocationBackground.BackgroundF = get_open_filename("PNG|*.png", "");//opens the file
+        spriteName = "LocBack"+string(global.totalLocationBackgrounds);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
+        global.locationBGArray[global.totalLocationBackgrounds] = background_add(ButtonAddLocationBackground.BackgroundF,0,0);   
+
         if(ButtonAddLocationBackground.BackgroundF != "")//if it finds a file, do this
-        {
-            show_message_async("Background uploaded");
+        {        
+            if((background_get_width(global.locationBGArray[global.totalLocationBackgrounds]) == 1920 and background_get_height(global.locationBGArray[global.totalLocationBackgrounds]) == 1080) or (background_get_width(global.locationBGArray[global.totalLocationBackgrounds]) == 1280  and background_get_height(global.locationBGArray[global.totalLocationBackgrounds]) == 720))
+            {
+                show_message_async("Background uploaded");
+            }
+            else
+            {
+                show_message_async("Background failed to upload, background's must either be 1920x1080 or 1280x720.");
+                background_delete(global.locationBGArray[global.totalLocationBackgrounds])
+                ButtonAddLocationBackground.BackgroundF = ""
+                ButtonAddLocationBackground.Background = ""
+            }
         }
         else
         {
-            show_message_async("You did not upload a background.");
+            show_message_async("Failed to upload Background.");
         }
-        
+
     }
 if(i_d == inputN)
 {
     fileN = get_open_filename("PNG|*.png", "");//opens the file
+    spriteName = "BuildingSpriteN"+string(global.totalNormBuildingSprites);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
+    global.normBuildingArray[global.totalNormBuildingSprites] = sprite_add(fileN,1,false,true,0,0);//creates the sprite using image above
+
     if(fileN != "")//if it finds a file, do this
-    {
-        inputM = show_message_async("Please select mythical building's image to upload.");
+    {    
+        if(sprite_get_width(global.normBuildingArray[global.totalNormBuildingSprites]) == 128 and sprite_get_height(global.normBuildingArray[global.totalNormBuildingSprites]) == 128)
+        {
+            inputM = show_message_async("Please select Mythical Building's image to upload.");
+        }
+        else
+        {
+            show_message_async("Image failed to upload, building's must be 128x128.");
+            sprite_delete(global.normBuildingArray[global.totalNormBuildingSprites]);
+            fileN = ""
+            inputN = ""
+    
+        }
     }
     else
     {
-        show_message_async("You did not select normal map's building's image to upload.");
+        show_message_async("Failed to upload Building Image.");
     }
+
     
 }
 if(i_d == inputM)
 {
     fileM = get_open_filename("PNG|*.png", "");//opens the file
+    spriteName = "BuildingSpriteM"+string(global.totalMythBuildingSprites);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
+    global.mythBuildingArray[global.totalMythBuildingSprites] = sprite_add(fileM,1,false,true,0,0);//creates the sprite using image above     
+
     if(fileM != "")//if it finds a file, do this
     {
-        inputB = show_message_async("Please select both building's image to upload.");
+        if(sprite_get_width(global.mythBuildingArray[global.totalMythBuildingSprites]) == 128 and sprite_get_height(global.mythBuildingArray[global.totalMythBuildingSprites]) == 128)
+        {
+            inputB = show_message_async("Please select the Both Regular and Mythical building's image that you wish to upload.");
+        }
+        else
+        {
+            show_message_async("Image failed to upload, building's must be 128x128.");
+            sprite_delete(global.normBuildingArray[global.totalNormBuildingSprites]);
+            fileN = ""
+            inputN = ""
+            sprite_delete(global.mythBuildingArray[global.totalMythBuildingSprites]);
+            fileM = ""
+            inputM = ""
+    
+        }   
     }
     else
     {
-        show_message_async("You did not select mythical map's building's image to upload.");
+        show_message_async("Failed to upload Building Image.");
     }
-    
+ 
 }
 if(i_d == inputB)
 {
     fileB = get_open_filename("PNG|*.png", "");//opens the file
+    spriteName = "BuildingSpriteB"+string(global.totalBothBuildingSprites);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
+    global.bothBuildingArray[global.totalBothBuildingSprites] = sprite_add(fileB,1,false,true,0,0);//creates the sprite using image above       
+
     if(fileB != "")//if it finds a file, do this
-    {
-        show_message_async("Sprite set added successfully.");
+    {    
+        if(sprite_get_width(global.bothBuildingArray[global.totalBothBuildingSprites]) == 128 and sprite_get_height(global.bothBuildingArray[global.totalBothBuildingSprites]) == 128)
+        {
+            show_message_async("Sprite set added successfully.");
+        }
+        else
+        {
+            show_message_async("Image failed to upload, building's must be 128x128.");
+            sprite_delete(global.normBuildingArray[global.totalNormBuildingSprites]);
+            fileN = ""
+            inputN = ""
+            sprite_delete(global.mythBuildingArray[global.totalMythBuildingSprites]);
+            fileM = ""
+            inputM = ""
+            sprite_delete(global.bothBuildingArray[global.totalBothBuildingSprites]);
+            fileB = ""
+            inputB = ""
+        }    
     }
     else
     {
         show_message_async("You did not select both map's building's image to upload.");
-    }
-   
+    }   
+
 }
 if(room != RoomSprites)
 if(ButtonAddLocationBackground.BackgroundF != "")
-{
+{  
     spriteName = "LocBack"+string(global.totalLocationBackgrounds);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
-    global.locationBGArray[global.totalLocationBackgrounds] = background_add(ButtonAddLocationBackground.BackgroundF,0,0);
     background_save(global.locationBGArray[global.totalLocationBackgrounds], "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
     room_set_background(tempRoom, 0, 1, 0, global.locationBGArray[global.totalLocationBackgrounds], 0, 0, 0, 0, 0, 0, 1); 
     Background = "";
@@ -240,7 +303,6 @@ if(ButtonAddLocationBackground.BackgroundF != "")
 if(fileN != "" and fileM != "" and fileB != "")
 {
         spriteName = "BuildingSpriteN"+string(global.totalNormBuildingSprites);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
-        global.normBuildingArray[global.totalNormBuildingSprites] = sprite_add(fileN,1,false,true,0,0);//creates the sprite using image above
         sprite_set_offset(global.normBuildingArray[global.totalNormBuildingSprites],sprite_get_width(global.normBuildingArray[global.totalNormBuildingSprites])/2,sprite_get_height(global.normBuildingArray[global.totalNormBuildingSprites])/2)
         saveLoc = sprite_save_strip(global.normBuildingArray[global.totalNormBuildingSprites], "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
         global.totalNormBuildingSprites += 1;
@@ -250,7 +312,6 @@ if(fileN != "" and fileM != "" and fileB != "")
         fileN = "";//sets the open file to blank
         
         spriteName = "BuildingSpriteM"+string(global.totalMythBuildingSprites);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
-        global.mythBuildingArray[global.totalMythBuildingSprites] = sprite_add(fileM,1,false,true,0,0);//creates the sprite using image above
         sprite_set_offset(global.mythBuildingArray[global.totalMythBuildingSprites],sprite_get_width(global.mythBuildingArray[global.totalMythBuildingSprites])/2,sprite_get_height(global.mythBuildingArray[global.totalMythBuildingSprites])/2)
         saveLoc = sprite_save_strip(global.mythBuildingArray[global.totalMythBuildingSprites], "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
         global.totalMythBuildingSprites += 1;
@@ -258,9 +319,8 @@ if(fileN != "" and fileM != "" and fileB != "")
         ini_write_real("General", "Myth Building Sprites", global.totalMythBuildingSprites);
         ini_close();//closes the ini
         fileM = "";//sets the open file to blank
-                      
-        spriteName = "BuildingSpriteB"+string(global.totalBothBuildingSprites);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
-        global.bothBuildingArray[global.totalBothBuildingSprites] = sprite_add(fileB,1,false,true,0,0);//creates the sprite using image above
+        
+        spriteName = "BuildingSpriteB"+string(global.totalBothBuildingSprites);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)          
         sprite_set_offset(global.bothBuildingArray[global.totalBothBuildingSprites],sprite_get_width(global.bothBuildingArray[global.totalBothBuildingSprites])/2,sprite_get_height(global.bothBuildingArray[global.totalBothBuildingSprites])/2)
         saveLoc = sprite_save_strip(global.bothBuildingArray[global.totalBothBuildingSprites], "editor_files/sprites/"+spriteName+".png");//saves the sprite to the editor files
         global.totalBothBuildingSprites += 1;

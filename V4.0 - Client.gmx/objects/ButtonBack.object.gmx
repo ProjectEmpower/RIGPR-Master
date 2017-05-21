@@ -69,6 +69,8 @@ if(room == RoomCharacter) //checks room
     }
     room = RoomMap; //swaps room
 }
+if(room == RoomCredits or room == RoomOptions)
+    room = RoomMenu
 if(room == RoomDiary)
 {
     room = RoomCharacter;
@@ -177,6 +179,8 @@ if(room == RoomCharacter) //checks room
     }
     room = RoomMap; //swaps room
 }
+if(room == RoomCredits or room == RoomOptions)
+    room = RoomMenu
 if(room == RoomDiary)
 {
     room = RoomCharacter;
@@ -187,15 +191,23 @@ if(room == RoomCards)
 }
 if(room == RoomLocationView)
 {
-    if(global.TimeTravel == false)
-        room = RoomMap; //swaps room  
+    if(global.Cont == 0)
+    {
+        if(global.TimeTravel == false)
+            room = RoomMap; //swaps room  
+        else
+        {
+            global.playerInt = global.playerTempInt;
+            global.playerChar = global.playerTempChar;
+            global.playerWell = global.playerTempWell;
+            global.TimeTravel = false;
+            room = RoomDiary
+        }
+    }
     else
     {
-        global.playerInt = global.playerTempInt;
-        global.playerChar = global.playerTempChar;
-        global.playerWell = global.playerTempWell;
-        global.TimeTravel = false;
-        room = RoomDiary
+        global.Cont = 0;
+        room = RoomLocationView
     }
 global.numberOfBackgrounds = 0;
         

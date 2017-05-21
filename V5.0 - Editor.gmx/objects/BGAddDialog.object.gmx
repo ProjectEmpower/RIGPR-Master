@@ -52,20 +52,33 @@
 if(i_d == ButtonAddLocationBackground.Background)
 {
     ButtonAddLocationBackground.BackgroundF = get_open_filename("PNG|*.png", "");//opens the file
+    spriteName = "LocBack"+string(global.totalLocationBackgrounds);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
+    global.locationBGArray[global.totalLocationBackgrounds] = background_add(ButtonAddLocationBackground.BackgroundF,0,0);   
+
     if(ButtonAddLocationBackground.BackgroundF != "")//if it finds a file, do this
     {
-        show_message_async("Background uploaded");
+        if((background_get_width(global.locationBGArray[global.totalLocationBackgrounds]) == 1920 and background_get_height(global.locationBGArray[global.totalLocationBackgrounds]) == 1080) or (background_get_width(global.locationBGArray[global.totalLocationBackgrounds]) == 1280  and background_get_height(global.locationBGArray[global.totalLocationBackgrounds]) == 720))
+        {
+            show_message_async("Background uploaded");
+        }
+        else
+        {
+            show_message_async("Background failed to upload, backgrounds must either be 1920x1080 or 1280x720.");
+            background_delete(global.locationBGArray[global.totalLocationBackgrounds])
+            ButtonAddLocationBackground.BackgroundF = ""
+            ButtonAddLocationBackground.Background = ""
+        }
     }
     else
     {
         show_message_async("You did not upload a background.");
     }
-    
+
 }
+
 if(ButtonAddLocationBackground.BackgroundF != "")
-{
+{ 
     spriteName = "LocBack"+string(global.totalLocationBackgrounds);//set the sprite name to be Usersprite + numberOftotalSprites(next sprite)
-    global.locationBGArray[global.totalLocationBackgrounds] = background_add(ButtonAddLocationBackground.BackgroundF,0,0);
     background_save(global.locationBGArray[global.totalLocationBackgrounds], "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
     room_set_background(tempRoom, 0, 1, 0, global.locationBGArray[global.totalLocationBackgrounds], 0, 0, 0, 0, 0, 0, 1); 
     Background = "";
