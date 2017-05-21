@@ -9,9 +9,6 @@
   <sprites name="sprites">
     <sprites name="Rooms">
       <sprites name="Menu">
-        <sprite>sprites\ButtonSpriteStart</sprite>
-        <sprite>sprites\TitleSpriteMenu</sprite>
-        <sprite>sprites\ButtonSpriteOptions</sprite>
         <sprite>sprites\ButtonSpriteResetWindow</sprite>
         <sprite>sprites\ButtonSpriteFullScreen</sprite>
       </sprites>
@@ -20,16 +17,11 @@
         <sprite>sprites\BuildingSpriteNormal</sprite>
         <sprite>sprites\BuildingSpriteMythical</sprite>
         <sprite>sprites\BuildingSpriteBoth</sprite>
-        <sprite>sprites\ButtonEditorModeSprite</sprite>
         <sprite>sprites\EditorMODE</sprite>
-        <sprite>sprites\ButtonDeckListSprite</sprite>
       </sprites>
       <sprites name="Character">
         <sprite>sprites\ButtonSpriteDiary</sprite>
         <sprite>sprites\ButtonSpriteCards</sprite>
-        <sprite>sprites\TitleSpriteCharacter</sprite>
-        <sprite>sprites\TitleSpriteDiary</sprite>
-        <sprite>sprites\TitleSpriteCards</sprite>
         <sprite>sprites\SwapList</sprite>
       </sprites>
       <sprite>sprites\ButtonSpriteBack</sprite>
@@ -42,7 +34,6 @@
         <sprite>sprites\ButtonSpriteDeleteCardSprite</sprite>
         <sprite>sprites\ButtonSpriteCycleMapVisibility</sprite>
         <sprite>sprites\ButtonSpriteNewEvent</sprite>
-        <sprite>sprites\ButtonSpriteEditEvent</sprite>
         <sprite>sprites\ButtonSpriteCreateEvent</sprite>
         <sprite>sprites\ButtonSpriteCreateCard</sprite>
         <sprite>sprites\ButtonSpriteEventSelect</sprite>
@@ -77,7 +68,6 @@
       <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
       <sprite>sprites\ArrowSpriteLeft</sprite>
       <sprite>sprites\ArrowSpriteRight</sprite>
-      <sprite>sprites\Map_Visibility</sprite>
       <sprite>sprites\ButtonSpriteSave</sprite>
       <sprite>sprites\DefaultCardSprite</sprite>
       <sprite>sprites\CardBackingNormal</sprite>
@@ -136,9 +126,6 @@
   </scripts>
   <objects name="objects">
     <objects name="Menu">
-      <object>objects\ButtonStart</object>
-      <object>objects\TitleMenu</object>
-      <object>objects\ButtonOptions</object>
       <object>objects\MenuToMap</object>
     </objects>
     <objects name="Map">
@@ -152,24 +139,14 @@
       <object>objects\ButtonWeekRight</object>
       <object>objects\ButtonYearRight</object>
       <object>objects\editorModeDisplay</object>
-      <objects name="Unused">
-        <object>objects\TitleMap</object>
-        <object>objects\ButtonMapSwap</object>
-        <object>objects\ButtonDeckList</object>
-        <object>objects\ButtonEditorMode</object>
-      </objects>
       <object>objects\WeekTextDraw</object>
       <object>objects\TextOnMap</object>
       <object>objects\DrawNames</object>
       <object>objects\Zoom</object>
-      <object>objects\Map_Vis</object>
     </objects>
     <objects name="Character">
-      <object>objects\TitleCharacter</object>
       <object>objects\ButtonDiary</object>
-      <object>objects\TitleDiary</object>
       <object>objects\ButtonCards</object>
-      <object>objects\TitleCards</object>
     </objects>
     <objects name="LocationAdd">
       <object>objects\LocationSetup</object>
