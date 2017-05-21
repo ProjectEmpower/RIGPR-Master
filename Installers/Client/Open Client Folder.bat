@@ -1,1 +1,0 @@
-START %SystemRoot%\explorer.exe %UserProfile%\AppData\Local\EMPOWER___Client

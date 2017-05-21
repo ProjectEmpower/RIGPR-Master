@@ -30,11 +30,11 @@ draw_set_valign(fa_middle);
 draw_text(global.roomWidth/2,125,"Credits Page");
 draw_text(global.roomWidth/2,200,"Client: Mark Eyles");
 draw_text(global.roomWidth/2,240,"Team Lead: Alec Weekes");
-draw_text(global.roomWidth/2,280,"Team Lead/Coding: Tom Maackie");
-draw_text(global.roomWidth/2,320,"Coding (Lead): Elliott Chaplin - elliott.chaplin@myport.ac.uk");
-draw_text(global.roomWidth/2,360,"Background and Icon Art: Mark Kaaya");
-draw_text(global.roomWidth/2,400,"Card Art: Thomas Wells");
-draw_text(global.roomWidth/2,440,"Button Art: Mark Kaaya/Tom Maackie/Elliott Chaplin");
+draw_text(global.roomWidth/2,280,"Team Lead/Programmer: Tom Maackie - kodakmw2@hotmail.co.uk");
+draw_text(global.roomWidth/2,320,"Lead Programmer: Elliott Chaplin - elliott.chaplin@myport.ac.uk");
+draw_text(global.roomWidth/2,360,"Background and Icon Artist: Mark Kaaya");
+draw_text(global.roomWidth/2,400,"Card Artist: Thomas Wells");
+draw_text(global.roomWidth/2,440,"Button Artist: Mark Kaaya/Tom Maackie/Elliott Chaplin");
 </string>
           </argument>
         </arguments>
