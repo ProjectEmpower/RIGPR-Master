@@ -34,7 +34,7 @@ draw_text(global.roomWidth/2,280,"Team Lead/Programmer: Tom Maackie - kodakmw2@h
 draw_text(global.roomWidth/2,320,"Lead Programmer: Elliott Chaplin - elliott.chaplin@myport.ac.uk");
 draw_text(global.roomWidth/2,360,"Background and Icon Artist: Mark Kaaya");
 draw_text(global.roomWidth/2,400,"Card Artist: Thomas Wells");
-draw_text(global.roomWidth/2,440,"Button Artist: Mark Kaaya/Tom Maackie/Elliott Chaplin");
+draw_text(global.roomWidth/2,440,"Button Artists: Mark Kaaya/Tom Maackie/Elliott Chaplin");
 </string>
           </argument>
         </arguments>
