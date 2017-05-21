@@ -60,7 +60,10 @@
     <instance objName="CardBacking" x="864" y="288" name="inst_487ECEC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="DeleteCard" x="128" y="640" name="inst_EDCA3A37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="CardSetup" x="96" y="96" name="inst_4CB6E14A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ReduceActions" x="480" y="640" name="inst_F931BF4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ReduceActions" x="128" y="512" name="inst_F931BF4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="DelChar" x="576" y="480" name="inst_9D957EB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="DelInfo" x="352" y="480" name="inst_DC429613" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="DelCons" x="128" y="480" name="inst_BE978A59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

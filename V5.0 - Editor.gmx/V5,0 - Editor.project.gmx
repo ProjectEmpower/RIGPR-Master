@@ -102,6 +102,9 @@
     <sprite>sprites\SwapSplashButtonSprite</sprite>
     <sprite>sprites\SpriteDelLocBack</sprite>
     <sprite>sprites\SpriteAddLocBack</sprite>
+    <sprite>sprites\RemoveCharCardSprite</sprite>
+    <sprite>sprites\RemoveInfoCardSprite</sprite>
+    <sprite>sprites\RemoveConsCardSprite</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\MapBackground</background>
@@ -193,7 +196,6 @@
       <objects name="CardEdit">
         <object>objects\ButtonCycleMapVisibility</object>
         <object>objects\CardSetup</object>
-        <object>objects\ButtonDeleteCard</object>
         <object>objects\ButtonSave</object>
         <object>objects\ButtonAddCardSprite</object>
         <object>objects\ButtonCardSpriteLeft</object>
@@ -252,6 +254,9 @@
     <object>objects\GoToNewG</object>
     <object>objects\ButtonCredits</object>
     <object>objects\GoToPlayerMenu</object>
+    <object>objects\DelChar</object>
+    <object>objects\DelInfo</object>
+    <object>objects\DelCons</object>
     <object>objects\ButtonCustomStats</object>
   </objects>
   <rooms name="rooms">

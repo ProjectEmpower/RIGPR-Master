@@ -30,6 +30,7 @@ x = 125;
 y = room_height-70
 if(global.TutorialSetup == true)
     sprite_index = No_sprite;
+msgDelCard = "";
 </string>
           </argument>
         </arguments>
@@ -54,186 +55,30 @@ if(global.TutorialSetup == true)
             <kind>1</kind>
             <string>if(global.RoomState == 0)
 {
-    ini_open(global.cardEventINI)
-    ini_section_delete(global.eventName);
-    ini_close()
-    for(i = global.eventRef; i &lt; global.totalEventCards; i++)
-    {
-        ini_open(global.cardEventINI)
-        tempEventName = "Event"+string(i)
-        tempNextEventName = "Event"+string(i+1)
-        if(ini_section_exists(tempNextEventName) and !ini_section_exists(tempEventName))
-        {
-            tempName = ini_read_string(tempNextEventName,"Event Name",0);
-            tempText = ini_read_string(tempNextEventName,"Event Text",0);
-            tempInt = ini_read_real(tempNextEventName,"Int",0);
-            tempChar = ini_read_real(tempNextEventName,"Char",0);
-            tempWell = ini_read_real(tempNextEventName,"Well",0);
-            tempMyth = ini_read_real(tempNextEventName,"Mythical",0);
-            tempSprite = ini_read_real(tempNextEventName,"Sprite",-1);
-            tempInfoCard = ini_read_real(tempNextEventName,"Info Cards",0);
-            tempCharCard = ini_read_real(tempNextEventName,"Char Cards",0);
-            tempActionNum = ini_read_real(tempNextEventName,"Action Cards",0);
-            tempAction[tempActionNum] = 0;
-            for(t = 0; t &lt;= tempActionNum; t++)
-            {
-                tempActionName = "Action"+string(t+1);
-                tempAction[t] = ini_read_real(tempNextEventName,tempActionName,0);
-            }
-            ini_write_real(tempEventName,"Ref",i);
-            ini_write_string(tempEventName,"Event Name",tempName);
-            ini_write_string(tempEventName,"Event Text",tempText);
-            ini_write_real(tempEventName,"Int",tempInt);
-            ini_write_real(tempEventName,"Char",tempChar);
-            ini_write_real(tempEventName,"Well",tempWell);
-            ini_write_real(tempEventName,"Mythical",tempMyth);
-            ini_write_real(tempEventName,"Sprite",tempSprite);
-            ini_write_real(tempEventName,"Info Cards",tempInfoCard);
-            ini_write_real(tempEventName,"Char Cards",tempCharCard);
-            ini_write_real(tempEventName,"Action Cards",tempActionNum);
-            for(t = 0; t &lt;= tempActionNum; t++)
-            {
-                tempActionName = "Action"+string(t+1);
-                 ini_write_real(tempEventName,tempActionName,tempAction[t]);
-            }
-            ini_section_delete(tempNextEventName);
-            ini_close(); //closes the ini file       
-        }
-    }
-    global.totalEventCards -= 1;
+    msgDelCard = show_question_async("Are you sure you want to delete the Event Card?");
+    
 }
 if(global.RoomState == 1)
 {
-    ini_open(global.cardActionINI)
-    ini_section_delete(global.cardName);
-    ini_close()
-    for(i = global.cardRef; i &lt; global.totalActionCards; i++)
-    {
-        ini_open(global.cardActionINI)
-        tempName = "Action"+string(i)
-        tempNextName = "Action"+string(i+1)
-        if(ini_section_exists(tempNextName) and !ini_section_exists(tempName))
-        {
-            tempCName = ini_read_string(tempNextName,"Card Name",0);
-            tempText = ini_read_string(tempNextName,"Card Text",0);
-            tempMyth = ini_read_real(tempNextName,"Mythical",0);
-            tempSprite = ini_read_real(tempNextName,"Sprite",-1);
-            tempInfoCard = ini_read_real(tempNextName,"Info Cards",0);
-            tempConsCard = ini_read_real(tempNextName,"Cons Cards",0);
-
-            ini_write_real(tempName,"Ref",i);
-            ini_write_string(tempName,"Card Name",tempCName);
-            ini_write_string(tempName,"Card Text",tempText);
-            ini_write_real(tempName,"Mythical",tempMyth);
-            ini_write_real(tempName,"Sprite",tempSprite);
-            ini_write_real(tempName,"Info Cards",tempInfoCard);
-            ini_write_real(tempName,"Cons Cards",tempConsCard);
-
-            ini_section_delete(tempNextName);
-            ini_close(); //closes the ini file       
-        }
-    }
-    global.totalActionCards -= 1;
+     msgDelCard = show_question_async("Are you sure you want to delete the Action Card?");
+       
 }
 if(global.RoomState == 2)
 {
-    ini_open(global.cardConsINI)
-    ini_section_delete(global.consName);
-    ini_close()
-    for(i = global.consCardRef; i &lt; global.totalConsCards; i++)
-    {
-        ini_open(global.cardConsINI)
-        tempName = "Cons"+string(i)
-        tempNextName = "Cons"+string(i+1)
-        if(ini_section_exists(tempNextName) and !ini_section_exists(tempName))
-        {
-            tempCName = ini_read_string(tempNextName,"Card Name",0);
-            tempText = ini_read_string(tempNextName,"Card Text",0);
-            tempInt = ini_read_real(tempNextName,"Int",0);
-            tempChar = ini_read_real(tempNextName,"Char",0);
-            tempWell = ini_read_real(tempNextName,"Well",0);
-            tempSprite = ini_read_real(tempNextName,"Sprite",-1);
-            tempInfoCard = ini_read_real(tempNextName,"Info Cards",0);
-
-            ini_write_real(tempName,"Ref",i);
-            ini_write_string(tempName,"Card Name",tempCName);
-            ini_write_string(tempName,"Card Text",tempText);
-            ini_write_real(tempName,"Int",tempInt);
-            ini_write_real(tempName,"Char",tempChar);
-            ini_write_real(tempName,"Well",tempWell);
-
-            ini_write_real(tempName,"Sprite",tempSprite);
-            ini_write_real(tempName,"Info Cards",tempInfoCard);
-
-            ini_section_delete(tempNextName);
-            ini_close(); //closes the ini file       
-        }
-    }
-    global.totalConsCards -= 1;
+     msgDelCard = show_question_async("Are you sure you want to delete the Consequence Card?");
+       
 }
 if(global.RoomState == 3)
 {
-    ini_open(global.cardInfoINI)
-    ini_section_delete(global.infoName);
-    ini_close()
-    for(i = global.infoCardRef; i &lt; global.totalInfoCards; i++)
-    {
-        ini_open(global.cardInfoINI)
-        tempName = "Info"+string(i)
-        tempNextName = "Info"+string(i+1)
-        if(ini_section_exists(tempNextName) and !ini_section_exists(tempName))
-        {
-            tempCName = ini_read_string(tempNextName,"Card Name",0);
-            tempText = ini_read_string(tempNextName,"Card Text",0);
-            tempSprite = ini_read_real(tempNextName,"Sprite",-1);
-            tempLink = ini_read_string(tempNextName,"Link","");
-
-            ini_write_real(tempName,"Ref",i);
-            ini_write_string(tempName,"Card Name",tempCName);
-            ini_write_string(tempName,"Card Text",tempText);
-
-            ini_write_real(tempName,"Sprite",tempSprite);
-            ini_write_string(tempName,"Link",tempLink);
-
-            ini_section_delete(tempNextName);
-            ini_close(); //closes the ini file       
-        }
-    }
-    global.totalInfoCards -= 1;
+    msgDelCard = show_question_async("Are you sure you want to delete the Information Card?");
+    
 }
 if(global.RoomState == 4)
 {
-    ini_open(global.cardCharINI)
-    ini_section_delete(global.charName);
-    ini_close()
-    for(i = global.charCardRef; i &lt; global.totalCharCards; i++)
-    {
-        ini_open(global.cardCharINI)
-        tempName = "Char"+string(i)
-        tempNextName = "Char"+string(i+1)
-        if(ini_section_exists(tempNextName) and !ini_section_exists(tempName))
-        {
-            tempCName = ini_read_string(tempNextName,"Card Name",0);
-            tempText = ini_read_string(tempNextName,"Card Text",0);
-
-            tempSprite = ini_read_real(tempNextName,"Sprite",-1);
-            tempInfoCard = ini_read_real(tempNextName,"Info Cards",0);
-
-            ini_write_real(tempName,"Ref",i);
-            ini_write_string(tempName,"Card Name",tempCName);
-            ini_write_string(tempName,"Card Text",tempText);
-
-
-            ini_write_real(tempName,"Sprite",tempSprite);
-            ini_write_real(tempName,"Info Cards",tempInfoCard);
-
-            ini_section_delete(tempNextName);
-            ini_close(); //closes the ini file       
-        }
-    }
-    global.totalCharCards -= 1;
+    msgDelCard = show_question_async("Are you sure you want to delete the Character Card?");
+        
 }
-room = RoomCardDeck;
+
 </string>
           </argument>
         </arguments>
