@@ -214,6 +214,7 @@
       </objects>
       <object>objects\ButtonSwapCards</object>
     </objects>
+    <object>objects\DrawSplash</object>
     <object>objects\DrawCredits</object>
     <object>objects\GameSetup</object>
     <object>objects\ReduceActions</object>

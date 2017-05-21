@@ -126,5 +126,6 @@ global.totalConsCards = 0;//total number of consequence cards
 global.totalCharCards = 0;//total number of character cards
 script_execute(LoadTutorial);
 //room = RoomResChange;
+script_execute(SetupFiles)
 room = RoomResChange;    
 //moves to the menu

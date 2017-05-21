@@ -37,9 +37,11 @@ if(ini_section_exists("General"))
 }
 else
 {
+  ini_close()
   file_delete("editor_files/editor.ini");
   room = RoomSetup;
 }
+
 </string>
           </argument>
         </arguments>

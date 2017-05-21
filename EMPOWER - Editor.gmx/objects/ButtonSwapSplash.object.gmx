@@ -27,6 +27,18 @@
             <kind>1</kind>
             <string>x = global.roomWidth/2+220
 y = global.roomHeight/2-50
+switch(global.splash)
+{
+    case 0: 
+    background_visible[0] = true;
+    background_visible[1] = false;
+
+    break;
+    case 1: 
+    background_visible[1] = true;
+    background_visible[0] = false;
+    break;
+}
 if(room == RoomMenu and (global.MenuBGing == 0 or global.BackgroundSetup == false))
     sprite_index = No_sprite
 </string>
@@ -54,10 +66,13 @@ if(room == RoomMenu and (global.MenuBGing == 0 or global.BackgroundSetup == fals
             <string>switch(global.splash)
 {
     case 0: global.splash = 1;
-        room_set_background(RoomMenu, 0, 1, 0, global.MenuBG, 0, 0, 0, 0, 0, 0, 1);
+    background_visible[1] = true;
+    background_visible[0] = false;
+
     break;
     case 1: global.splash = 0;
-        room_set_background(RoomMenu, 0, 1, 0, global.MenuClickBG, 0, 0, 0, 0, 0, 0, 1);  
+    background_visible[0] = true;
+    background_visible[1] = false;
     break;
 }
 room = RoomMenu

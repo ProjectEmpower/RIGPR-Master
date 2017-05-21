@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>x = 125
 y = global.roomHeight-170
+
 </string>
           </argument>
         </arguments>
@@ -51,6 +52,7 @@ y = global.roomHeight-170
             <kind>1</kind>
             <string>global.splash = 0;
 global.BackgroundSetup = true;
+
 room = RoomMenu;
 
 </string>

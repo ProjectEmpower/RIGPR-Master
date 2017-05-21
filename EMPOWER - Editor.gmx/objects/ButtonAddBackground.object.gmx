@@ -391,6 +391,7 @@ if(BackgroundFN != "")
 {    
     spriteName = "SplashBackground"
     background_save(global.MenuBG , "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
+    room_set_background(RoomMenu, 1, 1, 0, global.MenuBG, 0, 0, 0, 0, 0, 0, 1);
     BackgroundS = "";
     spriteName = "SplashClickBackground"
     background_save(global.MenuClickBG , "editor_files/BG/"+spriteName+".png");//saves the sprite to the editor files
@@ -451,10 +452,13 @@ if(room == RoomMenu and ButtonDeleteBackground.BackgroundD != "")
     {
         if ds_map_find_value(async_load, "status")
         {
+            background_visible[0] = true;
+            background_visible[1] = false;
             file_delete("editor_files/BG/SplashBackground.png");
             file_delete("editor_files/BG/SplashClickBackground.png");
             global.MenuBGing = 0;
             room_set_background(RoomMenu, 0, 1, 0, MainMenuBackground, 0, 0, 1, 1, 0, 0, 1);
+            room_set_background(RoomMenu, 1, 1, 0, MainMenuBackground, 0, 0, 1, 1, 0, 0, 1);
             show_message_async("File deleted"); 
             ButtonDeleteBackground.BackgroundD = "";
         }

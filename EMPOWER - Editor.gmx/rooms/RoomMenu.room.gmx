@@ -56,6 +56,7 @@
     <instance objName="ButtonAddBackground" x="512" y="192" name="inst_A6DA8708" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonDeleteBackground" x="544" y="320" name="inst_4930A0DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ButtonSwapSplash" x="320" y="224" name="inst_6FD7A0B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="DrawSplash" x="128" y="64" name="inst_58BC8303" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

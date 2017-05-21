@@ -199,11 +199,13 @@ if(global.PlayerMenuBGing != 0)
     global.PlayerMenuBG = background_add("editor_files/BG/MenuBackground.png",0,0);
     room_set_background(RoomPlayerMenu, 0, 1, 0, global.PlayerMenuBG, 0, 0, 0, 0, 0, 0, 1);
 }
+global.splash = 0;
 if(global.MenuBGing != 0)
 {
 
     global.MenuBG = background_add("editor_files/BG/SplashBackground.png",0,0);
     global.MenuClickBG = background_add("editor_files/BG/SplashClickBackground.png",0,0);
+    room_set_background(RoomMenu, 1, 1, 0, global.MenuBG, 0, 0, 0, 0, 0, 0, 1);
     room_set_background(RoomMenu, 0, 1, 0, global.MenuClickBG, 0, 0, 0, 0, 0, 0, 1);
 }
 if(global.NewGBGing != 0)
