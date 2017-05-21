@@ -355,9 +355,9 @@ if(room == RoomConsView)
     {
         cardNameText = "Event";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-        draw_text_transformed(x, y + 152, "Required Int: " + string(reqInt),1,1,0);
-        draw_text_transformed(x, y + 184, "Required Cha: " + string(reqChar),1,1,0);
-        draw_text_transformed(x, y + 216, "Required Wel: " + string(reqWell),1,1,0); 
+        draw_text_transformed(x, y + 152, "Required " + global.customInt + ": " + string(reqInt),1,1,0);
+        draw_text_transformed(x, y + 184, "Required " + global.customChar + ": " + string(reqChar),1,1,0);
+        draw_text_transformed(x, y + 216, "Required " + global.customWell + ": " + string(reqWell),1,1,0); 
     }
     if(RoomState == 1)
     {
@@ -370,9 +370,9 @@ if(room == RoomConsView)
     {
         cardNameText = "Consequence";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-        draw_text_transformed(x, y + 152, "Int: " + string(INT),1,1,0);
-        draw_text_transformed(x, y + 184, "Char: " + string(Cha),1,1,0);
-        draw_text_transformed(x, y + 216, "Well: " + string(Wel),1,1,0);
+        draw_text_transformed(x, y + 152, global.customInt + ": " + string(INT),1,1,0);
+        draw_text_transformed(x, y + 184, global.customChar + ": " + string(Cha),1,1,0);
+        draw_text_transformed(x, y + 216, global.customWell + ": " + string(Wel),1,1,0);
     }
     if(RoomState == 3)
     {

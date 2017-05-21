@@ -46,6 +46,27 @@ delay = 4;//sets the delay on text entry
 textShortLength = 30;//sets the max text for small text boxes
 textLongLength = 90;//sets the max text for large text boxes
 image_xscale = 1.5; //sets the scale to be 1.5 (default is 1)
+if(room == RoomCustomStats)
+{
+    if(instance_id[realNameTextBoxRef] == id)//checks instnace_id[ref] vs the id (current box clicked on)
+    {            
+        sprite_index = TextInputBoxSprite_Small;
+        txt_input = global.customInt;//sets default text
+        txt_display = "Stat 1: ";     //sets display text
+    }
+    if(instance_id[descTextBoxRef] == id)//checks instnace_id[ref] vs the id (current box clicked on)
+    {            
+        sprite_index = TextInputBoxSprite_Small;
+        txt_input = global.customWell;//sets default text
+        txt_display = "Stat 2: ";     //sets display text
+    }
+    if(instance_id[thirdTextBoxRef] == id)//checks instnace_id[ref] vs the id (current box clicked on)
+    {           
+        sprite_index = TextInputBoxSprite_Small;
+        txt_input = global.customChar;//sets default text
+        txt_display = "Stat 3: ";     //sets display text
+    }
+}
 if(room == RoomLocationAdd)//checks room
 {    
     if(instance_id[realNameTextBoxRef] == id)//checks instnace_id[ref] vs the id (current box clicked on)
@@ -270,19 +291,19 @@ if(room == RoomCardEdit)
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.reqEventInt);//sets default text
-            txt_display = "Required Int: "
+            txt_display = "Required " + global.customInt + ": " 
         }
         if(instance_id[global.box2] == id)
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.reqEventChar);
-            txt_display = "Required Char: "
+            txt_display = "Required " + global.customChar + ": "
         }
         if(instance_id[global.box3] == id)
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.reqEventWell);
-            txt_display = "Required Well: "
+            txt_display = "Required " + global.customWell + ": " 
         }
         if(instance_id[global.box4] == id)
         {
@@ -378,7 +399,7 @@ if(room == RoomCardEdit)
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.consInt);
-            txt_display = "Int: "
+            txt_display = global.customInt + ": "
             global.tempVal = 2;
             inst = instance_create(global.tempInputBoxX -55,global.tempInputBoxY,ConsType);  //creats an instance at the location using the object 
         }
@@ -386,7 +407,7 @@ if(room == RoomCardEdit)
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.consChar);
-            txt_display = "Char: "
+            txt_display = global.customChar + ": "
             global.tempVal = 3;
             inst = instance_create(global.tempInputBoxX -55,global.tempInputBoxY,ConsType);  //creats an instance at the location using the object 
  
@@ -395,7 +416,7 @@ if(room == RoomCardEdit)
         {
             sprite_index = TextInputBoxSprite_Small;
             txt_input = string(global.consWell);
-            txt_display = "Well: "
+            txt_display = global.customWell + ": "
             global.tempVal = 4;
             inst = instance_create(global.tempInputBoxX -55 ,global.tempInputBoxY,ConsType);  //creats an instance at the location using the object 
  
@@ -900,7 +921,21 @@ if(room == RoomLocationAdd)
     //checks the event types mythical status and displays accordingly
 
 }
-
+if(room == RoomCustomStats)
+{
+    if(instance_id[descTextBoxRef-1] == id)
+    {
+        txt_input = global.customInt;
+    }
+    if(instance_id[descTextBoxRef] == id)
+    {
+        txt_input = global.customChar;
+    }
+    if(instance_id[descTextBoxRef+1] == id)
+    {
+        txt_input = global.customWell;
+    }
+}
 if(room == RoomCardEdit)
 {
     if(global.RoomState == 0)
@@ -1789,7 +1824,14 @@ if(room == RoomLocationAdd)
         draw_text_ext(global.InputBoxX, myY - 8 ,txt_input, 20, 300);
     }
 }
-
+if(room == RoomCustomStats)
+{
+        draw_set_valign(fa_middle);
+        draw_set_halign(fa_right);
+        draw_text(global.roomWidth/2 , myY+50, txt_display); //draws the input box text
+        draw_set_halign(fa_left);        
+        draw_text(global.roomWidth/2 , myY+50, txt_input);      
+}
 if(room == RoomCardEdit)
 {
     if(global.RoomState == 1)

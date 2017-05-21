@@ -51,6 +51,21 @@ global.tempTextBoxY = global.InputTextY;//sets temp text box Y
 global.textBoxInstanceRef = instance_count;//This is the number of objects before instances are created.
 
 global.focus = 0; //box focus
+if(room == RoomCustomStats)
+{
+   global.tempInputBoxY -= 52;
+    global.tempTextBoxY -= 2;
+    for(i = 0; i &lt; 3; i++)
+    {    
+        if(i != 0)
+        {
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+        }
+        
+        global.textboxArray[i] = instance_create(global.roomWidth/2+149,global.tempInputBoxY+100,TextInputBox);         
+    }
+}
 if(room == RoomMap)
 {            
     global.tempInputBoxY -= 52;
@@ -873,6 +888,14 @@ if(room == RoomTutorial)
 if(room != RoomMap)
 {   
     room = tempRoom;
+}
+if(room == RoomCustomStats)
+{
+    ini_open(global.editorINI)
+    ini_write_string("General", "Custom Int", global.customInt);
+    ini_write_string("General", "Custom Well",  global.customWell);
+    ini_write_string("General", "Custom Char", global.customChar);
+    ini_close();
 }
 </string>
           </argument>

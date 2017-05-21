@@ -308,10 +308,11 @@ if(global.RoomState == 3)
     {
         cardNameText = "Event";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-        draw_text_transformed(x, y + 152, "Required Int: " + string(reqINT),1,1,0);
-        draw_text_transformed(x, y + 184, "Required Cha: " + string(reqCha),1,1,0);
-        draw_text_transformed(x, y + 216, "Required Wel: " + string(reqWel),1,1,0);
-    }
+        draw_text_transformed(x, y + 152, "Required " + global.customInt + ": " + string(reqINT),1,1,0);
+        draw_text_transformed(x, y + 184, "Required " + global.customChar + ": " + string(reqCha),1,1,0);
+        draw_text_transformed(x, y + 216, "Required " + global.customWell + ": " + string(reqWel),1,1,0);
+    }    
+
     if(global.RoomState == 1)
     {
         cardNameText = "Action";
@@ -323,10 +324,11 @@ if(global.RoomState == 3)
     {
         cardNameText = "Consequence";
         draw_text_transformed(x, y + 120, RealName,1,1,0);
-        draw_text_transformed(x, y + 152, "Int: " + string(INT),1,1,0);
-        draw_text_transformed(x, y + 184, "Char: " + string(Cha),1,1,0);
-        draw_text_transformed(x, y + 216, "Well: " + string(Wel),1,1,0);
+        draw_text_transformed(x, y + 152, global.customInt + ": " + string(INT),1,1,0);
+        draw_text_transformed(x, y + 184, global.customChar + ": " + string(Cha),1,1,0);
+        draw_text_transformed(x, y + 216, global.customWell + ": " + string(Wel),1,1,0);
     }
+
     if(global.RoomState == 3)
     {
         cardNameText = "Information";

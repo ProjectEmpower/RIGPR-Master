@@ -83,11 +83,13 @@ global.MythTutorial = ini_read_real("Tutorial","Myth Include",1);
 global.PlayerStatsTutorial = ini_read_real("Tutorial","Stats Include",1);
 global.DiaryTutorial = ini_read_real("Tutorial","Diary Include",1);
 global.CardsTutorial = ini_read_real("Tutorial","Cards Include",1);
-
-    for(i = 0; i &lt; 10; i++)
-    {            
-        global.TutorialOrder[i] = ini_read_real("Tutorial","Order"+string(i),i+1);;
-    }
+for(i = 0; i &lt; 10; i++)
+{            
+    global.TutorialOrder[i] = ini_read_real("Tutorial","Order"+string(i),i+1);;
+}
+global.customInt = ini_read_string("General", "Custom Int", "Int");
+global.customWell = ini_read_string("General", "Custom Well", "Well");
+global.customChar = ini_read_string("General", "Custom Char", "Char");
 global.totalLocationBackgrounds = ini_read_real("General", "Location Backgrounds", 0);   
 global.totalNormBuildingSprites = ini_read_real("General", "Norm Building Sprites", 0);
 global.totalMythBuildingSprites = ini_read_real("General", "Myth Building Sprites", 0);

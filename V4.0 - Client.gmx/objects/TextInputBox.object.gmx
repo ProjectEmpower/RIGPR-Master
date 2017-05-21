@@ -60,6 +60,7 @@ if(room == RoomNewGame)
         }
     }   
 }
+
 if(room == RoomCharacter)
 {    
     image_xscale = 1.5;
@@ -72,19 +73,19 @@ if(room == RoomCharacter)
     if(id == instance_id[realNameTextBoxRef+1])
     {
         sprite_index = No_sprite;
-        txt_display = "Int: ";
+        txt_display = global.customInt + ": ";
         txt_input = global.playerInt;
     }   
         if(id == instance_id[realNameTextBoxRef+2])
     {
         sprite_index = No_sprite;
-        txt_display = "Char: ";
+        txt_display = global.customChar + ": ";
         txt_input = global.playerChar;
     }   
         if(id == instance_id[realNameTextBoxRef+3])
     {
         sprite_index = No_sprite;
-        txt_display = "Well: ";
+        txt_display = global.customWell + ": ";
         txt_input = global.playerWell;
     }   
 }
@@ -147,21 +148,23 @@ if(room == RoomDiary)
     }   
     if(id == instance_id[realNameTextBoxRef+7])
     {
+
         sprite_index = No_sprite;
-        txt_display = "INT: ";
-        txt_input = "OLD - " + string(global.LoadTempInt)+ ", NEW - " + string(global.LoadInt);
+        txt_display = global.customInt+": ";
+        txt_input = "Old - " + string(global.LoadTempInt)+ ", New - " + string(global.LoadInt);
     }   
+
     if(id == instance_id[realNameTextBoxRef+8])
     {
         sprite_index = No_sprite;
-        txt_display = "CHAR: ";
-        txt_input = "OLD - " + string(global.LoadTempChar)+ ", NEW - " + string(global.LoadChar);
+        txt_display = global.customChar+": ";
+         txt_input = "Old - " + string(global.LoadTempChar)+ ", New - " + string(global.LoadChar);
     }   
     if(id == instance_id[realNameTextBoxRef+9])
     {
         sprite_index = No_sprite;
-        txt_display = "WELL: ";
-        txt_input = "OLD - " + string(global.LoadTempWell)+ ", NEW - " + string(global.LoadWell);
+        txt_display = global.customWell+": ";
+        txt_input = "Old - " + string(global.LoadTempWell)+ ", New - " + string(global.LoadWell);
     }   
     if(id == instance_id[realNameTextBoxRef+10])
     {
@@ -412,15 +415,18 @@ if(room == RoomLocationView)
 if(room == RoomDiary)
 {
     draw_set_valign(fa_middle);
+    if(instance_id[realNameTextBoxRef] != id)
+        draw_set_halign(fa_right);
+    else
+        draw_set_halign(fa_left);
+    draw_text(global.roomWidth/4, myY ,txt_display);//Draws the input text
     draw_set_halign(fa_left);
-    draw_text(global.roomWidth/5-25, myY ,txt_display);//Draws the input text
-
     if(instance_id[seventhTextBoxRef+4] == id)
     {
         draw_text_ext(global.roomWidth/5-175, myY+25 ,txt_input,20,350); //draws the input box text
     }
     else
-        draw_text(global.roomWidth/5+25, myY ,txt_input); //draws the input box text
+        draw_text(global.roomWidth/4, myY ,txt_input); //draws the input box text
 }
 </string>
           </argument>

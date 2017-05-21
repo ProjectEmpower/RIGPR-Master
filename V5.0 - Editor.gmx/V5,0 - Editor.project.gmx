@@ -98,6 +98,7 @@
     <sprite>sprites\BackgroundSprite</sprite>
     <sprite>sprites\MenuButton</sprite>
     <sprite>sprites\InfoLinkSprite</sprite>
+    <sprite>sprites\CustomStatNamesSprite</sprite>
     <sprite>sprites\SwapSplashButtonSprite</sprite>
     <sprite>sprites\SpriteDelLocBack</sprite>
     <sprite>sprites\SpriteAddLocBack</sprite>
@@ -251,6 +252,7 @@
     <object>objects\GoToNewG</object>
     <object>objects\ButtonCredits</object>
     <object>objects\GoToPlayerMenu</object>
+    <object>objects\ButtonCustomStats</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
@@ -275,6 +277,7 @@
     <room>rooms\RoomPlayerMenu</room>
     <room>rooms\RoomCredits</room>
     <room>rooms\RoomNewGame</room>
+    <room>rooms\RoomCustomStats</room>
     <room>rooms\RoomTutorial</room>
   </rooms>
   <help>

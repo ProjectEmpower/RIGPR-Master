@@ -76,6 +76,8 @@ if(room == RoomCharacter) //checks room
         room = RoomMap
     }
 }
+if(room == RoomCustomStats)
+    room = RoomOptions;
 if(room == RoomCredits)
 room = RoomOptions
 if(room == RoomMap and global.BackgroundSetup == true)
@@ -364,6 +366,8 @@ if(room == RoomCharacter) //checks room
         room = RoomMap
     }
 }
+if(room == RoomCustomStats)
+    room = RoomOptions;
 if(room == RoomCredits)
 room = RoomOptions
 if(room == RoomMap and global.BackgroundSetup == true)

@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//sets the buttons position
 x = global.roomWidth/2;
-y = global.roomHeight/2+150;
+y = global.roomHeight/2+250;
 </string>
           </argument>
         </arguments>

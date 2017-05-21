@@ -84,7 +84,7 @@
     <script>scripts\LoadHistory.gml</script>
     <script>scripts\PlayerSave.gml</script>
     <script>scripts\LoadCards.gml</script>
-    <script>scripts\DownloadFiles.gml</script>
+    <script>scripts\SetupFiles.gml</script>
     <script>scripts\StartGame.gml</script>
     <script>scripts\LoadTutorial.gml</script>
   </scripts>

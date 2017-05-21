@@ -207,6 +207,21 @@ else if(room == RoomCardEdit)
         }
     }
 }
+if(room == RoomCustomStats)
+{
+    if(instance_id[descTextBoxRef-1] == id)
+    {
+        global.customInt = txt_input;
+    }
+    if(instance_id[descTextBoxRef] == id)
+    {
+        global.customChar = txt_input;
+    }
+    if(instance_id[descTextBoxRef+1] == id)
+    {
+        global.customWell = txt_input;
+    }
+}
 if(room == RoomTutorial)
 {
     if(instance_id[global.boX0] == id)

@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
+if(room == RoomCustomStats)
+    draw_text(global.roomWidth/2, 125, "Custom Stats Setup");
 if(room == RoomCharacter)
     draw_text(global.roomWidth/2, 125, "Player Stats Background Setup");
 if(room == RoomDiary)
