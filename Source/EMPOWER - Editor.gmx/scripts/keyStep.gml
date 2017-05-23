@@ -221,6 +221,10 @@ if(room == RoomCustomStats)
     {
         global.customWell = txt_input;
     }
+    if(instance_id[descTextBoxRef+2] == id)
+    {
+        global.customMaxWeeks = real(txt_input);
+    }
 }
 if(room == RoomTutorial)
 {

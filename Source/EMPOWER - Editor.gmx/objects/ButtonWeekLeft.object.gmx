@@ -66,7 +66,7 @@
         }
         else if(global.week == 1 and global.year &gt; 1)
         {
-            global.week = 52;
+            global.week = global.customMaxWeeks;
             global.year -= 1;
 
         }

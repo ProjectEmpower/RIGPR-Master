@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>x = global.roomWidth-30;
 y = 80;
-if(global.JWeek == 52 and global.JYear == 3)
+if(global.JWeek == global.customMaxWeeks and global.JYear == 3)
     sprite_index = No_sprite;
 </string>
           </argument>
@@ -57,7 +57,7 @@ if(ini_section_exists("Year"+string(global.JYear) + " - Week"+string(global.JWee
     script_execute(SaveHistory);
 }
 ini_close()
-if(global.JWeek &lt; 52)
+if(global.JWeek &lt; global.customMaxWeeks)
 {
     global.JWeek += 1;
 }    

@@ -50,16 +50,7 @@ y = global.roomHeight / 2 - 100;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.MapBacking == 1)
-{
-    test = background_add("editor_files/sprites/Map.png",0,0);
-    room_set_background(RoomMap, 0, 1, 0, test, 0, 0, 1, 1, 0, 0, 1);
-}
-else
-{
-    room_set_background(RoomMap, 0, 1, 0, NewMapBG, 0, 0, 0, 0, 0, 0, 1);
-}
-
+            <string>
 room = RoomMap
 </string>
           </argument>

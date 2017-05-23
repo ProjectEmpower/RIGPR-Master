@@ -29,7 +29,7 @@
 {
     global.WeekRightButtonX = global.roomWidth-30;
     global.WeekRightButtonY = 80;
-    if(global.myth == 2 or global.week == 52 and global.year == 3 or global.BackgroundSetup == true)
+    if(global.myth == 2 or global.week == global.customMaxWeeks and global.year == 3 or global.BackgroundSetup == true)
         sprite_index = No_sprite;
 }
 
@@ -57,11 +57,11 @@
             <kind>1</kind>
             <string>if(room == RoomMap)
 {
-    if(global.week &lt; 52)
+    if(global.week &lt; global.customMaxWeeks)
     {
         global.week += 1;
     }
-    else if(global.week == 52 and global.year &lt; 3)
+    else if(global.week == global.customMaxWeeks and global.year &lt; 3)
     {
         global.week = 1;
         global.year += 1;

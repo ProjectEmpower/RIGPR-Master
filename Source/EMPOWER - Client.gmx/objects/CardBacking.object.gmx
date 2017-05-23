@@ -292,7 +292,7 @@ if(room == RoomCharView)
             global.JWeek = global.playerWeek;
             global.JYear = global.playerYear;
             script_execute(SaveHistory);
-            if(global.playerWeek &lt; 52)
+            if(global.playerWeek &lt; global.customMaxWeeks)
                 global.playerWeek += 1;
             else if(global.playerYear &lt; 3)
             {
@@ -368,7 +368,7 @@ if(room == RoomConsView)
             global.JWeek = global.playerWeek;
             global.JYear = global.playerYear;
             script_execute(SaveHistory);
-            if(global.playerWeek &lt; 52)
+            if(global.playerWeek &lt; global.customMaxWeeks)
                 global.playerWeek += 1;
             else if(global.playerYear &lt; 3)
             {

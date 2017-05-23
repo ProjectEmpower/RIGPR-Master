@@ -345,6 +345,7 @@ if(global.RoomState == 3)
             draw_text_ext(x, y + 125, CardText,20,200);
         
     }
+    draw_set_valign(fa_middle);
     draw_text_transformed(x, y - 112, cardNameText,1.5,1.5,0);
 }
 else

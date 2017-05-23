@@ -62,7 +62,7 @@ if(global.RoomState == 3)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardImage = show_message_async("Please select the Card art to upload.");
+            <string>CardImage = show_message_async("Please select the Card art to upload, must be 208x160.");
                 
 </string>
           </argument>

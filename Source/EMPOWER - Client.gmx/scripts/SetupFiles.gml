@@ -2,6 +2,7 @@ ini_open(global.editorINI);
 global.customInt = ini_read_string("General", "Custom Int", "Int");
 global.customWell = ini_read_string("General", "Custom Well", "Well");
 global.customChar = ini_read_string("General", "Custom Char", "Char");
+global.customMaxWeeks = ini_read_real("General","Custom Weeks", 24);
 global.totalNormBuildingSprites = ini_read_real("General", "Norm Building Sprites", 0);
 global.totalMythBuildingSprites = ini_read_real("General", "Myth Building Sprites", 0);
 global.totalBothBuildingSprites = ini_read_real("General", "Both Building Sprites", 0);

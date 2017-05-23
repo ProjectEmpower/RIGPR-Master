@@ -55,14 +55,18 @@ if(room == RoomCustomStats)
 {
    global.tempInputBoxY -= 52;
     global.tempTextBoxY -= 2;
-    for(i = 0; i &lt; 3; i++)
+    for(i = 0; i &lt; 4; i++)
     {    
         if(i != 0)
         {
             global.tempInputBoxY += 25;
             global.tempTextBoxY += 25;
         }
-        
+        if(i == 3)
+        {
+            global.tempInputBoxY += 25;
+            global.tempTextBoxY += 25;
+        }        
         global.textboxArray[i] = instance_create(global.roomWidth/2+149,global.tempInputBoxY+100,TextInputBox);         
     }
 }
@@ -895,6 +899,7 @@ if(room == RoomCustomStats)
     ini_write_string("General", "Custom Int", global.customInt);
     ini_write_string("General", "Custom Well",  global.customWell);
     ini_write_string("General", "Custom Char", global.customChar);
+    ini_write_real("General", "Custom Weeks", global.customMaxWeeks);
     ini_close();
 }
 </string>

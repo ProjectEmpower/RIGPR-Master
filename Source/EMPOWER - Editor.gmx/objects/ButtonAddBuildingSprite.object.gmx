@@ -65,7 +65,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>inputN = show_message_async("Please select Regular Building's image to upload.");
+            <string>inputN = show_message_async("Please select Regular Building's image to upload, must be 128x128.");
                 
 </string>
           </argument>

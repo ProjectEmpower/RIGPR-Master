@@ -66,6 +66,12 @@ if(room == RoomCustomStats)
         txt_input = global.customChar;//sets default text
         txt_display = "Stat 3: ";     //sets display text
     }
+    if(instance_id[forthTextBoxRef] == id)//checks instnace_id[ref] vs the id (current box clicked on)
+    {           
+        sprite_index = TextInputBoxSprite_Small;
+        txt_input = string(global.customMaxWeeks);//sets default text
+        txt_display = "Max Weeks: ";     //sets display text
+    }
 }
 if(room == RoomLocationAdd)//checks room
 {    
@@ -872,11 +878,11 @@ if(room == RoomLocationAdd)
             }
 
         }
-        if(global.eventWeek &gt; 52)
+        if(global.eventWeek &gt; global.customMaxWeeks)
         {
             global.eventWeek = 0;
             txt_input = string(global.eventWeek);    
-            show_message("There are only 52 weeks in a year!");           
+            show_message("There are only " + string(global.customMaxWeeks) + " weeks, as set the by 'Max Weeks' under 'Options' &gt; 'Custom Stats'.");           
         }
     }
     if(id == instance_id[seventhTextBoxRef])
@@ -934,6 +940,10 @@ if(room == RoomCustomStats)
     if(instance_id[descTextBoxRef+1] == id)
     {
         txt_input = global.customWell;
+    }
+    if(instance_id[descTextBoxRef+2] == id)
+    {
+        txt_input = string(global.customMaxWeeks);
     }
 }
 if(room == RoomCardEdit)

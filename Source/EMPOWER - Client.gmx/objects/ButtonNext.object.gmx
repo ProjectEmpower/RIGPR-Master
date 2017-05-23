@@ -57,10 +57,8 @@ y = room_height-75
     ini_write_real("Player","Char",5);
     ini_write_real("Player","Well",5);
 
-    if(global.TutorialSetup)
-        week = 0;
-    else
-        week = 1;
+    week = 0;
+
     ini_write_real("Player","Week",week);
     ini_write_real("Player","Tutorial",global.CompletedTutorial);
     ini_write_real("Player","Year",1);
@@ -68,6 +66,7 @@ y = room_height-75
     ini_close();
     script_execute(PlayerLoad);
     global.NewGame = false;
+    global.TutorialSetup = true;
     room = RoomMap;
 }
 </string>

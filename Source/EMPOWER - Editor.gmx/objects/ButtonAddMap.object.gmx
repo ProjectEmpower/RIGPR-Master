@@ -54,7 +54,7 @@ MapF = "";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Map = show_message_async("Please select the map file to upload");
+            <string>Map = show_message_async("Please select the map file to upload.");
                 
 </string>
           </argument>

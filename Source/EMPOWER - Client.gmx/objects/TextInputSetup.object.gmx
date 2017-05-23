@@ -256,7 +256,7 @@ if(os_type == os_android and (global.startOrientation == display_portrait or glo
         }
         if(room == RoomNewGame)
         {
-                textFeilds = 2;//number of text boxes we want.
+                textFeilds = 1;//number of text boxes we want.
             for(i = 0; i &lt; textFeilds; i++)
           {      
             if(i == 1)
@@ -535,7 +535,7 @@ else////////////////////////////////////////////////////////////////////////////
         }
         if(room == RoomNewGame)
         {
-                textFeilds = 2;//number of text boxes we want.
+                textFeilds = 1;//number of text boxes we want.
             for(i = 0; i &lt; textFeilds; i++)
           {      
             if(i == 1)
@@ -578,9 +578,18 @@ else////////////////////////////////////////////////////////////////////////////
                      if("Event"+string(i) == EventStore &amp;&amp; ds_list_find_index(listtemo,"Event"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
                         ds_list_add(listtemo,EventStore) 
-                        i = 0;
                         cardNum += 1;
-                        Week +=1;
+                        if(Week == global.customMaxWeeks and Year &lt; 3)
+                        {
+                            Week = 1;
+                            Year += 1;
+                            i = 0;
+                        }
+                        if(Week &lt;= global.customMaxWeeks)
+                        {
+                            Week +=1;  
+                            i = 0;
+                        }
                     }
 
             }
@@ -618,9 +627,18 @@ else////////////////////////////////////////////////////////////////////////////
                     if("Event"+string(i) == EventStore &amp;&amp; ds_list_find_index(listtemo,"Event"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
                         ds_list_add(listtemo,EventStore) 
-                        i = 0;
                         cardNum += 1;
-                        Week +=1;
+                        if(Week == global.customMaxWeeks and Year &lt; 3)
+                        {
+                            Week = 1;
+                            Year += 1;
+                            i = 0;
+                        }
+                        if(Week &lt;= global.customMaxWeeks)
+                        {
+                            Week +=1;  
+                            i = 0;
+                        }
                     }
 
             }
@@ -662,9 +680,18 @@ else////////////////////////////////////////////////////////////////////////////
                     if("Action"+string(i) == ActionStore &amp;&amp; ds_list_find_index(listtemo,"Action"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
                         ds_list_add(listtemo,ActionStore)
-                        i = 0;
                         cardNum += 1;
-                        Week +=1;
+                        if(Week == global.customMaxWeeks and Year &lt; 3)
+                        {
+                            Week = 1;
+                            Year += 1;
+                            i = 0;
+                        }
+                        if(Week &lt;= global.customMaxWeeks)
+                        {
+                            Week +=1;  
+                            i = 0;
+                        }
                     }
 
             }
@@ -705,9 +732,18 @@ else////////////////////////////////////////////////////////////////////////////
                     if("Action"+string(i) == ActionStore &amp;&amp; ds_list_find_index(listtemo,"Action"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
                         ds_list_add(listtemo,ActionStore)
-                        i = 0;
                         cardNum += 1;
-                        Week +=1;
+                        if(Week == global.customMaxWeeks and Year &lt; 3)
+                        {
+                            Week = 1;
+                            Year += 1;
+                            i = 0;
+                        }
+                        if(Week &lt;= global.customMaxWeeks)
+                        {
+                            Week +=1;  
+                            i = 0;
+                        }
                     }
 
             }
@@ -754,9 +790,18 @@ else////////////////////////////////////////////////////////////////////////////
                         {
         
                             ds_list_add(listtemo,ConsStore) 
-                            i = 0;
                             cardNum += 1;
-                            Week +=1;
+                            if(Week == global.customMaxWeeks and Year &lt; 3)
+                            {
+                                Week = 1;
+                                Year += 1;
+                                i = 0;
+                            }
+                            if(Week &lt;= global.customMaxWeeks)
+                            {
+                                Week +=1;  
+                                i = 0;
+                            }
                         }
                     }
 
@@ -797,10 +842,22 @@ else////////////////////////////////////////////////////////////////////////////
                         if("Cons"+string(i) == ConsStore &amp;&amp; ds_list_find_index(listtemo,"Cons"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                         {                       
                             ds_list_add(listtemo,ConsStore) 
-                            i = 0;
+
                             cardNum += 1;
-                            Week +=1;
+                            if(Week == global.customMaxWeeks and Year &lt; 3)
+                            {
+                                Week = 1;
+                                Year += 1;
+                                i = 0;
+                            }
+                            if(Week &lt;= global.customMaxWeeks)
+                            {
+                                Week +=1;  
+                                i = 0;
+                            }
                         }
+
+
                     }
             }
             if( ds_list_size(listtemo) &gt;= 4)
@@ -888,17 +945,26 @@ else////////////////////////////////////////////////////////////////////////////
                             ini_close();
                                          
                         }
-                        if(Week &lt;= global.playerWeek)
-                        {
-                            Week +=1;  
-                            e = 0;
-                        }
+
+
 
                     }                 
                     if("Info"+string(i) == InfoStore &amp;&amp; ds_list_find_index(listtemo,"Info"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
                         ds_list_add(listtemo,InfoStore) 
-                        e = 0;
+                        if(Week == global.customMaxWeeks and Year &lt; 3)
+                        {
+                            Week = 1;
+                            Year += 1;
+                            e = 0;
+                            i = 0;
+                        }
+                        if(Week &lt;= global.customMaxWeeks)
+                        {
+                            Week +=1;  
+                            e = 0;
+                            i = 0;
+                        }
                         cardNum += 1;
 
                     }
@@ -987,17 +1053,23 @@ else////////////////////////////////////////////////////////////////////////////
                             ini_close();
                                          
                         }
-                        if(Week &lt;= global.playerWeek)
-                        {
-                            Week +=1;  
-                            e = 0;
-                        }
                     }                       
                     if("Info"+string(i) == InfoStore &amp;&amp; ds_list_find_index(listtemo,"Info"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
                         ds_list_add(listtemo,InfoStore) 
-                        e = 0;
-                        i = 0;
+                        if(Week == global.customMaxWeeks and Year &lt; 3)
+                        {
+                            Week = 1;
+                            Year += 1;
+                            e = 0;
+                            i = 0;
+                        }
+                        if(Week &lt;= global.customMaxWeeks)
+                        {
+                            Week +=1;  
+                            e = 0;
+                            i = 0;
+                        }
                         cardNum += 1;
 
                     }
@@ -1047,9 +1119,20 @@ else////////////////////////////////////////////////////////////////////////////
                     if("Char"+string(i) == CharStore &amp;&amp; ds_list_find_index(listtemo,"Char"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
                         ds_list_add(listtemo,CharStore) 
-                        i = 0;
                         cardNum += 1;
-                        Week +=1;
+                        if(Week == global.customMaxWeeks and Year &lt; 3)
+                        {
+                            Week = 1;
+                            Year += 1;
+                            e = 0;
+                            i = 0;
+                        }
+                        if(Week &lt;= global.customMaxWeeks)
+                        {
+                            Week +=1;  
+                            e = 0;
+                            i = 0;
+                        }
                     }
 
             }
@@ -1090,10 +1173,22 @@ else////////////////////////////////////////////////////////////////////////////
                     if("Char"+string(i) == CharStore &amp;&amp; ds_list_find_index(listtemo,"Char"+string(i)) == -1)//checks to see if the event is the currently loaded event and adds it to the list if not already on the listtemo
                     {
                         ds_list_add(listtemo,CharStore) 
-                        i = 0;
                         cardNum += 1;
-                        Week +=1;
+                        if(Week == global.customMaxWeeks and Year &lt; 3)
+                        {
+                            Week = 1;
+                            Year += 1;
+                            e = 0;
+                            i = 0;
+                        }
+                        if(Week &lt;= global.customMaxWeeks)
+                        {
+                            Week +=1;  
+                            e = 0;
+                            i = 0;
+                        }
                     }
+
 
             }
             if(ds_list_size(listtemo)  &gt;= 4)

@@ -19,10 +19,10 @@ global.AllCards = "editor_files/AllCards.ini";
 
 if(!file_exists(global.playerINI))
 {
+    global.TutorialSetup = false;
    global.NewGame = true;
    global.UserSprite = 0;
     global.playerSprite = 0;
-    global.TutorialSetup = true;  
     global.CompletedTutorial = 0;
 }
 else
