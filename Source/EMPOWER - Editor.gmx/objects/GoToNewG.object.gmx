@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = 375
+            <string>//positions
+x = 375
 y = global.roomHeight-170
 </string>
           </argument>
@@ -49,7 +50,8 @@ y = global.roomHeight-170
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    room = RoomNewGame;
+            <string>//moves to newgame room to set clients BG
+        room = RoomNewGame;
 </string>
           </argument>
         </arguments>

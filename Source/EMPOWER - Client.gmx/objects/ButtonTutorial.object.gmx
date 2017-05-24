@@ -60,7 +60,7 @@ y = global.roomHeight - 75;
     ini_write_real("Player","Well",5);
 
     week = 1;
-
+    global.CompletedTutorial = 1;
     ini_write_real("Player","Week",week);
     ini_write_real("Player","Tutorial",global.CompletedTutorial);
     ini_write_real("Player","Year",1);

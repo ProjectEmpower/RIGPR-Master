@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room != RoomSprites)
+            <string>//positions
+if(room != RoomSprites)
 {
     x = global.roomWidth - 550;
     y = global.roomHeight /2;
@@ -35,6 +36,7 @@ if(room == RoomSprites)
     x = 200;
     y = global.roomHeight /2- 100;
 }
+//hides if not relevant
 if(global.cardSprite &lt;= 0)
     sprite_index = No_sprite;
     
@@ -60,8 +62,9 @@ if(global.cardSprite &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>//sets temproom variable
 tempRoom = room;
+//the code here is used to move the current card sprite left one place if it is available
 if(global.RoomState == 0)
 {
     if(global.cardSprite &gt; 0)

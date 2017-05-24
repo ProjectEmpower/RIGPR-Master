@@ -69,7 +69,7 @@ if(global.ListStyle == 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>//moves card list
 if(global.tempPos &gt; 0)
 {
     global.tempPos -= 1;

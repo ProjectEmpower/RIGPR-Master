@@ -25,9 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.card1[0] == 0)
-    sprite_index = No_sprite
-
+            <string>if(global.RoomState ==0)
+{
+    if(global.card1[0] == 0)
+        sprite_index = No_sprite
+}
+else
+  sprite_index = No_sprite  
+        
 x = 125;
 y = global.roomHeight - 200;
 </string>

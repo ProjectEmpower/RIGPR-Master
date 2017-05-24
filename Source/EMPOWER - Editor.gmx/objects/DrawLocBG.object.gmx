@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomBackgrounds)
+            <string>//Draws text to the screen (this is instanced from background add)
+if(room == RoomBackgrounds)
     draw_text(x,y-130,"Location Backgrounds");
 else
     draw_text(x,y-130,"Background");

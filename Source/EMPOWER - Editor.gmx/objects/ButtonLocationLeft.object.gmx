@@ -58,7 +58,7 @@ if(global.BGRef &gt; -1)//checks to see if it can move
     if(room == RoomLocationAdd)
         script_execute(SaveLocation);//save
     global.BGRef -= 1;//moves back a location
-    global.EventID = 0;//sets the eventID back to 0 (so it displays event 0 in future)
+    global.EventID = 1;//sets the eventID back to 0 (so it displays event 0 in future)
     if(global.BGRef != -1)
         room_set_background(tempRoom, 0, 1, 0, global.locationBGArray[global.BGRef], 0, 0, 0, 0, 0, 0, 1); 
     else

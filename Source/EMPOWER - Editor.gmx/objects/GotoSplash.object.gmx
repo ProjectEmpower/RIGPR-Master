@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = 125
+            <string>//position
+x = 125
 y = global.roomHeight-170
 
 </string>
@@ -50,9 +51,9 @@ y = global.roomHeight-170
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.splash = 0;
-global.BackgroundSetup = true;
-
+            <string>global.splash = 0;//sets splash to current splash screen 0(click) or 1(tap)
+global.BackgroundSetup = true;//flags BG setup as true
+//switches room
 room = RoomMenu;
 
 </string>

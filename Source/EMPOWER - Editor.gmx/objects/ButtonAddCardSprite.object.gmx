@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomSprites)
+            <string>//position
+if(room == RoomSprites)
 {
     x = 125;
     y = global.roomHeight - 170;
@@ -35,9 +36,12 @@ else
     x = global.roomWidth - 375;
     y = global.roomHeight - 70;
 }
+//temproom
 tempRoom = room;
+//text variables used in object
 CardImage = "";
 CardImageF = "";
+//hides button when not required (info card screen)
 if(global.RoomState == 3)
     sprite_index = No_sprite;
 </string>
@@ -62,7 +66,8 @@ if(global.RoomState == 3)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardImage = show_message_async("Please select the Card art to upload, must be 208x160.");
+            <string>//begins the rpocess of adding card art, continues in dialog
+CardImage = show_message_async("Please select the Card art to upload, must be 208x160.");
                 
 </string>
           </argument>

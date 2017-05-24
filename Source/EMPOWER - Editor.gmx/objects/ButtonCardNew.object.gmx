@@ -25,9 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = global.roomWidth -125;
+            <string>//Sets position on screen
+x = global.roomWidth -125;
 y =  70;
-//Sets position on screen
+//swaps sprite based on current screen (any card or event card)
 if(global.RoomState == 0)
 {
     sprite_index = ButtonSpriteCreateEvent;

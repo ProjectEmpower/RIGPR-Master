@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomMenu and (global.MenuBGing != 0 and global.BackgroundSetup != false))
+            <string>//draws the title (indicating what BG user is viewing) on splash screen, click or tap
+if(room == RoomMenu and (global.MenuBGing != 0 and global.BackgroundSetup != false))
     switch(global.splash)
     {
         case 0: draw_text(global.roomWidth/2,125,"Click Splash Screen");

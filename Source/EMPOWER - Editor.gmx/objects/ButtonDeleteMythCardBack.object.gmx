@@ -51,7 +51,8 @@ CardBackF = "";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.mythCardBacking != 0)
+            <string>//if available, begins card back delettion, see dialog
+if(global.mythCardBacking != 0)
     CardBack = show_question_async("Are you sure you wish to delete the Myhthical Card background?");
 </string>
           </argument>

@@ -25,8 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.TutorialSetup == true)
+            <string>//hides button in tutoral setup
+if(global.TutorialSetup == true)
     sprite_index = No_sprite;
+//positions
 x = global.roomWidth /2;
 y = global.roomHeight - 70;
 </string>
@@ -51,7 +53,8 @@ y = global.roomHeight - 70;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>script_execute(SaveLocation);
+            <string>//creates a new event at a location
+script_execute(SaveLocation);//saves current info (any altered text, etc.)
 ini_open(global.locationINI); //opens the ini file   
 global.locationEventNumber += 1; //adds 1 to the number of events
 eventRef= string(global.locationEventNumber); //creates a string of the number of events (current number = this event)
@@ -61,7 +64,7 @@ eventNameYear = "Event"+eventRef+"Year";//creates the string used in the ini fil
 eventNameMyth = "Event"+eventRef+"Mythical";//creates the string used in the ini file
 ini_write_real(global.tempLocation, eventNameType, 0);//stores blank info for type
 ini_write_real(global.tempLocation, eventNameWeek, 0);//stores blank info for week
-ini_write_real(global.tempLocation, eventNameYear, 1);//stores blank info for week
+ini_write_real(global.tempLocation, eventNameYear, 1);//stores blank info for year
 ini_write_real(global.tempLocation, eventNameMyth, 0);//stores blank info for mythical status
 global.eventMyth = 3;
 global.EventID = global.locationEventNumber;//moves the currently selected event to the new one

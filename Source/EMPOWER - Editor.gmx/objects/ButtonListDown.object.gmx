@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.RoomState == 0)
+            <string>//sets variables based on room
+if(global.RoomState == 0)
 {
     cardNum = global.totalEventCards;
 }
@@ -46,6 +47,7 @@ if(global.RoomState == 4)
     cardNum = global.totalCharCards;
 }
 
+//swaps sprite depending on list style
 if(global.ListStyle == 0)
 {
     if(global.listLength == 20 and global.tempPos + 20 &lt; cardNum)
@@ -90,7 +92,7 @@ if(global.ListStyle == 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>//moves the cards list down
 if(global.ListStyle == 0)
 {
     if(cardNum &gt; 20 + global.tempPos)

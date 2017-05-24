@@ -25,8 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = 625;
+            <string>//position
+x = 625;
 y = global.roomHeight - 170;
+//text variables used within object
 CardBack = "";
 InfoBack = "";
 CardBackF = "";
@@ -53,7 +55,8 @@ InfoBackF = "";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CardBack = show_message_async("Please select Mythical Card backing to upload, must be 256x424.");
+            <string>//starts the mythical card backing upload process, continued in dialog
+CardBack = show_message_async("Please select Mythical Card backing to upload, must be 256x424.");
                 
 </string>
           </argument>

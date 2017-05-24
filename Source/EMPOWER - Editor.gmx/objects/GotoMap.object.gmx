@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = 375
+            <string>//positions
+x = 375
 y = global.roomHeight-70
 </string>
           </argument>
@@ -49,8 +50,8 @@ y = global.roomHeight-70
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.BackgroundSetup = true;
-room = RoomMap;
+            <string>global.BackgroundSetup = true;//flags this as a BG change
+room = RoomMap;//sets the room to map
 </string>
           </argument>
         </arguments>

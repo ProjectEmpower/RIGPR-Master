@@ -25,9 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.RoomState != 1 or global.ConsCard == 0)
+            <string>if(global.RoomState == 1 )
+{
+    if( global.ConsCard == 0)
+        sprite_index = No_sprite
+}
+else
     sprite_index = No_sprite
-
 x = 125;
 y = global.roomHeight - 200;
 </string>

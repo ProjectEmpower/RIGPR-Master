@@ -351,7 +351,7 @@ if(room == RoomCardEdit)
         {
             global.cardRef = "T";
             global.tempCardID = "T";
-        }
+        }        
         //displays the cards information on the card add screen, same way as above.
         global.cardName = "Action"+global.tempCardID;
         textFeilds = 5;//number of text boxes we want.

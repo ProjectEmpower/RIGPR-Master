@@ -7,260 +7,242 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprites name="Rooms">
-      <sprites name="Menu">
-        <sprite>sprites\ButtonSpriteResetWindow</sprite>
-        <sprite>sprites\ButtonSpriteFullScreen</sprite>
-      </sprites>
-      <sprites name="Map">
-        <sprite>sprites\ButtonSpriteCharacter</sprite>
-        <sprite>sprites\BuildingSpriteNormal</sprite>
-        <sprite>sprites\BuildingSpriteMythical</sprite>
-        <sprite>sprites\BuildingSpriteBoth</sprite>
-        <sprite>sprites\EditorMODE</sprite>
-      </sprites>
-      <sprites name="Character">
-        <sprite>sprites\ButtonSpriteDiary</sprite>
-        <sprite>sprites\ButtonSpriteCards</sprite>
-        <sprite>sprites\SwapList</sprite>
-      </sprites>
-      <sprite>sprites\ButtonSpriteBack</sprite>
-      <sprites name="LocationAdd">
-        <sprite>sprites\ButtonSpriteDelete</sprite>
-        <sprite>sprites\ButtonSpriteDeleteEvent</sprite>
-        <sprite>sprites\ButtonSpriteDeleteLocationSprite</sprite>
-        <sprite>sprites\ButtonSpriteDeleteLocation</sprite>
-        <sprite>sprites\ButtonSpriteDeleteCard</sprite>
-        <sprite>sprites\ButtonSpriteDeleteCardSprite</sprite>
-        <sprite>sprites\ButtonSpriteCycleMapVisibility</sprite>
-        <sprite>sprites\ButtonSpriteNewEvent</sprite>
-        <sprite>sprites\ButtonSpriteCreateEvent</sprite>
-        <sprite>sprites\ButtonSpriteCreateCard</sprite>
-        <sprite>sprites\ButtonSpriteEventSelect</sprite>
-        <sprite>sprites\ButtonSpriteAddBuildingSprite</sprite>
-        <sprite>sprites\ButtonSpriteAddCardBackingNormal</sprite>
-        <sprite>sprites\ButtonSpriteDeleteCardBackingNormal</sprite>
-        <sprite>sprites\ButtonSpriteDeleteCardBackingMythical</sprite>
-        <sprite>sprites\ButtonSpriteAddMap</sprite>
-        <sprite>sprites\ButtonSpriteDeleteMap</sprite>
-        <sprite>sprites\ButtonSpriteAddBackground</sprite>
-        <sprite>sprites\ButtonSpriteDeleteBackground</sprite>
-        <sprite>sprites\ButtonSpriteAddCardBackingMythical</sprite>
-        <sprite>sprites\ButtonSpriteUpArrow</sprite>
-        <sprite>sprites\ButtonSpriteDownArrow</sprite>
-        <sprite>sprites\ButtonSpriteDownFastArrow</sprite>
-        <sprite>sprites\ButtonSpriteLeftFastArrow</sprite>
-        <sprite>sprites\ButtonSpriteRightFastArrow</sprite>
-        <sprite>sprites\ButtonSpriteUpFastArrow</sprite>
-      </sprites>
-      <sprite>sprites\Plus</sprite>
-      <sprite>sprites\Minus</sprite>
-      <sprite>sprites\No_sprite</sprite>
-      <sprite>sprites\TextInputBoxSprite</sprite>
-      <sprite>sprites\SelectedTextBoxSprite</sprite>
-      <sprite>sprites\TextInputBoxSprite_Large</sprite>
-      <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
-      <sprite>sprites\ActionCardSprite</sprite>
-      <sprite>sprites\EventCardSprite</sprite>
-      <sprite>sprites\CharCardSprite</sprite>
-      <sprite>sprites\ConsCardSprite</sprite>
-      <sprite>sprites\TextInputBoxSprite_Small</sprite>
-      <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
-      <sprite>sprites\ArrowSpriteLeft</sprite>
-      <sprite>sprites\ArrowSpriteRight</sprite>
-      <sprite>sprites\ButtonSpriteSave</sprite>
-      <sprite>sprites\DefaultCardSprite</sprite>
-      <sprite>sprites\CardBackingNormal</sprite>
-      <sprite>sprites\PushUpdateSprite</sprite>
-      <sprite>sprites\CardBackingMyth</sprite>
-      <sprite>sprites\CardBackingNormalInfo</sprite>
-      <sprite>sprites\CardBackingMythInfo</sprite>
-      <sprite>sprites\SplashScreen</sprite>
-      <sprite>sprites\MapScreen</sprite>
-      <sprite>sprites\JournalScreen</sprite>
-      <sprite>sprites\CardsScreen</sprite>
-      <sprite>sprites\CharScreen</sprite>
-      <sprite>sprites\NewGameScreen</sprite>
-      <sprite>sprites\GameMenuScreen</sprite>
-      <sprite>sprites\ReduceActionsSprite</sprite>
-      <sprite>sprites\ButtonSpriteCredits</sprite>
-    </sprites>
+    <sprite>sprites\ActionCardSprite</sprite>
+    <sprite>sprites\ArrowSpriteLeft</sprite>
+    <sprite>sprites\ArrowSpriteRight</sprite>
     <sprite>sprites\BackgroundSprite</sprite>
-    <sprite>sprites\MenuButton</sprite>
-    <sprite>sprites\InfoLinkSprite</sprite>
+    <sprite>sprites\BuildingSpriteBoth</sprite>
+    <sprite>sprites\BuildingSpriteMythical</sprite>
+    <sprite>sprites\BuildingSpriteNormal</sprite>
+    <sprite>sprites\ButtonSpriteAddBackground</sprite>
+    <sprite>sprites\ButtonSpriteAddBuildingSprite</sprite>
+    <sprite>sprites\ButtonSpriteAddCardBackingMythical</sprite>
+    <sprite>sprites\ButtonSpriteAddCardBackingNormal</sprite>
+    <sprite>sprites\ButtonSpriteAddMap</sprite>
+    <sprite>sprites\ButtonSpriteBack</sprite>
+    <sprite>sprites\ButtonSpriteCards</sprite>
+    <sprite>sprites\ButtonSpriteCharacter</sprite>
+    <sprite>sprites\ButtonSpriteCreateCard</sprite>
+    <sprite>sprites\ButtonSpriteCreateEvent</sprite>
+    <sprite>sprites\ButtonSpriteCredits</sprite>
+    <sprite>sprites\ButtonSpriteCycleMapVisibility</sprite>
+    <sprite>sprites\ButtonSpriteDelete</sprite>
+    <sprite>sprites\ButtonSpriteDeleteBackground</sprite>
+    <sprite>sprites\ButtonSpriteDeleteCard</sprite>
+    <sprite>sprites\ButtonSpriteDeleteCardBackingMythical</sprite>
+    <sprite>sprites\ButtonSpriteDeleteCardBackingNormal</sprite>
+    <sprite>sprites\ButtonSpriteDeleteCardSprite</sprite>
+    <sprite>sprites\ButtonSpriteDeleteEvent</sprite>
+    <sprite>sprites\ButtonSpriteDeleteLocation</sprite>
+    <sprite>sprites\ButtonSpriteDeleteLocationSprite</sprite>
+    <sprite>sprites\ButtonSpriteDeleteMap</sprite>
+    <sprite>sprites\ButtonSpriteDiary</sprite>
+    <sprite>sprites\ButtonSpriteDownArrow</sprite>
+    <sprite>sprites\ButtonSpriteDownFastArrow</sprite>
+    <sprite>sprites\ButtonSpriteEventSelect</sprite>
+    <sprite>sprites\ButtonSpriteFullScreen</sprite>
+    <sprite>sprites\ButtonSpriteLeftFastArrow</sprite>
+    <sprite>sprites\ButtonSpriteNewEvent</sprite>
+    <sprite>sprites\ButtonSpriteResetWindow</sprite>
+    <sprite>sprites\ButtonSpriteRightFastArrow</sprite>
+    <sprite>sprites\ButtonSpriteSave</sprite>
+    <sprite>sprites\ButtonSpriteUpArrow</sprite>
+    <sprite>sprites\ButtonSpriteUpFastArrow</sprite>
+    <sprite>sprites\CardBackingMyth</sprite>
+    <sprite>sprites\CardBackingMythInfo</sprite>
+    <sprite>sprites\CardBackingNormal</sprite>
+    <sprite>sprites\CardBackingNormalInfo</sprite>
+    <sprite>sprites\CardsScreen</sprite>
+    <sprite>sprites\CharCardSprite</sprite>
+    <sprite>sprites\CharScreen</sprite>
+    <sprite>sprites\ConsCardSprite</sprite>
     <sprite>sprites\CustomStatNamesSprite</sprite>
-    <sprite>sprites\SwapSplashButtonSprite</sprite>
-    <sprite>sprites\SpriteDelLocBack</sprite>
-    <sprite>sprites\SpriteAddLocBack</sprite>
+    <sprite>sprites\DefaultCardSprite</sprite>
+    <sprite>sprites\EditorMODE</sprite>
+    <sprite>sprites\EventCardSprite</sprite>
+    <sprite>sprites\GameMenuScreen</sprite>
+    <sprite>sprites\InfoLinkSprite</sprite>
+    <sprite>sprites\JournalScreen</sprite>
+    <sprite>sprites\MapScreen</sprite>
+    <sprite>sprites\MenuButton</sprite>
+    <sprite>sprites\Minus</sprite>
+    <sprite>sprites\NewGameScreen</sprite>
+    <sprite>sprites\No_sprite</sprite>
+    <sprite>sprites\Plus</sprite>
+    <sprite>sprites\PushUpdateSprite</sprite>
+    <sprite>sprites\ReduceActionsSprite</sprite>
     <sprite>sprites\RemoveCharCardSprite</sprite>
-    <sprite>sprites\RemoveInfoCardSprite</sprite>
     <sprite>sprites\RemoveConsCardSprite</sprite>
+    <sprite>sprites\RemoveInfoCardSprite</sprite>
+    <sprite>sprites\SelectedTextBoxSprite</sprite>
+    <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
+    <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
+    <sprite>sprites\SplashScreen</sprite>
+    <sprite>sprites\SpriteAddLocBack</sprite>
+    <sprite>sprites\SpriteDelLocBack</sprite>
+    <sprite>sprites\SwapList</sprite>
+    <sprite>sprites\SwapSplashButtonSprite</sprite>
+    <sprite>sprites\TextInputBoxSprite</sprite>
+    <sprite>sprites\TextInputBoxSprite_Large</sprite>
+    <sprite>sprites\TextInputBoxSprite_Small</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\MapBackground</background>
-    <background>background\NewMapBackground</background>
-    <background>background\MainMenuBackground</background>
     <background>background\ActionCard_Background</background>
+    <background>background\Blank_background</background>
     <background>background\CharacterCard_Background</background>
+    <background>background\CharacterScreen_Background</background>
     <background>background\ConsequenceCard_Background</background>
+    <background>background\EventCard_Background</background>
     <background>background\EventCreation_Background</background>
     <background>background\InfoCard_Background</background>
     <background>background\JournalScreen_Background</background>
-    <background>background\OptionsScreen_Background</background>
-    <background>background\EventCard_Background</background>
-    <background>background\CharacterScreen_Background</background>
-    <background>background\Blank_background</background>
+    <background>background\MainMenuBackground</background>
+    <background>background\MapBackground</background>
     <background>background\MenuBackground</background>
+    <background>background\NewMapBackground</background>
+    <background>background\OptionsScreen_Background</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\keyStep.gml</script>
-    <script>scripts\SaveLocation.gml</script>
-    <script>scripts\SaveEventCard.gml</script>
-    <script>scripts\SaveActionCard.gml</script>
-    <script>scripts\SaveConsCard.gml</script>
-    <script>scripts\SaveInfoCard.gml</script>
-    <script>scripts\SaveCharCard.gml</script>
-    <script>scripts\SaveTutorial.gml</script>
     <script>scripts\ResolutionChange.gml</script>
+    <script>scripts\SaveActionCard.gml</script>
+    <script>scripts\SaveCharCard.gml</script>
+    <script>scripts\SaveConsCard.gml</script>
+    <script>scripts\SaveEventCard.gml</script>
+    <script>scripts\SaveInfoCard.gml</script>
+    <script>scripts\SaveLocation.gml</script>
+    <script>scripts\SaveTutorial.gml</script>
   </scripts>
   <objects name="objects">
-    <objects name="Menu">
-      <object>objects\MenuToMap</object>
-    </objects>
-    <objects name="Map">
-      <object>objects\ButtonCharacter</object>
-      <object>objects\MapDragObject</object>
-      <object>objects\MapPosObject</object>
-      <object>objects\Building</object>
-      <object>objects\BuildingSetup</object>
-      <object>objects\ButtonWeekLeft</object>
-      <object>objects\ButtonYearLeft</object>
-      <object>objects\ButtonWeekRight</object>
-      <object>objects\ButtonYearRight</object>
-      <object>objects\editorModeDisplay</object>
-      <object>objects\WeekTextDraw</object>
-      <object>objects\TextOnMap</object>
-      <object>objects\DrawNames</object>
-      <object>objects\Zoom</object>
-    </objects>
-    <objects name="Character">
-      <object>objects\ButtonDiary</object>
-      <object>objects\ButtonCards</object>
-    </objects>
-    <objects name="LocationAdd">
-      <object>objects\LocationSetup</object>
-      <object>objects\ButtonDeleteLocation</object>
-      <object>objects\ButtonCreateEvent</object>
+    <objects name="Backgrounds">
+      <object>objects\ButtonAddBackground</object>
+      <object>objects\ButtonDeleteBackground</object>
+      <object>objects\ButtonSwapSplash</object>
       <object>objects\DrawLocBG</object>
-      <object>objects\ButtonLocationLeft</object>
-      <object>objects\ButtonLocationRight</object>
-      <object>objects\ButtonEventLeft</object>
-      <object>objects\ButtonEventRight</object>
-      <object>objects\ButtonSpriteLeft</object>
-      <object>objects\ButtonSpriteRight</object>
-      <object>objects\ButtonSelectEvent</object>
-      <object>objects\ButtonAddBuildingSprite</object>
+      <object>objects\DrawSplash</object>
+      <object>objects\GotoMap</object>
+      <object>objects\GoToNewG</object>
+      <object>objects\GoToPlayerMenu</object>
+      <object>objects\GotoSplash</object>
+    </objects>
+    <objects name="Cards">
+      <object>objects\ButtonAddCardSprite</object>
+      <object>objects\ButtonAddMythicalCardBack</object>
+      <object>objects\ButtonAddNormalCardBack</object>
+      <object>objects\ButtonCardNew</object>
+      <object>objects\ButtonCardSpriteLeft</object>
+      <object>objects\ButtonCardSpriteRight</object>
+      <object>objects\ButtonCardType</object>
+      <object>objects\ButtonDeleteMythCardBack</object>
+      <object>objects\ButtonDeleteNormalCardBack</object>
+      <object>objects\ButtonListDown</object>
+      <object>objects\ButtonListUp</object>
+      <object>objects\ButtonMoveFastDown</object>
+      <object>objects\ButtonMoveFastUp</object>
+      <object>objects\ButtonSwapCards</object>
+      <objects name="Card">
+        <object>objects\ButtonInfoLink</object>
+        <object>objects\CardBacking</object>
+        <object>objects\CardSpriteObject</object>
+      </objects>
+      <object>objects\CardListSetup</object>
+      <object>objects\CardSetup</object>
+      <object>objects\CardTypeButton</object>
+      <object>objects\CardTypeButtonAdder</object>
+      <object>objects\CardTypeSelect</object>
+      <object>objects\ConsType</object>
+      <object>objects\DelChar</object>
+      <object>objects\DelCons</object>
+      <object>objects\DeleteCard</object>
+      <object>objects\DeleteCurrentCardsprite</object>
       <object>objects\DeleteCurrentEvent</object>
       <object>objects\DeleteCurrentSprite</object>
-      <object>objects\ButtonDelLocationBackground</object>
-      <object>objects\ButtonPushUpdate</object>
-      <object>objects\ShowVer</object>
-      <object>objects\ButtonAddLocationBackground</object>
+      <object>objects\DelInfo</object>
+      <object>objects\ListStyleSwap</object>
+      <object>objects\ReduceActions</object>
     </objects>
-    <objects name="CardList">
-      <objects name="CardEdit">
-        <object>objects\ButtonCycleMapVisibility</object>
-        <object>objects\CardSetup</object>
-        <object>objects\ButtonSave</object>
-        <object>objects\ButtonAddCardSprite</object>
-        <object>objects\ButtonCardSpriteLeft</object>
-        <object>objects\ListStyleSwap</object>
-        <object>objects\ButtonCardSpriteRight</object>
-        <objects name="Card">
-          <object>objects\CardBacking</object>
-          <object>objects\CardSpriteObject</object>
-          <object>objects\CardTypeSelect</object>
-          <object>objects\CardTypeButton</object>
-          <object>objects\ButtonCardType</object>
-          <object>objects\CardTypeButtonAdder</object>
-          <object>objects\DeleteCurrentCardsprite</object>
-          <object>objects\DeleteCard</object>
-          <object>objects\ButtonInfoLink</object>
-        </objects>
-        <object>objects\ButtonListDown</object>
-        <object>objects\ButtonMoveFastDown</object>
-        <object>objects\ButtonListUp</object>
-        <object>objects\ButtonMoveFastUp</object>
-      </objects>
-      <objects name="CardDeck">
-        <object>objects\ButtonCardNew</object>
-        <object>objects\CardListSetup</object>
-      </objects>
-      <object>objects\ConsType</object>
-      <object>objects\Dialog</object>
+    <objects name="Character">
+      <object>objects\ButtonCards</object>
+      <object>objects\ButtonDiary</object>
+    </objects>
+    <objects name="Locations">
+      <object>objects\ButtonAddBuildingSprite</object>
+      <object>objects\ButtonAddLocationBackground</object>
+      <object>objects\ButtonCreateEvent</object>
+      <object>objects\ButtonDeleteLocation</object>
+      <object>objects\ButtonDelLocationBackground</object>
+      <object>objects\ButtonEventLeft</object>
+      <object>objects\ButtonEventRight</object>
+      <object>objects\ButtonLocationLeft</object>
+      <object>objects\ButtonLocationRight</object>
+      <object>objects\ButtonSelectEvent</object>
+      <object>objects\ButtonSpriteLeft</object>
+      <object>objects\ButtonSpriteRight</object>
+      <object>objects\LocationSetup</object>
+    </objects>
+    <objects name="Map">
+      <object>objects\Building</object>
+      <object>objects\BuildingSetup</object>
+      <object>objects\ButtonAddMap</object>
+      <object>objects\ButtonCharacter</object>
+      <object>objects\ButtonWeekLeft</object>
+      <object>objects\ButtonWeekRight</object>
+      <object>objects\ButtonYearLeft</object>
+      <object>objects\ButtonYearRight</object>
+      <object>objects\DeleteMap</object>
+      <object>objects\DrawNames</object>
+      <object>objects\editorModeDisplay</object>
+      <object>objects\MapDragObject</object>
+      <object>objects\MapPosObject</object>
+      <object>objects\TextOnMap</object>
+      <object>objects\WeekTextDraw</object>
+      <object>objects\Zoom</object>
     </objects>
     <objects name="Multiple Rooms">
-      <object>objects\TextInputSetup</object>
       <object>objects\TextInputBox</object>
-      <object>objects\ButtonBack</object>
+      <object>objects\Dialog</object>
+      <object>objects\TextInputSetup</object>
+      <object>objects\ResChange</object>
+      <object>objects\ButtonCycleMapVisibility</object>
       <object>objects\DrawTitles</object>
+      <object>objects\ButtonBack</object>
     </objects>
     <objects name="Options">
+      <object>objects\ButtonCredits</object>
+      <object>objects\ButtonCustomStats</object>
       <object>objects\ButtonFullScreen</object>
+      <object>objects\ButtonPushUpdate</object>
       <object>objects\ButtonResetWindow</object>
-      <objects name="Res Change">
-        <object>objects\ResChange</object>
-      </objects>
-      <object>objects\ButtonSwapCards</object>
+      <object>objects\DrawCredits</object>
     </objects>
-    <object>objects\DrawSplash</object>
-    <object>objects\DrawCredits</object>
-    <object>objects\GameSetup</object>
-    <object>objects\ReduceActions</object>
-    <object>objects\ButtonAddNormalCardBack</object>
-    <object>objects\ButtonAddBackground</object>
-    <object>objects\ButtonDeleteBackground</object>
-    <object>objects\ButtonAddMap</object>
-    <object>objects\ButtonDeleteNormalCardBack</object>
-    <object>objects\DeleteMap</object>
-    <object>objects\ButtonDeleteMythCardBack</object>
-    <object>objects\ButtonAddMythicalCardBack</object>
-    <object>objects\GotoMap</object>
-    <object>objects\ButtonSwapSplash</object>
-    <object>objects\GotoSplash</object>
-    <object>objects\GoToNewG</object>
-    <object>objects\ButtonCredits</object>
-    <object>objects\GoToPlayerMenu</object>
-    <object>objects\DelChar</object>
-    <object>objects\DelInfo</object>
-    <object>objects\DelCons</object>
-    <object>objects\ButtonCustomStats</object>
+    <objects name="Splash/Setup">
+      <object>objects\GameSetup</object>
+      <object>objects\MenuToMap</object>
+    </objects>
+    <objects name="Unused">
+      <object>objects\ShowVer</object>
+      <object>objects\ButtonSave</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>
     <room>rooms\RoomMenu</room>
     <room>rooms\RoomMap</room>
     <room>rooms\RoomLocationAdd</room>
-    <rooms name="Decks">
-      <rooms name="Card">
-        <room>rooms\RoomCardEdit</room>
-        <room>rooms\RoomCardDeck</room>
-      </rooms>
-    </rooms>
     <room>rooms\RoomSprites</room>
+    <room>rooms\RoomCardDeck</room>
+    <room>rooms\RoomCardEdit</room>
     <room>rooms\RoomOptions</room>
-    <rooms name="Options">
-      <room>rooms\RoomResChange</room>
-    </rooms>
     <room>rooms\RoomCharacter</room>
     <room>rooms\RoomDiary</room>
     <room>rooms\RoomCards</room>
     <room>rooms\RoomBackgrounds</room>
     <room>rooms\RoomPlayerMenu</room>
+    <room>rooms\RoomCustomStats</room>
     <room>rooms\RoomCredits</room>
     <room>rooms\RoomNewGame</room>
-    <room>rooms\RoomCustomStats</room>
+    <room>rooms\RoomResChange</room>
     <room>rooms\RoomTutorial</room>
   </rooms>
   <help>

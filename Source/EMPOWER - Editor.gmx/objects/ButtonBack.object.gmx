@@ -498,17 +498,14 @@ change = true;
     }
     if(global.RoomState == 4 and change == true)
     {
-        show_debug_message(global.lastState);
         if(global.lastState == 0)
         {
-            show_debug_message("de");
             global.RoomState = global.lastState;
             global.lastState = 4;
             room = RoomCardEdit;
         }
         else
         {
-            show_debug_message("map");
             global.lastState = 4;
             global.RoomState = 20;
             room = RoomMap

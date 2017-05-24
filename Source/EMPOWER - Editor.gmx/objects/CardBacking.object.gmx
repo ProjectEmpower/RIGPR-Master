@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomCardEdit)
+            <string>//positions
+if(room == RoomCardEdit)
 {
     x = global.roomWidth - 375;
     y = global.roomHeight /2;
@@ -35,9 +36,13 @@ if(room == RoomSprites)
     x = 375;
     y = global.roomHeight /2- 100;
 }
+//depth so things display correctly
 depth = 2;
+//creates an instance of the card art
 inst = instance_create(x,y- 72,CardSpriteObject);
+//checks the cards mythical status
 Mythical = global.tempCardBackMythStatus;
+//adds the cards info if not on sprite screen
 if(room != RoomSprites)
 {
     if(global.RoomState != 3)
@@ -66,7 +71,7 @@ if(room != RoomSprites)
         ref_display = global.charCardRef;
     }
 }
-
+//sets the cards backing based on mythical status
 if(Mythical == 0)
 {
     if(global.normalCardBacking != 0)

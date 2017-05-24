@@ -25,8 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = global.roomWidth/2+220
+            <string>//sets position
+x = global.roomWidth/2+220
 y = global.roomHeight/2-50
+//sets the background up read to be switched
 switch(global.splash)
 {
     case 0: 
@@ -39,6 +41,7 @@ switch(global.splash)
     background_visible[0] = false;
     break;
 }
+//Hides the button when not setting backgrounds
 if(room == RoomMenu and (global.MenuBGing == 0 or global.BackgroundSetup == false))
     sprite_index = No_sprite
 </string>
@@ -63,7 +66,8 @@ if(room == RoomMenu and (global.MenuBGing == 0 or global.BackgroundSetup == fals
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>switch(global.splash)
+            <string>//Swaps the visibility settings of the background 
+switch(global.splash)
 {
     case 0: global.splash = 1;
     background_visible[1] = true;

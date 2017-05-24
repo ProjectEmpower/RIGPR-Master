@@ -1228,7 +1228,8 @@ if(i_d == DeleteCard.msgDelCard)
                 }
             }
             global.totalEventCards -= 1; //after running, this will decrease the total instance number by 1
-
+            if(global.totalEventCards == 0)
+                tempRoom = RoomCardDeck;
 
         
         }
@@ -1265,7 +1266,8 @@ if(i_d == DeleteCard.msgDelCard)
                 }
             }
             global.totalActionCards -= 1;
-
+            if(global.totalActionCards == 0)
+                tempRoom = RoomCardDeck;
             
         
         }
@@ -1305,6 +1307,8 @@ if(i_d == DeleteCard.msgDelCard)
                 }
             }
             global.totalConsCards -= 1;
+            if(global.totalConsCards == 0)
+                tempRoom = RoomCardDeck;
 
         
         }
@@ -1338,7 +1342,8 @@ if(i_d == DeleteCard.msgDelCard)
                 }
             }
             global.totalInfoCards -= 1;
-
+            if(global.totalInfoCards == 0)
+                tempRoom = RoomCardDeck;
         
         }
         if(global.RoomState == 4)
@@ -1373,7 +1378,8 @@ if(i_d == DeleteCard.msgDelCard)
                 }
             }
             global.totalCharCards -= 1;
-
+            if(global.totalCharCards == 0)
+                tempRoom = RoomCardDeck;
         }
         room = tempRoom
     }

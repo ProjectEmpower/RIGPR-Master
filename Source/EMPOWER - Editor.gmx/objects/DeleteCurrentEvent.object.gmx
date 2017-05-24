@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.TutorialSetup == true)
+            <string>if(global.TutorialSetup == true or global.locationEventNumber == 0)
     sprite_index = No_sprite;
 x = global.roomWidth /2 - 215;
 y = global.roomHeight - 70;

@@ -252,7 +252,7 @@ if(room == RoomMap)
 {
     draw_set_halign(fa_center);//sets the horizontal allignment for the text
     draw_set_valign(fa_middle);//sets the vertical allignment for the text
-    draw_text(global.roomWidth/5*3, global.roomHeight/8+86,"Location Image");//draws the text "location Image"
+    draw_text(global.roomWidth/5*3, global.roomHeight/8+86,"Building Image");//draws the text "location Image"
 }
 
 </string>

@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>depth -= 1;
 instanceToCard = global.buttonInstance;
+//changes sprite depending on what button is pushed
 if(instanceToCard == 0)
     sprite_index = EventCardSprite;
 if(instanceToCard == 1)
@@ -57,7 +58,8 @@ if(instanceToCard == 4)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.RoomState = instanceToCard;
+            <string>//s roomstate to current button (event = event roomstate, etc.) This is used when adding/deleting card art on the sprite page
+global.RoomState = instanceToCard;
 global.cardSprite = -1;
 global.SelectWindow = false;
 room = RoomSprites;

@@ -25,28 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = global.roomWidth /2;
+            <string>//sets positions
+x = global.roomWidth /2;
 y = global.roomHeight /2-50;
+//sets defaults for text used within the object
 Background = "";
 BackgroundF = "";
 BackgroundN = "";
 BackgroundFN = "";
 BackgroundS = "";
 BackgroundFS = "";
-
+//sets up the room variable for when called later
 tempRoom = room;
+//sets up the background sizes so that they display correctly after being edited.
 background_xscale[0] = 1 * ((room_width) / background_width[0]);
 background_yscale[0] = 1 * ((room_height) / background_height[0]);
-background_xscale[1] = 1 * ((room_width) / background_width[0]);
-background_yscale[1] = 1 * ((room_height) / background_height[0]);
-background_xscale[2] = 1 * ((room_width) / background_width[0]);
-background_yscale[2] = 1 * ((room_height) / background_height[0]);
-background_xscale[3] = 1 * ((room_width) / background_width[0]);
-background_yscale[3] = 1 * ((room_height) / background_height[0]);
-background_xscale[4] = 1 * ((room_width) / background_width[0]);
-background_yscale[4] = 1 * ((room_height) / background_height[0]);
-background_xscale[5] = 1 * ((room_width) / background_width[0]);
-background_yscale[5] = 1 * ((room_height) / background_height[0]);
+background_xscale[1] = 1 * ((room_width) / background_width[1]);
+background_yscale[1] = 1 * ((room_height) / background_height[1]);
+background_xscale[2] = 1 * ((room_width) / background_width[2]);
+background_yscale[2] = 1 * ((room_height) / background_height[2]);
+background_xscale[3] = 1 * ((room_width) / background_width[3]);
+background_yscale[3] = 1 * ((room_height) / background_height[3]);
+background_xscale[4] = 1 * ((room_width) / background_width[4]);
+background_yscale[4] = 1 * ((room_height) / background_height[4]);
+background_xscale[5] = 1 * ((room_width) / background_width[5]);
+background_yscale[5] = 1 * ((room_height) / background_height[5]);
+//hides the button when on the splash screen initlally
 if(room == RoomMenu and global.BackgroundSetup == false)
     sprite_index = No_sprite;
 </string>
@@ -71,7 +75,8 @@ if(room == RoomMenu and global.BackgroundSetup == false)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomMenu)
+            <string>//When clicked, this will instigate the process of adding a button, see dialog object.
+if(room == RoomMenu)
     BackgroundS = show_message_async("Please select a 'Tap to Start' splash background. Backgrounds must either be 1920x1080 or 1280x720."); 
 else
     Background = show_message_async("Please select a background to use. Backgrounds must either be 1920x1080 or 1280x720.");

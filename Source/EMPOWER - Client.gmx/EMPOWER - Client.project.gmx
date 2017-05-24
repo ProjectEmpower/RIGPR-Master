@@ -7,32 +7,26 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprites name="Rooms">
-      <sprites name="Map">
-        <sprite>sprites\ButtonSpriteCharacter</sprite>
-      </sprites>
-      <sprites name="Character">
-        <sprite>sprites\ButtonSpriteDiary</sprite>
-        <sprite>sprites\ButtonSpriteCards</sprite>
-      </sprites>
-      <sprite>sprites\ButtonSpriteBack</sprite>
-      <sprite>sprites\TextInputBoxSprite_Small</sprite>
-      <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
-      <sprite>sprites\TextInputBoxSprite</sprite>
-      <sprite>sprites\SelectedTextBoxSprite</sprite>
-      <sprite>sprites\TextInputBoxSprite_Large</sprite>
-      <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
-    </sprites>
     <sprite>sprites\BuildingSpriteNormal</sprite>
+    <sprite>sprites\ButtonSpriteBack</sprite>
     <sprite>sprites\BuildingSpriteMythical</sprite>
     <sprite>sprites\BuildingSpriteBoth</sprite>
     <sprite>sprites\No_sprite</sprite>
+    <sprite>sprites\ButtonSpriteCharacter</sprite>
+    <sprite>sprites\ButtonSpriteCards</sprite>
+    <sprite>sprites\SelectedTextBoxSprite_Small</sprite>
+    <sprite>sprites\ButtonSpriteDiary</sprite>
+    <sprite>sprites\TextInputBoxSprite_Small</sprite>
     <sprite>sprites\ArrowSpriteLeft</sprite>
+    <sprite>sprites\TextInputBoxSprite_Large</sprite>
     <sprite>sprites\ArrowSpriteRight</sprite>
+    <sprite>sprites\SelectedTextBoxSprite_Large</sprite>
     <sprite>sprites\DefaultCardSprite</sprite>
+    <sprite>sprites\SelectedTextBoxSprite</sprite>
     <sprite>sprites\CardBackingNormal</sprite>
     <sprite>sprites\RedoEventSprite</sprite>
     <sprite>sprites\SwapType</sprite>
+    <sprite>sprites\TextInputBoxSprite</sprite>
     <sprite>sprites\CardType</sprite>
     <sprite>sprites\DefaultUserSprite</sprite>
     <sprite>sprites\ButtonSpriteContinue</sprite>
@@ -79,70 +73,76 @@
     <script>scripts\LoadTutorial.gml</script>
   </scripts>
   <objects name="objects">
-    <objects name="Rooms">
-      <objects name="Menu">
-        <object>objects\SplashToMenu</object>
-        <object>objects\ResizeBG</object>
-      </objects>
-      <objects name="Map">
-        <object>objects\ButtonCharacter</object>
-        <object>objects\MapDragObject</object>
-        <object>objects\MapPosObject</object>
-        <object>objects\Building</object>
-        <object>objects\BuildingSetup</object>
-        <object>objects\ButtonWeekLeft</object>
-        <object>objects\ButtonWeekRight</object>
-        <object>objects\WeekTextDraw</object>
-        <object>objects\Zoom</object>
-        <object>objects\DrawNames</object>
-        <object>objects\CardSpriteObject</object>
-        <object>objects\ButtonCardLeft</object>
-        <object>objects\ButtonCardRight</object>
-        <object>objects\CardBacking</object>
-        <object>objects\RedoEvent</object>
-        <object>objects\ButtonListStyle</object>
-        <object>objects\ButtonInfoLink</object>
-        <object>objects\ButtonCardType</object>
-        <object>objects\CharCard</object>
-        <object>objects\SpawnTutorial</object>
-      </objects>
-      <objects name="Character">
-        <object>objects\ButtonDiary</object>
-        <object>objects\ButtonCards</object>
-        <objects name="Journal">
-          <object>objects\ButtonJWeekLeft</object>
-          <object>objects\ButtonJYearLeft</object>
-          <object>objects\ButtonJWeekRight</object>
-          <object>objects\ButtonJYearRight</object>
-          <object>objects\JWeekDraw</object>
-        </objects>
-      </objects>
-      <object>objects\GameSetup</object>
-      <object>objects\ButtonBack</object>
-      <objects name="LocationView">
-        <object>objects\LocationSetup</object>
-        <object>objects\TextInputSetup</object>
-        <object>objects\TextInputBox</object>
-      </objects>
-      <objects name="Options">
-        <object>objects\ResChange</object>
-      </objects>
-      <object>objects\MobileRotation</object>
-      <object>objects\ButtonNext</object>
-      <object>objects\UserImage</object>
-      <object>objects\drawBGText</object>
-      <object>objects\ButtonSendEmail</object>
+    <objects name="Card">
+      <object>objects\ButtonCardLeft</object>
+      <object>objects\ButtonCardRight</object>
+      <object>objects\ButtonCardType</object>
+      <object>objects\ButtonInfoLink</object>
+      <object>objects\ButtonListStyle</object>
+      <object>objects\CardBacking</object>
+      <object>objects\CardSpriteObject</object>
+      <object>objects\CharCard</object>
+      <object>objects\LocationSetup</object>
     </objects>
-    <object>objects\ButtonContinueGame</object>
-    <object>objects\ButtonNewGame</object>
-    <object>objects\CheckDL</object>
-    <object>objects\DrawCredits</object>
-    <object>objects\ButtonOptions</object>
-    <object>objects\ButtonCredits</object>
-    <object>objects\ButtonTutorial</object>
-    <object>objects\ButtonFullScreen</object>
-    <object>objects\ButtonResetWindow</object>
-    <object>objects\Background</object>
+    <objects name="Character">
+      <object>objects\ButtonCards</object>
+      <object>objects\ButtonDiary</object>
+    </objects>
+    <objects name="Journal">
+      <object>objects\ButtonJWeekLeft</object>
+      <object>objects\ButtonJWeekRight</object>
+      <object>objects\ButtonJYearLeft</object>
+      <object>objects\ButtonJYearRight</object>
+      <object>objects\JWeekDraw</object>
+      <object>objects\RedoEvent</object>
+    </objects>
+    <objects name="Map">
+      <object>objects\Building</object>
+      <object>objects\BuildingSetup</object>
+      <object>objects\ButtonCharacter</object>
+      <object>objects\DrawNames</object>
+      <object>objects\MapDragObject</object>
+      <object>objects\MapPosObject</object>
+      <object>objects\WeekTextDraw</object>
+      <object>objects\Zoom</object>
+    </objects>
+    <objects name="Menu">
+      <object>objects\ButtonContinueGame</object>
+      <object>objects\ButtonCredits</object>
+      <object>objects\ButtonNewGame</object>
+      <object>objects\ButtonNext</object>
+      <object>objects\ButtonOptions</object>
+      <object>objects\ButtonTutorial</object>
+      <objects name="Options">
+        <object>objects\ButtonFullScreen</object>
+        <object>objects\ButtonResetWindow</object>
+        <object>objects\DrawCredits</object>
+      </objects>
+      <object>objects\SplashToMenu</object>
+    </objects>
+    <objects name="Multiple Rooms">
+      <object>objects\ButtonBack</object>
+      <object>objects\MobileRotation</object>
+      <object>objects\ResChange</object>
+      <object>objects\ResizeBG</object>
+      <object>objects\TextInputBox</object>
+      <object>objects\TextInputSetup</object>
+    </objects>
+    <objects name="Setup">
+      <object>objects\CheckDL</object>
+      <object>objects\GameSetup</object>
+    </objects>
+    <objects name="Tutorial">
+      <object>objects\Background</object>
+      <object>objects\SpawnTutorial</object>
+    </objects>
+    <objects name="Unused">
+      <object>objects\ButtonSendEmail</object>
+      <object>objects\ButtonWeekLeft</object>
+      <object>objects\ButtonWeekRight</object>
+      <object>objects\drawBGText</object>
+      <object>objects\UserImage</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\RoomSetup</room>

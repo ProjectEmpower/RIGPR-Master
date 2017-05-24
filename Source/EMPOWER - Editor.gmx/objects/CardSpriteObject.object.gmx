@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>depth = 1;
-
+//sets default info
 if(room != RoomSprites)
 {
 if(global.RoomState == 0)
@@ -65,6 +65,7 @@ if(global.RoomState == 4)
     CardText = global.charCardText;
 }
 }
+//sets sprite
 if(global.cardSprite == -1)
 {
     sprite_index = DefaultCardSprite;
@@ -299,7 +300,8 @@ if(global.RoomState == 3)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == RoomCardEdit or room == RoomCardDeck)
+            <string>//draws card text
+if(room == RoomCardEdit or room == RoomCardDeck)
 {
   draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
