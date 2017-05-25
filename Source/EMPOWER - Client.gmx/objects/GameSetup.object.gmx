@@ -117,7 +117,7 @@ if(i_d == msg)
             {
                 global.Address = global.Address + "/" 
             } 
-            zip = http_get_file(global.Address+"Files.zip", "Files.zip");
+            zip = http_get_file(global.Address+"editor_files.zip", "editor_files.zip");
 
          }
       }
@@ -127,7 +127,7 @@ if(i_d == msg)
     if (ds_map_find_value(async_load, "status"))
     {
         updateMsg = ""; 
-        zip = http_get_file(global.Address+"Files.zip", "Files.zip");
+        zip = http_get_file(global.Address+"editor_files.zip", "editor_files.zip");
 
     }
     else
@@ -175,7 +175,7 @@ if(i_d == msg)
             ini_write_real("General","Version",global.CurVer);
             ini_close(); 
             show_message_async("Download Complete.");
-            file_delete("Files.zip");
+            file_delete("editor_files.zip");
             check = true;
         
         }

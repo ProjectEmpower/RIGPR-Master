@@ -44,9 +44,9 @@ if(room == RoomLocationView)
 {
     if(global.TutorialSetup == true and global.Cont == 0)
     {
-        global.textToInput = "This is the Location Screen, click anywhere to view the available events";
+        global.textToInput = "This is the Location Screen, clicking/tapping the anywhere within the screen will display the possible Events at this Location.";
         global.instCheck = 0;
-        global.instX =  100;   
+        global.instX =  global.roomWidth/2;   
         global.instY = global.roomHeight/2;   
         global.TutBG[global.numberOfBackgrounds] = instance_create(global.instX ,global.instY ,Background);
     }
